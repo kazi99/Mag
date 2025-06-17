@@ -1,9 +1,86 @@
 \section{Test}
-Text and math $a, b \in \Z$ Coh
+Text and math $a, b \in \Z$
 \[
 \int_{M} d\omega = \int_{\partial M } \omega
 \]
 
 \[
-    D^b(\mathtt{Coh}(X))
+    \sum D^b(\mathtt{Coh}(X))
 \]
+
+% % --------------------------------------------------------------
+
+% \section*{Question 1}
+% \addtocounter{section}{1}
+
+% Components of natural transformations $\eta$ and $\mu$ are given by
+% \[
+%     \eta_X : X \to V(X), \quad \quad x \mapsto \delta_x,
+% \]
+% where $\delta_x : X \to S$ is the Kronecker delta $\delta_x(x) = 1$ and $\delta_x(y) = 0$ for $y \neq x$. When $X = \varnothing$, let $\eta_\varnothing$ be the empty map $\varnothing \to V(Y)$.
+% The natural transformation $\mu$ is given by
+% \[
+%     \mu_X : V(V(X)) \to V(X), \quad \quad w \mapsto \sum_{v \in V(X)} w(v)   v
+% \]
+% for all $X \in \abs{\Set}$.
+
+% % --------------------------------------------------------------
+
+% \section*{Question 2}
+% \addtocounter{section}{1}
+
+% The Kleisli category $\Set_V$ for the monad $(V, \eta, \mu)$ is given by the following data:
+% \begin{itemize}
+%     \item objects $\abs{\Set_V} = \abs{\Set}$,
+%     \item morphisms $\Set_V(X, Y) = \Set(X, V(Y))$ for all $X, Y \in \abs{\Set_V}$.
+% \end{itemize} 
+% For all $X,Y,Z \in \Set$ the identity morphism in $\Set_V(X, X)$ is $\id_X = \eta_X : X \to V(X)$ and the composition mapping
+% \[
+%     (-) \circ_V (-) : \Set_V(Y, Z) \times \Set_V(X, Y) \to \Set_V(X,Z), \\
+% \]
+% is given by 
+% \[
+%     g \circ_V f = \mu_Z \circ V(g) \circ f = \left(x \mapsto \sum_{w \in V(Z)} \sum_{y \in g\inv(w)} f(x)(y)g(y) \right).
+% \]
+
+\subsection{Weierstrassova funkcija $\wp$}
+
+Osrednja tema tega poglavja, ki bo povezala eliptične krivulje s kompleksnimi torusi in za katero je bilo potrebno razvijati teorijo v prejšnjem razdelku, bo najprej definicija nato pa pregled lastnosti \emph{Weierstrassove funkcije} $\wp$. 
+
+Vseskozi naj bo $\Lambda$ mreža v $\C$ in naj velja oznaka $\Lambda' = \Lambda \setminus \{0\}$.
+
+\begin{definicija}
+    \label{eisensteinova vrsta}
+    Za naravno število $k > 2$ je \emph{Eisensteinova vrsta reda $k$} podana kot
+    \[
+        G_k(\Lambda) = \sum_{\omega \in \Lambda'} \frac{1}{\omega^k}.  
+    \]
+\end{definicija}
+
+\begin{opomba}
+    Opazimo, da za lihe $k$ velja $G_k(\Lambda) = 0$, saj se člena pri $\omega$ in $-\omega$ v vsoti odštejeta. 
+\end{opomba}
+
+\begin{lema}
+    \label{lema o konvergenci eisensteinove vrste}
+    Za vsako naravno število $k > 2$ je Eisensteinova vrsta reda $k$ absolutno konvergentna.
+\end{lema}
+
+\begin{proof}
+    Za vsak $n \in \N$ definirajmo množice
+    \[
+        C_n = \{k_1 \omega_1 + k_2 \omega_2\in \Lambda \mid {k_1} + {k_2} = n\}.  
+    \]
+    Induktivni sklep pokaže, da je moč posamezne od teh množic $C_n$ enaka $4n$.
+    % Preprosto se je prepričati, da je moč posamezne od teh množic $\#C_n = 4n$. 
+    Vsak element $\omega \in C_n$ pa lahko po absolutni vrednosti ocenimo $\left\lvert \omega \right\rvert \geq \rho n$, kjer je $\rho > 0$ razdalja od izhodišča $0$ do roba paralelograma z oglišči v točkah $\pm \omega_1, \pm \omega_2$. Tedaj velja ocena
+    \[
+        \sum_{\omega \in \Lambda'} \frac{1}{\left\lvert  \omega^k \right\rvert} = 
+        \sum_{n = 1}^\infty \sum_{\omega \in C_n} \frac{1}{\left\lvert  \omega \right\rvert^k} \leq
+        \sum_{n = 1}^\infty \sum_{\omega \in C_n} \frac{1}{(\rho n)^k} =
+        \sum_{n = 1}^\infty \frac{4n}{\rho^k n^k} = 
+        \frac{4}{\rho^k} \sum_{n = 1}^\infty \frac{1}{n^{k-1}}.
+    \]
+    Klasičen rezultat iz realne analize pove, da zadnja vrsta konvergira natanko tedaj, ko je $k - 1 > 1$ in tako po primerjalnem kriteriju dobimo absolutno kovergenco Eisensteinove vrste $\sum_{\omega \in \Lambda'} \omega^{-k}$.
+\end{proof}
+

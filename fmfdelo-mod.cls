@@ -92,7 +92,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
 \ProcessOptions\relax
-\LoadClass[12pt, a4paper]{article}
+\LoadClass[11pt, a4paper]{article} % 12pt je bilo prvotno
 \ifthenelse{\boolean{@drugastopnja}}{
   \def\@stopnja{2. stopnja}
   \def\@tipdela{Magistrsko delo}
@@ -708,8 +708,8 @@
 }
 \def\@frontpages@en@acknowledgements{
   \ifdefined\@zahvala
-    \pdfbookmark[1]{Acknowledgements}{zahvala}
-    \section*{Acknowledgements}
+    \pdfbookmark[1]{Zahvala}{zahvala}
+    \section*{Zahvala}
     \@zahvala
     \vfill
     \cleardoublepage
@@ -855,7 +855,7 @@
   \newtheorem{definicija}{Definicija}[subsection]
 
   \cleardoublepage
-  \@make@razsirjenipovzetek{slovene}{Razsirjeni povzetek}{\@razsirjenipovzetek}
+  \@make@razsirjenipovzetek{slovene}{Razširjeni povzetek}{\@razsirjenipovzetek}
 }
 
 % only print the index (and clear the page) if the \index command has been used
