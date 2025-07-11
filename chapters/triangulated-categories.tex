@@ -1,6 +1,8 @@
 \section{Triangulated categories}
 
-\subsection{Additive and $k$-linear categories}
+\subsection{Additive, $k$-linear and abelian categories}
+
+We mainly follow \cite{kashiwara2006categories}.
 
 A categorical \emph{biproduct} of objects $X$ and $Y$ of a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
 \begin{center}
@@ -21,10 +23,12 @@ for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the 
             \circ \colon \hom_{\A}(Y, Z) \times \hom_{\A}(X, Y) \to \hom_{\A}(X, Z)
         \] 
         is bilinear.
-        \item[A2] There exists an object $0$, for which $\Hom_\A(0,0) = 0$.
+        \item[A2] There exists a \emph{zero object} $0$, for which $\Hom_\A(0,0) = 0$.
         \item[A3] For any two objects $X$ and $Y$ there exists a categorical biproduct of $X$ and $Y$. 
     \end{enumerate} 
 \end{definition}
+
+% Whenever it will be clear from context, we will sometimes omit the subindex $\A$ from $\Hom_\A(X, Y)$ for clarity and write just $\Hom(X, Y)$ instead.
 
 \begin{definition}
     A functor $F \colon \A \to \A'$ between two additive (resp.\ $k$-linear) categories $\A$ and $\A'$ is \emph{additive} (\resp \emph{$k$-linear}), if its action on morphisms
@@ -34,13 +38,49 @@ for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the 
     is a group homomorphism (resp.\ $k$-linear map).
 \end{definition}
 
+For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are mono and epi respectively. We also define the \emph{image} and \emph{coimage} of $f$ to be
+\begin{align*}
+    (\im f \to Y) &:= \ker(Y \to \coker f) \\
+    (X \to \coim f) &:= \coker(\ker f \to X).
+\end{align*}
+
+\begin{definition}
+    An additive category $\A$ is \emph{abelian}, if it contains all kernels and cokernels and satisfies axiom A4.
+    \begin{enumerate}
+        \item[A4] For any morphism $f\colon X \to Y$ in $\A$ the canonical morphism $\coim f \xrightarrow{\ \sim \ } \im f$ is an isomorphism.
+        \[\begin{tikzcd}[column sep = small]
+            % https://q.uiver.app/#q=WzAsNixbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIlxca2VyIGYiXSxbMywwLCJjb2tlciBmIl0sWzEsMSwiY29pbWYiXSxbMiwxLCJpbWYiXSxbMiwwXSxbMCwxLCJmIl0sWzEsM10sWzAsNF0sWzEsNV0sWzQsNSwiaCJdXQ==
+            {\ker f} & X & Y & {\coker f} \\
+            & \coim f & \im f
+            \arrow[hook', from=1-1, to=1-2]
+            \arrow["f", from=1-2, to=1-3]
+            \arrow[two heads, from=1-2, to=2-2]
+            \arrow[two heads, from=1-3, to=1-4]
+            \arrow[hook', from=2-3, to=1-3]
+            \arrow["\sim", from=2-2, to=2-3]
+        \end{tikzcd}\] 
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    We obtain the morphism mentioned in axiom A4 in the following way. Since $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ is equal to $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composit $\ker f \to X \to \im f$ then equals $0$, by the fact that $\im f \hookrightarrow Y$ is mono and $\ker f \to X \to Y$ equals $0$. From the universal property of cokernels we obtain a unique morphism $\coim f \to \im f$, since $(X \to \coim f) = \coker(\ker f \to X)$.
+\end{remark}
+
+\begin{definition}
+    Let
+    \[
+        X \xrightarrow{\ f \ } Y \xrightarrow{\ g\ } Z
+    \]
+    be a sequence of composable morphisms in an abelian category $\A$ satisfying $g \circ f = 0$ . We say it is \emph{exact}, if the canonical morphism $\im g \xrightarrow{\ \sim \ } \ker f$ is an isomorphism.
+\end{definition}
+
 \subsection{Triangulated categories}
 
 In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a category $\D$ together with an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $X[1]$ and its action on morphisms $f$ with $f[1]$.
 
 A \emph{triangle} in a category $\D$ with translation $T$ is a triplet of composable morphisms $(u, v, w)$ of category $\D$ having the form 
 \[
-    X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1].
+    X\xrightarrow{\ u \ } Y \xrightarrow{\ v \ } Z \xrightarrow{\ w \ } X[1].
 \]
 A \emph{morphism} of triangles $X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]$ and $X'\xrightarrow{u'} Y' \xrightarrow{v'} Z' \xrightarrow{w'} X'[1]$ is given by a triple of morphisms $(\alpha, \beta, \gamma)$ for which the diagram below commutes.
 \[\begin{tikzcd}
@@ -107,7 +147,7 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
 \begin{remark}
     For a distinguished triangle
     \[
-        X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]
+        X\xrightarrow{\ u \ } Y \xrightarrow{\ v \ } Z \xrightarrow{\ w \ } X[1]
     \]
     morphisms $u$ and $v$ are said to be of degree $0$ and morphism $w$ is said to be of degree $+1$. They are also sometimes diagramatically depicted as triangles, with the markings on morphisms describing their respective degrees.
     \[\begin{tikzcd}[column sep = small, row sep = 1.5em]
