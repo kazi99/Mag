@@ -1,0 +1,157 @@
+\section{Triangulated categories}
+
+\subsection{Additive and $k$-linear categories}
+
+A categorical \emph{biproduct} of objects $X$ and $Y$ of a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
+\begin{center}
+    \begin{tabular}{c c}
+        $p_X\colon X \oplus Y \to X$ & $p_Y\colon X \oplus Y \to Y$ \\
+        $i_X\colon X \to X \oplus Y$ & $i_Y\colon Y \to X \oplus Y$ \\
+    \end{tabular}
+\end{center}
+for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct.
+
+% $X \xleftarrow{p_X} X \oplus Y \xrightarrow{p_Y} Y$ is the categorical product of $X$ and $Y$ and $X \xrightarrow{i_X} X \oplus Y \xleftarrow{i_Y} Y$.
+
+\begin{definition}
+    A category $\A$ is additive (resp.\ $k$-linear) if all the hom-sets carry the structure of abelian groups (resp.\ $k$-modules) and the following axioms are satisfied
+    \begin{enumerate}
+        \item[A1] For all all objects $X$, $Y$ and $Z$ of $\A$ the composition
+        \[
+            \circ \colon \hom_{\A}(Y, Z) \times \hom_{\A}(X, Y) \to \hom_{\A}(X, Z)
+        \] 
+        is bilinear.
+        \item[A2] There exists an object $0$, for which $\Hom_\A(0,0) = 0$.
+        \item[A3] For any two objects $X$ and $Y$ there exists a categorical biproduct of $X$ and $Y$. 
+    \end{enumerate} 
+\end{definition}
+
+\begin{definition}
+    A functor $F \colon \A \to \A'$ between two additive (resp.\ $k$-linear) categories $\A$ and $\A'$ is \emph{additive} (\resp \emph{$k$-linear}), if its action on morphisms
+    \[
+        \hom_\A(X, Y) \to \hom_{\A'}(F(X), F(Y))
+    \] 
+    is a group homomorphism (resp.\ $k$-linear map).
+\end{definition}
+
+\subsection{Triangulated categories}
+
+In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a category $\D$ together with an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $X[1]$ and its action on morphisms $f$ with $f[1]$.
+
+A \emph{triangle} in a category $\D$ with translation $T$ is a triplet of composable morphisms $(u, v, w)$ of category $\D$ having the form 
+\[
+    X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1].
+\]
+A \emph{morphism} of triangles $X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]$ and $X'\xrightarrow{u'} Y' \xrightarrow{v'} Z' \xrightarrow{w'} X'[1]$ is given by a triple of morphisms $(\alpha, \beta, \gamma)$ for which the diagram below commutes.
+\[\begin{tikzcd}
+    % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+	X & Y & Z & {X[1]} \\
+	{X'} & {Y'} & {Z'} & {X'[1]}
+	\arrow[from=1-1, to=1-2]
+	\arrow["\alpha"', from=1-1, to=2-1]
+	\arrow[from=1-2, to=1-3]
+	\arrow["\beta"', from=1-2, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow["\gamma"', from=1-3, to=2-3]
+	\arrow["{\alpha[1]}"', from=1-4, to=2-4]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}
+\]
+One can compose morphisms of triangles in the obvious way and the notion of an isomorphism of triangles is defined as usual.
+
+\begin{definition}
+    A \emph{triangulated category} is an additive or $k$-linear category $\D$ with translation $T$ equipped with a class of \emph{distinguished triangles}, which is subject to the following axioms.
+    \begin{enumerate}
+        \item[TR1] \begin{enumerate}[(i)]
+            \item Any triangle isomorphic to a distinguished triangle is also itself destinguished.
+            \item For any $X$ the triangle
+            \[
+                X \xrightarrow{\id_X} X \longrightarrow 0 \longrightarrow X[1]
+            \] 
+            is distinguished.
+            \item For any morphism $f \colon X \to Y$ there is a distinguished triangle of the form
+            \[
+                X \xrightarrow{\ f \ } Y \longrightarrow Z \longrightarrow X[1]
+            \]
+            \end{enumerate}
+        \item[TR2]
+        \item[TR3]
+        \item[TR4]    
+    \end{enumerate} 
+\end{definition}
+
+% \begin{definition}
+%     A \emph{triangulated category} is an additive or $k$-linear category $\D$ together with two additional pieces of structure. 
+%     \begin{enumerate}    
+%         \item An additive or $k$-linear auto-equivalence
+%         \[
+%         T\colon \D \to \D,
+%         \]
+%         called a \emph{translation functor}. Usually we denote its action on an object $X$ of $\D$ with $X[1]$ and its action on a morphism $f$ with $f[1]$ instead of $T(X)$ and $T(f)$.
+        
+%         \item A collection of \emph{distinguished triangles}, which are triplets of composable morphisms $(u, v, w)$ of category $\D$ having the form 
+%         \[
+%             X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1],
+%             \]
+%     \end{enumerate}
+%     The above is constrained by the following axioms.
+
+%     \begin{enumerate}
+%         \item[\text{TR1}] 
+%         \item[TR2] 
+%     \end{enumerate}
+% \end{definition}
+
+\begin{remark}
+    For a distinguished triangle
+    \[
+        X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]
+    \]
+    morphisms $u$ and $v$ are said to be of degree $0$ and morphism $w$ is said to be of degree $+1$. They are also sometimes diagramatically depicted as triangles, with the markings on morphisms describing their respective degrees.
+    \[\begin{tikzcd}[column sep = small, row sep = 1.5em]
+        % https://q.uiver.app/#q=WzAsMyxbMSwwLCJaIl0sWzAsMiwiWCJdLFsyLDIsIlkiXSxbMCwxLCIrMSIsMl0sWzEsMiwiMCJdLFsyLDAsIjAiLDJdXQ==
+        & Z \\
+        \\
+        X && Y
+        \arrow["{+1}"', from=1-2, to=3-1]
+        \arrow["0", from=3-1, to=3-3]
+        \arrow["0"', from=3-3, to=1-2]
+    \end{tikzcd}\]
+\end{remark}
+
+\begin{definition}
+    Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. An additive functor $F \colon \D \to \D'$ is defined to be \emph{triangulated} or \emph{exact}, if the following two conditions are satisfied.
+    \begin{enumerate}[(i)]
+        \item There exists a natural isomorphism of functors 
+        \[
+            \eta \colon F \circ T \iso T' \circ F.
+        \]
+        \item For every distinguished triangle
+        \[
+            X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]
+        \]
+        in $\D$, the triangle
+        \[
+            F(X) \to F(Y) \to F(Z) \to F(X)[1] 
+        \]
+        is distinguished in $\D'$, where the last morphism (of degree $1$) is obtained as the composition $F(Z) \xrightarrow{Fw} F(X[1]) \xrightarrow{\eta_X} F(X)[1]$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    Let $H\colon \D \to \A$ be an additive functor between a triangulated category $\D$ and an abelian category $\A$. We say $H$ is a \emph{cohomological functor} if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
+    \[
+        \cdots \to H(X) \to H(Y) \to H(Z) \to H(X[1]) \to H(Y[1]) \to H(Z[1]) \to \cdots
+    \]
+    is exact.
+\end{definition}
+
+\begin{example}
+    For any object $W$ in a triangulated category $\D$ the functors 
+    \[
+    \Hom_\D(W, -) \colon \D \to \Ab \text{ and } \Hom_\D( - , W) \colon \D^\op \to \Ab
+    \]
+    are cohomological.
+\end{example}

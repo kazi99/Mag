@@ -461,12 +461,11 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}[definition]{Remark}
 \newtheorem{example*}[definition]{Example}
-\newenvironment{example}[1][]{
-  \begin{example*}[#1]\renewcommand*{\qedsymbol}{$\diamondsuit$}\pushQED{\qed}
-}{
-  \popQED\end{example*}
+\newenvironment{example}[1][]
+  {\begin{example*}[#1]}
+  {\end{example*}}
 }
-}
+
 
  % poševno napisan tekst
 \theoremstyle{plain}

@@ -1,0 +1,241 @@
+% \chapter{Derived categories}
+\section{Derived categories}
+
+\subsection{Categories of complexes}
+In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip these with a triangulated structure and . Throughout this section $\A$ will be a fixed additeve or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
+
+\subsubsection*{{Category of complexes}}
+
+By a \emph{chain complex} in $\A$ we mean a collection of objects and morphisms 
+\[
+    A^\bullet = \left((A^i)_{i \in \Z}, (d^i_A\colon A^i \to A^{i+1})_{i \in \Z}\right),
+\] 
+where $A^i$ are objects and $d^i$ are morphisms of $\A$, called \emph{differenitials}, subject to equations $d^{i+1}\circ d^i = 0$, for all $i \in \Z$. A complex is \emph{bounded from below} (\resp \emph{bounded from above}), if there exists $i_0 \in \Z$ for which $A^i = 0$ for all $i \leq i_0$ (\resp $i \geq i_0$) and is \emph{bounded}, if it is both bounded from below and bounded from above. A \emph{chain map} between two chain complexes $A^\bullet$ and $B^\bullet$ in $\A$ is a collection of morphisms in $\A$
+\[
+    f^\bullet = (f^i\colon A^i \to B^i)_{i \in \Z},
+\]
+for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This may diagramatically be described by the following commutative ladder.
+
+\[
+\begin{tikzcd}
+    % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQV57aS0xfSJdLFszLDAsIkFeaSJdLFs1LDAsIkFee2krMX0iXSxbMSwyLCJCXntpLTF9Il0sWzMsMiwiQl5pIl0sWzUsMiwiQl57aSsxfSJdLFs2LDIsIlxcY2RvdHMiXSxbNiwwLCJcXGNkb3RzIl0sWzAsMCwiXFxjZG90cyJdLFswLDIsIlxcY2RvdHMiXSxbMCwzLCJmXntpLTF9Il0sWzEsNCwiZl5pIl0sWzIsNSwiZl57aSsxfSJdLFswLDEsImRee2ktMX1fQSJdLFsxLDIsImReaV9BIl0sWzQsNSwiZF57aX1fQiJdLFszLDQsImRee2ktMX1fQiJdLFs1LDZdLFsyLDddLFs4LDBdLFs5LDNdXQ==
+	\cdots & {A^{i-1}} && {A^i} && {A^{i+1}} & \cdots \\
+	\\
+	\cdots & {B^{i-1}} && {B^i} && {B^{i+1}} & \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow["{d^{i-1}_A}", from=1-2, to=1-4]
+	\arrow["{f^{i-1}}", from=1-2, to=3-2]
+	\arrow["{d^i_A}", from=1-4, to=1-6]
+	\arrow["{f^i}", from=1-4, to=3-4]
+	\arrow[from=1-6, to=1-7]
+	\arrow["{f^{i+1}}", from=1-6, to=3-6]
+	\arrow[from=3-1, to=3-2]
+	\arrow["{d^{i-1}_B}", from=3-2, to=3-4]
+	\arrow["{d^{i}_B}", from=3-4, to=3-6]
+	\arrow[from=3-6, to=3-7]
+\end{tikzcd}
+\]
+
+We then define the \emph{category of chain complexes} in $\A$, denoted by $\com(\A)$, to be the following additive category. 
+\begin{center}
+    \begin{tabular}{r l}
+        \textsl{Objects:} & chain complexes in $\A$. \\
+        \textsl{Morphims:} & $\Hom_{\com(\A)}(X, Y)$ is the set of chain maps $X \to Y$, \\ & equipped with a group structure inherited from $\A$ \\ & by applying operations componentwise.
+    \end{tabular}
+\end{center}
+The composition law is defined componentwise and is clearly associative and bilinear, and the identity morphisms $1_{A^\bullet}$ are defined to be $(1_{A^i})_{i \in \Z}$. Additionally, we also define the following full additive subcategories of $\com(\A)$.
+\begin{center}
+    \begin{tabular}{c l}
+        $\com^+(\A)$ & \emph{Category of complexes bounded below}, spanned on \\ &complexes in $\A$ bounded below. \\
+        $\com^-(\A)$ & \emph{Category of complexes bounded above}, spanned on \\ &complexes in $\A$ bounded above. \\
+        $\com^b(\A)$ & \emph{Category of bounded complexes}, spanned on \\ &bounded complexes in $\A$. \\    
+    \end{tabular}
+\end{center}
+\begin{remark}
+    Whenever $\A$ is $k$-linear, all the categories of complexes $\com^*(\A)$ become $k$-linear as well in the obvious way.
+\end{remark}
+
+On all the categories of complexes mentioned above, we can now define the translation functor
+\[
+    T\colon \com^*(\A) \to \com^*(\A)
+\]  
+given by its action on objects and morphisms as follows.
+
+\begin{center}
+    \begin{tabular}{r l}
+        \textsl{Objects:} & $A^\bullet[1]$ is the chain complex with $(A^\bullet[1])^i := A^{i+1}$ \\ & and its differential is $d^i_{A[1]} = - d^{i+1}_{A}$. \\
+        \textsl{Morphims:} & For a chain map $f^\bullet\colon A^\bullet \to B^\bullet$ we define $f^\bullet[1]$ to have \\ & component maps $(f^\bullet[1])^i = f^{i+1}$.
+    \end{tabular}
+\end{center}
+The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its differential by a sign and shifting it one step to the \emph{left}, which is graphically pictured below.
+
+\[\begin{tikzcd}[row sep = 1.2em]
+    % https://q.uiver.app/#q=WzAsMTcsWzAsMSwiQV5cXGJ1bGxldFxcY29sb24iXSxbMCwyLCJBXlxcYnVsbGV0WzFdXFxjb2xvbiJdLFsxLDAsIlxcY2RvdHMiXSxbMywxLCJBXjAiXSxbNCwxLCJBXjEiXSxbMiwxLCJBXnstMX0iXSxbMiwyLCJBXjAiXSxbMywyLCJBXjEiXSxbNCwyLCJBXjIiXSxbNSwxLCJcXGNkb3RzIl0sWzUsMiwiXFxjZG90cyJdLFsxLDEsIlxcY2RvdHMiXSxbMSwyLCJcXGNkb3RzIl0sWzMsMCwiXFx0ZXh0dHR7MH0iXSxbNCwwLCJcXHRleHR0dHsxfSJdLFsyLDAsIlxcdGV4dHR0ey0xfSJdLFs1LDAsIlxcY2RvdHMiXSxbNiw3XSxbNyw4XSxbNSwzXSxbMyw0XSxbNCw5XSxbMTEsNV0sWzEyLDZdXQ==
+	& \color{linkcolor}\cdots & {\color{linkcolor}{\mathtt{-1}}} & {\color{linkcolor}\small{\mathtt{0}}} & {\color{linkcolor}\small{\mathtt{1}}} & {\color{linkcolor}\small{\mathtt{2}}} & \color{linkcolor}\cdots \\
+	{A^\bullet} & \cdots & {A^{-1}} & {A^0} & {A^1} & {A^2} & \cdots \\
+	{A^\bullet[1]} & \cdots & {A^0} & {A^1} & {A^2} & {A^3} & \cdots
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=2-5, to=2-6]
+	\arrow[from=2-6, to=2-7]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=3-4, to=3-5]
+    \arrow[from=3-5, to=3-6]
+    \arrow[from=3-6, to=3-7]
+\end{tikzcd}\]
+
+\begin{remark}
+    We remark that the translation functor $T$ is clearly also additive or $k$-linear, whenever $\A$ is additive or $k$-linear.
+\end{remark}
+
+Since $T$ is an auto-equivalence there exists a quasi-inverse $T\inv$ to $T$, which is defined and unique up to a natural isomorphism. We may then speak of $T^{k}$ for any $k \in \Z$, whose action on a complex $A^\bullet$ is described by $(A^\bullet[k])^i = A^{i + k}$ with differential $d^{i}_{A[k]} = (-1)^k d^{i+k}_A$.
+
+\subsubsection*{Homotopy category of complexes}
+
+
+\newpage
+\begin{lemma}
+    Let $f^\bullet \colon A^\bullet \to B^\bullet$ be a quasi-isomorphism and let $g^\bullet\colon C^\bullet \to B^\bullet$ be a morphism. Then there exist a quasi-isomorphism $u^\bullet\colon C_0^\bullet \to C^\bullet$ and a morphism $v^\bullet\colon C_0^\bullet \to A^\bullet$, such that $f \circ u = g \circ v$ \ie the diagram below commutes.
+    \[
+    \begin{tikzcd}
+        {C_0^\bullet} && C^\bullet \\
+        \\
+        A^\bullet && B^\bullet
+        \arrow["u^\bullet", dashed, from=1-1, to=1-3]
+        \arrow["\sim"', draw=none, from=1-1, to=1-3]
+        \arrow["v^\bullet"', dashed, from=1-1, to=3-1]
+        \arrow["g^\bullet", from=1-3, to=3-3]
+        \arrow["f^\bullet", from=3-1, to=3-3]
+        \arrow["\sim"', draw=none, from=3-1, to=3-3]
+    \end{tikzcd}
+    \]
+\end{lemma}
+
+The above also holds in categories $K^+(\A)$, $K^-(\A)$, $K^b(\A)$.
+
+\begin{proposition}
+    \label{injective resolution}
+    Suppose $\A$ contains enough injectives. Then every $A^\bullet$ in $K^+(\A)$ has an injective resolution.
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{remark}
+    As is evident from the proof by close inspection we have only used two facts about the class of all injective objects of $\A$ -- that every object of $\A$ embeds into some injective object and that the class of injectives is closed under finite direct sums. This will later on be used in subsection \ref{Subsection on F-adapted classes} when constructing a right derived functor of a given functor $F$ in the presence of an $F$-adapted class.
+\end{remark}
+
+\begin{lemma}
+    Let $A^\bullet$ be any acyclic complex in $K^+(\A)$ and $I^\bullet$ a complex of injectives from $K^+(J)$. Then
+    \[
+        \hom_{K^+(\A)}(A^\bullet, I^\bullet) = 0.
+    \]
+    In other words every morphism from an acyclic complex to an injective one is nulhomotopic.
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{theorem}
+    Assume $\A$ contains enough injectives and let $\J \subseteq \A$ denote the full subcategory on injecitve objects of $\A$. Then the inclusion $K^+(\J) \hookrightarrow K^+(\A)$ induces an equivalence of categories
+    \[
+        K^+(\J) \iso D^+(\A).
+    \]
+\end{theorem}
+
+\subsection{Derived functors}
+
+\subsubsection{$F$-adapted classes}
+\label{Subsection on F-adapted classes}
+
+Unfortunately our categories at hand will sometimes not contain enough injectives, as can already be seen with the category of coherent sheaves $\coherent{X}$ on a scheme $X$, which is not a point. In this case our previously defined method of constructing right derived functors will not work. Luckly however, there exists a method of obtaining a right derived functor $\rderived{}{F} : D^+(\A) \to D^+(\B)$, given a left exact functor $F: \A \to \B$, even when $\A$ does not contain enough injectives. To this end we first introduce $F$-adapted classes.
+
+\begin{definition}
+    \label{F-adapted}
+    A class of objects $\I \subset \A$ is \emph{adapted} to a left exact functor $F : \A \to \B$, if the following three conditions are satisfied.
+    \begin{enumerate}[(i)]
+        \item $\I$ is stable under finite sums. 
+        \item Every object $A$ of $\A$ embeds into some object of $\I$, \ie there exists an object $I \in \I$ and a monomorphism $A \hookrightarrow I$.
+        \item For every acyclic complex $I^\bullet$ in $K^+(\A)$, with $I^i \in \I$ for all $i \in \Z$, its image $F(I^\bullet)$ under $F$ is also acyclic.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    We imediately observe that whenever $\A$ contains enough injectives, the class of all injective objects forms an $F$-adapted class for \emph{every} functor $F\colon \A \to \B$.
+\end{remark}
+
+In the presence of an $F$-adapted class $\I$ we will now construct the right derived functor of $F$. Firstly one can upgrade the class of objects $\I$ to a full additive subcategory $\J$ of $\A$ having its class of objects be preciesly $\I$. This is done by declaring $\hom_\J(X, Y) := \hom_\A(X, Y)$ for all objects $X$, $Y$ of the class $\I$. Then we can define a functor $K^+(F) \colon K^+(\J) \to K^+(\B)$ between triangulated categories, which acts on objects of $K^+(\J)$ as 
+\[
+    \left(\cdots \to A^i \xrightarrow{d^i} A^{i+1} \to \cdots\right) \longmapsto \left(\cdots \to F(A^i) \xrightarrow{F(d^i)} F(A^{i+1}) \to \cdots\right)
+\]
+and on morphisms as
+\[
+    f^\bullet = (f^i \colon A^i \to B^i)_{i \in \Z} \longmapsto (F(f^i))_{i \in \Z}.
+\]
+It is then clear that $K^+(F)$ is exact because of condition (ii) of definition \ref{F-adapted} and it descends to a well defined functor on the level of derived categories 
+\[
+    D^+(\J) \to D^+(\B).
+\]
+Since we want to define the derived functor $\rderived{}{F}$, whose domain is $D^+(\A)$, it remains to construct a functor $D^+(\A) \to D^+(\J)$, which we can then post-compose with $K^+(F)$ to obtain $\rderived{}{F}$. What we will show instead is that the inclusion of categories $\J \hookrightarrow \A$ induces an exact equivalence of triangulated categories $D^+(\J)$ and $D^+(\A)$.
+
+It remains to be shown that the inclusion of categories $\J \hookrightarrow \A$ induces an the equivalence of categories $D^+(\J)$ and $D^+(\A)$. Firstly we remark that this inclusion clearly descends to a well-defined functor on the level of derived categories
+
+This hinges on the following lemma.
+
+\begin{lemma}
+    \label{F-acyclic resolutions}
+    For every complex $A^\bullet$ in $K^+(\A)$ there is a quasi-isomorphism $A^\bullet \to I^\bullet$ where $I^\bullet$ is a complex in $K^+(\J)$.
+\end{lemma}
+
+\begin{proof}
+    By inspecting the proof of proposition \ref{injective resolution} we see that only conditions (i) and (ii) of definition \ref{F-adapted} were actually used, so the proof of this lemma follows mutatis mutandis from said proposition.
+\end{proof}
+
+
+
+% it is clear that the restriction of the functor $F$ to $\J$ descends to the right derived functor
+
+% localization of K^+(\I) by qis equivalent to D^+(\A)
+
+\begin{proposition}
+    \label{F-acyclic is F-adapted}
+    Let $F : \A \to \B$ be a left exact functor between two abelin categories. Let $\I \subset \A$ be an $F$-adapted class of objects in $\A$. Then the class of all $F$-acyclic objects of $\A$, denoted by $\I_F$, is also $F$-adapted. 
+\end{proposition}
+
+\begin{lemma}
+    \label{F-adapted is F-acyclic}
+    Every object of an $F$-adapted class is also $F$-acyclic.
+\end{lemma}
+
+\begin{proof}
+    We only have to recall the definition 
+\end{proof}
+
+\begin{proof}[Proof of proposition \ref{F-acyclic is F-adapted}]
+    We verify conditions (i)--(iii) of definition \ref{F-adapted}. (i) As the higher derived functors $R^iF$ are clearly additive, $\I_F$ is stable under finite sums. (ii) Holds by lemma \ref{F-adapted is F-acyclic}. (iii) Suppose $A^\bullet$ is an acyclic complex in $K^+(\A)$ with $A^i \in \I_F$ for all $i$. Then using acyclicity of $A^\bullet$, we may break this complex up into a series of short exact sequences as follows.
+    \begin{align*}
+        0 \to A^0 \to & A^1 \to \ker d^2 \to 0 \\
+        0 \to \ker d^2 \to & A^2 \to \ker d^3 \to 0 \\
+        & \vdots
+    \end{align*} 
+    The first short exact sequence yields the following long exact sequence associated to $F$.
+    \begin{multline*}
+        0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to \rderived{1}{F}(A^0) \to \cdots \\ \cdots \to \rderived{i}{F}(A^0) \to \rderived{i}{F}(A^1) \to \rderived{i}{F}(\ker d^2) \to \rderived{i+1}{F}(A^0) \to \cdots.
+    \end{multline*}
+    Exacness of the sequence together with $F$-acyclicity of $A^0$ and $A^1$ shows that $\ker d^2$ is also $F$-acyclic and by only considering the begining few terms of the sequence we obtain the  short exact sequence 
+    % From the fact that $A^0$ and $A^1$ are $F$-acyclic we see that $\ker d^2$ is $F$-acyclic and we obtain a short exact sequence 
+    \[
+        0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to 0.
+    \]
+    After inductively applying the same reasoning for each of the original short exact sequences of \eqref{}, we are left with the following set of short exact sequences\footnote{To be more precise we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \simeq F(\ker d^i)\].}.
+    \begin{align*}
+        0 \to F(A^0) \to & F(A^1) \to \ker Fd^2 \to 0 \\
+        0 \to \ker Fd^2 \to & F(A^2) \to \ker Fd^3 \to 0 \\
+        & \vdots
+    \end{align*}   
+    Collecting them all together we can conclude that the complex $F(A^\bullet)$ is acyclic.\qedhere
+\end{proof}

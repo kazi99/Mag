@@ -2,16 +2,24 @@
 
 % Fonts
 % \usepackage{newpxtext}
-\usepackage{concmath}
-\usepackage[T1]{fontenc}
+
+% \usepackage{concmath}
+% \usepackage[T1]{fontenc}
 
 % \usepackage{fourier}
 % \usepackage[T1]{fontenc}
 
 % Additional packages
+% \usepackage[parfill]{parskip}
+
 \usepackage{enumerate}
 \usepackage[shortlabels]{enumitem}
 
+\usepackage{xparse}
+
+\usepackage{tikz}
+\usetikzlibrary{cd, babel}
+\usepackage{quiver}
 
 % Acronyms in slovene
 \newcommand{\ti}{t.~i.\ }
@@ -21,20 +29,54 @@
 % Acronyms in english
 \newcommand{\ie}{i.e.\ }
 \newcommand{\eg}{e.g.\ }
+\newcommand{\resp}{resp.\ }
 
 % Shorthands
 \newcommand{\R}{\mathbb R}
 \newcommand{\N}{\mathbf Z_{\geq 0}}
 \newcommand{\Z}{\mathbf Z}
 \newcommand{\C}{\mathbf C}
-% \newcommand{\O}{\mathcal O}
+\renewcommand{\O}{\mathcal O}
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\mathcal G}
+\newcommand{\A}{\mathcal A}
+\newcommand{\B}{\mathcal B}
+\newcommand{\I}{\mathcal I}
+\newcommand{\J}{\mathcal J}
+\newcommand{\D}{\mathcal D}
+
+\newcommand{\op}{\text{op}}
+
+\newcommand{\iso}{\simeq}
 
 \newcommand{\image}{\operatorname{im}}
 \newcommand{\colim}{\operatorname{colim}}
 \newcommand{\Ob}{\operatorname{Ob}}
-\newcommand{\com}{\operatorname{C}}
+\newcommand{\com}{\operatorname{Ch}}
+\renewcommand{\hom}{\operatorname{Hom}}
+\newcommand{\Hom}{\operatorname{Hom}}
+
+\newcommand{\Ab}{\mathsf{Ab}}
+
+\newcommand{\coherent}[1]{\textsf{Coh}(#1)}
+\newcommand{\quasicoh}[1]{\textsf{QCoh}(#1)}
+
+\newcommand{\rderived}[2]{\text{R}^{#1}#2}
+\newcommand{\lderived}[2]{\operatorname{L}^{#1}#2}
+
+% \NewDocumentCommand{\rderived}{o m}{
+%     \IfValueTF{#1}{%
+%         R^{#1} #2%
+%     }{%
+%         R #2%
+%     }%
+% }
+
+\newcommand{\derivedtensor}[3]{#1 \otimes_{#3}^{\operatorname{L}} #2}
+\newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
+\newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
 
 \newcommand{\Set}{\mathtt{Set}}
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\newcommand{\id}{\mathbb{1}}
+\newcommand{\id}{\operatorname{id}}
