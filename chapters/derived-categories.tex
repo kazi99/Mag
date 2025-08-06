@@ -1,23 +1,22 @@
 % \chapter{Derived categories}
-\section{Derived categories}
+\section{\textsf{redistribute: }Derived categories}
 
 \subsection{Categories of complexes}
 In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip these with a triangulated structure and . Throughout this section $\A$ will be a fixed additeve or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
 
 As a preliminary we introduce graded objects in ??
 
-\subsubsection*{{Category of complexes}}
+\subsubsection*{{Category of chain complexes}}
 
 By a \emph{chain complex} in $\A$ we mean a collection of objects and morphisms 
 \[
     A^\bullet = \left((A^i)_{i \in \Z}, (d^i_A\colon A^i \to A^{i+1})_{i \in \Z}\right),
 \] 
-where $A^i$ are objects and $d^i$ are morphisms of $\A$, called \emph{differenitials}, subject to equations $d^{i+1}\circ d^i = 0$, for all $i \in \Z$. A complex is \emph{bounded from below} (\resp \emph{bounded from above}), if there exists $i_0 \in \Z$ for which $A^i = 0$ for all $i \leq i_0$ (\resp $i \geq i_0$) and is \emph{bounded}, if it is both bounded from below and bounded from above. A \emph{chain map} between two chain complexes $A^\bullet$ and $B^\bullet$ in $\A$ is a collection of morphisms in $\A$
+where $A^i$ are objects and $d^i$ are morphisms of $\A$, called \emph{differenitials}, subject to equations $d^{i+1}\circ d^i = 0$, for all $i \in \Z$. A complex is \emph{bounded from below} (\resp \emph{bounded from above}), if there exists $i_0 \in \Z$ for which $A^i \iso 0$ for all $i \leq i_0$ (\resp $i \geq i_0$) and is \emph{bounded}, if it is both bounded from below and bounded from above. A \emph{chain map} between two chain complexes $A^\bullet$ and $B^\bullet$ in $\A$ is a collection of morphisms in $\A$
 \[
     f^\bullet = (f^i\colon A^i \to B^i)_{i \in \Z},
 \]
 for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This may diagramatically be described by the following commutative ladder.
-
 \[
 \begin{tikzcd}
     % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQV57aS0xfSJdLFszLDAsIkFeaSJdLFs1LDAsIkFee2krMX0iXSxbMSwyLCJCXntpLTF9Il0sWzMsMiwiQl5pIl0sWzUsMiwiQl57aSsxfSJdLFs2LDIsIlxcY2RvdHMiXSxbNiwwLCJcXGNkb3RzIl0sWzAsMCwiXFxjZG90cyJdLFswLDIsIlxcY2RvdHMiXSxbMCwzLCJmXntpLTF9Il0sWzEsNCwiZl5pIl0sWzIsNSwiZl57aSsxfSJdLFswLDEsImRee2ktMX1fQSJdLFsxLDIsImReaV9BIl0sWzQsNSwiZF57aX1fQiJdLFszLDQsImRee2ktMX1fQiJdLFs1LDZdLFsyLDddLFs4LDBdLFs5LDNdXQ==
@@ -37,15 +36,16 @@ for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This 
 	\arrow[from=3-6, to=3-7]
 \end{tikzcd}
 \]
+Sometimes we will denote a complex just by $A$, $B$,... insted of $A^\bullet$, $B^\bullet$,... to simplify notation. 
 
-We then define the \emph{category of chain complexes} in $\A$, denoted by $\com(\A)$, to be the following additive category. 
+Next we define the \emph{category of chain complexes} in $\A$, denoted by $\com(\A)$, as the following additive category. 
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
         \textsl{Morphims:} & $\Hom_{\com(\A)}(A, B)$ is the set of chain maps $A \to B$, \\ & equipped with a group structure inherited from $\A$ \\ & by applying operations componentwise.
     \end{tabular}
 \end{center}
-The composition law is defined componentwise and is clearly associative and bilinear, and the identity morphisms $1_{A^\bullet}$ are defined to be $(1_{A^i})_{i \in \Z}$. The complex $\cdots \to 0 \to 0 \to \cdots$ plays the role of the zero object in $\com(\A)$ and the biproduct of complexes $A$ and $B$ exists and is witnessed by the chain complex
+The composition law is defined componentwise and is clearly associative and bilinear. The identity morphisms $1_{A^\bullet}$ are defined to be $(1_{A^i})_{i \in \Z}$. The complex $\cdots \to 0 \to 0 \to \cdots$ plays the role of the zero object in $\com(\A)$ and the biproduct of complexes $A$ and $B$ exists and is witnessed by the chain complex
 \[
     A \oplus B = \left( (A^i \oplus B^i)_{i \in \Z}, (d^i_A \oplus d^i_B)_{i \in \Z}\right),
     % \quad \quad \cdots \to A^i \oplus B^i \xrightarrow{d^i_A \oplus d^i_B} A^{i+1} \oplus B^{i+1} \to \cdots,
@@ -103,14 +103,14 @@ Since $T$ is an auto-equivalence there exists a quasi-inverse $T\inv$ to $T$, wh
 
 \subsubsection*{Homotopy category of complexes}
 
-In this subsection we construct the homotopy category of chain complexes associated to a given additive category $\A$ and equip it with a triangulated structure. The main motivation for its introduction in this work is the fact that we will later on use it to construct the derived category of $\A$. In particular the homotopy category of $\A$, as opposed to the category of complexes\footnote{It is still possible to construct the derived category of $\A$ without passing through the homotopy category of complexes, however equipping it with a triangulated structure in this case becomes less elegant.} $\com(\A)$, can be enhanced with a triangulated structure which will afterwards descend to the level of derived categories.
+In this subsection we construct the homotopy category of chain complexes associated to a given additive category $\A$ and equip it with a triangulated structure. The main motivation for its introduction in this work is the fact that we will later on use it to construct the derived category of $\A$. In particular the homotopy category of $\A$, as opposed to the category of complexes\footnote{It is still possible to construct the derived category of $\A$ without passing through the homotopy category of complexes, however equipping it with a triangulated structure in that case becomes less elegant.} $\com(\A)$, can be enhanced with a triangulated structure which will afterwards descend to the level of derived categories.
 
 \begin{definition}
     Let $f^\bullet$ and $g^\bullet$ be two chain maps in $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$. We define $f^\bullet$ and $g^\bullet$ to be \emph{homotopic}, if there exists a collection of morphisms $\left( h^i\colon A^i \to B^{i-1} \right)_{i \in \Z}$, satisfying
     \[
         f^i - g^i = h^{i+1} \circ d^i_A + d^{i-1}_B \circ h^i
     \] 
-    for all $i \in \Z$ and denote it by $f^\bullet \htpy g^\bullet$. We say $f^\bullet$ is \emph{nullhomotopic}, if $f^\bullet \htpy 0$.
+    for all $i \in \Z$. If $f^\bullet$ and $g^\bullet$ are homotopic, we denote it by $f^\bullet \htpy g^\bullet$. 
     \[\begin{tikzcd}
         % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQV57aS0xfSJdLFszLDAsIkFeaSJdLFs1LDAsIkFee2krMX0iXSxbMSwyLCJCXntpLTF9Il0sWzMsMiwiQl5pIl0sWzUsMiwiQl57aSsxfSJdLFs2LDIsIlxcY2RvdHMiXSxbNiwwLCJcXGNkb3RzIl0sWzAsMCwiXFxjZG90cyJdLFswLDIsIlxcY2RvdHMiXSxbMCwzLCJmXntpLTF9Il0sWzEsNCwiZl5pIl0sWzIsNSwiZl57aSsxfSJdLFswLDEsImRee2ktMX1fQSJdLFsxLDIsImReaV9BIl0sWzQsNSwiZF57aX1fQiJdLFszLDQsImRee2ktMX1fQiJdLFs1LDZdLFsyLDddLFs4LDBdLFs5LDNdLFsxLDMsImheaSJdLFsyLDQsImhee2krMX0iXV0=
         \cdots & {A^{i-1}} && {A^i} && {A^{i+1}} & \cdots \\
@@ -130,13 +130,14 @@ In this subsection we construct the homotopy category of chain complexes associa
         \arrow["{d^{i}_B}", from=3-4, to=3-6]
         \arrow[from=3-6, to=3-7]
         \end{tikzcd}\] 
+    We say $f^\bullet$ is \emph{nullhomotopic}, if $f^\bullet \htpy 0$.
 \end{definition}
 
 \begin{lemma}
     \label{nullhomotopics form a subgroup}
     Let $A^\bullet$, $B^\bullet$ and $C^\bullet$ be complexes in $\com(\A)$, and let $f, f' \in \Hom(A^\bullet, B^\bullet)$ and $g, g' \in \Hom(B^\bullet, C^\bullet)$ be chain maps.
     \begin{enumerate}[(i)]
-        \item The set of all nullhomotopic chain maps $A^\bullet \to B^\bullet$ forms a subgroup of $\Hom(A^\bullet, B^\bullet)$.
+        \item The set of all nullhomotopic chain maps $A^\bullet \to B^\bullet$ forms a submodule of $\Hom(A^\bullet, B^\bullet)$.
         \item If $f \htpy f'$ and $g \htpy g'$, then $g \circ f \htpy g' \circ f'$.
     \end{enumerate}
 \end{lemma}
@@ -148,7 +149,7 @@ The homotopy category of complexes in $\A$, denoted by $K(\A)$, is defined to be
         \textsl{Morphims:} & $\Hom_{K(\A)}(X, Y) := \Hom_{\com(\A)}(X, Y)/_\htpy$
     \end{tabular}
 \end{center}
-The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[1_A^\bullet]$. All the hom-sets $\Hom_{K(\A)}(X, Y)$ are abelian groups by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are bilinear maps. 
+The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[1_A^\bullet]$. All the hom-sets $\Hom_{K(\A)}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. 
 
 As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $K(\A)$.
 \begin{center}
@@ -158,6 +159,83 @@ As in the case of categories of complexes in $\A$, we can also define the follow
         $K^b(\A)$ & \emph{Homotopy category of bounded complexes}, spanned on \\ &bounded complexes in $\A$. \\    
     \end{tabular}
 \end{center}
+\info{everywhere unless stated otherwise our complexes in $K^+(\A)$ will be supported in $\N$}
+
+\subsubsection*{Cohomology}
+
+A very important invariant of a chain complex in the homotopy category, which measures the extent to which it fails to be exact, is its cohomology. Here we are no longer assuming $\A$ is just $k$-linear, but abelian, since we will need kernels and cokernels to exists. 
+For a chain complex $A^\bullet$ in $\com(\A)$ and $i \in \Z$ we define its \emph{$i$-th cohomology} to be 
+\[
+    H^i(A^\bullet) := \coker(\im d^{i-1} \to \ker d^{i}).
+\]
+\begin{remark}
+    \label{versions of cohomology}
+    A computation with universal properties inside an abelian category shows, that the following are all equivalent ways of defining the cohomology of a complex as well 
+    \begin{align*}        
+        H^i(A^\bullet) := & \coker(\im d^{i-1} \to \ker d^{i}) \iso \ker(\coker d^{i-1}\to \im d^i) \\ &\iso \coker(A^{i-1} \to \ker d^{i}) \iso \ker(\coker d^{i-1} \to A^{i}).
+    \end{align*}
+    We refre the reader to \cite[Definition 8.3.8.~(i)]{kashiwara2006categories}.
+\end{remark}
+
+For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$ one can also define a morphism 
+\[
+    H^i(f^\bullet) \colon H^i(A^\bullet) \to H^i(B^\bullet)
+\]
+in $\A$, because $f^\bullet$ induces maps $\im d^{i-1}_A \to \im d^{i-1}_B$ and $\ker d^i_A \to \ker d^i_B$, which fit into the commutative diagram bellow.
+\[\begin{tikzcd}[column sep = small, row sep = 1.5em]
+    % https://q.uiver.app/#q=WzAsMTIsWzAsMSwiQV57aS0xfSJdLFsyLDEsIkFeaSJdLFs0LDEsIkFee2krMX0iXSxbMSwzLCJpbSBkXntpLTF9X0EiXSxbMSwyLCJpbWRee2ktMX1fQiJdLFswLDAsIkJee2ktMX0iXSxbMiwwLCJCXmkiXSxbNCwwLCJCXntpKzF9Il0sWzMsMiwiXFxrZXIgZF5pX0IiXSxbMywzLCJcXGtlciBkXmlfQSJdLFsyLDQsIkheaShCXlxcYnVsbGV0KSJdLFsyLDUsIkheaShBXlxcYnVsbGV0KSJdLFswLDNdLFs1LDRdLFs1LDYsImRee2ktMX1fQiJdLFswLDEsImRee2ktMX1fQSJdLFs2LDcsImReaV9CIl0sWzEsMiwiZF5pX0EiXSxbOCw2XSxbOSwxXSxbNCw2XSxbMywxXSxbNCw4XSxbMyw5XSxbOSwyLCIwIiwyXSxbOCw3LCIwIiwwLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzExLDEwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOSw4XSxbMyw0XSxbOSwxMV0sWzgsMTBdLFs0LDEwLCIwIiwyLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzMsMTEsIjAiLDJdLFswLDVdLFsxLDZdLFsyLDddXQ==
+	{B^{i-1}} && {B^i} && {B^{i+1}} \\
+	{A^{i-1}} && {A^i} && {A^{i+1}} \\
+	& {\im d^{i-1}_B} && {\ker d^i_B} \\
+	& {\im d^{i-1}_A} && {\ker d^i_A} \\
+	&& {H^i(B^\bullet)} \\
+	&& {H^i(A^\bullet)}
+	\arrow["{d^{i-1}_B}", from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-2]
+	\arrow["{d^i_B}", from=1-3, to=1-5]
+	\arrow[from=2-1, to=1-1]
+	\arrow["{d^{i-1}_A}", from=2-1, to=2-3]
+	\arrow[from=2-1, to=4-2]
+	\arrow[from=2-3, to=1-3]
+	\arrow["{d^i_A}", from=2-3, to=2-5]
+	\arrow[from=2-5, to=1-5]
+	\arrow[from=3-2, to=1-3]
+	\arrow[from=3-2, to=3-4]
+	\arrow["0"'{pos=0.7}, from=3-2, to=5-3]
+	\arrow[from=3-4, to=1-3]
+	\arrow["0"{pos=0.7}, from=3-4, to=1-5]
+	\arrow[from=3-4, to=5-3]
+	\arrow[from=4-2, to=2-3]
+	\arrow[from=4-2, to=3-2]
+	\arrow[from=4-2, to=4-4]
+	\arrow["0"', from=4-2, to=6-3]
+	\arrow[from=4-4, to=2-3]
+	\arrow["0"', from=4-4, to=2-5]
+	\arrow[from=4-4, to=3-4]
+	\arrow[from=4-4, to=6-3]
+	\arrow[dashed, from=6-3, to=5-3]
+\end{tikzcd}\]
+All the induced morphisms come from universal properties and are as such unique for which the diagram commutes. Thus the assignment
+% Since all the induced maps come from universal properties, they are unique for which the diagram commutes and thus the assignment 
+\[
+    f^\bullet \mapsto H^i(f^\bullet) \colon \Hom_{\com(\A)}(A, B) \to \Hom_\A(H^i(A), H^i(B))
+\]
+is functorial \ie respects composition and maps identity morphisms to identity morphisms. For the same reasons it is also a $k$-linear homomorphism, showing that
+\[
+    H^i \colon \com(\A) \to \A
+\]
+a $k$-linear functor.
+
+It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ at once, as is witnessed by the next proposition. 
+
+\begin{proposition} \cite[Theorem 12.3.3.]{kashiwara2006categories}
+    Let $0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$ be a short exact sequence in $\com(\A)$. Then there exists a long exact sequence in $\A$
+    \[
+        \cdots \to H^i(A^\bullet) \to H^i(B^\bullet) \to H^i(C^\bullet) \to H^{i+1}(A^\bullet) \to \cdots.
+    \]
+\end{proposition}
+
+Functors $H^i$ actually descend to the homotopy category $K(\A)$ of $\A$ 
 
 We now shift our focus to the construction of a triangulated structure on $K^*(\A)$. The translation functor $T\colon K^*(\A) \to K^*(\A)$ is defined on objects and morphisms in the following way.
 \begin{center}
@@ -166,17 +244,66 @@ We now shift our focus to the construction of a triangulated structure on $K^*(\
         \textsl{Morphims:} & $[f^\bullet] \longmapsto [f^\bullet[1]]$.
     \end{tabular}
 \end{center}
+This assignment is clearly well defined on morphisms, as $f \htpy f'$ implies $f[1] \htpy f'[1]$.
 
+\subsubsection*{Mapping cones}
+The other piece of data required to obtain a triangulated category is a collection of distinguished triangles. To describe what distingushed triangles are in our case, we must first introduce the mapping cone of a morphism of complexes and to this end we will for a moment step outside the scope of the homotopy categroy of complexes back into the category of complexes of $\A$.
+
+\begin{definition}
+    Let $f\colon A^\bullet \to B^\bullet$ be a morphism of complexes in $\com(\A)$. The complex $C(f)^\bullet$ is specified by the collection of objects
+    \[
+        C(f)^i := A^{i+1} \oplus B^i
+    \]
+    and differentials
+    \begin{equation}
+        \label{eq: cone differential}
+        d^i_{C(f)} := \begin{pmatrix}
+            -d^{i+1}_A & 0 \\ f^{i+1} & d^i_B
+        \end{pmatrix} = \begin{pmatrix}
+            d^i_{A[1]} & 0 \\ f[1]^i & d^i_B
+        \end{pmatrix}
+        \\
+    \end{equation}
+    \[
+        d^i_{C(f)} \colon A^{i+1} \oplus B^i \to A^{i+2} \oplus B^{i+1}
+    \]
+    for all $i \in \Z$.
+\end{definition}
+
+\begin{remark}
+    Using matrix notiaion here might be a bit misleading at first. Formally, matrix \eqref{eq: cone differential} represents the morphism 
+    \[
+        \left(\langle -d^{i+1}_{A}, 0 \rangle, \langle f^{i+1}, d^i_B \rangle\right) = \left\langle (-d^{i+1}_{A}, f^{i+1}), (0, d^i_B) \right\rangle
+    \]
+    according to our convention for defining morphisms from and into biproducts. 
+    A simple computation, using the fact that $f$ is a chain map, shows that $C(f)^\bullet$ is a chain complex.
+\end{remark}
+
+Along with the cone of a chain map $f$ we also define two chain maps
+\[
+    \tau_f \colon B^\bullet \to C(f)^\bullet,
+\]
+given by the collection $\left( \tau_f^i\colon B^i \to A^{i+1} \oplus B^i \right)_{i \in \Z}$, where $\tau_f^i = (0, \id{B^i})$, and 
+\[
+    \pi_f \colon C(f)^\bullet \to A^\bullet[1],
+\]
+given by the collection $\left( \pi_f^i\colon A^{i+1} \oplus B^i \to A^{i+1} \right)_{i \in \Z}$, where $\pi_f^i = \langle \id{A^{i+1}}, 0 \rangle$.
+
+The naming convention of course comes from topology, where one can show that the singular chain complex associated to the topological mapping cone $M(f)$ of a continuous map $f\colon X \to Y$ is chain homotopically equivalent to the cone of the chain map induced by $f$ between singular chain complexes of $X$ and $Y$.
 
 We define any triangle in $K(\A)$ isomorphic to a triangle of the form
 \[
-    A \xrightarrow{ \ f \ }  B \xrightarrow{\ \pi \ } C(f) \xrightarrow{\ \tau \ } A[1]
+    A \xrightarrow{ \ f \ }  B \xrightarrow{\ \tau_f \ } C(f) \xrightarrow{\ \pi_f \ } A[1]
 \]
 to be distinguished.
 
 \begin{proposition}
     The homotopy category $K(\A)$ together with the translation functor $T\colon K(\A) \to K(\A)$ and distinguished triangles defined above is a triangulated category.
 \end{proposition}
+
+\begin{proof}
+    
+\end{proof}
 
 \begin{remark}
     The proposition still holds true, if we replace $K(\A)$ with any of the categories $K^+(\A)$, $K^-(\A)$, $K^b(\A)$.
@@ -212,48 +339,86 @@ The above also holds in categories $K^+(\A)$, $K^-(\A)$, $K^b(\A)$.
     
 \end{proof}
 
-\begin{remark}
-    As is evident from the proof by close inspection we have only used two facts about the class of all injective objects of $\A$ -- that every object of $\A$ embeds into some injective object and that the class of injectives is closed under finite direct sums. This will later on be used in subsection \ref{Subsection on F-adapted classes} when constructing a right derived functor of a given functor $F$ in the presence of an $F$-adapted class.
-\end{remark}
+
+
+
+
+\subsection{Derived functors}
+
+The main goal of this section is to assign an appropriate triangulated functor on the level of derived categories, called a \emph{derived functor} of $F$ to a sensible additive functor $F \colon \A \to \B$ between two abelian categories. We will first deal with the easiest case, when $F$ is exact and then move on to the case, where $F$ will only be assumed to be left or right exact and instead require the domain category $\A$ to posses some nice properties (\eg contain enough injectives or contain an $F$-adapted class of objects). In practise the additional conditions $\A$ is required to satify are not very restricitve. 
 
 \begin{lemma}
-    Let $A^\bullet$ be any acyclic complex in $K^+(\A)$ and $I^\bullet$ a complex of injectives from $K^+(J)$. Then
-    \[
-        \hom_{K^+(\A)}(A^\bullet, I^\bullet) = 0.
-    \]
-    In other words every morphism from an acyclic complex to an injective one is nulhomotopic.
+    \label{qis iff cone acyclic}
+    Let $f\colon A^\bullet \to B^\bullet$ be a chain map. Then $f$ is a quasi-isomorphism if and only if its associated cone $C(f)^\bullet$ is acyclic. 
 \end{lemma}
 
 \begin{proof}
-    
+    One only needs to consider the distinguished triangle $A^\bullet \xrightarrow{f} B^\bullet \to C(f)^\bullet \to A[1]^\bullet$ in $K(\A)$ and its associated long exact sequence in cohomology.
 \end{proof}
 
-\begin{theorem}
-    Assume $\A$ contains enough injectives and let $\J \subseteq \A$ denote the full subcategory on injecitve objects of $\A$. Then the inclusion $K^+(\J) \hookrightarrow K^+(\A)$ induces an equivalence of categories
-    \[
-        K^+(\J) \iso D^+(\A).
-    \]
-\end{theorem}
+\begin{lemma}
+    \label{F preserves qis iff preserves acyclic}
+    Let $F\colon K(\A) \to K(\B)$ be a triangulated functor, then the following are equivalent.
+    \begin{enumerate}
+        \item[\emph{(i)}] $F$ preserves quasi-isomorphisms.
+        \item[\emph{(ii)}] $F$ preserves acyclic complexes.
+    \end{enumerate}
+\end{lemma}
 
-\subsection{Derived functors}
+\begin{proof}
+    $(\Rightarrow)$ Let $A^\bullet$ be an acyclic complex. Then the zero morphism $A^\bullet \to 0$ is a quasi-isomorphism and is by assumption mapped to a quasi-isomorphism $F(A^\bullet) \to 0$ by $F$. This means $F(A^\bullet)$ is acyclic.
+    
+    $(\Leftarrow)$ Let $f\colon A^\bullet \to B^\bullet$ be a quasi-isomorphism. The image of a distinguished triangle $A^\bullet \to B^\bullet \to C(f)^\bullet \to A^\bullet[1]$ in $K(\A)$ by the triangulated functor $F$ is a distinguished triangle $FA^\bullet \to FB^\bullet \to F(C(f)^\bullet) \to F(A^\bullet)[1]$ in $K(\B)$. By lemma \ref{qis iff cone acyclic} $C(f)^\bullet$ is acyclic, implying $F(C(f)^\bullet)$ is acyclic by the assumption (ii). Hence again by lemma \ref{qis iff cone acyclic} $F(f)$ is a quasi-isomorphism.
+    % The cone $F(C(f)^\bullet)$ is then acyclic, because $C(f)^\bullet$ was acyclic by lemma \ref{qis iff cone acyclic}, thus showing $Ff$ is a quasi-isomorphism.  
+\end{proof}
+
+\begin{proposition}
+    \label{Exact functor induces a derived functor}
+    Let $F\colon K(\A) \to K(\B)$ be a triangulated functor and assume it satisfies one of the equivalent conditions of lemma \ref{F preserves qis iff preserves acyclic}. Then there exists a triangulated functor $D(\A) \to D(\B)$ on the level of derived categories, for which the following diagram of triangulated functors commutes.
+    \begin{equation}
+        \label{eq: exact functor derives}
+        \begin{tikzcd}[column sep = 1.5em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLKFxcQSkiXSxbMiwwLCJLKFxcQikiXSxbMCwyLCJEKFxcQSkiXSxbMiwyLCJEKFxcQikiXSxbMCwxLCJGIl0sWzAsMl0sWzIsM10sWzEsM11d
+        {K(\A)} && {K(\B)} \\
+        \\
+        {D(\A)} && {D(\B)}
+        \arrow["F", from=1-1, to=1-3]
+        \arrow["{Q_\A}"', from=1-1, to=3-1]
+        \arrow["{Q_\B}", from=1-3, to=3-3]
+        \arrow[from=3-1, to=3-3]
+        \end{tikzcd}
+    \end{equation}
+\end{proposition}
+
+\begin{proof}
+    The functor $D(\A) \to D(\B)$ is defined on objects by the assignment $A^\bullet \mapsto F(A^\bullet)$ and on morphisms by the action
+    \[
+        \Hom_{D(\A)}(A^\bullet, B^\bullet) \to \Hom_{D(\B)}(F(A^\bullet), F(B^\bullet))
+    \]
+    defined as follows. A morphism $\phi \colon A^\bullet \to B^\bullet$ represented by a roof $A^\bullet \xleftarrow{\sim} C^\bullet \to B^\bullet$ is sent to the equivalence class of the roof $F(A^\bullet) \xleftarrow{\sim} F(C^\bullet) \to F(B^\bullet)$, where it was crutial that $F$ preserves quasi-isomorphisms. By functoriality of $F$ it is evident, that this map is well defined. Clearly $D(\A) \to D(\B)$ fits into the commutative diagram \eqref{eq: exact functor derives}, is also $k$-linear by the $k$-linearity assumption on $F$, commutes with the respective translation functors and maps distinguished triangles to distingushed triangles, because of commutativity of diagram \eqref{eq: exact functor derives}, making it a triangulated functor.
+\end{proof}
+
+Every $k$-linear functor $F\colon \A \to \B$ induces a triangulated functor on the level of homotopy categories $K(F)\colon K(\A) \to K(\B)$ and if moreover $F$ is assumed to be exact, then $K(F)$ satisfies the assumptions of lemma \ref{Exact functor induces a derived functor} and thus induces a triangulated functor on the level of derived categories. In the next subsection we will deal with the case, when $F$ is only left or right exact. 
 
 \subsubsection{$F$-adapted classes}
 \label{Subsection on F-adapted classes}
 
-Unfortunately our categories at hand will sometimes not contain enough injectives, as can already be seen with the category of coherent sheaves $\coherent{X}$ on a scheme $X$, which is not a point. In this case our previously defined method of constructing right derived functors will not work. Luckly however, there exists a method of obtaining a right derived functor $\rderived{}{F} : D^+(\A) \to D^+(\B)$, given a left exact functor $F: \A \to \B$, even when $\A$ does not contain enough injectives. To this end we first introduce $F$-adapted classes.
+Unfortunately our categories at hand will sometimes not contain enough injectives, as can already be seen with the category of coherent sheaves $\coherent{X}$ on a scheme $X$.
+% , which is not a point. 
+In this case our previously defined method of constructing right derived functors will not work. Luckly however, there exists a method of obtaining a right derived functor $\rderived{}{F} \colon D^+(\A) \to D^+(\B)$, given a left exact functor $F: \A \to \B$, even when $\A$ does not contain enough injectives, but posseses a milder class of objects. To this end we first introduce $F$-adapted classes.
 
 \begin{definition}
     \label{F-adapted}
-    A class of objects $\I \subset \A$ is \emph{adapted} to a left exact functor $F : \A \to \B$, if the following three conditions are satisfied.
+    A class of objects $\I \subset \A$ is \emph{adapted} to a left exact functor $F \colon \A \to \B$, if the following three conditions are satisfied.
     \begin{enumerate}[(i)]
         \item $\I$ is stable under finite sums. 
-        \item Every object $A$ of $\A$ embeds into some object of $\I$, \ie there exists an object $I \in \I$ and a monomorphism $A \hookrightarrow I$.
+        \item Every object $A$ of $\A$ \emph{embeds} into some object of $\I$, \ie there exists an object $I \in \I$ and a monomorphism $A \hookrightarrow I$.
         \item For every acyclic complex $I^\bullet$ in $K^+(\A)$, with $I^i \in \I$ for all $i \in \Z$, its image $F(I^\bullet)$ under $F$ is also acyclic.
     \end{enumerate}
 \end{definition}
 
 \begin{remark}
-    We imediately observe that whenever $\A$ contains enough injectives, the class of all injective objects forms an $F$-adapted class for \emph{every} functor $F\colon \A \to \B$.
+    We imediately observe, that whenever $\A$ contains enough injectives, the class of all injective objects forms an $F$-adapted class for \emph{every} left exact functor ${F\colon \A \to \B}$.
 \end{remark}
 
 In the presence of an $F$-adapted class $\I$ we will now construct the right derived functor of $F$. Firstly one can upgrade the class of objects $\I$ to a full additive subcategory $\J$ of $\A$ having its class of objects be preciesly $\I$. This is done by declaring $\hom_\J(X, Y) := \hom_\A(X, Y)$ for all objects $X$, $Y$ of the class $\I$. Then we can define a functor $K^+(F) \colon K^+(\J) \to K^+(\B)$ between triangulated categories, which acts on objects of $K^+(\J)$ as 
@@ -264,27 +429,83 @@ and on morphisms as
 \[
     f^\bullet = (f^i \colon A^i \to B^i)_{i \in \Z} \longmapsto (F(f^i))_{i \in \Z}.
 \]
-It is then clear that $K^+(F)$ is exact because of condition (ii) of definition \ref{F-adapted} and it descends to a well defined functor on the level of derived categories 
+It is then clear that $K^+(F)$ is triangulated and it descends to a well defined functor on the level of derived categories 
 \[
-    D^+(\J) \to D^+(\B).
+    D^+(\J) \to D^+(\B)
 \]
-Since we want to define the derived functor $\rderived{}{F}$, whose domain is $D^+(\A)$, it remains to construct a functor $D^+(\A) \to D^+(\J)$, which we can then post-compose with $K^+(F)$ to obtain $\rderived{}{F}$. What we will show instead is that the inclusion of categories $\J \hookrightarrow \A$ induces an exact equivalence of triangulated categories $D^+(\J)$ and $D^+(\A)$.
+by proposition \ref{Exact functor induces a derived functor}.
+Since we want to define the derived functor $\rderived{}{F}$, whose domain is $D^+(\A)$, it remains to construct a functor $D^+(\A) \to D^+(\J)$, which we can then post-compose with $K^+(F)$ to obtain $\rderived{}{F}$. What we will show instead is the following.
 
-It remains to be shown that the inclusion of categories $\J \hookrightarrow \A$ induces an the equivalence of categories $D^+(\J)$ and $D^+(\A)$. Firstly we remark that this inclusion clearly descends to a well-defined functor on the level of derived categories
+\begin{proposition}
+    \label{Derived cat of F-adapted category}
+    The inclusion of categories $\J \hookrightarrow \A$ induces an equivalence of triangulated categories $D^+(\J) \iso D^+(\A)$.
+\end{proposition}
+
+% that the inclusion of categories $\J \hookrightarrow \A$ induces an exact equivalence of triangulated categories $D^+(\J)$ and $D^+(\A)$.
+
+% It remains to be shown that the inclusion of categories $\J \hookrightarrow \A$ induces an the equivalence of categories $D^+(\J)$ and $D^+(\A)$. Firstly we remark that this inclusion clearly descends to a well-defined functor on the level of derived categories
 
 This hinges on the following lemma.
 
 \begin{lemma}
     \label{F-acyclic resolutions}
-    For every complex $A^\bullet$ in $K^+(\A)$ there is a quasi-isomorphism $A^\bullet \to I^\bullet$ where $I^\bullet$ is a complex in $K^+(\J)$.
+    For every complex $A^\bullet$ in $K^+(\A)$ there is a quasi-isomorphism $A^\bullet \to I^\bullet$, where $I^\bullet$ is a complex in $K^+(\J)$.
 \end{lemma}
 
 \begin{proof}
-    By inspecting the proof of proposition \ref{injective resolution} we see that only conditions (i) and (ii) of definition \ref{F-adapted} were actually used, so the proof of this lemma follows mutatis mutandis from said proposition.
+    By inspecting the proof of proposition \ref{injective resolution} we see that only conditions (i) and (ii) of definition \ref{F-adapted} were actually used, so the proof of this lemma can be copied from the proof of said proposition.
 \end{proof}
 
+\begin{proof}[Proof of proposition \ref{Derived cat of F-adapted category}]
+    First, there exists a triangulated functor $D^+(\J) \to D^+(\A)$ by proposition \ref{Exact functor induces a derived functor}, since the inclusion $\J \hookrightarrow \A$ sends acyclic complexes to acyclic ones. We claim, that this functor is an equivalence, thus we will show that it is full, faithful and essentially surjective. By lemma \ref{F-acyclic resolutions} we see that it is essentially surjective. Next we show that it is faithful \ie that the morphism action
+    \begin{equation}
+        \label{eq: morphism action of D(J) - D(A)}
+        \Hom_{D^+(\J)}(I^\bullet, J^\bullet) \to \Hom_{D^+(\A)}(I^\bullet, J^\bullet)
+    \end{equation}
+    is injective for any objects $I^\bullet$, $J^\bullet$ of $D^+(\J)$. Suppose two morphisms $\phi_0$, $\phi_1 \colon I^\bullet \to J^\bullet$, repersented by right roofs $I \to I_0 \xleftarrow{\sim} J$ and $I \to I_1 \xleftarrow{\sim} J$, are sent to the same morphism in $\Hom_{D^+(\A)}(I^\bullet, J^\bullet)$, meaning that there is the following commutative diagram in $K^+(\A)$.
+    \[\begin{tikzcd}[column sep = small, row sep = 1em]
+        % https://q.uiver.app/#q=WzAsNSxbMSwyLCJJXzAiXSxbMywyLCJBIl0sWzAsNCwiSSJdLFs0LDQsIkoiXSxbMiwwLCJCIl0sWzIsMF0sWzMsMCwiXFxzaW0iXSxbMiwxXSxbMywxLCJcXHNpbSIsMl0sWzAsNF0sWzEsNCwiXFxzaW0iLDJdXQ==
+        && A^\bullet \\
+        \\
+        & {I_0^\bullet} && {I_1^\bullet} \\
+        \\
+        I^\bullet &&&& J^\bullet
+        \arrow[from=3-2, to=1-3]
+        \arrow["\sim"', from=3-4, to=1-3]
+        \arrow[from=5-1, to=3-2]
+        \arrow[from=5-1, to=3-4]
+        \arrow["\sim"{pos=0.4}, from=5-5, to=3-2]
+        \arrow["\sim"', from=5-5, to=3-4]
+    \end{tikzcd}\]
+    Then simply extending the diagram by a quasi-isomorphism $A \to I_2$, ensured by lemma \ref{F-acyclic resolutions}, proves that $\phi_0$ and $\phi_1$ were in fact equal and that the action is faithful.
 
+    Lastly we show that the action on morphisms is also surjective, \ie the homomorphism of \eqref{eq: morphism action of D(J) - D(A)} is surjective. Pick any $\psi\colon I^\bullet \to J^\bullet$ in $D^+(\A)$, which is represented by a right roof $I^\bullet \to A^\bullet \xleftarrow{\sim} J^\bullet$. As before, extending the roof by a quasi-isomorphism $A^\bullet \to I^\bullet_0$ by lemma \ref{F-acyclic resolutions}, leaves us with a representative $I^\bullet \to I_0^\bullet \xleftarrow{\sim} J^\bullet$ of some morphism $\phi\colon I^\bullet \to J^\bullet$ in $D^+(\J)$.
+    \[\begin{tikzcd}[column sep = small, row sep = 1em]
+        % https://q.uiver.app/#q=WzAsNSxbMSwyLCJJXzAiXSxbMywyLCJBIl0sWzAsNCwiSSJdLFs0LDQsIkoiXSxbMiwwLCJJXzAiXSxbMiwwXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo0MH1dLFsyLDFdLFszLDEsIlxcc2ltIiwyXSxbMCw0LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDQsIlxcc2ltIiwyXV0=
+        && {I_0^\bullet} \\
+        \\
+        & {I_0^\bullet} && A^\bullet \\
+        \\
+        I^\bullet &&&& J^\bullet
+        \arrow[equals, from=3-2, to=1-3]
+        \arrow["\sim"', from=3-4, to=1-3]
+        \arrow[from=5-1, to=3-2]
+        \arrow[from=5-1, to=3-4]
+        \arrow["\sim"{pos=0.4}, from=5-5, to=3-2]
+        \arrow["\sim"', from=5-5, to=3-4]
+    \end{tikzcd}\]
+    The above diagram then shows, that $\phi$ is sent to $\psi$ and that the action on morphisms is surjective.
+\end{proof}
 
+We can now define the right dervied functor $\rderived{}{F}$ as the compositon
+\[
+    \rderived{}{F} \colon \quad D^+(\A) \xrightarrow{\ \iso \ } D^+(\J) \longrightarrow D^+(B),
+\] 
+where $D^+(\A) \xrightarrow{\ \iso \ } D^+(\J)$ denotes a quasi-inverse to the equivalence $D^+(\J) \iso D^+(\A)$ established in proposition \ref{Derived cat of F-adapted category}.
+Informally to compute the right derived functor $\rderived{}{F}(A^\bullet)$ of a complex $A^\bullet$ in $D^+(\A)$, one takes its $F$-adapted resolution $A^\bullet \to I^\bullet_A$ and then applies the functor $K^+(F)$ on $I^\bullet_A$, \ie
+\[
+    \rderived{}{F}(A^\bullet) = K^+(F)(I^\bullet_A).
+\]
 % it is clear that the restriction of the functor $F$ to $\J$ descends to the right derived functor
 
 % localization of K^+(\I) by qis equivalent to D^+(\A)
@@ -300,30 +521,60 @@ This hinges on the following lemma.
 \end{lemma}
 
 \begin{proof}
-    We only have to recall the definition 
+    We only have to recall definition \ref{}. An $F$-adapted object $I$ of $\J$ trivially forms its own resolution $I^\bullet = (\cdots \to 0 \to I \to 0 \to \cdots)$, which allows us to compute $\rderived{i}{F}(I) = H^i(\rderived{}{F}(I^\bullet))$ to be $0$, whenever $i \neq 0$ and $I$ for $i = 0$.
 \end{proof}
 
+% \begin{proof}[Proof of proposition \ref{F-acyclic is F-adapted}]
+%     We verify conditions (i)--(iii) of definition \ref{F-adapted}. (i) As the higher derived functors $R^iF$ are clearly additive, $\I_F$ is stable under finite sums. (ii) Holds by lemma \ref{F-adapted is F-acyclic}. (iii) Suppose $A^\bullet$ is an acyclic complex in $K^+(\A)$ with $A^i \in \I_F$ for all $i$. Then using acyclicity of $A^\bullet$, we may break this complex up into a series of short exact sequences as follows.
+%     \begin{align*}
+%         0 \to A^0 \to & A^1 \to \ker d^2 \to 0 \\
+%         0 \to \ker d^2 \to & A^2 \to \ker d^3 \to 0 \\
+%         & \vdots
+%     \end{align*} 
+%     The first short exact sequence yields the following long exact sequence associated to $F$.
+%     \begin{multline*}
+%         0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to \rderived{1}{F}(A^0) \to \cdots \\ \cdots \to \rderived{i}{F}(A^0) \to \rderived{i}{F}(A^1) \to \rderived{i}{F}(\ker d^2) \to \rderived{i+1}{F}(A^0) \to \cdots.
+%     \end{multline*}
+%     Exacness of the sequence together with $F$-acyclicity of $A^0$ and $A^1$ shows that $\ker d^2$ is also $F$-acyclic and by only considering the begining few terms of the sequence we obtain the  short exact sequence 
+%     % From the fact that $A^0$ and $A^1$ are $F$-acyclic we see that $\ker d^2$ is $F$-acyclic and we obtain a short exact sequence 
+%     \[
+%         0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to 0.
+%     \]
+%     After inductively applying the same reasoning for each of the original short exact sequences of \eqref{}, we are left with the following set of short exact sequences\footnote{To be more precise we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \simeq F(\ker d^i)\].}.
+%     \begin{align*}
+%         0 \to F(A^0) \to & F(A^1) \to \ker Fd^2 \to 0 \\
+%         0 \to \ker Fd^2 \to & F(A^2) \to \ker Fd^3 \to 0 \\
+%         & \vdots
+%     \end{align*}   
+%     Collecting them all back together we can conclude that the complex $F(A^\bullet)$ is acyclic.\qedhere
+% \end{proof}
+
 \begin{proof}[Proof of proposition \ref{F-acyclic is F-adapted}]
-    We verify conditions (i)--(iii) of definition \ref{F-adapted}. (i) As the higher derived functors $R^iF$ are clearly additive, $\I_F$ is stable under finite sums. (ii) Holds by lemma \ref{F-adapted is F-acyclic}. (iii) Suppose $A^\bullet$ is an acyclic complex in $K^+(\A)$ with $A^i \in \I_F$ for all $i$. Then using acyclicity of $A^\bullet$, we may break this complex up into a series of short exact sequences as follows.
-    \begin{align*}
-        0 \to A^0 \to & A^1 \to \ker d^2 \to 0 \\
-        0 \to \ker d^2 \to & A^2 \to \ker d^3 \to 0 \\
-        & \vdots
-    \end{align*} 
-    The first short exact sequence yields the following long exact sequence associated to $F$.
+    We verify conditions (i)--(iii) of definition \ref{F-adapted}. (i) As the higher derived functors $R^iF$ are clearly additive, $\I_F$ is stable under finite sums. (ii) Holds by lemma \ref{F-adapted is F-acyclic}. (iii) Suppose $A^\bullet$ is an acyclic complex in $K^+(\A)$ with $A^i \in \I_F$ for all $i$. Then using acyclicity of $A^\bullet$, we may break this complex up into a series of short exact sequences 
+    % as follows.
+    % \begin{align*}
+    %     0 \to A^0 \to & A^1 \to \ker d^2 \to 0 \\
+    %     0 \to \ker d^2 \to & A^2 \to \ker d^3 \to 0 \\
+    %     & \vdots
+    % \end{align*} 
+    \begin{equation}
+        \label{eq: SES from acyclic cx}
+        0 \to \ker d^i \to A^i \to \ker d^{i+1} \to 0 \quad \text{ for $i \in \Z$.}
+    \end{equation}
+    As our complex $A^\bullet$ is supported on $\N$, the first true short exact sequence happens at index $i = 1$, where $\ker d^1 = \im d^0 \iso A^0$
+    It yields the following long exact sequence associated to $F$
     \begin{multline*}
-        0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to \rderived{1}{F}(A^0) \to \cdots \\ \cdots \to \rderived{i}{F}(A^0) \to \rderived{i}{F}(A^1) \to \rderived{i}{F}(\ker d^2) \to \rderived{i+1}{F}(A^0) \to \cdots.
+        0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to \rderived{1}{F}(A^0) \to \cdots \\ \cdots \to \rderived{p}{F}(A^0) \to \rderived{p}{F}(A^1) \to \rderived{p}{F}(\ker d^2) \to \rderived{p+1}{F}(A^0) \to \cdots.
     \end{multline*}
-    Exacness of the sequence together with $F$-acyclicity of $A^0$ and $A^1$ shows that $\ker d^2$ is also $F$-acyclic and by only considering the begining few terms of the sequence we obtain the  short exact sequence 
+    Exacness of this sequence together with $F$-acyclicity of $A^0$ and $A^1$ shows that $\ker d^2$ is also $F$-acyclic and by only considering the begining few terms of the sequence, we obtain the short exact sequence 
     % From the fact that $A^0$ and $A^1$ are $F$-acyclic we see that $\ker d^2$ is $F$-acyclic and we obtain a short exact sequence 
     \[
         0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to 0.
     \]
-    After inductively applying the same reasoning for each of the original short exact sequences of \eqref{}, we are left with the following set of short exact sequences\footnote{To be more precise we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \simeq F(\ker d^i)\].}.
-    \begin{align*}
-        0 \to F(A^0) \to & F(A^1) \to \ker Fd^2 \to 0 \\
-        0 \to \ker Fd^2 \to & F(A^2) \to \ker Fd^3 \to 0 \\
-        & \vdots
-    \end{align*}   
-    Collecting them all together we can conclude that the complex $F(A^\bullet)$ is acyclic.\qedhere
+    After inductively applying the same reasoning for each of the original short exact sequences of \eqref{eq: SES from acyclic cx} for $i > 1$, we are left with short exact sequences\footnote{To be more precise we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \iso F(\ker d^i)\].}
+    \[
+        0 \to \ker Fd^i \to F(A^i) \to \ker Fd^{i+1} \to 0 \quad \text{ for $i \geq 1$.}
+    \]
+    Collecting them all back together we conclude that the complex $F(A^\bullet)$ is acyclic.
+    \info{There are inconsistencies with $F(A^\bullet) = K^+(F)(A^\bullet)$ and so on.} \qedhere
 \end{proof}

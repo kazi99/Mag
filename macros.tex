@@ -3,8 +3,8 @@
 % Fonts
 % \usepackage{newpxtext}
 
-% \usepackage{concmath}
-% \usepackage[T1]{fontenc}
+\usepackage{concmath}
+\usepackage[T1]{fontenc}
 
 % \usepackage{fourier}
 % \usepackage[T1]{fontenc}
@@ -17,9 +17,19 @@
 
 \usepackage{xparse}
 
+% Colors
+\usepackage{xcolor}
+
 \usepackage{tikz}
 \usetikzlibrary{cd, babel}
 \usepackage{quiver}
+
+% For comments in pdf
+\usepackage{todonotes}
+% \usepackage[pdftex,dvipsnames]{xcolor}
+\newcommand{\info}[1]{
+    \todo[linecolor=olive,backgroundcolor=olive!25,bordercolor=olive, size=\tiny]{#1}
+}
 
 % Acronyms in slovene
 \newcommand{\ti}{t.~i.\ }
@@ -30,9 +40,10 @@
 \newcommand{\ie}{i.e.\ }
 \newcommand{\eg}{e.g.\ }
 \newcommand{\resp}{resp.\ }
+\newcommand{\cf}{cf.\ }
 
 % Shorthands
-\newcommand{\R}{\mathbb R}
+\newcommand{\R}{\mathbf R}
 \newcommand{\N}{\mathbf Z_{\geq 0}}
 \newcommand{\Z}{\mathbf Z}
 \newcommand{\C}{\mathbf C}
@@ -44,27 +55,33 @@
 \newcommand{\I}{\mathcal I}
 \newcommand{\J}{\mathcal J}
 \newcommand{\D}{\mathcal D}
+% \newcommand{\k}{\texttt k}
 
 \newcommand{\op}{\text{op}}
 
 \newcommand{\iso}{\simeq}
 \newcommand{\htpy}{\simeq}
+\newcommand{\natiso}{\simeq}
 
+% Categories
 \newcommand{\im}{\operatorname{im}}
 \newcommand{\coim}{\operatorname{coim}}
 \newcommand{\coker}{\operatorname{coker}}
 \newcommand{\colim}{\operatorname{colim}}
 \newcommand{\Ob}{\operatorname{Ob}}
-\newcommand{\com}{\operatorname{Ch}}
 \renewcommand{\hom}{\operatorname{Hom}}
 \newcommand{\Hom}{\operatorname{Hom}}
 
+% Categories examples
+\newcommand{\Set}{\mathsf{Set}}
 \newcommand{\Ab}{\mathsf{Ab}}
+\renewcommand{\mod}[1]{\textsf{Mod}_{#1}}
+\newcommand{\coherent}[1]{\textsf{coh}(#1)}
+\newcommand{\quasicoh}[1]{\textsf{qcoh}(#1)}
+\newcommand{\com}{\operatorname{Ch}}
 
-\newcommand{\coherent}[1]{\textsf{Coh}(#1)}
-\newcommand{\quasicoh}[1]{\textsf{QCoh}(#1)}
-
-\newcommand{\rderived}[2]{\text{R}^{#1}#2}
+% Deriveed stuff
+\newcommand{\rderived}[2]{\mathbf{R}^{#1}#2}
 \newcommand{\lderived}[2]{\operatorname{L}^{#1}#2}
 
 % \NewDocumentCommand{\rderived}{o m}{
@@ -79,7 +96,13 @@
 \newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
 \newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
 
-\newcommand{\Set}{\mathtt{Set}}
+% Lattices
+\newcommand{\hyperbolic}{\mathcal U}
+
+
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\newcommand{\id}{\operatorname{id}}
+\newcommand{\id}[1]{\operatorname{id}_{#1}}
+
+% Quotient
+% \newcommand{\bigslant}[2]{{\raisebox{.2em}{#1}\left/\raisebox{-.2em}{#2}\right.}}

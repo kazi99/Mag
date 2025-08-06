@@ -1,0 +1,506 @@
+\section{Derived categories}
+
+The first goal of this section is to define the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments will try to be minimal and will not rely on the already established theory of localization of categories, which might at times seem less elegant, but we include the exposition for completness nonetheless.
+A more comprehensive and formal treatment of this topic can be found in \cite[\S 7]{kashiwara2006categories} or \cite{milicic-dercat}.
+
+\info{categorical motivation and universal property of $D(\A)$}
+
+\begin{lemma}
+    \label{Ore condition}
+    Let $s \colon A^\bullet \to B^\bullet$ be a quasi-isomorphism and let $f\colon C^\bullet \to B^\bullet$ be a morphism. Then there exist a quasi-isomorphism $u\colon C_0^\bullet \to C^\bullet$ and a morphism $g\colon C_0^\bullet \to A^\bullet$, such that the diagram below commutes in $K(\A)$.
+    \[
+    \begin{tikzcd}
+        {C_0^\bullet} && C^\bullet \\
+        \\
+        A^\bullet && B^\bullet
+        \arrow["u", dashed, from=1-1, to=1-3]
+        \arrow["\sim"', draw=none, from=1-1, to=1-3]
+        \arrow["g"', dashed, from=1-1, to=3-1]
+        \arrow["f", from=1-3, to=3-3]
+        \arrow["s", from=3-1, to=3-3]
+        \arrow["\sim"', draw=none, from=3-1, to=3-3]
+    \end{tikzcd}
+    \]
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+We are now in a position to define the derived category $D(\A)$ of an abelian category $\A$. It consists of
+\[
+    \textsl{Objects of $D(\A)$:} \quad \text{chain complexes in $\A$},
+\]
+\ie the class of objects of $K(\A)$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
+% Its class of objects is formed by chain complexes in $\A$ \ie equals the class of objects of $K(\A)$ and $\com(\A)$, but the definition of morphisms in this case is a bit more intricate. 
+For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not even a set, so $D(\A)$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ in the following way.
+
+A \emph{left roof spanned on $A^\bullet$ and $B^\bullet$} is a pair of morphisms $s \colon A^\bullet \to C^\bullet$ and $f\colon C^\bullet \to B^\bullet$ in the homotopy category $K(\A)$, where $s$ is a quasi-isomorphism. This roof is depicted in the following diagram.
+\begin{equation}
+    \label{eq: left roof}
+    \begin{tikzcd}[row sep = small, column sep = small]
+    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQyJdLFs0LDEsIkIiXSxbMSwyLCJmIiwyXSxbMSwwLCJzIl0sWzEsMCwiXFxzaW0iLDJdXQ==
+	&& C^\bullet \\
+	A^\bullet &&&& B^\bullet
+	\arrow["s", from=1-3, to=2-1]
+	\arrow["\sim"', from=1-3, to=2-1]
+	\arrow["f"', from=1-3, to=2-5]
+    \end{tikzcd}
+\end{equation}
+Dually, one also obtains the notion of a \emph{right roof spanned on $A^\bullet$ and $B^\bullet$}, which is a pair of morphisms $g\colon A^\bullet \to C^\bullet$ and $u\colon B^\bullet \to C^\bullet$, where $u$ is a quasi-isomorphism, and is depicted below.
+\[\begin{tikzcd}[row sep = small, column sep = small]
+    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQyJdLFs0LDEsIkIiXSxbMSwyLCJmIiwyXSxbMSwwLCJzIl0sWzEsMCwiXFxzaW0iLDJdXQ==
+	&& C^\bullet \\
+	A^\bullet &&&& B^\bullet
+	\arrow["g"', to=1-3, from=2-1]
+	\arrow["\sim"', to=1-3, from=2-5]
+	\arrow["u", to=1-3, from=2-5]
+\end{tikzcd}\] 
+Our construction of $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ will be based on left roofs, for nothing is gained or lost by picking either one of the two. Both work just as well and are in fact equvalent. Despite our arbitrary choice, it is still benefitial to consider both, as we will sometimes switch between the two whenever convenient. 
+
+\begin{definition}
+    Two left roofs $A^\bullet \xleftarrow{\ s_0 \ } C_0^\bullet \xrightarrow{\ f_0 \ } B^\bullet$ and $A^\bullet \xleftarrow{\ s_1 \ } C_1^\bullet \xrightarrow{\ f_1 \ } B^\bullet$ are defined to be \emph{equivalent}, if there exists a quasi-isomorphism $u\colon C^\bullet \to C_0^\bullet$ and a morphism ${g\colon C^\bullet \to C_1^\bullet}$ in $K(\A)$, for which the diagram below commutes (in $K(\A)$). 
+    \[\begin{tikzcd}[row sep = 1.5em, column sep = 2em]
+        % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBIl0sWzEsMSwiQ18wIl0sWzQsMiwiQiJdLFszLDEsIkNfMSJdLFsyLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFs0LDEsIlxcc2ltIiwyXSxbNCwzLCJnIiwyXSxbMSwwLCJcXHNpbSIsMl0sWzQsMSwidSJdXQ==
+        && C^\bullet \\
+        & {C_0^\bullet} && {C_1^\bullet} \\
+        A^\bullet &&&& B^\bullet
+        \arrow["\sim"', from=1-3, to=2-2]
+        \arrow["u", from=1-3, to=2-2]
+        \arrow["g"', from=1-3, to=2-4]
+        \arrow["\sim"', from=2-2, to=3-1]
+        \arrow[from=2-2, to=3-5]
+        \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
+        \arrow[from=2-4, to=3-5]
+\end{tikzcd}\]
+We denote this relation by $\equiv$.
+\end{definition}
+
+Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism, the composite $C^\bullet \to C_1^\bullet \to A^\bullet$ is as well, concluding that $g\colon C^\bullet \to C^\bullet_1$ is a quasi-isomorphism. 
+
+\begin{lemma}
+    The equivalence of left roofs on $A^\bullet$ and $B^\bullet$ is an equivalence relation.
+\end{lemma}
+
+\begin{proof}
+    The relation is clearly reflexive. We take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the solid diagram below.
+    \[\begin{tikzcd}
+        % https://q.uiver.app/#q=WzAsOCxbMCwzLCJBIl0sWzEsMiwiQ18wIl0sWzYsMywiQiJdLFs1LDIsIkNfMiJdLFszLDIsIkNfMSJdLFsyLDEsIkRfMCJdLFs0LDEsIkRfMSJdLFszLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFsxLDAsIlxcc2ltIiwyXSxbNSwxLCJcXHNpbSIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19LFsyNDAsNjAsNjAsMV1dLFs1LDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbNCwwLCJcXHNpbSIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs0LDJdLFs2LDMsIiIsMCx7ImNvbG91ciI6WzMwMCw2MCw2MF19XSxbNiw0LCJcXHNpbSIsMix7ImNvbG91ciI6WzMwMCw2MCw2MF19LFszMDAsNjAsNjAsMV1dLFs3LDUsIlxcc2ltIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsNiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        &&& C^\bullet \\
+        && {D_0^\bullet} && {D_1^\bullet} \\
+        & {C_0^\bullet} && {C_1^\bullet} && {C_2^\bullet} \\
+        A^\bullet &&&&&& B^\bullet
+        \arrow["\sim"', dashed, from=1-4, to=2-3]
+        \arrow[dashed, from=1-4, to=2-5]
+        \arrow["\sim"', color={rgb,255:red,92;green,92;blue,214}, from=2-3, to=3-2]
+        \arrow[color={rgb,255:red,92;green,92;blue,214}, from=2-3, to=3-4]
+        \arrow["\sim"', color={rgb,255:red,214;green,92;blue,214}, from=2-5, to=3-4]
+        \arrow[color={rgb,255:red,214;green,92;blue,214}, from=2-5, to=3-6]
+        \arrow["\sim"', from=3-2, to=4-1]
+        \arrow[curve={height=12pt}, from=3-2, to=4-7]
+        \arrow["\sim"'{pos=0.2}, from=3-4, to=4-1]
+        \arrow[from=3-4, to=4-7]
+        \arrow["\sim"{pos=0.6}, curve={height=-12pt}, from=3-6, to=4-1]
+        \arrow[from=3-6, to=4-7]
+    \end{tikzcd}\]
+    By lemma \ref{Ore condition} this diagram may be completed with the dashed arrows at the top, which shows that $A^\bullet \leftarrow C_0^\bullet \rightarrow B^\bullet$ and $A^\bullet \leftarrow C_2^\bullet \rightarrow B^\bullet$ are equivalent and ends the proof.
+\end{proof}
+
+For a left roof \eqref{eq: left roof} we let $\left[s \setminus f\right]$ or $\left[A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{\ f \ } B^\bullet\right]$ denote its equivalence class under $\equiv$.
+
+
+We define $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ to be the class of left roofs spanned by $A^\bullet$ and $B^\bullet$, quotiented by the relation $\equiv$. That is
+% \begin{equation*}
+%     \Hom_{D(\A)}(A^\bullet, B^\bullet) := 
+%     \left\{ (s, f) \in \coprod_{C^\bullet \in \Ob(K(\A))} \Hom_{K(\A)}(C^\bullet, A^\bullet) \times \Hom_{K(\A)}(C^\bullet, B^\bullet) \ \middle\vert \ \text{$s$ quasi-isomorphism} \right\}
+% \end{equation*}
+
+\[
+\Hom_{D(\A)}(A^\bullet, B^\bullet) := \\ 
+\left\{
+\left[
+\begin{array}{l c r}
+& C^\bullet & \\
+\quad \swarrow & & \searrow \quad\\
+A^\bullet & & B^\bullet
+\end{array}
+\right]
+\, \middle| \,
+\begin{array}{l}
+C^\bullet \in \Ob K(A), \
+f \in \Hom_{K(A)}(C^\bullet, B^\bullet), \\
+s \in \Hom_{K(A)}(C^\bullet, A^\bullet) \text{ quasi-isomorphism}
+\end{array}
+\right\}.
+\]
+
+Next we define the compositon operations
+\[
+    \circ \colon \Hom_{D(\A)}(A_0^\bullet, A_1^\bullet) \times \Hom_{D(\A)}(A_1^\bullet, A_2^\bullet) \to \Hom_{D(\A)}(A_0^\bullet, A_2^\bullet)
+\]
+for all objects $A_0^\bullet$, $A_1^\bullet$ and $A_2^\bullet$ of $D(\A)$. Let $\phi_0\colon A_0^\bullet \to A_1^\bullet$ and $\phi_1\colon A_1^\bullet \to A_2^\bullet$ be a pair of composable morphisms in $D(\A)$. Next pick their respective left roof representatives, $A_0^\bullet \xleftarrow{\ s_0\ } C_0^\bullet \xrightarrow{\ f_0 \ } A_1^\bullet$ and $A_1^\bullet \xleftarrow{\ s_1\ } C_1^\bullet \xrightarrow{\ f_1 \ } A_2^\bullet$, and concatenate them according to the solid zig-zag diagram below. 
+\[\begin{tikzcd}[row sep = small, column sep = small]
+    % https://q.uiver.app/#q=WzAsNixbMCwyLCJBXzAiXSxbMiwxLCJDXzAiXSxbNCwyLCJBXzEiXSxbOCwyLCJBXzIiXSxbNiwxLCJDXzEiXSxbNCwwLCJDIl0sWzEsMiwiZl8wIiwyXSxbMSwwLCJzXzAiXSxbMSwwLCJcXHNpbSIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDIsInNfMSJdLFs0LDMsImZfMSIsMl0sWzUsMSwidSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDQsImciLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCwyLCJcXHNpbSIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDEsIlxcc2ltIiwyLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+	&&&& C^\bullet \\
+	&& {C_0^\bullet} &&&& {C_1^\bullet} \\
+	{A_0^\bullet} &&&& {A_1^\bullet} &&&& {A_2^\bullet}
+	\arrow["u", dashed, from=1-5, to=2-3]
+	\arrow["\sim"', shift left, draw=none, from=1-5, to=2-3]
+	\arrow["g"', dashed, from=1-5, to=2-7]
+	\arrow["{s_0}", from=2-3, to=3-1]
+	\arrow["\sim"', shift left, draw=none, from=2-3, to=3-1]
+	\arrow["{f_0}"', from=2-3, to=3-5]
+	\arrow["{s_1}", from=2-7, to=3-5]
+	\arrow["\sim"', shift left, draw=none, from=2-7, to=3-5]
+	\arrow["{f_1}"', from=2-7, to=3-9]
+\end{tikzcd}\]
+By lemma \ref{Ore condition} there are morphisms $u\colon C^\bullet \to C_0^\bullet$ and $g\colon C^\bullet \to C_1^\bullet$, depicted with dashed arrows, completing the diagram in $K(\A)$. In this way we obtain a left roof, formed by a quasi-isomorphism $s_0 \circ u$ and a morphism $f_1 \circ g$, the equivalence class of which we define to be the composite 
+\[
+    \phi_1 \circ \phi_0 :=
+    \left[A_0^\bullet \xleftarrow{s_0 \circ u} C^\bullet \xrightarrow{f_1 \circ g} A_2^\bullet\right].
+\]
+It can be shown that this is a well defined composition that is also associative. We leave out the proof, because it is routine. 
+
+The identity morphism on an object $A^\bullet$ of $D(\A)$ is defined to be the equivalence class of $A^\bullet \xleftarrow{\id{A^\bullet}} A^\bullet \xrightarrow{\id{A^\bullet}} A^\bullet$. It is not difficult to check that these play the role of identity morphisms in $\mathcal{D}(\A)$. 
+
+
+
+
+
+As with the homotopy category of complexes $K(\A)$, we also have the following bounded versions of the derived category $D(\A)$, exhibited as full additive subcategories of the unbounded variant $D(\A)$.
+
+\begin{center}
+    \begin{tabular}{c l}
+        $D^+(\A)$ & spanned on complexes in $\A$ bounded below. \\
+        $D^-(\A)$ & spanned on complexes in $\A$ bounded above. \\
+        $D^b(\A)$ & spanned on bounded complexes in $\A$. \\    
+    \end{tabular}
+\end{center}
+
+\subsubsection*{$k$-linear structure on $\mathrm{D}(\A)$}
+We first define the biproduct on $D(\A)$.
+\info{finish subsection}
+
+\subsection{Derived categories of abelian categories with enough injectives}
+
+\begin{definition}
+    An object $I$ of an abelian category $\A$ is called \emph{injective}, if the functor $\Hom_\A(-, I)\colon \A^\op \to \mod{k}$ is exact. Equivalently whenever for any monomorphism ${A \hookrightarrow B}$ and $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
+    \[\begin{tikzcd}[column sep = 2em]
+        % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBIl0sWzIsMSwiQiJdLFsxLDAsIkkiXSxbMCwxLCIwIl0sWzMsMF0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyXSxbMSwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        & I \\
+        0 & A & B
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-2, to=1-2]
+        \arrow[hook, from=2-2, to=2-3]
+        \arrow[dashed, from=2-3, to=1-2]
+    \end{tikzcd}\]
+\end{definition}
+
+A category $\A$ is said to \emph{have enough injectives} if every object $A$ of $\A$ embeds into an injective object \ie there is a monomorphism $A \hookrightarrow I$ for some injective object $I$. 
+
+\begin{remark}
+    A simple verification shows, that the full subcategory of an abelian or $k$-linear category $\A$, spanend on all injective objects of $\A$ is a $k$-linear category, as the zero object $0$ is injective and the biproduct of two injective objects is again injective. We denote this category by $\J$.
+\end{remark}
+
+We will use injectives to 
+
+We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injective resolution} of the complex $A^\bullet$. Later we will also see that this injective resolution is unique up to homotopy \ie any two injective resolutions of $A^\bullet$ are homotopically equivalent. Throughout this section differenitials of $I^\bullet$ will be denoted with $\delta^i\colon I^i \to I^{i+1}$.
+
+\begin{proposition}
+    \label{injective resolution}
+    % Suppose $\A$ contains enough injectives. Then every $A^\bullet$ in $K^+(\A)$ has an injective resolution.
+    Suppose $\A$ contains enough injectives. Then for every $A^\bullet$ in $K^+(\A)$ there is a quasi-isomorphism $f^\bullet \colon A^\bullet \to I^\bullet$, where $I^\bullet \in \Ob K^+(\A)$ is a complex of injectives.
+\end{proposition}
+
+\begin{proof}
+    We will inductively construct a complex $I^\bullet$ in $K^+(\A)$, built up from injectives, and a quasi-isomorphism $f^\bullet \colon A^\bullet \to I^\bullet$. For simplicity assume $A^i = 0$ for $i < 0$. 
+    
+    The base case is trivial. Define $I^i = 0$ and $f^i = 0$ for $i < 0$ and take $f^0\colon A^0 \to I^0$ to be the morphism obtained from the assumption about $\A$ having enough injectives.
+    \[\begin{tikzcd}[column sep = 2em]
+        % https://q.uiver.app/#q=WzAsOCxbMSwwLCIwIl0sWzIsMCwiQV4wIl0sWzMsMCwiQV4xIl0sWzQsMCwiXFxjZG90cyJdLFswLDAsIlxcY2RvdHMiXSxbMiwxLCJJXjAiXSxbMSwxLCIwIl0sWzAsMSwiXFxjZG90cyJdLFs0LDBdLFswLDFdLFsxLDJdLFsyLDNdLFsxLDVdLFs3LDZdLFs2LDVdXQ==
+        \cdots & 0 & {A^0} & {A^1} & \cdots \\
+        \cdots & 0 & {I^0}
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-4, to=1-5]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+    \end{tikzcd}\]
+
+    For the induction step suppose we have constructed the complex $I^\bullet$ and the morphism $f^\bullet$ up to index $n$. 
+    \[\begin{tikzcd}[column sep = 2em]
+        % https://q.uiver.app/#q=WzAsOCxbMSwwLCJBXntuLTF9Il0sWzIsMCwiQV5uIl0sWzMsMCwiQV57bisxfSJdLFs0LDAsIlxcY2RvdHMiXSxbMCwwLCJcXGNkb3RzIl0sWzIsMSwiSV5uIl0sWzEsMSwiSV57bi0xfSJdLFswLDEsIlxcY2RvdHMiXSxbNCwwXSxbMCwxLCJkXntuLTF9Il0sWzEsMiwiZF5uIl0sWzIsM10sWzEsNSwiZl57bn0iLDJdLFs3LDZdLFs2LDUsIlxcZGVsdGFee24tMX0iXSxbMCw2LCJmXntuLTF9IiwyXV0=
+        \cdots & {A^{n-1}} & {A^n} & {A^{n+1}} & \cdots \\
+        \cdots & {I^{n-1}} & {I^n}
+        \arrow[from=1-1, to=1-2]
+        \arrow["{d^{n-1}}", from=1-2, to=1-3]
+        \arrow["{f^{n-1}}"', from=1-2, to=2-2]
+        \arrow["{d^n}", from=1-3, to=1-4]
+        \arrow["{f^{n}}"', from=1-3, to=2-3]
+        \arrow[from=1-4, to=1-5]
+        \arrow[from=2-1, to=2-2]
+        \arrow["{\delta^{n-1}}", from=2-2, to=2-3]
+    \end{tikzcd}\]
+    Consider the cokernel of $d^{n-1}_{C(f)}$
+    \[
+        A^n \oplus I^{n-1} \xrightarrow{\ d^{n-1}_{C(f)} \ } A^{n+1} \oplus I^n \xrightarrow{\ e \ } \coker d^{n-1}_{C(f)} 
+    \]
+    and denote with $j \colon \coker d^{n-1}_{C(f)} \hookrightarrow I^{n+1}$ an embedding to an injective object $I^{n+1}$.
+    %  we get from $\A$ having enough injectives. 
+    After precomposing the morphism
+    \[
+        A^{n+1} \oplus I^n \xrightarrow{\ e \ } \coker d^{n-1}_{C(f)} \xrightarrow{ \ j \ } I^{n+1}
+    \]
+    with canonical embeddings of $A^{n + 1}$ and $I^{n}$ into their biproduct $A^{n+1} \oplus I^n$, we obtain morphisms $\delta^{n}\colon I^n \to I^{n+1}$ and $f^{n+1}\colon A^{n+1} \to I^{n+1}$. As $j \circ e$ is a morphism fitting into the following coproduct diagram,
+    \[\begin{tikzcd}[row sep = 2em]
+        % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBXntuKzF9IFxcb3BsdXMgSV5uIl0sWzAsMCwiQV57bisxfSJdLFsyLDAsIklee259Il0sWzEsMywiSV57bisxfSJdLFswLDMsImogXFxjaXJjIGUiLDJdLFsxLDMsImZee24rMX0iLDIseyJjdXJ2ZSI6Mn1dLFsyLDMsIlxcZGVsdGFebiIsMCx7ImN1cnZlIjotMn1dLFsxLDBdLFsyLDBdXQ==
+        {A^{n+1}} && {I^{n}} \\
+        & {A^{n+1} \oplus I^n} \\
+        \\
+        & {I^{n+1}}
+        \arrow[from=1-1, to=2-2]
+        \arrow["{f^{n+1}}"', curve={height=12pt}, from=1-1, to=4-2]
+        \arrow[from=1-3, to=2-2]
+        \arrow["{\delta^n}", curve={height=-12pt}, from=1-3, to=4-2]
+        \arrow["{j \circ e}"', from=2-2, to=4-2]
+    \end{tikzcd}\]
+    we see that $j \circ e = \langle f^{n+1} , \delta^n \rangle$. Next, we see that $\delta^n\delta^{n-1} = 0$ and $\delta^n f^n = f^{n+1}d^n$ from the computation
+    \[
+        0 = j \circ e \circ d^{n-1}_{C(f)} = \langle f^{n+1},\ \delta^n \rangle \begin{pmatrix}
+            -d^n & 0 \\ f^n & \delta^{n-1}
+        \end{pmatrix} = \langle \delta^n f^n - f^{n+1}d^n , \ \delta^n\delta^{n-1}\rangle\\
+    \]
+    We have now constructed a chain complex $I^\bullet$ of injective objects and a chain map ${f \colon A^\bullet \to I^\bullet}$. 
+    
+    It remanis to be shown that $f\colon A^\bullet \to I^\bullet$ is a quasi-isomorphism. Recall, that $f$ is a quasi-isomorphism if and only if its cone $C(f)^\bullet$ is acyclic. By remark \ref{versions of cohomology}, we known
+    \[
+        H^n(C(f)^\bullet) = \ker(\coker d^{n-1}_{C(f)} \xrightarrow{\ d \ } A^{n+2} \oplus I^{n+1}),
+    \]
+    where $d$ is obtained from the universal property of $\coker d^{n-1}_{C(f)}$ induced by $d^n_{C(f)}$. Thus it suffices to show, that $d$ is a monomorphism. Consider the following diagram, which we will show to commute. 
+    \[\begin{tikzcd}[column sep = 2em]
+        % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBXm5cXG9wbHVzIElee24tMX0iXSxbMiwwLCJBXntuKzF9XFxvcGx1cyBJXntufSJdLFs0LDAsIkFee24rMn1cXG9wbHVzIElee24rMX0iXSxbMywxLCJjb2tlciBkXntuLTF9X3tDKGYpfSJdLFs1LDEsIklee24rMX0iXSxbMCwxLCJkXntuLTF9X3tDKGYpfSJdLFsxLDIsImRee259X3tDKGYpfSJdLFsxLDMsImUiXSxbMywyLCJkIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsNCwicCJdLFszLDQsImoiXV0=
+        {A^n\oplus I^{n-1}} && {A^{n+1}\oplus I^{n}} && {A^{n+2}\oplus I^{n+1}} \\
+        &&& {\coker d^{n-1}_{C(f)}} && {I^{n+1}}
+        \arrow["{d^{n-1}_{C(f)}}", from=1-1, to=1-3]
+        \arrow["{d^{n}_{C(f)}}", from=1-3, to=1-5]
+        \arrow["e", two heads, from=1-3, to=2-4]
+        \arrow["p", from=1-5, to=2-6]
+        \arrow["d", dashed, from=2-4, to=1-5]
+        \arrow["j", hook, from=2-4, to=2-6]
+    \end{tikzcd}\]
+    Once we show, that its right most triangle is commutative, we see that $d$ is mono, because $j$ is mono. We compute
+    \[
+        p \circ d \circ e = p \circ d^n_{C(f)} = \langle f^{n+1}, \delta^n \rangle = j \circ e.
+    \] 
+    As $e$ is epic, we may cancel it on the right, to arrive at $p \circ d = j$, which ends the proof.
+\end{proof}
+
+\begin{remark}
+    As is evident from the proof by close inspection we have only used two facts about the class of all injective objects of $\A$ -- that every object of $\A$ embeds into some injective object and that the class of injectives is closed under finite direct sums. This will later on be used in subsection \ref{Subsection on F-adapted classes} when constructing a right derived functor of a given functor $F$ in the presence of an $F$-adapted class.
+\end{remark}
+
+\begin{theorem}
+    \label{D+ = K+ and injectives}
+    Assume $\A$ contains enough injectives and let $\J \subseteq \A$ denote the full subcategory on injecitve objects of $\A$. Then the inclusion $K^+(\J) \hookrightarrow K^+(\A)$ induces an equivalence of triangulated categories
+    \[
+        K^+(\J) \iso D^+(\A).
+    \]
+\end{theorem}
+
+\begin{remark}
+    Theorem \ref{D+ = K+ and injectives} in particular shows that $D^+(\A)$ is a category in the usual sense, \ie all its hom-sets are in fact sets.  
+\end{remark}
+
+\begin{lemma}
+    \label{acyclic to injective is nulhomotopic}
+    Let $A^\bullet$ be any acyclic complex in $K^+(\A)$ and $I^\bullet$ a complex of injectives from $K^+(J)$. Then
+    \[
+        \hom_{K^+(\A)}(A^\bullet, I^\bullet) = 0.
+    \]
+    In other words every morphism from an acyclic complex to an injective one is nulhomotopic.
+\end{lemma}
+
+\begin{proof}
+    We will show that $f \htpy 0$ for any chain map $f \colon A^\bullet \to I^\bullet$ by inductively constructing an appropriate homotopy $h$. For simplicity assume $A^i = 0$ and $I^i = 0$ for $i < 0$ and define $h^i \colon A^i \to I^{i-1}$ to be $0$ for $i \leq 0$. 
+    
+    As $A^\bullet$ is acyclic, the first non-trivial differential $d^0\colon A^0 \to A^1$ is mono. From $I^0$ being injective, we obtain a morphism $h^1\colon A^1 \to I^0$, satisfying
+    \[
+        f^0 = h^1 \circ d^0.
+    \]
+    Note that the above can actually be rewritten to $f^0 = h^1d^0 + \delta^{-1}h^0$, as $h^0 = 0$.
+
+    For the induction step assume that we have already constructed $h^i \colon A^i \to I^{i-1}$, with $f^{i-1} = h^id^{i-1} + \delta^{i-2}h^{i-1}$ for all $i \leq n$. We are aiming to construct $h^{n+1} \colon A^{n+1} \to I^n$, for which $f^n = h^{n+1} d^n + \delta^{n-1}h^n$ holds. First, expand the differential $d^n$ into a composition of the cannonical epic $e \colon A^n \to \coker d^{n-1}$, followed by $j \colon \coker d^{n-1} \to A^{n+1}$ induced by the universal property of $\coker d^{n-1}$ by the map $d^n \colon A^n \to A^{n+1}$. Morphism $j$ is actually a mono by acyclicity of $A^\bullet$, since we know that
+    \[
+        0 = H^n(A^\bullet) \iso \ker(j \colon \coker d^{n-1} \to A^{n+1}).
+    \]
+    Next, we see that by the universal property of $\coker d^{n-1}$, morphism $f^n - \delta^{n-1}h^n \colon A^n \to I^n$ induces a morphism ${g \colon \coker d^{n-1} \to I^n}$, because
+    \begin{align*}
+        (f^n - \delta^{n-1}h^n)d^{n-1} &= f^nd^{n-1} - \delta^{n-1}h^nd^{n-1} \\
+        &= f^nd^{n-1} + \delta^{n-1}\delta^{n-2}h^{n-1} - \delta^{n-1}f^{n-1} \\
+        &= 0.
+    \end{align*}
+    The second equality follows from the inductive hypothesis and the third one from $f$ beign a chain map and $\delta$ being a differential. 
+
+    Lastly, for $I^n$ is injecive and $j$ mono, there is a morphism $h^{n+1} \colon A^{n+1} \to I^n$, satisfying $h^{n+1} \circ j = g$, thus after precomposing both sides with $e$, we arrive at
+    \[
+        h^{n+1}d^n = f^n - \delta^{n-1}h^n.
+        \qedhere  
+    \]
+\end{proof}
+
+\begin{lemma}
+    \label{D+ K+ aux lemma 1}
+    % Let $A^\bullet$ and $B^\bullet$ be complexes belonging to $K^+(\A)$ and $I^\bullet$ a complex of injectives from $K^+(\J)$.
+    Let $A^\bullet$ and $B^\bullet$ belong to $K^+(\A)$ and $I^\bullet \in K^+(\J)$. Let $f \colon B^\bullet \to A^\bullet$ be a quasi-isomorphism, then 
+    \[
+        \Hom_{K^+(\A)}(A^\bullet, I^\bullet) \xrightarrow{ \ f^* \ } \Hom_{K^+(\A)}(B^\bullet, I^\bullet) 
+    \]
+    is an isomorphism of $k$-modules.
+\end{lemma}
+
+\begin{proof}
+    In $K^+(\A)$ we have a distinguished triangle $B^\bullet \to A^\bullet \to C(f)^\bullet \to B[1]^\bullet$, which induces a long exact sequence (of $k$-modules)
+    \begin{multline*}
+        \cdots \longrightarrow \Hom_{K^+(\A)}(C(f)[-1]^\bullet, I^\bullet) \longrightarrow \\
+        \longrightarrow \Hom_{K^+(\A)}(A^\bullet, I^\bullet) \xrightarrow{ \ f^* \ }
+        \Hom_{K^+(\A)}(B^\bullet, I^\bullet) \longrightarrow \\
+        \longrightarrow \Hom_{K^+(\A)}(C(f)^\bullet, I^\bullet) \longrightarrow \cdots.
+    \end{multline*}
+    The reason being $\Hom_{K^+(\A)}(-, I^\bullet)$ is a cohomological functor by example \ref{partial homs are cohomological functors}. As $f$ is a quasi-isomorphism, the cone $C(f)^\bullet$ is acyclic along with all its shifts. Since $I^\bullet$ is a complex of injectives, $f^*$ is clearly an isomorphism by lemma \ref{acyclic to injective is nulhomotopic}. 
+\end{proof}
+
+\begin{lemma}
+    \label{D+ K+ aux lemma 2}
+    Let $A^\bullet$ belong to $K^+(\A)$ and $I^\bullet$ to $K^+(\J)$. Then the morphism action 
+    \begin{equation}
+        \label{eq: morphism action of Q}
+        \Hom_{K^+(\A)}(A^\bullet, I^\bullet) \to \Hom_{D^+(\A)}(A^\bullet, I^\bullet)
+    \end{equation}
+    of the localization functor $Q$ is an isomorphism of $k$-modules. 
+\end{lemma}
+
+\begin{proof}
+    We already know this is a $k$-module homomorphism, thus it is enough to show that it is bijective. This is accomplished by constructing its inverse. Let $\phi \colon A^\bullet \to I^\bullet$ be a morphism in $D^+(\A)$ and let $A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet$ be its left roof representative. The morphism $s$ being a quasi-isomorphism implies that $s^* \colon \Hom_{K^+(\A)}(A^\bullet, I^\bullet) \to \Hom_{K^+(\A)}(B^\bullet, I^\bullet)$ is bijective by lemma \ref{D+ K+ aux lemma 1}, so there is a unique morphism $g\colon A^\bullet \to I^\bullet$, such that $f = g \circ s$ in $K^+(\A)$. The inverse to \eqref{eq: morphism action of Q} is then defined by sending $\phi$ to $g$. 
+    
+    First let's argue why this map is well-defined \ie independent of the choice of left roof representative for $\phi$. We pick two left roof representatives $A^\bullet \xleftarrow{ \ s_0 \ } B_0^\bullet \xrightarrow{ \ f_0 \ } I^\bullet$ and $A^\bullet \xleftarrow{ \ s_1 \ } B_1^\bullet \xrightarrow{ \ f_1 \ } I^\bullet$ for $\phi$ and let $g_0$ and $g_1$ be such that $f_i = g_i \circ s_i$ for both $i$. As the roofs are equivalent there are quasi-isomorphisms $t_0 \colon C^\bullet \to B^\bullet_0$ and $t_1 \colon C^\bullet \to B^\bullet_1$, which fit into the following commutative diagram.
+    \[\begin{tikzcd}
+        % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBIl0sWzEsMSwiQl8wIl0sWzQsMiwiSSJdLFszLDEsIkJfMSJdLFsyLDAsIkMiXSxbMSwyLCJmXzAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywwLCJzXzEiLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywyLCJmXzEiXSxbNCwzLCJ0XzEiXSxbMSwwLCJzXzAiLDJdLFs0LDEsInRfMCIsMl1d
+        && C^\bullet \\
+        & {B^\bullet_0} && {B^\bullet_1} \\
+        A^\bullet &&&& I^\bullet
+        \arrow["{t_0}"', from=1-3, to=2-2]
+        \arrow["{t_1}", from=1-3, to=2-4]
+        \arrow["{s_0}"', from=2-2, to=3-1]
+        \arrow["{f_0}"'{pos=0.6}, from=2-2, to=3-5]
+        \arrow["{s_1}"{pos=0.6}, from=2-4, to=3-1]
+        \arrow["{f_1}", from=2-4, to=3-5]
+    \end{tikzcd}\]
+    Therefore $g_0s_0t_0 = f_0t_0 = f_1t_1 = g_1s_1t_1 = g_1s_0t_0$. As $s_0t_0$ is a quasi-isomorphism, we see that $g_0 = g_1$ by applying lemma \ref{D+ K+ aux lemma 1}.
+    %  follows by applying lemma \ref{D+ K+ aux lemma 1} as the composition $s_0t_0$ is a quasi-isomorphism.
+    
+    % The following diagram shows why the constructed map is a left inverse to \eqref{eq: morphism action of Q}
+    % \[
+    %     \left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right] \longmapsto 
+    %     \left( g\colon A^\bullet \to I^\bullet\right) \longmapsto 
+    %     \left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right] = 
+    %     \left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]
+    % \]
+
+    % \begin{align*}
+    %     \Hom_{D^+(\A)}(A^\bullet, I^\bullet) \to \Hom_{K^+(\J)}(A^\bullet, I^\bullet) \to \Hom_{D^+(\A)}(A^\bullet, I^\bullet) \\
+    %     \left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right] \longmapsto 
+    %     \left( g\colon A^\bullet \to I^\bullet\right) \longmapsto 
+    %     \left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right] = 
+    %     \left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]
+    % \end{align*}
+
+%     \[\begin{tikzcd}[column sep = small , row sep = small]
+%         % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEhvbV97RF4rKFxcQSl9KEFeXFxidWxsZXQsIEleXFxidWxsZXQpIl0sWzQsMCwiXFxIb21fe0ReKyhcXEEpfShBXlxcYnVsbGV0LCBJXlxcYnVsbGV0KSJdLFsyLDAsIlxcSG9tX3tLXisoXFxKKX0oQV5cXGJ1bGxldCwgSV5cXGJ1bGxldCkiXSxbMCwxLCJcXGxlZnRbIEFeXFxidWxsZXQgXFx4bGVmdGFycm93eyBcXCBzIFxcIH0gQl5cXGJ1bGxldCBcXHhyaWdodGFycm93eyBcXCBmIFxcIH0gSV5cXGJ1bGxldCBcXHJpZ2h0XSJdLFsyLDEsIlxcbGVmdCggZ1xcY29sb24gQV5cXGJ1bGxldCBcXHRvIEleXFxidWxsZXRcXHJpZ2h0KSJdLFs0LDEsIlxcbGVmdFtBXlxcYnVsbGV0IFxceGxlZnRhcnJvd3sgXFwgXFxpZHtBXlxcYnVsbGV0fSB9IEFeXFxidWxsZXQgXFx4cmlnaHRhcnJvd3sgXFwgZyBcXCB9IEleXFxidWxsZXRcXHJpZ2h0XSA9ICAgICAgICAgIFxcbGVmdFsgQV5cXGJ1bGxldCBcXHhsZWZ0YXJyb3d7IFxcIHMgXFwgfSBCXlxcYnVsbGV0IFxceHJpZ2h0YXJyb3d7IFxcIGYgXFwgfSBJXlxcYnVsbGV0IFxccmlnaHRdIl0sWzAsMl0sWzIsMV0sWzMsNCwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+% 	{\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} && {\Hom_{K^+(\J)}(A^\bullet, I^\bullet)} && {\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} \\
+% 	{\left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]} && {\left( g\colon A^\bullet \to I^\bullet\right)} && {\left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right] =          \left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]}
+% 	\arrow[from=1-1, to=1-3]
+% 	\arrow[from=1-3, to=1-5]
+% 	\arrow[maps to, from=2-1, to=2-3]
+% 	\arrow[maps to, from=2-3, to=2-5]
+% \end{tikzcd}\]
+
+    % and why it is also a right inverse to \eqref{eq: morphism action of Q}
+    % \[
+    %     \left(  g\colon A^\bullet \to I^\bullet \right) \longmapsto
+    %     \left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right] \longmapsto
+    %     \left(  g\colon A^\bullet \to I^\bullet \right).
+    %     \qedhere
+    % \]
+
+
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCJcXEhvbV97RF4rKFxcQSl9KEFeXFxidWxsZXQsIEleXFxidWxsZXQpIl0sWzIsMCwiXFxIb21fe0ReKyhcXEEpfShBXlxcYnVsbGV0LCBJXlxcYnVsbGV0KSJdLFsxLDAsIlxcSG9tX3tLXisoXFxKKX0oQV5cXGJ1bGxldCwgSV5cXGJ1bGxldCkiXSxbMCwxLCJcXGxlZnRbIEFeXFxidWxsZXQgXFx4bGVmdGFycm93eyBcXCBzIFxcIH0gQl5cXGJ1bGxldCBcXHhyaWdodGFycm93eyBcXCBmIFxcIH0gSV5cXGJ1bGxldCBcXHJpZ2h0XSJdLFsxLDEsIlxcbGVmdCggZ1xcY29sb24gQV5cXGJ1bGxldCBcXHRvIEleXFxidWxsZXRcXHJpZ2h0KSJdLFsyLDEsIlxcbGVmdFtBXlxcYnVsbGV0IFxceGxlZnRhcnJvd3sgXFwgXFxpZHtBXlxcYnVsbGV0fSB9IEFeXFxidWxsZXQgXFx4cmlnaHRhcnJvd3sgXFwgZyBcXCB9IEleXFxidWxsZXRcXHJpZ2h0XSJdLFszLDEsIlxcbGVmdFsgQV5cXGJ1bGxldCBcXHhsZWZ0YXJyb3d7IFxcIHMgXFwgfSBCXlxcYnVsbGV0IFxceHJpZ2h0YXJyb3d7IFxcIGYgXFwgfSBJXlxcYnVsbGV0IFxccmlnaHRdIl0sWzAsMl0sWzIsMV0sWzMsNCwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw2LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% \[\begin{tikzcd}[row sep = 0.5em, column sep = 0.75em]
+% 	{\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} & {\Hom_{K^+(\J)}(A^\bullet, I^\bullet)} & {\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} \\
+% 	{\left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]} & {\left( g\colon A^\bullet \to I^\bullet\right)} & {\left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right]} & {\left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]}
+% 	\arrow[from=1-1, to=1-2]
+% 	\arrow[from=1-2, to=1-3]
+% 	\arrow[maps to, from=2-1, to=2-2]
+% 	\arrow[maps to, from=2-2, to=2-3]
+% 	\arrow[equals, from=2-3, to=2-4]
+% \end{tikzcd}\]
+
+% \[\begin{tikzcd}[row sep = 0.5em, column sep = 0.75em]
+%     % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEhvbV97RF4rKFxcQSl9KEFeXFxidWxsZXQsIEleXFxidWxsZXQpIl0sWzIsMCwiXFxIb21fe0ReKyhcXEEpfShBXlxcYnVsbGV0LCBJXlxcYnVsbGV0KSJdLFsxLDAsIlxcSG9tX3tLXisoXFxKKX0oQV5cXGJ1bGxldCwgSV5cXGJ1bGxldCkiXSxbMCwxLCJcXGxlZnRbIEFeXFxidWxsZXQgXFx4bGVmdGFycm93eyBcXCBzIFxcIH0gQl5cXGJ1bGxldCBcXHhyaWdodGFycm93eyBcXCBmIFxcIH0gSV5cXGJ1bGxldCBcXHJpZ2h0XSJdLFsxLDEsIlxcbGVmdCggZ1xcY29sb24gQV5cXGJ1bGxldCBcXHRvIEleXFxidWxsZXRcXHJpZ2h0KSJdLFsyLDEsIlxcbGVmdFtBXlxcYnVsbGV0IFxceGxlZnRhcnJvd3sgXFwgXFxpZHtBXlxcYnVsbGV0fSB9IEFeXFxidWxsZXQgXFx4cmlnaHRhcnJvd3sgXFwgZyBcXCB9IEleXFxidWxsZXRcXHJpZ2h0XSJdLFswLDJdLFsyLDFdLFszLDQsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw1LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+% 	{\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} & {\Hom_{K^+(\J)}(A^\bullet, I^\bullet)} & {\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} \\
+% 	{\left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]} & {\left( g\colon A^\bullet \to I^\bullet\right)} & {\left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right]}
+% 	\arrow[from=1-1, to=1-2]
+% 	\arrow[from=1-2, to=1-3]
+% 	\arrow[maps to, from=2-1, to=2-2]
+% 	\arrow[maps to, from=2-2, to=2-3]
+% \end{tikzcd}\]
+
+
+Following the diagram below, it is clear why the constructed map is a right inverse to \eqref{eq: morphism action of Q} 
+\[\begin{tikzcd}[row sep = 0.5em, column sep = 0.75em]
+    % https://q.uiver.app/#q=WzAsNixbMSwwLCJcXEhvbV97RF4rKFxcQSl9KEFeXFxidWxsZXQsIEleXFxidWxsZXQpIl0sWzIsMCwiXFxIb21fe0teKyhcXEopfShBXlxcYnVsbGV0LCBJXlxcYnVsbGV0KSJdLFsyLDEsIlxcbGVmdCggZ1xcY29sb24gQV5cXGJ1bGxldCBcXHRvIEleXFxidWxsZXRcXHJpZ2h0KSJdLFswLDAsIlxcSG9tX3tLXisoXFxKKX0oQV5cXGJ1bGxldCwgSV5cXGJ1bGxldCkiXSxbMCwxLCJcXGxlZnQoIGdcXGNvbG9uIEFeXFxidWxsZXQgXFx0byBJXlxcYnVsbGV0XFxyaWdodCkiXSxbMSwxLCJcXGxlZnRbQV5cXGJ1bGxldCBcXHhsZWZ0YXJyb3d7IFxcIFxcaWR7QV5cXGJ1bGxldH0gfSBBXlxcYnVsbGV0IFxceHJpZ2h0YXJyb3d7IFxcIGcgXFwgfSBJXlxcYnVsbGV0XFxyaWdodF0iXSxbMCwxXSxbNCw1LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzUsMiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFszLDBdXQ==
+	{\Hom_{K^+(\A)}(A^\bullet, I^\bullet)} & {\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} & {\Hom_{K^+(\A)}(A^\bullet, I^\bullet)} \\
+	{\left( g\colon A^\bullet \to I^\bullet\right)} & {\left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right]} & {\left( g\colon A^\bullet \to I^\bullet\right).}
+	\arrow["Q", from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[maps to, from=2-1, to=2-2]
+	\arrow[maps to, from=2-2, to=2-3]
+\end{tikzcd}\]
+Lastly we see that it is also a left inverse by the following diagram \[\begin{tikzcd}[row sep = 0.5em, column sep = 0.75em]
+    % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEhvbV97RF4rKFxcQSl9KEFeXFxidWxsZXQsIEleXFxidWxsZXQpIl0sWzIsMCwiXFxIb21fe0ReKyhcXEEpfShBXlxcYnVsbGV0LCBJXlxcYnVsbGV0KSJdLFsxLDAsIlxcSG9tX3tLXisoXFxKKX0oQV5cXGJ1bGxldCwgSV5cXGJ1bGxldCkiXSxbMCwxLCJcXGxlZnRbIEFeXFxidWxsZXQgXFx4bGVmdGFycm93eyBcXCBzIFxcIH0gQl5cXGJ1bGxldCBcXHhyaWdodGFycm93eyBcXCBmIFxcIH0gSV5cXGJ1bGxldCBcXHJpZ2h0XSJdLFsxLDEsIlxcbGVmdCggZ1xcY29sb24gQV5cXGJ1bGxldCBcXHRvIEleXFxidWxsZXRcXHJpZ2h0KSJdLFsyLDEsIlxcbGVmdFtBXlxcYnVsbGV0IFxceGxlZnRhcnJvd3sgXFwgXFxpZHtBXlxcYnVsbGV0fSB9IEFeXFxidWxsZXQgXFx4cmlnaHRhcnJvd3sgXFwgZyBcXCB9IEleXFxidWxsZXRcXHJpZ2h0XSJdLFswLDJdLFsyLDFdLFszLDQsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw1LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+	{\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} & {\Hom_{K^+(\A)}(A^\bullet, I^\bullet)} & {\Hom_{D^+(\A)}(A^\bullet, I^\bullet)} \\
+	{\left[ A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet \right]} & {\left( g\colon A^\bullet \to I^\bullet\right)} & {\left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet\right]}
+	\arrow[from=1-1, to=1-2]
+	\arrow["Q", from=1-2, to=1-3]
+	\arrow[maps to, from=2-1, to=2-2]
+	\arrow[maps to, from=2-2, to=2-3]
+\end{tikzcd}\]
+along with observing that $A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ g \ } I^\bullet$ and $A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet$ are equivalent roofs.
+\end{proof}
+
+\begin{proof}[Proof of theorem \ref{D+ = K+ and injectives}]
+    % We start of with a
+
+    % \noindent
+    % % \textbf{Preliminary claim.} Let $A^\bullet$ and $B^\bullet$ be complexes belonging to $K^+(\A)$ and $I^\bullet$ a complex of injectives from $K^+(\J)$.
+    % \textbf{Preliminary claim.} Let $A^\bullet$ and $B^\bullet$ belong to $K^+(\A)$ and $I^\bullet \in K^+(\J)$. Let $f \colon B^\bullet \to A^\bullet$ be a quasi-isomorphism, then 
+    % \[
+    %     \Hom_{K^+(\A)}(A^\bullet, I^\bullet) \xrightarrow{ \ - \circ f \ } \Hom_{K^+(\A)}(B^\bullet, I^\bullet) 
+    % \]
+    % is a bijection.
+    As $K^+(\J) \to D^+(\A)$ is a triangulated functor, we only need to show that it is fully faithful and essentially surjective. Let $I^\bullet$ and $J^\bullet$ be objects of $K^+(\J)$. Then
+    \[
+        \Hom_{K^+(\J)}(I^\bullet, J^\bullet) \xrightarrow{\ = \ } \Hom_{K^+(\A)}(I^\bullet, J^\bullet) \xrightarrow{\ \eqref{D+ K+ aux lemma 2} \ } \Hom_{D^+(\A)}(I^\bullet, J^\bullet)
+    \]
+    is a bijection, showing fully faithfulness. Essential surjectivity is clear by the existence of injective resolutions (\cf proposition \ref{injective resolution}).
+\end{proof}
+
+\info{add a little argument for why injective res. are unique up to htpy.}
+
+% We leave out the proof for why this operation is associative, but refer the intersted reader to \cite{milicic-dercat} or \cite[\S 7]{kashiwara2006categories} for a more detailed and general approach astablishing the theory of localization of categories.
+% \begin{remark}
+%     This lemma reminds us of the Ore condition in the context of localization in non-commutative algebra as so analogously there is also a dual version of the lemma. 
+% \end{remark}
+
+\subsection{Another source of subcategories of derived categories}

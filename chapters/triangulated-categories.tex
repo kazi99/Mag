@@ -1,32 +1,55 @@
-\section{Triangulated categories}
+\section{\textsf{redistribute: }Triangulated categories}
 
 \subsection{Additive, $k$-linear and abelian categories}
 
 We mainly follow \cite{kashiwara2006categories}.
 
-A categorical \emph{biproduct} of objects $X$ and $Y$ of a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
+A categorical \emph{biproduct} of objects $X$ and $Y$ in a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
 \begin{center}
     \begin{tabular}{c c}
         $p_X\colon X \oplus Y \to X$ & $p_Y\colon X \oplus Y \to Y$ \\
         $i_X\colon X \to X \oplus Y$ & $i_Y\colon Y \to X \oplus Y$ \\
     \end{tabular}
 \end{center}
-for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct.
+for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct. For a pair of morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$ the unique induced morphism into the product $Z \to X \oplus Y$ is denoted by $(f_X, f_Y)$ and for a pair of morphisms $g_X \colon X \to Z$ and $g_Y \colon Y \to Z$ the unique induced morphism from the coproduct $X \oplus Y \to Z$ is denoted by $\langle g_X, g_Y \rangle$. For morphisms $f_0 \colon X_0 \to Y_0$ and $f_1 \colon X_1 \to Y_1$ we introduce notation $f_0 \oplus f_1 \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1$ to mean either of the two (equal) morphisms 
+\[
+    \left(\langle f_0, 0 \rangle, \langle 0, f_1 \rangle\right) 
+    \quad \text{ or } \quad 
+    \left\langle (f_0, 0), (0, f_1)\right\rangle
+\]
+also depicted in matrix notation as
+\[  
+    \begin{pmatrix}
+        f_0 & 0 \\
+        0 & f_1
+    \end{pmatrix}.
+\]
+
+Let $k$ denote either a field or the ring of integers $\Z$.
 
 % $X \xleftarrow{p_X} X \oplus Y \xrightarrow{p_Y} Y$ is the categorical product of $X$ and $Y$ and $X \xrightarrow{i_X} X \oplus Y \xleftarrow{i_Y} Y$.
 
 \begin{definition}
-    A category $\A$ is additive (resp.\ $k$-linear) if all the hom-sets carry the structure of abelian groups (resp.\ $k$-modules) and the following axioms are satisfied
+    A category $\A$ is additive (resp.\ $k$-linear) 
+    \info{Decide on which terminology to use (everything is covered by $k$-linear...)}
+    if all the hom-sets carry the structure of abelian groups (resp.\ $k$-modules) and the following axioms are satisfied
     \begin{enumerate}
-        \item[A1] For all all objects $X$, $Y$ and $Z$ of $\A$ the composition
+        \item[\textbf{A1}] For all all objects $X$, $Y$ and $Z$ of $\A$ the composition
         \[
             \circ \colon \hom_{\A}(Y, Z) \times \hom_{\A}(X, Y) \to \hom_{\A}(X, Z)
         \] 
         is bilinear.
-        \item[A2] There exists a \emph{zero object} $0$, for which $\Hom_\A(0,0) = 0$.
-        \item[A3] For any two objects $X$ and $Y$ there exists a categorical biproduct of $X$ and $Y$. 
+        \item[\textbf{A2}] There exists a \emph{zero object} $0$, for which $\Hom_\A(0,0) = 0$.
+        \item[\textbf{A3}] For any two objects $X$ and $Y$ there exists a categorical biproduct of $X$ and $Y$. 
     \end{enumerate} 
 \end{definition}
+
+\begin{remark}
+    \begin{enumerate}[(i)]
+        \item The zero object $0$ of a $k$-linear category $\A$ is both the initial and terminal object of $\A$.
+        \item One can recognise $k$-linear categories as the categories enriched over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
+    \end{enumerate}
+\end{remark}
 
 % Whenever it will be clear from context, we will sometimes omit the subindex $\A$ from $\Hom_\A(X, Y)$ for clarity and write just $\Hom(X, Y)$ instead.
 
@@ -38,21 +61,26 @@ for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the 
     is a group homomorphism (resp.\ $k$-linear map).
 \end{definition}
 
+Traditionally the term \emph{additive} is reserved for $\Z$-linear categories and $\Z$-linear functors between such categories.
+
+% Traditionally $\Z$-linear categories and functors between such categories are called \emph{additve}.
+
 For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are mono and epi respectively. We also define the \emph{image} and \emph{coimage} of $f$ to be
 \begin{align*}
     (\im f \to Y) &:= \ker(Y \to \coker f) \\
     (X \to \coim f) &:= \coker(\ker f \to X).
 \end{align*}
+For a monomorphism $Y \hookrightarrow X$ we will sometimes abusively call the cokernel $\coker(Y \to X)$ a \emph{quotient} and denote it by $X/Y$.
 
 \begin{definition}
-    An additive category $\A$ is \emph{abelian}, if it contains all kernels and cokernels and satisfies axiom A4.
+    A $k$-linear category $\A$ is \emph{abelian}, if it is closed under kernels and cokernels and satisfies axiom A4.
     \begin{enumerate}
-        \item[A4] For any morphism $f\colon X \to Y$ in $\A$ the canonical morphism $\coim f \xrightarrow{\ \sim \ } \im f$ is an isomorphism.
+        \item[\textbf{A4}] For any morphism $f\colon X \to Y$ in $\A$ the canonical morphism $\coim f \xrightarrow{\ \sim \ } \im f$ is an isomorphism.
         \[\begin{tikzcd}[column sep = small]
             % https://q.uiver.app/#q=WzAsNixbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIlxca2VyIGYiXSxbMywwLCJjb2tlciBmIl0sWzEsMSwiY29pbWYiXSxbMiwxLCJpbWYiXSxbMiwwXSxbMCwxLCJmIl0sWzEsM10sWzAsNF0sWzEsNV0sWzQsNSwiaCJdXQ==
             {\ker f} & X & Y & {\coker f} \\
             & \coim f & \im f
-            \arrow[hook', from=1-1, to=1-2]
+            \arrow[hook, from=1-1, to=1-2]
             \arrow["f", from=1-2, to=1-3]
             \arrow[two heads, from=1-2, to=2-2]
             \arrow[two heads, from=1-3, to=1-4]
@@ -62,65 +90,120 @@ For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \
     \end{enumerate}
 \end{definition}
 
+Axiom A4 essentailly states that abelian categories are those categories in which the first isomorphism theorem holds.
+
 \begin{remark}
-    We obtain the morphism mentioned in axiom A4 in the following way. Since $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ is equal to $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composit $\ker f \to X \to \im f$ then equals $0$, by the fact that $\im f \hookrightarrow Y$ is mono and $\ker f \to X \to Y$ equals $0$. From the universal property of cokernels we obtain a unique morphism $\coim f \to \im f$, since $(X \to \coim f) = \coker(\ker f \to X)$.
+    We obtain the morphism mentioned in axiom A4 in the following way. Since $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ equals $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composit $\ker f \to X \to \im f$ then equals $0$, by the fact that $\im f \hookrightarrow Y$ is mono and $\ker f \to X \to Y$ equals $0$. From the universal property of cokernels we obtain a unique morphism $\coim f \to \im f$, since $(X \to \coim f) = \coker(\ker f \to X)$.
 \end{remark}
+
+\begin{example}
+    The default examples of abelian categories are the category of $A$-modules $\mod{A}$ for a commutative ring $A$ and the categories of coherent and quasi-coherent sheaves $\coherent{X}$ and $\quasicoh{X}$ on a scheme $X$. On the other hand the category of (real or complex) vector bundles over a manifold of dimension at least $1$ is additive, but never abelian.
+\end{example}
 
 \begin{definition}
     Let
     \[
         X \xrightarrow{\ f \ } Y \xrightarrow{\ g\ } Z
     \]
-    be a sequence of composable morphisms in an abelian category $\A$ satisfying $g \circ f = 0$ . We say it is \emph{exact}, if the canonical morphism $\im g \xrightarrow{\ \sim \ } \ker f$ is an isomorphism.
+    be a sequence of composable morphisms in an abelian category $\A$.  
+    \begin{enumerate}[(i)]    
+        \item We say this sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im g \to \ker f$ is an isomorphism.
+
+        \item Extending (i), a sequence $\cdots \to X^0 \to X^1 \to X^2 \to \cdots$ is \emph{exact}, if any subsequence $X^{i-1} \to X^i \to X^{i+1}$ for $i \in \Z$ is exact. 
+        \item Exact sequences of the form $0 \to X \to Y \to Z \to 0$ are called \emph{short exact sequences}.
+    \end{enumerate}
+\end{definition}
+
+In the context of abelian categories functors which preserve a bit more than just the $k$-linear structure are of interest. This brings us to
+
+\begin{definition}
+    Let $F \colon \A \to \B$ be an additive functor between abelian categories. Consider a short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$.
+    \begin{enumerate}[(i)]
+        \item $F$ is said to be \emph{left exact}, if $0 \to FX \to FY \to FZ$ is exact.
+        \item $F$ is said to be \emph{right exact}, if $FX \to FY \to FZ \to 0$ is exact.
+        \item $F$ is said to be \emph{exact}, if it is both left and right exact. 
+    \end{enumerate}
 \end{definition}
 
 \subsection{Triangulated categories}
 
-In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a category $\D$ together with an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $X[1]$ and its action on morphisms $f$ with $f[1]$.
+In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $X[1]$ and likewise its action on morphisms $f$ with $f[1]$.
 
-A \emph{triangle} in a category $\D$ with translation $T$ is a triplet of composable morphisms $(u, v, w)$ of category $\D$ having the form 
+A \emph{triangle} in a category with translation $(\D, T)$ is a triplet of composable morphisms $(f, g, h)$ of category $\D$ having the form 
 \[
-    X\xrightarrow{\ u \ } Y \xrightarrow{\ v \ } Z \xrightarrow{\ w \ } X[1].
+    X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1].
 \]
-A \emph{morphism} of triangles $X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]$ and $X'\xrightarrow{u'} Y' \xrightarrow{v'} Z' \xrightarrow{w'} X'[1]$ is given by a triple of morphisms $(\alpha, \beta, \gamma)$ for which the diagram below commutes.
-\[\begin{tikzcd}
+A \emph{morphism} of triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ and $X'\xrightarrow{f'} Y' \xrightarrow{g'} Z' \xrightarrow{h'} X'[1]$ is given by a triple of morphisms $(u, v, w)$ for which the diagram below commutes.
+\[
+\begin{tikzcd}
     % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
 	X & Y & Z & {X[1]} \\
 	{X'} & {Y'} & {Z'} & {X'[1]}
 	\arrow[from=1-1, to=1-2]
-	\arrow["\alpha"', from=1-1, to=2-1]
+	\arrow["u"', from=1-1, to=2-1]
 	\arrow[from=1-2, to=1-3]
-	\arrow["\beta"', from=1-2, to=2-2]
+	\arrow["v"', from=1-2, to=2-2]
 	\arrow[from=1-3, to=1-4]
-	\arrow["\gamma"', from=1-3, to=2-3]
-	\arrow["{\alpha[1]}"', from=1-4, to=2-4]
+	\arrow["w"', from=1-3, to=2-3]
+	\arrow["{u[1]}"', from=1-4, to=2-4]
 	\arrow[from=2-1, to=2-2]
 	\arrow[from=2-2, to=2-3]
 	\arrow[from=2-3, to=2-4]
 \end{tikzcd}
 \]
-One can compose morphisms of triangles in the obvious way and the notion of an isomorphism of triangles is defined as usual.
+One can compose morphisms of triangles in the obvious way and the notion of an isomorphism of triangles is defined as usual. The following definition as stated is originally due to Verdier, who first introduced it in his thesis \cite{Verdier}.
 
 \begin{definition}
-    A \emph{triangulated category} is an additive or $k$-linear category $\D$ with translation $T$ equipped with a class of \emph{distinguished triangles}, which is subject to the following axioms.
+    A \emph{triangulated category} is a $k$-linear category with translation $(\D, T)$ equipped with a class of \emph{distinguished triangles}, which is subject to the following four axioms.
     \begin{enumerate}
-        \item[TR1] \begin{enumerate}[(i)]
+        \item[\textup{TR1}] \begin{enumerate}[(i)]
             \item Any triangle isomorphic to a distinguished triangle is also itself destinguished.
             \item For any $X$ the triangle
             \[
-                X \xrightarrow{\id_X} X \longrightarrow 0 \longrightarrow X[1]
+                X \xrightarrow{\id{X}} X \longrightarrow 0 \longrightarrow X[1]
             \] 
             is distinguished.
             \item For any morphism $f \colon X \to Y$ there is a distinguished triangle of the form
             \[
-                X \xrightarrow{\ f \ } Y \longrightarrow Z \longrightarrow X[1]
+                X \xrightarrow{\ f \ } Y \longrightarrow Z \longrightarrow X[1].
             \]
+            The object $Z$ is sometimes called the \emph{cone of $f$}. 
             \end{enumerate}
-        \item[TR2]
-        \item[TR3]
-        \item[TR4]    
+        \item[TR2] The triangle
+            \[
+                X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1]
+            \]
+            is distinguished if and only if
+            \[
+                Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1] \xrightarrow{-f[1]} Y[1]
+            \]
+            is distinguished.
+        \item[TR3] Given two distinguished triangles and morphisms $u\colon X \to X'$ and $v\colon Y \to Y'$, depicted in the solid diagram below 
+        \[
+        \begin{tikzcd}[column sep = normal, row sep = 2.5em]
+            % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+            X & Y & Z & {X[1]} \\
+            {X'} & {Y'} & {Z'} & {X'[1]}
+            \arrow["f", from=1-1, to=1-2]
+            \arrow["u"', from=1-1, to=2-1]
+            \arrow["g", from=1-2, to=1-3]
+            \arrow["v"', from=1-2, to=2-2]
+            \arrow["h", from=1-3, to=1-4]
+            \arrow["w"', dashed, from=1-3, to=2-3]
+            \arrow["{u[1]}"', from=1-4, to=2-4]
+            \arrow["{f'}", from=2-1, to=2-2]
+            \arrow["{g'}", from=2-2, to=2-3]
+            \arrow["{h'}", from=2-3, to=2-4]
+        \end{tikzcd}
+        \]
+        satisfying $v \circ f = f' \circ u$, there exists a (in general non-unique) morphism $w\colon Z \to Z'$, for which $(u, v, w)$ is a morphism of triangles \ie the diagram above commutes. 
+        \item[TR4] ...
     \end{enumerate} 
 \end{definition}
+
+Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition of a \emph{pre-triangulated category}. These are essentailly the categories we will be working with, since we will never use nor verify the axiom TR4. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will be honest triangulated categories anyways.
+
+% we will nevertheless use the terminology 
 
 % \begin{definition}
 %     A \emph{triangulated category} is an additive or $k$-linear category $\D$ together with two additional pieces of structure. 
@@ -147,9 +230,9 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
 \begin{remark}
     For a distinguished triangle
     \[
-        X\xrightarrow{\ u \ } Y \xrightarrow{\ v \ } Z \xrightarrow{\ w \ } X[1]
+        X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1]
     \]
-    morphisms $u$ and $v$ are said to be of degree $0$ and morphism $w$ is said to be of degree $+1$. They are also sometimes diagramatically depicted as triangles, with the markings on morphisms describing their respective degrees.
+    morphisms $f$ and $g$ are said to be of degree $0$ and morphism $h$ is said to be of degree $+1$. They are also sometimes diagramatically depicted as triangles, with the markings on morphisms describing their respective degrees.
     \[\begin{tikzcd}[column sep = small, row sep = 1.5em]
         % https://q.uiver.app/#q=WzAsMyxbMSwwLCJaIl0sWzAsMiwiWCJdLFsyLDIsIlkiXSxbMCwxLCIrMSIsMl0sWzEsMiwiMCJdLFsyLDAsIjAiLDJdXQ==
         & Z \\
@@ -170,28 +253,52 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
         \]
         \item For every distinguished triangle
         \[
-            X\xrightarrow{u} Y \xrightarrow{v} Z \xrightarrow{w} X[1]
+            X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]
         \]
         in $\D$, the triangle
         \[
-            F(X) \to F(Y) \to F(Z) \to F(X)[1] 
+            F(X) \xrightarrow{Ff} F(Y) \xrightarrow{Fg} F(Z) \to F(X)[1] 
         \]
-        is distinguished in $\D'$, where the last morphism (of degree $1$) is obtained as the composition $F(Z) \xrightarrow{Fw} F(X[1]) \xrightarrow{\eta_X} F(X)[1]$.
+        is distinguished in $\D'$, where the last morphism (of degree $1$) is obtained as the composition $F(Z) \xrightarrow{Fh} F(X[1]) \xrightarrow{\eta_X} F(X)[1]$.
     \end{enumerate}
 \end{definition}
 
+\begin{remark}
+    The condition on $F$ being an \emph{additive} functor in the above definition is actually unnecessary and follows from conditions (i) and (ii) \cite[\href{https://stacks.math.columbia.edu/tag/05QY}{Tag 05QY}]{stacks-project}.
+\end{remark}
+
+Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as triangualated categories), if there are triangulated functors $F \colon \D \to \D'$ and $G \colon \D' \to \D$, such that $G \circ F \natiso \id{\D}$ and $F \circ G \natiso \id{\D'}$ and we call $F$ and $G$ triangulated equivalences.
+
+\begin{proposition}
+    Let $F \colon \D \to \D'$ be a triangualted functor, which is an equivalence of categories with a quasi-inverse $G \colon \D' \to \D$. Then $G$ is also a triangulated  functor. 
+\end{proposition}
+
+\begin{proof}
+    This is a consequence of \cite[Proposition 1.41]{huybrechts2006fouriermukai}, as equivalences of categories are special instances of adjunctions. 
+\end{proof}
+
+As a consequence two triangualted categories are equivalent (as triangulated categories) whenever there exists a fully faithful essentailly surjective triangulated functor between them. 
+
 \begin{definition}
-    Let $H\colon \D \to \A$ be an additive functor between a triangulated category $\D$ and an abelian category $\A$. We say $H$ is a \emph{cohomological functor} if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
-    \[
+    Let $H\colon \D \to \A$ be an additive functor from a triangulated category $\D$ to an abelian category $\A$. We say $H$ is a \emph{cohomological functor}, if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
+    \begin{equation}
+        \label{eq: long exact sequence of cohomological functor}
         \cdots \to H(X) \to H(Y) \to H(Z) \to H(X[1]) \to H(Y[1]) \to H(Z[1]) \to \cdots
-    \]
+    \end{equation}
     is exact.
 \end{definition}
 
+Definition of the long sequence \eqref{eq: long exact sequence of cohomological functor} is extremely simple as opposed to other known long exact sequences assigned to certain short exact sequences (\eg of sheaves or complexes) as all the complexity is actually captured within the distinguished triangle already. All one has to do is unwrap the triangle $X \to Y \to Z \to X[1]$ into the following chain of composable morphisms
+\[
+    \cdots \to Y[-1] \to Z[-1] \to X \to Y \to Z \to X[1] \to Y[1] \to Z[1] \to X[2] \to \cdots
+\]
+and apply the functor $H$. 
+
 \begin{example}
+    \label{partial homs are cohomological functors}
     For any object $W$ in a triangulated category $\D$ the functors 
     \[
-    \Hom_\D(W, -) \colon \D \to \Ab \text{ and } \Hom_\D( - , W) \colon \D^\op \to \Ab
+    \Hom_\D(W, -) \colon \D \to \mod{k} \text{ and } \Hom_\D( - , W) \colon \D^\op \to \mod{k}
     \]
     are cohomological.
 \end{example}

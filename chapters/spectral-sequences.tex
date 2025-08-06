@@ -7,9 +7,11 @@ At first, when encountering spectral sequences, one might think of them as just 
 % just by considering their form for example.
 One of the most important spectral sequences, which is also very general within our scope of inspection, will be the Grothendieck spectral sequence relating the higher derived functors of two composable functors with the higher derived functors of their composition. Later on we will see that many useful and well-known spectral sequences occur as special cases of the Grothendieck spectral sequence. What follows was gathered mostly from \cite{}
 
-% Huybrechts FMinAG : chapter on ss
-% Gelfand, Manin : III.7
-% McCleary 
+\info{
+• Huybrechts FMinAG : chapter on ss \\
+• Gelfand, Manin : III.7 \\
+• McCleary  
+}
 
 For the time being we fix an abelian category $\mathcal A$ and start off with a definition.
 
@@ -28,7 +30,7 @@ For the time being we fix an abelian category $\mathcal A$ and start off with a 
     % for each $p, q \in \Z$.
     A sequence of bi-graded objects $(E^{\bullet, \bullet}_r)_{r \in \N}$ equipped with differentials of bi-degree $(r, 1-r)$. The $r$-th term of this sequence is called the $r$-th \emph{page} and it consists of a lattice of objects $E^{p,q}_r$ of $\mathcal A$, for $p, q \in \Z$, and differentials
     \[
-        d^{p,q}_r : E^{p,q}_r \to E^{p + r, q - r + 1}_r
+        d^{p,q}_r : E^{p,q}_r \to E^{p + r, q - r + 1}_r,
     \] 
     satisfying
     \[
@@ -54,8 +56,8 @@ The above collection of data also has to satisfy the following two convergence c
     \[
         d^{p,q}_r = 0 \quad \text{and} \quad d^{p + r, q - r + 1}_r = 0
     \]
-    and the isomorphism $\alpha^{p,q}_r$ can be taken to be the identity. We then say that the $(p,q)$-term stabilizes after page $r_0$ and we denote $E^{p,q}_{r_0}$ (along with all the subsequent $E^{p,q}_{r}$ for $r \geq r_0$) by $E^{p,q}_\infty$.
-    \item For each $n \in \Z$ there is a decreasing regular\footnote{In our case the filtration $(F^p E^n)_{p \in \Z}$ is \emph{regular}, whenever $\bigcap_p F^p E^n = \lim_p F^p E^n = 0$ and $\bigcup_p F^p E^n = \colim_p F^p E^n = E^n$.} filtration of $E^n$
+    and the isomorphism $\alpha^{p,q}_r$ can be taken to be the identity. We then say that the $(p,q)$-term \emph{stabilizes} after page $r_0$ and we denote $E^{p,q}_{r_0}$ (along with all the subsequent $E^{p,q}_{r}$ for $r \geq r_0$) by $E^{p,q}_\infty$.
+    \item For each $n \in \Z$ there is a decreasing \emph{regular}\footnote{In our case the filtration $(F^p E^n)_{p \in \Z}$ is \emph{regular}, whenever $\bigcap_p F^p E^n = \lim_p F^p E^n = 0$ and $\bigcup_p F^p E^n = \colim_p F^p E^n = E^n$.} filtration of $E^n$
     \[
         E^n \supseteq \dots \supseteq F^p E^n \supseteq F^{p + 1}E^n \supseteq \dots \supseteq 0
     \]
@@ -81,7 +83,7 @@ In this case we also denote the existence of such a spectral sequence by
     \[
         0 \to F^{p + 1} E^n \to F^p E^n \to E^{p,q}_\infty \to 0.
     \]
-    This observation becomes very fruitful when considering properties of objects of the category $\mathcal A$ which are closed under extensions, especially when the filtration of $E^n$ is finite.
+    This observation becomes very useful when considering properties of objects of the category $\mathcal A$ which are closed under extensions, especially when the filtration of $E^n$ is finite.
 
     % In that case one can inductively reason about such a property of $E^n$ provided the filtration of $E^n$ is finite.
  \end{remark}
@@ -92,4 +94,11 @@ In this case we also denote the existence of such a spectral sequence by
 % \]
 % respecting the differential of $K^\bullet$ \ie $d(F^p K^n) \subseteq F^p K^{n+1}$. Using only this piece of information one can 
 
-Thoku paper
+\info{mention Tohoku paper}
+
+\begin{theorem}[Grothendieck]
+    Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class, $\I_G$ a $G$-adapted class of objects and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $K^+(\A)$ there exists a spectral sequence
+    \[
+        E^{p,q}_2 = \rderived{p}{G}(\rderived{q}{F}(A^\bullet)) \implies \rderived{p+q}{(G \circ F)}(A^\bullet)
+    \] 
+\end{theorem}
