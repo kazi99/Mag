@@ -1,5 +1,7 @@
 \section{Derived categories}
 
+\subsection{Derived category of an abelian category}
+
 The first goal of this section is to define the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments will try to be minimal and will not rely on the already established theory of localization of categories, which might at times seem less elegant, but we include the exposition for completness nonetheless.
 A more comprehensive and formal treatment of this topic can be found in \cite[\S 7]{kashiwara2006categories} or \cite{milicic-dercat}.
 
@@ -24,7 +26,7 @@ A more comprehensive and formal treatment of this topic can be found in \cite[\S
 \end{lemma}
 
 \begin{proof}
-    
+    \info{add proof}
 \end{proof}
 
 We are now in a position to define the derived category $D(\A)$ of an abelian category $\A$. It consists of
@@ -106,15 +108,18 @@ Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism
     By lemma \ref{Ore condition} this diagram may be completed with the dashed arrows at the top, which shows that $A^\bullet \leftarrow C_0^\bullet \rightarrow B^\bullet$ and $A^\bullet \leftarrow C_2^\bullet \rightarrow B^\bullet$ are equivalent and ends the proof.
 \end{proof}
 
-For a left roof \eqref{eq: left roof} we let $\left[s \setminus f\right]$ or $\left[A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{\ f \ } B^\bullet\right]$ denote its equivalence class under $\equiv$.
+For a left roof \eqref{eq: left roof} we let $\left[s \setminus f\right]$ or $\left[A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{\ f \ } B^\bullet\right]$ denote its equivalence class under $\equiv$. 
 
+\vspace{0.3 cm}
+\info{make sure \emph{vertical spacing} is consistent}
 
+\noindent
+\textsc{Hom-sets.}
 We define $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ to be the class of left roofs spanned by $A^\bullet$ and $B^\bullet$, quotiented by the relation $\equiv$. That is
 % \begin{equation*}
 %     \Hom_{D(\A)}(A^\bullet, B^\bullet) := 
 %     \left\{ (s, f) \in \coprod_{C^\bullet \in \Ob(K(\A))} \Hom_{K(\A)}(C^\bullet, A^\bullet) \times \Hom_{K(\A)}(C^\bullet, B^\bullet) \ \middle\vert \ \text{$s$ quasi-isomorphism} \right\}
 % \end{equation*}
-
 \[
 \Hom_{D(\A)}(A^\bullet, B^\bullet) := \\ 
 \left\{
@@ -127,14 +132,15 @@ A^\bullet & & B^\bullet
 \right]
 \, \middle| \,
 \begin{array}{l}
-C^\bullet \in \Ob K(A), \
+C^\bullet \in \Ob K(A), \\
 f \in \Hom_{K(A)}(C^\bullet, B^\bullet), \\
-s \in \Hom_{K(A)}(C^\bullet, A^\bullet) \text{ quasi-isomorphism}
+s \in \Hom_{K(A)}(C^\bullet, A^\bullet) \text{ quasi-iso.}
 \end{array}
 \right\}.
 \]
 
-Next we define the compositon operations
+\noindent
+\textsc{Composition.} Next we define the compositon operations
 \[
     \circ \colon \Hom_{D(\A)}(A_0^\bullet, A_1^\bullet) \times \Hom_{D(\A)}(A_1^\bullet, A_2^\bullet) \to \Hom_{D(\A)}(A_0^\bullet, A_2^\bullet)
 \]
@@ -159,15 +165,31 @@ By lemma \ref{Ore condition} there are morphisms $u\colon C^\bullet \to C_0^\bul
     \phi_1 \circ \phi_0 :=
     \left[A_0^\bullet \xleftarrow{s_0 \circ u} C^\bullet \xrightarrow{f_1 \circ g} A_2^\bullet\right].
 \]
-It can be shown that this is a well defined composition that is also associative. We leave out the proof, because it is routine. 
+It can be shown that this is a well defined composition that is also associative. We leave out the proof, because it is routine, but refer the reader to a very detailed account by Miličić \cite[\S 1.3]{milicic-dercat}. 
 
+\vspace{0,3 cm}
+
+\noindent
+\textsc{Identities.}
 The identity morphism on an object $A^\bullet$ of $D(\A)$ is defined to be the equivalence class of $A^\bullet \xleftarrow{\id{A^\bullet}} A^\bullet \xrightarrow{\id{A^\bullet}} A^\bullet$. It is not difficult to check that these play the role of identity morphisms in $\mathcal{D}(\A)$. 
 
+\vspace{0,3 cm}
 
+\noindent
+\textsc{$k$-linear structure.}
+We first define the biproduct on $D(\A)$.
+\info{finish subsection}
 
+\vspace{0,3 cm}
 
+\noindent
+\textsc{Triangulated structure.}
 
-As with the homotopy category of complexes $K(\A)$, we also have the following bounded versions of the derived category $D(\A)$, exhibited as full additive subcategories of the unbounded variant $D(\A)$.
+\begin{remark}
+    All that has been defined and established in this section with left roofs can be analogously done also with right roofs 
+\end{remark}
+
+As with the homotopy category of complexes $K(\A)$, we also have the following bounded versions of the derived category $D(\A)$, exhibited as full triangulated subcategories of the unbounded variant $D(\A)$.
 
 \begin{center}
     \begin{tabular}{c l}
@@ -177,11 +199,9 @@ As with the homotopy category of complexes $K(\A)$, we also have the following b
     \end{tabular}
 \end{center}
 
-\subsubsection*{$k$-linear structure on $\mathrm{D}(\A)$}
-We first define the biproduct on $D(\A)$.
-\info{finish subsection}
+% ============================================================== %
 
-\subsection{Derived categories of abelian categories with enough injectives}
+\subsubsection{Derived categories of abelian categories with enough injectives}
 
 \begin{definition}
     An object $I$ of an abelian category $\A$ is called \emph{injective}, if the functor $\Hom_\A(-, I)\colon \A^\op \to \mod{k}$ is exact. Equivalently whenever for any monomorphism ${A \hookrightarrow B}$ and $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
@@ -278,7 +298,7 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
     \[
         H^n(C(f)^\bullet) = \ker(\coker d^{n-1}_{C(f)} \xrightarrow{\ d \ } A^{n+2} \oplus I^{n+1}),
     \]
-    where $d$ is obtained from the universal property of $\coker d^{n-1}_{C(f)}$ induced by $d^n_{C(f)}$. Thus it suffices to show, that $d$ is a monomorphism. Consider the following diagram, which we will show to commute. 
+    where $d$ is obtained from the universal property of $\coker d^{n-1}_{C(f)}$, induced by $d^n_{C(f)}$. Thus it suffices to show, that $d$ is a monomorphism. Consider the following diagram, which we will show to commute. 
     \[\begin{tikzcd}[column sep = 2em]
         % https://q.uiver.app/#q=WzAsNSxbMCwwLCJBXm5cXG9wbHVzIElee24tMX0iXSxbMiwwLCJBXntuKzF9XFxvcGx1cyBJXntufSJdLFs0LDAsIkFee24rMn1cXG9wbHVzIElee24rMX0iXSxbMywxLCJjb2tlciBkXntuLTF9X3tDKGYpfSJdLFs1LDEsIklee24rMX0iXSxbMCwxLCJkXntuLTF9X3tDKGYpfSJdLFsxLDIsImRee259X3tDKGYpfSJdLFsxLDMsImUiXSxbMywyLCJkIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzIsNCwicCJdLFszLDQsImoiXV0=
         {A^n\oplus I^{n-1}} && {A^{n+1}\oplus I^{n}} && {A^{n+2}\oplus I^{n+1}} \\
@@ -311,6 +331,7 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
 
 \begin{remark}
     Theorem \ref{D+ = K+ and injectives} in particular shows that $D^+(\A)$ is a category in the usual sense, \ie all its hom-sets are in fact sets.  
+    \info{maybe I replace "usual" with locally small everywhere this comes up.}
 \end{remark}
 
 \begin{lemma}
@@ -503,4 +524,18 @@ along with observing that $A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \
 %     This lemma reminds us of the Ore condition in the context of localization in non-commutative algebra as so analogously there is also a dual version of the lemma. 
 % \end{remark}
 
-\subsection{Another source of subcategories of derived categories}
+% ============================================================== %
+
+\subsubsection{Subcategories of derived categories}
+
+\[
+    \Phi_{\OO_{\Delta_X}}
+\]
+
+% ============================================================== %
+
+\subsection{Derived functors}
+
+% ============================================================== %
+
+\subsubsection{$F$-adapted classes}
