@@ -31,7 +31,7 @@
     \todo[linecolor=olive,backgroundcolor=olive!25,bordercolor=olive, size=\tiny]{#1}
 }
 
-% Acronyms in slovene
+% Krajšave v slovenščini
 \newcommand{\ti}{t.~i.\ }
 \newcommand{\tj}{tj.\ }
 \newcommand{\oz}{oz.\ }
@@ -57,13 +57,13 @@
 \newcommand{\D}{\mathcal D}
 % \newcommand{\k}{\texttt k}
 
-\newcommand{\op}{\text{op}}
 
+% Isos, equivalences, ...
 \newcommand{\iso}{\simeq}
 \newcommand{\htpy}{\simeq}
 \newcommand{\natiso}{\simeq}
 
-% Categories
+% Categorical constructions
 \newcommand{\im}{\operatorname{im}}
 \newcommand{\coim}{\operatorname{coim}}
 \newcommand{\coker}{\operatorname{coker}}
@@ -71,20 +71,25 @@
 \newcommand{\Ob}{\operatorname{Ob}}
 \renewcommand{\hom}{\operatorname{Hom}}
 \newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\id}[1]{\operatorname{id}_{#1}}
+\newcommand{\op}{\text{op}}
 
-% Categories examples
+% Specific categories
 \newcommand{\Set}{\mathsf{Set}}
 \newcommand{\Ab}{\mathsf{Ab}}
 \renewcommand{\mod}[1]{\mathsf{Mod}_{#1}}
 \newcommand{\coherent}[1]{\mathsf{coh}(#1)}
 \newcommand{\quasicoh}[1]{\mathsf{qcoh}(#1)}
 \newcommand{\com}{\operatorname{Ch}}
-\newcommand{\dercat}{}
-\newcommand{\Dplus}{}
-\newcommand{\Dminus}{}
-\newcommand{\Db}{}
+\newcommand{\K}{\operatorname{K}}
 
-% Deriveed stuff
+% Derived categories
+\newcommand{\dercat}[1]{\operatorname{D}(#1)}
+\newcommand{\derplus}[1]{\operatorname{D}^+(#1)}
+\newcommand{\derminus}[1]{\operatorname{D}^-(#1)}
+\newcommand{\derb}[1]{\operatorname{D}^b(#1)}
+
+% Derived functors
 \newcommand{\rderived}[2]{\mathbf{R}^{#1}#2}
 \newcommand{\lderived}[2]{\operatorname{L}^{#1}#2}
 
@@ -106,7 +111,7 @@
 
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\newcommand{\id}[1]{\operatorname{id}_{#1}}
+
 
 % Quotient
 % \newcommand{\bigslant}[2]{{\raisebox{.2em}{#1}\left/\raisebox{-.2em}{#2}\right.}}

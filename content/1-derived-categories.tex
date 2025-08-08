@@ -1,15 +1,45 @@
 \section{Derived categories}
 
-\subsection{Derived category of an abelian category}
-
-The first goal of this section is to define the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments will try to be minimal and will not rely on the already established theory of localization of categories, which might at times seem less elegant, but we include the exposition for completness nonetheless.
+The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments will try to be minimal and will not relay on the already established theory of localization of categories. Our approach might at times seem less elegant, but we include the exposition for completness nonetheless.
 A more comprehensive and formal treatment of this topic can be found in \cite[\S 7]{kashiwara2006categories} or \cite{milicic-dercat}.
 
-\info{categorical motivation and universal property of $D(\A)$}
+The second part covers the construction of derived functors. We also see how this holostic approach 
+
+\subsection{Derived category of an abelian category}
+
+So our goal is fairly simple, modify the homotopy category $\K(\A)$ in such a way that all the quasi-isomorphisms become isomorphisms in a universal way. This can be stated more formally in the form of a universal property.
+
+\begin{definition}
+    Let $\A$ be an abelian category and $\K(\A)$ its homotopy category. A triangulated category $\dercat{\A}$ together with a triangulated functor $Q\colon \K(\A) \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
+    \begin{enumerate}[(i)]
+        \item For every quasi-isomorphism $s$ in $\K(\A)$, $Q(s)$ is an isomorphism in $\dercat{\A}$.
+        \item For any triangulated category $\D$ and any functor $F\colon \K(\A) \to \D$, sending quasi-isomorphisms $s$ in $\K(\A)$ to isomorphisms $F(s)$ in $\D$,
+        % for which $F(s)$ is an isomorphism in $\D$ for all quasi-isomorphisms $s$ in $K(\A)$, 
+        there exists a triangulated functor $F_0 \colon D(\A) \to \D$, which is unique up to a unique natural isomorphism, such that $F \natiso F_0 \circ Q$.
+        % , and moreover $F_0$ is required to be unique up to a unique natural isomorphism.
+        In other words, the diagram below commutes up to natural isomorphism. 
+        \[\begin{tikzcd}
+            % https://q.uiver.app/#q=WzAsMyxbMCwwLCJLKFxcQSkiXSxbMCwxLCJEKFxcQSkiXSxbMSwwLCJcXEQiXSxbMCwyLCJGIl0sWzAsMSwiUSIsMl0sWzEsMiwiRl9cXEEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+            {\K(\A)} & \D \\
+            {\dercat{\A}}
+            \arrow["F", from=1-1, to=1-2]
+            \arrow["Q"', from=1-1, to=2-1]
+            \arrow["{F_0}"', dashed, from=2-1, to=1-2]
+        \end{tikzcd}\]
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    We recognise this definition as a special case of localization \cite[Def.~7.1.1.]{kashiwara2006categories}. In particular it says that $\dercat{\A}$ is the localization of triangulated category $\K(\A)$ by the family of all quasi-isomorphisms in $\K(\A)$.
+\end{remark}
+
+Instead we will construct a specific model, which achieves this. We will first need a technical lemma resembling the Ore condition from non-commutative algebra.
+
+\info{categorical motivation and universal property of $\dercat{\A}$}
 
 \begin{lemma}
     \label{Ore condition}
-    Let $f \colon A^\bullet \to B^\bullet$ and $s\colon C^\bullet \to B^\bullet$ belong to the homotopy category $K(\A)$, with $s$ being a quasi-isomorphism. Then there exists a quasi-isomorphism $u\colon C_0^\bullet \to A^\bullet$ and a morphism $g\colon C_0^\bullet \to C^\bullet$, such that the diagram below commutes in $K(\A)$.
+    Let $f \colon A^\bullet \to B^\bullet$ and $s\colon C^\bullet \to B^\bullet$ belong to the homotopy category $\K(\A)$, with $s$ being a quasi-isomorphism. Then there exists a quasi-isomorphism $u\colon C_0^\bullet \to A^\bullet$ and a morphism $g\colon C_0^\bullet \to C^\bullet$, such that the diagram below commutes in $K(\A)$.
     \[\begin{tikzcd}
         % https://q.uiver.app/#q=WzAsNCxbMCwyLCJBXlxcYnVsbGV0Il0sWzIsMiwiQl5cXGJ1bGxldCJdLFsyLDAsIkNeXFxidWxsZXQiXSxbMCwwLCJDXlxcYnVsbGV0XzAiXSxbMCwxLCJmIl0sWzIsMSwicyJdLFszLDIsImciLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywwLCJ1IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwxLCJcXHNpbSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
         {C^\bullet_0} && {C^\bullet} \\
@@ -28,15 +58,19 @@ A more comprehensive and formal treatment of this topic can be found in \cite[\S
     \info{add proof}
 \end{proof}
 
-We are now in a position to define the derived category $D(\A)$ of an abelian category $\A$. It consists of
+We are now in a position to construct the derived category $\dercat{\A}$ of an abelian category $\A$. It consists of
 \[
     \textsl{Objects of $D(\A)$:} \quad \text{chain complexes in $\A$},
 \]
-\ie the class of objects of $K(\A)$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
+\ie the class of objects of $\K(\A)$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
 % Its class of objects is formed by chain complexes in $\A$ \ie equals the class of objects of $K(\A)$ and $\com(\A)$, but the definition of morphisms in this case is a bit more intricate. 
 For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not necessarily a set, but a class, so $D(\A)$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ in the following way.
 
-A \emph{left roof spanned on $A^\bullet$ and $B^\bullet$} is a pair of morphisms $s \colon A^\bullet \to C^\bullet$ and $f\colon C^\bullet \to B^\bullet$ in the homotopy category $K(\A)$, where $s$ is a quasi-isomorphism. This roof is depicted in the following diagram.
+\vspace{0.3 cm}
+
+\noindent
+\textsc{Hom-sets.}
+A \emph{left roof spanned on $A^\bullet$ and $B^\bullet$} is a pair of morphisms $s \colon A^\bullet \to C^\bullet$ and $f\colon C^\bullet \to B^\bullet$ in the homotopy category $K(\A)$, where $s$ is a quasi-isomorphism. This roof is depicted in the following diagram
 \begin{equation}
     \label{eq: left roof}
     \begin{tikzcd}[row sep = small, column sep = small]
@@ -48,6 +82,7 @@ A \emph{left roof spanned on $A^\bullet$ and $B^\bullet$} is a pair of morphisms
 	\arrow["f"', from=1-3, to=2-5]
     \end{tikzcd}
 \end{equation}
+or denoted by $(s,f)$.
 Dually, one also obtains the notion of a \emph{right roof spanned on $A^\bullet$ and $B^\bullet$}, which is a pair of morphisms $g\colon A^\bullet \to C^\bullet$ and $u\colon B^\bullet \to C^\bullet$, where $u$ is a quasi-isomorphism, and is depicted below.
 \[\begin{tikzcd}[row sep = small, column sep = small]
     % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQyJdLFs0LDEsIkIiXSxbMSwyLCJmIiwyXSxbMSwwLCJzIl0sWzEsMCwiXFxzaW0iLDJdXQ==
@@ -61,7 +96,9 @@ Our construction of $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ will be based on left r
 
 \begin{definition}
     Two left roofs $A^\bullet \xleftarrow{\ s_0 \ } C_0^\bullet \xrightarrow{\ f_0 \ } B^\bullet$ and $A^\bullet \xleftarrow{\ s_1 \ } C_1^\bullet \xrightarrow{\ f_1 \ } B^\bullet$ are defined to be \emph{equivalent}, if there exists a quasi-isomorphism $u\colon C^\bullet \to C_0^\bullet$ and a morphism ${g\colon C^\bullet \to C_1^\bullet}$ in $K(\A)$, for which the diagram below commutes (in $K(\A)$). 
-    \[\begin{tikzcd}[row sep = 1.5em, column sep = 2em]
+    \begin{equation}
+        \label{eq: equivalence of left roofs}
+    \begin{tikzcd}[row sep = 1.5em, column sep = 2em]
         % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBIl0sWzEsMSwiQ18wIl0sWzQsMiwiQiJdLFszLDEsIkNfMSJdLFsyLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFs0LDEsIlxcc2ltIiwyXSxbNCwzLCJnIiwyXSxbMSwwLCJcXHNpbSIsMl0sWzQsMSwidSJdXQ==
         && C^\bullet \\
         & {C_0^\bullet} && {C_1^\bullet} \\
@@ -73,18 +110,30 @@ Our construction of $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ will be based on left r
         \arrow[from=2-2, to=3-5]
         \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
         \arrow[from=2-4, to=3-5]
-\end{tikzcd}\]
+    \end{tikzcd}
+    \end{equation}
 We denote this relation by $\equiv$.
 \end{definition}
 
-Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism, the composition $C^\bullet \to C_1^\bullet \to A^\bullet$ is as well, concluding that $g\colon C^\bullet \to C^\bullet_1$ is a quasi-isomorphism. 
+Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism, the same is true for the composition ${C^\bullet \to C_1^\bullet \to A^\bullet}$, concluding that $g\colon C^\bullet \to C^\bullet_1$ is a quasi-isomorphism. Also observe that in the diagram \eqref{eq: equivalence of left roofs} we may find a new left roof, namely 
+\begin{equation*}
+    \begin{tikzcd}[row sep = small, column sep = small]
+    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQyJdLFs0LDEsIkIiXSxbMSwyLCJmIiwyXSxbMSwwLCJzIl0sWzEsMCwiXFxzaW0iLDJdXQ==
+	&& C^\bullet \\
+	A^\bullet &&&& B^\bullet,
+	\arrow["s_0 \circ u"', from=1-3, to=2-1]
+	\arrow["\sim", from=1-3, to=2-1]
+	\arrow["f_1 \circ g", from=1-3, to=2-5]
+    \end{tikzcd}
+\end{equation*}
+which is also equivalent to the two roofs we started with $(s_0, f_0)$ and $(s_1, f_1)$. 
 
 \begin{lemma}
     The equivalence of left roofs on $A^\bullet$ and $B^\bullet$ is an equivalence relation.
 \end{lemma}
 
 \begin{proof}
-    The relation is clearly reflexive. We take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the solid diagram below.
+    The relation is clearly reflexive. We take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose left roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and left roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the solid diagram below.
     \[\begin{tikzcd}
         % https://q.uiver.app/#q=WzAsOCxbMCwzLCJBIl0sWzEsMiwiQ18wIl0sWzYsMywiQiJdLFs1LDIsIkNfMiJdLFszLDIsIkNfMSJdLFsyLDEsIkRfMCJdLFs0LDEsIkRfMSJdLFszLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFsxLDAsIlxcc2ltIiwyXSxbNSwxLCJcXHNpbSIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19LFsyNDAsNjAsNjAsMV1dLFs1LDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbNCwwLCJcXHNpbSIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs0LDJdLFs2LDMsIiIsMCx7ImNvbG91ciI6WzMwMCw2MCw2MF19XSxbNiw0LCJcXHNpbSIsMix7ImNvbG91ciI6WzMwMCw2MCw2MF19LFszMDAsNjAsNjAsMV1dLFs3LDUsIlxcc2ltIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsNiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
         &&& C^\bullet \\
@@ -104,17 +153,13 @@ Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism
         \arrow["\sim"{pos=0.6}, curve={height=-12pt}, from=3-6, to=4-1]
         \arrow[from=3-6, to=4-7]
     \end{tikzcd}\]
-    By lemma \ref{Ore condition} this diagram may be completed with the dashed arrows at the top, which shows that $A^\bullet \leftarrow C_0^\bullet \rightarrow B^\bullet$ and $A^\bullet \leftarrow C_2^\bullet \rightarrow B^\bullet$ are equivalent and ends the proof.
+    \info{I don't like how this diagram looks...}
+    By lemma \ref{Ore condition} this diagram may be completed with the dashed arrows at the top, proving that $A^\bullet \leftarrow C_0^\bullet \rightarrow B^\bullet$ and $A^\bullet \leftarrow C_2^\bullet \rightarrow B^\bullet$ are equivalent.
 \end{proof}
 
 For a left roof \eqref{eq: left roof} we let $\left[s \setminus f\right]$ or $\left[A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{\ f \ } B^\bullet\right]$ denote its equivalence class under $\equiv$. 
 
-\vspace{0.3 cm}
-\info{make sure \emph{vertical spacing} is consistent}
-
-\noindent
-\textsc{Hom-sets.}
-We define $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ to be the class of left roofs spanned by $A^\bullet$ and $B^\bullet$, quotiented by the relation $\equiv$. That is
+We then define $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ to be the class of left roofs spanned by $A^\bullet$ and $B^\bullet$, quotiented by the relation $\equiv$. That is
 % \begin{equation*}
 %     \Hom_{D(\A)}(A^\bullet, B^\bullet) := 
 %     \left\{ (s, f) \in \coprod_{C^\bullet \in \Ob(K(\A))} \Hom_{K(\A)}(C^\bullet, A^\bullet) \times \Hom_{K(\A)}(C^\bullet, B^\bullet) \ \middle\vert \ \text{$s$ quasi-isomorphism} \right\}
@@ -128,7 +173,7 @@ We define $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ to be the class of left roofs spa
 \quad \swarrow & & \searrow \quad\\
 A^\bullet & & B^\bullet
 \end{array}
-\right]
+\right]_\equiv
 \, \middle| \,
 \begin{array}{l}
 C^\bullet \in \Ob K(A), \\
@@ -138,12 +183,14 @@ s \in \Hom_{K(A)}(C^\bullet, A^\bullet) \text{ quasi-iso.}
 \right\}.
 \]
 
+\vspace{0,3 cm}
+
 \noindent
 \textsc{Composition.} Next we define the compositon operations
 \[
     \circ \colon \Hom_{D(\A)}(A_0^\bullet, A_1^\bullet) \times \Hom_{D(\A)}(A_1^\bullet, A_2^\bullet) \to \Hom_{D(\A)}(A_0^\bullet, A_2^\bullet)
 \]
-for all objects $A_0^\bullet$, $A_1^\bullet$ and $A_2^\bullet$ of $D(\A)$. Let $\phi_0\colon A_0^\bullet \to A_1^\bullet$ and $\phi_1\colon A_1^\bullet \to A_2^\bullet$ be a pair of composable morphisms in $D(\A)$. Next pick their respective left roof representatives, $A_0^\bullet \xleftarrow{\ s_0\ } C_0^\bullet \xrightarrow{\ f_0 \ } A_1^\bullet$ and $A_1^\bullet \xleftarrow{\ s_1\ } C_1^\bullet \xrightarrow{\ f_1 \ } A_2^\bullet$, and concatenate them according to the solid zig-zag diagram below. 
+for all objects $A_0^\bullet$, $A_1^\bullet$ and $A_2^\bullet$ of $D(\A)$. Let $\phi_0\colon A_0^\bullet \to A_1^\bullet$ and $\phi_1\colon A_1^\bullet \to A_2^\bullet$ be a pair of composable morphisms in $D(\A)$. Next, pick their respective left roof representatives, $A_0^\bullet \xleftarrow{\ s_0\ } C_0^\bullet \xrightarrow{\ f_0 \ } A_1^\bullet$ and $A_1^\bullet \xleftarrow{\ s_1\ } C_1^\bullet \xrightarrow{\ f_1 \ } A_2^\bullet$, and concatenate them according to the solid zig-zag diagram below. 
 \[\begin{tikzcd}[row sep = small, column sep = small]
     % https://q.uiver.app/#q=WzAsNixbMCwyLCJBXzAiXSxbMiwxLCJDXzAiXSxbNCwyLCJBXzEiXSxbOCwyLCJBXzIiXSxbNiwxLCJDXzEiXSxbNCwwLCJDIl0sWzEsMiwiZl8wIiwyXSxbMSwwLCJzXzAiXSxbMSwwLCJcXHNpbSIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDIsInNfMSJdLFs0LDMsImZfMSIsMl0sWzUsMSwidSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDQsImciLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCwyLCJcXHNpbSIsMix7Im9mZnNldCI6LTEsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDEsIlxcc2ltIiwyLHsib2Zmc2V0IjotMSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoibm9uZSJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 	&&&& C^\bullet \\
@@ -159,7 +206,7 @@ for all objects $A_0^\bullet$, $A_1^\bullet$ and $A_2^\bullet$ of $D(\A)$. Let $
 	\arrow["\sim"', shift left, draw=none, from=2-7, to=3-5]
 	\arrow["{f_1}"', from=2-7, to=3-9]
 \end{tikzcd}\]
-By lemma \ref{Ore condition} there are morphisms $u\colon C^\bullet \to C_0^\bullet$ and $g\colon C^\bullet \to C_1^\bullet$, depicted with dashed arrows, completing the diagram in $K(\A)$. In this way we obtain a left roof, formed by a quasi-isomorphism $s_0 \circ u$ and a morphism $f_1 \circ g$, the equivalence class of which we define to be the composite 
+By lemma \ref{Ore condition} there are morphisms $u\colon C^\bullet \to C_0^\bullet$ and $g\colon C^\bullet \to C_1^\bullet$, depicted with dashed arrows, completing the diagram in $K(\A)$. In this way we obtain a left roof, formed by a quasi-isomorphism $s_0 \circ u$ and a morphism $f_1 \circ g$, the equivalence class of which we define to be the composition 
 \[
     \phi_1 \circ \phi_0 :=
     \left[A_0^\bullet \xleftarrow{s_0 \circ u} C^\bullet \xrightarrow{f_1 \circ g} A_2^\bullet\right].
@@ -184,7 +231,13 @@ The identity morphism on an object $A^\bullet$ of $D(\A)$ is defined to be the e
 \vspace{0,3 cm}
 
 \noindent
-\textsc{Triangulated structure.}
+\textsc{Triangulated structure.} The shift functor $T \colon \dercat(\A) \to \dercat(\A)$ is defined 
+
+
+\vspace{0,3 cm}
+
+\noindent
+\textsc{Functor $Q\colon \K(\A) \to \dercat(\A)$.} 
 
 \info{introduce also the localization functor $Q \colon K(\A) \to D(\A)$.}
 
@@ -204,7 +257,7 @@ As with the homotopy category of complexes $K(\A)$, we also have the following b
 
 % ============================================================== %
 
-\subsubsection{Derived categories of abelian categories with enough injectives}
+\subsubsection{Derived category of an abelian category with enough injectives}
 
 \begin{definition}
     An object $I$ of an abelian category $\A$ is called \emph{injective}, if the functor $\Hom_\A(-, I)\colon \A^\op \to \mod{k}$ is exact. Equivalently whenever for any monomorphism ${A \hookrightarrow B}$ and $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
