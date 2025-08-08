@@ -1,6 +1,6 @@
 \section{Spectral sequences and how to use them}
 
-In this chapter we will first define cohomological spectral sequences and discuss their meaning through applications connected with derived categories.
+In this chapter we will first define cohomological spectral sequences and discuss their meaning through applications related with derived categories.
 
 At first, when encountering spectral sequences, one might think of them as just  bookkeeping devices encoding a tremendous amount of data, but we will soon see how elegantly one can infer certain properties related to derived categorical claims exploiting the fact that they can naturally be encoded with spectral sequences.
 % from a spectral sequence associated to a given problem  that we can encode a problem in terms of such a sequence. 
@@ -16,7 +16,7 @@ One of the most important spectral sequences, which is also very general within 
 For the time being we fix an abelian category $\mathcal A$ and start off with a definition.
 
 \begin{definition}
-    A \emph{cohomological spectral sequence} in an abelian category $\mathcal A$ consists of the following data on which we further impose two convergence conditions.
+    A \emph{(cohomological) spectral sequence} in an abelian category $\mathcal A$ consists of the following data on which we further impose two convergence conditions.
 \begin{itemize}
     \item \emph{Sequence of pages.} 
     % A finite page at step $r \in \N$ is a bi-graded object $E^{\bullet, \bullet}_r$ together with differentials of bi-degree $(r, 1-r)$ \ie morphisms
@@ -97,8 +97,8 @@ In this case we also denote the existence of such a spectral sequence by
 \info{mention Tohoku paper}
 
 \begin{theorem}[Grothendieck]
-    Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class, $\I_G$ a $G$-adapted class of objects and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $K^+(\A)$ there exists a spectral sequence
+    Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class in $\A$, $\I_G$ a $G$-adapted class of objects in $\B$ and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $K^+(\A)$ there exists a spectral sequence
     \[
-        E^{p,q}_2 = \rderived{p}{G}(\rderived{q}{F}(A^\bullet)) \implies \rderived{p+q}{(G \circ F)}(A^\bullet)
+        E^{p,q}_2 = \rderived{p}{G}(\rderived{q}{F}(A^\bullet)) \implies \rderived{p+q}{(G \circ F)}(A^\bullet).
     \] 
 \end{theorem}

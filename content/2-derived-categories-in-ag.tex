@@ -2,14 +2,53 @@
 
 \subsection{Derived category of coherent sheaves}
 
-One of the main invariants of a scheme $X$ over $k$ is its category of coherent sheaves $\coherent{X}$. One can think of this category as a slight expansion of the category of $k$-vector bundles on $X$ in the sense that $\coherent{X}$ is abelian, where as the former very often is not. In this chapter we restrict ourself to noetherian schemes and our primary object of study will be the bounded derived category of coherent sheaves
+One of the main invariants of a scheme $X$ over $k$ is its category of coherent sheaves $\coherent{X}$. One can think of this category as a slight extension of the category of locally free $\OO_X$-modules of finite rank also known as $k$-vector bundles on $X$ in the sense that $\coherent{X}$ is abelian, where as the former very often is not. In this chapter we restrict ourself to noetherian schemes and our primary object of study will be the bounded derived category of coherent sheaves
 \[
     D^b(X) := D^b(\coherent{X}).
 \]
 
+\begin{proposition}
+    For a noetherian scheme $X$, its category of quasi-coherent shaves $\quasicoh{X}$ contains enough injectives.
+\end{proposition}
+
+\begin{proposition}
+    For a noetherian scheme $X$ the inclusion $D^b(X) \hookrightarrow D^b(\quasicoh{X})$ induces an equivalence of triangulated categories
+    \[
+        D^b(X) \natiso D^b_{\mathsf{c}}(\quasicoh{X}),
+    \]
+    where $D^b_{\mathsf{c}}(\quasicoh{X})$ is the full triangulated subcategory of $D^b(\quasicoh{X})$ spanned on bounded complexes of quasi-coherent shaves on $X$ with coherent cohomology.
+\end{proposition}
+
+\begin{proposition}
+    
+\end{proposition}
+
+\newpage
+
 \subsection{Derived functors in algebraic geometry}
 
+In this subsection we will derive some functors occuring in algebraic geometry and later state some important facts relating them with each other. To derive these functors we will either deal with injective sheaves and access the realm of quasi-coherent sheaves, following the first part of section \ref{}, or introduce certain special classes of coherent sheaves depending on the functor we wish to derive and taking up the role of adapted classes, mirroring what was done in subsection \ref{}.
+
 \subsubsection{Global sections functor}
+Arguably the most common functor in algebraic geometry is the global secitons functor. Associated to a scheme $X$, the functor of \emph{global sections}
+\[
+    \Gamma \colon \mod{\OO_X} \to \mod{k}
+\]
+assigns to each $\OO_X$-module $\F$ its module of global sections $\F(X) = \Gamma(X, \F) = H^0(X, \F)$ and to a morphism of $\OO_X$-modules $\alpha\colon \F \to \G$ a homomorphism $\alpha_X \colon \F(X) \to \G(X)$.
+By abuse of notation we use $\Gamma$ to also denote the restrictions of the global sections functor to subcategories $\quasicoh{X}$ and $\coherent{X}$ of $\mod{\OO_X}$.
+
+As is commonly known, $\Gamma$ is a left exact functor, so our aim is to construct its right derived counterpart. Due to $\coherent{X}$ not having enough injectives, we resort to $\quasicoh{X}$, on which we may define 
+\[
+    \rderived{}{\Gamma}\colon D^+(\quasicoh{X}) \to D^+(\mod{k}).
+\]
+Precomposing it with the inclusion $D^+(\coherent{X}) \to D^+(\quasicoh{X})$
+
+
+
+
+
+
+
 \subsubsection{Push-forward $f_*$}
 \subsubsection{Pull-back $f^*$}
 \subsubsection{Inner hom}

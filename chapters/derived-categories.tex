@@ -135,21 +135,28 @@ In this subsection we construct the homotopy category of chain complexes associa
 
 \begin{lemma}
     \label{nullhomotopics form a subgroup}
-    Let $A^\bullet$, $B^\bullet$ and $C^\bullet$ be complexes in $\com(\A)$, and let $f, f' \in \Hom(A^\bullet, B^\bullet)$ and $g, g' \in \Hom(B^\bullet, C^\bullet)$ be chain maps.
+    Let $A^\bullet$, $B^\bullet$ and $C^\bullet$ be complexes in $\com(\A)$, and let $f, f' \in \Hom_{\com(\A)}(A^\bullet, B^\bullet)$ and $g, g' \in \Hom_{\com(\A)}(B^\bullet, C^\bullet)$ be chain maps.
     \begin{enumerate}[(i)]
-        \item The set of all nullhomotopic chain maps $A^\bullet \to B^\bullet$ forms a submodule of $\Hom(A^\bullet, B^\bullet)$.
+        \item The subset of all nullhomotopic chain maps in $A^\bullet \to B^\bullet$ forms a submodule of $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$.
         \item If $f \htpy f'$ and $g \htpy g'$, then $g \circ f \htpy g' \circ f'$.
+        \info{Pick one notation convention, sometimes its $f$, $f'$, sometimes its $f_0$, $f_1$, ...}
     \end{enumerate}
 \end{lemma}
 
-The homotopy category of complexes in $\A$, denoted by $K(\A)$, is defined to be the additive category consisting of
+\begin{proof}
+    See \cite[]{}.
+\end{proof}
+
+The homotopy category of complexes in $\A$, denoted by $K(\A)$, is defined to be an additive category consisting of
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
         \textsl{Morphims:} & $\Hom_{K(\A)}(X, Y) := \Hom_{\com(\A)}(X, Y)/_\htpy$
     \end{tabular}
 \end{center}
-The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[1_A^\bullet]$. All the hom-sets $\Hom_{K(\A)}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. 
+The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[1_A^\bullet]$. All the hom-sets $\Hom_{K(\A)}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The biproduct of two complexes is 
+
+\info{define the biproduct as well}
 
 As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $K(\A)$.
 \begin{center}
@@ -159,7 +166,7 @@ As in the case of categories of complexes in $\A$, we can also define the follow
         $K^b(\A)$ & \emph{Homotopy category of bounded complexes}, spanned on \\ &bounded complexes in $\A$. \\    
     \end{tabular}
 \end{center}
-\info{everywhere unless stated otherwise our complexes in $K^+(\A)$ will be supported in $\N$}
+\info{in practise everywhere unless stated otherwise our complexes in $K^+(\A)$ will be supported in $\N$}
 
 \subsubsection*{Cohomology}
 
@@ -174,7 +181,7 @@ For a chain complex $A^\bullet$ in $\com(\A)$ and $i \in \Z$ we define its \emph
     \begin{align*}        
         H^i(A^\bullet) := & \coker(\im d^{i-1} \to \ker d^{i}) \iso \ker(\coker d^{i-1}\to \im d^i) \\ &\iso \coker(A^{i-1} \to \ker d^{i}) \iso \ker(\coker d^{i-1} \to A^{i}).
     \end{align*}
-    We refre the reader to \cite[Definition 8.3.8.~(i)]{kashiwara2006categories}.
+    See \cite[Def.~8.3.8.~(i)]{kashiwara2006categories}.
 \end{remark}
 
 For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$ one can also define a morphism 
@@ -234,6 +241,8 @@ It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ a
         \cdots \to H^i(A^\bullet) \to H^i(B^\bullet) \to H^i(C^\bullet) \to H^{i+1}(A^\bullet) \to \cdots.
     \]
 \end{proposition}
+
+\info{this is not done...}
 
 Functors $H^i$ actually descend to the homotopy category $K(\A)$ of $\A$ 
 
@@ -347,6 +356,8 @@ The above also holds in categories $K^+(\A)$, $K^-(\A)$, $K^b(\A)$.
 
 The main goal of this section is to assign an appropriate triangulated functor on the level of derived categories, called a \emph{derived functor} of $F$ to a sensible additive functor $F \colon \A \to \B$ between two abelian categories. We will first deal with the easiest case, when $F$ is exact and then move on to the case, where $F$ will only be assumed to be left or right exact and instead require the domain category $\A$ to posses some nice properties (\eg contain enough injectives or contain an $F$-adapted class of objects). In practise the additional conditions $\A$ is required to satify are not very restricitve. 
 
+We start with some establishing lemmas.
+
 \begin{lemma}
     \label{qis iff cone acyclic}
     Let $f\colon A^\bullet \to B^\bullet$ be a chain map. Then $f$ is a quasi-isomorphism if and only if its associated cone $C(f)^\bullet$ is acyclic. 
@@ -409,7 +420,7 @@ In this case our previously defined method of constructing right derived functor
 
 \begin{definition}
     \label{F-adapted}
-    A class of objects $\I \subset \A$ is \emph{adapted} to a left exact functor $F \colon \A \to \B$, if the following three conditions are satisfied.
+    A class of objects $\I \subseteq \A$ is \emph{adapted} to a left exact functor $F \colon \A \to \B$, if the following three conditions are satisfied.
     \begin{enumerate}[(i)]
         \item $\I$ is stable under finite sums. 
         \item Every object $A$ of $\A$ \emph{embeds} into some object of $\I$, \ie there exists an object $I \in \I$ and a monomorphism $A \hookrightarrow I$.
@@ -418,7 +429,7 @@ In this case our previously defined method of constructing right derived functor
 \end{definition}
 
 \begin{remark}
-    We imediately observe, that whenever $\A$ contains enough injectives, the class of all injective objects forms an $F$-adapted class for \emph{every} left exact functor ${F\colon \A \to \B}$.
+    We observe, that whenever $\A$ contains enough injectives, the class of all injective objects $\I_{\A}$ forms an $F$-adapted class for \emph{every} left exact functor ${F\colon \A \to \B}$. Points (i) and (ii) are clearly true for $\I_\A$ and point (iii) follows from lemma \ref{acyclic to injective is nulhomotopic}. Indeed it tells that an acyclic complex of injectives $I^\bullet$ is nulhomotopic, which implies $F(I^\bullet)$ is nulhomotopic and in particular acyclic.
 \end{remark}
 
 In the presence of an $F$-adapted class $\I$ we will now construct the right derived functor of $F$. Firstly one can upgrade the class of objects $\I$ to a full additive subcategory $\J$ of $\A$ having its class of objects be preciesly $\I$. This is done by declaring $\hom_\J(X, Y) := \hom_\A(X, Y)$ for all objects $X$, $Y$ of the class $\I$. Then we can define a functor $K^+(F) \colon K^+(\J) \to K^+(\B)$ between triangulated categories, which acts on objects of $K^+(\J)$ as 
@@ -429,7 +440,7 @@ and on morphisms as
 \[
     f^\bullet = (f^i \colon A^i \to B^i)_{i \in \Z} \longmapsto (F(f^i))_{i \in \Z}.
 \]
-It is then clear that $K^+(F)$ is triangulated and it descends to a well defined functor on the level of derived categories 
+It is then clear that $K^+(F)$ is triangulated and maps acyclic complexes to acyclic one, thus it descends to a well defined functor on the level of derived categories 
 \[
     D^+(\J) \to D^+(\B)
 \]
@@ -462,22 +473,20 @@ This hinges on the following lemma.
         \label{eq: morphism action of D(J) - D(A)}
         \Hom_{D^+(\J)}(I^\bullet, J^\bullet) \to \Hom_{D^+(\A)}(I^\bullet, J^\bullet)
     \end{equation}
-    is injective for any objects $I^\bullet$, $J^\bullet$ of $D^+(\J)$. Suppose two morphisms $\phi_0$, $\phi_1 \colon I^\bullet \to J^\bullet$, repersented by right roofs $I \to I_0 \xleftarrow{\sim} J$ and $I \to I_1 \xleftarrow{\sim} J$, are sent to the same morphism in $\Hom_{D^+(\A)}(I^\bullet, J^\bullet)$, meaning that there is the following commutative diagram in $K^+(\A)$.
-    \[\begin{tikzcd}[column sep = small, row sep = 1em]
-        % https://q.uiver.app/#q=WzAsNSxbMSwyLCJJXzAiXSxbMywyLCJBIl0sWzAsNCwiSSJdLFs0LDQsIkoiXSxbMiwwLCJCIl0sWzIsMF0sWzMsMCwiXFxzaW0iXSxbMiwxXSxbMywxLCJcXHNpbSIsMl0sWzAsNF0sWzEsNCwiXFxzaW0iLDJdXQ==
+    is injective for all objects $I^\bullet$, $J^\bullet$ of $D^+(\J)$. Suppose two morphisms $\phi_0$, $\phi_1 \colon I^\bullet \to J^\bullet$, repersented by right roofs $I^\bullet \to I_0^\bullet \xleftarrow{\sim} J^\bullet$ and $I^\bullet \to I_1^\bullet \xleftarrow{\sim} J^\bullet$, are sent to the same morphism in $\Hom_{D^+(\A)}(I^\bullet, J^\bullet)$, meaning that there is the following commutative diagram in $K^+(\A)$.
+    \[\begin{tikzcd}[row sep = 1.5em, column sep = 2em]
+        % https://q.uiver.app/#q=WzAsNSxbMSwxLCJJXzAiXSxbMywxLCJBIl0sWzAsMiwiSSJdLFs0LDIsIkoiXSxbMiwwLCJCIl0sWzIsMF0sWzMsMCwiXFxzaW0iXSxbMiwxXSxbMywxLCJcXHNpbSIsMl0sWzAsNF0sWzEsNCwiXFxzaW0iLDJdXQ==
         && A^\bullet \\
-        \\
-        & {I_0^\bullet} && {I_1^\bullet} \\
-        \\
+        & {I_0^\bullet} && I_1^\bullet \\
         I^\bullet &&&& J^\bullet
-        \arrow[from=3-2, to=1-3]
-        \arrow["\sim"', from=3-4, to=1-3]
-        \arrow[from=5-1, to=3-2]
-        \arrow[from=5-1, to=3-4]
-        \arrow["\sim"{pos=0.4}, from=5-5, to=3-2]
-        \arrow["\sim"', from=5-5, to=3-4]
+        \arrow[from=2-2, to=1-3]
+        \arrow["\sim"', from=2-4, to=1-3]
+        \arrow[from=3-1, to=2-2]
+        \arrow[from=3-1, to=2-4]
+        \arrow["\sim", from=3-5, to=2-2]
+        \arrow["\sim"', from=3-5, to=2-4]
     \end{tikzcd}\]
-    Then simply extending the diagram by a quasi-isomorphism $A \to I_2$, ensured by lemma \ref{F-acyclic resolutions}, proves that $\phi_0$ and $\phi_1$ were in fact equal and that the action is faithful.
+    Then simply extending the diagram by a quasi-isomorphism $A^\bullet \to I_2^\bullet$, ensured by lemma \ref{F-acyclic resolutions}, proves that $\phi_0$ and $\phi_1$ were in fact equal and that the action is faithful.
 
     Lastly we show that the action on morphisms is also surjective, \ie the homomorphism of \eqref{eq: morphism action of D(J) - D(A)} is surjective. Pick any $\psi\colon I^\bullet \to J^\bullet$ in $D^+(\A)$, which is represented by a right roof $I^\bullet \to A^\bullet \xleftarrow{\sim} J^\bullet$. As before, extending the roof by a quasi-isomorphism $A^\bullet \to I^\bullet_0$ by lemma \ref{F-acyclic resolutions}, leaves us with a representative $I^\bullet \to I_0^\bullet \xleftarrow{\sim} J^\bullet$ of some morphism $\phi\colon I^\bullet \to J^\bullet$ in $D^+(\J)$.
     \[\begin{tikzcd}[column sep = small, row sep = 1em]
@@ -576,5 +585,5 @@ Informally to compute the right derived functor $\rderived{}{F}(A^\bullet)$ of a
         0 \to \ker Fd^i \to F(A^i) \to \ker Fd^{i+1} \to 0 \quad \text{ for $i \geq 1$.}
     \]
     Collecting them all back together we conclude that the complex $F(A^\bullet)$ is acyclic.
-    \info{There are inconsistencies with $F(A^\bullet) = K^+(F)(A^\bullet)$ and so on.} \qedhere
+    \info{There are inconsistencies with $F(A^\bullet) = K^+(F)(A^\bullet)$ and so on. $\to$ I am going to abuse notation and use $F(A^\bullet)$, bc this is also done in practise \eg $f_*\F^\bullet$, not $K^+(f_*)(\F^\bullet)$} \qedhere
 \end{proof}

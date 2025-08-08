@@ -9,20 +9,19 @@ A more comprehensive and formal treatment of this topic can be found in \cite[\S
 
 \begin{lemma}
     \label{Ore condition}
-    Let $s \colon A^\bullet \to B^\bullet$ be a quasi-isomorphism and let $f\colon C^\bullet \to B^\bullet$ be a morphism. Then there exist a quasi-isomorphism $u\colon C_0^\bullet \to C^\bullet$ and a morphism $g\colon C_0^\bullet \to A^\bullet$, such that the diagram below commutes in $K(\A)$.
-    \[
-    \begin{tikzcd}
-        {C_0^\bullet} && C^\bullet \\
+    Let $f \colon A^\bullet \to B^\bullet$ and $s\colon C^\bullet \to B^\bullet$ belong to the homotopy category $K(\A)$, with $s$ being a quasi-isomorphism. Then there exists a quasi-isomorphism $u\colon C_0^\bullet \to A^\bullet$ and a morphism $g\colon C_0^\bullet \to C^\bullet$, such that the diagram below commutes in $K(\A)$.
+    \[\begin{tikzcd}
+        % https://q.uiver.app/#q=WzAsNCxbMCwyLCJBXlxcYnVsbGV0Il0sWzIsMiwiQl5cXGJ1bGxldCJdLFsyLDAsIkNeXFxidWxsZXQiXSxbMCwwLCJDXlxcYnVsbGV0XzAiXSxbMCwxLCJmIl0sWzIsMSwicyJdLFszLDIsImciLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywwLCJ1IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwxLCJcXHNpbSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+        {C^\bullet_0} && {C^\bullet} \\
         \\
-        A^\bullet && B^\bullet
-        \arrow["u", dashed, from=1-1, to=1-3]
-        \arrow["\sim"', draw=none, from=1-1, to=1-3]
-        \arrow["g"', dashed, from=1-1, to=3-1]
-        \arrow["f", from=1-3, to=3-3]
-        \arrow["s", from=3-1, to=3-3]
-        \arrow["\sim"', draw=none, from=3-1, to=3-3]
-    \end{tikzcd}
-    \]
+        {A^\bullet} && {B^\bullet}
+        \arrow["g", dashed, from=1-1, to=1-3]
+        \arrow["u", dashed, from=1-1, to=3-1]
+        \arrow["\sim"', draw=none, from=1-1, to=3-1]
+        \arrow["s", from=1-3, to=3-3]
+        \arrow["\sim"', draw=none, from=1-3, to=3-3]
+        \arrow["f", from=3-1, to=3-3]
+    \end{tikzcd}\]
 \end{lemma}
 
 \begin{proof}
@@ -35,7 +34,7 @@ We are now in a position to define the derived category $D(\A)$ of an abelian ca
 \]
 \ie the class of objects of $K(\A)$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
 % Its class of objects is formed by chain complexes in $\A$ \ie equals the class of objects of $K(\A)$ and $\com(\A)$, but the definition of morphisms in this case is a bit more intricate. 
-For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not even a set, so $D(\A)$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ in the following way.
+For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not necessarily a set, but a class, so $D(\A)$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ in the following way.
 
 A \emph{left roof spanned on $A^\bullet$ and $B^\bullet$} is a pair of morphisms $s \colon A^\bullet \to C^\bullet$ and $f\colon C^\bullet \to B^\bullet$ in the homotopy category $K(\A)$, where $s$ is a quasi-isomorphism. This roof is depicted in the following diagram.
 \begin{equation}
@@ -78,7 +77,7 @@ Our construction of $\Hom_{D(\A)}(A^\bullet, B^\bullet)$ will be based on left r
 We denote this relation by $\equiv$.
 \end{definition}
 
-Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism, the composite $C^\bullet \to C_1^\bullet \to A^\bullet$ is as well, concluding that $g\colon C^\bullet \to C^\bullet_1$ is a quasi-isomorphism. 
+Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism, the composition $C^\bullet \to C_1^\bullet \to A^\bullet$ is as well, concluding that $g\colon C^\bullet \to C^\bullet_1$ is a quasi-isomorphism. 
 
 \begin{lemma}
     The equivalence of left roofs on $A^\bullet$ and $B^\bullet$ is an equivalence relation.
@@ -172,12 +171,14 @@ It can be shown that this is a well defined composition that is also associative
 \noindent
 \textsc{Identities.}
 The identity morphism on an object $A^\bullet$ of $D(\A)$ is defined to be the equivalence class of $A^\bullet \xleftarrow{\id{A^\bullet}} A^\bullet \xrightarrow{\id{A^\bullet}} A^\bullet$. It is not difficult to check that these play the role of identity morphisms in $\mathcal{D}(\A)$. 
+\info{need to pick a consistent choice of notation for derived cats.}
 
 \vspace{0,3 cm}
 
 \noindent
 \textsc{$k$-linear structure.}
-We first define the biproduct on $D(\A)$.
+
+% We first define the biproduct on $D(\A)$.
 \info{finish subsection}
 
 \vspace{0,3 cm}
@@ -185,11 +186,13 @@ We first define the biproduct on $D(\A)$.
 \noindent
 \textsc{Triangulated structure.}
 
+\info{introduce also the localization functor $Q \colon K(\A) \to D(\A)$.}
+
 \begin{remark}
-    All that has been defined and established in this section with left roofs can be analogously done also with right roofs 
+    All that has been defined and established in this section with left roofs can be analogously done also with right roofs.
 \end{remark}
 
-As with the homotopy category of complexes $K(\A)$, we also have the following bounded versions of the derived category $D(\A)$, exhibited as full triangulated subcategories of the unbounded variant $D(\A)$.
+As with the homotopy category of complexes $K(\A)$, we also have the following bounded versions of the derived category $D(\A)$, appearing as full triangulated subcategories of the unbounded variant $D(\A)$.
 
 \begin{center}
     \begin{tabular}{c l}
@@ -352,7 +355,7 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
     \]
     Note that the above can actually be rewritten to $f^0 = h^1d^0 + \delta^{-1}h^0$, as $h^0 = 0$.
 
-    For the induction step assume that we have already constructed $h^i \colon A^i \to I^{i-1}$, with $f^{i-1} = h^id^{i-1} + \delta^{i-2}h^{i-1}$ for all $i \leq n$. We are aiming to construct $h^{n+1} \colon A^{n+1} \to I^n$, for which $f^n = h^{n+1} d^n + \delta^{n-1}h^n$ holds. First, expand the differential $d^n$ into a composition of the cannonical epic $e \colon A^n \to \coker d^{n-1}$, followed by $j \colon \coker d^{n-1} \to A^{n+1}$ induced by the universal property of $\coker d^{n-1}$ by the map $d^n \colon A^n \to A^{n+1}$. Morphism $j$ is actually a mono by acyclicity of $A^\bullet$, since we know that
+    For the induction step assume that we have already constructed $h^i \colon A^i \to I^{i-1}$, with $f^{i-1} = h^id^{i-1} + \delta^{i-2}h^{i-1}$ for all $i \leq n$. We are aiming to construct $h^{n+1} \colon A^{n+1} \to I^n$, for which $f^n = h^{n+1} d^n + \delta^{n-1}h^n$ holds. First, expand the differential $d^n$ into a composition of the canonical epimorphism $e \colon A^n \to \coker d^{n-1}$, followed by $j \colon \coker d^{n-1} \to A^{n+1}$ induced by the universal property of $\coker d^{n-1}$ by the map $d^n \colon A^n \to A^{n+1}$. Morphism $j$ is actually a monomorphism by acyclicity of $A^\bullet$, since we know that
     \[
         0 = H^n(A^\bullet) \iso \ker(j \colon \coker d^{n-1} \to A^{n+1}).
     \]
@@ -362,11 +365,11 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
         &= f^nd^{n-1} + \delta^{n-1}\delta^{n-2}h^{n-1} - \delta^{n-1}f^{n-1} \\
         &= 0.
     \end{align*}
-    The second equality follows from the inductive hypothesis and the third one from $f$ beign a chain map and $\delta$ being a differential. 
+    The second equality follows from the inductive hypothesis and the third one from $f$ being a chain map and $\delta^{n-1}$, $\delta^{n-2}$ being a differentials. 
 
-    Lastly, for $I^n$ is injecive and $j$ mono, there is a morphism $h^{n+1} \colon A^{n+1} \to I^n$, satisfying $h^{n+1} \circ j = g$, thus after precomposing both sides with $e$, we arrive at
+    Lastly, for $I^n$ is injecive and $j$ mono, there is a morphism $h^{n+1} \colon A^{n+1} \to I^n$, satisfying $h^{n+1} \circ j = g$, thus after precomposing both sides with $e$, we arrive at $h^{n+1}d^n = f^n - \delta^{n-1}h^n$, which can be rewritten as
     \[
-        h^{n+1}d^n = f^n - \delta^{n-1}h^n.
+        f^n = h^{n+1}d^n + \delta^{n-1}h^n.
         \qedhere  
     \]
 \end{proof}
@@ -514,7 +517,7 @@ along with observing that $A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \
     \[
         \Hom_{K^+(\J)}(I^\bullet, J^\bullet) \xrightarrow{\ = \ } \Hom_{K^+(\A)}(I^\bullet, J^\bullet) \xrightarrow{\ \eqref{D+ K+ aux lemma 2} \ } \Hom_{D^+(\A)}(I^\bullet, J^\bullet)
     \]
-    is a bijection, showing fully faithfulness. Essential surjectivity is clear by the existence of injective resolutions (\cf proposition \ref{injective resolution}).
+    is a bijection, showing fully faithfulness (the last map is a bijection by lemma \ref{D+ K+ aux lemma 2}). Essential surjectivity is clear from the existence of injective resolutions (\cf proposition \ref{injective resolution}) because quasi-isomorphisms now play the role of isomorphisms in $D^+(\A)$.
 \end{proof}
 
 \info{add a little argument for why injective res. are unique up to htpy.}
@@ -528,9 +531,9 @@ along with observing that $A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \
 
 \subsubsection{Subcategories of derived categories}
 
-\[
-    \Phi_{\OO_{\Delta_X}}
-\]
+We have already seen $D^+(\A)$, $D^-(\A)$ and $D^b(\A)$ be defined as full triangulated subcategories of $D(\A)$ on the class of certain bounded complexes taking values in $\A$.  
+
+
 
 % ============================================================== %
 
@@ -538,4 +541,4 @@ along with observing that $A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \
 
 % ============================================================== %
 
-\subsubsection{$F$-adapted classes}
+\subsubsection*{$F$-adapted classes}

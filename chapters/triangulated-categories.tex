@@ -1,5 +1,7 @@
 \section{\textsf{redistribute: }Triangulated categories}
 
+In this section we try to make a brief account of the relevant prerequisites needed to discuss derived categories.
+
 \subsection{Additive, $k$-linear and abelian categories}
 
 We mainly follow \cite{kashiwara2006categories}.
@@ -65,12 +67,14 @@ Traditionally the term \emph{additive} is reserved for $\Z$-linear categories an
 
 % Traditionally $\Z$-linear categories and functors between such categories are called \emph{additve}.
 
-For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are mono and epi respectively. We also define the \emph{image} and \emph{coimage} of $f$ to be
+For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are monomophim and epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
 \begin{align*}
     (\im f \to Y) &:= \ker(Y \to \coker f) \\
     (X \to \coim f) &:= \coker(\ker f \to X).
 \end{align*}
-For a monomorphism $Y \hookrightarrow X$ we will sometimes abusively call the cokernel $\coker(Y \to X)$ a \emph{quotient} and denote it by $X/Y$.
+Notice that the image and the coimage, just like the kernel and the cokernel, are defined to be morphisms, not only objects. Sometimes these are called \emph{structure morphisms}.
+
+For a monomorphism $Y \hookrightarrow X$ we will sometimes by abuse of terminology call the cokernel $\coker(Y \to X)$ a \emph{quotient} and denote it by $X/Y$.
 
 \begin{definition}
     A $k$-linear category $\A$ is \emph{abelian}, if it is closed under kernels and cokernels and satisfies axiom A4.
@@ -90,14 +94,14 @@ For a monomorphism $Y \hookrightarrow X$ we will sometimes abusively call the co
     \end{enumerate}
 \end{definition}
 
-Axiom A4 essentailly states that abelian categories are those categories in which the first isomorphism theorem holds.
+Axiom A4 essentailly states that abelian categories are those additive categories possesing all kernels and cokernels in which the first isomorphism theorem holds.
 
 \begin{remark}
-    We obtain the morphism mentioned in axiom A4 in the following way. Since $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ equals $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composit $\ker f \to X \to \im f$ then equals $0$, by the fact that $\im f \hookrightarrow Y$ is mono and $\ker f \to X \to Y$ equals $0$. From the universal property of cokernels we obtain a unique morphism $\coim f \to \im f$, since $(X \to \coim f) = \coker(\ker f \to X)$.
+    We obtain the morphism mentioned in axiom A4 in the following way. Due to $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ being $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composition $\ker f \to X \to \im f$ then equals $0$, by the fact that $\im f \hookrightarrow Y$ is mono and $\ker f \to X \to Y$ equals $0$. From the universal property of cokernels we obtain a unique morphism $\coim f \to \im f$, since $(X \to \coim f) = \coker(\ker f \to X)$.
 \end{remark}
 
 \begin{example}
-    The default examples of abelian categories are the category of $A$-modules $\mod{A}$ for a commutative ring $A$ and the categories of coherent and quasi-coherent sheaves $\coherent{X}$ and $\quasicoh{X}$ on a scheme $X$. On the other hand the category of (real or complex) vector bundles over a manifold of dimension at least $1$ is additive, but never abelian.
+    The default examples of abelian categories are the category of abelian groups $\Ab$ or more generaly the category of $A$-modules $\mod{A}$ for a commutative ring $A$ and the categories of coherent and quasi-coherent sheaves $\coherent{X}$ and $\quasicoh{X}$ on a scheme $X$. On the other hand the category of (real or complex) vector bundles over a manifold of dimension at least $1$ is additive, but never abelian.
 \end{example}
 
 \begin{definition}
@@ -114,16 +118,30 @@ Axiom A4 essentailly states that abelian categories are those categories in whic
     \end{enumerate}
 \end{definition}
 
+To relate the definition of exactness with more primitive objects of an abelian category, namely kernels and cokernels, it is not difficult to show that
+\[
+    0 \to X \to Y \to Z \text{ is exact, if and only if } (X \to Y) = \ker(Y \to Z),
+\]
+and dually
+\[
+    X \to Y \to Z \to 0 \text{ is exact, if and only if } (Y \to Z) = \coker(X \to Y).
+\]
+
 In the context of abelian categories functors which preserve a bit more than just the $k$-linear structure are of interest. This brings us to
 
 \begin{definition}
-    Let $F \colon \A \to \B$ be an additive functor between abelian categories. Consider a short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$.
+    Let $F \colon \A \to \B$ be an additive functor between abelian categories. 
+    % Consider a short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$.
     \begin{enumerate}[(i)]
-        \item $F$ is said to be \emph{left exact}, if $0 \to FX \to FY \to FZ$ is exact.
-        \item $F$ is said to be \emph{right exact}, if $FX \to FY \to FZ \to 0$ is exact.
+        \item $F$ is said to be \emph{left exact}, if $0 \to FX \to FY \to FZ$ is exact for any short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$.
+        \item $F$ is said to be \emph{right exact}, if $FX \to FY \to FZ \to 0$ is exact for any short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$..
         \item $F$ is said to be \emph{exact}, if it is both left and right exact. 
     \end{enumerate}
 \end{definition}
+
+\begin{remark}
+    Equivalently, one can also define left exact functors to be exactly those additive functors, which commute with kernels and dually define right exact functors to be additive functors commuting with cokernels.  
+\end{remark}
 
 \subsection{Triangulated categories}
 
@@ -246,6 +264,7 @@ Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition o
 
 \begin{definition}
     Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. An additive functor $F \colon \D \to \D'$ is defined to be \emph{triangulated} or \emph{exact}, if the following two conditions are satisfied.
+    \info{Maybe I will pick only triangulated, to not overload the term exact...}
     \begin{enumerate}[(i)]
         \item There exists a natural isomorphism of functors 
         \[
@@ -267,7 +286,9 @@ Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition o
     The condition on $F$ being an \emph{additive} functor in the above definition is actually unnecessary and follows from conditions (i) and (ii) \cite[\href{https://stacks.math.columbia.edu/tag/05QY}{Tag 05QY}]{stacks-project}.
 \end{remark}
 
-Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as triangualated categories), if there are triangulated functors $F \colon \D \to \D'$ and $G \colon \D' \to \D$, such that $G \circ F \natiso \id{\D}$ and $F \circ G \natiso \id{\D'}$ and we call $F$ and $G$ triangulated equivalences.
+\begin{definition}
+    Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as triangualated categories), if there are triangulated functors $F \colon \D \to \D'$ and $G \colon \D' \to \D$, such that $G \circ F \natiso \id{\D}$ and $F \circ G \natiso \id{\D'}$ and we call $F$ and $G$ \emph{triangulated equivalences}.
+\end{definition}
 
 \begin{proposition}
     Let $F \colon \D \to \D'$ be a triangualted functor, which is an equivalence of categories with a quasi-inverse $G \colon \D' \to \D$. Then $G$ is also a triangulated  functor. 
@@ -277,7 +298,7 @@ Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as tria
     This is a consequence of \cite[Proposition 1.41]{huybrechts2006fouriermukai}, as equivalences of categories are special instances of adjunctions. 
 \end{proof}
 
-As a consequence two triangualted categories are equivalent (as triangulated categories) whenever there exists a fully faithful essentailly surjective triangulated functor between them. 
+As a consequence, two triangualted categories are equivalent (as triangulated categories) whenever there exists a fully faithful essentailly surjective triangulated functor from one to the other. 
 
 \begin{definition}
     Let $H\colon \D \to \A$ be an additive functor from a triangulated category $\D$ to an abelian category $\A$. We say $H$ is a \emph{cohomological functor}, if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
@@ -288,11 +309,11 @@ As a consequence two triangualted categories are equivalent (as triangulated cat
     is exact.
 \end{definition}
 
-Definition of the long sequence \eqref{eq: long exact sequence of cohomological functor} is extremely simple as opposed to other known long exact sequences assigned to certain short exact sequences (\eg of sheaves or complexes) as all the complexity is actually captured within the distinguished triangle already. All one has to do is unwrap the triangle $X \to Y \to Z \to X[1]$ into the following chain of composable morphisms
+Construction of the long sequence \eqref{eq: long exact sequence of cohomological functor} is extremely simple as opposed to other known long exact sequences assigned to certain short exact sequences (\eg of sheaves or complexes) as all the complexity is actually captured within the distinguished triangle already. All one has to do is unwrap the triangle $X \to Y \to Z \to X[1]$ into the following chain of composable morphisms
 \[
     \cdots \to Y[-1] \to Z[-1] \to X \to Y \to Z \to X[1] \to Y[1] \to Z[1] \to X[2] \to \cdots
 \]
-and apply the functor $H$. 
+and apply functor $H$ over it. 
 
 \begin{example}
     \label{partial homs are cohomological functors}
