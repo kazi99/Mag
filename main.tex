@@ -66,7 +66,7 @@
 \zahvala{.}
 
 % - ime datoteke z viri (vključno s končnico .bib), če uporabljate BibTeX
-\literatura{references.bib}
+\literatura{references}
 
 % - ime datoteke z razširjenim povzetkom v slovenskem jeziku
 \razsirjenipovzetek{razsirjenipovzetek.tex}
@@ -83,11 +83,15 @@
 
 \begin{document}
 
-\input{chapters/triangulated-categories.tex}
+\input{content/0-introduction.tex}
 \newpage
-\input{chapters/derived-categories.tex}
+
+\input{content/0-categorical-prerequisites.tex}
 \newpage
-\newpage
+
+% \input{chapters/derived-categories.tex}
+% \newpage
+% \newpage
 
 \input{content/1-derived-categories.tex}
 \newpage

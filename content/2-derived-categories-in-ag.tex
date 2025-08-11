@@ -1,4 +1,5 @@
 \section{Derived categories in geometry}
+\label{Derived categories in geometry}
 
 \subsection{Derived category of coherent sheaves}
 
@@ -39,9 +40,12 @@ By abuse of notation we use $\Gamma$ to also denote the restrictions of the glob
 
 As is commonly known, $\Gamma$ is a left exact functor, so our aim is to construct its right derived counterpart. Due to $\coherent{X}$ not having enough injectives, we resort to $\quasicoh{X}$, on which we may define 
 \[
-    \rderived{}{\Gamma}\colon D^+(\quasicoh{X}) \to D^+(\mod{k}).
+    \rderived{}{\Gamma}\colon \derplus{\quasicoh{X}} \to \derplus{\mod{k}},
 \]
-Precomposing it with the inclusion $D^+(\coherent{X}) \to D^+(\quasicoh{X})$
+according to \ref{}. Precomposing the latter functor with the inclusion $\derplus{\coherent{X}} \to \derplus{\quasicoh{X}}$ leaves us with the derived functor
+\[
+    \rderived{}{\Gamma} \colon \derplus{\coherent{X}} \to \derplus{\mod{k}}.
+\]
 
 
 

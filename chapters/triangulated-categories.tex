@@ -127,7 +127,7 @@ and dually
     X \to Y \to Z \to 0 \text{ is exact, if and only if } (Y \to Z) = \coker(X \to Y).
 \]
 
-In the context of abelian categories functors which preserve a bit more than just the $k$-linear structure are of interest. This brings us to
+In the context of abelian categories functors, which preserve a bit more than just the $k$-linear structure, are of interest. This brings us to
 
 \begin{definition}
     Let $F \colon \A \to \B$ be an additive functor between abelian categories. 
@@ -172,7 +172,7 @@ A \emph{morphism} of triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarro
 One can compose morphisms of triangles in the obvious way and the notion of an isomorphism of triangles is defined as usual. The following definition as stated is originally due to Verdier, who first introduced it in his thesis \cite{Verdier}.
 
 \begin{definition}
-    A \emph{triangulated category} is a $k$-linear category with translation $(\D, T)$ equipped with a class of \emph{distinguished triangles}, which is subject to the following four axioms.
+    A \emph{triangulated category} (\emph{over $k$}) is a $k$-linear category with translation $(\D, T)$ equipped with a class of \emph{distinguished triangles}, which is subject to the following four axioms.
     \begin{enumerate}
         \item[\textup{TR1}] \begin{enumerate}[(i)]
             \item Any triangle isomorphic to a distinguished triangle is also itself destinguished.
@@ -285,6 +285,11 @@ Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition o
 \begin{remark}
     The condition on $F$ being an \emph{additive} functor in the above definition is actually unnecessary and follows from conditions (i) and (ii) \cite[\href{https://stacks.math.columbia.edu/tag/05QY}{Tag 05QY}]{stacks-project}.
 \end{remark}
+\info{this remark may be omitted.}
+
+\begin{definition}
+    Let $\D_0$ and $\D$ be triangulated categories such that $\D_0$ is a subcategory of $\D$. Then $\D_0$ is a \emph{triangulated subcategory} of $\D$, if the inclusion functor $i \colon \D_0 \hookrightarrow \D$ is a triangulated functor. 
+\end{definition}
 
 \begin{definition}
     Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as triangualated categories), if there are triangulated functors $F \colon \D \to \D'$ and $G \colon \D' \to \D$, such that $G \circ F \natiso \id{\D}$ and $F \circ G \natiso \id{\D'}$ and we call $F$ and $G$ \emph{triangulated equivalences}.
@@ -321,5 +326,53 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, -) \colon \D \to \mod{k} \text{ and } \Hom_\D( - , W) \colon \D^\op \to \mod{k}
     \]
-    are cohomological.
+    are cohomological. Let us verify the first claim.
+    \info{verify claim.}
 \end{example}
+
+The following are all specialized results characterizing, when a fully faithful triangulated functor is an equivalence. We will exploit corollary \ref{condition for functor to be an equivalence} for the proof of the final theorem.
+
+\begin{definition}
+    Let $\D$ be a triangulated category and $\D_0$, $\D_1$ its triangulated subcategories. We say $\D$ \emph{decomposes} into $\D_0$ and $\D_1$ if the following three conditions are met.
+    \begin{enumerate}[(i)]
+        \item Categories $\D_0$ and $\D_1$ contain objects not isomorphic to $0$.
+        \item Every object $X$ of $\D$ fits into a distinguished triangle (in $\D$) of the form
+        \[
+            Y_0 \to X \to Y_1 \to Y_0[1],
+        \]
+        where $Y_0$ and $Y_1$ belong to $\D_0$ and $\D_1$ respectively.
+        \item For all objects $Y_0$ of $\D_0$ and $Y_1$ of $\D_1$ it holds that
+        \[
+            \Hom_\D(Y_0, Y_1) = 0 \quad \text{ and } \quad \Hom_\D(Y_1, Y_0) = 0.
+        \]
+    \end{enumerate} 
+    Additionally, $\D$ is called \emph{indecomposable}, if it can not be decomposed in this way.
+\end{definition}
+
+\begin{lemma}
+    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$. Suppose $F$ has a right adjoint $F \dashv H \colon \D' \to \D$. Then $F$ is an equivalence if and only if for any object $Y$ in $\D'$ the condition $G(Y) \iso 0$ implies $Y \iso 0$.
+\end{lemma}
+
+\begin{proposition}
+    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ having both left and right adjoints $G \dashv F \dashv H$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence if and only if for all objects $Y$ in $\D'$ the condition $H(Y) \iso 0$ implies $G(Y) \iso 0$. 
+\end{proposition}
+
+\begin{corollary}
+    \label{condition for functor to be an equivalence}
+    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ with $G \colon \D' \to \D$ being its left and right adjoint $G \vdash F \vdash G$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence.
+\end{corollary}
+
+For the last part of this section let $k$ denote a field.
+
+\begin{definition}
+    Let $\D$ be a triangulated category over $k$ with $\Hom_\D(X, Y)$ being a finite dimensional $k$-vector space for all objects $X$ and $Y$ of $\D$. A \emph{Serre functor} is a triangulated autoequivalence $S \colon \D \to \D$ of $\D$, such that for all $X$ and $Y$ there exists an isomorphism of $k$-vector spaces
+    \[
+        \eta_{X,Y} \colon \Hom_\D(X, Y) \xrightarrow{ \ \sim \ } \Hom_\D(Y, S(X))^\vee
+    \]
+    and the collection of all such isomorphisms, $(\eta_{X,Y})_{X,Y}$ forms a natural in both arguments isomorphism of functors $\D^\op \times \D \to \mod{k}$.
+    % forming an isomorphism natural in both arguments $X$ and $Y$.
+\end{definition}
+
+\begin{proposition}
+    Suppose $F \colon \D \to \D'$ is a triangulated functor of triangulated categories $\D$ and $\D'$ endowed with Serre functors $S_\D$ and $S_{\D'}$ respectively. Assume $F$ has a left adjoint $G \dashv F$. Then $S_\D \circ G \circ S_{\D'}\inv$ is right adjoint to $F$.
+\end{proposition}

@@ -110,7 +110,7 @@ In this subsection we construct the homotopy category of chain complexes associa
     \[
         f^i - g^i = h^{i+1} \circ d^i_A + d^{i-1}_B \circ h^i
     \] 
-    for all $i \in \Z$. If $f^\bullet$ and $g^\bullet$ are homotopic, we denote it by $f^\bullet \htpy g^\bullet$. 
+    for all $i \in \Z$. The collection of morphisms $(h^i)_{i \in \Z}$ is called a \emph{homotopy} and we denote $f^\bullet$ and $g^\bullet$ being homotopic by $f^\bullet \htpy g^\bullet$. 
     \[\begin{tikzcd}
         % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQV57aS0xfSJdLFszLDAsIkFeaSJdLFs1LDAsIkFee2krMX0iXSxbMSwyLCJCXntpLTF9Il0sWzMsMiwiQl5pIl0sWzUsMiwiQl57aSsxfSJdLFs2LDIsIlxcY2RvdHMiXSxbNiwwLCJcXGNkb3RzIl0sWzAsMCwiXFxjZG90cyJdLFswLDIsIlxcY2RvdHMiXSxbMCwzLCJmXntpLTF9Il0sWzEsNCwiZl5pIl0sWzIsNSwiZl57aSsxfSJdLFswLDEsImRee2ktMX1fQSJdLFsxLDIsImReaV9BIl0sWzQsNSwiZF57aX1fQiJdLFszLDQsImRee2ktMX1fQiJdLFs1LDZdLFsyLDddLFs4LDBdLFs5LDNdLFsxLDMsImheaSJdLFsyLDQsImhee2krMX0iXV0=
         \cdots & {A^{i-1}} && {A^i} && {A^{i+1}} & \cdots \\
@@ -189,7 +189,9 @@ For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$ one can al
     H^i(f^\bullet) \colon H^i(A^\bullet) \to H^i(B^\bullet)
 \]
 in $\A$, because $f^\bullet$ induces maps $\im d^{i-1}_A \to \im d^{i-1}_B$ and $\ker d^i_A \to \ker d^i_B$, which fit into the commutative diagram bellow.
-\[\begin{tikzcd}[column sep = small, row sep = 1.5em]
+\begin{equation}
+    \label{eq: diagram for map on cohomology}
+    \begin{tikzcd}[column sep = small, row sep = 1.5em]
     % https://q.uiver.app/#q=WzAsMTIsWzAsMSwiQV57aS0xfSJdLFsyLDEsIkFeaSJdLFs0LDEsIkFee2krMX0iXSxbMSwzLCJpbSBkXntpLTF9X0EiXSxbMSwyLCJpbWRee2ktMX1fQiJdLFswLDAsIkJee2ktMX0iXSxbMiwwLCJCXmkiXSxbNCwwLCJCXntpKzF9Il0sWzMsMiwiXFxrZXIgZF5pX0IiXSxbMywzLCJcXGtlciBkXmlfQSJdLFsyLDQsIkheaShCXlxcYnVsbGV0KSJdLFsyLDUsIkheaShBXlxcYnVsbGV0KSJdLFswLDNdLFs1LDRdLFs1LDYsImRee2ktMX1fQiJdLFswLDEsImRee2ktMX1fQSJdLFs2LDcsImReaV9CIl0sWzEsMiwiZF5pX0EiXSxbOCw2XSxbOSwxXSxbNCw2XSxbMywxXSxbNCw4XSxbMyw5XSxbOSwyLCIwIiwyXSxbOCw3LCIwIiwwLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzExLDEwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOSw4XSxbMyw0XSxbOSwxMV0sWzgsMTBdLFs0LDEwLCIwIiwyLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzMsMTEsIjAiLDJdLFswLDVdLFsxLDZdLFsyLDddXQ==
 	{B^{i-1}} && {B^i} && {B^{i+1}} \\
 	{A^{i-1}} && {A^i} && {A^{i+1}} \\
@@ -221,7 +223,8 @@ in $\A$, because $f^\bullet$ induces maps $\im d^{i-1}_A \to \im d^{i-1}_B$ and 
 	\arrow[from=4-4, to=3-4]
 	\arrow[from=4-4, to=6-3]
 	\arrow[dashed, from=6-3, to=5-3]
-\end{tikzcd}\]
+    \end{tikzcd}
+\end{equation}
 All the induced morphisms come from universal properties and are as such unique for which the diagram commutes. Thus the assignment
 % Since all the induced maps come from universal properties, they are unique for which the diagram commutes and thus the assignment 
 \[
@@ -231,7 +234,36 @@ is functorial \ie respects composition and maps identity morphisms to identity m
 \[
     H^i \colon \com(\A) \to \A
 \]
-a $k$-linear functor.
+a $k$-linear functor. Due to the following proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defiened functor 
+\[
+    H^i \colon \kcat{\A} \to \A
+\]
+on the homotopy category $\kcat{\A}$.
+
+\begin{proposition}
+    \label{cohomology of nulhomotopic map}
+    Let $f \colon A^\bullet \to B^\bullet$ be a nulhomotopic chain map in $\com(\A)$. Then $f$ induces the zero map on cohomology, that is $H^i(f) = 0$ for all $i \in \Z$.
+\end{proposition}
+
+\begin{proof}
+    As $f$ is nulhomotopic, there exists a homotopy $(h^i \colon A^i \to B^{i-1})_{i\in Z}$ such that 
+    \[
+        f^i =  h^{i+1} d^i_A + d^{i-1}_B  h^i \quad \text{ for all $i \in \Z$.}
+    \]
+    Let us name the following morphisms from diagram \eqref{eq: diagram for map on cohomology}.
+    \begin{center}
+        \begin{tabular}{c c}
+            $i_A \colon \ker d^i_A \hookrightarrow A^{i}$ & $i_B \colon \ker d^i_B \hookrightarrow B^{i}$ \\
+            $\psi_B \colon B^{i-1} \twoheadrightarrow \im d^{i-1}_B$ & $\xi_B \colon \im d^{i-1}_B \to \ker d^i_B$ \\
+            $\pi_B \colon \ker d^i_B \twoheadrightarrow H^i(B^\bullet)$ & $\phi \colon \ker d^i_A \to \ker d^i_B$ \\
+            % $j_B \colon \im d^{i-1}_B \hookrightarrow B^i$.
+        \end{tabular}
+    \end{center}
+    We compute $i_B \phi = f^i i_A = (h^{i+1}d^i_A + d^{i-1}_Bh^i)i_A = d^{i-1}_B h^i i_A = 
+    % j_B \psi_B h^i i_A = 
+    i_B \xi_B \psi_B h^i i_A$. Since $i_B$ is a monomorphism, we may cancel it on the left, to express $\phi$ as $\xi_B \psi_B h^i i_A$. Then it is clear, that $\pi_B \phi = 0$ (as $\pi_B\xi_B = 0$), which means that $0$ is the unique map $H^i(A^\bullet) \to H^i(B^\bullet)$ fitting into the commutative diagram \eqref{eq: diagram for map on cohomology}.
+    \info{ugly but uses only universal properties, no elements}
+\end{proof}
 
 It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ at once, as is witnessed by the next proposition. 
 
@@ -244,7 +276,7 @@ It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ a
 
 \info{this is not done...}
 
-Functors $H^i$ actually descend to the homotopy category $K(\A)$ of $\A$ 
+% Functors $H^i$ actually descend to the homotopy category $K(\A)$ of $\A$ 
 
 We now shift our focus to the construction of a triangulated structure on $K^*(\A)$. The translation functor $T\colon K^*(\A) \to K^*(\A)$ is defined on objects and morphisms in the following way.
 \begin{center}
@@ -271,11 +303,11 @@ The other piece of data required to obtain a triangulated category is a collecti
         \end{pmatrix} = \begin{pmatrix}
             d^i_{A[1]} & 0 \\ f[1]^i & d^i_B
         \end{pmatrix}
-        \\
     \end{equation}
-    \[
-        d^i_{C(f)} \colon A^{i+1} \oplus B^i \to A^{i+2} \oplus B^{i+1}
-    \]
+    % \vspace{0.2cm}
+    % \[
+    %     d^i_{C(f)} \colon A^{i+1} \oplus B^i \to A^{i+2} \oplus B^{i+1}
+    % \]
     for all $i \in \Z$.
 \end{definition}
 
@@ -354,7 +386,7 @@ The above also holds in categories $K^+(\A)$, $K^-(\A)$, $K^b(\A)$.
 
 \subsection{Derived functors}
 
-The main goal of this section is to assign an appropriate triangulated functor on the level of derived categories, called a \emph{derived functor} of $F$ to a sensible additive functor $F \colon \A \to \B$ between two abelian categories. We will first deal with the easiest case, when $F$ is exact and then move on to the case, where $F$ will only be assumed to be left or right exact and instead require the domain category $\A$ to posses some nice properties (\eg contain enough injectives or contain an $F$-adapted class of objects). In practise the additional conditions $\A$ is required to satify are not very restricitve. 
+The main goal of this section is to assign to a sensible additive functor $F \colon \A \to \B$ between two abelian categories an appropriate triangulated functor on the level of derived categories, called a \emph{derived functor} of $F$. We will first deal with the easiest case, when $F$ is exact and then move on to the case, where $F$ will only be assumed to be left or right exact and instead require the domain category $\A$ to posses some nice properties (\eg contain enough injectives or contain an $F$-adapted class of objects). In practise the additional conditions $\A$ is required to satify are not very restricitve. 
 
 We start with some establishing lemmas.
 
@@ -408,7 +440,7 @@ We start with some establishing lemmas.
     \]
     sending a morphism $\phi \colon A^\bullet \to B^\bullet$, represented by a roof $A^\bullet \xleftarrow{\sim} C^\bullet \to B^\bullet$, to the equivalence class of the roof $F(A^\bullet) \xleftarrow{\sim} F(C^\bullet) \to F(B^\bullet)$. At this point it was crutial that $F$ preserves quasi-isomorphisms.
     % defined as follows. A morphism $\phi \colon A^\bullet \to B^\bullet$ represented by a roof $A^\bullet \xleftarrow{\sim} C^\bullet \to B^\bullet$ is sent to the equivalence class of the roof $F(A^\bullet) \xleftarrow{\sim} F(C^\bullet) \to F(B^\bullet)$, where it was crutial that $F$ preserves quasi-isomorphisms. 
-    By functoriality of $F$ it is evident, that this map is well defined. Clearly $D(\A) \to D(\B)$ fits into the commutative diagram \eqref{eq: exact functor derives}, is also $k$-linear by the $k$-linearity assumption on $F$, commutes with the respective translation functors and maps distinguished triangles to distingushed triangles, because of commutativity of diagram \eqref{eq: exact functor derives}, making it a triangulated functor.
+    By functoriality of $F$ it is evident, that this map is well defined. The defined assignment is also functorial in the sense that it respects composition and identities. Clearly $D(\A) \to D(\B)$ fits into the (up to natural isomorphism) commutative square \eqref{eq: exact functor derives}, is also $k$-linear by the $k$-linearity assumption on $F$, commutes with the respective translation functors (up to natural isomorphism) and maps distinguished triangles to distingushed triangles, because of commutativity of the diagram \eqref{eq: exact functor derives}, making it a triangulated functor.
 \end{proof}
 
 Every $k$-linear functor $F\colon \A \to \B$ induces a triangulated functor on the level of homotopy categories $K(F)\colon K(\A) \to K(\B)$ and if moreover $F$ is assumed to be exact, then $K(F)$ satisfies the assumptions of lemma \ref{Exact functor induces a derived functor} and thus induces a triangulated functor on the level of derived categories. In the next subsection we will deal with the case, when $F$ is only left or right exact. 
@@ -582,7 +614,7 @@ Informally to compute the right derived functor $\rderived{}{F}(A^\bullet)$ of a
     \[
         0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to 0.
     \]
-    After inductively applying the same reasoning for each of the original short exact sequences of \eqref{eq: SES from acyclic cx} for $i > 1$, we are left with short exact sequences\footnote{To be more precise we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \iso F(\ker d^i)\].}
+    After inductively applying the same reasoning for each of the original short exact sequences of \eqref{eq: SES from acyclic cx} for $i > 1$, we are left with short exact sequences\footnote{To be more precise, we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \iso F(\ker d^i)\].}
     \[
         0 \to \ker Fd^i \to F(A^i) \to \ker Fd^{i+1} \to 0 \quad \text{ for $i \geq 1$.}
     \]

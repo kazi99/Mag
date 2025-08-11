@@ -35,6 +35,7 @@
 \newcommand{\ti}{t.~i.\ }
 \newcommand{\tj}{tj.\ }
 \newcommand{\oz}{oz.\ }
+\newcommand{\npr}{npr.\ }
 
 % Acronyms in english
 \newcommand{\ie}{i.e.\ }
@@ -80,14 +81,21 @@
 \renewcommand{\mod}[1]{\mathsf{Mod}_{#1}}
 \newcommand{\coherent}[1]{\mathsf{coh}(#1)}
 \newcommand{\quasicoh}[1]{\mathsf{qcoh}(#1)}
-\newcommand{\com}{\operatorname{Ch}}
+\newcommand{\com}{\mathsf{Ch}}
+
+% Homotopy category of complexes
 \newcommand{\K}{\operatorname{K}}
+\newcommand{\kcat}[1]{\K(#1)}
+\newcommand{\kplus}[1]{\K^+(#1)}
+\newcommand{\kminus}[1]{\K^-(#1)}
+\newcommand{\kb}[1]{\K^b(#1)}
 
 % Derived categories
-\newcommand{\dercat}[1]{\operatorname{D}(#1)}
-\newcommand{\derplus}[1]{\operatorname{D}^+(#1)}
-\newcommand{\derminus}[1]{\operatorname{D}^-(#1)}
-\newcommand{\derb}[1]{\operatorname{D}^b(#1)}
+\newcommand{\derd}{\operatorname{D}}
+\newcommand{\dercat}[1]{\derd(#1)}
+\newcommand{\derplus}[1]{\derd^+(#1)}
+\newcommand{\derminus}[1]{\derd^-(#1)}
+\newcommand{\derb}[1]{\derd^b(#1)}
 
 % Derived functors
 \newcommand{\rderived}[2]{\mathbf{R}^{#1}#2}
@@ -104,6 +112,12 @@
 \newcommand{\derivedtensor}[3]{#1 \otimes_{#3}^{\operatorname{L}} #2}
 \newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
 \newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
+
+% Cohomology
+\newcommand{\td}{\operatorname{td}}
+\newcommand{\tdclass}[1]{\td_{#1}}
+\newcommand{\firstchern}{\operatorname{c}_1}
+\newcommand{\ch}[1]{\operatorname{ch}(#1)}
 
 % Lattices
 \newcommand{\hyperbolic}{\mathcal U}
