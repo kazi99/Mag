@@ -49,7 +49,7 @@ Let $k$ denote either a field or the ring of integers $\Z$.
 \begin{remark}
     \begin{enumerate}[(i)]
         \item The zero object $0$ of a $k$-linear category $\A$ is both the initial and terminal object of $\A$.
-        \item One can recognise $k$-linear categories as the categories enriched over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
+        \item One can recognize $k$-linear categories as the categories enriched over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
     \end{enumerate}
 \end{remark}
 
@@ -65,9 +65,9 @@ Let $k$ denote either a field or the ring of integers $\Z$.
 
 Traditionally the term \emph{additive} is reserved for $\Z$-linear categories and $\Z$-linear functors between such categories.
 
-% Traditionally $\Z$-linear categories and functors between such categories are called \emph{additve}.
+% Traditionally $\Z$-linear categories and functors between such categories are called \emph{additive}.
 
-For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are monomophim and epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
+For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are monomorphism and epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
 \begin{align*}
     (\im f \to Y) &:= \ker(Y \to \coker f) \\
     (X \to \coim f) &:= \coker(\ker f \to X).
@@ -227,6 +227,10 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
 
 Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition of a \emph{pre-triangulated category}. These are essentailly the categories we will be working with, since we will never use nor verify the axiom TR4. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will be honest triangulated categories anyways.
 
+\begin{remark}
+    The object $Z$, called the \emph{cone of $f$}, in axiom TR1 (iii) is unique up to isomorphism. This is seen through the use of axiom TR3 in combination with example \ref{partial homs are cohomological functors} and the five lemma from homological algebra in $\mod{k}$. 
+\end{remark}
+
 % we will nevertheless use the terminology 
 
 % \begin{definition}
@@ -251,22 +255,31 @@ Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition o
 %     \end{enumerate}
 % \end{definition}
 
-\begin{remark}
-    For a distinguished triangle
-    \[
-        X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1]
-    \]
-    morphisms $f$ and $g$ are said to be of degree $0$ and morphism $h$ is said to be of degree $+1$. They are also sometimes diagramatically depicted as triangles, with the markings on morphisms describing their respective degrees.
-    \[\begin{tikzcd}[column sep = small, row sep = 1.5em]
-        % https://q.uiver.app/#q=WzAsMyxbMSwwLCJaIl0sWzAsMiwiWCJdLFsyLDIsIlkiXSxbMCwxLCIrMSIsMl0sWzEsMiwiMCJdLFsyLDAsIjAiLDJdXQ==
-        & Z \\
-        \\
-        X && Y
-        \arrow["{+1}"', from=1-2, to=3-1]
-        \arrow["0", from=3-1, to=3-3]
-        \arrow["0"', from=3-3, to=1-2]
-    \end{tikzcd}\]
-\end{remark}
+% \begin{remark}
+%     For a distinguished triangle
+%     \[
+%         X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1]
+%     \]
+%     morphisms $f$ and $g$ are said to be of degree $0$ and morphism $h$ is said to be of degree $+1$. They are also sometimes diagramatically depicted as triangles, with the markings on morphisms describing their respective degrees.
+%     \[\begin{tikzcd}[column sep = small, row sep = 1.5em]
+%         % https://q.uiver.app/#q=WzAsMyxbMSwwLCJaIl0sWzAsMiwiWCJdLFsyLDIsIlkiXSxbMCwxLCIrMSIsMl0sWzEsMiwiMCJdLFsyLDAsIjAiLDJdXQ==
+%         & Z \\
+%         \\
+%         X && Y
+%         \arrow["{+1}"', from=1-2, to=3-1]
+%         \arrow["0", from=3-1, to=3-3]
+%         \arrow["0"', from=3-3, to=1-2]
+%     \end{tikzcd}\]
+% \end{remark}
+
+\begin{proposition}
+    \label{composition of two arrows in d.t. is zero}
+    Let $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ be a distinguished triangle in a triangulated category $\D$. Then $g \circ f = 0$.
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
 
 \begin{definition}
     Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. An additive functor $F \colon \D \to \D'$ is defined to be \emph{triangulated} or \emph{exact}, if the following two conditions are satisfied.
@@ -293,31 +306,32 @@ Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition o
 \end{remark}
 \info{this remark may be omitted.}
 
-\begin{proposition}
-    Let $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ be a distinguished triangle in a triangulated category $\D$. Then $g \circ f = 0$.
-\end{proposition}
-
-\begin{proof}
-    
-\end{proof}
-
 \begin{definition}
     Let $\D_0$ and $\D$ be triangulated categories such that $\D_0$ is a subcategory of $\D$. Then $\D_0$ is a \emph{triangulated subcategory} of $\D$, if the inclusion functor $i \colon \D_0 \hookrightarrow \D$ is a triangulated functor. 
 \end{definition}
 
+\begin{proposition}
+    \label{triangulated subcategory proposition}
+    Let $\D$ be a triangulated category and $\D_0 \subseteq \D$ a full additive subcategory of $\D$. Assume that the translation functor $T$ of $\D$ restricts to an autoequivalence $T_0$ of $\D_0$ and that for every distinguished triangle $X\xrightarrow{f} Y \xrightarrow{} Z \xrightarrow{} X[1]$ in $\D$, where $f$ belongs to $\D_0$, the object $Z$ is isomorphic to some object of $\D_0$. Then $\D_0$ is naturally equipped with a  triangulated structure, for which it becomes a \emph{triangulated} subcategory of $\D$.
+\end{proposition}
+
+\begin{proof}
+    We take $T_0$ to be the translation functor on $\D_0$ and take distinguished triangles in $\D_0$ to be all the triangles of $\D_0$, for which there exists an isomorphism of triangles to some distinguished triangle of $\D$. Then $\D_0$ is clearly triangulated and the inclusion functor $i \colon \D_0 \hookrightarrow \D$ is triangulated.
+\end{proof}
+
 \begin{definition}
-    Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as triangualated categories), if there are triangulated functors $F \colon \D \to \D'$ and $G \colon \D' \to \D$, such that $G \circ F \natiso \id{\D}$ and $F \circ G \natiso \id{\D'}$ and we call $F$ and $G$ \emph{triangulated equivalences}.
+    Triangulated categories $\D$ and $\D'$ are said to be \emph{equivalent} (as triangulated categories), if there are triangulated functors $F \colon \D \to \D'$ and $G \colon \D' \to \D$, such that $G \circ F \natiso \id{\D}$ and $F \circ G \natiso \id{\D'}$ and we call $F$ and $G$ \emph{triangulated equivalences}.
 \end{definition}
 
 \begin{proposition}
-    Let $F \colon \D \to \D'$ be a triangualted functor, which is an equivalence of categories with a quasi-inverse $G \colon \D' \to \D$. Then $G$ is also a triangulated  functor. 
+    Let $F \colon \D \to \D'$ be a triangulated functor, which is an equivalence of categories with a quasi-inverse $G \colon \D' \to \D$. Then $G$ is also a triangulated  functor. 
 \end{proposition}
 
 \begin{proof}
     This is a consequence of \cite[Proposition 1.41]{huybrechts2006fouriermukai}, as equivalences of categories are special instances of adjunctions. 
 \end{proof}
 
-As a consequence, two triangualted categories are equivalent (as triangulated categories) whenever there exists a fully faithful essentailly surjective triangulated functor from one to the other. 
+As a consequence, two triangulated categories are equivalent (as triangulated categories) whenever there exists a fully faithful essentially surjective triangulated functor from one to the other. 
 
 \begin{definition}
     Let $H\colon \D \to \A$ be an additive functor from a triangulated category $\D$ to an abelian category $\A$. We say $H$ is a \emph{cohomological functor}, if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
@@ -340,7 +354,7 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, -) \colon \D \to \mod{k} \text{ and } \Hom_\D( - , W) \colon \D^\op \to \mod{k}
     \]
-    are cohomological. Let us verify the first claim. Consider the long exact sequence 
+    are cohomological\footnote{With claiming that $\Hom_\D(-, W)$ is cohomological we are being slightly imprecise, as we have not clarified what the triangulated structure on $\D^\op$ is. We take it to be the most obvious one (\cf \cite[Ch.~1, 1.2]{milicic-dercat}).}. Let us verify the first claim. Consider the long exact sequence 
     \[
         \cdots \to \Hom_\D(W, X) \to \Hom_\D(W, Y) \to \Hom_\D(W, Z) \to \Hom_\D(W, X[1]) \to \cdots 
     \]
@@ -348,7 +362,9 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, X) \xrightarrow{f_*} \Hom_\D(W, Y) \xrightarrow{g_*} \Hom_\D(W, Z) \quad \text{ is exact.}
     \]
-    By proposition \ref{} we see that $\im f_* \subseteq \ker g_* $, so we are left to prove the other inclusion. Suppose $v \colon W \to Y$ is in $\ker g_*$. Then axiom TR3 (together with TR2 and TR1 (ii)) asserts the existence of a morphism $u \colon W \to X$ making the diagram below commutative.
+    By proposition \ref{} we see that $\im f_* \subseteq \ker g_* $, so we are left to prove the other inclusion. Suppose $v \colon W \to Y$ is in $\ker g_*$. Then axiom TR3 (together with TR2 and TR1 (ii))
+    \info{As this is the first argument with the axioms of triangulated cats, I could maybe expand it a little bit more. }
+    asserts the existence of a morphism $u \colon W \to X$ making the diagram below commutative.
     \[
         \begin{tikzcd}[column sep = normal, row sep = 2.5em]
             % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
@@ -369,7 +385,16 @@ and apply functor $H$ over it.
     From the commutative square on the left it is then clear that $v \in \im f_*$, as $v = f \circ u$.
 \end{example}
 
-The following are all specialized results characterizing, when a fully faithful triangulated functor is an equivalence. We will exploit corollary \ref{condition for functor to be an equivalence} in the proof of the final theorem of section \ref{}.
+\begin{proposition}
+    \label{f iso iff cone trivial}
+    Let $X \xrightarrow{f} Y \to Z \to X[1]$ be a distinguished triangle in a triangulated category $\D$. Then $f$ is an isomorphism if and only if $Z \iso 0$.
+\end{proposition}
+
+\begin{proof}
+    We argue with a chain of equivalences. Observe that $f$ is an isomorphism if and only if $f_*\colon \Hom_\D(W, X) \to \Hom_\D(W, Y)$ and $f^* \colon \Hom_\D(Y, W) \to \Hom_\D(X, W)$ are isomorphisms for all objects $W$ of $\D$. From the existence of long exact sequences established in the previous example the latter condition is equivalent to $\Hom_\D(W, Z) = 0$ and $\Hom_\D(Z, W) = 0$ for all $W$, which in turn is equivalent to $Z \iso 0$.
+\end{proof}
+
+The following are all specialized results characterizing, when a fully faithful triangulated functor is an equivalence. We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the final theorem in section \ref{}.
 
 \begin{definition}
     Let $\D$ be a triangulated category and $\D_0$, $\D_1$ its triangulated subcategories. We say $\D$ \emph{decomposes} into $\D_0$ and $\D_1$ if the following three conditions are met.
@@ -389,11 +414,23 @@ The following are all specialized results characterizing, when a fully faithful 
 \end{definition}
 
 \begin{lemma}
-    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$. Suppose $F$ has a right adjoint $F \dashv H \colon \D' \to \D$. Then $F$ is an equivalence if and only if for any object $Y$ in $\D'$ the condition $G(Y) \iso 0$ implies $Y \iso 0$.
+    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$. Suppose $F$ has a right adjoint $F \dashv H \colon \D' \to \D$. Then $F$ is an equivalence if and only if for any object $Z$ in $\D'$ the condition $H(Z) \iso 0$ implies $Z \iso 0$.
 \end{lemma}
 
 \begin{proof}
-    
+    \noindent
+    ($\Rightarrow$) Let $Y$ belong to $\D'$. Since $F$ is part of an equivalence, the counit $\varepsilon_Y \colon FH(Y) \to Y$ is also an isomorphism, thus, as $H(Y) \iso 0$ implies $FH(Y) \iso 0$, we see that $Y \iso 0$.
+
+    \noindent
+    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}. Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[Prop.~1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
+    \[
+        HFH(Y) \xrightarrow{ H(\varepsilon_Y) } H(Y) \longrightarrow H(Z) \longrightarrow HFH(Y)[1].
+    \]
+    By the triangle identity relating units and counits of an adjunction \cite[\href{https://stacks.math.columbia.edu/tag/0GLL}{Tag 0GLL}]{stacks-project}, we have
+    \[
+        H(\varepsilon_Y) \circ \eta_{H(Y)}  = \id{H(Y)},
+    \]
+    and as observed earlier, since $\eta_{H(Y)}$ is an isomorphism, $H(\varepsilon_Y)$ is as well. It follows by \ref{f iso iff cone trivial} that $H(Z) \iso 0$, from which, by the assumption, $Z \iso 0$ follows. Finally, by \ref{f iso iff cone trivial} again, $\varepsilon_Y$ is an isomorphism, proving our claim.
 \end{proof}
 
 \begin{proposition}
@@ -402,24 +439,40 @@ The following are all specialized results characterizing, when a fully faithful 
 
 \begin{corollary}
     \label{condition for functor to be an equivalence}
-    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ with $G \colon \D' \to \D$ being its left and right adjoint $G \vdash F \vdash G$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence.
+    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ with $G \colon \D' \to \D$ simultaneously being its left and right adjoint $G \dashv F \dashv G$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence.
 \end{corollary}
 
 For the last part of this section let $k$ denote a field.
 
 \begin{definition}
-    Let $\D$ be a triangulated category over $k$ with $\Hom_\D(X, Y)$ being a finite dimensional $k$-vector space for all objects $X$ and $Y$ of $\D$. A \emph{Serre functor} is a triangulated autoequivalence $S \colon \D \to \D$ of $\D$, such that for all $X$ and $Y$ there exists an isomorphism of $k$-vector spaces
+    Let $\D$ be a triangulated category over $k$ with $\Hom_\D(X, Y)$ being a finite dimensional $k$-vector space for all objects $X$ and $Y$ of $\D$. A \emph{Serre functor} is a triangulated autoequivalence $S \colon \D \to \D$ of $\D$, such that for all objects $X$ and $Y$ there exists an isomorphism of $k$-vector spaces
     \[
-        \eta_{X,Y} \colon \Hom_\D(X, Y) \xrightarrow{ \ \sim \ } \Hom_\D(Y, S(X))^\vee
+        \sigma_{X,Y} \colon \Hom_\D(X, Y) \xrightarrow{ \ \sim \ } \Hom_\D(Y, S(X))^\vee,
     \]
-    and the collection of all such isomorphisms, $(\eta_{X,Y})_{X,Y}$ forms a natural in both arguments isomorphism of functors $\D^\op \times \D \to \mod{k}$.
+    which is natural in both arguments $X$ and $Y$, thus forming a natural isomorphism of functors $\D^\op \times \D \to \mod{k}$.
+    % and the collection of all such isomorphisms, $(\eta_{X,Y})_{X,Y}$ forms a natural in both arguments isomorphism of functors $\D^\op \times \D \to \mod{k}$.
     % forming an isomorphism natural in both arguments $X$ and $Y$.
 \end{definition}
 
 \begin{proposition}
+    \label{Serre functors and adjoints}
     Suppose $F \colon \D \to \D'$ is a triangulated functor of triangulated categories $\D$ and $\D'$ endowed with Serre functors $S_\D$ and $S_{\D'}$ respectively. Assume $F$ has a left adjoint $G \dashv F$. Then $S_\D \circ G \circ S_{\D'}\inv$ is right adjoint to $F$.
 \end{proposition}
 
+\begin{proof}
+    For any two objects $X$ of $\D$ and $Y$ of $\D'$ we compute
+    \begin{align*}
+        \Hom_{\D'}(F(X),\  Y) &\iso \Hom_{\D'}(Y,\ S_{\D'}(F(X)))^\vee \\
+        &\iso \Hom_{\D'}(S_{\D'}\inv(Y),\ F(X))^\vee \\
+        &\iso \Hom_{\D}(G(S_{\D'}\inv(Y)),\ X)^\vee \\
+        &\iso \Hom_{\D}(X,\ S_{\D}(G(S_{\D'}\inv(Y))))^{\vee\vee} \\
+        &\iso \Hom_{\D}(X,\ S_{\D}(G(S_{\D'}\inv(Y)))).
+    \end{align*}
+    For this is a chain of natural equivalences of functors in $X$ and $Y$, it follows that
+    \[
+        F \dashv S_\D \circ G \circ S_{\D'}\inv. \qedhere
+    \]
+\end{proof}
 
 
 % ================================================================ %
@@ -427,9 +480,10 @@ For the last part of this section let $k$ denote a field.
 
 
 \subsection{Categories of complexes}
-In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip these with a triangulated structure and . Throughout this section $\A$ will be a fixed additeve or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
+In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
 
-As a preliminary we introduce graded objects in ??
+As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-indexed sequences $A^\bullet = (A^i)_{i \in \Z}$ of objects $A^i$ of $\A$. A \emph{morphism $f \colon A^\bullet \to B^\bullet$ of degree $k \in \Z$} is a sequence $(f^i \colon A^i \to B^{i+k})_{i \in \Z}$ of morphisms of $\A$. Bundling up all this data, we obtain the $\Z$-\emph{graded category of $\A$} denoted by $\A^\Z$, consisting of graded objects of $\A$ and morphisms of all integer degrees. It can also be thought of as the functor category from the free category of $\Z$ to $\A$, hence the notation $\A^\Z$. 
+\info{This is introduced so I can say the differential is a morphism of degree $1$, homotopy is a morphism of degree $-1$, and makes defining $\Hom^\bullet$ just slightly easier.}
 
 \subsubsection*{{Category of chain complexes}}
 
@@ -437,11 +491,11 @@ By a \emph{chain complex} in $\A$ we mean a collection of objects and morphisms
 \[
     A^\bullet = \left((A^i)_{i \in \Z}, (d^i_A\colon A^i \to A^{i+1})_{i \in \Z}\right),
 \] 
-where $A^i$ are objects and $d^i$ are morphisms of $\A$, called \emph{differenitials}, subject to equations $d^{i+1}\circ d^i = 0$, for all $i \in \Z$. A complex is \emph{bounded from below} (\resp \emph{bounded from above}), if there exists $i_0 \in \Z$ for which $A^i \iso 0$ for all $i \leq i_0$ (\resp $i \geq i_0$) and is \emph{bounded}, if it is both bounded from below and bounded from above. A \emph{chain map} between two chain complexes $A^\bullet$ and $B^\bullet$ in $\A$ is a collection of morphisms in $\A$
+where $A^i$ are objects and $d^i$ are morphisms of $\A$, called \emph{differentials}, subject to equations $d^{i+1}\circ d^i = 0$, for all $i \in \Z$. A complex is \emph{bounded from below} (\resp \emph{bounded from above}), if there exists $i_0 \in \Z$ for which $A^i \iso 0$ for all $i \leq i_0$ (\resp $i \geq i_0$) and is \emph{bounded}, if it is both bounded from below and bounded from above. A \emph{chain map} between two chain complexes $A^\bullet$ and $B^\bullet$ in $\A$ is a collection of morphisms in $\A$
 \[
     f^\bullet = (f^i\colon A^i \to B^i)_{i \in \Z},
 \]
-for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This may diagramatically be described by the following commutative ladder.
+for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This may diagrammatically be described by the following commutative ladder.
 \[
 \begin{tikzcd}
     % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQV57aS0xfSJdLFszLDAsIkFeaSJdLFs1LDAsIkFee2krMX0iXSxbMSwyLCJCXntpLTF9Il0sWzMsMiwiQl5pIl0sWzUsMiwiQl57aSsxfSJdLFs2LDIsIlxcY2RvdHMiXSxbNiwwLCJcXGNkb3RzIl0sWzAsMCwiXFxjZG90cyJdLFswLDIsIlxcY2RvdHMiXSxbMCwzLCJmXntpLTF9Il0sWzEsNCwiZl5pIl0sWzIsNSwiZl57aSsxfSJdLFswLDEsImRee2ktMX1fQSJdLFsxLDIsImReaV9BIl0sWzQsNSwiZF57aX1fQiJdLFszLDQsImRee2ktMX1fQiJdLFs1LDZdLFsyLDddLFs4LDBdLFs5LDNdXQ==
@@ -467,7 +521,7 @@ Next we define the \emph{category of chain complexes} in $\A$, denoted by $\com(
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
-        \textsl{Morphims:} & $\Hom_{\com(\A)}(A, B)$ is the set of chain maps $A \to B$, \\ & equipped with a group structure inherited from $\A$ \\ & by applying operations componentwise.
+        \textsl{Morphisms:} & $\Hom_{\com(\A)}(A, B)$ is the set of chain maps $A \to B$, \\ & equipped with a group structure inherited from $\A$ \\ & by applying operations componentwise.
     \end{tabular}
 \end{center}
 The composition law is defined componentwise and is clearly associative and bilinear. The identity morphisms $1_{A^\bullet}$ are defined to be $(1_{A^i})_{i \in \Z}$. The complex $\cdots \to 0 \to 0 \to \cdots$ plays the role of the zero object in $\com(\A)$ and the biproduct of complexes $A$ and $B$ exists and is witnessed by the chain complex
@@ -475,7 +529,7 @@ The composition law is defined componentwise and is clearly associative and bili
     A \oplus B = \left( (A^i \oplus B^i)_{i \in \Z}, (d^i_A \oplus d^i_B)_{i \in \Z}\right),
     % \quad \quad \cdots \to A^i \oplus B^i \xrightarrow{d^i_A \oplus d^i_B} A^{i+1} \oplus B^{i+1} \to \cdots,
 \]
-together with the cannonical projection and injection morphisms arising from biproducts componentwise.
+together with the canonical projection and injection morphisms arising from biproducts componentwise.
 
 Additionally, we also define the following full additive subcategories of $\com(\A)$.
 \begin{center}
@@ -498,10 +552,10 @@ given by its action on objects and morphisms as follows.
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & $T(A^\bullet) = A^\bullet[1]$ is the chain complex with $(A^\bullet[1])^i := A^{i+1}$ \\ & and differentials $d^i_{A[1]} = - d^{i+1}_{A}$. \\
-        \textsl{Morphims:} & For a chain map $f^\bullet\colon A^\bullet \to B^\bullet$ we define $f^\bullet[1]$ to have \\ & component maps $(f^\bullet[1])^i = f^{i+1}$.
+        \textsl{Morphisms:} & For a chain map $f^\bullet\colon A^\bullet \to B^\bullet$ we define $f^\bullet[1]$ to have \\ & component maps $(f^\bullet[1])^i = f^{i+1}$.
     \end{tabular}
 \end{center}
-The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its differential by a sign and shifting it one step to the \emph{left}, which is graphically pictured below.
+The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its differential by a sign and shifting it one step to the \emph{left}, which is pictured below.
 
 \[\begin{tikzcd}[row sep = 1.2em]
     % https://q.uiver.app/#q=WzAsMTcsWzAsMSwiQV5cXGJ1bGxldFxcY29sb24iXSxbMCwyLCJBXlxcYnVsbGV0WzFdXFxjb2xvbiJdLFsxLDAsIlxcY2RvdHMiXSxbMywxLCJBXjAiXSxbNCwxLCJBXjEiXSxbMiwxLCJBXnstMX0iXSxbMiwyLCJBXjAiXSxbMywyLCJBXjEiXSxbNCwyLCJBXjIiXSxbNSwxLCJcXGNkb3RzIl0sWzUsMiwiXFxjZG90cyJdLFsxLDEsIlxcY2RvdHMiXSxbMSwyLCJcXGNkb3RzIl0sWzMsMCwiXFx0ZXh0dHR7MH0iXSxbNCwwLCJcXHRleHR0dHsxfSJdLFsyLDAsIlxcdGV4dHR0ey0xfSJdLFs1LDAsIlxcY2RvdHMiXSxbNiw3XSxbNyw4XSxbNSwzXSxbMyw0XSxbNCw5XSxbMTEsNV0sWzEyLDZdXQ==
@@ -526,7 +580,7 @@ The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its d
 
 Since $T$ is an auto-equivalence there exists a quasi-inverse $T\inv$ to $T$, which is defined and unique up to a natural isomorphism. We may then speak of $T^{k}$ for any $k \in \Z$, whose action on a complex $A^\bullet$ is described by $(A^\bullet[k])^i = A^{i + k}$ with differential $d^{i}_{A[k]} = (-1)^k d^{i+k}_A$.
 
-\subsubsection*{Homotopy category of complexes}
+\subsubsection*{Homotopy category of chain complexes}
 
 In this subsection we construct the homotopy category of chain complexes associated to a given additive category $\A$ and equip it with a triangulated structure. The main motivation for its introduction in this work is the fact that we will later on use it to construct the derived category of $\A$. In particular the homotopy category of $\A$, as opposed to the category of complexes\footnote{It is still possible to construct the derived category of $\A$ without passing through the homotopy category of complexes, however equipping it with a triangulated structure in that case becomes less elegant.} $\com(\A)$, can be enhanced with a triangulated structure which will afterwards descend to the level of derived categories.
 
@@ -560,7 +614,7 @@ In this subsection we construct the homotopy category of chain complexes associa
 
 \begin{lemma}
     \label{nullhomotopics form a subgroup}
-    Let $A^\bullet$, $B^\bullet$ and $C^\bullet$ be complexes in $\com(\A)$, and let $f, f' \in \Hom_{\com(\A)}(A^\bullet, B^\bullet)$ and $g, g' \in \Hom_{\com(\A)}(B^\bullet, C^\bullet)$ be chain maps.
+    Let $A^\bullet$, $B^\bullet$ and $C^\bullet$ be complexes in $\com(\A)$ and let $f, f' \in \Hom_{\com(\A)}(A^\bullet, B^\bullet)$ and $g, g' \in \Hom_{\com(\A)}(B^\bullet, C^\bullet)$ be chain maps.
     \begin{enumerate}[(i)]
         \item The subset of all nullhomotopic chain maps in $A^\bullet \to B^\bullet$ forms a submodule of $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$.
         \item If $f \htpy f'$ and $g \htpy g'$, then $g \circ f \htpy g' \circ f'$.
@@ -569,43 +623,33 @@ In this subsection we construct the homotopy category of chain complexes associa
 \end{lemma}
 
 \begin{proof}
-    See \cite[]{}. \info{make a reference}
+    For (i) see \cite[Ch.~3, 1.3.1]{milicic-dercat}. Claim (ii) is a direct consequence of \cite[Ch.~3, 1.3.2]{milicic-dercat}.
 \end{proof}
 
-The homotopy category of complexes in $\A$, denoted by $K(\A)$, is defined to be an additive category consisting of
+The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined to be an additive category consisting of
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
-        \textsl{Morphims:} & $\Hom_{K(\A)}(X, Y) := \Hom_{\com(\A)}(X, Y)/_\htpy$
+        \textsl{Morphims:} & $\Hom_{\kcat{\A}}(X, Y) := \Hom_{\com(\A)}(X, Y)/_\htpy$
     \end{tabular}
 \end{center}
-The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[1_A^\bullet]$. All the hom-sets $\Hom_{K(\A)}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The biproduct of two complexes is 
+The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[\id{A^\bullet}]$. All the hom-sets $\Hom_{\kcat{\A}}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The biproduct of two complexes $A^\bullet$ and $B^\bullet$ consists of an object $A^\bullet \oplus B^\bullet$ corresponding to the usual biproduct in $\com(\A)$ together with the homotopy classes of structure maps of its $\com(\A)$-counterpart.
 
-\info{define the biproduct as well}
+\vspace*{0.3 cm}
 
-As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $K(\A)$.
-\begin{center}
-    \begin{tabular}{c l}
-        $K^+(\A)$ & \emph{Homotopy category of complexes bounded below}, spanned on \\ &complexes in $\A$ bounded below. \\
-        $K^-(\A)$ & \emph{Homotopy category of complexes bounded above}, spanned on \\ &complexes in $\A$ bounded above. \\
-        $K^b(\A)$ & \emph{Homotopy category of bounded complexes}, spanned on \\ &bounded complexes in $\A$. \\    
-    \end{tabular}
-\end{center}
-\info{in practise everywhere unless stated otherwise our complexes in $K^+(\A)$ will be supported in $\N$}
-
-% Functors $H^i$ actually descend to the homotopy category $K(\A)$ of $\A$ 
-
-We now shift our focus to the construction of a triangulated structure on $K^*(\A)$. The translation functor $T\colon K^*(\A) \to K^*(\A)$ is defined on objects and morphisms in the following way.
+\noindent
+\textsc{Triangulated structure on $\kcat{\A}$.}
+We now shift\footnote{Pun intended.} our focus to the construction of a triangulated structure on $\kcat{\A}$. The translation functor $T\colon \kcat{\A} \to \kcat{\A}$ is defined on objects and morphisms in the following way.
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & $A^\bullet \longmapsto A^\bullet[1]$. \\
-        \textsl{Morphims:} & $[f^\bullet] \longmapsto [f^\bullet[1]]$.
+        \textsl{Morphisms:} & $[f^\bullet] \longmapsto [f^\bullet[1]]$.
     \end{tabular}
 \end{center}
 This assignment is clearly well defined on morphisms, as $f \htpy f'$ implies $f[1] \htpy f'[1]$.
 
-\subsubsection*{Mapping cones}
-The other piece of data required to obtain a triangulated category is a collection of distinguished triangles. To describe what distingushed triangles are in our case, we must first introduce the mapping cone of a morphism of complexes and to this end we will for a moment step outside the scope of the homotopy categroy of complexes back into the category of complexes of $\A$.
+% \subsubsection*{Mapping cones}
+The other piece of data required to obtain a triangulated category is a collection of \emph{distinguished triangles}. To describe what distinguished triangles are in the case of $\kcat{\A}$, we must first introduce the mapping cone of a morphism of complexes and to this end we will for a moment step outside the scope of the homotopy category of complexes back into the category of chain complexes.
 
 \begin{definition}
     Let $f\colon A^\bullet \to B^\bullet$ be a morphism of complexes in $\com(\A)$. The complex $C(f)^\bullet$ is specified by the collection of objects
@@ -619,52 +663,71 @@ The other piece of data required to obtain a triangulated category is a collecti
             -d^{i+1}_A & 0 \\ f^{i+1} & d^i_B
         \end{pmatrix} = \begin{pmatrix}
             d^i_{A[1]} & 0 \\ f[1]^i & d^i_B
-        \end{pmatrix}
+        \end{pmatrix},
     \end{equation}
     % \vspace{0.2cm}
     % \[
     %     d^i_{C(f)} \colon A^{i+1} \oplus B^i \to A^{i+2} \oplus B^{i+1}
     % \]
-    for all $i \in \Z$.
+    for all $i \in \Z$, is called the \emph{cone of $f$}.
 \end{definition}
 
 \begin{remark}
-    Using matrix notiaion here might be a bit misleading at first. Formally, matrix \eqref{eq: cone differential} represents the morphism 
+    Using matrix notation here might be a bit misleading at first. Formally, matrix \eqref{eq: cone differential} represents the morphism 
     \[
         \left(\langle -d^{i+1}_{A}, 0 \rangle, \langle f^{i+1}, d^i_B \rangle\right) = \left\langle (-d^{i+1}_{A}, f^{i+1}), (0, d^i_B) \right\rangle
     \]
     according to our convention for defining morphisms from and into biproducts. 
-    A simple computation, using the fact that $f$ is a chain map, shows that $C(f)^\bullet$ is a chain complex.
+    A simple matrix calculation, using the fact that $f$ is a chain map and $d_A$, $d_B$ differentials, shows that $C(f)^\bullet$ is indeed a chain complex.
 \end{remark}
 
-Along with the cone of a chain map $f$ we also define two chain maps
+\begin{remark}
+    \info{this remark can also be skipped}
+    The naming convention of course comes from topology, where one can show that the singular chain complex associated to the topological mapping cone $M(f)$ of a continuous map $f\colon X \to Y$ is chain homotopically equivalent to the cone of the chain map induced by $f$ between singular chain complexes of $X$ and $Y$.
+\end{remark}
+
+Along with the cone of a chain map $f$ we also introduce two chain maps
 \[
     \tau_f \colon B^\bullet \to C(f)^\bullet,
 \]
-given by the collection $\left( \tau_f^i\colon B^i \to A^{i+1} \oplus B^i \right)_{i \in \Z}$, where $\tau_f^i = (0, \id{B^i})$, and 
+given by the collection $\left( \tau_f^i\colon B^i \to A^{i+1} \oplus B^i \right)_{i \in \Z}$, where $\tau_f^i$ is the canonical injection into the biproduct for all $i \in \Z$, and 
 \[
     \pi_f \colon C(f)^\bullet \to A^\bullet[1],
 \]
-given by the collection $\left( \pi_f^i\colon A^{i+1} \oplus B^i \to A^{i+1} \right)_{i \in \Z}$, where $\pi_f^i = \langle \id{A^{i+1}}, 0 \rangle$.
+given by the collection $\left( \pi_f^i\colon A^{i+1} \oplus B^i \to A^{i+1} \right)_{i \in \Z}$, where $\pi_f^i$ is the canonical projection from the biproduct for all $i \in \Z$.
 
-The naming convention of course comes from topology, where one can show that the singular chain complex associated to the topological mapping cone $M(f)$ of a continuous map $f\colon X \to Y$ is chain homotopically equivalent to the cone of the chain map induced by $f$ between singular chain complexes of $X$ and $Y$.
 
-We define any triangle in $K(\A)$ isomorphic to a triangle of the form
+\begin{definition}
+We define any triangle in $\kcat{\A}$ isomorphic to a triangle of the form
 \[
     A \xrightarrow{ \ f \ }  B \xrightarrow{\ \tau_f \ } C(f) \xrightarrow{\ \pi_f \ } A[1]
 \]
 to be distinguished.
+\end{definition}
 
 \begin{proposition}
-    The homotopy category $K(\A)$ together with the translation functor $T\colon K(\A) \to K(\A)$ and distinguished triangles defined above is a triangulated category.
+    The homotopy category $\kcat{\A}$ together with the translation functor $T\colon \kcat{\A} \to \kcat{\A}$ and distinguished triangles defined above is a triangulated category.
 \end{proposition}
 
 \begin{proof}
-    
+    \info{Very detailed proof is given in \cite[Ch.~3, 2.1.]{milicic-dercat}}    
 \end{proof}
 
+As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $\kcat{\A}$.
+\begin{center}
+    \begin{tabular}{c l}
+        $\kplus{\A}$ & \emph{Homotopy category of complexes bounded below}, spanned on \\ &complexes in $\A$ bounded below. \\
+        $\kminus{\A}$ & \emph{Homotopy category of complexes bounded above}, spanned on \\ &complexes in $\A$ bounded above. \\
+        $\kb{\A}$ & \emph{Homotopy category of bounded complexes}, spanned on \\ &bounded complexes in $\A$. \\    
+    \end{tabular}
+\end{center}
+
+
+For convenience we will in practice assume that unless otherwise stated our complexes $A^\bullet$ in $\kplus{\A}$ will be supported in $\N$ \ie we will assume $A^i \iso 0$ for $i < 0$.
+
 \begin{remark}
-    The proposition still holds true, if we replace $K(\A)$ with any of the categories $K^+(\A)$, $K^-(\A)$, $K^b(\A)$.
+    By proposition \ref{triangulated subcategory proposition} all the subcategories $\kplus{\A}$, $\kminus{\A}$, $\kb{\A}$ of $\kcat{\A}$ are triangulated.
+    % The proposition still holds true, if we replace $\kcat{\A}$ with any of the categories $\kplus{\A}$, $\kminus{\A}$, $\kb{\A}$.
 \end{remark}
 
 \subsubsection*{Cohomology}
@@ -733,7 +796,7 @@ is functorial \ie respects composition and maps identity morphisms to identity m
 \[
     H^i \colon \com(\A) \to \A
 \]
-a $k$-linear functor. Due to the following proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defiened functor 
+a $k$-linear functor. Due to the following proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defined functor 
 \[
     H^i \colon \kcat{\A} \to \A
 \]
@@ -741,11 +804,11 @@ on the homotopy category $\kcat{\A}$.
 
 \begin{proposition}
     \label{cohomology of nulhomotopic map}
-    Let $f \colon A^\bullet \to B^\bullet$ be a nulhomotopic chain map in $\com(\A)$. Then $f$ induces the zero map on cohomology, that is $H^i(f) = 0$ for all $i \in \Z$.
+    Let $f \colon A^\bullet \to B^\bullet$ be a nullhomotopic chain map in $\com(\A)$. Then $f$ induces the zero map on cohomology, that is $H^i(f) = 0$ for all $i \in \Z$.
 \end{proposition}
 
 \begin{proof}
-    As $f$ is nulhomotopic, there exists a homotopy $(h^i \colon A^i \to B^{i-1})_{i\in Z}$ such that 
+    As $f$ is nullhomotopic, there exists a homotopy $(h^i \colon A^i \to B^{i-1})_{i\in Z}$ such that 
     \[
         f^i =  h^{i+1} d^i_A + d^{i-1}_B  h^i \quad \text{ for all $i \in \Z$.}
     \]
@@ -764,6 +827,10 @@ on the homotopy category $\kcat{\A}$.
     \info{ugly but uses only universal properties, no elements}
 \end{proof}
 
+\begin{corollary}
+    Cohomology functors $H^i \colon \kcat{\A} \to \A$ are additive.
+\end{corollary}
+
 It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ at once, as is witnessed by the next proposition. 
 
 \begin{proposition} \cite[Theorem 12.3.3.]{kashiwara2006categories}
@@ -772,5 +839,7 @@ It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ a
         \cdots \to H^i(A^\bullet) \to H^i(B^\bullet) \to H^i(C^\bullet) \to H^{i+1}(A^\bullet) \to \cdots.
     \]
 \end{proposition}
+
+With respect to the triangulated structure on $\kcat{\A}$ the cohomology functors are cohomological. 
 
 \info{this is not done...}
