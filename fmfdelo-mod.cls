@@ -32,7 +32,7 @@
 \newcommand{\@sloeng}[2]{\ifthenelse{\boolean{@anglescina}}{#2}{#1}}
 \newcommand{\@iftrst}[2]{\@ifthen{\boolean{@trst}}{#1}}
 \def\@bibbackend{bibtex}
-\def\@citationstyle{alphabetic}
+\def\@citationstyle{alphabetic} % sprememba: iz "numeric" na "alphabetic"
 
 \DeclareOption{anglescina}{\setboolean{@anglescina}{true}}
 \DeclareOption{mat1}{
