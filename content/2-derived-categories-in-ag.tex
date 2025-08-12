@@ -5,24 +5,29 @@
 
 One of the main invariants of a scheme $X$ over $k$ is its category of coherent sheaves $\coherent{X}$. One can think of this category as a slight extension of the category of locally free $\OO_X$-modules of finite rank also known as $k$-vector bundles on $X$ in the sense that $\coherent{X}$ is abelian, where as the former very often is not. In this chapter we restrict ourself to noetherian schemes and our primary object of study will be the bounded derived category of coherent sheaves
 \[
-    D^b(X) := D^b(\coherent{X}).
+    \derb{X} := \derb{\coherent{X}}.
 \]
 
 \begin{proposition}
-    For a noetherian scheme $X$, its category of quasi-coherent shaves $\quasicoh{X}$ contains enough injectives.
+    The category of quasi-coherent sheaves $\quasicoh{X}$, of a noetherian scheme $X$, contains enough injectives.
+    % For a noetherian scheme $X$, its category of quasi-coherent shaves $\quasicoh{X}$ contains enough injectives.
 \end{proposition}
 
 \begin{proposition}
-    For a noetherian scheme $X$ the inclusion $D^b(X) \hookrightarrow D^b(\quasicoh{X})$ induces an equivalence of triangulated categories
+    For a noetherian scheme $X$ the inclusion $\derb{X} \hookrightarrow \derb{\quasicoh{X}}$ induces an equivalence of triangulated categories
     \[
-        D^b(X) \natiso D^b_{\mathsf{c}}(\quasicoh{X}),
+        \derb{X} \natiso \mathsf{D}^b_{\mathsf{coh}}(\quasicoh{X}),
     \]
-    where $D^b_{\mathsf{c}}(\quasicoh{X})$ is the full triangulated subcategory of $D^b(\quasicoh{X})$ spanned on bounded complexes of quasi-coherent shaves on $X$ with coherent cohomology.
+    where $\mathsf{D}^b_{\mathsf{coh}}(\quasicoh{X})$ is the full triangulated subcategory of $\derb{\quasicoh{X}}$, spanned on bounded complexes of quasi-coherent shaves on $X$ with coherent cohomology.
 \end{proposition}
 
 \begin{proposition}
     
 \end{proposition}
+
+\begin{theorem}\emph{\cite[Proposition 3.10]{huybrechts2006fouriermukai}}
+    The bounded derived category $\derb{X}$ of a connected noetherian scheme $X$ is indecomposable.
+\end{theorem}
 
 \newpage
 
