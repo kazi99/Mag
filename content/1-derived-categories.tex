@@ -1,6 +1,6 @@
 \section{Derived categories}
 
-The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments, although specialized to the homotopy category $\\kcat{\A}$ and the class of quasi-isomorphisms, do not differ tremendously from the general theory of localization of categories. 
+The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments, although specialized to the homotopy category $\kcat{\A}$ and the class of quasi-isomorphisms, do not differ tremendously from the general theory of localization of categories. 
 % Our arguments will try to be minimal and will not rely on the already established theory of localization of categories. Our approach might at times seem less elegant, but we include the exposition for completness nonetheless.
 A more comprehensive and formal treatment of this topic is laid out in \cite[Ch.~7]{kashiwara2006categories} or \cite{milicic-dercat}.
 The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. We close the section by establishing a correspondence between the hom-sets of $\derplus{\A}$ and certain $\operatorname{Ext}$-modules.
@@ -8,7 +8,7 @@ The second part covers the construction of derived functors. We see how the esta
 
 \subsection{Derived category of an abelian category}
 
-In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in section \ref{Derived categories in geometry}, involves the following. Instead of intrinsically \info{intrinsically might not be the best word as resolutions in some sense do represent a sheaf intrinsically in the sense of generators and relations (Hilbert syzygy thm)...}
+In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in section \ref{Derived categories in geometry}, involves the following. Instead of intrinsically \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
 studying the sheaf $\F$, we represent it with a so called \emph{resolution}, which consists of a complex of sheaves $F^\bullet$, built up from sheaves $F^i$, for $i \in \Z$, belonging to some class of sheaves, which is well behaved under cohomology, and a quasi-isomorphism of the form $F^\bullet \to \F$ or $\F \to F^\bullet$. 
 % After observing that using two different resolutions of $\F$ 
 After noting that the sheaf $\F$ can be seen as a complex concentrated in degree $0$ and observing that replacing a resolution of $\F$ with another one
@@ -26,20 +26,20 @@ Taking a step back, we would like to modify the homotopy category $\kcat{\cohere
 
 % The central idea in this part of algebraic geometry is 
 
-% Our goal in general is then fairly simple, modify the homotopy category $\\kcat{\A}$ in such a way that all the quasi-isomorphisms become isomorphisms in a ``universal way''. This is stated more formally in the form of the ensuing universal property.
+% Our goal in general is then fairly simple, modify the homotopy category $\kcat{\A}$ in such a way that all the quasi-isomorphisms become isomorphisms in a ``universal way''. This is stated more formally in the form of the ensuing universal property.
 
 \begin{definition}
-    Let $\A$ be an abelian category and $\\kcat{\A}$ its homotopy category. A triangulated category $\dercat{\A}$ together with a triangulated functor $Q\colon \\kcat{\A} \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
-    \begin{enumerate}[(i)]
-        \item For every quasi-isomorphism $s$ in $\\kcat{\A}$, $Q(s)$ is an isomorphism in $\dercat{\A}$.
-        \item For any triangulated category $\D$ and any functor $F\colon \\kcat{\A} \to \D$, sending quasi-isomorphisms $s$ in $\\kcat{\A}$ to isomorphisms $F(s)$ in $\D$,
+    Let $\A$ be an abelian category and $\kcat{\A}$ its homotopy category. A triangulated category $\dercat{\A}$ together with a triangulated functor $Q\colon \kcat{\A} \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
+    \begin{enumerate}
+        \item For every quasi-isomorphism $s$ in $\kcat{\A}$, $Q(s)$ is an isomorphism in $\dercat{\A}$.
+        \item For any triangulated category $\D$ and any functor $F\colon \kcat{\A} \to \D$, sending quasi-isomorphisms $s$ in $\kcat{\A}$ to isomorphisms $F(s)$ in $\D$,
         % for which $F(s)$ is an isomorphism in $\D$ for all quasi-isomorphisms $s$ in $\kcat{\A}$, 
         there exists a triangulated functor $F_0 \colon \dercat{\A} \to \D$, which is unique up to a unique natural isomorphism, such that $F \natiso F_0 \circ Q$.
         % , and moreover $F_0$ is required to be unique up to a unique natural isomorphism.
         In other words, the diagram below commutes up to natural isomorphism. 
         \[\begin{tikzcd}
             % https://q.uiver.app/#q=WzAsMyxbMCwwLCJLKFxcQSkiXSxbMCwxLCJEKFxcQSkiXSxbMSwwLCJcXEQiXSxbMCwyLCJGIl0sWzAsMSwiUSIsMl0sWzEsMiwiRl9cXEEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
-            {\\kcat{\A}} & \D \\
+            {\kcat{\A}} & \D \\
             {\dercat{\A}}
             \arrow["F", from=1-1, to=1-2]
             \arrow["Q"', from=1-1, to=2-1]
@@ -49,10 +49,10 @@ Taking a step back, we would like to modify the homotopy category $\kcat{\cohere
 \end{definition}
 
 \begin{remark}
-    We recognise this definition as a special case of localization of categories \cite[Def.~7.1.1.]{kashiwara2006categories}. In particular it defines $\dercat{\A}$ to be the \emph{localization of a triangulated category} $\\kcat{\A}$ by the family of all quasi-isomorphisms in $\\kcat{\A}$.
+    We recognize this definition as a special case of localization of categories \cite[Definition 7.1.1.]{kashiwara2006categories}. In particular it defines $\dercat{\A}$ to be the \emph{localization of a triangulated category} $\kcat{\A}$ by the family of all quasi-isomorphisms in $\kcat{\A}$.
 \end{remark}
 
-A naive way of constructing $\dercat{\A}$ out of $\\kcat{\A}$ would be to artificially add the inverses to all the quasi-isomorphisms in $\\kcat{\A}$ and then impose the correct collection of relations on the newly constructed class of morphisms. As this can quickly lead us to some set theoretic problems, we will construct a specific model, which acheves this, instead. Our construction is a priori not going to result in a locally small\footnote{A category $\mathcal C$ is called \emph{locally small} if for all objects $X$ and $Y$ of $\mathcal C$ the hom-sets $\Hom_\mathcal{C}(X, Y)$ are actual sets.} category, but as we shall soon see in practice all the categories we will be concerned with will be locally small. 
+A naive way of constructing $\dercat{\A}$ out of $\kcat{\A}$ would be to artificially add the inverses to all the quasi-isomorphisms in $\kcat{\A}$ and then impose the correct collection of relations on the newly constructed class of morphisms. As this can quickly lead us to some set theoretic problems, we will construct a specific model, which achieves this, instead. Our construction is a priori not going to result in a locally small\footnote{A category $\mathcal C$ is called \emph{locally small} if for all objects $X$ and $Y$ of $\mathcal C$ the hom-sets $\Hom_\mathcal{C}(X, Y)$ are actual sets.} category, but as we shall soon see in practice all the categories we will be concerned with will be locally small. 
 % still going to reach outside the scope of sets, but as we will se in practise 
 % this can quickly become very tricky, we will construct a specific model instead.
 % This will be achieved by constructing a specific model. 
@@ -62,8 +62,8 @@ To start, we first need a technical lemma resembling the Ore condition from non-
 
 \begin{lemma}
     \label{Ore condition}
-    Let $f \colon A^\bullet \to B^\bullet$ and $s\colon C^\bullet \to B^\bullet$ belong to the homotopy category $\\kcat{\A}$, with $s$ being a quasi-isomorphism. Then there exists a quasi-isomorphism $u\colon C_0^\bullet \to A^\bullet$ and a morphism $g\colon C_0^\bullet \to C^\bullet$, such that the diagram below commutes in $\kcat{\A}$.
-    \[\begin{tikzcd}
+    Let $f \colon A^\bullet \to B^\bullet$ and $s\colon C^\bullet \to B^\bullet$ belong to the homotopy category $\kcat{\A}$, with $s$ being a quasi-isomorphism. Then there exists a quasi-isomorphism $u\colon C_0^\bullet \to A^\bullet$ and a morphism $g\colon C_0^\bullet \to C^\bullet$, such that the diagram below commutes in $\kcat{\A}$.
+    \[\begin{tikzcd}[column sep = 2em]
         % https://q.uiver.app/#q=WzAsNCxbMCwyLCJBXlxcYnVsbGV0Il0sWzIsMiwiQl5cXGJ1bGxldCJdLFsyLDAsIkNeXFxidWxsZXQiXSxbMCwwLCJDXlxcYnVsbGV0XzAiXSxbMCwxLCJmIl0sWzIsMSwicyJdLFszLDIsImciLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywwLCJ1IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiwxLCJcXHNpbSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6Im5vbmUifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
         {C^\bullet_0} && {C^\bullet} \\
         \\
@@ -85,7 +85,7 @@ Equipped with the preceding lemma, we are now in a position to construct the der
 \[
     \textsl{Objects of $\dercat{\A}$:} \quad \text{chain complexes in $\A$},
 \]
-\ie the class of objects of $\\kcat{\A}$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
+\ie the class of objects of $\kcat{\A}$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
 % Its class of objects is formed by chain complexes in $\A$ \ie equals the class of objects of $\kcat{\A}$ and $\com(\A)$, but the definition of morphisms in this case is a bit more intricate. 
 For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not necessarily a set, but a class, so $\dercat{\A}$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ in the following way.
 
@@ -115,7 +115,7 @@ Dually, one also obtains the notion of a \emph{right roof spanned on $A^\bullet$
 	\arrow["\sim"', to=1-3, from=2-5]
 	\arrow["u", to=1-3, from=2-5]
 \end{tikzcd}\] 
-Our construction of $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ will be based on left roofs, for nothing is gained or lost by picking either one of the two. Both work just as well and are in fact equvalent. Despite our arbitrary choice, it is still benefitial to consider both, as we will sometimes switch between the two whenever convenient. 
+Our construction of $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ will be based on left roofs, for nothing is gained or lost by picking either one of the two. Both work just as well and are in fact equivalent. Despite our arbitrary choice, it is still beneficial to consider both, as we will sometimes switch between the two whenever convenient. 
 
 \begin{definition}
     Two left roofs $A^\bullet \xleftarrow{\ s_0 \ } C_0^\bullet \xrightarrow{\ f_0 \ } B^\bullet$ and $A^\bullet \xleftarrow{\ s_1 \ } C_1^\bullet \xrightarrow{\ f_1 \ } B^\bullet$ are defined to be \emph{equivalent}, if there exists a quasi-isomorphism $u\colon C^\bullet \to C_0^\bullet$ and a morphism ${g\colon C^\bullet \to C_1^\bullet}$ in $\kcat{\A}$, for which the diagram below commutes (in $\kcat{\A}$). 
@@ -156,28 +156,69 @@ which is also equivalent to the two roofs we started with $(s_0, f_0)$ and $(s_1
 \end{lemma}
 
 \begin{proof}
-    The relation is clearly reflexive. We take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose left roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and left roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the solid diagram below.
-    \[\begin{tikzcd}
-        % https://q.uiver.app/#q=WzAsOCxbMCwzLCJBIl0sWzEsMiwiQ18wIl0sWzYsMywiQiJdLFs1LDIsIkNfMiJdLFszLDIsIkNfMSJdLFsyLDEsIkRfMCJdLFs0LDEsIkRfMSJdLFszLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFsxLDAsIlxcc2ltIiwyXSxbNSwxLCJcXHNpbSIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19LFsyNDAsNjAsNjAsMV1dLFs1LDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbNCwwLCJcXHNpbSIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs0LDJdLFs2LDMsIiIsMCx7ImNvbG91ciI6WzMwMCw2MCw2MF19XSxbNiw0LCJcXHNpbSIsMix7ImNvbG91ciI6WzMwMCw2MCw2MF19LFszMDAsNjAsNjAsMV1dLFs3LDUsIlxcc2ltIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsNiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
-        &&& C^\bullet \\
-        && {D_0^\bullet} && {D_1^\bullet} \\
-        & {C_0^\bullet} && {C_1^\bullet} && {C_2^\bullet} \\
-        A^\bullet &&&&&& B^\bullet
-        \arrow["\sim"', dashed, from=1-4, to=2-3]
-        \arrow[dashed, from=1-4, to=2-5]
-        \arrow["\sim"', color={rgb,255:red,92;green,92;blue,214}, from=2-3, to=3-2]
-        \arrow[color={rgb,255:red,92;green,92;blue,214}, from=2-3, to=3-4]
-        \arrow["\sim"', color={rgb,255:red,214;green,92;blue,214}, from=2-5, to=3-4]
-        \arrow[color={rgb,255:red,214;green,92;blue,214}, from=2-5, to=3-6]
-        \arrow["\sim"', from=3-2, to=4-1]
-        \arrow[curve={height=12pt}, from=3-2, to=4-7]
-        \arrow["\sim"'{pos=0.2}, from=3-4, to=4-1]
-        \arrow[from=3-4, to=4-7]
-        \arrow["\sim"{pos=0.6}, curve={height=-12pt}, from=3-6, to=4-1]
-        \arrow[from=3-6, to=4-7]
+    The relation is clearly reflexive. We take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose left roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and left roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the diagrams
+    \begin{center}
+        \begin{tabular}{l c r}
+            \begin{tikzcd}[column sep = small, row sep = small]
+                % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBXlxcYnVsbGV0Il0sWzEsMSwiQ18wXlxcYnVsbGV0Il0sWzQsMiwiQl5cXGJ1bGxldCJdLFszLDEsIkNfMV5cXGJ1bGxldCJdLFsyLDAsIkReXFxidWxsZXQiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFsxLDAsIlxcc2ltIiwyXSxbNCwxLCJcXHNpbSIsMl0sWzQsMywiZyIsMl0sWzQsMSwidSJdXQ==
+                && {D_0^\bullet} \\
+                & {C_0^\bullet} && {C_1^\bullet} \\
+                {A^\bullet} &&&& {B^\bullet}
+                \arrow["\sim"', from=1-3, to=2-2]
+                \arrow["", from=1-3, to=2-2]
+                \arrow[""', from=1-3, to=2-4]
+                \arrow["\sim"', from=2-2, to=3-1]
+                \arrow[from=2-2, to=3-5]
+                \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
+                \arrow[from=2-4, to=3-5]
+            \end{tikzcd} & 
+            and &
+            \begin{tikzcd}[column sep = small, row sep = small]
+                % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBXlxcYnVsbGV0Il0sWzEsMSwiQ18wXlxcYnVsbGV0Il0sWzQsMiwiQl5cXGJ1bGxldCJdLFszLDEsIkNfMV5cXGJ1bGxldCJdLFsyLDAsIkReXFxidWxsZXQiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFsxLDAsIlxcc2ltIiwyXSxbNCwxLCJcXHNpbSIsMl0sWzQsMywiZyIsMl0sWzQsMSwidSJdXQ==
+                && {D_1^\bullet} \\
+                & {C_1^\bullet} && {C_2^\bullet} \\
+                {A^\bullet} &&&& {B^\bullet.}
+                \arrow["\sim"', from=1-3, to=2-2]
+                \arrow["", from=1-3, to=2-2]
+                \arrow[""', from=1-3, to=2-4]
+                \arrow["\sim"', from=2-2, to=3-1]
+                \arrow[from=2-2, to=3-5]
+                \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
+                \arrow[from=2-4, to=3-5]
+            \end{tikzcd}
+        \end{tabular}
+    \end{center}
+    % \[\begin{tikzcd}
+    %     % https://q.uiver.app/#q=WzAsOCxbMCwzLCJBIl0sWzEsMiwiQ18wIl0sWzYsMywiQiJdLFs1LDIsIkNfMiJdLFszLDIsIkNfMSJdLFsyLDEsIkRfMCJdLFs0LDEsIkRfMSJdLFszLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFsxLDAsIlxcc2ltIiwyXSxbNSwxLCJcXHNpbSIsMix7ImNvbG91ciI6WzI0MCw2MCw2MF19LFsyNDAsNjAsNjAsMV1dLFs1LDQsIiIsMCx7ImNvbG91ciI6WzI0MCw2MCw2MF19XSxbNCwwLCJcXHNpbSIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs0LDJdLFs2LDMsIiIsMCx7ImNvbG91ciI6WzMwMCw2MCw2MF19XSxbNiw0LCJcXHNpbSIsMix7ImNvbG91ciI6WzMwMCw2MCw2MF19LFszMDAsNjAsNjAsMV1dLFs3LDUsIlxcc2ltIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsNiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    %     &&& C^\bullet \\
+    %     && {D_0^\bullet} && {D_1^\bullet} \\
+    %     & {C_0^\bullet} && {C_1^\bullet} && {C_2^\bullet} \\
+    %     A^\bullet &&&&&& B^\bullet
+    %     \arrow["\sim"', dashed, from=1-4, to=2-3]
+    %     \arrow[dashed, from=1-4, to=2-5]
+    %     \arrow["\sim"', color={rgb,255:red,92;green,92;blue,214}, from=2-3, to=3-2]
+    %     \arrow[color={rgb,255:red,92;green,92;blue,214}, from=2-3, to=3-4]
+    %     \arrow["\sim"', color={rgb,255:red,214;green,92;blue,214}, from=2-5, to=3-4]
+    %     \arrow[color={rgb,255:red,214;green,92;blue,214}, from=2-5, to=3-6]
+    %     \arrow["\sim"', from=3-2, to=4-1]
+    %     \arrow[curve={height=12pt}, from=3-2, to=4-7]
+    %     \arrow["\sim"'{pos=0.2}, from=3-4, to=4-1]
+    %     \arrow[from=3-4, to=4-7]
+    %     \arrow["\sim"{pos=0.6}, curve={height=-12pt}, from=3-6, to=4-1]
+    %     \arrow[from=3-6, to=4-7]
+    % \end{tikzcd}\]
+    By lemma \ref{Ore condition} the right roof $D_0^\bullet \to C_1^\bullet \leftarrow D_1^\bullet$ may be completed to form a commutative square
+    \[\begin{tikzcd}[column sep = 2em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwyLCJEXzBeXFxidWxsZXQiXSxbMiwyLCJDXzFcXGJ1bGxldCJdLFsyLDAsIkReXFxidWxsZXRfMSJdLFswLDAsIkNeXFxidWxsZXQiXSxbMCwxXSxbMiwxLCJcXHNpbSJdLFszLDAsIlxcc2ltIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+        {C^\bullet} && {D^\bullet_1} \\
+        \\
+        {D_0^\bullet} && {C_1^\bullet,}
+        \arrow[dashed, from=1-1, to=1-3]
+        \arrow["\sim"', dashed, from=1-1, to=3-1]
+        \arrow["\sim", from=1-3, to=3-3]
+        \arrow[from=3-1, to=3-3]
     \end{tikzcd}\]
-    \info{I don't like how this diagram looks...}
-    By lemma \ref{Ore condition} this diagram may be completed with the dashed arrows at the top, proving that $A^\bullet \leftarrow C_0^\bullet \rightarrow B^\bullet$ and $A^\bullet \leftarrow C_2^\bullet \rightarrow B^\bullet$ are equivalent.
+    proving that $A^\bullet \leftarrow C_0^\bullet \rightarrow B^\bullet$ and $A^\bullet \leftarrow C_2^\bullet \rightarrow B^\bullet$ are equivalent.
 \end{proof}
 
 For a left roof \eqref{eq: left roof} we let $\left[s \setminus f\right]$ or $\left[A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{\ f \ } B^\bullet\right]$ denote its equivalence class under $\equiv$. 
@@ -193,7 +234,7 @@ We then define $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ to be the class of lef
 \left[
 \begin{array}{l c r}
 & C^\bullet & \\
-\quad \swarrow & & \searrow \quad\\
+\quad \swarrow & & \searrow \quad \ \\
 A^\bullet & & B^\bullet
 \end{array}
 \right]_\equiv
@@ -209,9 +250,9 @@ s \in \Hom_{K(A)}(C^\bullet, A^\bullet) \text{ quasi-iso.}
 \vspace{0,3 cm}
 
 \noindent
-\textsc{Composition.} Next we define the compositon operations
+\textsc{Composition.} Next we define the composition operations
 \[
-    \circ \colon \Hom_{\dercat{\A}}(A_0^\bullet, A_1^\bullet) \times \Hom_{\dercat{\A}}(A_1^\bullet, A_2^\bullet) \to \Hom_{\dercat{\A}}(A_0^\bullet, A_2^\bullet)
+    \circ \colon \Hom_{\dercat{\A}}(A_0^\bullet, A_1^\bullet) \times \Hom_{\dercat{\A}}(A_1^\bullet, A_2^\bullet) \to \Hom_{\dercat{\A}}(A_0^\bullet, A_2^\bullet),
 \]
 for all objects $A_0^\bullet$, $A_1^\bullet$ and $A_2^\bullet$ of $\dercat{\A}$. Let $\phi_0\colon A_0^\bullet \to A_1^\bullet$ and $\phi_1\colon A_1^\bullet \to A_2^\bullet$ be a pair of composable morphisms in $\dercat{\A}$. Next, pick their respective left roof representatives, $A_0^\bullet \xleftarrow{\ s_0\ } C_0^\bullet \xrightarrow{\ f_0 \ } A_1^\bullet$ and $A_1^\bullet \xleftarrow{\ s_1\ } C_1^\bullet \xrightarrow{\ f_1 \ } A_2^\bullet$, and concatenate them according to the solid zig-zag diagram below. 
 \[\begin{tikzcd}[row sep = small, column sep = small]
@@ -245,8 +286,8 @@ The identity morphism on an object $A^\bullet$ of $\dercat{\A}$ is defined to be
 \vspace{0,3 cm}
 
 \noindent
-\textsc{Functor $Q\colon \\kcat{\A} \to \dercat{\A}$.} The \emph{localization} functor $Q\colon \\kcat{\A} \to \dercat{\A}$ is an identity on objects functor with the action on morphisms defined by the assignment 
-\[\begin{tikzcd}[row sep = 0.5em, column sep = 0.75em]
+\textsc{Functor $Q\colon \kcat{\A} \to \dercat{\A}$.} The \emph{localization} functor $Q\colon \kcat{\A} \to \dercat{\A}$ is an identity on objects functor with the action on morphisms defined by the assignment 
+\[\begin{tikzcd}[row sep = 0.3em, column sep = 0.75em]
     % https://q.uiver.app/#q=WzAsNCxbMSwwLCJcXEhvbV97XFxkZXJjYXR7XFxBfX0oQV5cXGJ1bGxldCwgSV5cXGJ1bGxldCkiXSxbMCwwLCJcXEhvbV97fShBXlxcYnVsbGV0LCBJXlxcYnVsbGV0KSJdLFswLDEsIlxcbGVmdCggZlxcY29sb24gQV5cXGJ1bGxldCBcXHRvIEleXFxidWxsZXRcXHJpZ2h0KSJdLFsxLDEsIlxcbGVmdFtBXlxcYnVsbGV0IFxceGxlZnRhcnJvd3sgXFwgXFxpZHtBXlxcYnVsbGV0fSB9IEFeXFxidWxsZXQgXFx4cmlnaHRhcnJvd3sgXFwgZiBcXCB9IEleXFxidWxsZXRcXHJpZ2h0XSJdLFsyLDMsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbMSwwXV0=
 	{\Hom_{\kcat{\A}}(A^\bullet, B^\bullet)} & {\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)} \\
 	{\left( f\colon A^\bullet \to B^\bullet\right)} & {\left[A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \xrightarrow{ \ f \ } B^\bullet\right].}
@@ -254,14 +295,75 @@ The identity morphism on an object $A^\bullet$ of $\dercat{\A}$ is defined to be
 	\arrow[maps to, from=2-1, to=2-2]
 \end{tikzcd}\]
 
-
-\vspace{0,3 cm}
+% \vspace{0,3 cm}
 
 \noindent
-\textsc{$k$-linear structure.}
+\textsc{$k$-linear structure.} To equip the hom-sets of $\dercat{\A}$ with a $k$-module structure, we consult the following lemma resembling finding a common denominator in the context of left roofs.
 
-% We first define the biproduct on $\dercat{\A}$.
-\info{finish subsection}
+\begin{lemma}
+    \label{common denominator for left roofs}
+    Let $\phi_0 \colon A^\bullet \to B^\bullet$ and $\phi_1 \colon A^\bullet \to B^\bullet$ be two morphisms in $\dercat{\A}$ represented by left roofs
+    \begin{center}
+    \begin{tabular}{l c r}
+        \begin{tikzcd}[row sep = small, column sep = small]
+            % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQ18wIl0sWzQsMSwiQiJdLFsxLDIsImZfMCJdLFsxLDAsInNfMCIsMl0sWzEsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+            && {C_0^\bullet} \\
+            A^\bullet &&&& B^\bullet
+            \arrow["{s_0}"', from=1-3, to=2-1]
+            \arrow["\sim", draw=none, from=1-3, to=2-1]
+            \arrow["{f_0}", from=1-3, to=2-5]
+        \end{tikzcd}
+        & \quad and \quad &
+        \begin{tikzcd}[row sep = small, column sep = small]
+            % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQ18wIl0sWzQsMSwiQiJdLFsxLDIsImZfMCJdLFsxLDAsInNfMCIsMl0sWzEsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+            && {C_1^\bullet} \\
+            A^\bullet &&&& B^\bullet
+            \arrow["{s_1}"', from=1-3, to=2-1]
+            \arrow["\sim", draw=none, from=1-3, to=2-1]
+            \arrow["{f_1}", from=1-3, to=2-5]
+        \end{tikzcd}
+    \end{tabular}
+    \end{center}
+    Then there is a quasi-isomorphism $s \colon C^\bullet \to A^\bullet$ and morphisms $g_0$, $g_1 \colon C^\bullet \to B^\bullet$, such that 
+    \begin{center}
+    \begin{tabular}{l c r}
+        \begin{tikzcd}[row sep = small, column sep = small]
+            % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQ18wIl0sWzQsMSwiQiJdLFsxLDIsImZfMCJdLFsxLDAsInNfMCIsMl0sWzEsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+            && {C^\bullet} \\
+            A^\bullet &&&& B^\bullet
+            \arrow["{s}"', from=1-3, to=2-1]
+            \arrow["\sim", draw=none, from=1-3, to=2-1]
+            \arrow["{g_0}", from=1-3, to=2-5]
+        \end{tikzcd}
+        & \quad and \quad &
+        \begin{tikzcd}[row sep = small, column sep = small]
+            % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQ18wIl0sWzQsMSwiQiJdLFsxLDIsImZfMCJdLFsxLDAsInNfMCIsMl0sWzEsMCwiXFxzaW0iLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJub25lIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+            && {C^\bullet} \\
+            A^\bullet &&&& B^\bullet
+            \arrow["{s}"', from=1-3, to=2-1]
+            \arrow["\sim", draw=none, from=1-3, to=2-1]
+            \arrow["{g_1}", from=1-3, to=2-5]
+        \end{tikzcd}
+    \end{tabular}
+    \end{center}
+    represent $\phi_0$ and $\phi_1$ respectively.
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+Using notation from lemma \ref{common denominator for left roofs}, we define the addition operation on $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ by the rule
+\[
+    \phi_0 + \phi_1 := \left[ A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{ g_0 + g_1 } B^\bullet \right].
+\]
+It is well defined, associative, commutative and has a neutral element $0 = Q(0)$. The action of scalars of the ring $k$ is defined as  
+\[
+    \lambda \phi_0 := \left[ A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{ \lambda f_0 } B^\bullet \right].
+\]
+Moreover, the composition law $\circ$ is $k$-bilinear and the localization functor $Q \colon \kcat{\A} \to \dercat{\A}$ is an additive functor. 
+
+
 
 \vspace{0,3 cm}
 
@@ -273,6 +375,8 @@ The identity morphism on an object $A^\bullet$ of $\dercat{\A}$ is defined to be
 \begin{remark}
     All that has been defined and established in this section with left roofs can analogously also be done with right roofs.
 \end{remark}
+
+\info{maybe add that the constructed $\dercat{\A}$ satisfies the universal property form the beginning. Later it can be referenced when considering functors going out of $\dercat{\A}$.}
 
 As with the homotopy category of complexes $\kcat{\A}$, we also have the following bounded versions of the derived category $\dercat{\A}$, appearing as full triangulated subcategories of the unbounded variant $\dercat{\A}$ by proposition \ref{triangulated subcategory proposition}.
 
@@ -296,8 +400,12 @@ As with the homotopy category of complexes $\kcat{\A}$, we also have the followi
 After possibly working with proper classes when constructing the derived category, this section will once again place us back on familiar grounds of set theory. Aside from these concerns the establishing result of this section will have a very important practical application -- construction of derived functors. Under an assumption on the abelian category $\A$, we will establish an equivalence of $\derplus{\A}$ with the homotopy category of a full additive subcategory of $\A$, spanned on \emph{injective objects}, which we define presently. 
 
 \begin{definition}
-    An object $I$ of an abelian category $\A$ is called \emph{injective}\footnote{Dually, an object $P$ of $\A$ is \emph{projective}, if the functor $\Hom_\A(P, -) \colon \A \to \mod{k}$ is exact, and $\A$ is said to \emph{have enough projectives}, if every object $A$ of $\A$ is a quotient of some projective object \ie there is an epimorphism $P \twoheadrightarrow A$ for some projective object $P$.
-}, if the functor $\Hom_\A(-, I)\colon \A^\op \to \mod{k}$ is exact. Equivalently whenever for any monomorphism ${A \hookrightarrow B}$ and morphism $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
+    An object $I$ of an abelian category $\A$ is \emph{injective}\footnote{Dually, an object $P$ of $\A$ is \emph{projective}, if $P$ is injective in $\A^\op$, or more explicitly, the functor $\Hom_\A(P, -) \colon \A \to \mod{k}$ is exact. Category $\A$ is said to \emph{have enough projectives}, if every object $A$ of $\A$ is a quotient of some projective object \ie there is an epimorphism $P \twoheadrightarrow A$ for some projective object $P$.
+}, if the functor 
+\[
+    \Hom_\A(-, I)\colon \A^\op \to \mod{k}
+\]
+is exact. Equivalently whenever for any monomorphism ${A \hookrightarrow B}$ and morphism $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
     \[\begin{tikzcd}[column sep = 2em]
         % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBIl0sWzIsMSwiQiJdLFsxLDAsIkkiXSxbMCwxLCIwIl0sWzMsMF0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyXSxbMSwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
         & I \\
@@ -308,15 +416,15 @@ After possibly working with proper classes when constructing the derived categor
         \arrow[dashed, from=2-3, to=1-2]
     \end{tikzcd}\]
 \end{definition}
-A category $\A$ is said to \emph{have enough injectives} if every object $A$ of $\A$ embeds into an injective object \ie there is a monomorphism $A \hookrightarrow I$ for some injective object $I$. 
+A category $\A$ is said to \emph{have enough injectives}, if every object $A$ of $\A$ embeds into an injective object \ie there is a monomorphism $A \hookrightarrow I$ for some injective object $I$. 
 
 \begin{remark}
-    A simple verification shows, that the full subcategory of an abelian or $k$-linear category $\A$, spanend on all injective objects of $\A$ is a $k$-linear category, as the zero object $0$ is injective and the biproduct of two injective objects is again injective. We denote this category by $\J$.
+    A simple verification shows, that the full subcategory of an abelian or $k$-linear category $\A$, spanned on all injective objects of $\A$ is a $k$-linear category, as the zero object $0$ is injective and the biproduct of two injective objects is again injective. We denote this category by $\J$.
 \end{remark}
 
 We will use injectives to 
 
-We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injective resolution} of the complex $A^\bullet$. Later we will also see that this injective resolution is unique up to homotopy \ie any two injective resolutions of $A^\bullet$ are homotopically equivalent. Throughout this section differenitials of $I^\bullet$ will be denoted with $\delta^i\colon I^i \to I^{i+1}$.
+We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injective resolution} of the complex $A^\bullet$. Later we will also see that this injective resolution is unique up to homotopy \ie any two injective resolutions of $A^\bullet$ are homotopically equivalent. Throughout this section differentials of $I^\bullet$ will be denoted with $\delta^i\colon I^i \to I^{i+1}$.
 
 \begin{proposition}
     \label{injective resolution}
