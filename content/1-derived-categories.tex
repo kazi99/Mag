@@ -3,7 +3,7 @@
 The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments, although specialized to the homotopy category $\kcat{\A}$ and the class of quasi-isomorphisms, do not differ tremendously from the general theory of localization of categories. 
 % Our arguments will try to be minimal and will not rely on the already established theory of localization of categories. Our approach might at times seem less elegant, but we include the exposition for completness nonetheless.
 A more comprehensive and formal treatment of this topic is laid out in \cite[Ch.~7]{kashiwara2006categories} or \cite{milicic-dercat}.
-The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. We close the section by establishing a correspondence between the hom-sets of $\derplus{\A}$ and certain $\operatorname{Ext}$-modules.
+The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. To close the section, we prove a correspondence between the hom-sets of $\derplus{\A}$ and certain $\operatorname{Ext}$-modules.
 % more general framework realtes back to the classical higher derived functors. 
 
 \subsection{Derived category of an abelian category}
@@ -29,8 +29,9 @@ Taking a step back, we would like to modify the homotopy category $\kcat{\cohere
 % Our goal in general is then fairly simple, modify the homotopy category $\kcat{\A}$ in such a way that all the quasi-isomorphisms become isomorphisms in a ``universal way''. This is stated more formally in the form of the ensuing universal property.
 
 \begin{definition}
+    \label{universal property of D(A)}
     Let $\A$ be an abelian category and $\kcat{\A}$ its homotopy category. A triangulated category $\dercat{\A}$ together with a triangulated functor $Q\colon \kcat{\A} \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
-    \begin{enumerate}
+    \begin{enumerate}[label = (\roman*)]
         \item For every quasi-isomorphism $s$ in $\kcat{\A}$, $Q(s)$ is an isomorphism in $\dercat{\A}$.
         \item For any triangulated category $\D$ and any functor $F\colon \kcat{\A} \to \D$, sending quasi-isomorphisms $s$ in $\kcat{\A}$ to isomorphisms $F(s)$ in $\D$,
         % for which $F(s)$ is an isomorphism in $\D$ for all quasi-isomorphisms $s$ in $\kcat{\A}$, 
@@ -57,6 +58,8 @@ A naive way of constructing $\dercat{\A}$ out of $\kcat{\A}$ would be to artific
 % this can quickly become very tricky, we will construct a specific model instead.
 % This will be achieved by constructing a specific model. 
 % Instead we will construct a specific model, which achieves this. 
+
+\subsubsection{Construction}
 
 To start, we first need a technical lemma resembling the Ore condition from non-commutative algebra.
 
@@ -85,7 +88,7 @@ Equipped with the preceding lemma, we are now in a position to construct the der
 \[
     \textsl{Objects of $\dercat{\A}$:} \quad \text{chain complexes in $\A$},
 \]
-\ie the class of objects of $\kcat{\A}$ or $\com(\A)$, and a class of morphisms, which is a bit more intricate to define. 
+\ie the class of objects of $\kcat{\A}$ or $\com(\A)$, and a class of morphisms, which is quite intricate to define. 
 % Its class of objects is formed by chain complexes in $\A$ \ie equals the class of objects of $\kcat{\A}$ and $\com(\A)$, but the definition of morphisms in this case is a bit more intricate. 
 For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not necessarily a set, but a class, so $\dercat{\A}$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ in the following way.
 
@@ -105,7 +108,7 @@ A \emph{left roof spanned on $A^\bullet$ and $B^\bullet$} is a pair of morphisms
 	\arrow["f"', from=1-3, to=2-5]
     \end{tikzcd}
 \end{equation}
-or denoted by $(s,f)$.
+and denoted by $(s,f)$.
 Dually, one also obtains the notion of a \emph{right roof spanned on $A^\bullet$ and $B^\bullet$}, which is a pair of morphisms $g\colon A^\bullet \to C^\bullet$ and $u\colon B^\bullet \to C^\bullet$, where $u$ is a quasi-isomorphism, and is depicted below.
 \[\begin{tikzcd}[row sep = small, column sep = small]
     % https://q.uiver.app/#q=WzAsMyxbMCwxLCJBIl0sWzIsMCwiQyJdLFs0LDEsIkIiXSxbMSwyLCJmIiwyXSxbMSwwLCJzIl0sWzEsMCwiXFxzaW0iLDJdXQ==
@@ -115,13 +118,14 @@ Dually, one also obtains the notion of a \emph{right roof spanned on $A^\bullet$
 	\arrow["\sim"', to=1-3, from=2-5]
 	\arrow["u", to=1-3, from=2-5]
 \end{tikzcd}\] 
-Our construction of $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ will be based on left roofs, for nothing is gained or lost by picking either one of the two. Both work just as well and are in fact equivalent. Despite our arbitrary choice, it is still beneficial to consider both, as we will sometimes switch between the two whenever convenient. 
+Our construction of $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ will be based on left roofs, for nothing is gained or lost by picking either one of the two. Both work just as well and are in fact equivalent (see \cite[Remark 7.1.18]{kashiwara2006categories}). Despite our arbitrary choice, it is still beneficial to consider both, as we will sometimes switch between the two whenever convenient. 
 
 \begin{definition}
     Two left roofs $A^\bullet \xleftarrow{\ s_0 \ } C_0^\bullet \xrightarrow{\ f_0 \ } B^\bullet$ and $A^\bullet \xleftarrow{\ s_1 \ } C_1^\bullet \xrightarrow{\ f_1 \ } B^\bullet$ are defined to be \emph{equivalent}, if there exists a quasi-isomorphism $u\colon C^\bullet \to C_0^\bullet$ and a morphism ${g\colon C^\bullet \to C_1^\bullet}$ in $\kcat{\A}$, for which the diagram below commutes (in $\kcat{\A}$). 
     \begin{equation}
         \label{eq: equivalence of left roofs}
-    \begin{tikzcd}[row sep = 1.5em, column sep = 2em]
+    \begin{tikzcd}[row sep = small, column sep = small]
+        % [row sep = 1.5em, column sep = 2em]
         % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBIl0sWzEsMSwiQ18wIl0sWzQsMiwiQiJdLFszLDEsIkNfMSJdLFsyLDAsIkMiXSxbMSwyXSxbMywwLCJcXHNpbSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFszLDJdLFs0LDEsIlxcc2ltIiwyXSxbNCwzLCJnIiwyXSxbMSwwLCJcXHNpbSIsMl0sWzQsMSwidSJdXQ==
         && C^\bullet \\
         & {C_0^\bullet} && {C_1^\bullet} \\
@@ -130,9 +134,9 @@ Our construction of $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ will be based on 
         \arrow["u", from=1-3, to=2-2]
         \arrow["g"', from=1-3, to=2-4]
         \arrow["\sim"', from=2-2, to=3-1]
-        \arrow[from=2-2, to=3-5]
         \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
         \arrow[from=2-4, to=3-5]
+        \arrow[from=2-2, to=3-5, crossing over]
     \end{tikzcd}
     \end{equation}
 We denote this relation by $\equiv$.
@@ -168,9 +172,9 @@ which is also equivalent to the two roofs we started with $(s_0, f_0)$ and $(s_1
                 \arrow["", from=1-3, to=2-2]
                 \arrow[""', from=1-3, to=2-4]
                 \arrow["\sim"', from=2-2, to=3-1]
-                \arrow[from=2-2, to=3-5]
                 \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
                 \arrow[from=2-4, to=3-5]
+                \arrow[from=2-2, to=3-5, crossing over]
             \end{tikzcd} & 
             and &
             \begin{tikzcd}[column sep = small, row sep = small]
@@ -182,9 +186,9 @@ which is also equivalent to the two roofs we started with $(s_0, f_0)$ and $(s_1
                 \arrow["", from=1-3, to=2-2]
                 \arrow[""', from=1-3, to=2-4]
                 \arrow["\sim"', from=2-2, to=3-1]
-                \arrow[from=2-2, to=3-5]
                 \arrow["\sim"{pos=0.6}, from=2-4, to=3-1]
                 \arrow[from=2-4, to=3-5]
+                \arrow[from=2-2, to=3-5, crossing over]
             \end{tikzcd}
         \end{tabular}
     \end{center}
@@ -275,7 +279,7 @@ By lemma \ref{Ore condition} there are morphisms $u\colon C^\bullet \to C_0^\bul
     \phi_1 \circ \phi_0 :=
     \left[A_0^\bullet \xleftarrow{s_0 \circ u} C^\bullet \xrightarrow{f_1 \circ g} A_2^\bullet\right].
 \]
-It can be shown that this is a well defined composition that is also associative. We leave out the proof, because it is routine, but refer the reader to a very detailed account by Miličić \cite[Ch.~1.3]{milicic-dercat}. 
+It can be shown that this is a well defined composition, independent of the choice of left roof representatives of $\phi_0$ and $\phi_1$ and independent of the choice of the peak $C^\bullet$ and morphisms $u\colon C^\bullet \to C_0^\bullet$ and $g\colon C^\bullet \to C_1^\bullet$, for which the square at the top of the diagram commutes. It is also true that the operation is associative. We leave out the proof, because it is routine, but refer the reader to a very detailed account by Miličić \cite[Ch.~1.3]{milicic-dercat}. 
 
 \vspace{0,3 cm}
 
@@ -359,7 +363,7 @@ Using notation from lemma \ref{common denominator for left roofs}, we define the
 \]
 It is well defined, associative, commutative and has a neutral element $0 = Q(0)$. The action of scalars of the ring $k$ is defined as  
 \[
-    \lambda \phi_0 := \left[ A^\bullet \xleftarrow{\ s\ } C^\bullet \xrightarrow{ \lambda f_0 } B^\bullet \right].
+    \lambda \phi_0 := \left[ A^\bullet \xleftarrow{\ s_0\ } C^\bullet \xrightarrow{ \lambda f_0 } B^\bullet \right].
 \]
 Moreover, the composition law $\circ$ is $k$-bilinear and the localization functor $Q \colon \kcat{\A} \to \dercat{\A}$ is an additive functor. 
 
@@ -376,7 +380,40 @@ Moreover, the composition law $\circ$ is $k$-bilinear and the localization funct
     All that has been defined and established in this section with left roofs can analogously also be done with right roofs.
 \end{remark}
 
-\info{maybe add that the constructed $\dercat{\A}$ satisfies the universal property form the beginning. Later it can be referenced when considering functors going out of $\dercat{\A}$.}
+\begin{proposition}
+    \label{universal property for D(A) proposition}
+    The constructed derived category $\dercat{\A}$ of an abelian category $\A$ together with the localization functor $Q \colon \kcat{\A} \to \dercat{\A}$ satisfies the universal property of definition \ref{universal property of D(A)}.
+\end{proposition}
+
+\begin{proof}
+    For (i) suppose $s\colon A^\bullet \to B^\bullet$ is a quasi-isomorphism. Then the inverse of $Q(s)$ is a morphism $\phi\colon B^\bullet \to A^\bullet$ represented by the left roof $B^\bullet \xleftarrow{\ s \ } A^\bullet \xrightarrow{\id{A^\bullet}} A^\bullet$. Clearly $\phi \circ Q(s) = \id{A^\bullet}$, whereas $Q(s) \circ \phi$, represented by $B^\bullet \xleftarrow{s} A^\bullet \xrightarrow{s} B^\bullet$, can be seen to equal $\id{B^\bullet}$ by the following diagram.
+    % , where all the unmarked arrows are identities.
+    \[\begin{tikzcd}[column sep = small, row sep = small]
+        % https://q.uiver.app/#q=WzAsNSxbMCwyLCJCXlxcYnVsbGV0Il0sWzEsMSwiQV5cXGJ1bGxldCJdLFs0LDIsIkJeXFxidWxsZXQiXSxbMywxLCJCXlxcYnVsbGV0Il0sWzIsMCwiQV5cXGJ1bGxldCJdLFsxLDIsInMiLDJdLFszLDAsIiIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MCwibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywyLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDAsInMiLDJdLFs0LDEsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsMywicyIsMl1d
+        && {A^\bullet} \\
+        & {A^\bullet} && {B^\bullet} \\
+        {B^\bullet} &&&& {B^\bullet}
+        \arrow[equals, from=1-3, to=2-2]
+        \arrow["s"', from=1-3, to=2-4]
+        \arrow["s"', from=2-2, to=3-1]
+        \arrow[equals, from=2-4, to=3-1]
+        \arrow[equals, from=2-4, to=3-5]
+        \arrow["s"'{pos=0.7}, from=2-2, to=3-5, crossing over]
+    \end{tikzcd}\]
+    For (ii) the functor $F_0 \colon \dercat{\A} \to \kcat{\A}$ is defined by the assignment on
+    \begin{center}
+    \begin{tabular}{r l}
+        \textsl{Objects:} & $A^\bullet \longmapsto F(A^\bullet)$. \\
+        \textsl{Morphisms:} & $[A^\bullet \xleftarrow{s} C^\bullet \xrightarrow{f} B^\bullet] \longmapsto F(f) \circ F(s)\inv$.
+    \end{tabular}
+    \end{center}
+    This is well defined and functorial for the functor $F\colon \kcat{\A} \to \D$ sends quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\D$. Moreover, $F_0$ is a $k$-linear functor, as can quickly be computed, applying lemma \ref{common denominator for left roofs} and its notation
+    \begin{gather*}
+        F_0(\phi_0 + \phi_1) = F(g_0 + g_1) \circ F(s)\inv = F(g_0) \circ F(s)\inv + F(g_1) \circ F(s)\inv = F_0(\phi_0) + F_1(\phi_1) \\
+        F_0(\lambda \phi_0) = F(\lambda f_0) \circ F(s_0)\inv = \lambda (F(f_0) \circ F(s_0)\inv) = \lambda F_0(\phi_0).
+    \end{gather*}
+    The functor $F_0$ also commutes with the translation functors of $\dercat{\A}$ and $\D$, because $F$ is triangulated, and maps distinguished triangles of $\dercat{\A}$ to distinguished triangles of $\D$, making it a triangulated functor as well. Lastly it is clear from the definition, that $F_0 \circ Q = F$ and that $F_0$ is unique up to natural isomorphism making the diagram \eqref{universal property of D(A)} commute. 
+\end{proof}
 
 As with the homotopy category of complexes $\kcat{\A}$, we also have the following bounded versions of the derived category $\dercat{\A}$, appearing as full triangulated subcategories of the unbounded variant $\dercat{\A}$ by proposition \ref{triangulated subcategory proposition}.
 
@@ -422,21 +459,26 @@ A category $\A$ is said to \emph{have enough injectives}, if every object $A$ of
     A simple verification shows, that the full subcategory of an abelian or $k$-linear category $\A$, spanned on all injective objects of $\A$ is a $k$-linear category, as the zero object $0$ is injective and the biproduct of two injective objects is again injective. We denote this category by $\J$.
 \end{remark}
 
-We will use injectives to 
+Injective objects will be utilized as building blocks for representing complexes. They are the preferred class of objects to work with in this context because they enable a favourable interplay between cohomology and homotopy. 
+For example, as a consequence of lemma \ref{acyclic to injective is nulhomotopic}, every acyclic bounded below complex of injectives $I^\bullet$ is actually nullhomotopic \ie isomorphic to the object $0$ in $\kplus{\A}$. 
+In light of this, consider a complex $A^\bullet$ of $\kplus{\A}$. A complex of injectives $I^\bullet$ of $\kplus{\J}$ together with a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ is called an \emph{injective resolution} of $A^\bullet$.
+Later we will also see that this injective resolution is unique up to homotopy equivalence.
+% of their nice behaviour with respect to cohomology and homotopy
 
-We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injective resolution} of the complex $A^\bullet$. Later we will also see that this injective resolution is unique up to homotopy \ie any two injective resolutions of $A^\bullet$ are homotopically equivalent. Throughout this section differentials of $I^\bullet$ will be denoted with $\delta^i\colon I^i \to I^{i+1}$.
+% We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injective resolution} of the complex $A^\bullet$. Later we will also see that this injective resolution is unique up to homotopy \ie any two injective resolutions of $A^\bullet$ are homotopically equivalent. 
+% Throughout this section differentials of $I^\bullet$ will be denoted with $\delta^i\colon I^i \to I^{i+1}$.
 
 \begin{proposition}
     \label{injective resolution}
     % Suppose $\A$ contains enough injectives. Then every $A^\bullet$ in $\kplus{\A}$ has an injective resolution.
-    Suppose $\A$ contains enough injectives. Then for every $A^\bullet$ in $\kplus{\A}$ there is a quasi-isomorphism $f^\bullet \colon A^\bullet \to I^\bullet$, where $I^\bullet \in \Ob \kplus{\A}$ is a complex of injectives.
+    Suppose $\A$ contains enough injectives. Then for every $A^\bullet$ in $\kplus{\A}$ there is a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$, where $I^\bullet \in \Ob \kplus{\A}$ is a complex of injectives.
 \end{proposition}
 
 \begin{proof}
-    We will inductively construct a complex $I^\bullet$ in $\kplus{\A}$, built up from injectives, and a quasi-isomorphism $f^\bullet \colon A^\bullet \to I^\bullet$. For simplicity assume $A^i = 0$ for $i < 0$. 
+    We will inductively construct a complex $I^\bullet$ in $\kplus{\A}$, built up from injectives, and a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$. For simplicity assume $A^i = 0$ for $i < 0$. 
     
     The base case is trivial. Define $I^i = 0$ and $f^i = 0$ for $i < 0$ and take $f^0\colon A^0 \to I^0$ to be the morphism obtained from the assumption about $\A$ having enough injectives.
-    \[\begin{tikzcd}[column sep = 2em]
+    \[\begin{tikzcd}[column sep = normal, row sep = 2.7em]
         % https://q.uiver.app/#q=WzAsOCxbMSwwLCIwIl0sWzIsMCwiQV4wIl0sWzMsMCwiQV4xIl0sWzQsMCwiXFxjZG90cyJdLFswLDAsIlxcY2RvdHMiXSxbMiwxLCJJXjAiXSxbMSwxLCIwIl0sWzAsMSwiXFxjZG90cyJdLFs0LDBdLFswLDFdLFsxLDJdLFsyLDNdLFsxLDVdLFs3LDZdLFs2LDVdXQ==
         \cdots & 0 & {A^0} & {A^1} & \cdots \\
         \cdots & 0 & {I^0}
@@ -447,10 +489,11 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
         \arrow[from=1-4, to=1-5]
         \arrow[from=2-1, to=2-2]
         \arrow[from=2-2, to=2-3]
+        \arrow[from=1-2, to=2-2]
     \end{tikzcd}\]
 
-    For the induction step suppose we have constructed the complex $I^\bullet$ and the morphism $f^\bullet$ up to index $n$. 
-    \[\begin{tikzcd}[column sep = 2em]
+    For the induction step suppose we have constructed injective objects $I^i$, with differentials ${\delta^i \colon I^i \to I^{i+1}}$, and morphisms $f^i$ for all $i$ up to $n$, such that the diagram below commutes. 
+    \[\begin{tikzcd}[column sep = normal, row sep = 3em]
         % https://q.uiver.app/#q=WzAsOCxbMSwwLCJBXntuLTF9Il0sWzIsMCwiQV5uIl0sWzMsMCwiQV57bisxfSJdLFs0LDAsIlxcY2RvdHMiXSxbMCwwLCJcXGNkb3RzIl0sWzIsMSwiSV5uIl0sWzEsMSwiSV57bi0xfSJdLFswLDEsIlxcY2RvdHMiXSxbNCwwXSxbMCwxLCJkXntuLTF9Il0sWzEsMiwiZF5uIl0sWzIsM10sWzEsNSwiZl57bn0iLDJdLFs3LDZdLFs2LDUsIlxcZGVsdGFee24tMX0iXSxbMCw2LCJmXntuLTF9IiwyXV0=
         \cdots & {A^{n-1}} & {A^n} & {A^{n+1}} & \cdots \\
         \cdots & {I^{n-1}} & {I^n}
@@ -463,7 +506,7 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
         \arrow[from=2-1, to=2-2]
         \arrow["{\delta^{n-1}}", from=2-2, to=2-3]
     \end{tikzcd}\]
-    Consider the cokernel of $d^{n-1}_{C(f)}$
+    Consider the cokernel of the differential\footnote{Strictly speaking this is not a differential of a complex yet, because we have not specified the chain map $f$ entirely. But this is easily fixed by setting $I^i = 0$ and $f^i$ to be the zero morphism $A^i \to 0$, for $i > n$.} $d^{n-1}_{C(f)}$
     \[
         A^n \oplus I^{n-1} \xrightarrow{\ d^{n-1}_{C(f)} \ } A^{n+1} \oplus I^n \xrightarrow{\ e \ } \coker d^{n-1}_{C(f)} 
     \]
@@ -534,7 +577,7 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
 
 \begin{lemma}
     \label{acyclic to injective is nulhomotopic}
-    Let $A^\bullet$ be any acyclic complex in $\kplus{\A}$ and $I^\bullet$ a complex of injectives from $K^+(J)$. Then
+    Let $A^\bullet$ be any acyclic complex in $\kplus{\A}$ and $I^\bullet$ a complex of injectives from $\kplus{\J}$. Then
     \[
         \hom_{\kplus{\A}}(A^\bullet, I^\bullet) = 0.
     \]
@@ -604,7 +647,7 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
     We already know this is a $k$-module homomorphism, thus it is enough to show that it is bijective. This is accomplished by constructing its inverse. Let $\phi \colon A^\bullet \to I^\bullet$ be a morphism in $\derplus{\A}$ and let $A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet$ be its left roof representative. The morphism $s$ being a quasi-isomorphism implies that $s^* \colon \Hom_{\kplus{\A}}(A^\bullet, I^\bullet) \to \Hom_{\kplus{\A}}(B^\bullet, I^\bullet)$ is bijective by lemma \ref{D+ K+ aux lemma 1}, so there is a unique morphism $g\colon A^\bullet \to I^\bullet$, such that $f = g \circ s$ in $\kplus{\A}$. The inverse to \eqref{eq: morphism action of Q} is then defined by sending $\phi$ to $g$. 
     
     First let's argue why this map is well-defined \ie independent of the choice of left roof representative for $\phi$. We pick two left roof representatives $A^\bullet \xleftarrow{ \ s_0 \ } B_0^\bullet \xrightarrow{ \ f_0 \ } I^\bullet$ and $A^\bullet \xleftarrow{ \ s_1 \ } B_1^\bullet \xrightarrow{ \ f_1 \ } I^\bullet$ for $\phi$ and let $g_0$ and $g_1$ be such that $f_i = g_i \circ s_i$ for both $i$. As the roofs are equivalent there are quasi-isomorphisms $t_0 \colon C^\bullet \to B^\bullet_0$ and $t_1 \colon C^\bullet \to B^\bullet_1$, which fit into the following commutative diagram.
-    \[\begin{tikzcd}
+    \[\begin{tikzcd}[row sep = small, column sep = small]
         % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBIl0sWzEsMSwiQl8wIl0sWzQsMiwiSSJdLFszLDEsIkJfMSJdLFsyLDAsIkMiXSxbMSwyLCJmXzAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywwLCJzXzEiLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywyLCJmXzEiXSxbNCwzLCJ0XzEiXSxbMSwwLCJzXzAiLDJdLFs0LDEsInRfMCIsMl1d
         && C^\bullet \\
         & {B^\bullet_0} && {B^\bullet_1} \\
@@ -612,9 +655,9 @@ We call a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ an \emph{injectiv
         \arrow["{t_0}"', from=1-3, to=2-2]
         \arrow["{t_1}", from=1-3, to=2-4]
         \arrow["{s_0}"', from=2-2, to=3-1]
-        \arrow["{f_0}"'{pos=0.6}, from=2-2, to=3-5]
         \arrow["{s_1}"{pos=0.6}, from=2-4, to=3-1]
         \arrow["{f_1}", from=2-4, to=3-5]
+        \arrow["{f_0}"'{pos=0.6}, from=2-2, to=3-5, crossing over]
     \end{tikzcd}\]
     Therefore $g_0s_0t_0 = f_0t_0 = f_1t_1 = g_1s_1t_1 = g_1s_0t_0$. As $s_0t_0$ is a quasi-isomorphism, we see that $g_0 = g_1$ by applying lemma \ref{D+ K+ aux lemma 1}.
     %  follows by applying lemma \ref{D+ K+ aux lemma 1} as the composition $s_0t_0$ is a quasi-isomorphism.
@@ -715,7 +758,28 @@ along with observing that $A^\bullet \xleftarrow{ \ \id{A^\bullet} } A^\bullet \
     is a bijection, showing fully faithfulness (the last map is a bijection by lemma \ref{D+ K+ aux lemma 2}). Essential surjectivity is clear from the existence of injective resolutions (\cf proposition \ref{injective resolution}) because quasi-isomorphisms now play the role of isomorphisms in $\derplus{\A}$.
 \end{proof}
 
-\info{add a little argument for why injective res. are unique up to htpy.}
+Within the scope of an abelian category $\A$ with enough injectives, theorem \ref{D+ = K+ and injectives} now offers some well known and classical results of homological algebra. 
+
+\begin{corollary}
+    Let $\A$ be an abelian category with enough injectives.
+    \begin{enumerate}[label = (\roman*)]
+        \item{Any two injective resolutions of a complex $A^\bullet$ of $\kplus{\A}$ are homotopically equivalent \ie isomorphic in $\kplus{\A}$}
+        \item{For any morphism of complexes $f \colon A^\bullet \to B^\bullet$ in $\kplus{\A}$ and any injective resolutions $A^\bullet \to I^\bullet_A$ and $B^\bullet \to I^\bullet_B$ of $A^\bullet$ and $B^\bullet$ respectively, there is a unique up to homotopy chain map $I^\bullet_A \to I^\bullet_B$ for which the square below commutes up to homotopy.
+        \[\begin{tikzcd}[row sep = normal]
+            % https://q.uiver.app/#q=WzAsNCxbMiwwLCJBXlxcYnVsbGV0Il0sWzIsMiwiQl5cXGJ1bGxldCJdLFswLDAsIkleXFxidWxsZXRfQSJdLFswLDIsIkleXFxidWxsZXRfQiJdLFswLDEsImYiXSxbMCwyXSxbMSwzXSxbMiwzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+            {I^\bullet_A} && {A^\bullet} \\
+            \\
+            {I^\bullet_B} && {B^\bullet}
+            \arrow[dashed, from=1-1, to=3-1]
+            \arrow[from=1-3, to=1-1]
+            \arrow["f", from=1-3, to=3-3]
+            \arrow[from=3-3, to=3-1]
+        \end{tikzcd}\]
+        }
+    \end{enumerate}
+\end{corollary}
+
+% \info{add a little argument for why injective res. are unique up to htpy.}
 
 % We leave out the proof for why this operation is associative, but refer the intersted reader to \cite{milicic-dercat} or \cite[\S 7]{kashiwara2006categories} for a more detailed and general approach astablishing the theory of localization of categories.
 % \begin{remark}
@@ -734,6 +798,100 @@ We have already seen $\derplus{\A}$, $\derminus{\A}$ and $\derb{\A}$ be defined 
 
 \subsection{Derived functors}
 
+The main goal of this section is to assign to a sensible additive functor $F \colon \A \to \B$ between two abelian categories an appropriate triangulated functor on the level of derived categories, called a \emph{derived functor}. We will first deal with the easiest case, when $F$ is exact and then move on to the case, where $F$ will only be assumed to be left or right exact and instead require the domain category $\A$ to posses some nice properties (\eg contain enough injectives or contain an $F$-adapted class of objects). In practise the additional conditions $\A$ is required to satisfy are not very restrictive. 
+
+\subsubsection{Derived functors of exact functors}
+
+We start with some establishing lemmas.
+
+\begin{lemma}
+    \label{qis iff cone acyclic}
+    Let $f\colon A^\bullet \to B^\bullet$ be a chain map. Then $f$ is a quasi-isomorphism if and only if its associated cone $C(f)^\bullet$ is acyclic. 
+\end{lemma}
+
+\info{proof can reference a proposition from section on triangulated cats...}
+
+\begin{proof}
+    One only needs to consider the distinguished triangle $A^\bullet \xrightarrow{f} B^\bullet \to C(f)^\bullet \to A[1]^\bullet$ in $\kcat{\A}$ and its associated long exact sequence in cohomology.
+\end{proof}
+
+\begin{lemma}
+    \label{F preserves qis iff preserves acyclic}
+    Let $F\colon \kcat{\A} \to \kcat{\B}$ be a triangulated functor, then $F$ preserves quasi-isomorphisms if and only if it preserves acyclic complexes.
+    % \begin{enumerate}
+    %     \item[\emph{(i)}] $F$ preserves quasi-isomorphisms
+    %     \item[\emph{(ii)}] $F$ preserves acyclic complexes.
+    % \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    $(\Rightarrow)$ Let $A^\bullet$ be an acyclic complex. Then the zero morphism $A^\bullet \to 0$ is a quasi-isomorphism and is by assumption mapped to a quasi-isomorphism $F(A^\bullet) \to 0$ by $F$. This means $F(A^\bullet)$ is acyclic.
+    
+    $(\Leftarrow)$ Let $f\colon A^\bullet \to B^\bullet$ be a quasi-isomorphism. The image of a distinguished triangle $A^\bullet \to B^\bullet \to C(f)^\bullet \to A^\bullet[1]$ in $\kcat{\A}$ by the triangulated functor $F$ is a distinguished triangle $FA^\bullet \to FB^\bullet \to F(C(f)^\bullet) \to F(A^\bullet)[1]$ in $\kcat{\B}$. By lemma \ref{qis iff cone acyclic} $C(f)^\bullet$ is acyclic, implying $F(C(f)^\bullet)$ is acyclic by the assumption (ii). Hence again by lemma \ref{qis iff cone acyclic} $F(f)$ is a quasi-isomorphism.
+    % The cone $F(C(f)^\bullet)$ is then acyclic, because $C(f)^\bullet$ was acyclic by lemma \ref{qis iff cone acyclic}, thus showing $Ff$ is a quasi-isomorphism.  
+\end{proof}
+
+\begin{proposition}
+    \label{Exact functor induces a derived functor}
+    Let $F\colon \kcat{\A} \to \kcat{\B}$ be a triangulated functor and assume it satisfies one of the equivalent conditions of lemma \ref{F preserves qis iff preserves acyclic}. Then there exists a triangulated functor $D(\A) \to D(\B)$ on the level of derived categories, for which the following diagram of triangulated functors commutes.
+    \begin{equation}
+        \label{eq: exact functor derives}
+        \begin{tikzcd}[column sep = 1.5em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLKFxcQSkiXSxbMiwwLCJLKFxcQikiXSxbMCwyLCJEKFxcQSkiXSxbMiwyLCJEKFxcQikiXSxbMCwxLCJGIl0sWzAsMl0sWzIsM10sWzEsM11d
+        {\kcat{\A}} && {\kcat{\B}} \\
+        \\
+        {D(\A)} && {D(\B)}
+        \arrow["F", from=1-1, to=1-3]
+        \arrow["{Q_\A}"', from=1-1, to=3-1]
+        \arrow["{Q_\B}", from=1-3, to=3-3]
+        \arrow[from=3-1, to=3-3]
+        \end{tikzcd}
+    \end{equation}
+\end{proposition}
+
+\begin{proof}
+    The claim follows from the universal property of $\dercat{\A}$ (\cf proposition \ref{universal property for D(A) proposition}), as $Q_\B \circ F$ sends quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\dercat{\B}$.
+\end{proof}
+
+% The induced functor $\dercat{\A} \to \dercat{\B}$ will be called the \emph{derived functor of $F$}, often being denoted with $F$ as well.
+
+Every $k$-linear functor $F\colon \A \to \B$ induces a triangulated functor on the level of homotopy categories $\kcat{\A} \to \kcat{\B}$, defined by the assignment.
+\begin{center}
+    \begin{tabular}{r l}
+        \textsl{Objects:} & $A^\bullet \longmapsto \left(\cdots \to F(A^i) \xrightarrow{F(d^i)} F(A^{i+1}) \to \cdots \right)$. \\
+        \textsl{Morphisms:} & $\left(f\colon A^\bullet \to B^\bullet\right) \longmapsto \left(F(f^i) \colon F(A^i) \to F(B^i)\right)_{i \in \Z}$.
+    \end{tabular}
+    \end{center}
+ If moreover $F$ is assumed to be exact, then $\kcat{\A} \to \kcat{\B}$ satisfies the assumptions of lemma \ref{Exact functor induces a derived functor} and thus induces a triangulated functor $\dercat{\A} \to \dercat{\B}$ on the level of derived categories. We call this the \emph{derived functor of $F$} and often denote it with $F$ as well. We emphasise again that this convention will be used only in the case when $F\colon \A \to \B$ is an \emph{exact} functor between abelian categories.
+
+
 % ============================================================== %
 
-\subsubsection*{$F$-adapted classes}
+\subsubsection{Derived functors of left (right) exact functors}
+% \subsubsection*{$F$-adapted classes}
+
+Assume $F \colon \A \to \B$ is a l\emph{eft} exact functor between abelian categories $\A$ and $\B$. The theory for right exact functors is obtained in parallel by dualizing everything. A crucial downside of functors, which are no longer exact, is that their induced functors on the category of complexes no longer satisfy the two equivalent conditions of lemma \ref{F preserves qis iff preserves acyclic}, so the same idea with the universal property of definition \ref{universal property of D(A)}, which worked in the case of exact functors, cannot be applied in this case. Instead we will present two other more restrictive methods of constructing right derived functors, which are the following:
+\begin{enumerate}[label = $\triangleright$]
+    \item Assuming $\A$ has enough injectives, construct a \emph{right derived functor} 
+    \[
+        {\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}} 
+    \]
+    for any left exact functor $F \colon \A \to \B$.
+    \item Fix a left exact functor $F \colon \A \to \B$ and assume the category $\A$ contains a so-called \emph{$F$-adapted class}. Construct a \emph{right derived functor} $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$.
+\end{enumerate}
+These methods are however no less restrictive than the case of exact functors, when viewed through the perspective of our applications later on. Lastly we note, that the first method is in some sense a special instance of the second one, which will be explained in this subsection.
+% considered in the context of our applications later on.
+
+\[\begin{tikzcd}[column sep = small, row sep = 1.8em]
+    % https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXGtwbHVze1xcSn0iXSxbMiwwLCJcXGtwbHVze1xcQX0iXSxbMiwyLCJcXGRlcnBsdXN7XFxBfSJdLFs0LDAsIlxca3BsdXN7XFxCfSJdLFs0LDIsIlxcZGVycGx1c3tcXEJ9Il0sWzEsMiwiUV9cXEEiXSxbMiwwLCJcXG5hdGlzbyIsMl0sWzAsMSwiXFxpb3RhIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwzLCJGIl0sWzMsNCwiUV9cXEIiXV0=
+	{\kplus{\J}} && {\kplus{\A}} && {\kplus{\B}} \\
+	\\
+	&& {\derplus{\A}} && {\derplus{\B}}
+	\arrow["\iota", hook, from=1-1, to=1-3]
+	\arrow["F", from=1-3, to=1-5]
+	\arrow["{Q_\A}", from=1-3, to=3-3]
+	\arrow["{Q_\B}", from=1-5, to=3-5]
+	\arrow["\natiso"', from=3-3, to=1-1]
+\end{tikzcd}\]
+
+% In th subsection we will deal with the case, when $F$ is only left exact. The theory dually runs in parallel, when $F$ is right exact. 

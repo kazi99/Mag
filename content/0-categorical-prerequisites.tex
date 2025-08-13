@@ -759,41 +759,77 @@ For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$ one can al
 \[
     H^i(f^\bullet) \colon H^i(A^\bullet) \to H^i(B^\bullet)
 \]
-in $\A$, because $f^\bullet$ induces maps $\im d^{i-1}_A \to \im d^{i-1}_B$ and $\ker d^i_A \to \ker d^i_B$, which fit into the commutative diagram bellow.
+in $\A$, because $f^\bullet$ induces maps $\im d^{i-1}_A \to \im d^{i-1}_B$ and $\ker d^i_A \to \ker d^i_B$, which fit into the commutative diagram \eqref{eq: diagram for map on cohomology}.
+% \begin{equation}
+%     \label{eq: diagram for map on cohomology}
+%     \begin{tikzcd}[column sep = small, row sep = 1.5em]
+%     % https://q.uiver.app/#q=WzAsMTIsWzAsMSwiQV57aS0xfSJdLFsyLDEsIkFeaSJdLFs0LDEsIkFee2krMX0iXSxbMSwzLCJpbSBkXntpLTF9X0EiXSxbMSwyLCJpbWRee2ktMX1fQiJdLFswLDAsIkJee2ktMX0iXSxbMiwwLCJCXmkiXSxbNCwwLCJCXntpKzF9Il0sWzMsMiwiXFxrZXIgZF5pX0IiXSxbMywzLCJcXGtlciBkXmlfQSJdLFsyLDQsIkheaShCXlxcYnVsbGV0KSJdLFsyLDUsIkheaShBXlxcYnVsbGV0KSJdLFswLDNdLFs1LDRdLFs1LDYsImRee2ktMX1fQiJdLFswLDEsImRee2ktMX1fQSJdLFs2LDcsImReaV9CIl0sWzEsMiwiZF5pX0EiXSxbOCw2XSxbOSwxXSxbNCw2XSxbMywxXSxbNCw4XSxbMyw5XSxbOSwyLCIwIiwyXSxbOCw3LCIwIiwwLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzExLDEwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOSw4XSxbMyw0XSxbOSwxMV0sWzgsMTBdLFs0LDEwLCIwIiwyLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzMsMTEsIjAiLDJdLFswLDVdLFsxLDZdLFsyLDddXQ==
+% 	{B^{i-1}} && {B^i} && {B^{i+1}} \\
+% 	{A^{i-1}} && {A^i} && {A^{i+1}} \\
+% 	& {\im d^{i-1}_B} && {\ker d^i_B} \\
+% 	& {\im d^{i-1}_A} && {\ker d^i_A} \\
+% 	&& {H^i(B^\bullet)} \\
+% 	&& {H^i(A^\bullet)}
+% 	\arrow["{d^{i-1}_B}", from=1-1, to=1-3]
+% 	\arrow[from=1-1, to=3-2]
+% 	\arrow["{d^i_B}", from=1-3, to=1-5]
+% 	\arrow[from=2-1, to=1-1]
+% 	\arrow[from=2-1, to=4-2]
+% 	\arrow[from=2-3, to=1-3]
+% 	\arrow[from=2-5, to=1-5]
+% 	\arrow[from=3-2, to=1-3]
+% 	\arrow[from=3-2, to=3-4]
+% 	\arrow["0"'{pos=0.7}, from=3-2, to=5-3]
+% 	\arrow[from=3-4, to=1-3]
+% 	\arrow["0"{pos=0.7}, from=3-4, to=1-5]
+% 	\arrow[from=3-4, to=5-3]
+% 	\arrow[from=4-2, to=2-3]
+% 	\arrow[from=4-2, to=3-2]
+% 	\arrow[from=4-2, to=4-4]
+% 	\arrow["0"', from=4-2, to=6-3]
+% 	\arrow[from=4-4, to=2-3]
+% 	\arrow["0"', from=4-4, to=2-5]
+% 	\arrow[from=4-4, to=3-4]
+% 	\arrow[from=4-4, to=6-3]
+% 	\arrow[dashed, from=6-3, to=5-3]
+% 	\arrow["{d^i_A}", from=2-3, to=2-5, crossing over]
+% 	\arrow["{d^{i-1}_A}", from=2-1, to=2-3, crossing over]
+%     \end{tikzcd}
+% \end{equation}
 \begin{equation}
     \label{eq: diagram for map on cohomology}
-    \begin{tikzcd}[column sep = small, row sep = 1.5em]
-    % https://q.uiver.app/#q=WzAsMTIsWzAsMSwiQV57aS0xfSJdLFsyLDEsIkFeaSJdLFs0LDEsIkFee2krMX0iXSxbMSwzLCJpbSBkXntpLTF9X0EiXSxbMSwyLCJpbWRee2ktMX1fQiJdLFswLDAsIkJee2ktMX0iXSxbMiwwLCJCXmkiXSxbNCwwLCJCXntpKzF9Il0sWzMsMiwiXFxrZXIgZF5pX0IiXSxbMywzLCJcXGtlciBkXmlfQSJdLFsyLDQsIkheaShCXlxcYnVsbGV0KSJdLFsyLDUsIkheaShBXlxcYnVsbGV0KSJdLFswLDNdLFs1LDRdLFs1LDYsImRee2ktMX1fQiJdLFswLDEsImRee2ktMX1fQSJdLFs2LDcsImReaV9CIl0sWzEsMiwiZF5pX0EiXSxbOCw2XSxbOSwxXSxbNCw2XSxbMywxXSxbNCw4XSxbMyw5XSxbOSwyLCIwIiwyXSxbOCw3LCIwIiwwLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzExLDEwLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbOSw4XSxbMyw0XSxbOSwxMV0sWzgsMTBdLFs0LDEwLCIwIiwyLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzMsMTEsIjAiLDJdLFswLDVdLFsxLDZdLFsyLDddXQ==
-	{B^{i-1}} && {B^i} && {B^{i+1}} \\
-	{A^{i-1}} && {A^i} && {A^{i+1}} \\
-	& {\im d^{i-1}_B} && {\ker d^i_B} \\
-	& {\im d^{i-1}_A} && {\ker d^i_A} \\
-	&& {H^i(B^\bullet)} \\
-	&& {H^i(A^\bullet)}
-	\arrow["{d^{i-1}_B}", from=1-1, to=1-3]
-	\arrow[from=1-1, to=3-2]
-	\arrow["{d^i_B}", from=1-3, to=1-5]
-	\arrow[from=2-1, to=1-1]
-	\arrow["{d^{i-1}_A}", from=2-1, to=2-3]
-	\arrow[from=2-1, to=4-2]
-	\arrow[from=2-3, to=1-3]
-	\arrow["{d^i_A}", from=2-3, to=2-5]
-	\arrow[from=2-5, to=1-5]
-	\arrow[from=3-2, to=1-3]
-	\arrow[from=3-2, to=3-4]
-	\arrow["0"'{pos=0.7}, from=3-2, to=5-3]
-	\arrow[from=3-4, to=1-3]
-	\arrow["0"{pos=0.7}, from=3-4, to=1-5]
-	\arrow[from=3-4, to=5-3]
-	\arrow[from=4-2, to=2-3]
-	\arrow[from=4-2, to=3-2]
-	\arrow[from=4-2, to=4-4]
-	\arrow["0"', from=4-2, to=6-3]
-	\arrow[from=4-4, to=2-3]
-	\arrow["0"', from=4-4, to=2-5]
-	\arrow[from=4-4, to=3-4]
-	\arrow[from=4-4, to=6-3]
-	\arrow[dashed, from=6-3, to=5-3]
+    \begin{tikzcd}[column sep = small, row sep = 2em]
+        % https://q.uiver.app/#q=WzAsMTIsWzIsMCwiQV57aS0xfSJdLFs0LDAsIkFeaSJdLFs2LDAsIkFee2krMX0iXSxbMywyLCJpbSBkXntpLTF9X0EiXSxbMSwzLCJpbWRee2ktMX1fQiJdLFswLDEsIkJee2ktMX0iXSxbMiwxLCJCXmkiXSxbNCwxLCJCXntpKzF9Il0sWzMsMywiXFxrZXIgZF5pX0IiXSxbNSwyLCJcXGtlciBkXmlfQSJdLFsyLDUsIkheaShCXlxcYnVsbGV0KSJdLFs0LDQsIkheaShBXlxcYnVsbGV0KSJdLFswLDNdLFs1LDRdLFs1LDYsImRee2ktMX1fQiJdLFswLDEsImRee2ktMX1fQSJdLFs2LDcsImReaV9CIl0sWzEsMiwiZF5pX0EiXSxbOCw2LCJiIiwxXSxbOSwxXSxbNCw2LCJhIiwxXSxbMywxXSxbNCw4XSxbMyw5XSxbOSwyLCIwIiwyLHsibGFiZWxfcG9zaXRpb24iOjgwfV0sWzgsNywiMDEiLDIseyJsYWJlbF9wb3NpdGlvbiI6ODB9XSxbMTEsMTAsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs5LDgsInoiLDFdLFszLDQsInciLDFdLFs5LDExXSxbOCwxMF0sWzQsMTAsIjAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMywxMSwiMCIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFswLDVdLFsxLDYsInkiLDFdLFsyLDcsIngiLDFdXQ==
+        && {A^{i-1}} && {A^i} && {A^{i+1}} \\
+        {B^{i-1}} && {B^i} && {B^{i+1}} \\
+        &&& {\im d^{i-1}_A} && {\ker d^i_A} \\
+        & {\im d^{i-1}_B} && {\ker d^i_B} \\
+        &&&& {H^i(A^\bullet)} \\
+        && {H^i(B^\bullet)}
+        \arrow["{d^{i-1}_A}", from=1-3, to=1-5]
+        \arrow[from=1-3, to=2-1]
+        \arrow[from=1-3, to=3-4]
+        \arrow["{d^i_A}", from=1-5, to=1-7]
+        \arrow["{d^{i-1}_B}"{pos=0.6}, from=2-1, to=2-3]
+        \arrow[from=2-1, to=4-2]
+        \arrow[from=3-4, to=1-5]
+        \arrow[from=3-4, to=3-6]
+        \arrow[from=3-4, to=4-2] % "w"{description}, 
+        \arrow["0"'{pos=0.7}, from=3-4, to=5-5]
+        \arrow[from=3-6, to=1-5]
+        \arrow["0"'{pos=0.8}, from=3-6, to=1-7]
+        \arrow[from=3-6, to=4-4, crossing over] % "z"{description}, 
+        \arrow[from=3-6, to=5-5]
+        \arrow[from=4-2, to=2-3, crossing over] % "a"{description}, 
+        \arrow[from=4-2, to=4-4]
+        \arrow["0"'{pos=0.7}, from=4-2, to=6-3]
+        \arrow[from=4-4, to=2-3, crossing over] % "b"{description}, 
+        \arrow["0"'{pos=0.8}, from=4-4, to=2-5, crossing over] % 01
+        \arrow[from=4-4, to=6-3]
+        \arrow[dashed, from=5-5, to=6-3]
+        \arrow[from=1-7, to=2-5, crossing over] % "x"{description}, 
+        \arrow["{d^i_B}"{pos=0.6}, from=2-3, to=2-5, crossing over]
+        \arrow[from=1-5, to=2-3, crossing over] % "y"{description}, 
     \end{tikzcd}
 \end{equation}
 All the induced morphisms come from universal properties and are as such unique for which the diagram commutes. Thus the assignment
