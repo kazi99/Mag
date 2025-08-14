@@ -180,7 +180,7 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
 
 \begin{definition}
     A \emph{triangulated category} (\emph{over $k$}) is a $k$-linear category with translation $(\D, T)$ equipped with a class of \emph{distinguished triangles}, which is subject to the following four axioms.
-    \begin{enumerate}[label = \textbf{TR\arabic*}]
+    \begin{enumerate}[label = \textsf{TR\arabic*}]
         \item{
             \begin{enumerate}[label = (\roman*)]
             \item{Any triangle isomorphic to a distinguished triangle is also itself distinguished.}
@@ -225,14 +225,14 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
         \]
         satisfying $v \circ f = f' \circ u$, there exists a (in general non-unique) morphism $w\colon Z \to Z'$, for which $(u, v, w)$ is a morphism of triangles \ie the diagram above commutes.
         } \label{TR3}
-        \item{ ... }
+        \item{ ... } \label{TR4}
     \end{enumerate} 
 \end{definition}
 
-Omitting the so-called \emph{octahedral} axiom TR4 we arrive at the definition of a \emph{pre-triangulated category}. These are essentially the categories we will be working with, since we will never use nor verify the axiom TR4. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will be honest triangulated categories anyways.
+Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the definition of a \emph{pre-triangulated category}. These are essentially the categories we will be working with, since we will never use nor verify the axiom \ref{TR4}. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will be honest triangulated categories anyway.
 
 \begin{remark}
-    The object $Z$, called the \emph{cone of $f$}, in axiom \textbf{TR1} \ref{TR1 iii} is unique up to isomorphism. This is seen through the use of axiom \ref{TR3} in combination with example \ref{partial homs are cohomological functors} and the five lemma \cite[Lemma 8.3.13]{kashiwara2006categories} from homological algebra in $\mod{k}$. 
+    The object $Z$, called the \emph{cone of $f$}, in axiom \ref{TR1} \ref{TR1 iii} is unique up to isomorphism. This is seen through the use of axiom \ref{TR3} in combination with example \ref{partial homs are cohomological functors} and the five lemma \cite[Lemma 8.3.13]{kashiwara2006categories} from homological algebra in $\mod{k}$. 
 \end{remark}
 
 % we will nevertheless use the terminology 
@@ -358,7 +358,7 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, -) \colon \D \to \mod{k} \text{ and } \Hom_\D( - , W) \colon \D^\op \to \mod{k}
     \]
-    are cohomological\footnote{With claiming that $\Hom_\D(-, W)$ is cohomological we are being slightly imprecise, as we have not clarified what the triangulated structure on $\D^\op$ is. We take it to be the most obvious one (\cf \cite[Ch.~1, 1.2]{milicic-dercat}).}. Let us verify the first claim. Consider the long exact sequence 
+    are cohomological\footnote{With claiming that $\Hom_\D(-, W)$ is cohomological we are being slightly imprecise, as we have not clarified what the triangulated structure on $\D^\op$ is. We take it to be the most obvious one (\cf \cite[Chapter 1, \S 1.2]{milicic-dercat}).}. Let us verify the first claim. Consider the long exact sequence 
     \[
         \cdots \to \Hom_\D(W, X) \to \Hom_\D(W, Y) \to \Hom_\D(W, Z) \to \Hom_\D(W, X[1]) \to \cdots 
     \]
@@ -366,7 +366,7 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, X) \xrightarrow{f_*} \Hom_\D(W, Y) \xrightarrow{g_*} \Hom_\D(W, Z) \quad \text{ is exact.}
     \]
-    By proposition \ref{composition of two arrows in d.t. is zero} we see that $\im f_* \subseteq \ker g_* $, so we are left to prove the other inclusion. Suppose $v \colon W \to Y$ is in $\ker g_*$. Then axiom TR3 (together with TR2 and TR1 (ii))
+    By proposition \ref{composition of two arrows in d.t. is zero} we see that $\im f_* \subseteq \ker g_* $, so we are left to prove the other inclusion. Suppose $v \colon W \to Y$ is in $\ker g_*$. Then axiom \ref{TR3} (together with \ref{TR2} and \ref{TR1} (ii))
     \info{As this is the first argument with the axioms of triangulated cats, I could maybe expand it a little bit more. }
     asserts the existence of a morphism $u \colon W \to X$ making the diagram below commutative.
     \[
