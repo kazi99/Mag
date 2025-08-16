@@ -1,13 +1,13 @@
 \section{Spectral sequences and how to use them}
 
-In this chapter we will first define cohomological spectral sequences and discuss their meaning through applications related with derived categories.
+In this chapter we will first define cohomological spectral sequences and then discuss their meaning through applications related with derived categories.
 
 At first, when encountering spectral sequences, one might think of them as just  bookkeeping devices encoding a tremendous amount of data, but we will soon see how elegantly one can infer certain properties related to derived categorical claims exploiting the fact that they can naturally be encoded with spectral sequences.
 % from a spectral sequence associated to a given problem  that we can encode a problem in terms of such a sequence. 
 % just by considering their form for example.
-One of the most important spectral sequences, which is also very general within our scope of inspection, will be the Grothendieck spectral sequence relating the higher derived functors of two composable functors with the higher derived functors of their composition. Later on we will see that many useful and well-known spectral sequences occur as special cases of the Grothendieck spectral sequence. What follows was gathered mostly from \cite[Chapter 2, 2.1]{huybrechts2006fouriermukai} and \cite[Chapter III.7]{gelfand2002methods}.
+One of the most important spectral sequences, which is also very general within our scope of inspection, will be the Grothendieck spectral sequence relating the higher derived functors of two composable functors with the higher derived functors of their composition. Later on we will see that many useful and well-known spectral sequences occur as special cases of the Grothendieck spectral sequence. What follows was gathered mostly from \cite[Chapter 2, \S 2.1]{huybrechts2006fouriermukai} and \cite[Chapter III.7]{gelfand2002methods}.
 
-For the time being we fix an abelian category $\mathcal A$ and start off with a definition.
+% For the time being we fix an abelian category $\mathcal A$ and start off with a definition.
 
 \begin{definition}
     A \emph{(cohomological) spectral sequence} in an abelian category $\mathcal A$ consists of the following data on which we further impose two convergence conditions.
@@ -51,10 +51,11 @@ The above collection of data also has to satisfy the following two convergence c
         d^{p,q}_r = 0 \quad \text{and} \quad d^{p + r, q - r + 1}_r = 0
     \]
     and the isomorphism $\alpha^{p,q}_r$ can be taken to be the identity. We then say that the $(p,q)$-term \emph{stabilizes} after page $r_0$ and we denote $E^{p,q}_{r_0}$ (along with all the subsequent $E^{p,q}_{r}$ for $r \geq r_0$) by $E^{p,q}_\infty$.
-    \item For each $n \in \Z$ there is a decreasing \emph{regular}\footnote{In our case the filtration $(F^p E^n)_{p \in \Z}$ is \emph{regular}, whenever $\bigcap_p F^p E^n = \lim_p F^p E^n = 0$ and $\bigcup_p F^p E^n = \colim_p F^p E^n = E^n$.} filtration of $E^n$
-    \[
+    \item For each $n \in \Z$ there is a \emph{regular}\footnote{In our case the filtration $(F^p E^n)_{p \in \Z}$ is \emph{regular}, whenever $\bigcap_p F^p E^n = \lim_p F^p E^n = 0$ and $\bigcup_p F^p E^n = \colim_p F^p E^n = E^n$.} decreasing filtration of $E^n$
+    \begin{equation}
+        \label{eq: regular filtration}
         E^n \supseteq \dots \supseteq F^p E^n \supseteq F^{p + 1}E^n \supseteq \dots \supseteq 0
-    \]
+    \end{equation}
     and isomorphisms
     \[
         \beta^{p,q} : E^{p,q}_\infty \xrightarrow{\sim} F^p E^{p + q}/F^{p + 1}E^{p + q}
@@ -64,23 +65,40 @@ The above collection of data also has to satisfy the following two convergence c
 
 In this case we also denote the existence of such a spectral sequence by 
 \[
-    E^{p,q}_r \implies E^n.
+    E^{p,q}_r \implies E^{p+q}.
 \]
 \end{definition}
 
 \begin{remark}
-    A few words are in order to justify us naming the sequence $(E^n)_{n \in \Z}$ our \emph{goal of computation}. Usually one is given a starting page or a small number of them and the first goal is to identify the transfinite page -- we are refering to convergence condition (a). Often one is able to infer the differentials degenerate after a number of turns of the pages from context or by observing the shape of the spectral sequence. For example \emph{first quadrant spectral sequences}, \ie the ones with non-trivial $E^{p,q}_r$ only for $(p,q)$ lying in the first quadrant, always satisfy condition (a).
-    
-    The second part of the computation is concerned with relating objects from the transfinte page $E^{\bullet, \bullet}_\infty$ with objects $E^n$. This is captured in the convergence condition (b), from which we can clearly observe that the intermediate quotients of the filtration $(F^p E^n)_{p \in \Z}$ for a fixed term $E^n$ lie on the anti-diagonal of the transfinite page passing through \eg $E^{n, 0}_\infty$.
+    A few words are in order to justify us naming the sequence $(E^n)_{n \in \Z}$ our \emph{goal of computation}. Usually one is given a starting page or a small number of them and the first goal is to identify the transfinite page -- we are referring to convergence condition (a). Often one is able to infer the differentials degenerate after a number of turns of the pages from context or by observing the shape of the spectral sequence. For example \emph{first quadrant spectral sequences}, \ie the ones with non-trivial $E^{p,q}_r$ only for $(p,q)$ lying in the first quadrant, always satisfy condition (a).
+
+    The second part of the computation is concerned with relating objects from the transfinite page $E^{\bullet, \bullet}_\infty$ with objects $E^n$. This is captured in the convergence condition (b), from which we can clearly observe that the intermediate quotients of the filtration $(F^p E^n)_{p \in \Z}$, for a fixed term $E^n$, lie on the anti-diagonal
+    % (with direction vector $(1,-1)$)
+    of the transfinite page passing through \eg $E^{n, 0}_\infty$. Explicitly these are terms $\dots, E^{n-1,1}_\infty, E^{n,0}_\infty, E^{n+1,-1}_\infty, \dots$
     
     In condition (b) the existence of isomorphisms $\beta^{p,q}$ can also be restated by saying that $E^{p,q}_\infty$ fits into a short exact sequence
-    \[
+    \begin{equation}
+        \label{eq: SES of filtration}
         0 \to F^{p + 1} E^n \to F^p E^n \to E^{p,q}_\infty \to 0.
-    \]
+    \end{equation}
     This observation becomes very useful when considering properties of objects of the category $\mathcal A$ which are closed under extensions, especially when the filtration of $E^n$ is finite.
 
     % In that case one can inductively reason about such a property of $E^n$ provided the filtration of $E^n$ is finite.
  \end{remark}
+
+\begin{lemma}
+    \label{finite filtration}
+    Let $a \leq b$ be integers and consider the regular decreasing filtration
+    \begin{equation}
+        \label{eq: filtration}
+        F \supseteq \dots F^{p-1} \supseteq F^p \supseteq F^{p + 1} \supseteq \dots \supseteq 0
+    \end{equation}
+    of an object $F$. Assume that the quotients $F^p/F^{p+1}$ vanish for $p \notin [a,b]$, then $F^{p} \iso F$ for $p \leq a$ and $F^{p} \iso 0$ for $p \geq b$, so \eqref{eq: filtration} is a finite filtration of $F$. In particular, when $a = b$, we have $F \iso 0$.
+\end{lemma}
+
+\begin{proof}
+    For the quotients $F^p/F^{p+1}$ vanish for $p \notin [a,b]$, all the inclusions $F^{p+1} \subseteq F^p$ turn into isomorphisms. Then by regularity it follows that $F = \colim_p F^p \iso \colim_{p \leq a} F^p = F^{a}$ and similarly $0 \iso \lim_p F^p \iso \lim_{p \geq b} F^p =  F^b$.
+\end{proof}
 
 % Next we mention two ways of naturally obtaining a spectral sequence, the first one arises from a filtered chain complex. A filtration of a chain complex $K^\bullet \in \Ob(\com(\mathcal A))$ is a decreasing sequence of chain complexes 
 % \[
@@ -88,11 +106,68 @@ In this case we also denote the existence of such a spectral sequence by
 % \]
 % respecting the differential of $K^\bullet$ \ie $d(F^p K^n) \subseteq F^p K^{n+1}$. Using only this piece of information one can 
 
-\info{mention Tohoku paper}
+In his famous ``Tohoku paper'' \cite{} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two functors with the composition of their higher derived functors.
 
 \begin{theorem}[Grothendieck]
-    Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class in $\A$, $\I_G$ a $G$-adapted class of objects in $\B$ and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $K^+(\A)$ there exists a spectral sequence
-    \[
-        E^{p,q}_2 = \rderived{p}{G}(\rderived{q}{F}(A^\bullet)) \implies \rderived{p+q}{(G \circ F)}(A^\bullet).
-    \] 
+    \label{Grothendieck spectral sequence}
+    Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class in $\A$, $\I_G$ a $G$-adapted class of objects in $\B$ and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $\kplus{\A}$ there exists a spectral sequence
+    \begin{equation}
+        \label{eq: Grothendieck spectral sequence}
+        E^{p,q}_2 = \rderived{p}{G}(\rderived{q}{F}(A^\bullet)) \implies \rderived{p+q}{(G \circ F)}(A^\bullet) = E^{p+q}.
+    \end{equation} 
 \end{theorem}
+
+\begin{remark}
+    Taking the functor $F$ to be the identity in Theorem \ref{Grothendieck spectral sequence} we obtain as a consequence that for any left exact functor $F \colon \A \to \B$, admitting a right derived functor $\rderived{}{F}\colon \derplus{\A} \to \derplus{\B}$ there is a spectral sequence 
+    \begin{equation}
+        \label{eq: special case of Grothendieck spectral sequence}
+        E^{p,q}_2 = \rderived{p}{F}(H^q(A^\bullet)) \implies \rderived{p+q}{F}(A^\bullet) = E^{p+q},
+    \end{equation}
+    for every $A^\bullet$ of $\kplus{\A}$.
+\end{remark}
+
+\begin{proposition}
+    Let $F \colon \A \to \B$ be a left exact functor admitting a right derived functor $\rderived{}{F}\colon \derplus{\A} \to \derplus{\B}$. 
+    \begin{enumerate}[label = (\roman*)]
+        \item{Suppose that for every object $A$ of $\A$ the complex $\rderived{i}{F}(A)$ is non-trivial only for finitely many $i \in \Z$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\derb{\B}$ for any bounded complex $A^\bullet$ of $\derb{\A}$, consequently inducing a right derived functor on the level of bounded derived categories
+        \[
+            \rderived{}{F} \colon \derb{\A} \to \derb{\B}.
+        \]}
+        \item{Let $\mathcal C \subset \B$ be a thick subcategory of $\B$ and assume that for every $A^\bullet$ of $\derplus{\A}$, $\rderived{i}{F}(A)$ belong to $\mathcal C$ for all $A$ of $\A$ and $i \in \Z$. Moreover assume there exists $m \in \N$, such that $\rderived{i}{F}(A) = 0$, for all $A$ of $\A$ and $i > m$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\mathsf{D}^+_\mathcal{C}(\B)$ for any $A^\bullet$ in $\derplus{\A}$, therefore inducing the functor
+        \[
+            \rderived{}{F}\colon \derplus{\A} \to \mathsf{D}^+_\mathcal{C}(\B).
+        \]
+        }
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    For (i) consider $A^\bullet$ in $\derb{\A}$. We will show that $\rderived{i}{F}(A^\bullet)$ is non-trivial only for finitely many $i \in \Z$. To do so, we will use spectral sequence \eqref{eq: special case of Grothendieck spectral sequence}. As the $q$-th cohomology $H^q(A^\bullet)$ is an object of $\A$, the complex $\rderived{}{F}(H^q(A^\bullet))$ is bounded by assumption and thus $\rderived{p}{F}(H^q(A^\bullet))$ is non-trivial only for finitely many $p \in \Z$. Since $\A^\bullet$ is also a bounded complex we see that all the non-trivial objects of page $E_2$ may be collected inside of a large enough square, 
+    % say $D = [x_0,x_1] \times [y_0,y_1]$ for integers $x_0 < x_1$ and $y_0 < y_1$. 
+    say $D = [-a, a]^2$ for a positive integer $a \in \Z$.
+    In other words $E^{p,q}_2 \iso 0$ for $(p,q) \notin D$, implying that also $E^{p,q}_\infty \iso 0$ for $(p,q) \notin D$. This means that all the intermediate quotients of the filtration of $E^n$, \ie the terms $E^{p,q}_\infty$, with $p + q = n$, are trivial, provided $\abs{n} > 2a$. By regularity of the filtrations we deduce that $\rderived{n}{F}(A^\bullet) = E^n \iso 0$ for $\abs{n} > 2a$, implying that $\rderived{}{F}(A^\bullet)$ belongs to $\derb{\B}$.
+    
+    For (ii) we will apply the same idea and use the spectral sequence \eqref{eq: special case of Grothendieck spectral sequence} to show that $\rderived{i}{F}(A^\bullet)$ belong to $\mathcal C$ for all $i \in \Z$. This time we see that $\rderived{p}{F}(H^q(A^\bullet)) = E^{p,q}_2 \iso 0$ for $p \notin [0,m]$, thus the same goes for $E^{p,q}_\infty$. Since every anti-diagonal (line with slope $-1$) going through a point with integral coordinates passes through only $m+1$ other points with integral components lying in the infinite strip $[0,m] \times \Z$, all the objects $E^n$ have finite regular filtrations by Lemma \ref{finite filtration}, which look like this
+    \begin{equation}
+        \label{eq: finite filtration}
+        E^n = F^0E^n \supseteq_{E^{0,n}_\infty} F^1E^n \supseteq_{E^{1, n-1}_\infty} F^2E^n \supseteq \cdots \supseteq F^mE^n \supseteq_{E^{m, n-1}_\infty} F^{m+1}E^n = 0.
+    \end{equation}
+    The intermediate quotients, inscribed in the subscript of $\supseteq$\footnote{
+        % The inscription in the index of $\supseteq$ is meant to denote the intermediate quotients between two subsequent terms of the filtration. 
+        For example $F^0E^n \supseteq_{E^{0,n}_\infty} F^1E^n$ is supposed to mean that the quotient $F^0E^n / F^1E^n$ is isomorphic to $E^{0,n}_\infty$.}
+    , of said filtration are precisely those $E^{p,q}_\infty$, with $p+q = n$ and $(p,q) \in [0,m] \times \Z$. Since $\mathcal C$ is thick, in particular closed under kernels and quotients, and all the objects of page $E_2$ belong to $\mathcal C$ by assumption, then all the objects from all the subsequent pages, including the transfinite one $E_\infty$, also belong to $\mathcal C$. 
+    %  as the latter category is thick and in particular closed under kernels and quotients. 
+    Inductively, using short exact sequences \eqref{eq: SES of filtration} and thickness of $\mathcal C$, we then see, that all the terms of the finite filtration \eqref{eq: finite filtration} belong to $\mathcal C$, including $E^n = \rderived{n}{F}(A^\bullet)$.
+    %  is built up as a series of extensions problems, consisting of objects from the thick category $\mathcal C$, making $E^n$ belong to $\mathcal C$ as well. 
+\end{proof}
+
+\begin{proposition}
+    Let $\A$ be an abelian category with enough injectives. Suppose $A^\bullet$ belongs to $\kminus{\A}$ and $B^\bullet$ belongs to $\kplus{\A}$. Then there exists a spectral sequence 
+    \[
+        E^{p,q}_2 = \Ext^p(H^{-q}(A^\bullet), B^\bullet) \implies \Ext^{p+q}(A^\bullet, B^\bullet) = E^{p+q}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    See \cite[\S 2, Example 2.70]{huybrechts2006fouriermukai}.
+\end{proof}

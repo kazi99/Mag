@@ -13,19 +13,42 @@ A categorical \emph{biproduct} of objects $X$ and $Y$ in a category $\mathcal C$
         $i_X\colon X \to X \oplus Y$ & $i_Y\colon Y \to X \oplus Y$ \\
     \end{tabular}
 \end{center}
-for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct. For a pair of morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$ the unique induced morphism into the product $Z \to X \oplus Y$ is denoted by $(f_X, f_Y)$ and for a pair of morphisms $g_X \colon X \to Z$ and $g_Y \colon Y \to Z$ the unique induced morphism from the coproduct $X \oplus Y \to Z$ is denoted by $\langle g_X, g_Y \rangle$. For morphisms $f_0 \colon X_0 \to Y_0$ and $f_1 \colon X_1 \to Y_1$ we introduce notation $f_0 \oplus f_1 \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1$ to mean either of the two (equal) morphisms 
+for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct. For a pair of morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$ the unique induced morphism into the product $Z \to X \oplus Y$ is denoted by $(f_X, f_Y)$ and for a pair of morphisms $g_X \colon X \to Z$ and $g_Y \colon Y \to Z$ the unique induced morphism from the coproduct $X \oplus Y \to Z$ is denoted by $\langle g_X, g_Y \rangle$. For morphisms 
+\begin{center}
+    \begin{tabular}{c c}
+        $f_{00}\colon X_0 \to Y_0$ & $f_{01}\colon X_0 \to Y_1$ \\
+        $f_{10}\colon X_1 \to Y_1$ & $f_{11}\colon X_1 \to Y_1$ \\
+    \end{tabular}
+\end{center}
+of $\mathcal C$, there are two equal morphisms $X_0 \oplus X_1 \to Y_0 \oplus Y_1$, namely
 \[
-    \left(\langle f_0, 0 \rangle, \langle 0, f_1 \rangle\right) 
-    \quad \text{ or } \quad 
-    \left\langle (f_0, 0), (0, f_1)\right\rangle
+    \left(\langle f_{00}, f_{01} \rangle, \langle f_{10}, f_{11} \rangle\right) 
+    \quad \text{ and } \quad 
+    \left\langle (f_{00}, f_{10}), (f_{01}, f_{11})\right\rangle,
 \]
-also depicted in matrix notation as
-\[  
+which we will be denoting by the matrix
+\begin{equation}
+    \label{eq: matrix of morphisms}
     \begin{pmatrix}
-        f_0 & 0 \\
-        0 & f_1
-    \end{pmatrix}.
-\]
+        f_{00} & f_{01} \\
+        f_{10} & f_{11}
+    \end{pmatrix} \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1.
+\end{equation}
+% In particular, when $f_{01}$ and $f_{10}$ are the morphism $0$, we will use $f_{00} \oplus f_{11} \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1$ to denote the morphism \eqref{eq: matrix of morphisms}.
+
+% For morphisms $f_{0} \colon X_0 \to Y_0$, $f_1 \colon X_1 \to Y_1$ we introduce notation $f_0 \oplus f_1 \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1$ to mean either of the two (equal) morphisms 
+% \[
+%     \left(\langle f_0, 0 \rangle, \langle 0, f_1 \rangle\right) 
+%     \quad \text{ or } \quad 
+%     \left\langle (f_0, 0), (0, f_1)\right\rangle
+% \]
+% also depicted in matrix notation as
+% \[  
+%     \begin{pmatrix}
+%         f_0 & 0 \\
+%         0 & f_1
+%     \end{pmatrix}.
+% \]
 
 Let $k$ denote either a field or the ring of integers $\Z$.
 
@@ -35,7 +58,7 @@ Let $k$ denote either a field or the ring of integers $\Z$.
     A category $\A$ is additive (resp.\ $k$-linear) 
     \info{Decide on which terminology to use (everything is covered by $k$-linear...)}
     if all the hom-sets carry the structure of abelian groups (resp.\ $k$-modules) and the following axioms are satisfied
-    \begin{enumerate}[label = \textbf{A\arabic*}]
+    \begin{enumerate}[label = \textsf{A\arabic*}]
         \item{For all all objects $X$, $Y$ and $Z$ of $\A$ the composition
         \[
             \circ \colon \hom_{\A}(Y, Z) \times \hom_{\A}(X, Y) \to \hom_{\A}(X, Z)
@@ -49,18 +72,24 @@ Let $k$ denote either a field or the ring of integers $\Z$.
 \begin{remark}
     \begin{enumerate}[label = (\roman*)]
         \item The zero object $0$ of a $k$-linear category $\A$ is both the initial and terminal object of $\A$.
-        \item One can recognize $k$-linear categories as the categories enriched over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
+        \item For morphisms $f_{0} \colon X_0 \to Y_0$, $f_1 \colon X_1 \to Y_1$ we introduce notation 
+        \[
+            f_0 \oplus f_1 \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1
+        \]
+        to mean either of the two (equal) morphisms $\left(\langle f_0, 0 \rangle, \langle 0, f_1 \rangle\right)$ or $\left\langle (f_0, 0), (0, f_1)\right\rangle$.
+        \item One can recognize $k$-linear categories as the categories \emph{enriched} over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
+        \info{this point may be skipped}
     \end{enumerate}
 \end{remark}
 
 % Whenever it will be clear from context, we will sometimes omit the subindex $\A$ from $\Hom_\A(X, Y)$ for clarity and write just $\Hom(X, Y)$ instead.
 
 \begin{definition}
-    A functor $F \colon \A \to \A'$ between two additive (resp.\ $k$-linear) categories $\A$ and $\A'$ is \emph{additive} (\resp \emph{$k$-linear}), if its action on morphisms
+    A functor $F \colon \A \to \A'$ between two additive (\resp $k$-linear) categories $\A$ and $\A'$ is \emph{additive} (\resp \emph{$k$-linear}), if its action on morphisms
     \[
         \hom_\A(X, Y) \to \hom_{\A'}(F(X), F(Y))
     \] 
-    is a group homomorphism (resp.\ $k$-linear map).
+    is a group homomorphism (\resp $k$-linear map).
 \end{definition}
 
 Traditionally the term \emph{additive} is reserved for $\Z$-linear categories and $\Z$-linear functors between such categories.
@@ -78,7 +107,7 @@ For a monomorphism $Y \hookrightarrow X$ we will sometimes by abuse of terminolo
 
 \begin{definition}
     A $k$-linear category $\A$ is \emph{abelian}, if it is closed under kernels and cokernels and satisfies axiom \ref{A4}.
-    \begin{enumerate}[label = \textbf{A4}]
+    \begin{enumerate}[label = \textsf{A4}]
         \item{For any morphism $f\colon X \to Y$ in $\A$ the canonical morphism $\coim f \xrightarrow{\ \sim \ } \im f$ is an isomorphism.
         \[\begin{tikzcd}[column sep = small]
             % https://q.uiver.app/#q=WzAsNixbMSwwLCJYIl0sWzIsMCwiWSJdLFswLDAsIlxca2VyIGYiXSxbMywwLCJjb2tlciBmIl0sWzEsMSwiY29pbWYiXSxbMiwxLCJpbWYiXSxbMiwwXSxbMCwxLCJmIl0sWzEsM10sWzAsNF0sWzEsNV0sWzQsNSwiaCJdXQ==
@@ -144,6 +173,14 @@ In the context of abelian categories, functors, which preserve a bit more than j
     Equivalently, one can also define left exact functors to be exactly those additive functors, which commute with kernels and dually define right exact functors to be additive functors commuting with cokernels.  
 \end{remark}
 
+\begin{example}
+    \label{Homs are left exact functors}
+    For an abelian category $\A$ the hom-functors 
+    \[
+    \Hom_\A(A, -) \colon \A \to \mod{k} \quad \text{ and } \quad \Hom_\A( - , A) \colon \A^\op \to \mod{k}
+    \] 
+    are both left exact. Note that a sequence $0 \to X \to Y \to Z \to 0$ is exact in $\A^\op$, if $0 \to Z \to Y \to X \to 0$ is exact in $\A$.
+\end{example}
 
 
 % ================================================================ %
@@ -155,9 +192,10 @@ In the context of abelian categories, functors, which preserve a bit more than j
 In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $X[1]$ and likewise its action on morphisms $f$ with $f[1]$.
 
 A \emph{triangle} in a category with translation $(\D, T)$ is a triplet of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
-\[
+\begin{equation}
+    \label{eq: basic distinguished triangle}
     X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1].
-\]
+\end{equation}
 A \emph{morphism} of triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ and $X'\xrightarrow{f'} Y' \xrightarrow{g'} Z' \xrightarrow{h'} X'[1]$ is given by a triple of morphisms $(u, v, w)$, for which the diagram below commutes.
 \[
 \begin{tikzcd}
@@ -389,16 +427,56 @@ and apply functor $H$ over it.
     From the commutative square on the left it is then clear that $v \in \im f_*$, as $v = f \circ u$.
 \end{example}
 
-\begin{proposition}
+\begin{lemma}
     \label{f iso iff cone trivial}
     Let $X \xrightarrow{f} Y \to Z \to X[1]$ be a distinguished triangle in a triangulated category $\D$. Then $f$ is an isomorphism if and only if $Z \iso 0$.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
     We argue with a chain of equivalences. Observe that $f$ is an isomorphism if and only if $f_*\colon \Hom_\D(W, X) \to \Hom_\D(W, Y)$ and $f^* \colon \Hom_\D(Y, W) \to \Hom_\D(X, W)$ are isomorphisms for all objects $W$ of $\D$. From the existence of long exact sequences established in the previous example the latter condition is equivalent to $\Hom_\D(W, Z) = 0$ and $\Hom_\D(Z, W) = 0$ for all $W$, which in turn is equivalent to $Z \iso 0$.
+    \info{I think Yoneda can be used here to enable us to consider only $f_*$ instead of both $f_*$ and $f^*$. \ie $f_*$ iso for all $W$ iff $f$ iso}
 \end{proof}
 
-The following are all specialized results characterizing, when a fully faithful triangulated functor is an equivalence. We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the final theorem in section \ref{}.
+\begin{lemma}
+    Let triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ and $X'\xrightarrow{f'} Y' \xrightarrow{g'} Z' \xrightarrow{h'} X'[1]$ be distinguished in a triangulated category $\D$. Then their direct sum
+    \[
+        X \oplus X' \xrightarrow{f \oplus f'} Y \oplus Y' \xrightarrow{g \oplus g'} Z \oplus Z' \xrightarrow{h \oplus h'} (X \oplus X')[1]
+    \]
+    is also distinguished in $\D$.
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{lemma}
+    \label{split distinguished triangles}
+    Let $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ be a distinguished triangle in a triangulated category $\D$ and assume $h = 0$. Then there exists an isomorphism $Y \iso X \oplus Z$, for which the next diagram commutes.
+    \[
+        \begin{tikzcd}[column sep = normal, row sep = 2.5em]
+            % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+            X & X \oplus Z & Z & {X[1]} \\
+            {X} & {Y} & {Z} & {X'[1]}
+            \arrow["", from=1-1, to=1-2]
+            \arrow[""', equals, from=1-1, to=2-1]
+            \arrow["", from=1-2, to=1-3]
+            \arrow["\sim"', from=1-2, to=2-2]
+            \arrow["0", from=1-3, to=1-4]
+            \arrow[""', equals, from=1-3, to=2-3]
+            \arrow[""', equals, from=1-4, to=2-4]
+            \arrow["f", from=2-1, to=2-2]
+            \arrow["g", from=2-2, to=2-3]
+            \arrow["0", from=2-3, to=2-4]
+        \end{tikzcd}
+        \]
+    % Let $\D$ be a triangulated category and assume morphism $h$ in \eqref{eq: basic distinguished triangle} is $0$. 
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+The following are all specialized results characterizing, when a triangulated functor is an equivalence. We will use \ref{} in the proof of proposition \ref{}. We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
 
 \begin{definition}
     Let $\D$ be a triangulated category and $\D_0$, $\D_1$ its triangulated subcategories. We say $\D$ \emph{decomposes} into $\D_0$ and $\D_1$ if the following three conditions are met.
@@ -416,6 +494,14 @@ The following are all specialized results characterizing, when a fully faithful 
     \end{enumerate} 
     Additionally, $\D$ is called \emph{indecomposable}, if it can not be decomposed in this way.
 \end{definition}
+
+\begin{proposition}
+    Suppose a triangulated category $\D$ decomposes into $\D_0$ and $\D_1$. Then every object $X$ of $\D$ is isomorphic to $Y_0 \oplus Y_1$ for some objects $Y_0$ and $Y_1$ belonging to $\D_0$ and $\D_1$, respectively.
+\end{proposition}
+
+\begin{proof}
+    This is a direct consequence of the definition and Lemma \ref{split distinguished triangles}.
+\end{proof}
 
 \begin{lemma}
     Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$. Suppose $F$ has a right adjoint $F \dashv H \colon \D' \to \D$. Then $F$ is an equivalence if and only if for any object $Z$ in $\D'$ the condition $H(Z) \iso 0$ implies $Z \iso 0$.
@@ -913,9 +999,11 @@ so the long exact sequence of proposition \ref{LES in cohomology} can be rephras
     \[
         0 \longrightarrow B^\bullet \xrightarrow{ \ \tau_f \ } C(f)^\bullet \xrightarrow{\ \pi_f \ } A[1]^\bullet \longrightarrow 0
     \]
-    in $\com(\A)$ to which one then applies proposition \ref{LES in cohomology}\footnote{Note that we have actually used much less than what the proposition has to offer.}.
+    in $\com(\A)$ to which one then applies proposition \ref{LES in cohomology}\footnote{Note that we have actually used much less than what the proposition has to offer, in particular not even the existence of the connecting morphism.}.
 
-    Now we argue why this is enough to show that all $H^i$ are cohomological. Since every distinguished triangle in $\kcat{\A}$ is isomorphic to a triangle of the form \eqref{eq: model for d.t. in homotopy cat.} we see that the sequence $H^0(B^\bullet) \to H^0(C^\bullet) \to H^0(A[1]^\bullet)$ is exact for any distinguished triangle $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ by functoriality of $H^i$. Rotating the preceding triangle \ie periodically applying the translation functor or its quasi-inverse (both preserving distinguishness of triangles by axiom \ref{TR2}) shows that $H^0$ is cohomological. Finally, by \eqref{eq: cohomology and translation} clearly all $H^i$ are cohomological. \qedhere
+    Now we argue why this is enough to show that all $H^i$ are cohomological. Since every distinguished triangle in $\kcat{\A}$ is isomorphic to a triangle of the form \eqref{eq: model for d.t. in homotopy cat.} we see that the sequence $H^0(B^\bullet) \to H^0(C^\bullet) \to H^0(A[1]^\bullet)$ is exact for any distinguished triangle $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ by functoriality of $H^i$. Rotating the preceding triangle \ie periodically applying axiom \ref{TR2},
+    % the translation functor or its quasi-inverse (both preserving distinguishness of triangles by axiom \ref{TR2}),
+    shows that $H^0$ is cohomological. Finally, by \eqref{eq: cohomology and translation} clearly all $H^i$ are cohomological. \qedhere
 
 
     % We are allowed to make this reduction because of \eqref{eq: cohomology and translation}, the fact that distinguished triangles 

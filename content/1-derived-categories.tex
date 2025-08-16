@@ -6,7 +6,7 @@ A more comprehensive and formal treatment of this topic is laid out in \cite[Ch.
 The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. To close the section, we prove a correspondence between the hom-sets of $\derplus{\A}$ and certain $\operatorname{Ext}$-modules.
 % more general framework realtes back to the classical higher derived functors. 
 
-\subsection{Derived category of an abelian category}
+\subsection{Derived categories of abelian categories}
 
 In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in section \ref{Derived categories in geometry}, involves the following. Instead of intrinsically \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
 studying the sheaf $\F$, we represent it with a so called \emph{resolution}, which consists of a complex of sheaves $F^\bullet$, built up from sheaves $F^i$, for $i \in \Z$, belonging to some class of sheaves, which is well behaved under cohomology, and a quasi-isomorphism of the form $F^\bullet \to \F$ or $\F \to F^\bullet$. 
@@ -15,7 +15,7 @@ After noting that the sheaf $\F$ can be seen as a complex concentrated in degree
 results in computing isomorphic cohomology groups, we are motivated  
 not to distinguish the sheaf $\F$ from its resolutions in the ambient (homotopy) category of complexes any longer. 
 % identify the sheaf $\F$ with the collection of all its resolutions. 
-Taking a step back, we would like to modify the homotopy category $\kcat{\coherent{X}}$ in such a way that $\F$ is identified with all its resolutions, or in other words, we want all the quasi-isomorphisms of $\kcat{\coherent{X}}$ to turn into isomorphisms in a ``universal way''. We will take the latter to be our inspiration for the definition of a derived category $\dercat{\A}$ of a general abelian category $\A$. This is stated more formally in the form of the ensuing universal property.
+Taking a step back, we would like to modify the homotopy category $\kcat{\coherent{X}}$ in such a way that $\F$ is identified with all its resolutions, or in other words, we want all the quasi-isomorphisms of $\kcat{\coherent{X}}$ to turn into isomorphisms in a ``universal way''. We will take the latter to be our inspiration for the definition of the derived category $\dercat{\A}$ of a general abelian category $\A$. This is stated more formally in the form of the ensuing universal property.
 
 % assigning the derived category $\dercat{\A}$ to a general abelian category $\A$. 
 
@@ -28,14 +28,36 @@ Taking a step back, we would like to modify the homotopy category $\kcat{\cohere
 
 % Our goal in general is then fairly simple, modify the homotopy category $\kcat{\A}$ in such a way that all the quasi-isomorphisms become isomorphisms in a ``universal way''. This is stated more formally in the form of the ensuing universal property.
 
+% \begin{definition}
+%     \label{universal property of D(A)}
+%     Let $\A$ be an abelian category and $\kcat{\A}$ its homotopy category. A triangulated category $\dercat{\A}$ together with a triangulated functor $Q\colon \kcat{\A} \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
+%     \info{maybe I replace triangulated in this def. w/ $k$-linear and then add to proposion 2.8, that when $Q$ and $F$ are assumed to be triangulated $F_0$ is as well. This is so that I can use it directly to construct homology functors on $\dercat{\A}$}
+%     \begin{enumerate}[label = (\roman*)]
+%         \item For every quasi-isomorphism $s$ in $\kcat{\A}$, $Q(s)$ is an isomorphism in $\dercat{\A}$.
+%         \item For any triangulated category $\D$ and any functor $F\colon \kcat{\A} \to \D$, sending quasi-isomorphisms $s$ in $\kcat{\A}$ to isomorphisms $F(s)$ in $\D$,
+%         % for which $F(s)$ is an isomorphism in $\D$ for all quasi-isomorphisms $s$ in $\kcat{\A}$, 
+%         there exists a triangulated functor $F_0 \colon \dercat{\A} \to \D$, which is unique up to a unique natural isomorphism, such that $F \natiso F_0 \circ Q$.
+%         % , and moreover $F_0$ is required to be unique up to a unique natural isomorphism.
+%         In other words, the diagram below commutes up to natural isomorphism. 
+%         \[\begin{tikzcd}
+%             % https://q.uiver.app/#q=WzAsMyxbMCwwLCJLKFxcQSkiXSxbMCwxLCJEKFxcQSkiXSxbMSwwLCJcXEQiXSxbMCwyLCJGIl0sWzAsMSwiUSIsMl0sWzEsMiwiRl9cXEEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+%             {\kcat{\A}} & \D \\
+%             {\dercat{\A}}
+%             \arrow["F", from=1-1, to=1-2]
+%             \arrow["Q"', from=1-1, to=2-1]
+%             \arrow["{F_0}"', dashed, from=2-1, to=1-2]
+%         \end{tikzcd}\]
+%     \end{enumerate}
+% \end{definition}
+
 \begin{definition}
     \label{universal property of D(A)}
-    Let $\A$ be an abelian category and $\kcat{\A}$ its homotopy category. A triangulated category $\dercat{\A}$ together with a triangulated functor $Q\colon \kcat{\A} \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
+    Let $\A$ be an abelian category and $\kcat{\A}$ its homotopy category. A category $\dercat{\A}$ together with a functor $Q\colon \kcat{\A} \to \dercat{\A}$ is the \emph{derived category of $\A$}, if it satisfies:
     \begin{enumerate}[label = (\roman*)]
         \item For every quasi-isomorphism $s$ in $\kcat{\A}$, $Q(s)$ is an isomorphism in $\dercat{\A}$.
-        \item For any triangulated category $\D$ and any functor $F\colon \kcat{\A} \to \D$, sending quasi-isomorphisms $s$ in $\kcat{\A}$ to isomorphisms $F(s)$ in $\D$,
+        \item For any category $\D$ and any functor $F\colon \kcat{\A} \to \D$, sending quasi-isomorphisms $s$ in $\kcat{\A}$ to isomorphisms $F(s)$ in $\D$,
         % for which $F(s)$ is an isomorphism in $\D$ for all quasi-isomorphisms $s$ in $\kcat{\A}$, 
-        there exists a triangulated functor $F_0 \colon \dercat{\A} \to \D$, which is unique up to a unique natural isomorphism, such that $F \natiso F_0 \circ Q$.
+        there exists a functor $F_0 \colon \dercat{\A} \to \D$, which is unique up to a unique natural isomorphism, such that $F \natiso F_0 \circ Q$.
         % , and moreover $F_0$ is required to be unique up to a unique natural isomorphism.
         In other words, the diagram below commutes up to natural isomorphism. 
         \[\begin{tikzcd}
@@ -50,7 +72,7 @@ Taking a step back, we would like to modify the homotopy category $\kcat{\cohere
 \end{definition}
 
 \begin{remark}
-    We recognize this definition as a special case of localization of categories \cite[Definition 7.1.1.]{kashiwara2006categories}. In particular it defines $\dercat{\A}$ to be the \emph{localization of a triangulated category} $\kcat{\A}$ by the family of all quasi-isomorphisms in $\kcat{\A}$.
+    We recognize this definition as a special case of localization of categories \cite[\S 7, Definition 7.1.1.]{kashiwara2006categories} or \cite[\S III.2, Definition 1]{gelfand2002methods}. In particular it defines $\dercat{\A}$ to be the \emph{localization of a triangulated category} $\kcat{\A}$ by the family of all quasi-isomorphisms in $\kcat{\A}$.
 \end{remark}
 
 A naive way of constructing $\dercat{\A}$ out of $\kcat{\A}$ would be to artificially add the inverses to all the quasi-isomorphisms in $\kcat{\A}$ and then impose the correct collection of relations on the newly constructed class of morphisms. As this can quickly lead us to some set theoretic problems, we will construct a specific model, which achieves this, instead. Our construction is a priori not going to result in a locally small\footnote{A category $\mathcal C$ is called \emph{locally small} if for all objects $X$ and $Y$ of $\mathcal C$ the hom-sets $\Hom_\mathcal{C}(X, Y)$ are actual sets.} category, but as we shall soon see in practice all the categories we will be concerned with will be locally small. 
@@ -382,7 +404,7 @@ Moreover, the composition law $\circ$ is $k$-bilinear and the localization funct
 
 \begin{proposition}
     \label{universal property for D(A) proposition}
-    The constructed derived category $\dercat{\A}$ of an abelian category $\A$ together with the localization functor $Q \colon \kcat{\A} \to \dercat{\A}$ satisfies the universal property of definition \ref{universal property of D(A)}.
+    The constructed derived category $\dercat{\A}$ of an abelian category $\A$ together with the localization functor $Q \colon \kcat{\A} \to \dercat{\A}$ satisfies the universal property of Definition \ref{universal property of D(A)}. Additionally, in notation of Definition \ref{universal property of D(A)}, if category $\D$ and the functor $F \colon \kcat{\A} \to \D$ are $k$-linear or triangulated, the induced functor $F_0$ is as well.
 \end{proposition}
 
 \begin{proof}
@@ -402,9 +424,9 @@ Moreover, the composition law $\circ$ is $k$-bilinear and the localization funct
     \end{tikzcd}\]
     For (ii) the functor $F_0 \colon \dercat{\A} \to \kcat{\A}$ is defined by the assignment on
     \begin{center}
-    \begin{tabular}{r l}
-        \textsl{Objects:} & $A^\bullet \longmapsto F(A^\bullet)$. \\
-        \textsl{Morphisms:} & $[A^\bullet \xleftarrow{s} C^\bullet \xrightarrow{f} B^\bullet] \longmapsto F(f) \circ F(s)\inv$.
+    \begin{tabular}{r r c l}
+        \textsl{Objects:} & $A^\bullet$ & $\longmapsto$ & $F(A^\bullet)$. \\
+        \textsl{Morphisms:} & $[A^\bullet \xleftarrow{s} C^\bullet \xrightarrow{f} B^\bullet]$ & $\longmapsto$ & $F(f) \circ F(s)\inv$.
     \end{tabular}
     \end{center}
     This is well defined and functorial for the functor $F\colon \kcat{\A} \to \D$ sends quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\D$. Moreover, $F_0$ is a $k$-linear functor, as can quickly be computed by an application of Lemma \ref{common denominator for left roofs}. Using the same notation as in the lemma, we have
@@ -412,8 +434,32 @@ Moreover, the composition law $\circ$ is $k$-bilinear and the localization funct
         F_0(\phi_0 + \phi_1) = F(g_0 + g_1) \circ F(s)\inv = F(g_0) \circ F(s)\inv + F(g_1) \circ F(s)\inv = F_0(\phi_0) + F_1(\phi_1) \\
         \text{and} \quad F_0(\lambda \phi_0) = F(\lambda f_0) \circ F(s_0)\inv = \lambda (F(f_0) \circ F(s_0)\inv) = \lambda F_0(\phi_0).
     \end{gather*}
-    The functor $F_0$ also commutes with the translation functors of $\dercat{\A}$ and $\D$, because $F$ is triangulated, and maps distinguished triangles of $\dercat{\A}$ to distinguished triangles of $\D$, making it a triangulated functor as well. Lastly it is clear from the definition, that $F_0 \circ Q = F$ and that $F_0$ is unique up to a natural isomorphism for which the diagram \eqref{universal property of D(A)} commutes. 
+    It is clear from the definition, that $F_0 \circ Q = F$ and that $F_0$ is unique up to a natural isomorphism for which the diagram \eqref{universal property of D(A)} commutes. 
+
+    Lastly, when $\D$ and $F$ are triangulated, the functor $F_0$ also commutes with the translation functors of $\dercat{\A}$ and $\D$, because $Q$ as the identity on objects and $F$ commutes with translation functors of $\kcat{\A}$ and $\D$. From the fact that distinguished triangles in $\dercat{\A}$ are by definition exactly those triangles, which are isomorphic to $Q$-images of distinguished triangles of $\kcat{\A}$, and the fact that $F$ maps distinguished triangles of $\dercat{\A}$ to distinguished triangles of $\D$, we can conclude that $F_0$ is triangulated as well. 
 \end{proof}
+
+
+% ============================================================== %
+
+
+\subsubsection{Cohomology}
+
+Since cohomology already appeared as an indispensable tool on the level of the homotopy category $\kcat{\A}$, it would be nice to also have it be accessible at the level of derived categories. 
+% also have access to it at the level of derived categories. 
+We can in fact define cohomology functors on $\dercat{\A}$ by inducing them from the functors $H^i \colon \kcat{\A} \to \A$, which by definition send quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\A$, using the universal property of Definition \ref{universal property of D(A)}. In this way we obtain $k$-linear functors 
+\[
+    H^i \colon \dercat{\A} \rightarrow \A, \qquad i \in \Z
+\]
+for $i \in \Z$, which as expected return the $i$-th cohomology of a complex $A^\bullet$ and return the morphism $H^i(f) \circ H^i(s)\inv$ when applied to a morphism in $\dercat{\A}$, represented by a left roof \eqref{eq: left roof}.
+
+
+% ============================================================== %
+
+
+\subsubsection{Subcategories of derived categories}
+
+% We have already seen $\derplus{\A}$, $\derminus{\A}$ and $\derb{\A}$ be defined as full triangulated subcategories of $\dercat{\A}$ on the class of certain bounded complexes taking values in $\A$.  
 
 As with the homotopy category of complexes $\kcat{\A}$, we also have the following bounded versions of the derived category $\dercat{\A}$, appearing as full triangulated subcategories of the unbounded variant $\dercat{\A}$ by proposition \ref{triangulated subcategory proposition}.
 
@@ -430,9 +476,80 @@ As with the homotopy category of complexes $\kcat{\A}$, we also have the followi
     \end{tabular}
 \end{center}
 
+There is also another (equivalent) way of obtaining the categories mentioned above, which will sometimes be more convenient to work with.  
+
+\begin{proposition}
+    \label{Subcategories of D(A) but bigger}
+    Let $\A$ be an abelian category. 
+    \begin{enumerate}[label = (\roman*)]
+        \item{The inclusion $\derplus{\A} \hookrightarrow \dercat{\A}$ (resp.~$\derminus{\A} \hookrightarrow \dercat{\A}$) induces an equivalence between $\derplus{\A}$ and the full triangulated subcategory of $\dercat{\A}$ spanned on (possibly unbounded) complexes $A^\bullet$, for which there is an integer $n \in \Z$, such that $H^i(A^\bullet) \iso 0$ for all $i < n$ (resp.~$i > n$).}
+        \item{}
+        \item{} 
+    \end{enumerate}
+\end{proposition}
+
+To make the proof of this proposition conceptually clearer, we introduce two complexes associated to a complex $A^\bullet$, namely
+\begin{align*}
+    \ltruncation{n}(A^\bullet) &= (\cdots \to 0 \to \coker d^{n-1} \to A^{n+1} \to A^{n+2} \to \cdots), \\
+    \rtruncation{n}(A^\bullet) &= (\cdots \to A^{n-2} \to A^{n-1} \to \ker d^{n} \to 0 \to \cdots).
+\end{align*}
+
+They come equipped with the natural quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ and the natural inclusion map $j \colon \rtruncation{n}(A^\bullet) \to A^\bullet$, satisfying the following
+\begin{align}
+    H^i(q) \colon H^i(A^\bullet) \to H^i(\ltruncation{n}(A^\bullet)) \text{ is an isomorphism for all } i \geq n, \\
+    H^i(j) \colon H^i(\rtruncation{n}(A^\bullet)) \to H^i(A^\bullet) \text{ is an isomorphism for all } i \leq n.
+\end{align}
+% In order to make the proof of this proposition conceptually clearer, we introduce truncation functors $\tau_{\geq n} \colon \kcat{\A} \to \kplus{\A}$, defined by
+% \begin{center}
+%     \begin{tabular}{r r c l}
+%         \textsl{Objects:} & $A^\bullet$ & $\longmapsto$ & $(\cdots \to 0 \to \coker d^{n-1} \to A^{n+1} \to A^{n+2} \to \cdots)$. \\
+%         \textsl{Morphisms:} & $(f\colon A^\bullet \to B^\bullet)$ & $\longmapsto$ & $ 
+%         (\tau_{\geq n}(f)^i)_{i \in \Z}$, 
+%         % \text{, where } \tau_{\geq n}(f)^i = 
+%         % \begin{cases}
+%         %     0, \ i < n \\
+%         %     \coker d^{n-1}_A \to \coker d^{n-1}_B, \ i = n \\ 
+%         %     f^i, \ i > n.
+%         % \end{cases}$.
+%     \end{tabular}
+% \end{center}
+% where $\tau_{\geq n}(f)^i$ is the zero morphism for $i < n$, the induced morphism $\coker d^{n-1}_A \to \coker d^{n-1}_B$ for $i = n$ and morphisms $f^i\colon A^i \to B^i$ for $i > n$. 
+% % Naturally for every $A^\bullet$ there is a quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$.
+
+% We also have $\tau_{\leq n} \colon \kcat{\A} \to \kminus{\A}$, defined by
+% \begin{center}
+%     \begin{tabular}{r r c l}
+%         \textsl{Objects:} & $A^\bullet$ & $\longmapsto$ & $(\cdots \to A^{n-2} \to A^{n-1} \to \ker d^{n} \to 0 \to \cdots)$. \\
+%         \textsl{Morphisms:} & $(f\colon A^\bullet \to B^\bullet)$ & $\longmapsto$ & $ 
+%         (\tau_{\leq n}(f)^i)_{i \in \Z}$, 
+%     \end{tabular}
+% \end{center}
+% where $\tau_{\leq n}(f)^i$ is $f^i \colon A^i \to B^i$ for $i < n$, the induced morphism $\ker d^n_A \to \ker d^n_B$ for $i = n$ and the zero morphism for $i > 0$.
+% % In this case there are natural inclusions $j \colon \rtruncation{n}(A^\bullet) \to A^\bullet$ for every $A^\bullet$.
+
+% \begin{lemma}
+%     For every complex $A^\bullet$ the natural quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ induces isomorphisms $H^i(q)$ for $i \geq n$ and the natural inclusion map $j \colon \rtruncation{n}(A^\bullet) \to A^\bullet$ induces isomorphisms $H^i(j)$ for $i \leq n$.
+% \end{lemma}
+
+\begin{proof}[Proof of Proposition \ref{Subcategories of D(A) but bigger}]
+    The inclusion $\derplus{\A} \hookrightarrow \dercat{\A}$ is already fully faithful, so we verify only that it is essentially surjective onto the subcategory of complexes with cohomology bounded from below. Suppose $A^\bullet$ satisfies $H^i(A^\bullet) \iso 0$, for all $i < n$. Then we claim that the quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ is actually a quasi-isomorphism.
+    
+    This shows that there is an isomorphism in $\dercat{\A}$ between $A^\bullet$ and a complex $\ltruncation{n}(A^\bullet)$, which belongs to $\derplus{\A}$. 
+\end{proof}
+
+\info{Move footnote about $\A \to \kcat{\A}$ being fully faithful over here.}
+
+\begin{proposition}
+    The natural functor $\A \to \dercat{\A}$ is fully faithful, thus identifying $\A$ with the full subcategory of complexes $A^\bullet$ of $\dercat{\A}$, satisfying $H^i(A^\bullet) \iso 0$, for all $i \neq 0$.
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
 % ============================================================== %
 
-\subsubsection{Derived category of an abelian category with enough injectives}
+\subsubsection{Derived categories of abelian categories with enough injectives}
 
 After possibly working with proper classes when constructing the derived category, this section will once again place us back on familiar grounds of set theory. Aside from these concerns the establishing result of this section will have a very important practical application -- construction of derived functors. Under an assumption on the abelian category $\A$, we will establish an equivalence of $\derplus{\A}$ with the homotopy category of a full additive subcategory of $\A$, spanned on \emph{injective objects}, which we define presently. 
 
@@ -517,18 +634,28 @@ Later we will also see that this injective resolution is unique up to homotopy e
         A^{n+1} \oplus I^n \xrightarrow{\ e \ } \coker d^{n-1}_{C(f)} \xrightarrow{ \ j \ } I^{n+1}
     \]
     with canonical embeddings of $A^{n + 1}$ and $I^{n}$ into their biproduct $A^{n+1} \oplus I^n$, we obtain morphisms $\delta^{n}\colon I^n \to I^{n+1}$ and $f^{n+1}\colon A^{n+1} \to I^{n+1}$. As $j \circ e$ is a morphism fitting into the following coproduct diagram,
-    \info{this diagram doesn't need to take up so much space.}
-    \[\begin{tikzcd}[row sep = 2em]
-        % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBXntuKzF9IFxcb3BsdXMgSV5uIl0sWzAsMCwiQV57bisxfSJdLFsyLDAsIklee259Il0sWzEsMywiSV57bisxfSJdLFswLDMsImogXFxjaXJjIGUiLDJdLFsxLDMsImZee24rMX0iLDIseyJjdXJ2ZSI6Mn1dLFsyLDMsIlxcZGVsdGFebiIsMCx7ImN1cnZlIjotMn1dLFsxLDBdLFsyLDBdXQ==
-        {A^{n+1}} && {I^{n}} \\
-        & {A^{n+1} \oplus I^n} \\
-        \\
-        & {I^{n+1}}
-        \arrow[from=1-1, to=2-2]
-        \arrow["{f^{n+1}}"', curve={height=12pt}, from=1-1, to=4-2]
-        \arrow[from=1-3, to=2-2]
-        \arrow["{\delta^n}", curve={height=-12pt}, from=1-3, to=4-2]
-        \arrow["{j \circ e}"', from=2-2, to=4-2]
+    % \[\begin{tikzcd}[row sep = 2em]
+    %     % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBXntuKzF9IFxcb3BsdXMgSV5uIl0sWzAsMCwiQV57bisxfSJdLFsyLDAsIklee259Il0sWzEsMywiSV57bisxfSJdLFswLDMsImogXFxjaXJjIGUiLDJdLFsxLDMsImZee24rMX0iLDIseyJjdXJ2ZSI6Mn1dLFsyLDMsIlxcZGVsdGFebiIsMCx7ImN1cnZlIjotMn1dLFsxLDBdLFsyLDBdXQ==
+    %     {A^{n+1}} && {I^{n}} \\
+    %     & {A^{n+1} \oplus I^n} \\
+    %     \\
+    %     & {I^{n+1}}
+    %     \arrow[from=1-1, to=2-2]
+    %     \arrow["{f^{n+1}}"', curve={height=12pt}, from=1-1, to=4-2]
+    %     \arrow[from=1-3, to=2-2]
+    %     \arrow["{\delta^n}", curve={height=-12pt}, from=1-3, to=4-2]
+    %     \arrow["{j \circ e}"', from=2-2, to=4-2]
+    % \end{tikzcd}\]
+    \[\begin{tikzcd}[column sep = small, row sep = 2em]
+        % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBXntuKzF9IFxcb3BsdXMgSV5uIl0sWzAsMSwiQV57bisxfSJdLFsxLDAsIklee259Il0sWzIsMiwiSV57bisxfSJdLFswLDMsImogXFxjaXJjIGUiLDIseyJsYWJlbF9wb3NpdGlvbiI6NDAsInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxLDMsImZee24rMX0iLDIseyJjdXJ2ZSI6Mn1dLFsyLDMsIlxcZGVsdGFebiIsMCx7ImN1cnZlIjotMn1dLFsxLDBdLFsyLDBdXQ==
+        & {I^{n}} \\
+        {A^{n+1}} & {A^{n+1} \oplus I^n} \\
+        && {I^{n+1}}
+        \arrow[from=1-2, to=2-2]
+        \arrow["{\delta^n}", curve={height=-18pt}, from=1-2, to=3-3]
+        \arrow[from=2-1, to=2-2]
+        \arrow["{f^{n+1}}"', curve={height=18pt}, from=2-1, to=3-3]
+        \arrow["{j \circ e}"'{pos=0.4}, dashed, from=2-2, to=3-3]
     \end{tikzcd}\]
     we see that $j \circ e = \langle f^{n+1} , \delta^n \rangle$. Next, we see that $\delta^n\delta^{n-1} = 0$ and $\delta^n f^n = f^{n+1}d^n$ from the computation
     \[
@@ -791,12 +918,6 @@ Within the scope of an abelian category $\A$ with enough injectives, theorem \re
 %     This lemma reminds us of the Ore condition in the context of localization in non-commutative algebra as so analogously there is also a dual version of the lemma. 
 % \end{remark}
 
-% ============================================================== %
-
-\subsubsection{Subcategories of derived categories}
-
-We have already seen $\derplus{\A}$, $\derminus{\A}$ and $\derb{\A}$ be defined as full triangulated subcategories of $\dercat{\A}$ on the class of certain bounded complexes taking values in $\A$.  
-
 
 
 % ============================================================== %
@@ -898,10 +1019,13 @@ Lastly we note, that the first method is in some sense a special instance of the
 \vspace{0.3 cm}
 
 \noindent
-\textsc{Method 1.} Let $F\colon \A \to \B$ be a left exact functor between abelian categories with $\A$ having enough injectives. By Theorem \ref{D+ = K+ and injectives} we know that the composition of $\iota \colon \kplus{\J} \to \kplus{\A}$ followed by the localization functor $Q_\A \colon \kplus{\A} \to \derplus{\A}$ is an equivalence of triangulated categories. The \emph{right derived functor of $F$} is then defined to be the composition
-\[
+\textsc{Method 1.} 
+\label{method 1}
+Let $F\colon \A \to \B$ be a left exact functor between abelian categories with $\A$ having enough injectives. By Theorem \ref{D+ = K+ and injectives} we know that the composition of $\kplus{\J} \to \kplus{\A}$ followed by the localization functor $Q_\A \colon \kplus{\A} \to \derplus{\A}$ is an equivalence of triangulated categories. The \emph{right derived functor of $F$} is then defined to be the composition
+\begin{equation}
+    \label{eq: construction of RF with injectives}
     \rderived{}{F}\colon \quad \derplus{\A} \xrightarrow{ \ \natiso \ } \kplus{\J} \hookrightarrow \kplus{\A} \xrightarrow{ \ F \ } \kplus{\B} \xrightarrow{\ Q_\B \ } \derplus{\B}
-\]
+\end{equation}
 The functor $\rderived{}{F}$ is clearly triangulated for it is a composition of triangulated functors. Note that in this case the functor $\rderived{}{F}$ does not necessarily make the square \eqref{eq: exact functor derives} commutative.
 
 We will use this construction many times through the course of the thesis, so we reiterate the above definition by providing a simple recipe for computing the image of $\rderived{}{F}$ on complexes $A^\bullet$ of $\derplus{\A}$.   
@@ -914,6 +1038,10 @@ We will use this construction many times through the course of the thesis, so we
         \rderived{}{F}(A^\bullet) = F(I^\bullet_A).
     \]
 \end{enumerate}
+
+\begin{remark}
+    In the slightly more general situation, if one is already given a triangulated functor $F \colon \kplus{\A} \to \kplus{\B}$ at the level of homotopy categories and assumes that $\A$ contains enough injectives, procedure \eqref{eq: construction of RF with injectives} again yields a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$. This remark will be esspecially useful when considering the \emph{differentialy graded inner} $\Hom^\bullet$-functor of subsection \ref{}, which does not appear as a functor induced by some left exact functor $\A \to \B$ on the level of abelian categories.
+\end{remark}
 
 \begin{remark}
     When considering a right exact functor $F \colon \A \to \B$, we instead assume the category $\A$ contains enough projectives. In this case we use the dualized version of Theorem \ref{D+ = K+ and injectives}, stating that $\kminus{\mathcal P} \natiso \derminus{\A}$, where $\mathcal P$ denotes the full subcategory of $\A$, spanned on projective objects of $\A$. The left derived functor is then defined as the composition
@@ -935,7 +1063,7 @@ In this case \textsc{Method 1} of constructing right derived functors will not w
 
 \begin{definition}
     \label{F-adapted}
-    A class of objects $\I_F \subseteq \A$ is \emph{adapted} to a left\footnote{Dually, a class of objects $\mathcal P_F$ of $\A$ is \emph{adapted} to a \emph{right} exact functor $F \colon \A \to \B$ if it is closed under finite direct sums, every object of $\A$ is a quotient of some object of $\mathcal P$ and for every acyclic complex $P^\bullet$ in $\kminus{\A}$, with $P^i \in \mathcal P$, its image $F(P^\bullet)$ under $F$ is also acyclic.} exact functor $F \colon \A \to \B$, if the following three conditions are satisfied.
+    A class of objects $\I_F \subseteq \A$ is \emph{adapted} to a \textit{left exact}\footnote{Dually, a class of objects $\mathcal P_F$ of $\A$ is \emph{adapted} to a \textit{right exact} functor $F \colon \A \to \B$ if it is closed under finite direct sums, every object of $\A$ is a quotient of some object of $\mathcal P_F$ and for every acyclic complex $P^\bullet$ in $\kminus{\A}$, with $P^i \in \mathcal P_F$, its image $F(P^\bullet)$ under $F$ is also acyclic.} functor $F \colon \A \to \B$, if the following three conditions are satisfied.
     \begin{enumerate}[label = (\roman*)]
         \item{$\I_F$ is stable under finite direct sums. \info{I started calling biproducts direct sums now...}} \label{F-adapted i} 
         \item{Every object $A$ of $\A$ \emph{embeds} into some object of $\I_F$, \ie there exists an object $I \in \I_F$ and a monomorphism $A \hookrightarrow I$.} \label{F-adapted ii}
@@ -943,16 +1071,17 @@ In this case \textsc{Method 1} of constructing right derived functors will not w
     \end{enumerate}
 \end{definition}
 
-\begin{remark}
+\begin{example}
     We observe, that whenever $\A$ contains enough injectives, the class of all injective objects forms an $F$-adapted class for \emph{every} left exact functor ${F\colon \A \to \B}$. Points (i) and (ii) are clearly true for the class of injective objects and point (iii) follows from Lemma \ref{acyclic to injective is nulhomotopic}. Indeed, it tells us that an acyclic complex of injectives $I^\bullet$ is nullhomotopic, which implies $F(I^\bullet)$ is nullhomotopic as well, therefore, in particular, also acyclic.
-\end{remark}
+\end{example}
 
 In the presence of an $F$-adapted class $\I$ we will now construct the right derived functor of $F$. Firstly we upgrade the class of objects $\I$ to a full additive subcategory of $\A$, also denoted by $\I$, having its class of objects be precisely the $F$-adapted class $\I$. 
 % This is done by declaring $\hom_\J(X, Y) := \hom_\A(X, Y)$ for all objects $X$, $Y$ of the class $\I$. 
 Then extending $F$ term-wise to a functor on the level of homotopy categories, also denoted by $F \colon \kplus{\I} \to \kplus{\A}$, utilizing the procedure outlined at the end of subsection \ref{subsection: Derived functors of exact functors}, we obtain a functor, which maps acyclic complexes to acyclic complexes because by definition the $F$-adapted class $\I$ satisfies condition \ref{F-adapted iii} of Definition \ref{F-adapted}. By Proposition \ref{Exact functor induces a derived functor} the functor $F$ then descends to a well defined functor on the level of derived categories
-\[
+\begin{equation}
+    \label{eq: D+(I) -> D+(B)}
     \derplus{\I} \to \derplus{\B}.
-\]
+\end{equation}
 Since we want to define the derived functor $\rderived{}{F}$, whose domain is $\derplus{\A}$, it remains to construct a functor $\derplus{\A} \to \derplus{\I}$, which we can then post-compose with $\derplus{\I} \to \derplus{\B}$ to obtain $\rderived{}{F}$. What we will show instead is the following.
 
 \begin{proposition}
@@ -963,7 +1092,7 @@ Since we want to define the derived functor $\rderived{}{F}$, whose domain is $\
     \]
 \end{proposition}
 
-The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following lemma, closely resembling Lemma \ref{injective resolution}. In the same sprit, we call the complex $I^\bullet$ belonging to $\kplus{\I}$ together with the quasi-isomorphism $A^\bullet \to I^\bullet$ an $\I$-resolution of the complex $A^\bullet$.
+The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following lemma, closely resembling Lemma \ref{injective resolution}. In the same sprit, we call the complex $I^\bullet$ belonging to $\kplus{\I}$ together with a quasi-isomorphism $A^\bullet \to I^\bullet$ an $\I$-resolution of the complex $A^\bullet$.
 
 \begin{lemma}
     \label{F-acyclic resolutions}
@@ -1040,23 +1169,23 @@ The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following l
 \end{proof}
 
 \begin{remark}
-    Upon close inspection, we also recognise Theorem \ref{D+ = K+ and injectives} as a special case of Proposition \ref{D+(I) = D+(A) F-adapted}, when one takes the $F$-adapted class $\I$ to be the class of all injectives of $\A$, provided there is enough of them. Indeed, it can be shown that any quasi-isomorphism $f\colon I^\bullet \to J^\bullet$ between two bounded below complexes of injectives is an isomorphism in $\kplus{\I}$. This is done by showing both $f^*\colon \Hom_{\kplus{\I}}(J^\bullet, I^\bullet) \to \Hom_{\kplus{\I}}(I^\bullet, I^\bullet)$ and $f_* \colon \Hom_{\kplus{\I}}(J^\bullet, I^\bullet) \to \Hom_{\kplus{\I}}(J^\bullet, J^\bullet)$ are isomorphisms. Lemma \ref{D+ K+ aux lemma 1} already shows us that $f^*$ is an isomorphism and by a very similar argument as in the proof of the lemma $f_*$ is as well.
+    Upon close inspection, we recognise Theorem \ref{D+ = K+ and injectives} as a special case of Proposition \ref{D+(I) = D+(A) F-adapted}, namely take the $F$-adapted class $\I$ to be the class of all injectives of $\A$, provided there is enough of them. Indeed, it can be shown that any quasi-isomorphism $f\colon I^\bullet \to J^\bullet$ between two bounded below complexes of injectives is an isomorphism in $\kplus{\I}$. This is done by showing both $f^*\colon \Hom_{\kplus{\I}}(J^\bullet, I^\bullet) \to \Hom_{\kplus{\I}}(I^\bullet, I^\bullet)$ and $f_* \colon \Hom_{\kplus{\I}}(J^\bullet, I^\bullet) \to \Hom_{\kplus{\I}}(J^\bullet, J^\bullet)$ are isomorphisms. Lemma \ref{D+ K+ aux lemma 1} already shows us that $f^*$ is an isomorphism and by a very similar argument as in the proof of the same lemma $f_*$ is as well.
 \end{remark}
 
 We can now define the \emph{right derived functor} $\rderived{}{F}$ as the composition
 \[
     \rderived{}{F} \colon \quad \derplus{\A} \xrightarrow{\ \iso \ } \derplus{\I} \longrightarrow D^+(B),
 \] 
-where $\derplus{\A} \xrightarrow{\ \iso \ } \derplus{\I}$ denotes a quasi-inverse to the equivalence $\derplus{\I} \iso \derplus{\A}$ established in Proposition \ref{D+(I) = D+(A) F-adapted}.
-The procedure for computing the right derived functor $\rderived{}{F}(A^\bullet)$ of a complex $A^\bullet$ in $\derplus{\A}$ is then very similar to \textsc{Method 1}. One takes an $F$-adapted resolution $A^\bullet \to I^\bullet_A$ of $A^\bullet$ and then applies the functor $F$ to $I^\bullet_A$, \ie
+where $\derplus{\A} \xrightarrow{\ \iso \ } \derplus{\I}$ denotes a quasi-inverse to the equivalence $\derplus{\I} \iso \derplus{\A}$ established in Proposition \ref{D+(I) = D+(A) F-adapted} and $\derplus{\I} \to \derplus{\B}$ is the functor \eqref{eq: D+(I) -> D+(B)}.
+The procedure for computing the right derived functor $\rderived{}{F}(A^\bullet)$ of a complex $A^\bullet$ in $\derplus{\A}$ is then very similar to \textsc{Method 1}. One takes an $\I$-resolution $A^\bullet \to I^\bullet_A$ of $A^\bullet$ and then applies the functor $F$ to $I^\bullet_A$, \ie
 \[
     \rderived{}{F}(A^\bullet) = F(I^\bullet_A).
 \]
 
-We mention that both methods give rise to right derived functors satisfying the following defining universal property. We only state this here, but refer the reader to \cite[\S III.6]{gelfand2002methods} for the claim and its proof or \cite[]{kashiwara2006categories} for a more comprehensive and high level treatment using the formalism of localization. 
+We mention that both methods give rise to right derived functors satisfying the following defining universal property. We only state this here, but refer the reader to \cite[\S III.6]{gelfand2002methods} for the claim and its proof or \cite[\S 13.3, \S 10.3, \S 7.3]{kashiwara2006categories} for a more comprehensive and high level treatment using the formalism of localization. 
 
 \begin{definition}\cite[\S III.6, Definition 6]{gelfand2002methods}
-    Let $F \colon \A \to \B$ be a left exact functor between abelian categories. The right derived functor of $F$ is a triangulated functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$ together with a natural transformation $\varepsilon_F \colon Q_\B \circ F \Longrightarrow \rderived{}{F} \circ Q_\A$, such that for any triangulated functor $G \colon \derplus{\A} \to \derplus{\B}$ and any natural transformation $\varepsilon \colon Q_\B \circ F \Longrightarrow G \circ Q_\A$, there exists a unique natural transformation $\eta \colon \rderived{}{F} \Longrightarrow G$, for which
+    Let $F \colon \A \to \B$ be a left exact functor between abelian categories. The \emph{right derived functor of $F$} is a triangulated functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$ together with a natural transformation $\varepsilon_F \colon Q_\B \circ F \Longrightarrow \rderived{}{F} \circ Q_\A$, such that for any triangulated functor $G \colon \derplus{\A} \to \derplus{\B}$ and any natural transformation $\varepsilon \colon Q_\B \circ F \Longrightarrow G \circ Q_\A$, there exists a unique natural transformation $\eta \colon \rderived{}{F} \Longrightarrow G$, for which
     \[\begin{tikzcd}[column sep = small]
         % https://q.uiver.app/#q=WzAsMyxbMCwxLCJhIl0sWzEsMCwiYiJdLFsyLDEsImMiXSxbMSwwLCJ4IiwyLHsibGV2ZWwiOjJ9XSxbMSwyLCJ5IiwwLHsibGV2ZWwiOjJ9XSxbMCwyLCJ6IiwwLHsibGV2ZWwiOjJ9XV0=
         & Q_\B \circ F \\
@@ -1068,17 +1197,46 @@ We mention that both methods give rise to right derived functors satisfying the 
     is commutative in the functor category $\operatorname{Fct}(\derplus{\A}, \derplus{\B})$.  
 \end{definition}
 
-Classically derived functors of a left exact functor $F \colon \A \to \B$ first appeared as a sequence of additive functors $\A \to \B$. We introduce them in the following definition, using our established modern viewpoint. 
+\noindent
+\textsc{Method 2$^*$.} \info{I think I will delete this method 2$^*$.} There is one instance in this thesis in which the two described methods will not suffice, namely in deriving the \emph{differentialy graded} $\Hom^\bullet$-functor. In this case our starting point will be a triangulated functor already on the level of homotopy categories $F \colon \kplus{\A} \to \kplus{\B}$, which does not originate from any functor at the level of abelian categories $\A \to \B$. Analogous to Definition \ref{F-adapted}, we introduce the following.
+\begin{definition}
+    \label{F-adapted for homotopy category}
+    Let $F \colon \kplus{\A} \to \kplus{\B}$ be a triangulated functor. A full triangulated subcategory $\mathcal K_F \subseteq \kplus{\A}$ is siad to be \emph{$F$-adapted} if the following two conditions hold.
+    \begin{enumerate}[label = (\roman*)]
+        \item{For every complex $A^\bullet$ in $\kplus{\A}$, there is a } \label{F-adapted for homotopy category i}
+        \item{For every acyclic complex $A^\bullet$ of $\mathcal K_F$, the complex $F(A^\bullet)$ is acyclic as well.} \label{F-adapted for homotopy category ii}
+    \end{enumerate}
+\end{definition}
+
+In order to construct the right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$, we assume the existence of an $F$-adapted category $\mathcal K_F \subseteq \kplus{\A}$ and introduce the full additive subcategory $\D_F \subseteq \derplus{\A}$ spanned on objects of $\mathcal K_F$. Proposition \ref{triangulated subcategory proposition} guarantees that $\D_F$ is a full triangulated subcategory of $\derplus{\A}$ and is moreover equivalent to the latter by \ref{F-adapted for homotopy category i} of Definition \ref{F-adapted for homotopy category}. Then we can extend the funtor $F$ to a functor $\D_F \to \derplus{\B}$ given by the assignment
+\begin{center}
+    \begin{tabular}{r r c l}
+        \textsl{Objects:} & $A^\bullet$ & $\longmapsto$ & $F(A^\bullet)$. \\
+        \textsl{Morphisms:} & $[A^\bullet \xleftarrow{s} C^\bullet \xrightarrow{f} B^\bullet]$ & $\longmapsto$ & $Q_\B F(f) \circ Q_\B F(s)\inv$.
+    \end{tabular}
+\end{center}
+This is a well-defined functor because condition \ref{F-adapted for homotopy category ii} of Definition \ref{F-adapted for homotopy category} ensures $F$ sends quasi-isomorphisms to quasi-isomorphisms by Proposition \ref{F preserves qis iff preserves acyclic}.
+Lastly the right derived functor is then given as the composition
+\[
+    \rderived{}{F} \colon \quad \derplus{\A} \xrightarrow{\ \iso \ } \D_F \longrightarrow \derplus{\B}.
+\]
+\begin{example}
+    When $\A$ contains enough injectives, the category $\kplus{\J} \subseteq \kplus{\A}$ is $F$-adapted for any triangulated functor $F \colon \kplus{\A} \to \kplus{\B}$.
+\end{example}
+
+\vspace{3cm}
+
+Classically derived functors of a left exact functor $F \colon \A \to \B$ first appeared as a sequence of additive functors $\A \to \B$. We introduce them in the following definition, using our established (modern) viewpoint. 
 
 \begin{definition}
-    For a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$ of a left exact functor $F \colon \A \to \B$, we define the \emph{higher derived functors of} $F$ as
+    For a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$ of a left exact functor $F \colon \A \to \B$, we define the \emph{higher derived functors of} $F$ as compositions
     \[
         \rderived{i}{F} := H^i \circ \rderived{}{F} \colon \quad \derplus{\A} \to \B
     \]
     for all $i \in \Z$. 
 \end{definition}
 
-Frequently we will be interested in the image of a higher derived functor $\rderived{i}{F}$ of just a single object $A$ belonging to category $\A$. In that case we will always interpret\footnote{More precisely, there is always a fully faithful functor $\A \to \kplus{\A}$ sending an object $A$ to a complex concentrated in degree $0$ and likewise for morphisms \cite[Chapter 3, Lemma 1.3.5]{milicic-dercat}.} it as a bounded complex concentrated in degree $0$. 
+Frequently we will be interested in the image of a higher derived functor $\rderived{i}{F}$ of just a single object $A$ belonging to category $\A$. In that case we will always interpret\footnote{More precisely, there is always a fully faithful functor $\A \to \kcat{\A}$ sending an object $A$ to a complex $\cdots \to 0 \to A \to 0 \to \cdots$ concentrated in degree $0$ and a morphism $f\colon A \to B$ to the homotopy class of the chain map defined by $f^0 = f$ and $f^i = 0$, for $i \neq 0$ \cite[Chapter 3, Lemma 1.3.5]{milicic-dercat}.} it as a bounded complex concentrated in degree $0$. 
 
 \begin{example}
     For an object $A$ of $\A$, equipped with an $F$-adapted class $\I$, we can compute that $\rderived{i}{F}(A) \iso 0$, for $i < 0$, and $\rderived{0}{F}(A) \iso F(A)$. 
@@ -1088,7 +1246,8 @@ Frequently we will be interested in the image of a higher derived functor $\rder
 \end{example}
 
 \begin{definition}
-    We say an object $A$ of $\A$ is \emph{$F$-acyclic}, if $\rderived{i}{F}(A) \iso 0$ for all $i \neq 0$.
+    \label{F-acyclic}
+    Suppose the right derived functor $\rderived{}{F}$ exists. We say an object $A$ of $\A$ is \emph{$F$-acyclic}, if $\rderived{i}{F}(A) \iso 0$ for all $i \neq 0$.
 \end{definition}
 
 A useful tool for gathering information about the action of the higher derived functors of a left exact functor $F$ on objects will be the long exact sequence associated to $F$ introduced in the following proposition. In view of this proposition we also interpret higher derived functors of $F$ as measuring the extent to which $F$ fails to be exact. 
@@ -1110,14 +1269,54 @@ A useful tool for gathering information about the action of the higher derived f
         0 \to H^0(\rderived{}{F}(A)) \to H^0(\rderived{}{F}(B)) \to H^0(\rderived{}{F}(C)) \to H^0(\rderived{}{F}(A)[1]) \to \cdots \\
         \cdots H^0(\rderived{}{F}(A)[i]) \to H^0(\rderived{}{F}(B)[i]) \to H^0(\rderived{}{F}(C)[i]) \to H^0(\rderived{}{F}(A)[i+1]) \to \cdots
     \end{multline*}
-    by Proposition \ref{LES in cohomology}, which is readily seen to be isomorphic to \eqref{eq: LES for left exact functor F}.  
+    by Proposition \ref{LES in cohomology}, whose terms are readily seen to be isomorphic to the terms of \eqref{eq: LES for left exact functor F}. \qedhere
 \end{proof}
 
-\begin{remark}
-    
-\end{remark}
+The rest of this section is devoted to proving some useful results relating $F$-acyclic and $F$-adapted objects. 
 
-The rest of this section is devoted to proving 
+\begin{lemma}
+    \label{F-adapted is F-acyclic}
+    Every object of an $F$-adapted class is also $F$-acyclic.
+\end{lemma}
+
+\begin{proof}
+    We only have to recall definition \ref{F-acyclic}. An object $I$ belonging to an $F$-adapted class $\I$ trivially forms its own $\I$-resolution $I^\bullet = (\cdots \to 0 \to I \to 0 \to \cdots)$, which allows us to compute $\rderived{i}{F}(I) = H^i(\rderived{}{F}(I^\bullet)) = H^i(F(I^\bullet)) \iso 0$, whenever $i \neq 0$ (and also $F(I)$ for $i = 0$).
+\end{proof}
+
+\begin{proposition}
+    \label{F-acyclic is F-adapted}
+    Let $F : \A \to \B$ be a left exact functor between two abelian categories. Let $\I \subset \A$ be an $F$-adapted class of objects in $\A$. Then the class of all $F$-acyclic objects of $\A$, denoted by $\I_F$, is also $F$-adapted. 
+\end{proposition}
+
+\begin{proof}
+    We verify conditions (i)--(iii) of definition \ref{F-adapted}. (i) Since the higher derived functors $\rderived{i}{F}$ are additive, $\I_F$ is stable under finite sums. (ii) Holds by lemma \ref{F-adapted is F-acyclic}. (iii) Suppose $A^\bullet$ is an acyclic complex in $K^+(\A)$ with $A^i \in \I_F$ for all $i$. Then using acyclicity of $A^\bullet$, we may break this complex up into a series of short exact sequences 
+    % as follows.
+    % \begin{align*}
+    %     0 \to A^0 \to & A^1 \to \ker d^2 \to 0 \\
+    %     0 \to \ker d^2 \to & A^2 \to \ker d^3 \to 0 \\
+    %     & \vdots
+    % \end{align*} 
+    \begin{equation}
+        \label{eq: SES from acyclic cx}
+        0 \to \ker d^i \to A^i \to \ker d^{i+1} \to 0 \quad \text{ for $i \in \Z$.}
+    \end{equation}
+    As our complex $A^\bullet$ is supported on $\N$, the first interesting short exact sequence happens at index $i = 1$, where $\ker d^1 = \im d^0 \iso A^0$
+    It yields the following long exact sequence associated to $F$
+    \begin{multline*}
+        0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to \rderived{1}{F}(A^0) \to \cdots \\ \cdots \to \rderived{i}{F}(A^0) \to \rderived{i}{F}(A^1) \to \rderived{i}{F}(\ker d^2) \to \rderived{i+1}{F}(A^0) \to \cdots.
+    \end{multline*}
+    Exactness of this sequence together with $F$-acyclicity of $A^0$ and $A^1$ shows that $\ker d^2$ is also $F$-acyclic and by only considering the beginning few terms of the sequence, we obtain the short exact sequence 
+    % From the fact that $A^0$ and $A^1$ are $F$-acyclic we see that $\ker d^2$ is $F$-acyclic and we obtain a short exact sequence 
+    \[
+        0 \to F(A^0) \to F(A^1) \to F(\ker d^2) \to 0.
+    \]
+    After inductively applying the same reasoning for each of the original short exact sequences of \eqref{eq: SES from acyclic cx} for $i > 1$, we are left with short exact sequences\footnote{To be more precise, we have used that $F$ is left exact in order to swap the order of $F$ and $\ker$ to reach \[\ker Fd^i \iso F(\ker d^i)\].}
+    \[
+        0 \to \ker Fd^i \to F(A^i) \to \ker Fd^{i+1} \to 0 \quad \text{ for $i \geq 1$.}
+    \]
+    Collecting them all back together we conclude that the complex $F(A^\bullet)$ is acyclic.
+    % \info{There are inconsistencies with $F(A^\bullet) = K^+(F)(A^\bullet)$ and so on. $\to$ I am going to abuse notation and use $F(A^\bullet)$, bc this is also done in practise \eg $f_*\F^\bullet$, not $K^+(f_*)(\F^\bullet)$} \qedhere
+\end{proof}
 
 % \[\begin{tikzcd}[column sep = small, row sep = 1.8em]
 %     % https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXGtwbHVze1xcSn0iXSxbMiwwLCJcXGtwbHVze1xcQX0iXSxbMiwyLCJcXGRlcnBsdXN7XFxBfSJdLFs0LDAsIlxca3BsdXN7XFxCfSJdLFs0LDIsIlxcZGVycGx1c3tcXEJ9Il0sWzEsMiwiUV9cXEEiXSxbMiwwLCJcXG5hdGlzbyIsMl0sWzAsMSwiXFxpb3RhIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwzLCJGIl0sWzMsNCwiUV9cXEIiXV0=
@@ -1132,3 +1331,46 @@ The rest of this section is devoted to proving
 % \end{tikzcd}\]
 
 % In th subsection we will deal with the case, when $F$ is only left exact. The theory dually runs in parallel, when $F$ is right exact. 
+
+\subsubsection{Ext functor}
+
+As a first application of the established theory of derived functors we consider the hom-functor
+\[
+    \Hom_\A(A, -) \colon \A \to \mod{k},
+\]
+where $A$ is an object of an abelian category $\A$. Assume that category $\A$ contains enough injectives. By Example \ref{}, we know that $\Hom_\A(A, -)$ is a left exact functor, so we can right derive it, to obtain the functor
+% so there exists its right derived functor
+\[
+    \mathbf{R}\Hom_\A(A, -) \colon \derplus{\A} \to \derplus{\mod{k}}.
+\] 
+Taking the $i$-th cohomology, we obtain higher derived functors of $\Hom_\A(A, -)$, called the \emph{Ext-functors}
+\[
+    \Ext^i_\A(A, -) := \rderived{i}{\Hom_\A(A, -)} = H^i(\rderived{}{\Hom_\A(A, -)}).
+\]
+There exists a very beautiful connection relating the Ext-functors of category $\A$ and the hom-functors of the bounded below derived category $\derplus{\A}$ captured in the next proposion.
+
+\begin{proposition}
+    Let $\A$ be an abelian category with enough injectives and let $A$ and $B$ belong to $\A$. Then for all $i \in \Z$ there exist isomorphisms
+    \[
+        \Ext^i_\A(A, B) \iso \Hom_{\derplus{\A}}(A, B[i]).
+    \]
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{remark}
+    There is also a generalization of this result providing a way to identify the hom-functors in $\derplus{\A}$ applied not only to objects of $\A$, but to bounded below complexes. In that case, on the Ext-side, one considers the \emph{differentialy graded hom-functors} of $\kplus{\A}$, namely $\Hom^\bullet(-,-) \colon \kminus{\A}^\op \times \kplus{\A} \to \kcat{\mod{k}}$, for which $\Hom^\bullet(A^\bullet, -)$ turns out to be right derivable inducing its higher derived functors $\Ext^i(A^\bullet, -) = \rderived{i}{\Hom^\bullet(A^\bullet, -)}$. Then for all $i \in \Z$ and all $A^\bullet$ and $B^\bullet$ of $\derplus{\A}$ there are isomorphisms
+    \[
+        \Ext^i(A^\bullet, B^\bullet) \iso \Hom_{\derplus{\A}}(A^\bullet, B[i]^\bullet).
+    \]
+    \info{this has to be expaned, because I need it for Serre functors, naturality in $A^\bullet$ and $B^\bullet$ is important.}
+\end{remark}
+
+\begin{proposition}
+    Let $\A$ be an abelian category with enough injectives. Then for every $A^\bullet$ of $\kminus{\A}$ and $B^\bullet$ belonging to $\kplus{\A}$ there natural isomorphisms
+    \[
+        \alpha_{A^\bullet, B^\bullet} : \Ext^i_\A(A^\bullet, B^\bullet) \iso \Hom_{\dercat{\A}}(A^\bullet, B[i]^\bullet).
+    \]
+\end{proposition}

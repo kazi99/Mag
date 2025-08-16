@@ -44,7 +44,7 @@
 \newcommand{\cf}{cf.\ }
 
 % Shorthands
-\newcommand{\R}{\mathbf R}
+\newcommand{\R}{\mathbb R}
 \newcommand{\N}{\mathbf Z_{\geq 0}}
 \newcommand{\Z}{\mathbf Z}
 \newcommand{\C}{\mathbf C}
@@ -100,6 +100,7 @@
 % Derived functors
 \newcommand{\rderived}[2]{\mathbf{R}^{#1}#2}
 \newcommand{\lderived}[2]{\mathbf{L}^{#1}#2}
+\newcommand{\Ext}{\operatorname{Ext}}
 
 % \NewDocumentCommand{\rderived}{o m}{
 %     \IfValueTF{#1}{%
@@ -109,7 +110,7 @@
 %     }%
 % }
 
-\newcommand{\derivedtensor}[3]{#1 \otimes_{#3}^{\operatorname{L}} #2}
+\newcommand{\derivedtensor}[3]{#1 \otimes_{#3}^{\mathbf{L}} #2}
 \newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
 \newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
 
@@ -118,6 +119,10 @@
 \newcommand{\tdclass}[1]{\td_{#1}}
 \newcommand{\firstchern}{\operatorname{c}_1}
 \newcommand{\ch}[1]{\operatorname{ch}(#1)}
+
+% Truncations
+\newcommand{\ltruncation}[1]{\tau_{\geq #1}}
+\newcommand{\rtruncation}[1]{\tau_{\leq #1}}
 
 % Lattices
 \newcommand{\hyperbolic}{\mathcal U}
