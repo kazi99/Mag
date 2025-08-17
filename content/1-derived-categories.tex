@@ -1040,7 +1040,8 @@ We will use this construction many times through the course of the thesis, so we
 \end{enumerate}
 
 \begin{remark}
-    In the slightly more general situation, if one is already given a triangulated functor $F \colon \kplus{\A} \to \kplus{\B}$ at the level of homotopy categories and assumes that $\A$ contains enough injectives, procedure \eqref{eq: construction of RF with injectives} again yields a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$. This remark will be esspecially useful when considering the \emph{differentialy graded inner} $\Hom^\bullet$-functor of subsection \ref{}, which does not appear as a functor induced by some left exact functor $\A \to \B$ on the level of abelian categories.
+    \label{Deriving homotopy functors}
+    In the slightly more general situation, if one is already given a triangulated functor $F \colon \kplus{\A} \to \kplus{\B}$ at the level of homotopy categories and assumes that $\A$ contains enough injectives, procedure \eqref{eq: construction of RF with injectives} again yields a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$. This remark will be esspecially useful when considering the \emph{differentialy graded inner} $\Hom^\bullet$-functor of subsection \ref{subsection: Ext functors}, which does not appear as a functor induced by some left exact functor $\A \to \B$ on the level of abelian categories.
 \end{remark}
 
 \begin{remark}
@@ -1197,34 +1198,34 @@ We mention that both methods give rise to right derived functors satisfying the 
     is commutative in the functor category $\operatorname{Fct}(\derplus{\A}, \derplus{\B})$.  
 \end{definition}
 
-\noindent
-\textsc{Method 2$^*$.} \info{I think I will delete this method 2$^*$.} There is one instance in this thesis in which the two described methods will not suffice, namely in deriving the \emph{differentialy graded} $\Hom^\bullet$-functor. In this case our starting point will be a triangulated functor already on the level of homotopy categories $F \colon \kplus{\A} \to \kplus{\B}$, which does not originate from any functor at the level of abelian categories $\A \to \B$. Analogous to Definition \ref{F-adapted}, we introduce the following.
-\begin{definition}
-    \label{F-adapted for homotopy category}
-    Let $F \colon \kplus{\A} \to \kplus{\B}$ be a triangulated functor. A full triangulated subcategory $\mathcal K_F \subseteq \kplus{\A}$ is siad to be \emph{$F$-adapted} if the following two conditions hold.
-    \begin{enumerate}[label = (\roman*)]
-        \item{For every complex $A^\bullet$ in $\kplus{\A}$, there is a } \label{F-adapted for homotopy category i}
-        \item{For every acyclic complex $A^\bullet$ of $\mathcal K_F$, the complex $F(A^\bullet)$ is acyclic as well.} \label{F-adapted for homotopy category ii}
-    \end{enumerate}
-\end{definition}
+% \noindent
+% \textsc{Method 2$^*$.} \info{I think I will delete this method 2$^*$.} There is one instance in this thesis in which the two described methods will not suffice, namely in deriving the \emph{differentialy graded} $\Hom^\bullet$-functor. In this case our starting point will be a triangulated functor already on the level of homotopy categories $F \colon \kplus{\A} \to \kplus{\B}$, which does not originate from any functor at the level of abelian categories $\A \to \B$. Analogous to Definition \ref{F-adapted}, we introduce the following.
+% \begin{definition}
+%     \label{F-adapted for homotopy category}
+%     Let $F \colon \kplus{\A} \to \kplus{\B}$ be a triangulated functor. A full triangulated subcategory $\mathcal K_F \subseteq \kplus{\A}$ is siad to be \emph{$F$-adapted} if the following two conditions hold.
+%     \begin{enumerate}[label = (\roman*)]
+%         \item{For every complex $A^\bullet$ in $\kplus{\A}$, there is a } \label{F-adapted for homotopy category i}
+%         \item{For every acyclic complex $A^\bullet$ of $\mathcal K_F$, the complex $F(A^\bullet)$ is acyclic as well.} \label{F-adapted for homotopy category ii}
+%     \end{enumerate}
+% \end{definition}
 
-In order to construct the right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$, we assume the existence of an $F$-adapted category $\mathcal K_F \subseteq \kplus{\A}$ and introduce the full additive subcategory $\D_F \subseteq \derplus{\A}$ spanned on objects of $\mathcal K_F$. Proposition \ref{triangulated subcategory proposition} guarantees that $\D_F$ is a full triangulated subcategory of $\derplus{\A}$ and is moreover equivalent to the latter by \ref{F-adapted for homotopy category i} of Definition \ref{F-adapted for homotopy category}. Then we can extend the funtor $F$ to a functor $\D_F \to \derplus{\B}$ given by the assignment
-\begin{center}
-    \begin{tabular}{r r c l}
-        \textsl{Objects:} & $A^\bullet$ & $\longmapsto$ & $F(A^\bullet)$. \\
-        \textsl{Morphisms:} & $[A^\bullet \xleftarrow{s} C^\bullet \xrightarrow{f} B^\bullet]$ & $\longmapsto$ & $Q_\B F(f) \circ Q_\B F(s)\inv$.
-    \end{tabular}
-\end{center}
-This is a well-defined functor because condition \ref{F-adapted for homotopy category ii} of Definition \ref{F-adapted for homotopy category} ensures $F$ sends quasi-isomorphisms to quasi-isomorphisms by Proposition \ref{F preserves qis iff preserves acyclic}.
-Lastly the right derived functor is then given as the composition
-\[
-    \rderived{}{F} \colon \quad \derplus{\A} \xrightarrow{\ \iso \ } \D_F \longrightarrow \derplus{\B}.
-\]
-\begin{example}
-    When $\A$ contains enough injectives, the category $\kplus{\J} \subseteq \kplus{\A}$ is $F$-adapted for any triangulated functor $F \colon \kplus{\A} \to \kplus{\B}$.
-\end{example}
+% In order to construct the right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$, we assume the existence of an $F$-adapted category $\mathcal K_F \subseteq \kplus{\A}$ and introduce the full additive subcategory $\D_F \subseteq \derplus{\A}$ spanned on objects of $\mathcal K_F$. Proposition \ref{triangulated subcategory proposition} guarantees that $\D_F$ is a full triangulated subcategory of $\derplus{\A}$ and is moreover equivalent to the latter by \ref{F-adapted for homotopy category i} of Definition \ref{F-adapted for homotopy category}. Then we can extend the funtor $F$ to a functor $\D_F \to \derplus{\B}$ given by the assignment
+% \begin{center}
+%     \begin{tabular}{r r c l}
+%         \textsl{Objects:} & $A^\bullet$ & $\longmapsto$ & $F(A^\bullet)$. \\
+%         \textsl{Morphisms:} & $[A^\bullet \xleftarrow{s} C^\bullet \xrightarrow{f} B^\bullet]$ & $\longmapsto$ & $Q_\B F(f) \circ Q_\B F(s)\inv$.
+%     \end{tabular}
+% \end{center}
+% This is a well-defined functor because condition \ref{F-adapted for homotopy category ii} of Definition \ref{F-adapted for homotopy category} ensures $F$ sends quasi-isomorphisms to quasi-isomorphisms by Proposition \ref{F preserves qis iff preserves acyclic}.
+% Lastly the right derived functor is then given as the composition
+% \[
+%     \rderived{}{F} \colon \quad \derplus{\A} \xrightarrow{\ \iso \ } \D_F \longrightarrow \derplus{\B}.
+% \]
+% \begin{example}
+%     When $\A$ contains enough injectives, the category $\kplus{\J} \subseteq \kplus{\A}$ is $F$-adapted for any triangulated functor $F \colon \kplus{\A} \to \kplus{\B}$.
+% \end{example}
 
-\vspace{3cm}
+% \vspace{3cm}
 
 Classically derived functors of a left exact functor $F \colon \A \to \B$ first appeared as a sequence of additive functors $\A \to \B$. We introduce them in the following definition, using our established (modern) viewpoint. 
 
@@ -1262,7 +1263,8 @@ A useful tool for gathering information about the action of the higher derived f
 \end{proposition}
 
 \begin{proof}
-    First, we describe how the short exact sequence gives rise to a distinguished triangle $A \to B \to C \to A[1]$ in $\derplus{\A}$, where $A$, $B$ and $C$ are considered as complexes concentrated in degree $0$. 
+    First, we describe how the short exact sequence gives rise to a distinguished triangle $A \to B \to C \to A[1]$ in $\derplus{\A}$, where $A$, $B$ and $C$ are considered as complexes concentrated in degree $0$.
+    \info{finish this} 
 
     After first applying the triangulated functor $\rderived{}{F}$ and then the cohomological functor $H^0$ to the triangle $A \to B \to C \to A[1]$, we obtain a long exact sequence 
     \begin{multline*}
@@ -1332,9 +1334,10 @@ The rest of this section is devoted to proving some useful results relating $F$-
 
 % In th subsection we will deal with the case, when $F$ is only left exact. The theory dually runs in parallel, when $F$ is right exact. 
 
-\subsubsection{Ext functor}
+\subsubsection{Ext functors}
+\label{subsection: Ext functors}
 
-As a first application of the established theory of derived functors we consider the hom-functor
+As a first application of the established theory of derived functors we consider the $\Hom$-functor
 \[
     \Hom_\A(A, -) \colon \A \to \mod{k},
 \]
@@ -1347,7 +1350,7 @@ Taking the $i$-th cohomology, we obtain higher derived functors of $\Hom_\A(A, -
 \[
     \Ext^i_\A(A, -) := \rderived{i}{\Hom_\A(A, -)} = H^i(\rderived{}{\Hom_\A(A, -)}).
 \]
-There exists a very beautiful connection relating the Ext-functors of category $\A$ and the hom-functors of the bounded below derived category $\derplus{\A}$ captured in the next proposion.
+There exists a very beautiful connection relating the Ext-functors of category $\A$ and the hom-functors of the bounded below derived category $\derplus{\A}$ captured in the next proposion, given without proof, for in a moment we will present its generalized verison.
 
 \begin{proposition}
     Let $\A$ be an abelian category with enough injectives and let $A$ and $B$ belong to $\A$. Then for all $i \in \Z$ there exist isomorphisms
@@ -1360,13 +1363,80 @@ There exists a very beautiful connection relating the Ext-functors of category $
     
 \end{proof}
 
-\begin{remark}
-    There is also a generalization of this result providing a way to identify the hom-functors in $\derplus{\A}$ applied not only to objects of $\A$, but to bounded below complexes. In that case, on the Ext-side, one considers the \emph{differentialy graded hom-functors} of $\kplus{\A}$, namely $\Hom^\bullet(-,-) \colon \kminus{\A}^\op \times \kplus{\A} \to \kcat{\mod{k}}$, for which $\Hom^\bullet(A^\bullet, -)$ turns out to be right derivable inducing its higher derived functors $\Ext^i(A^\bullet, -) = \rderived{i}{\Hom^\bullet(A^\bullet, -)}$. Then for all $i \in \Z$ and all $A^\bullet$ and $B^\bullet$ of $\derplus{\A}$ there are isomorphisms
-    \[
-        \Ext^i(A^\bullet, B^\bullet) \iso \Hom_{\derplus{\A}}(A^\bullet, B[i]^\bullet).
-    \]
-    \info{this has to be expaned, because I need it for Serre functors, naturality in $A^\bullet$ and $B^\bullet$ is important.}
-\end{remark}
+For any two complexes $A^\bullet$ and $B^\bullet$ we can define a complex $\Hom^\bullet(A^\bullet, B^\bullet)$ of $k$-modules given by terms
+\[
+    \Hom^i(A^\bullet, B^\bullet) = \prod_{j \in \Z}\Hom_\A(A^j, B^{j + i}),
+\]
+\ie the set of all degree $i$ maps from $A^\bullet$ to $B^\bullet$, considered as graded objects of $\A^\Z$, and differentials 
+\[
+    d^i \colon \Hom^i(A^\bullet, B^\bullet) \to \Hom^{i+1}(A^\bullet, B^\bullet), \qquad 
+    d^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z}.
+\]
+This differential will also be denoted by $\delta^i_B$.
+
+By setting $\Hom^\bullet(A^\bullet, -)(B^\bullet) = \Hom^\bullet(A^\bullet, B^\bullet)$ and for a chain map $u\colon B^\bullet \to C^\bullet$ in $\com(\A)$ defining $u_* = \Hom^\bullet(A^\bullet, -)(u) \colon \Hom^\bullet(A^\bullet, B^\bullet) \to \Hom^\bullet(A^\bullet, C^\bullet)$ to be the chain map given by the collection $(u_*^i)_{i \in \Z}$, where $u_*^i$ sends $f = (f^j)_{j \in \Z} \in \Hom^i(A^\bullet, B^\bullet)$ to $u \circ f = (u^{i+j} \circ f^j)_{j \in \Z}$, we obtain a functor
+\[
+    \Hom^\bullet(A^\bullet, -) \colon \com(\A) \to \com(\mod{k}).
+\]
+Indeed, clearly $u_*$ is a graded morphism of degree $0$, which moreover commutes with the differentials, according to the following computation
+\begin{align*}
+    u^{i+1}_*\left(d^i_{\Hom^\bullet(A, B)}(f)\right) &= u^{i+1}_*\left(\left(d^{i+j}_B f^j + (-1)^{i+1} f^{j+1} d^j_A\right)_j\right) \\
+    &= \left(u^{i+j+1} d^{i+j}_B f^j + (-1)^{i+1} u^{i+j+1} f^{j+1} d^j_A\right)_j \\
+    &= \left(d^{i+j}_C u^{i+j} f^j + (-1)^{i+1} u^{i+j+1} f^{j+1} d^j_A\right)_j \\
+    &= d^i_{\Hom^\bullet(A, C)}\left(\left(u^{i + j}f^j\right)_j\right) \\
+    &= d^i_{\Hom^\bullet(A, C)}\left(u^i_*(f)\right),
+\end{align*}
+for all $f \in \Hom^i(A^\bullet, B^\bullet)$. While not difficult to check, the verification of functoriality is omitted. 
+
+Next, we would like $\Hom^\bullet(A^\bullet, -)$ to descend to a homotopy functor $\kcat{\A} \to \kcat{\mod{k}}$. This is indeed so, as a null-homotopic chain map $u\colon B^\bullet \to C^\bullet$ is sent to a null-homotopic chain map $u_* \htpy 0$. Indeed, suppose homotopy $h \in \Hom^{-1}(B^\bullet, C^\bullet)$ whitnesses $u \htpy 0$, then for all $i \in \Z$, we have
+\[
+    u^i = d^{i-1}_C \circ h^i + h^{i+1} \circ d^i_B.
+\]
+We let $h^i_*$ denote the morphism $\Hom^i(A^\bullet, B^\bullet) \to \Hom^{i-1}(A^\bullet, C^\bullet)$, given by sending $f$ to $(h^{i+j} \circ f^j)_{j \in \Z}$ and then compute
+\begin{align*}
+    (\delta^{i-1}_C \circ h^{i}_* + h^{i+1}_* \circ \delta^i_B)(f) &= 
+    \delta^{i-1}_C\left((h^{i+j}f^j)_j\right) + h^{i+1}_*\left((d_B^{i+j} f^j + (-1)^{i+1}f^{j+1}d^j_A)_j\right) \\
+    &= \left(d^{i+j-1}_C h^{i+j} f^j + (-1)^{i} h^{i+j+1} f^{j+1} d^j_A \right)_j  + \\ 
+    & \qquad \qquad + \left(h^{i+j+1}d_B^{i+j}f^j + (-1)^{i+1} h^{i+j+1} f^{j+1} d^j_A \right)_j \\
+    &= \left(d^{i+j-1}_C h^{i+j} f^j + h^{i+j+1}d_B^{i+j}f^j\right)_j \\
+    &= \left((d^{i+j-1}_C h^{i+j} + h^{i+j+1}d_B^{i+j})\circ f^j\right)_j \\
+    &= \left(u^{i+j} \circ f^j\right)_j \\
+    &= u_*^{i}(f).
+\end{align*}
+Thus the homotopy $h_* = (h^i_*)_{i \in \Z}$ whitnesses $u_* \htpy 0$, allowing us to conclude that 
+\[
+    \Hom^\bullet(A^\bullet, -) \colon \kcat{\A} \to \kcat{\mod{k}}
+\] 
+is well-defined. The preceding functor is also triangulated because it commutes with the translation functors and it sends distinguished triangles of $\kcat{\A}$ to distinguished triangles of $\kcat{\mod{k}}$ because of the following isomorphism of chain complexes of $k$-modules,
+\[
+    C(u_*)^\bullet = C(\Hom^\bullet(A^\bullet, -)(u))^\bullet \cong \Hom^\bullet(A^\bullet, -)(C(u)^\bullet)
+\]
+which holds for any chain map $u \colon B^\bullet \to C^\bullet$. Indeed we have
+\begin{align*}
+    C(u_*)^i 
+    &= \Hom^{i+1}(A^\bullet, B^\bullet) \oplus \Hom^i(A^\bullet, C^\bullet) \\
+    &= \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1}) \oplus \prod_{j \in \Z}\Hom_\A(A^j, C^{i+j}) \\
+    &\cong \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1} \oplus C^{i+j}) \\
+    &= \prod_{j \in \Z}\Hom_\A(A^j, C(u)^{i+j}) \\
+    &= \Hom^i(A^\bullet, C(u)^\bullet),
+\end{align*}
+with these isomorphisms also commuting with the differentials. Pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$ which is given by a pair $f$
+
+\vspace{3cm}
+
+At last, for $A^\bullet$ belonging to $\kminus{\A}$ \ie bounded from \emph{above}\footnote{This assumption cannot be skipped, for otherwise we cannot claim, that the functor $\Hom^\bullet(A^\bullet, -)$ maps into the bounded \emph{below} homotopy category $\kplus{\A}$.}, we have a triangulated functor $\Hom^\bullet(A^\bullet, -) \colon \kplus{\A} \to \kplus{\mod{k}}$, which we may derive, in accordance with Remark \ref{Deriving homotopy functors}, of course assuming $\A$ contains enough injectives, to obtain
+\[
+    \rderived{}{\Hom^\bullet(A^\bullet, -)} \colon \derplus{\A} \longrightarrow \derplus{\mod{k}}.
+\]
+Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \rderived{i}{\Hom^\bullet(A^\bullet, -)}$.
+
+% \begin{remark}
+%     There is also a generalization of this result providing a way to identify the hom-functors in $\derplus{\A}$ applied not only to objects of $\A$, but to bounded below complexes. In that case, on the Ext-side, one considers the \emph{differentialy graded hom-functors} of $\kplus{\A}$, namely $\Hom^\bullet(-,-) \colon \kminus{\A}^\op \times \kplus{\A} \to \kcat{\mod{k}}$, for which $\Hom^\bullet(A^\bullet, -)$ turns out to be right derivable inducing its higher derived functors $\Ext^i(A^\bullet, -) = \rderived{i}{\Hom^\bullet(A^\bullet, -)}$. Then for all $i \in \Z$ and all $A^\bullet$ and $B^\bullet$ of $\derplus{\A}$ there are isomorphisms
+%     \[
+%         \Ext^i(A^\bullet, B^\bullet) \iso \Hom_{\derplus{\A}}(A^\bullet, B[i]^\bullet).
+%     \]
+%     \info{this has to be expaned, because I need it for Serre functors, naturality in $A^\bullet$ and $B^\bullet$ is important.}
+% \end{remark}
 
 \begin{proposition}
     Let $\A$ be an abelian category with enough injectives. Then for every $A^\bullet$ of $\kminus{\A}$ and $B^\bullet$ belonging to $\kplus{\A}$ there natural isomorphisms
@@ -1374,3 +1444,22 @@ There exists a very beautiful connection relating the Ext-functors of category $
         \alpha_{A^\bullet, B^\bullet} : \Ext^i_\A(A^\bullet, B^\bullet) \iso \Hom_{\dercat{\A}}(A^\bullet, B[i]^\bullet).
     \]
 \end{proposition}
+\info{I think this is true, but I won't be able to show it as I need to use $\derplus{\A} \natiso \kplus{\J}$, since $A^\bullet$ is not bounded from below.}
+
+\begin{proposition}
+    Let $\A$ be an abelian category with enough injectives. Then for every $A^\bullet$ and $B^\bullet$ belonging to $\derb{\A}$ there natural isomorphisms
+    \[
+        \alpha_{A^\bullet, B^\bullet} : \Ext^i_\A(A^\bullet, B^\bullet) \iso \Hom_{\derb{\A}}(A^\bullet, B[i]^\bullet).
+    \]
+\end{proposition}
+
+\begin{lemma}
+    Let $A^\bullet$ and $B^\bullet$ be chain complexes in $\kcat{\A}$ and let $i \in \Z$. Then there are natural isomorphisms
+    \[
+        H^i()
+    \]
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}

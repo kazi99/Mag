@@ -576,7 +576,11 @@ For the last part of this section let $k$ denote a field.
 \subsection{Categories of complexes}
 In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
 
-As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-indexed sequences $A^\bullet = (A^i)_{i \in \Z}$ of objects $A^i$ of $\A$. A \emph{morphism $f \colon A^\bullet \to B^\bullet$ of degree $k \in \Z$} is a sequence $(f^i \colon A^i \to B^{i+k})_{i \in \Z}$ of morphisms of $\A$. Bundling up all this data, we obtain the $\Z$-\emph{graded category of $\A$} denoted by $\A^\Z$, consisting of graded objects of $\A$ and morphisms of all integer degrees. It can also be thought of as the functor category from the free category of $\Z$ to $\A$, hence the notation $\A^\Z$. 
+As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-indexed sequences $A^\bullet = (A^i)_{i \in \Z}$ of objects $A^i$ of $\A$. A \emph{morphism $f \colon A^\bullet \to B^\bullet$ of degree $k \in \Z$} is a sequence $(f^i \colon A^i \to B^{i+k})_{i \in \Z}$ of morphisms of $\A$. The set of all degree $k$ morphisms will be denoted with $\Hom^k_\A(A^\bullet, B^\bullet)$. Bundling up all this data, we obtain the $\Z$-\emph{graded category of $\A$} denoted by $\A^\Z$, consisting of graded objects of $\A$ and morphisms of all integer degrees, thus
+\[
+    \Hom_{\A^\Z}(A^\bullet, B^\bullet) = \prod_{k \in \Z}\Hom^k_\A(A^\bullet, B^\bullet).
+\]  
+The category $\A^\Z$ can also be thought of as the functor category from the free category of $\Z$ to $\A$, hence the notation $\A^\Z$. 
 \info{This is introduced so I can say the differential is a morphism of degree $1$, homotopy is a morphism of degree $-1$, and makes defining $\Hom^\bullet$ just slightly easier.}
 
 \subsubsection*{{Category of chain complexes}}
