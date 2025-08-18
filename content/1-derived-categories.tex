@@ -1359,10 +1359,6 @@ There exists a very beautiful connection relating the Ext-functors of category $
     \]
 \end{proposition}
 
-\begin{proof}
-    
-\end{proof}
-
 For any two complexes $A^\bullet$ and $B^\bullet$ we can define a complex $\Hom^\bullet(A^\bullet, B^\bullet)$ of $k$-modules given by terms
 \[
     \Hom^i(A^\bullet, B^\bullet) = \prod_{j \in \Z}\Hom_\A(A^j, B^{j + i}),
@@ -1416,11 +1412,12 @@ which holds for any chain map $u \colon B^\bullet \to C^\bullet$. Indeed we have
     C(u_*)^i 
     &= \Hom^{i+1}(A^\bullet, B^\bullet) \oplus \Hom^i(A^\bullet, C^\bullet) \\
     &= \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1}) \oplus \prod_{j \in \Z}\Hom_\A(A^j, C^{i+j}) \\
+    &\cong \prod_{j \in \Z} \left(\Hom_\A(A^j, B^{i+j+1}) \oplus \Hom_\A(A^j, C^{i+j})\right) \\
     &\cong \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1} \oplus C^{i+j}) \\
     &= \prod_{j \in \Z}\Hom_\A(A^j, C(u)^{i+j}) \\
     &= \Hom^i(A^\bullet, C(u)^\bullet),
 \end{align*}
-with these isomorphisms also commuting with the differentials. Pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$ which is given by a pair $f$
+where these isomorphisms also commute with the differentials. Pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$ which is given by a pair $f$
 
 \vspace{3cm}
 
@@ -1447,6 +1444,7 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 \info{I think this is true, but I won't be able to show it as I need to use $\derplus{\A} \natiso \kplus{\J}$, since $A^\bullet$ is not bounded from below.}
 
 \begin{proposition}
+    \label{Homs in derived category}
     Let $\A$ be an abelian category with enough injectives. Then for every $A^\bullet$ and $B^\bullet$ belonging to $\derb{\A}$ there natural isomorphisms
     \[
         \alpha_{A^\bullet, B^\bullet} : \Ext^i_\A(A^\bullet, B^\bullet) \iso \Hom_{\derb{\A}}(A^\bullet, B[i]^\bullet).
@@ -1454,12 +1452,28 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 \end{proposition}
 
 \begin{lemma}
-    Let $A^\bullet$ and $B^\bullet$ be chain complexes in $\kcat{\A}$ and let $i \in \Z$. Then there are natural isomorphisms
+    \label{Homotopy hom = cohomology of inner hom}
+    Let $A^\bullet$ and $B^\bullet$ be chain complexes in $\kcat{\A}$ and let $i \in \Z$. Then
     \[
-        H^i()
-    \]
+        H^i(\Hom^\bullet(A^\bullet, B^\bullet)) = \Hom_{\kcat{\A}}(A^\bullet, B[i]^\bullet).
+    \] 
 \end{lemma}
 
 \begin{proof}
+    This is practically the definition of $\Hom_{\kcat{\A}}(A^\bullet, B[i]^\bullet)$. The cohomology $k$-module $H^i(\Hom^\bullet(A^\bullet, B^\bullet))$ is defined to be the quotient $\ker d^i / \im d^{i-1}$, thus let us identify $\ker d^i$ and $\im d^{i-1}$. Notice, that for $f \in \Hom^i(A^\bullet, B^\bullet)$ we have
+    \[
+        d^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z} = (-1)^i \left(d^j_{B[i]} \circ f^j - f^{j+1} \circ d^j_A\right)_{j \in \Z},
+    \]
+    thus $\ker d^i$ is the set of all chain maps $A^\bullet \to B[i]^\bullet$, and $\im d^{i-1}$ the set of all null-homotopic chain maps.
+\end{proof}
 
+\begin{proof}[Proof of Proposition \ref{Homs in derived category}]
+    Let $B^\bullet \to I^\bullet$ be an injective resolution for $B^\bullet$. We follow the chain of isomorphisms
+    \begin{align*}
+        \Hom_{\derb{\A}}(A^\bullet, B[i]^\bullet) &= \Hom_{\derplus{\A}}(A^\bullet, B[i]^\bullet) \\
+        &\iso \Hom_{\derplus{\A}}(A^\bullet, I[i]^\bullet) \\
+        &\iso \Hom_{\kplus{\J}}(A^\bullet, I[i]^\bullet) \qquad \qquad \text{(Theorem \ref{D+ = K+ and injectives})}\\
+        &= H^i(\Hom^\bullet(A^\bullet, I^\bullet)) \qquad \qquad \quad \text{(Lemma \ref{Homotopy hom = cohomology of inner hom})} \\
+        &= \Ext_\A^i(A^\bullet, B^\bullet).
+    \end{align*}
 \end{proof}
