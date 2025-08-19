@@ -83,7 +83,7 @@ A naive way of constructing $\dercat{\A}$ out of $\kcat{\A}$ would be to artific
 
 \subsubsection{Construction}
 
-To start, we first need a technical lemma resembling the Ore condition from non-commutative algebra.
+To start, we first need a technical lemma resembling the Ore condition from non-commuta\-tive algebra.
 
 \begin{lemma}
     \label{Ore condition}
@@ -143,6 +143,7 @@ Dually, one also obtains the notion of a \emph{right roof spanned on $A^\bullet$
 Our construction of $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ will be based on left roofs, for nothing is gained or lost by picking either one of the two. Both work just as well and are in fact equivalent (see \cite[Remark 7.1.18]{kashiwara2006categories}). Despite our arbitrary choice, it is still beneficial to consider both, as we will sometimes switch between the two whenever convenient. 
 
 \begin{definition}
+    \label{Definition of equivalence of roofs}
     Two left roofs $A^\bullet \xleftarrow{\ s_0 \ } C_0^\bullet \xrightarrow{\ f_0 \ } B^\bullet$ and $A^\bullet \xleftarrow{\ s_1 \ } C_1^\bullet \xrightarrow{\ f_1 \ } B^\bullet$ are defined to be \emph{equivalent}, if there exists a quasi-isomorphism $u\colon C^\bullet \to C_0^\bullet$ and a morphism ${g\colon C^\bullet \to C_1^\bullet}$ in $\kcat{\A}$, for which the diagram below commutes (in $\kcat{\A}$). 
     \begin{equation}
         \label{eq: equivalence of left roofs}
@@ -376,7 +377,7 @@ The identity morphism on an object $A^\bullet$ of $\dercat{\A}$ is defined to be
 \end{lemma}
 
 \begin{proof}
-    
+    \info{add proof}    
 \end{proof}
 
 Using notation from lemma \ref{common denominator for left roofs}, we define the addition operation on $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ by the rule
@@ -395,7 +396,7 @@ Moreover, the composition law $\circ$ is $k$-bilinear and the localization funct
 
 \noindent
 \textsc{Triangulated structure.} The shift functor $T \colon \dercat{\A} \to \dercat{\A}$ is defined 
-
+\info{finish this}
 
 
 \begin{remark}
@@ -461,44 +462,87 @@ for $i \in \Z$, which as expected return the $i$-th cohomology of a complex $A^\
 
 % We have already seen $\derplus{\A}$, $\derminus{\A}$ and $\derb{\A}$ be defined as full triangulated subcategories of $\dercat{\A}$ on the class of certain bounded complexes taking values in $\A$.  
 
-As with the homotopy category of complexes $\kcat{\A}$, we also have the following bounded versions of the derived category $\dercat{\A}$, appearing as full triangulated subcategories of the unbounded variant $\dercat{\A}$ by proposition \ref{triangulated subcategory proposition}.
+As with the homotopy category of complexes $\kcat{\A}$, we also have the bounded versions of the derived category $\dercat{\A}$. They are constructed in the exact same way as $\dercat{\A}$ above, with the adjustment, that we replace every instance of the category $\kcat{\A}$ with either $\kplus{\A}$, $\kminus{\A}$ or $\kb{\A}$, to obtain $\derplus{\A}$, $\derminus{\A}$ or $\derb{\A}$, respectively. They are clearly all triangulated as well. All three bounded variants naturally come with the inclusion functors
+\[
+    \derplus{\A} \to \dercat{\A}, \qquad \derminus{\A} \to \dercat{\A}, \qquad \derb{\A} \to \dercat{\A},
+\]
+% \[\begin{tikzcd}[row sep = small]
+%     % https://q.uiver.app/#q=WzAsNCxbMSwwLCJCIl0sWzAsMSwiQSJdLFsyLDEsIkMiXSxbMSwyLCJEIl0sWzEsMF0sWzAsMl0sWzEsM10sWzMsMl1d
+% 	& \derplus{\A} \\
+% 	\derb{\A} && \dercat{\A}, \\
+% 	& \derminus{\A}
+% 	\arrow[from=1-2, to=2-3]
+% 	\arrow[from=2-1, to=1-2]
+% 	\arrow[from=2-1, to=3-2]
+% 	\arrow[from=3-2, to=2-3]
+% \end{tikzcd}\]
+defined to be the identity on objects and send a morphism, \ie equivalence class of some roof representative with respect to the ``bounded variant'' of the equivalence relation \ref{Definition of equivalence of roofs}, where, again, every instance of $\kcat{\A}$ is replaced by either $\kplus{\A}$, $\kminus{\A}$ or $\kb{\A}$, to the equivalence class of that same roof representative, but now under the original equivalence relation. All three functors are clearly also triangulated.  
 
-\begin{center}
-    % \begin{tabular}{c l}
-    %     $\derplus{\A}$ & spanned on complexes in $\A$ bounded below. \\
-    %     $\derminus{\A}$ & spanned on complexes in $\A$ bounded above. \\
-    %     $\derb{\A}$ & spanned on bounded complexes in $\A$. \\    
-    % \end{tabular}
-    \begin{tabular}{c l}
-        $\derplus{\A}$ & spanned on objects of $\kplus{\A}$. \\
-        $\derminus{\A}$ & spanned on objects of $\kminus{\A}$. \\
-        $\derb{\A}$ & spanned on objects of $\kb{\A}$. \\    
-    \end{tabular}
-\end{center}
+% appearing as full triangulated subcategories of the unbounded variant $\dercat{\A}$ by proposition \ref{triangulated subcategory proposition}.
+% As with the homotopy category of complexes $\kcat{\A}$, we also have the following bounded versions of the derived category $\dercat{\A}$, appearing as full triangulated subcategories of the unbounded variant $\dercat{\A}$ by proposition \ref{triangulated subcategory proposition}.
 
-There is also another (equivalent) way of obtaining the categories mentioned above, which will sometimes be more convenient to work with.  
+% \begin{center}
+%     % \begin{tabular}{c l}
+%     %     $\derplus{\A}$ & spanned on complexes in $\A$ bounded below. \\
+%     %     $\derminus{\A}$ & spanned on complexes in $\A$ bounded above. \\
+%     %     $\derb{\A}$ & spanned on bounded complexes in $\A$. \\    
+%     % \end{tabular}
+%     \begin{tabular}{c l}
+%         $\derplus{\A}$ & spanned on objects of $\kplus{\A}$. \\
+%         $\derminus{\A}$ & spanned on objects of $\kminus{\A}$. \\
+%         $\derb{\A}$ & spanned on objects of $\kb{\A}$. \\    
+%     \end{tabular}
+% \end{center}
+
+There is also another (equivalent) way of obtaining the categories mentioned above, which we introduce with the next proposition, as they will sometimes be more convenient to work with.  
 
 \begin{proposition}
     \label{Subcategories of D(A) but bigger}
     Let $\A$ be an abelian category. 
     \begin{enumerate}[label = (\roman*)]
-        \item{The inclusion $\derplus{\A} \hookrightarrow \dercat{\A}$ (resp.~$\derminus{\A} \hookrightarrow \dercat{\A}$) induces an equivalence between $\derplus{\A}$ and the full triangulated subcategory of $\dercat{\A}$ spanned on (possibly unbounded) complexes $A^\bullet$, for which there is an integer $n \in \Z$, such that $H^i(A^\bullet) \iso 0$ for all $i < n$ (resp.~$i > n$).}
-        \item{}
-        \item{} 
+        % \item{The functor $\derplus{\A} \to \dercat{\A}$ (\resp $\derminus{\A} \hookrightarrow \dercat{\A}$) is fully faithful and induces an equivalence between $\derplus{\A}$ and the full triangulated subcategory of $\dercat{\A}$ spanned on (possibly unbounded) complexes $A^\bullet$, for which there is an integer $n \in \Z$, such that $H^i(A^\bullet) \iso 0$ for all $i < n$ (\resp $i > n$).}
+        \item{The functor $\derplus{\A} \to \dercat{\A}$ is fully faithful and induces an equivalence between $\derplus{\A}$ and the full triangulated subcategory of $\dercat{\A}$ spanned on (possibly unbounded) complexes $A^\bullet$, for which there is an integer $n \in \Z$, such that $H^i(A^\bullet) \iso 0$ for all $i < n$.}
+        \item{The functor $\derminus{\A} \to \dercat{\A}$ is fully faithful and induces an equivalence between $\derminus{\A}$ and the full triangulated subcategory of $\dercat{\A}$ spanned on (possibly unbounded) complexes $A^\bullet$, for which there is an integer $n \in \Z$, such that $H^i(A^\bullet) \iso 0$ for all $i > n$.} 
+        \item{The functor $\derb{\A} \to \dercat{\A}$ is fully faithful and induces an equivalence between $\derb{\A}$ and the full triangulated subcategory of $\dercat{\A}$ spanned on (possibly unbounded) complexes $A^\bullet$, for which there is an integer $n \in \Z$, such that $H^i(A^\bullet) \iso 0$ for all $\abs{i} > n$.} 
     \end{enumerate}
 \end{proposition}
 
-To make the proof of this proposition conceptually clearer, we introduce two complexes associated to a complex $A^\bullet$, namely
+To make the proof of this proposition conceptually clearer, we introduce two complexes associated to a complex $A^\bullet$, called its \emph{right and left truncations}
 \begin{align*}
-    \ltruncation{n}(A^\bullet) &= (\cdots \to 0 \to \coker d^{n-1} \to A^{n+1} \to A^{n+2} \to \cdots), \\
-    \rtruncation{n}(A^\bullet) &= (\cdots \to A^{n-2} \to A^{n-1} \to \ker d^{n} \to 0 \to \cdots).
+    \rtruncation{n}(A^\bullet) &= (\cdots \to A^{n-2} \to A^{n-1} \to \ker d^{n} \to 0 \to \cdots) \text{ \ and } \\
+    \ltruncation{n}(A^\bullet) &= (\cdots \to 0 \to \coker d^{n-1} \to A^{n+1} \to A^{n+2} \to \cdots).
 \end{align*}
-
-They come equipped with the natural quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ and the natural inclusion map $j \colon \rtruncation{n}(A^\bullet) \to A^\bullet$, satisfying the following
+They come equipped with the natural inclusion map $j \colon \rtruncation{n}(A^\bullet) \to A^\bullet$ and the natural quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$, satisfying the following claims
 \begin{align}
-    H^i(q) \colon H^i(A^\bullet) \to H^i(\ltruncation{n}(A^\bullet)) \text{ is an isomorphism for all } i \geq n, \\
-    H^i(j) \colon H^i(\rtruncation{n}(A^\bullet)) \to H^i(A^\bullet) \text{ is an isomorphism for all } i \leq n.
+    H^i(j) \colon H^i(\rtruncation{n}(A^\bullet)) \to H^i(A^\bullet) \text{ is an isomorphism for all } i \leq n. \label{right truncation isos on cohomology} \\
+    H^i(q) \colon H^i(A^\bullet) \to H^i(\ltruncation{n}(A^\bullet)) \text{ is an isomorphism for all } i \geq n. \label{left trunctation isos on cohomology}
 \end{align}
+Indeed, claim \eqref{right truncation isos on cohomology} is clearly true for $i < n$, with $i = n$ being the only interesting case. Here the right commutative square of the diagram below
+% \[\begin{tikzcd}[column sep = small, row sep = 1.5em]
+%     % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGtlciBkXm4iXSxbMiwwLCIwIl0sWzAsMiwiQV57bn0iXSxbMiwyLCJBXntuKzF9Il0sWzIsMywiZF5uIl0sWzAsMSwiMCJdLFsxLDMsImpee24rMX0iXSxbMCwyLCJqXm4iLDJdXQ==
+% 	{\ker d^n} && 0 \\
+% 	\\
+% 	{A^{n}} && {A^{n+1}}
+% 	\arrow["0", from=1-1, to=1-3]
+% 	\arrow["{j^n}"', from=1-1, to=3-1]
+% 	\arrow["{j^{n+1}}", from=1-3, to=3-3]
+% 	\arrow["{d^n}", from=3-1, to=3-3]
+% \end{tikzcd}\]
+\[\begin{tikzcd}[column sep = small, row sep = 1.5em]
+    % https://q.uiver.app/#q=WzAsNixbMiwwLCJcXGtlciBkXm4iXSxbNCwwLCIwIl0sWzIsMiwiQV57bn0iXSxbNCwyLCJBXntuKzF9Il0sWzAsMCwiQV57bi0xfSJdLFswLDIsIkFee24tMX0iXSxbMiwzLCJkXm4iXSxbMCwxLCIwIl0sWzEsMywial57bisxfSJdLFswLDIsImpebiIsMl0sWzQsMCwiXFxkZWx0YSJdLFs0LDUsImpee24tMX0iLDJdLFs1LDIsImRee24tMX0iXV0=
+	{A^{n-1}} && {\ker d^n} && 0 \\
+	\\
+	{A^{n-1}} && {A^{n}} && {A^{n+1}}
+	\arrow["\delta", from=1-1, to=1-3]
+	\arrow["{j^{n-1}}"', from=1-1, to=3-1]
+	\arrow["0", from=1-3, to=1-5]
+	\arrow["{j^n}"', from=1-3, to=3-3]
+	\arrow["{j^{n+1}}", from=1-5, to=3-5]
+	\arrow["{d^{n-1}}", from=3-1, to=3-3]
+	\arrow["{d^n}", from=3-3, to=3-5]
+\end{tikzcd}\]
+induces the identity morphism between the kernels of the horizontal differentials, consequently also inducing the identity morphism on $n$-th cohomology $H^n(j) \colon H^n(\rtruncation{n}(A^\bullet)) \to H^n(A^\bullet)$.
+Dually, the claim \eqref{left trunctation isos on cohomology} also holds. 
 % In order to make the proof of this proposition conceptually clearer, we introduce truncation functors $\tau_{\geq n} \colon \kcat{\A} \to \kplus{\A}$, defined by
 % \begin{center}
 %     \begin{tabular}{r r c l}
@@ -532,26 +576,38 @@ They come equipped with the natural quotient map $q \colon A^\bullet \to \ltrunc
 % \end{lemma}
 
 \begin{proof}[Proof of Proposition \ref{Subcategories of D(A) but bigger}]
-    The inclusion $\derplus{\A} \hookrightarrow \dercat{\A}$ is already fully faithful, so we verify only that it is essentially surjective onto the subcategory of complexes with cohomology bounded from below. Suppose $A^\bullet$ satisfies $H^i(A^\bullet) \iso 0$, for all $i < n$. Then we claim that the quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ is actually a quasi-isomorphism.
+    For (i) the functor $\derplus{\A} \rightarrow \dercat{\A}$ is readily seen to be fully faithful by considering morphisms to be represented by \emph{right} roofs. For example in the right roof $A^\bullet \to C^\bullet \leftarrow B^\bullet$ spanned on complexes $A^\bullet$ and $B^\bullet$ of $\derplus{\A}$, we first observe that $C^\bullet$ has bounded cohomology from below, thus $q \colon C^\bullet \to \ltruncation{n}(C^\bullet)$ is a quasi-isomorphism for some $n \in \Z$. Extending the aforementioned right roof with quasi-isomorphism $q$, to obtain $A^\bullet \to \ltruncation{n}(C^\bullet) \leftarrow B^\bullet$, then yields an equivalent right roof, whose peak now belongs to $\derplus{\A}$ and the equivalence class of which is therefore sent to the morphism represented by $A^\bullet \to C^\bullet \leftarrow B^\bullet$.
+    % taking the viewpoint of morphisms being represented by \emph{right} roofs and extending their peaks using the quotient map into their left truncations. For example in right roof $A^\bullet \to C^\bullet \leftarrow B^\bullet$ spanned on complexes $A^\bullet$ and $B^\bullet$ of $\derplus{\A}$, we first observe that $C^\bullet$ has bounded   
+    % truncating their peaks by extening them with the quotient map $q$. 
+    % so we verify only that it is essentially surjective onto the subcategory of complexes with cohomology bounded from below. 
+
+    To verify this functor is essentially surjective onto the subcategory of complexes with cohomology bounded from below,
+    suppose $A^\bullet$ satisfies $H^i(A^\bullet) \iso 0$, for all $i < n$. Then by \eqref{left trunctation isos on cohomology} the quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ is a quasi-isomorphism, inducing an isomorphism $A^\bullet \iso \ltruncation{n}(A^\bullet)$ in $\dercat{\A}$. 
     
-    This shows that there is an isomorphism in $\dercat{\A}$ between $A^\bullet$ and a complex $\ltruncation{n}(A^\bullet)$, which belongs to $\derplus{\A}$. 
+    The case (ii) is proven analogously, now considering left roofs and right truncations. For (iii), the functor $\derb{\A} \to \dercat{\A}$ is viewed as the composition $\derb{\A} \to \derplus{\A} \to \dercat{\A}$. Here $\derb{\A} \to \derplus{\A}$ is seen to be fully faithful via a minor modification of the argument for (ii) and $\derplus{\A} \to \dercat{\A}$ is fully faithful by (i). Essential surjectivity onto the required subcategory then follows as the roof $A^\bullet \to \ltruncation{n}(A^\bullet) \leftarrow \rtruncation{n}(\ltruncation{n}(A^\bullet))$, for some $n \in \Z$, witnesses an isomorphism in $\dercat{\A}$ of a complex $A^\bullet$ with bounded cohomology and a bounded complex $\rtruncation{n}(\ltruncation{n}(A^\bullet))$. \qedhere
+    % we view the inclusion $\derb{\A} \hookrightarrow \dercat{\A}$ as the composition $\derb{\A} \hookrightarrow \derplus{\A} \hookrightarrow \dercat{\A}$
+    
+    % claim that the quotient map $q \colon A^\bullet \to \ltruncation{n}(A^\bullet)$ is actually a quasi-isomorphism.
+    
+    % This shows that there is an isomorphism in $\dercat{\A}$ between $A^\bullet$ and a complex $\ltruncation{n}(A^\bullet)$, which belongs to $\derplus{\A}$. 
 \end{proof}
 
 \info{Move footnote about $\A \to \kcat{\A}$ being fully faithful over here.}
 
 \begin{proposition}
-    The natural functor $\A \to \dercat{\A}$ is fully faithful, thus identifying $\A$ with the full subcategory of complexes $A^\bullet$ of $\dercat{\A}$, satisfying $H^i(A^\bullet) \iso 0$, for all $i \neq 0$.
+    The natural functor $\A \to \dercat{\A}$ is fully faithful, thus identifying $\A$ with the full subcategory of $\dercat{\A}$, spanned by complexes $A^\bullet$, satisfying $H^i(A^\bullet) \iso 0$, for all $i \neq 0$.
 \end{proposition}
 
 \begin{proof}
-    
+    The functor $\A \to \dercat{\A}$ can be written as the composition $\A \to \derplus{\A} \to \dercat{\A}$, so we only need to verify fully faithfulness of $\A \to \derplus{\A}$. This is seen through the fact that any quasi-isomorphism between two complexes concentrated in degree $0$ is an isomorphism. 
+    % That the functor is fully faithful is a consequence of the fact that it can be written as the composition $\A \to \derplus{\A} \to \dercat{\A}$ and any quasi-isomorphism between two complexes concentrated in degree $0$ is an isomorphism. Essential surjectivity follows from a similar argument as in the proof of Proposition \ref{Subcategories of D(A) but bigger} (iii) by taking $n$ to be $0$. 
 \end{proof}
 
 % ============================================================== %
 
 \subsubsection{Derived categories of abelian categories with enough injectives}
 
-After possibly working with proper classes when constructing the derived category, this section will once again place us back on familiar grounds of set theory. Aside from these concerns the establishing result of this section will have a very important practical application -- construction of derived functors. Under an assumption on the abelian category $\A$, we will establish an equivalence of $\derplus{\A}$ with the homotopy category of a full additive subcategory of $\A$, spanned on \emph{injective objects}, which we define presently. 
+After possibly working with proper classes, when constructing the derived category, this section will once again place us back on familiar grounds of set theory. Aside from these concerns the establishing result of this section will have a very important practical application -- construction of derived functors. Under an assumption on the abelian category $\A$, we will establish an equivalence of $\derplus{\A}$ with the homotopy category of a full additive subcategory of $\A$, spanned on \emph{injective objects}, which we define presently. 
 
 \begin{definition}
     An object $I$ of an abelian category $\A$ is \emph{injective}\footnote{Dually, an object $P$ of $\A$ is \emph{projective}, if $P$ is injective in $\A^\op$, or more explicitly, the functor $\Hom_\A(P, -) \colon \A \to \mod{k}$ is exact. Category $\A$ is said to \emph{have enough projectives}, if every object $A$ of $\A$ is a quotient of some projective object \ie there is an epimorphism $P \twoheadrightarrow A$ for some projective object $P$.
@@ -559,7 +615,7 @@ After possibly working with proper classes when constructing the derived categor
 \[
     \Hom_\A(-, I)\colon \A^\op \to \mod{k}
 \]
-is exact. Equivalently whenever for any monomorphism ${A \hookrightarrow B}$ and morphism $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
+is exact. Equivalently, $I$ is injective, whenever for any monomorphism ${A \hookrightarrow B}$ and morphism $A \to I$ there is a morphism $B \to I$, for which the following diagram commutes.
     \[\begin{tikzcd}[column sep = 2em]
         % https://q.uiver.app/#q=WzAsNCxbMSwxLCJBIl0sWzIsMSwiQiJdLFsxLDAsIkkiXSxbMCwxLCIwIl0sWzMsMF0sWzAsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwyXSxbMSwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
         & I \\
@@ -778,7 +834,7 @@ Later we will also see that this injective resolution is unique up to homotopy e
 \begin{proof}
     We already know this is a $k$-module homomorphism, thus it is enough to show that it is bijective. This is accomplished by constructing its inverse. Let $\phi \colon A^\bullet \to I^\bullet$ be a morphism in $\derplus{\A}$ and let $A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet$ be its left roof representative. The morphism $s$ being a quasi-isomorphism implies that $s^* \colon \Hom_{\kplus{\A}}(A^\bullet, I^\bullet) \to \Hom_{\kplus{\A}}(B^\bullet, I^\bullet)$ is bijective by lemma \ref{D+ K+ aux lemma 1}, so there is a unique morphism $g\colon A^\bullet \to I^\bullet$, such that $f = g \circ s$ in $\kplus{\A}$. The inverse to \eqref{eq: morphism action of Q} is then defined by sending $\phi$ to $g$. 
     
-    First let's argue why this map is well-defined \ie independent of the choice of left roof representative for $\phi$. We pick two left roof representatives $A^\bullet \xleftarrow{ \ s_0 \ } B_0^\bullet \xrightarrow{ \ f_0 \ } I^\bullet$ and $A^\bullet \xleftarrow{ \ s_1 \ } B_1^\bullet \xrightarrow{ \ f_1 \ } I^\bullet$ for $\phi$ and let $g_0$ and $g_1$ be such that $f_i = g_i \circ s_i$ for both $i$. As the roofs are equivalent there are quasi-isomorphisms $t_0 \colon C^\bullet \to B^\bullet_0$ and $t_1 \colon C^\bullet \to B^\bullet_1$, which fit into the following commutative diagram.
+    First let's argue why this map is well defined \ie independent of the choice of left roof representative for $\phi$. We pick two left roof representatives $A^\bullet \xleftarrow{ \ s_0 \ } B_0^\bullet \xrightarrow{ \ f_0 \ } I^\bullet$ and $A^\bullet \xleftarrow{ \ s_1 \ } B_1^\bullet \xrightarrow{ \ f_1 \ } I^\bullet$ for $\phi$ and let $g_0$ and $g_1$ be such that $f_i = g_i \circ s_i$ for both $i$. As the roofs are equivalent there are quasi-isomorphisms $t_0 \colon C^\bullet \to B^\bullet_0$ and $t_1 \colon C^\bullet \to B^\bullet_1$, which fit into the following commutative diagram.
     \[\begin{tikzcd}[row sep = small, column sep = small]
         % https://q.uiver.app/#q=WzAsNSxbMCwyLCJBIl0sWzEsMSwiQl8wIl0sWzQsMiwiSSJdLFszLDEsIkJfMSJdLFsyLDAsIkMiXSxbMSwyLCJmXzAiLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywwLCJzXzEiLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywyLCJmXzEiXSxbNCwzLCJ0XzEiXSxbMSwwLCJzXzAiLDJdLFs0LDEsInRfMCIsMl1d
         && C^\bullet \\
@@ -1227,6 +1283,18 @@ We mention that both methods give rise to right derived functors satisfying the 
 
 % \vspace{3cm}
 
+For two composable the following proposition tells us that first deriving and then composing or first composing and then deriving results in the same functor.
+
+\begin{proposition}
+    
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\subsubsection*{Higher derived functors}
+
 Classically derived functors of a left exact functor $F \colon \A \to \B$ first appeared as a sequence of additive functors $\A \to \B$. We introduce them in the following definition, using our established (modern) viewpoint. 
 
 \begin{definition}
@@ -1384,11 +1452,11 @@ Indeed, clearly $u_*$ is a graded morphism of degree $0$, which moreover commute
 \end{align*}
 for all $f \in \Hom^i(A^\bullet, B^\bullet)$. While not difficult to check, the verification of functoriality is omitted. 
 
-Next, we would like $\Hom^\bullet(A^\bullet, -)$ to descend to a homotopy functor $\kcat{\A} \to \kcat{\mod{k}}$. This is indeed so, as a null-homotopic chain map $u\colon B^\bullet \to C^\bullet$ is sent to a null-homotopic chain map $u_* \htpy 0$. Indeed, suppose homotopy $h \in \Hom^{-1}(B^\bullet, C^\bullet)$ whitnesses $u \htpy 0$, then for all $i \in \Z$, we have
+Next, we would like $\Hom^\bullet(A^\bullet, -)$ to descend to a homotopy functor $\kcat{\A} \to \kcat{\mod{k}}$. This is in fact so, as a null-homotopic chain map $u\colon B^\bullet \to C^\bullet$ is sent to a null-homotopic chain map $u_* \htpy 0$. Indeed, suppose homotopy $h \in \Hom^{-1}(B^\bullet, C^\bullet)$ witnesses $u \htpy 0$, then for all $i \in \Z$, we have
 \[
     u^i = d^{i-1}_C \circ h^i + h^{i+1} \circ d^i_B.
 \]
-We let $h^i_*$ denote the morphism $\Hom^i(A^\bullet, B^\bullet) \to \Hom^{i-1}(A^\bullet, C^\bullet)$, given by sending $f$ to $(h^{i+j} \circ f^j)_{j \in \Z}$ and then compute
+We let $h^i_*$ denote the morphism $\Hom^i(A^\bullet, B^\bullet) \to \Hom^{i-1}(A^\bullet, C^\bullet)$, given by sending $f$ to $(h^{i+j} \circ f^j)_{j \in \Z}$, and then compute
 \begin{align*}
     (\delta^{i-1}_C \circ h^{i}_* + h^{i+1}_* \circ \delta^i_B)(f) &= 
     \delta^{i-1}_C\left((h^{i+j}f^j)_j\right) + h^{i+1}_*\left((d_B^{i+j} f^j + (-1)^{i+1}f^{j+1}d^j_A)_j\right) \\
@@ -1403,7 +1471,7 @@ Thus the homotopy $h_* = (h^i_*)_{i \in \Z}$ whitnesses $u_* \htpy 0$, allowing 
 \[
     \Hom^\bullet(A^\bullet, -) \colon \kcat{\A} \to \kcat{\mod{k}}
 \] 
-is well-defined. The preceding functor is also triangulated because it commutes with the translation functors and it sends distinguished triangles of $\kcat{\A}$ to distinguished triangles of $\kcat{\mod{k}}$ because of the following isomorphism of chain complexes of $k$-modules,
+is well defined. The preceding functor is also triangulated because it commutes with the translation functors and it sends distinguished triangles of $\kcat{\A}$ to distinguished triangles of $\kcat{\mod{k}}$ because of the following isomorphism of chain complexes of $k$-modules,
 \[
     C(u_*)^\bullet = C(\Hom^\bullet(A^\bullet, -)(u))^\bullet \cong \Hom^\bullet(A^\bullet, -)(C(u)^\bullet)
 \]
@@ -1419,7 +1487,10 @@ which holds for any chain map $u \colon B^\bullet \to C^\bullet$. Indeed we have
 \end{align*}
 where these isomorphisms also commute with the differentials. Pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$ which is given by a pair $f$
 
+
 \vspace{3cm}
+
+
 
 At last, for $A^\bullet$ belonging to $\kminus{\A}$ \ie bounded from \emph{above}\footnote{This assumption cannot be skipped, for otherwise we cannot claim, that the functor $\Hom^\bullet(A^\bullet, -)$ maps into the bounded \emph{below} homotopy category $\kplus{\A}$.}, we have a triangulated functor $\Hom^\bullet(A^\bullet, -) \colon \kplus{\A} \to \kplus{\mod{k}}$, which we may derive, in accordance with Remark \ref{Deriving homotopy functors}, of course assuming $\A$ contains enough injectives, to obtain
 \[
@@ -1434,6 +1505,16 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 %     \]
 %     \info{this has to be expaned, because I need it for Serre functors, naturality in $A^\bullet$ and $B^\bullet$ is important.}
 % \end{remark}
+
+\begin{remark}
+    Behind the scenes of this whole process one actually consideres an additive bifunctor $F \colon \A \times \A' \to \A''$, with $\A$, $\A'$ and $\A''$ abelian, where the latter is assumed to contain countable products. From this bifunctor we induce another additive bifunctor on the level of chain complexes $F_{\pi} \colon \com(\A) \times \com(\A') \to \com(\A'')$ via the total complex of a double complex as described in \cite[\S 11.6]{kashiwara2006categories}.
+    %  with terms $F^\bullet_\pi(X^\bullet, Y^\bullet) = \operatorname{tot_\pi}(F(X^\bullet, Y^\bullet))$, where $\operatorname{tot_\pi}(Z^{\bullet, \bullet})^n = \prod_{p+q = n} Z^{p,q}$. 
+    It then turns out that $F_\pi$ induces a well defined triangulated bifunctor on the level of the homotopy category 
+    \[
+        \kcat{\A} \times \kcat{\A'} \to \kcat{\A''}.
+    \]
+    % $\kplus{\A} \times \kplus{\A'} \to \kplus{\A''}$, $\kminus{\A} \times \kminus{\A'} \to \kminus{\A''}$, $\kb{\A} \times \kcat{\A'} \to \kcat{\A''}$ and $\kcat{\A} \times \kb{\A'} \to \kcat{\A''}$.
+\end{remark}
 
 \begin{proposition}
     Let $\A$ be an abelian category with enough injectives. Then for every $A^\bullet$ of $\kminus{\A}$ and $B^\bullet$ belonging to $\kplus{\A}$ there natural isomorphisms
