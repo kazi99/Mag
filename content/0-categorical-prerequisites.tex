@@ -1,10 +1,10 @@
 \section{Categorical prerequisites}
 
-In this section we try to make a brief account of the majority of the relevant prerequisites needed to discuss derived categories.
+In this section we try to make a brief account of the majority of the relevant prerequisites needed to discuss derived categories. Firstly we introduce additive, $k$-linear and abelian categories together with relevant functors preserving (certain parts of) their structure. Next we build the framework for triangulated categories of which derived categories will be a special kind and also state and prove some specialized results on triangulated categories, which will be applied later on in chapter \ref{Chapter: Derived Torelli theorem}. Lastly, we lay out the foundations on which derived categories will be constructed on -- the (homotopy) category of complexes. The main pieces of literature for this part were \cite{kashiwara2006categories} and \cite{huybrechts2006fouriermukai}.
 
 \subsection{Additive, $k$-linear and abelian categories}
 
-We mainly follow \cite{kashiwara2006categories}.
+In this section we mainly follow \cite[Chapter 8]{kashiwara2006categories}. With $k$ we denote either a field or the ring of integers $\Z$.
 
 A categorical \emph{biproduct} of objects $X$ and $Y$ in a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
 \begin{center}
@@ -26,7 +26,7 @@ of $\mathcal C$, there are two equal morphisms $X_0 \oplus X_1 \to Y_0 \oplus Y_
     \quad \text{ and } \quad 
     \left\langle (f_{00}, f_{10}), (f_{01}, f_{11})\right\rangle,
 \]
-which we will be denoting by the matrix
+which we will be denoting with the matrix
 \begin{equation}
     \label{eq: matrix of morphisms}
     \begin{pmatrix}
@@ -49,8 +49,6 @@ which we will be denoting by the matrix
 %         0 & f_1
 %     \end{pmatrix}.
 % \]
-
-Let $k$ denote either a field or the ring of integers $\Z$.
 
 % $X \xleftarrow{p_X} X \oplus Y \xrightarrow{p_Y} Y$ is the categorical product of $X$ and $Y$ and $X \xrightarrow{i_X} X \oplus Y \xleftarrow{i_Y} Y$.
 
@@ -96,12 +94,12 @@ Traditionally the term \emph{additive} is reserved for $\Z$-linear categories an
 
 % Traditionally $\Z$-linear categories and functors between such categories are called \emph{additive}.
 
-For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are monomorphism and epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
+For a morphism $f\colon X \to Y$ in an additive category $\A$ recall, that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$, if it exists. It is well-known and easy to verify, that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are a monomorphism and an epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
 \begin{align*}
     (\im f \to Y) &:= \ker(Y \to \coker f) \\
     (X \to \coim f) &:= \coker(\ker f \to X).
 \end{align*}
-Notice that the image and the coimage, just like the kernel and the cokernel, are defined to be morphisms, not only objects. Sometimes these are called \emph{structure morphisms}.
+Notice that the image and the coimage, just like the kernel and the cokernel, are defined to be morphisms, not only objects. Sometimes these are called their \emph{structure morphisms}.
 
 For a monomorphism $Y \hookrightarrow X$ we will sometimes by abuse of terminology call the cokernel $\coker(Y \to X)$ a \emph{quotient} and denote it by $X/Y$.
 
@@ -131,7 +129,7 @@ Axiom \ref{A4} essentially states that abelian categories are those additive cat
 \end{remark}
 
 \begin{example}
-    The default examples of abelian categories are the category of abelian groups $\Ab$ or more generally the category of $A$-modules $\mod{A}$ for a commutative ring $A$ and the categories of coherent and quasi-coherent sheaves $\coherent{X}$ and $\quasicoh{X}$ on a scheme $X$. On the other hand the category of (real or complex) vector bundles over a manifold of dimension at least $1$ is additive, but never abelian. The last claim is due to the latter category not being closed under kernels and cokernels.
+    The default examples of abelian categories are the category of abelian groups $\Ab$ or more generally the category of $A$-modules $\mod{A}$ for a commutative ring $A$. The categories of coherent and quasi-coherent sheaves, $\coherent{X}$ and $\quasicoh{X}$, on a scheme $X$ are also abelian (\cite[\href{https://stacks.math.columbia.edu/tag/01BY}{Tag 01BY}]{stacks-project} and \cite[\href{https://stacks.math.columbia.edu/tag/077P}{Tag 077P}]{stacks-project}). On the other hand the category of (real or complex) vector bundles for example over the real line $\R$ is additive, but not abelian. The last claim is due to the category of vector bundles on $\R$ not being closed under kernels and cokernels.
 \end{example}
 
 \begin{definition}
@@ -189,9 +187,7 @@ In the context of abelian categories, functors, which preserve a bit more than j
 
 \subsection{Triangulated categories}
 
-In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $X[1]$ and likewise its action on morphisms $f$ with $f[1]$.
-
-A \emph{triangle} in a category with translation $(\D, T)$ is a triplet of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
+In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $T(X) = X[1]$ and likewise its action on morphisms $f$ with $T(f) = f[1]$. A \emph{triangle} in a category with translation $(\D, T)$ is a triplet of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
 \begin{equation}
     \label{eq: basic distinguished triangle}
     X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1].
@@ -214,19 +210,19 @@ A \emph{morphism} of triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarro
 	\arrow[from=2-3, to=2-4]
 \end{tikzcd}
 \]
-One can compose morphisms of triangles in the obvious way and the notion of an isomorphism of triangles is defined as usual. The following definition as stated is originally due to Verdier, who first introduced it in his thesis \cite{Verdier}.
+One can compose morphisms of triangles in the obvious way and the notion of an isomorphism (of triangles) is defined as usual. The following definition as stated is originally due to Verdier, who first introduced it in his thesis \cite{Verdier}.
 
 \begin{definition}
     A \emph{triangulated category} (\emph{over $k$}) is a $k$-linear category with translation $(\D, T)$ equipped with a class of \emph{distinguished triangles}, which is subject to the following four axioms.
     \begin{enumerate}[label = \textsf{TR\arabic*}]
         \item{
             \begin{enumerate}[label = (\roman*)]
-            \item{Any triangle isomorphic to a distinguished triangle is also itself distinguished.}
+            \item{Any triangle isomorphic to a distinguished triangle is also itself distinguished.} \label{TR1 i}
             \item{For any $X$ the triangle
             \[
                 X \xrightarrow{\id{X}} X \longrightarrow 0 \longrightarrow X[1]
             \] 
-            is distinguished.}
+            is distinguished.} \label{TR1 ii}
             \item{For any morphism $f \colon X \to Y$ there is a distinguished triangle of the form
             \[
                 X \xrightarrow{\ f \ } Y \longrightarrow Z \longrightarrow X[1].
@@ -263,7 +259,7 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
         \]
         satisfying $v \circ f = f' \circ u$, there exists a (in general non-unique) morphism $w\colon Z \to Z'$, for which $(u, v, w)$ is a morphism of triangles \ie the diagram above commutes.
         } \label{TR3}
-        \item{ ... } \label{TR4}
+        \item{ \info{Will be added at some point} } \label{TR4}
     \end{enumerate} 
 \end{definition}
 
@@ -320,7 +316,23 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \end{proposition}
 
 \begin{proof}
-    
+    First, by axiom \ref{TR2} triangle $Y \xrightarrow{ g } Z \xrightarrow{ h } X[1] \xrightarrow{-f[1]} Y[1]$ is distinguished. By axiom \ref{TR1} \ref{TR1 ii} triangle $Z \xrightarrow{\id{Z}} Z \to 0 \to Z[1]$ is distinguished and by axiom \ref{TR3} there exits a morphism from the first triangle to the second one depicted in the diagram below.
+    \[\begin{tikzcd}[column sep = normal, row sep = 2.5em]
+        % https://q.uiver.app/#q=WzAsOCxbMCwwLCJZIl0sWzEsMCwiWiJdLFsyLDAsIlhbMV0iXSxbMywwLCJZWzFdIl0sWzAsMSwiWiJdLFsxLDEsIloiXSxbMiwxLCIwIl0sWzMsMSwiWlsxXSJdLFswLDEsImciXSxbMSwyLCJoIl0sWzIsMywiLWZbMV0iXSxbNCw1LCJcXGlke1p9Il0sWzUsNl0sWzYsN10sWzEsNSwiXFxpZHtafSJdLFsyLDZdLFszLDcsImdbMV0iLDJdLFswLDQsImciLDJdXQ==
+        Y & Z & {X[1]} & {Y[1]} \\
+        Z & Z & 0 & {Z[1]}
+        \arrow["g", from=1-1, to=1-2]
+        \arrow["g"', from=1-1, to=2-1]
+        \arrow["h", from=1-2, to=1-3]
+        \arrow["{\id{Z}}", from=1-2, to=2-2]
+        \arrow["{-f[1]}", from=1-3, to=1-4]
+        \arrow[dashed, from=1-3, to=2-3]
+        \arrow["{g[1]}"', from=1-4, to=2-4]
+        \arrow["{\id{Z}}", from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+    \end{tikzcd}\]
+    The right most square says $g[1] \circ (-f[1]) = 0$, from which we conclude that $g \circ f = 0$, after applying a quasi-inverse of the translation functor, which is an additive equivalence.
 \end{proof}
 
 \begin{definition}
@@ -396,11 +408,11 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, -) \colon \D \to \mod{k} \text{ and } \Hom_\D( - , W) \colon \D^\op \to \mod{k}
     \]
-    are cohomological\footnote{With claiming that $\Hom_\D(-, W)$ is cohomological we are being slightly imprecise, as we have not clarified what the triangulated structure on $\D^\op$ is. We take it to be the most obvious one (\cf \cite[Chapter 1, \S 1.2]{milicic-dercat}).}. Let us verify the first claim. Consider the long exact sequence 
+    are cohomological\footnote{With claiming that $\Hom_\D(-, W)$ is cohomological we are being slightly imprecise, as we have not clarified what the triangulated structure on $\D^\op$ is. We take it to be the most obvious one (\cf \cite[Chapter 1, \S 1.2]{milicic-dercat}).}. Let us verify the first claim. Consider the long sequence 
     \[
         \cdots \to \Hom_\D(W, X) \to \Hom_\D(W, Y) \to \Hom_\D(W, Z) \to \Hom_\D(W, X[1]) \to \cdots 
     \]
-    arising from a distinguished triangle $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$. Since the translation functor on $\D$ and the axiom TR2 allow us to turn this triangle and still end up with a distinguished triangle, it suffices to verify only that 
+    arising from a distinguished triangle $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$. Since the translation functor on $\D$ and the axiom \ref{TR2} allow us to turn this triangle and still end up with a distinguished triangle, it suffices to verify only that 
     \[
     \Hom_\D(W, X) \xrightarrow{f_*} \Hom_\D(W, Y) \xrightarrow{g_*} \Hom_\D(W, Z) \quad \text{ is exact.}
     \]
@@ -476,9 +488,80 @@ and apply functor $H$ over it.
     
 \end{proof}
 
-The following are all specialized results characterizing, when a triangulated functor is an equivalence. We will use \ref{} in the proof of proposition \ref{}. We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
+The following are all specialized results characterizing, when a triangulated functor is an equivalence. 
+% We will use \ref{} in the proof of proposition \ref{}. 
+They will be used in a fundamental way in the proof of the Derived Torelli theorem. In particular we highlight Proposition \ref{Fully faithful functor on a spanning class}, Proposition \ref{Serre functors and adjoints} and Corollary \ref{condition for functor to be an equivalence}, which will be directly used in the proof. We mention that all the results of this part can be found in \cite[Chapter 1]{huybrechts2006fouriermukai}.
+% We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
 
 \begin{definition}
+    Let $\D$ be a triangulated category. A collection of objects $\Omega$ in $\D$ forms a \emph{spanning class} of $\D$, if for all objects $X$ of $\D$ the following two conditions are satisfied. 
+    \begin{enumerate}[label = (\roman*)]
+        \item{If $\Hom_\D(U, X[i]) = 0$ for all $U \in \Omega$ and all $i \in \Z$, then $X \iso 0$.}
+        \item{If $\Hom_\D(X, U[i]) = 0$ for all $U \in \Omega$ and all $i \in \Z$, then $X \iso 0$.} 
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    \label{Fully faithful functor on a spanning class}
+    Let $F \colon \D \to \D'$ be a triangulated functor of triangulated categories. Assume $F$ has left and right adjoints $G \dashv F \dashv H$. Suppose $\D$ contains a spanning class $\Omega$ and that $F$ induces isomorphisms
+    \begin{equation}
+        \label{eq: action of F on spanning class}
+        \Hom_\D(U, V[i]) \to \Hom_{\D'}(F(U), F(V[i]))
+    \end{equation}
+    for all $U ,V \in \Omega$. Then $F$ is fully faithful.
+\end{proposition}
+
+\begin{proof}
+    For any $X, Y$ of $\D$ we will show that the morphism action of $F$
+    \[
+        \Hom_\D(X, Y[i]) \to \Hom_{\D'}(F(X), F(Y[i]))
+    \]
+    is an isomorphism. The two adjunctions $G \dashv F \dashv H$ give rise to the following commutative diagram
+    \begin{equation}
+        \label{eq: two adjunctions diagram}
+    \begin{tikzcd}[column sep = small, row sep = 2em]
+        % https://q.uiver.app/#q=WzAsNCxbMiwyLCJcXEhvbV97XFxEJ30oRihYKSwgRihZKSkiXSxbMiwwLCJcXEhvbV97XFxEfShYLCBIRihZKSkiXSxbMCwwLCJcXEhvbV9cXEQoWCxZKSJdLFswLDIsIlxcSG9tX1xcRChHRihYKSwgWSkiXSxbMiwzLCIoXFx2YXJlcHNpbG9uX1gpXioiXSxbMiwxLCIoXFxldGFfWSlfKiJdLFsxLDAsIlxcc2ltIl0sWzMsMCwiXFxzaW0iXSxbMiwwLCJGIl1d
+        {\Hom_\D(X,Y)} && {\Hom_{\D}(X, HF(Y))} \\
+        \\
+        {\Hom_\D(GF(X), Y)} && {\Hom_{\D'}(F(X), F(Y)),}
+        \arrow["{(\eta_Y)_*}", from=1-1, to=1-3]
+        \arrow["{(\varepsilon_X)^*}"', from=1-1, to=3-1]
+        \arrow["F", from=1-1, to=3-3]
+        \arrow["\sim", from=1-3, to=3-3]
+        \arrow["\sim", from=3-1, to=3-3]
+    \end{tikzcd}
+    \end{equation}
+    where $\eta_Y\colon Y \to HF(Y)$ denotes the unit of the adjunction $F \dashv H$ and $\varepsilon_X \colon GF(X) \to X$ denotes the counit of the adjunction $G \dashv F$.
+
+    First we show, that $\varepsilon_U$ is an isomorphism for every $U \in \Omega$. Indeed, as $\varepsilon_U$ fits into a distinguished triangle
+    \[
+        GF(U) \xrightarrow{\ \varepsilon_U \ } U \longrightarrow Z \longrightarrow (GF(U))[1],
+    \]
+    the cohomological functor $\Hom_\D(-, V)$, for $V \in \Omega$, induces a long exact sequence 
+    \begin{multline}
+        \label{eq: LES for counit}
+        \cdots \leftarrow \Hom_\D(GF(U), V) \xleftarrow{(\varepsilon_U)^*} \Hom_\D(U, V) \leftarrow \\
+        \leftarrow \Hom_\D(Z, V) \leftarrow \Hom_\D(GF(U)[1], V) \leftarrow \cdots.
+    \end{multline}
+    By assumption \eqref{eq: action of F on spanning class} is a bijection for all $U, V \in \Omega$ and $i \in \Z$, thus, considering the diagram \eqref{eq: two adjunctions diagram}, where we set $X = U$ and $Y = V$, we see that $(\varepsilon_U)^*$, along with $(\varepsilon_U[i])^*$ for all $i \in \Z$, is an isomorphism. From the long exact sequence \eqref{eq: LES for counit} we then conclude, that $\Hom_\D(Z[i], V) = 0$ for all $i \in \Z$ and as $V \in \Omega$ belonging to a spanning class of $\D$ was arbitrary, $Z \iso 0$, showing $\varepsilon_U$ is an isomorphism by Lemma \ref{f iso iff cone trivial}.
+
+    Secondly, we show that $\eta_Y$ is an isomorphism for all objects $Y$ of $\D$. This is done in a very similar manner. Considering now the distinguished triangle
+    \[
+        Y \xrightarrow{\ \eta_Y \ } HF(Y) \longrightarrow Z \longrightarrow Y[1],
+    \]
+    we apply the cohomological functor $\Hom_\D(U, -)$, for $U \in \Omega$, to obtain the long exact sequence
+    \begin{multline}
+        \label{eq: LES for unit}
+        \cdots \to \Hom_\D(U, Y) \xrightarrow{(\eta_Y)_*} \Hom_\D(U, HF(Y)) \to \\
+        \to \Hom_\D(U, Z) \to \Hom_\D(U, Y[1]) \to \cdots.
+    \end{multline}
+    Setting $X = U$ in diagram \eqref{eq: two adjunctions diagram}, we see that $\varepsilon_U$ being an isomorphism implies $(\eta_Y)_*$ is an isomorphism. The long exact sequence \eqref{eq: LES for unit} then establishes $\Hom_\D(U, Z[i]) = 0$ for all $i \in \Z$, thus showing $Z \iso 0$. Consequently $\eta_Y$ is an isomorphism by Lemma \ref{f iso iff cone trivial}.
+    
+    Lastly, looking back at diagram \eqref{eq: two adjunctions diagram}, $\eta_Y$ being an isomorphism, for all objects $Y$ of $\D$, proves, that the morphism action of $F$ is an isomorphism \ie $F$ is fully faithful.
+\end{proof}
+
+\begin{definition}
+    \label{Definition of decomposable category}
     Let $\D$ be a triangulated category and $\D_0$, $\D_1$ its triangulated subcategories. We say $\D$ \emph{decomposes} into $\D_0$ and $\D_1$ if the following three conditions are met.
     \begin{enumerate}[label = (\roman*)]
         \item Categories $\D_0$ and $\D_1$ contain objects not isomorphic to $0$.
@@ -509,17 +592,18 @@ The following are all specialized results characterizing, when a triangulated fu
 
 \begin{proof}
     \noindent
-    ($\Rightarrow$) Let $Y$ belong to $\D'$. Since $F$ is part of an equivalence, the counit $\varepsilon_Y \colon FH(Y) \to Y$ is also an isomorphism, thus, as $H(Y) \iso 0$ implies $FH(Y) \iso 0$, we see that $Y \iso 0$.
+    ($\Rightarrow$) Let $Y$ belong to $\D'$. Since $F$ is part of an equivalence, the counit $\varepsilon_Y \colon FH(Y) \to Y$ is an isomorphism, thus, as $H(Y) \iso 0$ implies $FH(Y) \iso 0$, we see that $Y \iso 0$.
 
     \noindent
-    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}. Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[Prop.~1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
+    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism (this is easily seen from digram \eqref{eq: two adjunctions diagram} or \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}). Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[Prop.~1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
     \[
         HFH(Y) \xrightarrow{ H(\varepsilon_Y) } H(Y) \longrightarrow H(Z) \longrightarrow HFH(Y)[1].
     \]
     By the triangle identity relating units and counits of an adjunction \cite[\href{https://stacks.math.columbia.edu/tag/0GLL}{Tag 0GLL}]{stacks-project}, we have
-    \[
+    \begin{equation}
+        \label{eq: triangle identity for adjunctions}
         H(\varepsilon_Y) \circ \eta_{H(Y)}  = \id{H(Y)},
-    \]
+    \end{equation}
     and as observed earlier, since $\eta_{H(Y)}$ is an isomorphism, $H(\varepsilon_Y)$ is as well. It follows by \ref{f iso iff cone trivial} that $H(Z) \iso 0$, from which, by the assumption, $Z \iso 0$ follows. Finally, by \ref{f iso iff cone trivial} again, $\varepsilon_Y$ is an isomorphism, proving our claim.
 \end{proof}
 
@@ -528,7 +612,32 @@ The following are all specialized results characterizing, when a triangulated fu
 \end{proposition}
 
 \begin{proof}
+    If $F$ is an equivalence, the condition is satisfied because its quasi-inverse is both a left and right adjoint to $F$ and adjoints are unique up to natural isomorphisms. Suppose now that the condition is satisfied and we show, that $F$ is essentially surjective. 
     
+    We will first construct two triangulated subcategories of $\D'$, where one of which will turn out to contain only trivial objects by indecomposability of $\D'$. Let $\D_0'$ the full subcategory of $\D'$ consisting of all objects $Y$, for which $H(Y) \iso 0$. As $H$ is triangulated $\D_0'$ is a full \emph{triangulated} subcategory of $\D'$. We will show this category contains only trivial objects.
+    Let $\D'_1$ be the full subcategory of $\D'$ spanned on objects of the form $F(X)$ for some object $X$ of $\D'$. Similarly, as $F$ is triangulated, $\D'_1$ is a triangulated subcategory of $\D'$, sometimes called the \emph{essential image of $F$}. We now show, that $\D_0'$ and $\D_1'$ satisfy conditions (ii) and (iii) of Definition \ref{Definition of decomposable category}.
+
+    To verify (ii) pick any object $Y$ of $\D'$ and consider the counit $\varepsilon_Y$ within a distinguished triangle
+    \begin{equation}
+        \label{eq: distinguished triangle of counit}
+        FH(Y) \xrightarrow{ \varepsilon_Y } Y \to Z \to FH(Y)[1]
+    \end{equation}
+    of $\D'$. By definition $FH(Y)$ belongs to $\D'_1$. On the other hand, to see that $Z$ belongs to $\D'_0$, we map the triangle to $\D$ via the functor $H$, to conclude that $H(\varepsilon_Y)$ is an isomorphism, by the triangle identity \eqref{eq: triangle identity for adjunctions} and the fact that $F$ is fully faithful (thus $\eta_{H(Y)}$ is an isomorphism). Then $H(Z) \iso 0$ by Lemma \ref{f iso iff cone trivial}, showing that $Z$ belongs to $\D_0'$.
+
+    To see why (iii) holds true pick objects $Y_0$ and $Y_1$ of $\D'_0$ and $\D'_1$ respectively. Then by definition there exists an object $X$ of $\D$, such that $F(X) \iso Y_1$, so we compute
+    \[
+        \Hom_{\D'}(Y_1, Y_0) \iso \Hom_{\D'}(F(X), Y_0) \iso \Hom_{\D}(X, H(Y_0)) = 0
+    \]
+    because $H(Y_0) \iso 0$. As per the assumption, $H(Y_0) \iso 0$ implies $G(Y_0) \iso 0$, so we see that
+    % and, with the condition ``$H(Y) \iso 0$ implies $G(Y) \iso 0$'' coming in handy, we also see that
+    \[
+        \Hom_{\D'}(Y_0, Y_1) \iso \Hom_{\D'}(Y_0, F(X)) \iso \Hom_{\D}(G(Y_0), X) = 0
+    \]
+    
+    Since $\D$ contains non-trivial objects and $F$ is fully faithful, the category $\D_1'$ must contain a non-trivial object, namely an $F$-image of any non-trivial object of $\D$. Since by assumption $\D'$ is indecomposable, the category $\D_0'$ only contains trivial objects. In other words, if $H(Y) \iso 0$ for some object $Y$ of $\D'$, then $Y \iso 0$.
+    
+    Finally, to show that $F$ is essentially surjective, we prove that the counit $\varepsilon_Y\colon FH(Y) \to Y$ is an isomorphism for every object $Y$ of $\D'$. 
+    Once again considering the image of the distinguished triangle \eqref{eq: distinguished triangle of counit} via the functor $H$, we have already established that $H(Z) \iso 0$. The latter implies $Z \iso 0$ and finally, by Lemma \ref{f iso iff cone trivial}, $\varepsilon_Y$ is an isomorphism.
 \end{proof}
 
 \begin{corollary}
@@ -541,7 +650,7 @@ For the last part of this section let $k$ denote a field.
 \begin{definition}
     Let $\D$ be a triangulated category over $k$ with $\Hom_\D(X, Y)$ being a finite dimensional $k$-vector space for all objects $X$ and $Y$ of $\D$. A \emph{Serre functor} is a triangulated autoequivalence $S \colon \D \to \D$ of $\D$, such that for all objects $X$ and $Y$ there exists an isomorphism of $k$-vector spaces
     \[
-        \sigma_{X,Y} \colon \Hom_\D(X, Y) \xrightarrow{ \ \sim \ } \Hom_\D(Y, S(X))^\vee,
+        \sigma_{X,Y} \colon \Hom_\D(X, Y) \xrightarrow{ \ \sim \ } \Hom_\D(Y, S(X))^*,
     \]
     which is natural in both arguments $X$ and $Y$, thus forming a natural isomorphism of functors $\D^\op \times \D \to \mod{k}$.
     % and the collection of all such isomorphisms, $(\eta_{X,Y})_{X,Y}$ forms a natural in both arguments isomorphism of functors $\D^\op \times \D \to \mod{k}$.
@@ -556,10 +665,10 @@ For the last part of this section let $k$ denote a field.
 \begin{proof}
     For any two objects $X$ of $\D$ and $Y$ of $\D'$ we compute
     \begin{align*}
-        \Hom_{\D'}(F(X),\  Y) &\iso \Hom_{\D'}(Y,\ S_{\D'}(F(X)))^\vee \\
-        &\iso \Hom_{\D'}(S_{\D'}\inv(Y),\ F(X))^\vee \\
-        &\iso \Hom_{\D}(G(S_{\D'}\inv(Y)),\ X)^\vee \\
-        &\iso \Hom_{\D}(X,\ S_{\D}(G(S_{\D'}\inv(Y))))^{\vee\vee} \\
+        \Hom_{\D'}(F(X),\  Y) &\iso \Hom_{\D'}(Y,\ S_{\D'}(F(X)))^* \\
+        &\iso \Hom_{\D'}(S_{\D'}\inv(Y),\ F(X))^* \\
+        &\iso \Hom_{\D}(G(S_{\D'}\inv(Y)),\ X)^* \\
+        &\iso \Hom_{\D}(X,\ S_{\D}(G(S_{\D'}\inv(Y))))^{**} \\
         &\iso \Hom_{\D}(X,\ S_{\D}(G(S_{\D'}\inv(Y)))).
     \end{align*}
     For this is a chain of natural equivalences of functors in $X$ and $Y$, it follows that
