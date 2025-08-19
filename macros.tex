@@ -17,7 +17,7 @@
 
 \usepackage{xparse}
 
-% Colors
+% Colours
 \usepackage{xcolor}
 
 \usepackage{tikz}
@@ -44,9 +44,10 @@
 \newcommand{\cf}{cf.\ }
 
 % Shorthands
-\newcommand{\R}{\mathbb R}
+\newcommand{\R}{\mathbf R}
 \newcommand{\N}{\mathbf Z_{\geq 0}}
 \newcommand{\Z}{\mathbf Z}
+\newcommand{\Q}{\mathbf Q}
 \newcommand{\C}{\mathbf C}
 \newcommand{\OO}{\mathcal O}
 \newcommand{\F}{\mathcal F}
@@ -56,6 +57,7 @@
 \newcommand{\I}{\mathcal I}
 \newcommand{\J}{\mathcal J}
 \newcommand{\D}{\mathcal D}
+\newcommand{\E}{\mathcal E}
 % \newcommand{\k}{\texttt k}
 
 
@@ -114,11 +116,45 @@
 \newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
 \newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
 
+% Fourier-Mukai
+\newcommand{\fm}[1]{\Phi_{#1}}
+\newcommand{\fmcoh}[1]{f^{#1}}
+
 % Cohomology
 \newcommand{\td}{\operatorname{td}}
 \newcommand{\tdclass}[1]{\td_{#1}}
 \newcommand{\firstchern}{\operatorname{c}_1}
-\newcommand{\ch}[1]{\operatorname{ch}(#1)}
+% \newcommand{\ch}[1]{\operatorname{ch}(#1)}
+\newcommand{\mukai}[1]{\widetilde{H}(#1, \Z)}
+\newcommand{\rk}[1]{\operatorname{rk}(#1)}
+
+\NewDocumentCommand{\ch}{ o g }{%
+  \IfNoValueTF{#1}%
+    { % no optional arg
+      \IfNoValueTF{#2}%
+        { \mathrm{ch} }%
+        { \mathrm{ch}\!\left(#2\right) }%
+    }%
+    { % with optional arg
+      \IfNoValueTF{#2}%
+        { \mathrm{ch}^{#1} }%
+        { \mathrm{ch}^{#1}\!\left(#2\right) }%
+    }%
+}
+
+\NewDocumentCommand{\cclass}{ o g }{%
+  \IfNoValueTF{#1}%
+    { % no optional arg
+      \IfNoValueTF{#2}%
+        { \mathrm{c} }%
+        { \mathrm{c}\!\left(#2\right) }%
+    }%
+    { % with optional arg
+      \IfNoValueTF{#2}%
+        { \mathrm{c}_{#1} }%
+        { \mathrm{c}_{#1}\!\left(#2\right) }%
+    }%
+}
 
 % Truncations
 \newcommand{\ltruncation}[1]{\tau_{\geq #1}}

@@ -1,4 +1,5 @@
 \section{Derived Torelli theorem}
+\label{Chapter: Derived Torelli theorem}
 
 \begin{theorem}
     Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then they are $D$-equivalent if and only if there exists a Hodge isometry $f\colon T(X) \to T(Y)$ between their transcendental lattices.
@@ -8,3 +9,32 @@
 \subsection{Moduli space of sheaves on a K3 surface}
 \subsection{Proof}
 
+\info{recall what the projections $p$ and $q$ are.}
+
+\begin{proposition}
+    Suppose there exists an equivalence of triangulated categories $\derb{X} \natiso \derb{Y}$, then there is a Hodge isometry $\mukai{X} \iso \mukai{Y}$.
+\end{proposition}
+
+\begin{lemma}
+    For any object $\E^\bullet$ of $\derb{X \times Y}$, its Chern character $\ch{\E^\bullet}$ is integral, \ie belongs to $H^*(X \times Y, \Z) \subseteq H^*(X \times Y, \Q)$. Consequently the Mukai vector $v(\E^\bullet)$ is integral as well.
+\end{lemma}
+
+\begin{proof}
+    We rewrite the Chern character as a vector with respect to the decomposition $H^*(X \times Y, \Q) = \bigoplus_{i=0}^4 H^{2i}(X \times Y, \Q)$
+    \[
+        \ch{\E^\bullet} = \left(\rk{\E^\bullet}, \firstchern(\E^\bullet), \tfrac{1}{2}(\cclass[1]{\E^\bullet}^2 - 2\cclass[2]{\E^\bullet}), \ch[2]{\E^\bullet}, \ch[3]{\E^\bullet} \right)
+    \]
+    Components $\rk{\E^\bullet}$ and $\cclass[1]{\E^\bullet}$ are integral by definition. The first Chern class $\cclass[1]{\E^\bullet} \in H^2(X\times Y, \Z)$ may be rewritten in accordance with the Künneth decomposition
+    \[
+        H^2(X\times Y, \Z) \iso H^2(X, \Z) \oplus H^2(Y, \Z)
+    \]
+    as $\cclass[1]{\E^\bullet} = p^*\alpha + q^*\beta$, for some $\alpha \in H^2(X, \Z)$ and $\beta \in H^2(Y, \Z)$. Therefore, as $X$ and $Y$ have \emph{even} intersection pairings by \ref{intersection pairing on K3 is even}, since they are K3 surfaces, we see that $\cclass[1]{\E^\bullet}^2 = p^*\alpha^2 + 2 p^*\alpha.q^*\beta + q^*\beta^2$ is even. Together with $\cclass[2]{\E^\bullet}$ being integral this shows the third component is also integral.
+
+\end{proof}
+
+\begin{proof}
+    By Orlov's result \ref{Orlov's theorem}, the functor witnessing the equivalence $\derb{X} \natiso \derb{Y}$ is naturally isomorphic to a Fourier-Mukai transform $\fm{\E^\bullet}$ for some object $\E^\bullet$ of the category $\derb{X \times Y}$. We will show that the cohomological Fourier-Mukai transform $\fmcoh{\E^\bullet} \colon H^*(X, \Q) \to H^*(Y, \Q)$ of Chapter \ref{} induces a Hodge isometry between the Mukai lattices
+    \[
+        \fmcoh{\E^\bullet} \colon \mukai{X} \to \mukai{Y}.
+    \]
+\end{proof}
