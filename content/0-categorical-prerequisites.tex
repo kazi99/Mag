@@ -186,6 +186,7 @@ In the context of abelian categories, functors, which preserve a bit more than j
 
 
 \subsection{Triangulated categories}
+\label{Subsection: Triangulated categories}
 
 In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $T(X) = X[1]$ and likewise its action on morphisms $f$ with $T(f) = f[1]$. A \emph{triangle} in a category with translation $(\D, T)$ is a triplet of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
 \begin{equation}
@@ -575,11 +576,13 @@ They will be used in a fundamental way in the proof of the Derived Torelli theor
         \[
             \Hom_\D(Y_0, Y_1) = 0 \quad \text{ and } \quad \Hom_\D(Y_1, Y_0) = 0.
         \]
+        In this case we also say that $\D_0$ and $\D_1$ are \emph{orthogonal}.
     \end{enumerate} 
     Additionally, $\D$ is called \emph{indecomposable}, if it can not be decomposed in this way.
 \end{definition}
 
 \begin{proposition}
+    \label{In a decomposable cat every object splits}
     Suppose a triangulated category $\D$ decomposes into $\D_0$ and $\D_1$. Then every object $X$ of $\D$ is isomorphic to $Y_0 \oplus Y_1$ for some objects $Y_0$ and $Y_1$ belonging to $\D_0$ and $\D_1$, respectively.
 \end{proposition}
 

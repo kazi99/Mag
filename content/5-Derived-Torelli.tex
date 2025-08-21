@@ -1,12 +1,15 @@
 \section{Derived Torelli theorem}
 \label{Chapter: Derived Torelli theorem}
 
+\info{in this chapter sheaves will always be coherent.}
+
 In this last chapter we will again be dealing with K3 surfaces over the field of complex numbers $\C$. In particular we will characterize when two K3 surfaces $X$ and $Y$ have equivalent bounded derived categories, through their internal structure, namely their so called \emph{transcendental lattices}. For a K3 surface $X$, its \emph{transcendental lattice} is defined to be the orthogonal complement $\NS{X}^\perp \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\pairing{-}{-}$ on $\cohom{2}{X}{\Z}$, introduced in the previous chapter. The transcendental lattice of $X$ will be denoted by $\transc{X}$.
 Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$. 
 
 \info{todd class of K3}
 
 \begin{theorem}
+    \label{Derived Torelli}
     Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then $\derb{X} \natiso \derb{Y}$ if and only if there exists a Hodge isometry $f\colon T_X \to T_Y$ between their transcendental lattices.
 \end{theorem}
 
@@ -15,7 +18,7 @@ We will be using Fourier-Mukai transforms in an essential way. When applied to t
 Thus we see that in the case of K3 surfaces every left and right adjoints of Fourier-Mukai transforms agree.
 Here we have of course used one of the defining properties of K3 surfaces -- triviality of their canonical bundle.
 
-\subsection{Mukai lattice}
+% \subsection{Mukai lattice}
 
 In order to consider all the cohomology groups of a K3 surface $X$ at once Mukai introduced the following pairing on $\cohom{\bullet}{X}{\Z}$. For 
 
@@ -32,9 +35,10 @@ For this lattice to nicely fit into our context of Hodge lattices, we also equip
         $\widetilde{H}^{0,2}(X)$ & $=$ & $H^{0,2}(X)$.
     \end{tabular}
 \end{center}
+\info{describe which parts are orthogonal and why}
 
-\subsection{Moduli space of sheaves on a K3 surface}
-\subsection{Proof}
+% \subsection{Moduli space of sheaves on a K3 surface}
+\subsection{Mukai lattice and one side of the proof}
 
 \info{recall what the projections $p$ and $q$ are.}
 
@@ -96,11 +100,13 @@ For this lattice to nicely fit into our context of Hodge lattices, we also equip
     \[
         \fmcoh{\E^\bullet} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q) \qquad \alpha \mapsto p_*(v(\E^\bullet) \smallsmile q^*(\alpha)).
     \]
-    By lemma \ref{Mukai vector is integral} the Mukai vector $v(\E^\bullet)$ lies in $H^\bullet(X \times Y, \Z) \subseteq H^\bullet(X \times Y, \Q)$, thus $\fmcoh{\E^\bullet}$ may be restricted to the integral parts to form an additive map
+    By lemma \ref{Mukai vector is integral} the Mukai vector $v(\E^\bullet)$ lies in $H^\bullet(X \times Y, \Z) \subseteq H^\bullet(X \times Y, \Q)$, thus $\fmcoh{\E^\bullet}$ may be restricted to the integral parts, thus forming a homomorphism of abelian groups
     \[
         \fmcoh{\E^\bullet} \colon H^\bullet(X, \Z) \to H^\bullet(Y, \Z).
     \]
 
+    \noindent
+    \textsl{Bijection.}
     Next we verify that $\fmcoh{\E^\bullet}$ is bijective. We do so by constructing its right inverse. For $\fm{\E^\bullet}$ is an equivalence, the Fourier-Mukai transform associated to the the kernel $\E^\bullet_L$, of its left adjoint, is actually its quasi-inverse. Thus from $\fm{\E^\bullet_L} \circ \fm{\E^\bullet} \natiso \id{\derb{X}}$ along with uniqueness of kernels and Example \ref{Identifying fm transforms}, we see that $\struct{\Delta_X} \iso \E^\bullet_L * \E^\bullet$. As cohomological Fourier-Mukai transforms compose just like the categorical ones do, according to Proposition \ref{Composition of cohomological fm is fm}, we see that $\fmcoh{\E^\bullet_L} \circ \fmcoh{\E^\bullet} = \fmcoh{\struct{\Delta_X}}$, thus it suffices to show that $\fmcoh{\struct{\Delta_X}} = \id{H^\bullet(X, \Z)}$.
     
     We start by computing the Mukai vector of $\struct{\Delta_X}$. Consulting the help of Grothendieck-Riemann-Roch \ref{Grothendieck-Riemann-Roch}, we see that
@@ -117,9 +123,12 @@ For this lattice to nicely fit into our context of Hodge lattices, we also equip
         \fmcoh{\struct{\Delta_X}}(\alpha) = p_*(v(\struct{\Delta_X})\smallsmile p^*\alpha) = p_*(\Delta_*(1)\smallsmile p^*\alpha) = p_*(\Delta_*(1\smallsmile \Delta^*p^*(\alpha))) = \alpha.
     \]
     % By letting $\mathcal R^\bullet$ denote the convolution of $\E^\bullet$ and $\E^\bullet_L$, we see that by uniqueness of kernels of Fourier-Mukai transforms it follows that 
-    The map $\fmcoh{\E^\bullet}$ is now a homomorphism of free abelian groups admitting a right inverse, therefore it is an isomorphism of abelian groups.
-
-    We are left to show that $\fmcoh{\E^\bullet}$ is an isometry and that it preserves the Hodge structure. To see that $\fmcoh{\E^\bullet}$ is an isometry, we do two preliminary computations. Let $\alpha \in \mukai{X}$ and $\beta \in \mukai{Y}$ and let $\nu_X \colon X \to \spec{\C}$, $\nu_Y \colon Y \to \spec{\C}$ and $\nu_{X \times Y} \colon X \times Y \to \spec{\C}$ denote the structure maps, then by Lemma \ref{Intersection pairing through push-forward of structure map}
+    The map $\fmcoh{\E^\bullet}$ is now a homomorphism of free abelian groups admitting a right inverse, therefore it is an isomorphism of abelian groups. We are left to show that $\fmcoh{\E^\bullet}$ is an isometry and that it preserves the Hodge structure. 
+    
+    \vspace{0.5cm}
+    \noindent
+    \textsl{Isometry.}
+    To see that $\fmcoh{\E^\bullet}$ is an isometry, we do two preliminary computations. Let $\alpha \in \mukai{X}$ and $\beta \in \mukai{Y}$ and let $\nu_X \colon X \to \spec{\C}$, $\nu_Y \colon Y \to \spec{\C}$ and $\nu_{X \times Y} \colon X \times Y \to \spec{\C}$ denote the structure maps, then by Lemma \ref{Intersection pairing through push-forward of structure map}
     \begin{align*}
         \pairing{\fmcoh{\E^\bullet}(\alpha)}{\beta}_Y &= \nu_{Y, *}(\beta^\vee \smallsmile \fmcoh{\E^\bullet}(\alpha))
         \\
@@ -163,23 +172,163 @@ For this lattice to nicely fit into our context of Hodge lattices, we also equip
     \]       
     proving that $\fmcoh{\E^\bullet}$ is an isometry. 
 
+    \vspace{0.5cm}
+
+    \noindent
+    \textsl{Hodge structures.}
     Lastly, we show that $\fmcoh{\E^\bullet}$ preserves the Hodge structure \ie
     \[
         \fmcoh{\E^\bullet}_\C(\widetilde{H}^{p,q}(X)) \subseteq \widetilde{H}^{p,q}(Y) 
     \]
     for all $p$, $q$, with $p + q = 2$. 
-    By Proposition \ref{}, the condition \eqref{} specializes to 
-    \[
+    By Proposition \ref{Hodge lattice, fm transform interaction}, the condition \eqref{eq: Hodge lattice, fm transform} specializes to 
+    \begin{equation}
+        \label{eq: H20 is mapped to H20}
         f_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y)
-    \]
+    \end{equation}
     % since the term on the right is the only non-trivial one of the direct sum decomposition.
-    and in fact this turns out to be sufficient for $f$ to preserve the Hodge structures. This is a very special coincidence, which happens as a consequence of the Hodge structure on the Mukai lattice of a K3 surface.
+    and in fact this turns out to be sufficient for $f$ to preserve the Hodge structures. This is a very special coincidence, which happens as a consequence of the Hodge structure on the Mukai lattice of a K3 surface taking a particular from.
     % In fact, we will show this inclusion holds only for $(p,q) = (2,0)$, as this turns out to be sufficient. 
     Indeed, if $f_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y)$, then $f_\C(\widetilde{H}^{0,2}(X)) \subseteq \widetilde{H}^{0,2}(Y)$ is obtained through conjugation
     \[
         f_\C\left(\widetilde{H}^{0,2}(X)\right) = f_\C\left(\ols{\widetilde{H}^{2,0}(X)}\right) = \ols{f_\C\left(\widetilde{H}^{2,0}(X)\right)} \subseteq \ols{\widetilde{H}^{2,0}(Y)} = \widetilde{H}^{0,2}(Y).
     \]
-    And, to see $f_\C(\widetilde{H}^{1,1}(X)) \subseteq \widetilde{H}^{1,1}(Y)$, we pick a class $x \in \widetilde{H}^{1,1}(X)$ and map it over to $f_\C(x) \in \mukai{X} \otimes \C$.
+    And, to see $f_\C(\widetilde{H}^{1,1}(X)) \subseteq \widetilde{H}^{1,1}(Y)$, we pick a non-zero class $x \in \widetilde{H}^{1,1}(X)$ and map it over to $y = f_\C(x) \in \mukai{X} \otimes \C$. Then for any $y^{2,0} \in \widetilde{H}^{2,0}(Y)$, we have $\pairing{y}{y^{2,0}} = 0$. Indeed, first as $f_\C$ is an isomorphism of $\C$-vector spaces and $\widetilde{H}^{2,0}(X)$ and $\widetilde{H}^{2,0}(Y)$ are one dimensional, the inclusion \eqref{eq: H20 is mapped to H20} is actually an equality, thus we may represent $y^{2,0}$ as $f_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$. As $\widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X)$ and $f_\C$ is an isometry, we obtain $0 = \pairing{x}{x^{2,0}} = \pairing{y}{y^{2,0}}$ to conclude $y \in \widetilde{H}^{2,0}(Y)^\perp$. Symmetrically one obtains $y \in \widetilde{H}^{0,2}(Y)^\perp$. 
+
+    Finally, once we verify that $\widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp \subseteq \widetilde{H}^{1,1}(Y)$, we may conclude that $y \in \widetilde{H}^{1,1}(Y)$ to prove our last claim.
+    This is indeed the case for once we write a class $z \in \widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp$ according to the Hodge decomposition as $z = z^{2,0} + z^{1,1} + z^{0,2}$, we see that $z^{2,0} = z^{0,2} = 0$, by non-degeneracy of the pairing. For example for any $w = w^{2,0} + w^{1,1} + w^{0,2} \in \mukai{Y}$ we have
+    \[
+        \pairing{z^{2,0}}{w} = \pairing{z^{2,0}}{w^{2,0}} + \pairing{z^{2,0}}{w^{1,1}} + \pairing{z^{2,0}}{w^{0,2}} = 0,
+    \]
+    where $\pairing{z^{2,0}}{w^{2,0}} = 0$, because $z^{2,0} = z - z^{1,1} - z^{0,2}$ shows $z^{2,0} \in \widetilde{H}^{0,2}(Y)^\perp$ and $\pairing{z^{2,0}}{w^{1,1}} = 0$ together with $\pairing{z^{2,0}}{w^{0,2}} = 0$ follow from orthogonality relations \eqref{}. \qedhere
+    
+    % arising from the fact that $y^{2,0}$ is of the form $f_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$
+    
+    
+    % As $f_\C$ is an isomorphism of $\C$-vector spaces, the class $y$ is non-zero. 
     
     % $\widetilde{H}^{2,0}(Y) \oplus \widetilde{H}^{1,1}(Y) \oplus \widetilde{H}^{0,2}(Y)$
+\end{proof}
+
+\subsection{Moduli spaces of sheaves on K3 surfaces and the other side of the proof}
+
+The last subsection is devoted to proving the right to left implication of Theorem \ref{Derived Torelli}, captured in the preceding proposition.
+
+\begin{proposition}
+    \label{Hodge isometry implies D equivalence}
+    Let $X$ and $Y$ be K3 surfaces over $\C$ and suppose there exists a Hodge isometry 
+    \[
+        f \colon \mukai{X} \to \mukai{Y}
+    \]
+    of their Mukai lattices. Then there exists an equivalence of their bounded derived categories of coherent sheaves $\derb{X} \iso \derb{Y}$.
+    % If there is a Hodge isometry of Mukai lattices $\mukai{X} \iso \mukai{Y}$, there is an equivalence of triangulated categories $\derb{X} \iso \derb{Y}$.
+\end{proposition}
+The method of our proof will first lead us to introduce another K3 surface $M$, which will turn out to be isomorphic to $Y$ through an application of the classical Torelli theorem \ref{Classical Torelli theorem}, and whose derived category we will show is equivalent to $\derb{X}$. Not only will the K3 surface $M$ itself be important, but also how it is constructed or what it \emph{represents}. We will expand on this viewpoint to some extent, but will have to refer the reader to \cite[text]{keylist} for details and proofs, as this part is unfortunately outside the scope of our thesis. This approach will serve as an invaluable tool for obtaining a kernel for a Fourier-Mukai transform of the from $\derb{M} \to \derb{X}$, which we will later prove to be an equivalence. To prove the latter claim we will take a bit of an alternative route, than what is presented in \cite{Orlov-K3}, and use the abstract machinery of triangulated categories -- indecomposability and spanning classes, established towards the latter parts of Section \ref{Subsection: Triangulated categories}, together with results of Section \ref{Subsection: Derived category of coherent sheaves}. 
+
+
+% using the abstract machinery of triangulated categories and spanning classes, established towards the latter parts of subsection \ref{}. Through an application of the classical Torelli theorem \ref{Classical Torelli}, the K3 surface $M$ will turn out to be isomorphic to $Y$.
+
+% A few more words are required to introduce how the K3 surface $M$ comes about. Not only is the K3 surface $M$ important, but also how it is constructed or what it \emph{represents}. This viewpoint will serve as an invaluable tool for obtaining a kernel for a Fourier-Mukai transform of the from $\derb{M} \to \derb{X}$, which we will later prove to be an equivalence. 
+
+Recall that any object $X$ of a category $\mathcal C$ gives rise to a functor 
+\[
+    h_X \colon \mathcal C^\op \to \Set,
+\]
+which is given by $h_X = \Hom_{\mathcal C}(-, X)$. A functor $F \colon \mathcal C^\op \to \Set$ is siad to be \emph{representable} if there is some object $X$ of $\mathcal C$, for which $F$ and $h_X$ are naturally isomorphic. Moreover the Yoneda lemma \cite[text]{keylist} then asserts for every object $X$ of $\mathcal C$ and any functor $F \colon \mathcal C ^\op \to \Set$ the existence of an isomorphism 
+\begin{equation}
+    \label{eq: nat iso of Yoneda}
+    \Hom_{\operatorname{Fct(\mathcal C^\op, \Set)}}(h_X, F) \natiso F(X),
+\end{equation}
+which is natural both in $X$ and $F$.
+
+From now on we focus on a fixed K3 surface $X$ over $\C$ and consider the category $\sch{\C}$ of schemes over $\C$. The main idea we are trying to is to consider sheaves on $X$. These sheaves will
+
+appear in families ``indexed'' by some other scheme $S$ over $\C$. Such families may be encoded as single sheaves on the product $\F \in \coherent{X \times S}$. 
+
+
+As this would be an absolute overkill for there are too many coherent sheaves, we restrict ourselves by imposing some additional constraints on our sheaves.
+
+For any scheme $S$ over $\C$, a sheaf $\F \in \coherent{X \times S}$ is said to be \emph{flat over $S$}, if $\F$ is a flat $\pi_S\inv \struct{S}$-module, where $\pi_S \colon X \times S \to S$ is the canonical projection. Let $s \in S$ be a closed point, to which we know there is a corresponding morphism of schemes $\spec{\C} \to S$ also denoted with $s$. Then we define $i_s \colon X \to X \times S$ to be the composition
+\[
+    i_s \colon \quad X \longrightarrow X \times \spec{\C} \xrightarrow{\id{X} \times s} X \times S
+\]
+and introduce $\F|_s$ to mean the pull-back sheaf $i_s^*\F$ on $X$.
+
+
+ 
+
+\begin{definition}
+    \label{Definition of moduli functor}
+    Let $X$ be a K3 surface over $\C$ with a prescribed Mukai vector $v \in \mukai{X}$. The \emph{moduli functor}
+    \[
+        \M_v \colon \sch{\C}^\op \longrightarrow \Set
+    \]
+    is defined on objects as 
+    \[
+        S \longmapsto \left\{\F \in \coherent{X \times S} \ \middle| 
+        \begin{array}{l}
+            \text{$\F$ is flat over $S$, and for each closed point $s \in S$,} \\
+            \text{$\F|_s$ is a stable sheaf on $X$, with $v(\F|_s) = v$.}
+        \end{array}
+        \right\}_{/\sim},
+    \]
+    where $\F \sim \F'$ is defined to hold precisely when there exist a line bundle $\mathcal L$ on $S$, for which $\F \iso \F' \otimes_{\struct{X \times S}} \pi_S^*\mathcal L$, and on morphisms as
+    \[
+        (f\colon S' \to S) \longmapsto \left( (\id{X} \times f)^* \colon
+            \begin{array}{r l}
+                & \M_v(S) \to \M_v(S') \\
+                & [\F] \mapsto [(\id{X} \times f)^*\F]
+            \end{array}
+            \right).
+    \]
+\end{definition}
+
+\begin{remark}
+    Our moduli functor is constrained by a prescribed Mukai vector as opposed to \cite[text]{keylist}, which prescribes the Chern character. As Mukai vectors and Chern characters determine each other on a K3 surface, the definitions are in fact equivalent. 
+\end{remark}
+
+\begin{theorem}
+    \label{Representability of moduli functor}
+    Let $v \in \mukai{X}$ be an isotropic vector with ... Then the moduli functor $\M_v \colon \sch{\C}^\op \to \Set$ of definition \ref{Definition of moduli functor} is representable and is represented by a K3 surface $M$ over $\C$.
+\end{theorem}
+
+\begin{example}
+    The vector $(0,0,1)$ is an example of such a $v$ and so is any isometric image of it. 
+\end{example}
+
+\begin{remark}
+    The moduli functor $\M_v$ is actually representable already even under no additional restrictions on the Mukai vector $v$. The conditions are there to ensure $M$ becomes a K3 surface. For example in general $M$ is smooth and has dimension $\pairing{v}{v} + 2$ (\cf \cite[\S 4.3, Propositon 4.20]{vanBree2020}).
+\end{remark}
+
+\begin{definition}
+    The \emph{universal bundle (on $X$)} is the unique sheaf $\E \in \coherent{X \times M}$, to which the natural isomorphism \eqref{eq: nat iso of Yoneda} of the Yoneda lemma composed with the natural isomorphism of Theorem \ref{Representability of moduli functor}, witnessing representability of $\M_v$, assigns the identity natural transformation $\id{h_M}$ of the functor $h_M$
+    \[
+        \Hom_{\operatorname{Fct(\sch{\C}^\op, \Set)}}(h_M, h_M) \xrightarrow{\ \iso\ } h_M(M) \xrightarrow{\ = \ } \Hom_{\sch{\C}}(M, M) \xrightarrow{\ \iso\ } \M_v(M).
+    \]
+\end{definition}
+
+As a consequence of a more general fact \cite[text]{keylist}, we obtain the following. 
+
+\begin{theorem}
+    The universal bundle $\E$ is actually a \emph{bundle} \ie a locally free $\struct{X \times M}$-module of finite rank. 
+\end{theorem}
+
+
+\noindent
+With all the preparations now out of the way, we can begin with the proof.
+% where we will exploit brilliant results of Mukai 
+% In the definition of the moduli functor, we will use the term \emph{stable}, which we have not defined. 
+\begin{proof}[Proof of Proposition \ref{Hodge isometry implies D equivalence}]
+    \vspace{0.5 cm}
+    \noindent
+    \textsl{Identifying $M$ and $Y$.}
+
+    \vspace{0.5 cm}
+    \noindent
+    \textsl{Fully faithfulness.}
+
+    \vspace{0.5 cm}
+    \noindent
+    \textsl{Essential surjectivity.}
+    
 \end{proof}
