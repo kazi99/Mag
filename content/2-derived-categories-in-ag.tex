@@ -2,11 +2,16 @@
 \label{Derived categories in geometry}
 
 \subsection{Derived category of coherent sheaves}
+\label{Subsection: Derived category of coherent sheaves}
 
 One of the main invariants of a scheme $X$ over $k$ is its category of coherent sheaves $\coherent{X}$. We can think of this category as a slight extension of the category of locally free $\OO_X$-modules of finite rank also known as $k$-vector bundles on $X$ in the sense that $\coherent{X}$ is abelian, where as the former very often is not. In this chapter we restrict ourself to noetherian schemes and our primary object of study will be the bounded derived category of coherent sheaves
 \[
     \derb{X} := \derb{\coherent{X}}.
 \]
+
+\noindent
+\textsl{Notation.}
+Copying Huybrechts, we will denote by $\mathcal H^i(\F^\bullet)$ the $i$-th cohomology of a complex $\F^\bullet$ of sheaves on $X$, not to mistake it for sheaf cohomology $\cohom{i}{X}{\F}$ of $X$ with coefficients in a sheaf $\F$.
 
 \begin{proposition}
     The category of quasi-coherent sheaves $\quasicoh{X}$ of a noetherian scheme $X$ contains enough injectives.
@@ -21,8 +26,30 @@ One of the main invariants of a scheme $X$ over $k$ is its category of coherent 
     where $\mathsf{D}^b_{\mathsf{coh}}(\quasicoh{X})$ is the full triangulated subcategory of $\derb{\quasicoh{X}}$, spanned on bounded complexes of quasi-coherent shaves on $X$ with coherent cohomology.
 \end{proposition}
 
+\begin{definition}
+    \label{Definition of support}
+    Let $X$ be a scheme. The \emph{support} of an $\struct{X}$-module $\F$ is defined to be the set
+    \[
+        \supp{\F} = \{x \in X \mid \F_x \not\iso 0 \}.
+    \] 
+    The \emph{support} of a complex $\F^\bullet$ of $\derb{X}$ is defined to be the union
+    \[
+        \supp{\F^\bullet} = \bigcup_{i \in \Z} \supp{\mathcal H^i(\F^\bullet)}.
+    \]
+\end{definition}
+
+\begin{remark}
+    \label{supports closed}
+    The support $\supp{\F}$ of a coherent sheaf $\F \in \coherent{X}$ is a closed subset of $X$, therefore the support of any complex $\F^\bullet$ of $\derb{X}$ is closed as well.
+\end{remark}
+
+Let $x \in X$ be a closed point. Then we know there is a corresponding morphism $x \colon \spec{k} \to X$ 
+\[
+    k(x) = x_* \struct{\spec{k}}
+\]
+
 \begin{proposition}[\text{\cite[\S 3, Proposition 3.17]{huybrechts2006fouriermukai} or \cite[Example 2.2]{bridgeland2019equivalencestriangulatedcategoriesfouriermukai}}]
-    Let $X$ be a smooth projective variety over $k$. The set of all skyscraper sheaves $k(x)$, for closed points $x \in X$, forms a spanning class of the bounded derived category $\derb{X}$.
+    Suppose $X$ is a smooth projective variety over $k$. The set of all skyscraper sheaves $k(x)$, for closed points $x \in X$, forms a spanning class of the bounded derived category $\derb{X}$.
 \end{proposition}
 
 \begin{proof}
@@ -30,11 +57,52 @@ One of the main invariants of a scheme $X$ over $k$ is its category of coherent 
 \end{proof}
 
 \begin{theorem}[\text{\cite[\S 3, Proposition 3.10]{huybrechts2006fouriermukai}}]
-    The bounded derived category $\derb{X}$ of a connected noetherian scheme $X$ is indecomposable.
+    The bounded derived category $\derb{X}$ of a connected noetherian scheme $X$ over $k$ is indecomposable.
 \end{theorem}
 
 \begin{proof}
-    
+    For the sake of contradiction, assume $\derb{X}$ decomposes into triangulated subcategories $\D_0$ and $\D_1$. We will first prove that the structure sheaf $\struct{X}$ belongs to either $\D_0$ or $\D_1$.
+    By Proposition \ref{In a decomposable cat every object splits}, the  structure sheaf $\struct{X}$ is isomorphic to a direct sum $\F_0^\bullet \oplus \F_1^\bullet$, with complexes $\F_i^\bullet$ belonging to $\D_i$.
+    % Then the structure sheaf $\struct{X}$ is isomorphic to a direct sum $\F_0^\bullet \oplus \F_1^\bullet$ with complexes $\F_i^\bullet$ belonging to $\D_i$ by Proposition \ref{In a decomposable cat every object splits}. 
+    Since $\struct{X}$ clearly has cohomology supported only in degree $0$, the same is true for $\F_0^\bullet$ and $\F_1^\bullet$, thus, by Proposition \ref{A -> D(A) fully faithful}, we may replace them with coherent sheaves $\F_0$ and $\F_1$, respectively. By the same proposition this means that there isomorphism $\struct{X} \iso \F_0 \oplus \F_1$ in $\coherent{X}$. As the functor computing stalks of a sheaf at any given point $x \in X$ is exact, we obtain a direct sum decomposition $\OO_{X,x} \iso \F_{0,x} \oplus \F_{1,x}$, enabling us to write
+    \[
+        X = \supp{\struct{X}} = \supp{\F_0} \cup \supp{\F_1}.
+    \]
+    As $\F_i$ are coherent sheaves, their supports are closed in $X$, according to Remark \ref{supports closed}, and as $\OO_{X,x}$ is a local ring, and therefore \emph{indecomposable}\footnote{
+        A ring $R$ is \emph{indecomposable}, if it can not be written in the form $R \iso I \oplus J$ for two non-zero $R$-modules $I$ and $J$. If such a decomposition exists, $I$ and $J$ can be identified with \emph{proper} ideals of $R$. Now assuming $R$ is local with a maximal ideal $\mathfrak{m}$, we end up with a contradiction $R \subseteq I + J \subseteq \mathfrak{m} \subsetneq R$.
+        % which are necessarily cyclic. Letting $e$ denote the generator of $I \trianglelefteq R$ and $f$ the generator of $J \trianglelefteq R$, we see that from $I \cap J = 0 $, $e$ and $f$ are idempotents. For the decomposition is non-trivial $e$ and $f$ are non-zero. If we now assume $R$ is local, we arrive at a contradiction as  
+        % generated respectively by a pair of orthogonal idempotents. If $R$ is assumed to be a local ring
+        % is not isomorphic to a direct sum of two non-trivial $R$-modules. 
+    }, for every $x \in X$, either $\F_{0,x} = 0$ or $\F_{1,x} = 0$, meaning $\supp{\F_0} \cap \supp{\F_1} = \varnothing$. By connectedness of $X$, it follows that either $\F_0 = 0$ or $\F_1 = 0$, thus, without loss of generality, we may assume that $\struct{X}$ belongs to $\D_0$. 
+
+    Secondly picking any closed point $x \in X$, we see that $k(x)$ belongs to $\D_0$ as well. Indeed, as with $\struct{X}$, we may decompose $k(x)$ as $k(x) \iso \F_0 \oplus \F_1$ in $\coherent{X}$ for some coherent sheaves $\F_i$ belonging to $\D_i$. Then firstly $\supp{\F_i} \subset \{x\}$ and computing the stalk at $x$ shows either $\F_0$ or $\F_1$ is trivial. If $\F_1 = 0$, $k(x)$ belongs to $\D_0$, but if $\F_0 = 0$, then the isomorphism $k(x) \iso \F_1$ allows us to construct a non-zero homomorphism of sheaves $\struct{X} \to k(x) \to \F_1$\footnote{The morphism $\struct{X} \to k(x)$ comes from the morphism $\spec{k} \to X$, which includes the closed point $x$ into $X$.}, contradicting orthogonality of $\D_0$ and $\D_1$.
+
+    To finish off the proof, we now show that $\D_1$ contains only trivial objects. Suppose $\F^\bullet$ is an object of $\D_1$. If $\F^\bullet$ is not trivial, let $m \in \Z$ be maximal with the property $\mathcal H^m(\F^\bullet) \neq 0$. Then $\supp{\mathcal H^m(\F^\bullet)} \neq \varnothing$ and there is a \emph{closed} point $x \in X$, which is also contained in $\supp{\mathcal H^m(\F^\bullet)}$\footnote{
+        If $x_0 \in \supp{\mathcal H}$ is not a closed point, consider it inside an affine open chart $U \iso \spec{A}$. Then $\supp{\mathcal H} \cap U$ corresponds in $\spec{A}$ to a non-empty closed subset of the form $V(I)$ for some ideal $I \trianglelefteq A$. Since every ideal $I$ is contained in some maximal ideal, we obtain a closed point of $V(I)$ in this way.
+    }. As before this means there is a non-zero map $\mathcal H^m(\F^\bullet) \to k(x)$. Using this we will construct a non-zero morphism $\F^\bullet \to k(x)[m]$, once again contradicting orthogonality of $\D_0$ and $\D_1$. By \eqref{right truncation isos on cohomology}, we know the inclusion $\rtruncation{m}(\F^\bullet) \to \F^\bullet$ is a quasi-isomorphism. If we view $\mathcal H^m(\F^\bullet)$ in one of its equivalent ways as $\coker(\F^{m-1} \to \ker d^m)$, we obtain a commutative diagram
+    \[\begin{tikzcd}[row sep = small, column sep = small]
+        % https://q.uiver.app/#q=WzAsMTIsWzQsMCwiXFxrZXIgZF5tIl0sWzYsMCwiMCJdLFs0LDIsIlxcbWF0aGNhbCBIXm0oXFxtYXRoY2FsIEZeXFxidWxsZXQpIl0sWzYsMiwiMCJdLFsyLDAsIlxcbWF0aGNhbCBGXnttLTF9Il0sWzIsMiwiMCJdLFsxLDAsIlxcY2RvdHMiXSxbMCwyLCJcXG1hdGhjYWwgSF5tKFxcbWF0aGNhbCBGXlxcYnVsbGV0KVttXToiXSxbMSwyLCJcXGNkb3RzIl0sWzcsMCwiXFxjZG90cyJdLFs3LDIsIlxcY2RvdHMiXSxbMCwwLCJcXHJ0cnVuY2F0aW9ue219XFxtYXRoY2FsIEZeXFxidWxsZXQ6Il0sWzIsM10sWzAsMV0sWzEsM10sWzAsMl0sWzQsMF0sWzQsNV0sWzUsMl0sWzYsNF0sWzgsNV0sWzEsOV0sWzMsMTBdXQ==
+        {\rtruncation{m}(\mathcal F^\bullet)} & \cdots & {\mathcal F^{m-1}} && {\ker d^m} && 0 & \cdots \\
+        \\
+        {\mathcal H^m(\mathcal F^\bullet)[m]} & \cdots & 0 && {\mathcal H^m(\mathcal F^\bullet)} && 0 & \cdots,
+        \arrow[from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-5]
+        \arrow[from=1-3, to=3-3]
+        \arrow[from=1-5, to=1-7]
+        \arrow[from=1-5, to=3-5]
+        \arrow[from=1-7, to=1-8]
+        \arrow[from=1-7, to=3-7]
+        \arrow[from=3-2, to=3-3]
+        \arrow[from=3-3, to=3-5]
+        \arrow[from=3-5, to=3-7]
+        \arrow[from=3-7, to=3-8]
+    \end{tikzcd}\]
+    which gives rise to a chain map $\rtruncation{m}(\F^\bullet) \to \mathcal H^m(\F^\bullet)[m]$. The left roof \eqref{eq: contrived roof} below then represents a non-zero morphism $\F^\bullet \to k(x)[m]$ in $\derb{X}$, as it is clearly non-zero once the $m$-th cohomology functor is applied.
+    \begin{equation}
+        \label{eq: contrived roof}
+        \F^\bullet \leftarrow \rtruncation{m}(\F^\bullet) \to \mathcal H^m(\F^\bullet) \to k(x)[m]
+    \end{equation}
+    As this cannot be so, $\F^\bullet$ has trivial cohomology making it and the category $\D_1$ trivial, contradicting our initial assumption of $\D_0$ and $\D_1$ forming a decomposition of $\derb{X}$ and proving that $\derb{X}$ is indecomposable. 
 \end{proof}
 
 \info{Serre's vanishing results}
