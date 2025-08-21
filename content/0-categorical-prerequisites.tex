@@ -316,7 +316,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \end{proposition}
 
 \begin{proof}
-    First, by axiom \ref{TR2} triangle $Y \xrightarrow{ g } Z \xrightarrow{ h } X[1] \xrightarrow{-f[1]} Y[1]$ is distinguished. By axiom \ref{TR1} \ref{TR1 ii} triangle $Z \xrightarrow{\id{Z}} Z \to 0 \to Z[1]$ is distinguished and by axiom \ref{TR3} there exits a morphism from the first triangle to the second one depicted in the diagram below.
+    First, by axiom \ref{TR2}, triangle $Y \xrightarrow{ g } Z \xrightarrow{ h } X[1] \xrightarrow{-f[1]} Y[1]$ is distinguished. By axiom \ref{TR1} \ref{TR1 ii}, triangle $Z \xrightarrow{\id{Z}} Z \to 0 \to Z[1]$ is distinguished and, by axiom \ref{TR3}, there exits a morphism from the first triangle to the second one depicted in the diagram below.
     \[\begin{tikzcd}[column sep = normal, row sep = 2.5em]
         % https://q.uiver.app/#q=WzAsOCxbMCwwLCJZIl0sWzEsMCwiWiJdLFsyLDAsIlhbMV0iXSxbMywwLCJZWzFdIl0sWzAsMSwiWiJdLFsxLDEsIloiXSxbMiwxLCIwIl0sWzMsMSwiWlsxXSJdLFswLDEsImciXSxbMSwyLCJoIl0sWzIsMywiLWZbMV0iXSxbNCw1LCJcXGlke1p9Il0sWzUsNl0sWzYsN10sWzEsNSwiXFxpZHtafSJdLFsyLDZdLFszLDcsImdbMV0iLDJdLFswLDQsImciLDJdXQ==
         Y & Z & {X[1]} & {Y[1]} \\
@@ -332,7 +332,8 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
         \arrow[from=2-2, to=2-3]
         \arrow[from=2-3, to=2-4]
     \end{tikzcd}\]
-    The right most square says $g[1] \circ (-f[1]) = 0$, from which we conclude that $g \circ f = 0$, after applying a quasi-inverse of the translation functor, which is an additive equivalence.
+    The right most square says $g[1] \circ (-f[1]) = 0$, from which we conclude that $g \circ f = 0$, after applying a quasi-inverse of the translation functor.
+    % , which is an additive equivalence.
 \end{proof}
 
 \begin{definition}
@@ -351,7 +352,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
         \[
             F(X) \xrightarrow{Ff} F(Y) \xrightarrow{Fg} F(Z) \to F(X)[1] 
         \]
-        is distinguished in $\D'$, where the last morphism (of degree $1$) is obtained as the composition $F(Z) \xrightarrow{Fh} F(X[1]) \xrightarrow{\eta_X} F(X)[1]$.
+        is distinguished in $\D'$, where the last morphism is obtained as the composition $F(Z) \xrightarrow{Fh} F(X[1]) \xrightarrow{\eta_X} F(X)[1]$.
     \end{enumerate}
 \end{definition}
 
@@ -830,7 +831,7 @@ In this subsection we construct the homotopy category of chain complexes associa
 \end{lemma}
 
 \begin{proof}
-    For \ref{nullhomotopic maps are a submodule} see \cite[Ch.~3, 1.3.1]{milicic-dercat}. Claim \ref{composition and homotopy behave} is a direct consequence of \cite[Ch.~3, 1.3.2]{milicic-dercat}.
+    For \ref{nullhomotopic maps are a submodule} see \cite[Chapter 3, 1.3.1]{milicic-dercat}. Claim \ref{composition and homotopy behave} is a direct consequence of \cite[Chapter 3, 1.3.2]{milicic-dercat}.
 \end{proof}
 
 The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined to be an additive category consisting of

@@ -1,9 +1,91 @@
 \section{Fourier-Mukai transforms}
 
+\begin{example}
+    \label{Identifying fm transforms}
+    % In this example we notice and identity some common functors from algebraic geometry appear as Fourier-Mukai transforms. 
+\begin{enumerate}[label = (\roman*)]
+    \item{
+    $\id{\derb{X}} \iso \fm{\struct{\Delta_X}}$. Recall that $\struct{\Delta_X}$ is defined to be push-forward $\Delta_*\struct{X}$, of the structure sheaf of $X$ along the diagonal embedding $\Delta \colon X \to X \times X$. Then for any object $E$ of $\derb{X}$ we compute 
+    % \begin{align*}
+    %     \fm{\struct{\Delta_X}} &= \rderived{}{p_*}(\derivedtensor{\struct{\Delta_X}}{\lderived{}{p^*}(E)}{\struct{X \times X}}) \\
+    %     &\iso \rderived{}{p_*}(\derivedtensor{\Delta_*\struct{X}}{\lderived{}{p^*}(E)}{\struct{X \times X}}) \\
+    %     &\iso \rderived{}{p_*}(\derivedtensor{\Delta_*\struct{X}}{\lderived{}{\Delta^*}(\lderived{}{p^*}(E))}{\struct{X \times X}}) \\
+    % \end{align*}
+    \begin{align*}
+        \fm{\struct{\Delta_X}} &= p_*(\struct{\Delta_X} \otimes_{\struct{X \times X}} p^*(E)) \\
+        &= p_*(\Delta_*\struct{X} \otimes_{\struct{X \times X}} p^*(E)) \\
+        &\iso p_*(\Delta_*(\struct{X} \otimes_{\struct{X}} \Delta^*p^*(E))) \\
+        % &\iso \struct{X} \otimes E \\
+        &\iso \id{\derb{X}}(E).
+    \end{align*}
+    All isomorphisms are natural in $E$, thus proving $\id{\derb{X}} \iso \fm{\struct{\Delta_X}}$.
+    }
+    \item{$(-)[1] \iso \fm{\struct{\Delta_X}[1]}$. A similar computation as above also identifies the translation functor as a Fourier-Mukai transform}
+\end{enumerate}
+\end{example}
+
 \begin{theorem}[\text{\cite[Theorem 2.2]{Orlov-K3}}]
     \label{Orlov's theorem}
-    Let $X$ and $Y$ be smooth projective varieties over a field $k$. Suppose $F \colon \derb{X} \to \derb{Y}$ is a fully faithful functor admitting a right (and, consequently, the left) adjoint functor. Then there exists up to an isomorphism a unique object $E$ of $\derb{X \times Y}$ such that $F$ and $\fm{E}$ are naturally isomorphic.
+    Let $X$ and $Y$ be smooth projective varieties over a field $k$. Suppose $F \colon \derb{X} \to \derb{Y}$ is a fully faithful functor admitting a right (and, consequently, left) adjoint functor. Then there exists up to an isomorphism a unique object $E$ of $\derb{X \times Y}$ such that $F$ and $\fm{E}$ are naturally isomorphic.
 \end{theorem}
 
+\begin{proposition}
+    \label{Composition of fm is fm}
+    Let $\fm{\E^\bullet} \colon \derb{X} \to \derb{Y}$ and $\fm{\F^\bullet} \colon \derb{Y} \to \derb{Z}$ be Fourier-Mukai transforms with kernels $\E^\bullet$ and $\F^\bullet$ belonging to $\derb{X \times Y}$ and $\derb{Y \times Z}$ respectively. Then the composition $\fm{\F^\bullet} \circ \fm{\E^\bullet} \colon \derb{X} \to \derb{Z}$ is also a Fourier-Mukai transform with kernel $\mathcal R^\bullet = ...$, which is sometimes also called the \emph{convolution} of $\E^\bullet$ and $\F^\bullet$.
+\end{proposition}
+
 \subsection{on $K$-groups}
+
+
 \subsection{on rational cohomology}
+\label{Subsection: FM transform on cohomology}
+
+\begin{proposition}
+    \label{Composition of cohomological fm is fm}
+    Let $\fmcoh{\E^\bullet} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q)$ and $\fmcoh{\F^\bullet} \colon H^\bullet(Y, \Q) \to H^\bullet(Z, \Q)$ be cohomological Fourier-Mukai transforms for $\E^\bullet$ and $\F^\bullet$ belonging to $\derb{X \times Y}$ and $\derb{Y \times Z}$ respectively. Then the composition $\fmcoh{\F^\bullet} \circ \fmcoh{\E^\bullet}$ is also a cohomological Fourier-Mukai transform with kernel $\mathcal R^\bullet$ of Proposition \ref{}
+\end{proposition}
+
+\begin{theorem}[Grothendieck-Riemann-Roch]
+    \label{Grothendieck-Riemann-Roch}
+    Let
+\end{theorem}
+
+\begin{remark}
+    What's the deal with Chow groups $A_\Q(X)$    
+\end{remark}
+
+\begin{corollary}[Hirzebruch-Riemann-Roch]
+    \label{Hirzebruch-Riemann-Roch}
+    \[
+        \chi(X, \E) = \int_X \ch{\E}\tdclass{X}.
+    \]
+\end{corollary}
+
+\begin{remark}
+    Meaning of integral $\int_X \ch{\E}\tdclass{X} = \pairing{\ch{\E}\tdclass{X}}{[X]}$
+\end{remark}
+
+\begin{proof}
+    from GRR.
+\end{proof}
+
+\begin{proposition}
+    \label{cohomological projection formula}
+    Let $f \colon X \to Y$ be a continuous map between closed orientable manifolds $X$ and $Y$. Then for all $\alpha \in \cohom{*}{X}{\Z}$ and $\beta \in \cohom{*}{Y}{\Z}$
+    \[
+        f_*\alpha \smallsmile \beta = f_*(\alpha \smallsmile f^*\beta).
+    \]
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{proposition}
+    \label{Hodge lattice, fm transform interaction}
+    Then for every pair of integers $(p,q)$
+    \begin{equation}
+        \label{eq: Hodge lattice, fm transform}
+        \fmcoh{E}_\C\left(H^{p,q}(X)\right) \subseteq \bigoplus_{s - t = p - q} H^{s,t}(Y).
+    \end{equation}
+\end{proposition}

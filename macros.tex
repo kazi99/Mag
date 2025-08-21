@@ -59,6 +59,8 @@
 \newcommand{\D}{\mathcal D}
 \newcommand{\E}{\mathcal E}
 % \newcommand{\k}{\texttt k}
+\newcommand{\inv}{^{-1}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 
 
 % Isos, equivalences, ...
@@ -116,18 +118,26 @@
 \newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
 \newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
 
+% Algebraic geometry
+\newcommand{\struct}[1]{\mathcal{O}_{#1}}
+\newcommand{\spec}[1]{\operatorname{Spec}#1}
+
 % Fourier-Mukai
 \newcommand{\fm}[1]{\Phi_{#1}}
+\newcommand{\fmkt}[1]{\phi_{#1}}
 \newcommand{\fmcoh}[1]{f^{#1}}
 
 % Cohomology
 \newcommand{\td}{\operatorname{td}}
 \newcommand{\tdclass}[1]{\td_{#1}}
-\newcommand{\firstchern}{\operatorname{c}_1}
-% \newcommand{\ch}[1]{\operatorname{ch}(#1)}
 \newcommand{\mukai}[1]{\widetilde{H}(#1, \Z)}
 \newcommand{\rk}[1]{\operatorname{rk}(#1)}
+\newcommand{\cohom}[3]{H^{#1}(#2, #3)}
+\newcommand{\pairing}[2]{\langle #1, #2 \rangle}
+\newcommand{\NS}[1]{\operatorname{NS}(#1)}
+\newcommand{\transc}[1]{T_{#1}}
 
+% Chern character
 \NewDocumentCommand{\ch}{ o g }{%
   \IfNoValueTF{#1}%
     { % no optional arg
@@ -142,6 +152,7 @@
     }%
 }
 
+% Chern class
 \NewDocumentCommand{\cclass}{ o g }{%
   \IfNoValueTF{#1}%
     { % no optional arg
@@ -163,9 +174,9 @@
 % Lattices
 \newcommand{\hyperbolic}{\mathcal U}
 
-
-\newcommand{\inv}{^{-1}}
-\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+%command for alg-closure that automatically adapts its 'bar' to the arg based on the args length (including '\')
+\newcommand{\ols}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip} % overline short
+\newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
 
 
 % Quotient

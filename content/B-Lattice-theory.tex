@@ -1,1 +1,33 @@
 \section{Lattice theory}
+
+\begin{theorem}[Milnor]
+    \label{Milnor}
+    Let $(n_+,n_-)$ be a pair of non-negative integers. Then there exists an even unimodular lattice of signature $(n_+, n_-)$, if and only if $n_+ - n_- \equiv 0 \ (8)$. If $n_+$, $n_- > 0$ then the (indefinite) lattice is unique up to isomorphism.
+\end{theorem}
+
+\begin{corollary}
+    Let $\Lambda_0$ and $\Lambda_1$ be positive definite even unimodular lattices with $\rk{\Lambda_0} = \rk{\Lambda_1}$, then
+    \[
+        \Lambda_0 \oplus \hyperbolic \iso \Lambda_1 \oplus \hyperbolic.
+    \]
+\end{corollary}
+
+\begin{proof}
+    Signature of $\Lambda_0$ and $\Lambda_1$ is $(\rk{\Lambda_0}, 0)$, thus the signature of $\Lambda_0 \oplus \hyperbolic$ and $\Lambda_1 \oplus \hyperbolic$ is $(\rk{\Lambda_0} + 1, 1)$, so the result follows by Milnor's Theorem \ref{Milnor}.
+\end{proof}
+
+\begin{corollary}
+    Let $\Lambda$ be an indefinite even unimodular lattice of signature $(n_+, n_-)$. Setting $\tau = n_+ - n_-$ to be the index of $\Lambda$, then $\tau \equiv 0 \ (8)$ and
+    \begin{center}
+        \begin{tabular}{r l}
+            if $\tau \geq 0$, then & $\Lambda \iso E_8^{\oplus \frac{\tau}{8}} \oplus \hyperbolic^{\oplus n_-},$ \\
+            if $\tau \leq 0$, then & $\Lambda \iso E_8(-1)^{\oplus \frac{-\tau}{8}} \oplus \hyperbolic^{\oplus n_+}.$
+        \end{tabular}
+    \end{center}
+\end{corollary}
+
+\begin{proof}
+    The $E_8$ lattice has signature $(8,0)$, and the hyperbolic lattice $\hyperbolic$ has signature $(1,1)$, thus the signature of $E_8^{\oplus \frac{\tau}{8}} \oplus \hyperbolic^{\oplus n_-}$ equals $(8\cdot \tfrac{\tau}{8} + n_-,n_-) = (n_+, n_-)$.
+\end{proof}
+
+\info{These three results are from Huybrects K3}
