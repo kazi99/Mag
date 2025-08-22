@@ -13,6 +13,11 @@ One of the main invariants of a scheme $X$ over $k$ is its category of coherent 
 \textsl{Notation.}
 Copying Huybrechts, we will denote by $\mathcal H^i(\F^\bullet)$ the $i$-th cohomology of a complex $\F^\bullet$ of sheaves on $X$, not to mistake it for sheaf cohomology $\cohom{i}{X}{\F}$ of $X$ with coefficients in a sheaf $\F$.
 
+In this section some of the results will have to be given without proof
+but we will provide precise references wherever required. Certain results will serve as the groundwork on which the theory is then further developed, for example statements like certain functors map coherent sheaves into coherent shaves, while others like Grothendieck-Verdier duality used to establish some relations among the derived functors, are well outside the scope of this thesis. 
+
+We also mainly focus on showcasing the methods and interactions of derived functors and not that much on being as general as one can be. 
+
 \begin{proposition}
     The category of quasi-coherent sheaves $\quasicoh{X}$ of a noetherian scheme $X$ contains enough injectives.
     % For a noetherian scheme $X$, its category of quasi-coherent shaves $\quasicoh{X}$ contains enough injectives.
@@ -79,7 +84,9 @@ Let $x \in X$ be a closed point. Then we know there is a corresponding morphism 
 
     To finish off the proof, we now show that $\D_1$ contains only trivial objects. Suppose $\F^\bullet$ is an object of $\D_1$. If $\F^\bullet$ is not trivial, let $m \in \Z$ be maximal with the property $\mathcal H^m(\F^\bullet) \neq 0$. Then $\supp{\mathcal H^m(\F^\bullet)} \neq \varnothing$ and there is a \emph{closed} point $x \in X$, which is also contained in $\supp{\mathcal H^m(\F^\bullet)}$\footnote{
         If $x_0 \in \supp{\mathcal H}$ is not a closed point, consider it inside an affine open chart $U \iso \spec{A}$. Then $\supp{\mathcal H} \cap U$ corresponds in $\spec{A}$ to a non-empty closed subset of the form $V(I)$ for some ideal $I \trianglelefteq A$. Since every ideal $I$ is contained in some maximal ideal, we obtain a closed point of $V(I)$ in this way.
-    }. As before this means there is a non-zero map $\mathcal H^m(\F^\bullet) \to k(x)$. Using this we will construct a non-zero morphism $\F^\bullet \to k(x)[m]$, once again contradicting orthogonality of $\D_0$ and $\D_1$. By \eqref{right truncation isos on cohomology}, we know the inclusion $\rtruncation{m}(\F^\bullet) \to \F^\bullet$ is a quasi-isomorphism. If we view $\mathcal H^m(\F^\bullet)$ in one of its equivalent ways as $\coker(\F^{m-1} \to \ker d^m)$, we obtain a commutative diagram
+    }. As before this means there is a non-zero map $\mathcal H^m(\F^\bullet) \to k(x)$. Using this we will construct a non-zero morphism $\F^\bullet \to k(x)[m]$ in $\derb{X}$, once again contradicting orthogonality of $\D_0$ and $\D_1$. By \eqref{right truncation isos on cohomology}, we know the inclusion $\rtruncation{m}(\F^\bullet) \to \F^\bullet$ is a quasi-isomorphism. If we view $\mathcal H^m(\F^\bullet)$ 
+    % in one of its equivalent ways 
+    as $\coker(\F^{m-1} \to \ker d^m)$, we obtain a commutative diagram
     \[\begin{tikzcd}[row sep = small, column sep = small]
         % https://q.uiver.app/#q=WzAsMTIsWzQsMCwiXFxrZXIgZF5tIl0sWzYsMCwiMCJdLFs0LDIsIlxcbWF0aGNhbCBIXm0oXFxtYXRoY2FsIEZeXFxidWxsZXQpIl0sWzYsMiwiMCJdLFsyLDAsIlxcbWF0aGNhbCBGXnttLTF9Il0sWzIsMiwiMCJdLFsxLDAsIlxcY2RvdHMiXSxbMCwyLCJcXG1hdGhjYWwgSF5tKFxcbWF0aGNhbCBGXlxcYnVsbGV0KVttXToiXSxbMSwyLCJcXGNkb3RzIl0sWzcsMCwiXFxjZG90cyJdLFs3LDIsIlxcY2RvdHMiXSxbMCwwLCJcXHJ0cnVuY2F0aW9ue219XFxtYXRoY2FsIEZeXFxidWxsZXQ6Il0sWzIsM10sWzAsMV0sWzEsM10sWzAsMl0sWzQsMF0sWzQsNV0sWzUsMl0sWzYsNF0sWzgsNV0sWzEsOV0sWzMsMTBdXQ==
         {\rtruncation{m}(\mathcal F^\bullet)} & \cdots & {\mathcal F^{m-1}} && {\ker d^m} && 0 & \cdots \\
@@ -100,12 +107,12 @@ Let $x \in X$ be a closed point. Then we know there is a corresponding morphism 
     which gives rise to a chain map $\rtruncation{m}(\F^\bullet) \to \mathcal H^m(\F^\bullet)[m]$. The left roof \eqref{eq: contrived roof} below then represents a non-zero morphism $\F^\bullet \to k(x)[m]$ in $\derb{X}$, as it is clearly non-zero once the $m$-th cohomology functor is applied.
     \begin{equation}
         \label{eq: contrived roof}
-        \F^\bullet \leftarrow \rtruncation{m}(\F^\bullet) \to \mathcal H^m(\F^\bullet) \to k(x)[m]
+        \F^\bullet \xleftarrow{\ \ \sim \ \ } \rtruncation{m}(\F^\bullet) \to \mathcal H^m(\F^\bullet) \to k(x)[m]
     \end{equation}
     As this cannot be so, $\F^\bullet$ has trivial cohomology making it and the category $\D_1$ trivial, contradicting our initial assumption of $\D_0$ and $\D_1$ forming a decomposition of $\derb{X}$ and proving that $\derb{X}$ is indecomposable. 
 \end{proof}
 
-\info{Serre's vanishing results}
+\info{Grothendieck's vanishing results and Serre's finitness}
 
 \newpage
 
@@ -143,3 +150,35 @@ according to \ref{method 1}. Precomposing the latter functor with the inclusion 
 \subsection{Interactions between derived functors}
 
 \info{projection formula, base change, GV-duality}
+
+Define the functor $f^! \colon \derb{Y} \to \derb{X}$ to be
+\[
+    f^! = \lderived{}{f^*}(-) \otimes_{\struct{X}} \omega_f[\dim(f)],
+\]
+where $\omega_f = \omega_X \otimes f^*\omega_Y^*$ and $\dim(f) = \dim(Y) - \dim(X)$. As $\omega_f$ is just a line bundle on $X$, the tensor product need not be derived. 
+
+\begin{theorem}[Grothendieck-Verdier duality, \text{\cite[Chapter VII, \S 4, Corollary 4.3]{Hartshorne1966}}]
+    Let $X$ and $Y$ be smooth schemes over $k$. Let $f \colon X \to Y$ be a proper morphism. Then for every $\F^\bullet$ in $\derb{X}$ and $\E^\bullet$ of $\derb{Y}$, there is an isomorphism in $\derb{Y}$
+    \[
+        \rderived{}{f_*}\rderived{}{\localhom^\bullet_X}(\F^\bullet, f^! \E^\bullet) \iso \rderived{}{\localhom^\bullet_Y}(\rderived{}{f_*}(\F^\bullet), \E^\bullet),
+    \]
+    which is natural in $\F^\bullet$ and $\E^\bullet$.
+
+\end{theorem}
+
+Define the Serre functor $S_X \colon \derb{X} \to \derb{X}$ to be the composition
+\[
+    S_X = (-) \otimes_\struct{X} \omega_X[\dim X]
+\]
+
+\begin{theorem}[Serre duality for derived categories]
+    Let $X$ be a projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. Then there is an isomorphism
+    \[
+        \Hom_{\derb{X}}(\F^\bullet, \E^\bullet) \iso \Hom_{\derb{X}}(\E^\bullet, S_X(\F^\bullet))^*,
+    \]
+    which is natural in $\E^\bullet$ and $\F^\bullet$.
+\end{theorem}
+
+\begin{proof}
+    From Grothendieck-Verdier duality
+\end{proof}
