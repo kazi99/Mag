@@ -20,7 +20,24 @@
     \end{align*}
     All isomorphisms are natural in $E$, thus proving $\id{\derb{X}} \iso \fm{\struct{\Delta_X}}$.
     }
-    \item{$(-)[1] \iso \fm{\struct{\Delta_X}[1]}$. A similar computation as above also identifies the translation functor as a Fourier-Mukai transform}
+    \item{$(-)[1] \iso \fm{\struct{\Delta_X}[1]}$. A similar computation as above identifies the translation functor as a Fourier-Mukai transform with kernel $\struct{\Delta_X}[1]$.}
+    \item{$\rderived{}{f_*} \iso \fm{\struct{\Gamma_f}}$. For a morphism $f \colon X \to Y$, let $\struct{\Gamma_f}$ denote the push-forward of the sheaf $\struct{X}$ along the morphism $i\colon X \to X \times Y$ induced by the identity $\id{X}\colon X \to X$ and $f\colon X \to Y$.  Then for any object $E$ of $\derb{X}$ we have
+    \begin{align*}
+        \fm{\struct{\Gamma_f}} &= p_*(\struct{\Gamma_f} \otimes_{\struct{X \times Y}} q^*(E)) \\
+        &= p_*(i_*\struct{X} \otimes_{\struct{X \times X}} q^*(E)) \\
+        &\iso p_*(i_*(\struct{X} \otimes_{\struct{X}} i^*q^*(E))) \\
+        % &\iso \struct{X} \otimes E \\
+        &\iso f_*(E).
+    \end{align*}
+    % \begin{align*}
+    %     \fm{\struct{\Gamma_f}} &= \rderived{}{p_*}(\struct{\Gamma_f} \otimes_{\struct{X \times Y}} \lderived{}{q^*}(E)) \\
+    %     &= \rderived{}{p_*}(i_*\struct{X} \otimes_{\struct{X \times X}} \lderived{}{q^*}(E)) \\
+    %     &\iso \rderived{}{p_*}(\rderived{}{i_*}(\struct{X} \otimes_{\struct{X}} \lderived{}{i^*}\lderived{}{q^*}(E))) \\
+    %     % &\iso \struct{X} \otimes E \\
+    %     &\iso \rderived{}{f_*}(E).
+    % \end{align*}
+    Note that we have used $p \circ i = f$ and $q \circ i = \id{X}$ passing to the last line. As all the isomorphisms are natural, we have $\rderived{}{f_*} \iso \fm{\struct{\Gamma_f}}$.
+    }
 \end{enumerate}
 \end{example}
 
