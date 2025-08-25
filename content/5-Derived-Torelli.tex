@@ -3,15 +3,19 @@
 
 \info{in this chapter sheaves will always be coherent.}
 
-In this last chapter we will again be dealing with K3 surfaces over the field of complex numbers $\C$. In particular we will characterize when two K3 surfaces $X$ and $Y$ have equivalent bounded derived categories, through their internal structure, namely their so called \emph{transcendental lattices}. For a K3 surface $X$, its \emph{transcendental lattice} is defined to be the orthogonal complement $\NS{X}^\perp \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\pairing{-}{-}$ on $\cohom{2}{X}{\Z}$, introduced in the previous chapter. The transcendental lattice of $X$ will be denoted by $\transc{X}$.
-Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$. 
+In this last chapter we will again be dealing with K3 surfaces over the field of complex numbers $\C$. In particular we will characterize when two K3 surfaces $X$ and $Y$ have equivalent bounded derived categories, through their internal structure, namely their \emph{transcendental lattices}. Recall that the \emph{transcendental lattice} $\transc{X}$ of a K3 surface $X$ is defined to be the orthogonal complement of the Néron-Severi group $\NS{X} \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\pairing{-}{-}$ on $\cohom{2}{X}{\Z}$.
+Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$, by declaring $\transc{X}^{p,q} = H^{p,q}(X) \cap (\transc{X} \otimes_\Z \C)$, making it a Hodge lattice. The transcendental lattice of a K3 surface plays a prominent role in the following theorem. 
 
-\info{todd class of K3}
+% \info{todd class of K3}
 
 \begin{theorem}
     \label{Derived Torelli}
     Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then $\derb{X} \natiso \derb{Y}$ if and only if there exists a Hodge isometry $f\colon T_X \to T_Y$ between their transcendental lattices.
 \end{theorem}
+
+Along with the transcendental lattice, Fourier-Mukai transforms and related concepts of chapter \ref{} will become very involved once we start proving the above theorem. We provide a quick summary for the incarnation of these concepts, when $X$ is a K3 surface. 
+
+
 
 We will be using Fourier-Mukai transforms in an essential way. When applied to the case of K3 surfaces adjoints of Fourier-Mukai transforms take up an interesting form.
 
@@ -210,9 +214,9 @@ For this lattice to nicely fit into our context of Hodge lattices, we also equip
     % $\widetilde{H}^{2,0}(Y) \oplus \widetilde{H}^{1,1}(Y) \oplus \widetilde{H}^{0,2}(Y)$
 \end{proof}
 
-\subsection{Moduli spaces of sheaves on K3 surfaces and the other side of the proof}
+\subsection{Moduli spaces of sheaves and the other side of the proof}
 
-The last subsection is devoted to proving the right to left implication of Theorem \ref{Derived Torelli}, captured in the preceding proposition.
+The last subsection is devoted to proving the right to left implication of Theorem \ref{Derived Torelli}, captured in the ensuing proposition.
 
 \begin{proposition}
     \label{Hodge isometry implies D equivalence}
@@ -223,7 +227,9 @@ The last subsection is devoted to proving the right to left implication of Theor
     of their Mukai lattices. Then there exists an equivalence of their bounded derived categories of coherent sheaves $\derb{X} \iso \derb{Y}$.
     % If there is a Hodge isometry of Mukai lattices $\mukai{X} \iso \mukai{Y}$, there is an equivalence of triangulated categories $\derb{X} \iso \derb{Y}$.
 \end{proposition}
-The method of our proof will first lead us to introduce another K3 surface $M$, which will turn out to be isomorphic to $Y$ through an application of the classical Torelli theorem \ref{Classical Torelli theorem}, and whose derived category we will show is equivalent to $\derb{X}$. Not only will the K3 surface $M$ itself be important, but also how it is constructed or what it \emph{represents}. We will expand on this viewpoint to some extent, but will have to refer the reader to \cite[text]{keylist} for details and proofs, as this part is unfortunately outside the scope of our thesis. This approach will serve as an invaluable tool for obtaining a kernel for a Fourier-Mukai transform of the from $\derb{M} \to \derb{X}$, which we will later prove to be an equivalence. To prove the latter claim we will take a bit of an alternative route, than what is presented in \cite{Orlov-K3}, and use the abstract machinery of triangulated categories -- indecomposability and spanning classes, established towards the latter parts of Section \ref{Subsection: Triangulated categories}, together with results of Section \ref{Subsection: Derived category of coherent sheaves}. 
+The method of our proof will lead us to introduce another K3 surface $M$, which will turn out to be isomorphic to $Y$ through an application of the classical Torelli theorem \ref{Classical Torelli theorem}, and whose derived category we will show to be equivalent to $\derb{X}$. Not only will the K3 surface $M$ itself be important, but also how it is constructed or what it \emph{represents}. We will expand on this viewpoint to some extent, but will have to refer the reader to \cite{HuybrechtsLehn2010} or \cite{vanBree2020} for details and proofs, as this part is unfortunately outside the scope of our thesis. We also mention that this line of thinking was guided by the influential paper of Mukai \cite{Mukai1987}. This approach will serve as an invaluable tool for obtaining a kernel for a Fourier-Mukai transform of the from $\derb{M} \to \derb{X}$, which we will later prove to be an equivalence. 
+% In proving the latter claim we will take a bit of an alternative route, than what is presented in \cite{Orlov-K3}, and use the abstract machinery of triangulated categories -- indecomposability and spanning classes, established towards the latter parts of Section \ref{Subsection: Triangulated categories}, together with results of Section \ref{Subsection: Derived category of coherent sheaves}. 
+In proving the latter claim we will diverge slightly from the original proof, presented in \cite{Orlov-K3}, and use the abstract machinery of triangulated categories. Utilizing indecomposability of $\derb{X}$ and the spanning class of skyscraper sheaves $k(x)$, for closed points $x \in X$, we will show fully faithfulness through the use of Proposition \ref{Fully faithful functor on a spanning class} and essential surjectivity via the use of Corollary \ref{condition for functor to be an equivalence}, which we have established towards the latter parts of Section \ref{Subsection: Triangulated categories}.
 
 
 % using the abstract machinery of triangulated categories and spanning classes, established towards the latter parts of subsection \ref{}. Through an application of the classical Torelli theorem \ref{Classical Torelli}, the K3 surface $M$ will turn out to be isomorphic to $Y$.
@@ -232,30 +238,107 @@ The method of our proof will first lead us to introduce another K3 surface $M$, 
 
 Recall that any object $X$ of a category $\mathcal C$ gives rise to a functor 
 \[
-    h_X \colon \mathcal C^\op \to \Set,
+    h_X = \Hom_{\mathcal C}(-, X) \colon  \quad \mathcal C^\op \to \Set,
 \]
-which is given by $h_X = \Hom_{\mathcal C}(-, X)$. A functor $F \colon \mathcal C^\op \to \Set$ is siad to be \emph{representable} if there is some object $X$ of $\mathcal C$, for which $F$ and $h_X$ are naturally isomorphic. Moreover the Yoneda lemma \cite[text]{keylist} then asserts for every object $X$ of $\mathcal C$ and any functor $F \colon \mathcal C ^\op \to \Set$ the existence of an isomorphism 
+% which is given by $h_X = \Hom_{\mathcal C}(-, X)$. 
+A functor $F \colon \mathcal C^\op \to \Set$ is said to be \emph{representable}, if there is some object $X$ of $\mathcal C$, for which $F$ and $h_X$ are naturally isomorphic. Moreover the Yoneda lemma \cite[text]{keylist} then asserts that the map  
 \begin{equation}
     \label{eq: nat iso of Yoneda}
-    \Hom_{\operatorname{Fct(\mathcal C^\op, \Set)}}(h_X, F) \natiso F(X),
+    \Hom_{\operatorname{Fct(\mathcal C^\op, \Set)}}(h_X, F) \to F(X), \qquad \alpha \mapsto \alpha_X(\id{X}),
 \end{equation}
-which is natural both in $X$ and $F$.
+is an isomorphism for every object $X$ of $\mathcal C$ and any functor $F \colon \mathcal C ^\op \to \Set$, and is natural both in $X$ and $F$.
 
-From now on we focus on a fixed K3 surface $X$ over $\C$ and consider the category $\sch{\C}$ of schemes over $\C$. The main idea we are trying to is to consider sheaves on $X$. These sheaves will
+From now on we focus on a fixed K3 surface $X$ over the field of complex numbers $\C$ and consider the category $\sch{\C}$ of schemes over $\C$. The main idea for conceiving a new space out of $X$, we will employ, is an attempt to see the collection of all coherent sheaves on $X$ as a space itself. What was said above is not precise nor fully correct, as the collection of all coherent sheaves on $X$ is way to large to consider all at once, so we will instead restrict ourself to a smaller class of sheaves by imposing some additional constraints, which we present presently. 
 
-appear in families ``indexed'' by some other scheme $S$ over $\C$. Such families may be encoded as single sheaves on the product $\F \in \coherent{X \times S}$. 
+Firstly, in the spirit of deformation theory, we might consider our sheaves arising as members of certain families of sheaves on $X$ ``parametrized'' by points of some other scheme $S$ over $\C$. The notion of such a family is encoded in a single coherent sheaf $\F \in \coherent{X \times S}$, defined on the product $X \times S$. Indeed, consider a closed point $s \in S$, to which there is a corresponding morphism of schemes over $\C$, also denoted $s \colon \spec{\C} \to S$. Then we define the morphism $i_s \colon X \to X \times S$ to be the composition
+\begin{equation}
+    \label{eq: inclusion of X to X x S}
+    i_s \colon \quad X \longrightarrow X \times \spec{\C} \xrightarrow{\id{X} \times s} X \times S,
+\end{equation}
+where the first morphism into the product is induced by $\id{X}$ and the structure map $X \to \spec{\C}$ and introduce $\F|_s$ to mean the pull-back sheaf $i_s^*\F$ on $X$. In particular, this will allow us to focus only on those sheaves on $X$ parametrized by $S$, with a fixed Mukai vector.
+% Let $s \in S$ be a closed point, to which we know there is a corresponding morphism of schemes over $\C$, also denoted $s \colon \spec{\C} \to S$. Then we define $i_s \colon X \to X \times S$ to be the composition
+% \[
+%     i_s \colon \quad X \longrightarrow X \times \spec{\C} \xrightarrow{\id{X} \times s} X \times S,
+% \]
+% where the first morphism into the product is induced by $\id{X}$ and the structure map $X \to \spec{\C}$ and introduce $\F|_s$ to mean the pull-back sheaf $i_s^*\F$ on $X$. This will allow us to focus only on those sheaves on $X$ parametrized by $S$, which have a fixed Mukai vector.
+Since we would like the geometry of our scheme $S$ to have a greater impact on the parametrization of sheaves on $X$, we would like our families $\F$ to vary somewhat continuously with respect to the parameter space $S$. To this end we impose the following \emph{flatness} condition on $\F$. 
+
+% play a part in parametrizing sheaves on $X$, we would like our families $\F$ to vary somewhat continuously with respect to the parameter $s \in S$. To this end we will impose the following \emph{flatness} condition on $\F$. 
 
 
-As this would be an absolute overkill for there are too many coherent sheaves, we restrict ourselves by imposing some additional constraints on our sheaves.
-
-For any scheme $S$ over $\C$, a sheaf $\F \in \coherent{X \times S}$ is said to be \emph{flat over $S$}, if $\F$ is a flat $\pi_S\inv \struct{S}$-module, where $\pi_S \colon X \times S \to S$ is the canonical projection. Let $s \in S$ be a closed point, to which we know there is a corresponding morphism of schemes $\spec{\C} \to S$ also denoted with $s$. Then we define $i_s \colon X \to X \times S$ to be the composition
-\[
-    i_s \colon \quad X \longrightarrow X \times \spec{\C} \xrightarrow{\id{X} \times s} X \times S
-\]
-and introduce $\F|_s$ to mean the pull-back sheaf $i_s^*\F$ on $X$.
+% Since we want the parametrizing scheme $S$ to have a greater impact on the whole family 
+% In order to capture that the members of such a family vary somewhat continuously with respect to the parameter $s \in S$, we impose the following \emph{flatness} condition on $\F$. 
 
 
+% Already one way of obtaining a bunch of coherent sheaves on $X$ all at once is through families indexed  
+
+
+% The main idea we are trying to is to consider sheaves on $X$. These sheaves will
+
+% appear in families ``indexed'' by some other scheme $S$ over $\C$. Such families may be encoded as single sheaves on the product $\F \in \coherent{X \times S}$. 
+
+
+% As this would be an absolute overkill for there are too many coherent sheaves, we restrict ourselves by imposing some additional constraints on our sheaves.
+
+% \vspace{1cm}
+
+\begin{definition}
+    \label{F is flat over S}
+    For any scheme $S$ over $\C$, a sheaf $\F \in \coherent{X \times S}$ is said to be \emph{flat over $S$}, if $\F$ is a flat $\pi_S\inv \struct{S}$-module, where $\pi_S \colon X \times S \to S$ is the canonical projection. 
+\end{definition}
  
+
+A condition, which restricts the scope of available sheaves even further is \emph{stability}. We quickly glance over the main components, which enable us to define what a stable sheaf is in the first place and give a property analogous to Schur's lemma, but for stable sheaves, which will become relevant in the proof of Proposition \ref{Hodge isometry implies D equivalence}.
+% reason about two properties of stable sheaves relevant for us.
+\begin{itemize}[label = $\vartriangleright$]
+    \item{
+        As $X$ is projective, let $\struct{X}(1)$ denote the pull-back of $\struct{\mathbb P^n}(1)$ along an inclusion $X \hookrightarrow \mathbb{P}^n$ and define $\F(m) := \F \otimes_{\struct{X}} \struct{X}(1)^{\otimes m}$ for $\F \in \coherent{X}$ and $m \in \N$.
+        }
+    \item{
+        The \emph{Hilbert polynomial} of a coherent sheaf $\F \in \coherent{X}$ is defined as
+        \[
+            P(\F, -) \colon \N \to \Z \qquad m \mapsto \chi(X, \F(m)),
+        \]
+        which is know to be a polynomial function uniquely expressible in the form 
+        \[
+            P(\F, m) = \sum_{i = 0}^d \alpha_i(\F)\frac{m^i}{i!},
+        \]
+        for some rational coefficients $\alpha_i(\F)$ and $d \in \N$ (\cf \cite[Part I, \S 1.2, Lemma 1.2.1]{HuybrechtsLehn2010}). Let $P(\F)$ denote the corresponding polynomial. The \emph{reduced Hilbert polynomial} of $\F$ is defined to be $p(\F) = P(\F)/\alpha_d(\F)$.
+    }
+    \item{
+        Equip the set of all polynomials $\Q[t]$ with the lexicographical ordering of their coefficients $<$, meaning that for polynomials $f$ and $g$ we set $f < g$, if the leading coefficient of $g - f$ is positive. 
+    }
+    \item{
+        We declare the \emph{dimension} of a sheaf to be the dimension of its support.
+        A sheaf is said to be \emph{pure} if all its non-trivial subsheaves have the same dimension. 
+        % A sheaf $\F \in \coherent{X}$ is said to be \emph{pure} of dimension $d$, if $\supp{\E} \subseteq X$ has dimension $d$ for every non-trivial subsheaf $\E \subseteq \F$ (\cf \cite[Part I, \S 1.1, Definition 1.1.2]{HuybrechtsLehn2010}).
+    }
+    \item{
+        A pure sheaf $\F \in \coherent{X}$ is called \emph{stable} if for each proper non-trivial subsheaf $\G \subseteq \F$, $p(\G) < p(\F)$ holds. 
+    }
+    \item{
+        Any homomorphism $\F \to \G$ between two stable sheaves with $P(\F) = P(\G)$ is either $0$ or an isomorphism. Consequently, for two stable sheaves $\F$ and $\G$, we have
+        \begin{equation}
+            \label{eq: schur lemma for stable sheaves}
+            \Hom_{\struct{X}}(\F, \G) \iso \begin{cases}
+                \C, &\text{if $\F \iso \G$,} \\
+                0, &\text{if $\F \not\iso \G$.}
+            \end{cases}
+        \end{equation}
+        For the proof one may consult Proposition 1.2.7 and Corollary 1.2.8 of \cite[Part I, \S 1.2]{HuybrechtsLehn2010}.
+    }
+    \item{
+        For a coherent sheaf $\F$, it is possible to compute its Hilbert polynomial using the Hirzebruch-Riemann-Roch theorem \ref{Hirzebruch-Riemann-Roch}. In the case that $X$ is a K3 surface the result of the computation is
+        \[
+            P(\F, m) = (2\ch[0](\F) + \ch[2](\F)) + \pairing{h}{\ch[1](\F)}m + \tfrac{1}{2}\pairing{h}{h}\ch[0]{\F}m^2,
+        \]
+        where $h = \cclass[1](\struct{X}(1))$. We therefore see that the Mukai vector $v(\F)$ determines the Hilbert polynomial $P(\F)$. 
+    }
+\end{itemize}
+
+% As it is not really illuminating, we will not give a definition of when a sheaf is stable 
+\noindent
+With all the necessary terminology now established, we can introduce the following functor. 
 
 \begin{definition}
     \label{Definition of moduli functor}
@@ -272,7 +355,12 @@ and introduce $\F|_s$ to mean the pull-back sheaf $i_s^*\F$ on $X$.
         \end{array}
         \right\}_{/\sim},
     \]
-    where $\F \sim \F'$ is defined to hold precisely when there exist a line bundle $\mathcal L$ on $S$, for which $\F \iso \F' \otimes_{\struct{X \times S}} \pi_S^*\mathcal L$, and on morphisms as
+    where $\F \sim \F'$ is defined to hold precisely when there exist a line bundle $\mathcal L$ on $S$, for which $\F \iso \F' \otimes_{\struct{X \times S}} \pi_S^*\mathcal L$, and on morphisms\footnote{
+                    The assignment is well defined because
+                    \[
+                        (\id{X} \times f)^*(\F \otimes \pi_S^*\mathcal L) \iso (\id{X} \times f)^*\F \otimes (\id{X} \times f)^*\pi_S^*\mathcal L \iso (\id{X} \times f)^*\F \otimes \pi_{S'}^*f^*\mathcal L.
+                    \]
+                } as
     \[
         (f\colon S' \to S) \longmapsto \left( (\id{X} \times f)^* \colon
             \begin{array}{r l}
@@ -284,51 +372,278 @@ and introduce $\F|_s$ to mean the pull-back sheaf $i_s^*\F$ on $X$.
 \end{definition}
 
 \begin{remark}
-    Our moduli functor is constrained by a prescribed Mukai vector as opposed to \cite[text]{keylist}, which prescribes the Chern character. As Mukai vectors and Chern characters determine each other on a K3 surface, the definitions are in fact equivalent. 
+    Our moduli functor is constrained by a prescribed Mukai vector as opposed to \cite[\S 4.2, Proposition 4.15]{vanBree2020}, where they prescribe the Chern character. As Mukai vectors and Chern characters determine each other on a K3 surface, the definitions are in fact equivalent. 
 \end{remark}
 
 \begin{theorem}
     \label{Representability of moduli functor}
-    Let $v \in \mukai{X}$ be an isotropic vector with ... Then the moduli functor $\M_v \colon \sch{\C}^\op \to \Set$ of definition \ref{Definition of moduli functor} is representable and is represented by a K3 surface $M$ over $\C$.
+    Let $v \in \mukai{X}$ be an isotropic vector with $\gcd_{w \in N(X)}\pairing{v}{w} = 1$. Then the moduli functor $\M_v \colon \sch{\C}^\op \to \Set$ is representable and is represented by a K3 surface $M_v$ over $\C$, also called the \emph{fine moduli space}.
 \end{theorem}
+\info{Not sure if these conditions are actually sufficient for $M$ to be K3, but I actually only need $M$ to be smooth and projective, b/c I show $M$ and $X$ are derived equivalent.}
 
-\begin{example}
-    The vector $(0,0,1)$ is an example of such a $v$ and so is any isometric image of it. 
-\end{example}
+% \begin{example}
+%     The vector $(0,0,1)$ is an example of such a $v$ and so is any isometric image of it. 
+% \end{example}
 
 \begin{remark}
-    The moduli functor $\M_v$ is actually representable already even under no additional restrictions on the Mukai vector $v$. The conditions are there to ensure $M$ becomes a K3 surface. For example in general $M$ is smooth and has dimension $\pairing{v}{v} + 2$ (\cf \cite[\S 4.3, Propositon 4.20]{vanBree2020}).
+    The moduli functor $\M_v$ is actually representable already even under no additional assumptions on the Mukai vector $v$. The conditions are there only to ensure $M_v$ is a K3 surface. For example in general $M_v$ is smooth and has dimension $\pairing{v}{v} + 2$ (\cf \cite[\S 4.3, Propositon 4.20]{vanBree2020}).
 \end{remark}
 
+Circling back to the original idea of constructing a space, which parametrizes isomorphism classes of stable coherent shaves on $X$ with a prescribed Mukai vector, we now argue as to why $M_v$ achieves this. Since the set of all closed points of $M_v$ is in bijection with the set of morphisms $\spec{\C} \to M_v$ in $\sch{\C}$, we obtain the following chain of natural bijections
+\begin{equation}
+    \label{eq: natural iso applied to SpecC}
+    \Hom_{\sch{\C}}(\spec{\C}, M_v) \xrightarrow{\ = \ } h_{M_v}(\spec{\C}) \xrightarrow{\ \iso \ } \M_v(\spec{\C}).
+\end{equation}
+Thus every closed point of $M_v$ represents and is represented by a unique class $[\F]_\sim \in \M_v(\spec{\C})$ of coherent sheaves on $X \times \spec{\C}$. As $\spec{\C}$ carries only the trivial line bundle $\struct{\spec{\C}}$, the equivalence relation $\sim$ of Definition \ref{Definition of moduli functor} is enhanced to distinguishing only non-isomorphic sheaves on $X \times \spec{\C}$. Since clearly $X \iso X \times \spec{\C}$, we arrive at the bijective correspondence
+% \begin{equation}
+%     \{ p \in M \mid \text{$p$ closed point}\} \leftrightarrows \{\F \in \coherent{X} \mid \text{$\F$ is stable with $v(\F) = v$.}\}
+% \end{equation}
+\begin{equation}
+    \label{eq: closed points of M}
+    \{ \text{closed points of $M_v$}\} 
+    \leftrightarrow \left\{
+        \begin{array}{c}
+            \text{isomorphism classes $[\F]_\iso$} \\
+            \text{of stable sheaves on $X$ with $v(\F) = v$}
+        \end{array}
+        \right\},
+\end{equation}
+tying in perfectly into our initial idea of $M_v$ parametrizing certain sheaves on $X$.  
+
+Another key ingredient, playing a principal part in the proof of Proposition \ref{Hodge isometry implies D equivalence}, is the \emph{universal bundle} defined by the subsequent category theoretic magic.
+
+% \begin{definition}
+%     The \emph{universal bundle (on $X$)} is the unique sheaf $\E \in \coherent{X \times M}$, to which the natural isomorphism \eqref{eq: nat iso of Yoneda} of the Yoneda lemma composed with the natural isomorphism of Theorem \ref{Representability of moduli functor}, witnessing representability of $\M_v$, assigns the identity natural transformation $\id{h_M}$ of the functor $h_M$
+%     \[
+%         \Hom_{\operatorname{Fct(\sch{\C}^\op, \Set)}}(h_M, h_M) \xrightarrow{\ \iso\ } h_M(M) \xrightarrow{\ = \ } \Hom_{\sch{\C}}(M, M) \xrightarrow{\ \iso\ } \M_v(M).
+%     \]
+%     \info{Why is Yoneda even here, }
+% \end{definition}
+
 \begin{definition}
-    The \emph{universal bundle (on $X$)} is the unique sheaf $\E \in \coherent{X \times M}$, to which the natural isomorphism \eqref{eq: nat iso of Yoneda} of the Yoneda lemma composed with the natural isomorphism of Theorem \ref{Representability of moduli functor}, witnessing representability of $\M_v$, assigns the identity natural transformation $\id{h_M}$ of the functor $h_M$
+    The \emph{universal bundle (on $X$)} is any representative $\E \in \coherent{X \times M}$ of the unique equivalence class of $\M_v(M)$, to which the isomorphism 
     \[
-        \Hom_{\operatorname{Fct(\sch{\C}^\op, \Set)}}(h_M, h_M) \xrightarrow{\ \iso\ } h_M(M) \xrightarrow{\ = \ } \Hom_{\sch{\C}}(M, M) \xrightarrow{\ \iso\ } \M_v(M).
+        \Hom_{\operatorname{Fct(\sch{\C}^\op, \Set)}}(h_M, \M_v) \to \M_v(M)
+    \]
+    of Yoneda lemma sends the natural isomorphism $\eta \colon h_M \Longrightarrow \M_v$, detecting representability of the moduli functor $\M_v$. In other words 
+    \[
+        [\E]_\sim = \eta_M(\id{M}).
     \]
 \end{definition}
 
 As a consequence of a more general fact \cite[text]{keylist}, we obtain the following. 
 
 \begin{theorem}
-    The universal bundle $\E$ is actually a \emph{bundle} \ie a locally free $\struct{X \times M}$-module of finite rank. 
+    The universal bundle $\E$ is a \emph{bundle} \ie a locally free $\struct{X \times M}$-module of finite rank. 
 \end{theorem}
 
+\begin{remark}
+    \label{Points of M are sheaves}
+Utilizing the universal bundle $\E$ we can provide another way of interpreting the isomorphism classes of stable sheaves on $X$ with Mukai vector $v$ \ie elements of $\M_v(\spec{\C})$. Under the natural bijection $\eta_{\spec{\C}}$ of \eqref{eq: natural iso applied to SpecC} every isomorphism class $[\F]_\iso \in \M_v(\spec{\C})$ corresponds to a unique morphism $t \colon \spec{\C} \to M$. By naturality of $\eta$, we obtain the following commutative square 
+\[\begin{tikzcd}[column sep = normal, row sep = 1.8em]
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCIxIl0sWzIsMCwiMiJdLFswLDIsIjMiXSxbMiwyLCI0Il0sWzAsMSwiXFxldGFfTSJdLFswLDIsInBeKiIsMl0sWzEsMywiXFxNX3YocCkiXSxbMiwzLCJcXGV0YSIsMl1d
+	\Hom_{\sch{\C}}(M, M) && \M_v(M) \\
+	\\
+	\Hom_{\sch{\C}}(\spec{\C}, M) && \M_v(\spec{\C}),
+	\arrow["{\eta_M}", from=1-1, to=1-3]
+	\arrow["{- \circ t}"', from=1-1, to=3-1]
+	\arrow["{\M_v(t)}", from=1-3, to=3-3]
+	\arrow["\eta_{\spec{\C}}", from=3-1, to=3-3]
+\end{tikzcd}\]
+which spells out that 
+\begin{align*}
+    [\F]_\iso = \eta_{\spec{\C}}(t) &= \eta_{\spec{\C}}(((-)\circ t)(\id{M})) = \\
+    &= \M_v(t)(\eta_M(\id{M})) = \M_v(t)([\E]_\sim) = [(\id{X} \times t)^*\E]_\iso.
+    % = [\E|_{X \times \{p\}}]_\iso.
+\end{align*}
+Taking the liberty of identifying $t \colon \spec{\C} \to M$ with its image -- a closed point corresponding to a stable sheaf $\F \in \coherent{X}$, with $v(\F) = v$, and denoting it with $[\F]$, we see that the above calculation reads
+\[
+    \E|_{[\F]} \iso \F.
+\]
+\end{remark}
+
+% of viewing the closed points of the moduli space $M_v$. 
+% Since we know closed points of $M_v$ are in bijective correspondence with isomorphism classes of stable sheaves $\F$ on $X$, with $v(\F) = v$ 
+
+
+Lastly we need the following theorem of Bondal and Orlov characterizing fully faithfulness of a Fourier-Mukai transform.
+
+\begin{theorem}[Bondal, Orlov]
+    Let $X$ and $Y$ be smooth projective varieties over $\C$ and let $\fm{E} \colon \derb{X} \to \derb{Y}$ be a Fourier-Mukai transform associated to a kernel $E$ of $\derb{X \times Y}$. Then $\fm{E}$ is fully faithful if and only if for any two closed points $x$ and $y$ of $X$ the following condition is satisfied
+    \begin{equation}
+            \Hom_{\derb{Y}}(\fm{E}(k(x)), \fm{E}(k(y))[i]) \iso \begin{cases}
+                \C, &\text{if $x = y$ and $i = 0$,} \\
+                0, &\text{if $x \neq y$ or $i \notin [0, \dim X]$.}
+            \end{cases}
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    The proof may be found in \cite[\S 7, Proposition 7.1]{huybrechts2006fouriermukai} or \cite[Theorem 5.1]{bridgeland2019equivalencestriangulatedcategoriesfouriermukai}.
+\end{proof}
+
+\begin{remark}
+    Let us give some evidence for why one might expect such a result to hold and why is it so important.
+
+    We touch upon this approach after the proof. 
+\end{remark}
+
+\begin{remark}        
+    The assumption of picking $\C$ to be our ground field is not very far from the full generality, where the underlying field is required to be algebraically closed and of characteristic zero.
+\end{remark}
 
 \noindent
-With all the preparations now out of the way, we can begin with the proof.
+With all the preparations now out of the way, we may begin with the proof.
 % where we will exploit brilliant results of Mukai 
 % In the definition of the moduli functor, we will use the term \emph{stable}, which we have not defined. 
 \begin{proof}[Proof of Proposition \ref{Hodge isometry implies D equivalence}]
+
+    We will split the proof in a couple of cases, depending on where the Hodge isometry $f \colon \mukai{X} \to \mukai{Y}$ sends the vector $(0,0,1) \in \mukai{X}$. Let $v = (v_0, v_1, v_2) \in \mukai{Y}$ be the image of $(0,0,1)$ under $f$.
+
+
+
     \vspace{0.5 cm}
     \noindent
     \textsl{Identifying $M$ and $Y$.}
 
     \vspace{0.5 cm}
     \noindent
-    \textsl{Fully faithfulness.}
+    \textsl{Fully faithfulness.} To show $\fm{\E}$ is fully faithful we will use Proposition \ref{Fully faithful functor on a spanning class}. By Proposition \ref{k(x) spanning class}, we know the skyscrapers $k(t)$, for closed points $t \in M$ form a spanning class of $\derb{M}$, so we will first compute $\Hom_{\derb{X}}(k(s), k(t)[i])$ for all closed points $s$ and $t$ in $M$ and $i \in \Z$. We do this in a few cases.
+
+    \vspace{0.3cm}
+    \noindent
+    \textsl{Case $s \neq t$.} For $i < 0$ or $i > 2$, we know by Proposition \ref{Homs in derived category} that $\Hom_{\derb{M}}(k(s), k(t)[i]) \iso \Ext^i_{\struct{M}}(k(s), k(t))$, which are trivial for $i < 0$. They are also trivial for $i > 2$, by Serre duality \ref{Serre duality for derived cats}, as
+    \[
+        \Hom_{\derb{M}}(k(s), k(t)[i]) \iso \Hom_{\derb{M}}(k(t)[i], k(s)[2])^* \iso \Hom_{\derb{M}}(k(t), k(s)[2 - i])^*
+    \]   
+    For $i = 0$, using fully faithfulness of $\coherent{X} \to \derb{X}$ and noticing that the supports of $k(s)$ and $k(t)[i]$ are disjoint we obtain 
+    \[
+    \Hom_{\derb{X}}(k(s), k(t)[i]) = \Hom_{\struct{X}}(k(s), k(t)) = 0.
+    \]
+    For $i = 2$, Serre duality allows us to copy the result of $i = 0$, to see $\Hom_{\derb{X}}(k(s), k(t)[2])$ is also trivial.
+    And, when $i = 1$ 
+
+    \vspace{0.3cm}
+    \noindent
+    \textsl{Case $s = t$.}
+
+    % For $i = 2$, by Serre duality \ref{}, we obtain $\Hom_{\derb{X}}(k(s), k(t)[2]) \iso \Hom_{\derb{X}}(k(t), k(s)) = 0$.
+
+    % And for $i = 0$, we obtain by
+    % Then the supports of $k(s)$ and $k(t)[i]$ are disjoint for all $i \in \Z$
+    %     $s = t$ 
+    
+
+    In conclusion we have computed that
+    \begin{equation}
+            \Hom_{\derb{X}}(k(s), k(t)[i]) \iso \begin{cases}
+                \C, &\text{if $s = t$ and $i \in \{0, 2\}$,} \\
+                \C^2, &\text{if $s = t$ and $i = 1$,} \\
+                0, &\text{else.}
+            \end{cases}
+    \end{equation}
+    
+    Next, we compute $\Hom_{\derb{X}}(\fm{\E}(k(s)), \fm{\E}(k(t))[i])$ for all closed points $s$, $t \in M$ and all $i \in \Z$. The first step is to obtain a more practical description of $\fm{\E}(k(t))$. As usual, let $t \colon \spec{\C} \to M$ denote the morphism corresponding to a closed point $t$ and let $i_t \colon X \to X \times M$ be defined like \eqref{eq: inclusion of X to X x S}. Then the following is a pull-back square, as $X$ may be seen as the fibre of the projection $p \colon X \times M \to M$ above the closed point $t$.
+    \[\begin{tikzcd}[column sep = small, row sep = 1.8em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCIxIl0sWzIsMCwiMiJdLFswLDIsIjMiXSxbMiwyLCI0Il0sWzAsMSwiXFxldGFfTSJdLFswLDIsInBeKiIsMl0sWzEsMywiXFxNX3YocCkiXSxbMiwzLCJcXGV0YSIsMl1d
+        X && X \times M \\
+        \\
+        \spec{\C} && M
+        \arrow["{i_t}", from=1-1, to=1-3]
+        \arrow["{p|_t}"', from=1-1, to=3-1]
+        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
+        \arrow["{p}", from=1-3, to=3-3]
+        \arrow["{t}", from=3-1, to=3-3]
+    \end{tikzcd}\]
+
+
+
+    
+    % our first task is to compute what the objects $\fm{\E}(k(t))$ are. As usual, let $t \colon \spec{\C} \to M$ denote the corresponding morphism and let $i_t \colon X \to X \times M$ be defined like \eqref{eq: inclusion of X to X x S}. Then the following is a pull-back square, as $X$ may be seen as the fibre above $t$ of the projection $p \colon X \times M \to X$.
+    % \[\begin{tikzcd}[column sep = small, row sep = 1.8em]
+    %     % https://q.uiver.app/#q=WzAsNCxbMCwwLCIxIl0sWzIsMCwiMiJdLFswLDIsIjMiXSxbMiwyLCI0Il0sWzAsMSwiXFxldGFfTSJdLFswLDIsInBeKiIsMl0sWzEsMywiXFxNX3YocCkiXSxbMiwzLCJcXGV0YSIsMl1d
+    %     X && X \times M \\
+    %     \\
+    %     \spec{\C} && M
+    %     \arrow["{i_t}", from=1-1, to=1-3]
+    %     \arrow["{p|_t}"', from=1-1, to=3-1]
+    %     \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
+    %     \arrow["{p}", from=1-3, to=3-3]
+    %     \arrow["{t}", from=3-1, to=3-3]
+    % \end{tikzcd}\]
+    As projections are always flat, by the flat base change formula \ref{} and the projection formula \ref{}, we compute
+    \begin{align*}
+        \fm{\E}(k(t)) &= ...\\
+        & \iso i_t^*\E \\
+        & = \E|_t.
+    \end{align*}
+    Again, we consider the following cases. 
+
+    \vspace{0.3cm}
+    \noindent
+    \textsl{Case $s \neq t$.}  
+    For $i < 0$ or $i > 2$, we know by Proposition \ref{Homs in derived category} that $\Hom_{\derb{X}}(\E|_s, \E|_t[i]) \iso \Ext^i_{\struct{X}}(\E|_s, \E|_t[i])$, which are trivial for $i < 0$. They are also trivial for $i > 2$, by Serre duality \ref{Serre duality for derived cats}. When $i = 0$, we claim that $\Hom_{\derb{X}}(\E|_s, \E|_t)$ is trivial. First, fully faithfulness of $\coherent{X} \to \derb{X}$ (\cf Proposition \ref{A -> D(A) fully faithful}), allows us to transport back into $\coherent{X}$ and show triviality of $\Hom_{\struct{X}}(\E|_s, \E|_t)$. Next, following the discussion of Remark \ref{Points of M are sheaves}, points $s$ and $t$ of $M$ naturally correspond to isomorphism classes of stable sheaves $\F$ and $\G$ on $X$, respectively. In this case we have
+    \[
+        \F \iso \E|_{[\F]} \iso \E|_s \quad \text{and} \quad \G \iso \E|_{[\G]} \iso \E|_t.
+    \]
+    As $s$ and $t$ are distinct, sheaves $\F$ and $\G$ are non-isomorphic, but share the same Mukai vector. As the Mukai vector of a sheaf determines its Hilbert polynomial, $P(\F) = P(\G)$. Applying \eqref{eq: schur lemma for stable sheaves} yields 
+    \[
+        \Hom_{\derb{X}}(\E|_s, \E|_t) = \Hom_{\struct{X}}(\F, \G)= 0. 
+    \]
+    From Serre duality \ref{Serre duality for derived cats} and freshly established case of $i = 0$, we see 
+    \[
+        \Hom_{\derb{X}}(\E|_s, \E|_t[2]) = 0.
+    \]
+    Lastly, for $i = 1$ it follows that $\Hom_{\derb{X}}(\E|_s, \E|_t[1]) \iso \Ext^1_\struct{X}(\E|_s, \E|_t)$ is trivial, because $v$ is isotropic and 
+    \[
+        \pairing{v}{v} = \chi(\E|_s, \E|_t) = \dim\Ext^0_\struct{X}(\E|_s, \E|_t) - \dim\Ext^1_\struct{X}(\E|_s, \E|_t) + \dim\Ext^2_\struct{X}(\E|_s, \E|_t),
+    \]
+    for $\Ext^0_\struct{X}(\E|_s, \E|_t)$ and $\Ext^2_\struct{X}(\E|_s, \E|_t)$ are trivial.
+
+    \vspace{0.3cm}
+    \noindent
+    \textsl{Case $s = t$.}
+    If $i < 0$ or $i > 2$, $\Hom_{\derb{X}}(\E|_s, \E|_s[i])$ is trivial, following the same argument as in the case of $s \neq t$. When $i = 0$, stability and \eqref{eq: schur lemma for stable sheaves} show that $\Hom_{\derb{X}}(\E|_s, \E|_s) \iso \C$. In the case $i = 2$, Serre duality \ref{Serre duality for derived cats} in conjunction with the previous isomorphism imply $\Hom_{\derb{X}}(\E|_s, \E|_s[2]) \iso \C$. Finally, for $v$ is isotropic 
+    % Since by Proposition \ref{A -> D(A) fully faithful} the inclusion of $\coherent{X}$ into $\derb{X}$ is fully faithful and we have thus computed 
+
+    In conclusion
+    \begin{equation}
+            \Hom_{\derb{X}}(\E|_s, \E|_t[i]) \iso \begin{cases}
+                \C, &\text{if $s = t$ and $i \in \{0, 2\}$,} \\
+                0, &\text{else.}
+            \end{cases}
+    \end{equation}
+
+    Notice that \eqref{} now perfectly reflects \eqref{}, thus whenever $s \neq t$ or $s = t$ and $i \neq 0,2$, the functor $\fm{\E}$ induces isomorphisms between two trivial vector spaces
+    \[
+        \Hom_{\derb{M}}(k(s), k(t)[i]) \to \Hom_{\derb{X}}(\fm{\E}(k(s)), \fm{\E}(k(t))[i]).
+    \]
+    If $s = t$ and $i = 0$, $\fm{\E}$ clearly sends the identity morphism $\id{k(s)}$ to the identity $\id{\fm{\E}(k(s))}$, thus the linear map
+    \[
+        \Hom_{\derb{M}}(k(s), k(s)) \to \Hom_{\derb{X}}(\fm{\E}(k(s)), \fm{\E}(k(s)))
+    \] 
+    is non-zero. Because both spaces are 1-dimensional vector spaces, it is an isomorphism.
+    If $s = t$ and $i = 2$, we use that Serre functors on $\derb{X}$ and $\derb{M}$ clearly commute with $\fm{\E}$, for they are just double shifts, to obtain a commutative square.
+    \[\begin{tikzcd}[column sep = normal, row sep = 1.8em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCIxIl0sWzIsMCwiMiJdLFswLDIsIjMiXSxbMiwyLCI0Il0sWzAsMSwiXFxldGFfTSJdLFswLDIsInBeKiIsMl0sWzEsMywiXFxNX3YocCkiXSxbMiwzLCJcXGV0YSIsMl1d
+        \Hom_{\derb{M}}(k(s), k(s)[2]) && \Hom_{\derb{X}}(\fm{\E}(k(s)), \fm{\E}(k(s))[2]) \\
+        \\
+        \Hom_{\derb{M}}(k(s), k(s))^* && \Hom_{\derb{X}}(\fm{\E}(k(s)), \fm{\E}(k(s)))^*
+        \arrow["{}", from=1-1, to=1-3]
+        \arrow["{\sim}"', from=1-1, to=3-1]
+        \arrow["{\sim}", from=1-3, to=3-3]
+        \arrow["\sim"', from=3-3, to=3-1]
+    \end{tikzcd}\]
+    As three out of the four arrows are isomorphisms, so is the fourth. The assumption of Proposition \ref{Fully faithful functor on a spanning class} are now verified, allowing us to conclude that $\fm{\E}$ is fully faithful.
 
     \vspace{0.5 cm}
     \noindent
-    \textsl{Essential surjectivity.}
+    \textsl{Essential surjectivity.} 
     
 \end{proof}
+
+\info{I mention Serre duality a million times in this proof, do I need to reference the theorem every time?}
+
+\begin{remark}
+    
+\end{remark}

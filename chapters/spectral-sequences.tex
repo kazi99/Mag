@@ -127,17 +127,18 @@ In his famous ``Tohoku paper'' \cite{} Grothendieck devised the following spectr
 \end{remark}
 
 \begin{proposition}
+    \label{Spectral sequences for derived cats}
     Let $F \colon \A \to \B$ be a left exact functor admitting a right derived functor $\rderived{}{F}\colon \derplus{\A} \to \derplus{\B}$. 
     \begin{enumerate}[label = (\roman*)]
         \item{Suppose that for every object $A$ of $\A$ the complex $\rderived{i}{F}(A)$ is non-trivial only for finitely many $i \in \Z$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\derb{\B}$ for any bounded complex $A^\bullet$ of $\derb{\A}$, consequently inducing a right derived functor on the level of bounded derived categories
         \[
             \rderived{}{F} \colon \derb{\A} \to \derb{\B}.
-        \]}
+        \]} \label{Bounded on objects implies bounded on complexes}
         \item{Let $\mathcal C \subset \B$ be a thick subcategory of $\B$ and assume that for every $A^\bullet$ of $\derplus{\A}$, $\rderived{i}{F}(A)$ belong to $\mathcal C$ for all $A$ of $\A$ and $i \in \Z$. Moreover assume there exists $m \in \N$, such that $\rderived{i}{F}(A) = 0$, for all $A$ of $\A$ and $i > m$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\mathsf{D}^+_\mathcal{C}(\B)$ for any $A^\bullet$ in $\derplus{\A}$, therefore inducing the functor
         \[
             \rderived{}{F}\colon \derplus{\A} \to \mathsf{D}^+_\mathcal{C}(\B).
         \]
-        }
+        } \label{Cohomology in a thick subcategory}
     \end{enumerate}
 \end{proposition}
 
@@ -162,12 +163,27 @@ In his famous ``Tohoku paper'' \cite{} Grothendieck devised the following spectr
 \end{proof}
 
 \begin{proposition}
-    Let $\A$ be an abelian category with enough injectives. Suppose $A^\bullet$ belongs to $\kminus{\A}$ and $B^\bullet$ belongs to $\kplus{\A}$. Then there exists a spectral sequence 
-    \[
-        E^{p,q}_2 = \Ext^p(H^{-q}(A^\bullet), B^\bullet) \implies \Ext^{p+q}(A^\bullet, B^\bullet) = E^{p+q}.
-    \]
+    Let $\A$ be an abelian category with enough injectives. Suppose $A^\bullet$ belongs to $\kminus{\A}$ and $B^\bullet$ belongs to $\kplus{\A}$. Then there exist spectral sequences 
+        \begin{equation}
+        \label{eq: Spectral sequence Ext 2}
+        E^{p,q}_2 = \Ext^p_\A(A^\bullet, H^q(B^\bullet)) \implies \Ext^{p+q}_\A(A^\bullet, B^\bullet) = E^{p+q}
+    \end{equation}
+    and
+    \begin{equation}
+        \label{eq: Spectral sequence Ext 1}
+        E^{p,q}_2 = \Ext^p_\A(H^{-q}(A^\bullet), B^\bullet) \implies \Ext^{p+q}_\A(A^\bullet, B^\bullet) = E^{p+q}.
+    \end{equation}
 \end{proposition}
 
 \begin{proof}
     See \cite[\S 2, Example 2.70]{huybrechts2006fouriermukai}.
 \end{proof}
+
+\begin{remark}
+    Using Proposition \ref{Homs in derived category}, and taking $A^\bullet$ and $B^\bullet$ to be bounded complexes of $\derb{\A}$ the above spectral sequences specialize to 
+    \begin{align}
+        E^{p,q}_2 = \Hom_{\derb{\A}}(A^\bullet, H^q(B^\bullet)[p]) &\Rightarrow \Hom_{\derb{\A}}(A^\bullet, B^\bullet[p+q]) = E^{p+q}, \\
+        E^{p,q}_2 = \Hom_{\derb{\A}}(H^{-q}(A^\bullet), B^\bullet[p]) &\Rightarrow \Hom_{\derb{\A}}(A^\bullet, B^\bullet[p+q]) = E^{p+q}. 
+        \label{eq: Spectral sequence derived hom 1}
+    \end{align}
+\end{remark}

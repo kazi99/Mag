@@ -4,26 +4,31 @@
 \subsection{Derived category of coherent sheaves}
 \label{Subsection: Derived category of coherent sheaves}
 
-One of the main invariants of a scheme $X$ over $k$ is its category of coherent sheaves $\coherent{X}$. We can think of this category as a slight extension of the category of locally free $\OO_X$-modules of finite rank also known as $k$-vector bundles on $X$ in the sense that $\coherent{X}$ is abelian, where as the former very often is not. In this chapter we restrict ourself to noetherian schemes and our primary object of study will be the bounded derived category of coherent sheaves
+One of the main invariants of a scheme $X$ over $k$ is its category of coherent sheaves $\coherent{X}$. We can think of this category as a slight extension of the category of locally free $\OO_X$-modules of finite rank also known as $k$-vector bundles on $X$ in the sense that $\coherent{X}$ is abelian, where as the former very often is not. In this chapter we restrict ourself to noetherian schemes and later to smooth projective varieties over an algebraically closed field $k$. Our primary object of study will be the bounded derived category of coherent sheaves
 \[
     \derb{X} := \derb{\coherent{X}}.
 \]
 
+In this section some of the results will have to be given without proof
+but we will provide precise references when required. Certain results will serve as the groundwork on which the theory is then further developed, for example statements like certain functors map coherent sheaves into coherent shaves, while others, like Grothendieck-Verdier duality, lie well outside the scope of this thesis, but are relevant for establishing certain relations among the derived functors. We also mainly focus on showcasing the methods and interactions between the derived functors and not that much on being as general as one can be. 
+
+\vspace{0.3cm}
 \noindent
 \textsl{Notation.}
-Copying Huybrechts, we will denote by $\mathcal H^i(\F^\bullet)$ the $i$-th cohomology of a complex $\F^\bullet$ of sheaves on $X$, not to mistake it for sheaf cohomology $\cohom{i}{X}{\F}$ of $X$ with coefficients in a sheaf $\F$.
-
-In this section some of the results will have to be given without proof
-but we will provide precise references wherever required. Certain results will serve as the groundwork on which the theory is then further developed, for example statements like certain functors map coherent sheaves into coherent shaves, while others like Grothendieck-Verdier duality used to establish some relations among the derived functors, are well outside the scope of this thesis. 
-
-We also mainly focus on showcasing the methods and interactions of derived functors and not that much on being as general as one can be. 
+Copying Huybrechts \cite{huybrechts2006fouriermukai}, we will denote by $\mathcal H^i(\F^\bullet)$ the $i$-th cohomology of a complex $\F^\bullet$, not to mistake it for sheaf cohomology $\cohom{i}{X}{\F}$ of $X$ with coefficients in a sheaf $\F$.
 
 \begin{proposition}
+    \label{qcoh of noetherian scheme contains enough injectives}
     The category of quasi-coherent sheaves $\quasicoh{X}$ of a noetherian scheme $X$ contains enough injectives.
     % For a noetherian scheme $X$, its category of quasi-coherent shaves $\quasicoh{X}$ contains enough injectives.
 \end{proposition}
 
+\begin{proof}
+    This is a consequence of \cite[\S II, Theorem 7.18]{Hartshorne1966},  which states that every quasi-coherent sheaf on a noetherian scheme $X$ can be embedded into a quasi-coherent sheaf, which is an injective $\struct{X}$-module. 
+\end{proof}
+
 \begin{proposition}
+    \label{Db(X) is bounded derived of quasi-coherent with coherent cohomology}
     For a noetherian scheme $X$ the inclusion $\derb{X} \hookrightarrow \derb{\quasicoh{X}}$ induces an equivalence of triangulated categories
     \[
         \derb{X} \natiso \mathsf{D}^b_{\mathsf{coh}}(\quasicoh{X}),
@@ -45,35 +50,23 @@ We also mainly focus on showcasing the methods and interactions of derived funct
 
 \begin{remark}
     \label{supports closed}
-    The support $\supp{\F}$ of a coherent sheaf $\F \in \coherent{X}$ is a closed subset of $X$, therefore the support of any complex $\F^\bullet$ of $\derb{X}$ is closed as well.
+    The support $\supp{\F}$ of a coherent sheaf $\F \in \coherent{X}$ is a closed subset of $X$, therefore the support of any complex $\F^\bullet$ of $\derb{X}$, being a finite union of closed non-empty sets, is closed as well.
 \end{remark}
 
-Let $x \in X$ be a closed point. Then we know there is a corresponding morphism $x \colon \spec{k} \to X$ 
-\[
-    k(x) = x_* \struct{\spec{k}}
-\]
-
-\begin{proposition}[\text{\cite[\S 3, Proposition 3.17]{huybrechts2006fouriermukai} or \cite[Example 2.2]{bridgeland2019equivalencestriangulatedcategoriesfouriermukai}}]
-    Suppose $X$ is a smooth projective variety over $k$. The set of all skyscraper sheaves $k(x)$, for closed points $x \in X$, forms a spanning class of the bounded derived category $\derb{X}$.
-\end{proposition}
-
-\begin{proof}
-    
-\end{proof}
-
 \begin{theorem}[\text{\cite[\S 3, Proposition 3.10]{huybrechts2006fouriermukai}}]
-    The bounded derived category $\derb{X}$ of a connected noetherian scheme $X$ over $k$ is indecomposable.
+    \label{Db(X) indecomposable for X connected}
+    The bounded derived category $\derb{X}$ of a connected scheme $X$ over $k$ is indecomposable.
 \end{theorem}
 
 \begin{proof}
     For the sake of contradiction, assume $\derb{X}$ decomposes into triangulated subcategories $\D_0$ and $\D_1$. We will first prove that the structure sheaf $\struct{X}$ belongs to either $\D_0$ or $\D_1$.
     By Proposition \ref{In a decomposable cat every object splits}, the  structure sheaf $\struct{X}$ is isomorphic to a direct sum $\F_0^\bullet \oplus \F_1^\bullet$, with complexes $\F_i^\bullet$ belonging to $\D_i$.
     % Then the structure sheaf $\struct{X}$ is isomorphic to a direct sum $\F_0^\bullet \oplus \F_1^\bullet$ with complexes $\F_i^\bullet$ belonging to $\D_i$ by Proposition \ref{In a decomposable cat every object splits}. 
-    Since $\struct{X}$ clearly has cohomology supported only in degree $0$, the same is true for $\F_0^\bullet$ and $\F_1^\bullet$, thus, by Proposition \ref{A -> D(A) fully faithful}, we may replace them with coherent sheaves $\F_0$ and $\F_1$, respectively. By the same proposition this means that there isomorphism $\struct{X} \iso \F_0 \oplus \F_1$ in $\coherent{X}$. As the functor computing stalks of a sheaf at any given point $x \in X$ is exact, we obtain a direct sum decomposition $\OO_{X,x} \iso \F_{0,x} \oplus \F_{1,x}$, enabling us to write
+    Since $\struct{X}$ clearly has cohomology supported only in degree $0$, the same is true for $\F_0^\bullet$ and $\F_1^\bullet$, thus, by Proposition \ref{A -> D(A) fully faithful}, we may replace them with coherent sheaves $\F_0$ and $\F_1$, respectively. By the same proposition this means that there is an isomorphism $\struct{X} \iso \F_0 \oplus \F_1$ in $\coherent{X}$. As the functor computing stalks of a sheaf at any given point $x \in X$ is exact, we obtain a direct sum decomposition $\OO_{X,x} \iso \F_{0,x} \oplus \F_{1,x}$, enabling us to write
     \[
         X = \supp{\struct{X}} = \supp{\F_0} \cup \supp{\F_1}.
     \]
-    As $\F_i$ are coherent sheaves, their supports are closed in $X$, according to Remark \ref{supports closed}, and as $\OO_{X,x}$ is a local ring, and therefore \emph{indecomposable}\footnote{
+    As $\F_i$ are coherent sheaves, their supports are closed in $X$, according to Remark \ref{supports closed}. Since $\OO_{X,x}$ is a local ring, and therefore \emph{indecomposable}\footnote{
         A ring $R$ is \emph{indecomposable}, if it can not be written in the form $R \iso I \oplus J$ for two non-zero $R$-modules $I$ and $J$. If such a decomposition exists, $I$ and $J$ can be identified with \emph{proper} ideals of $R$. Now assuming $R$ is local with a maximal ideal $\mathfrak{m}$, we end up with a contradiction $R \subseteq I + J \subseteq \mathfrak{m} \subsetneq R$.
         % which are necessarily cyclic. Letting $e$ denote the generator of $I \trianglelefteq R$ and $f$ the generator of $J \trianglelefteq R$, we see that from $I \cap J = 0 $, $e$ and $f$ are idempotents. For the decomposition is non-trivial $e$ and $f$ are non-zero. If we now assume $R$ is local, we arrive at a contradiction as  
         % generated respectively by a pair of orthogonal idempotents. If $R$ is assumed to be a local ring
@@ -109,10 +102,97 @@ Let $x \in X$ be a closed point. Then we know there is a corresponding morphism 
         \label{eq: contrived roof}
         \F^\bullet \xleftarrow{\ \ \sim \ \ } \rtruncation{m}(\F^\bullet) \to \mathcal H^m(\F^\bullet) \to k(x)[m]
     \end{equation}
-    As this cannot be so, $\F^\bullet$ has trivial cohomology making it and the category $\D_1$ trivial, contradicting our initial assumption of $\D_0$ and $\D_1$ forming a decomposition of $\derb{X}$ and proving that $\derb{X}$ is indecomposable. 
+    As this cannot be so, $\F^\bullet$ has trivial cohomology making it and the category $\D_1$ trivial. This contradicts our initial assumption of $\D_0$ and $\D_1$ forming a decomposition of $\derb{X}$ and proves that $\derb{X}$ is indecomposable. 
 \end{proof}
 
-\info{Grothendieck's vanishing results and Serre's finitness}
+\begin{proposition}
+    \label{Db(X) has finite dimensional homs}
+    Let $X$ be a projective variety over $k$.
+    For any two bounded complexes $\E^\bullet$ and $\F^\bullet$ of $\derb{X}$ the hom-set $\Hom_{\derb{X}}(\E^\bullet, \F^\bullet)$ is a finite dimensional $k$-vector space. 
+\end{proposition}
+
+The above proposition heavily relies on a finiteness result of Serre.
+
+\begin{theorem}[\text{\cite[\S III, Theorem 5.2]{Hartshorne1977}}]
+    \label{Serre finitness}
+    Let $X$ be a projective variety over $k$ and $\F$ a coherent sheaf on $X$. Then $\cohom{i}{X}{\F}$ are finite dimensional $k$-vector spaces for all $i \in \Z$.
+\end{theorem}
+
+% \info{I actually need a reference for $Ext^i(\F, \G)$ are finite dimensional or $\localext{i}{\F}{\G}{}$ are coherent for $\F$, $\G$ coherent.}
+
+\begin{proof}[Proof of Proposition \ref{Db(X) has finite dimensional homs}]
+    % We will show that $\Ext^i_{\struct{X}}(\E^\bullet, \F^\bullet)$ is finite dimensional using spectral sequences \eqref{eq: Spectral sequence Ext 2} and \eqref{eq: Spectral sequence Ext 1}.
+    Since $\derb{X} \to \derb{\quasicoh{X}}$ is fully faithful and $\quasicoh{X}$ contains enough injectives, Proposition \ref{Homs in derived category}, tells us that
+    \[
+        \Hom_{\derb{X}}(\E^\bullet, \F^\bullet) \iso \Ext^0_{\struct{X}}(\E^\bullet, \F^\bullet) = H^0(\Hom^\bullet_{\struct{X}}(\E^\bullet, \F^\bullet)).
+    \]
+    Recall that $\Hom^i_{\struct{X}}(\E^\bullet, \F^\bullet) = \bigoplus_{j \in \Z} \Hom_{\struct{X}}(\E^j, \F^{i+j})$, where the direct sum is actually finite due to $\E^\bullet$ and $\F^\bullet$ being bounded complexes. From \cite[\href{https://stacks.math.columbia.edu/tag/01CQ}{Tag 01CQ}]{stacks-project}, we see that the internal Hom of two coherent sheaves is again coherent, thus its module of global sections $\Gamma(X, \localhom_{\struct{X}}(\F, \G)) = \Hom_{\struct{X}}(\F, \G)$ is finite dimensional by Theorem \ref{Serre finitness}. In turn this implies $\Hom^i_{\struct{X}}(\E^\bullet, \F^\bullet)$ are finitely dimensional $k$-vector spaces for all $i \in \Z$, meaning $H^0(\Hom^\bullet_{\struct{X}}(\E^\bullet, \F^\bullet))$ is finite dimensional as well. 
+\end{proof}
+
+
+Suppose $X$ is a variety over an algebraically closed field $k$ and let $x \in X$ be a closed point. Then we know it is a $k$-point and there is a corresponding morphism of schemes over $k$, $x \colon \spec{k} \to X$. We define the skyscraper sheaf $k(x)$ to be the push-forward of the structure sheaf $\struct{\spec{k}}$ along the map $x$, 
+\[
+    k(x) := x_* \struct{\spec{k}}.
+\]
+
+\begin{definition}
+    \label{Serre functor on Db(X)}
+    For a smooth and projective variety $X$ over $k$ define the \emph{Serre functor} $S_X \colon \derb{X} \to \derb{X}$ to be the composition
+    \[
+        S_X = (-) \otimes_\struct{X} \omega_X[\dim X]
+    \]
+\end{definition}
+
+\begin{theorem}[Serre duality for derived categories]
+    \label{Serre duality for derived cats}
+    Let $X$ be a smooth projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. Then there is an isomorphism
+    \[
+        \Hom_{\derb{X}}(\F^\bullet, \E^\bullet) \iso \Hom_{\derb{X}}(\E^\bullet, S_X(\F^\bullet))^*,
+    \]
+    which is natural in $\E^\bullet$ and $\F^\bullet$.
+\end{theorem}
+
+\begin{proof}
+    This will follow as a corollary of Grothendieck-Verdier duality \ref{}.
+\end{proof}
+
+The following proposition can be found in \cite[\S 3, Proposition 3.17]{huybrechts2006fouriermukai} or in Bridgeland's paper \cite[Example 2.2]{bridgeland2019equivalencestriangulatedcategoriesfouriermukai}. It is proven by a very neat application of the spectral sequence \eqref{eq: Spectral sequence derived hom 1}.
+
+\begin{proposition}
+    \label{k(x) spanning class}
+    Suppose $X$ is a smooth projective variety over $k$. The set of all skyscraper sheaves $k(x)$, for closed points $x \in X$, forms a spanning class of the bounded derived category $\derb{X}$.
+\end{proposition}
+
+\begin{proof}
+    By virtue of contradiction we will show that for any non-trivial complex $\F^\bullet$ of $\derb{X}$ there are closed points $x_0$, $x_1 \in X$ and integers $i_0$, $i_1 \in \Z$, for which
+    \[
+        \Hom_{\derb{X}}(\F^\bullet, k(x_0)[i_0]) \neq 0 \quad \text{and} \quad \Hom_{\derb{X}}(k(x_1), \F^\bullet[i_1]) \neq 0.
+    \] 
+    By Serre duality \ref{Serre duality for derived cats}, we see it suffices to find only $x_0$ and $i_0$, since
+    \begin{align*}
+        \Hom_{\derb{X}}(k(x_1), \F^\bullet[i_1]) 
+        &\iso \Hom_{\derb{X}}(\F^\bullet[i_1], k(x) \otimes_{\struct{X}} \omega_X[\dim X])^* \\
+        &\iso \Hom_{\derb{X}}(\F^\bullet, k(x)[\dim X - i_1])^*. 
+    \end{align*}
+    As $\F^\bullet$ is non-trivial, let $m \in \Z$ be maximal with the property that $\mathcal{H}^m(\F^\bullet) \neq 0$. As in the proof of Theorem \ref{Db(X) indecomposable for X connected}, pick a closed point in the non-empty support of $\mathcal H^m(\F^\bullet)$, for which we then know there is a non-zero morphism $\mathcal H^m(\F^\bullet) \to k(x)$ in $\derb{X}$. Consider now the spectral sequence \eqref{eq: Spectral sequence derived hom 1}
+    \[
+        E^{p,q}_2 = \Hom_{\derb{X}}(\mathcal H^{-q}(\F^\bullet), k(x)[p]) \Rightarrow \Hom_{\derb{X}}(\F^\bullet, k(x)[p+q]) = E^{p+q}.  
+    \] 
+    This is a spectral sequence lying in the right half plane, since $E^{p,q}_2 = 0$ for $p < 0$ as negative $\Ext$-modules are always trivial. A portion of the second page of the spectral sequence is depicted below.
+    \[\begin{tikzcd}[column sep = 1em, row sep = 0.5em]
+        % https://q.uiver.app/#q=WzAsMjAsWzIsMiwiKiJdLFsxLDIsIkVeezAsIC1tfV8yIl0sWzMsMiwiKiJdLFsxLDEsIioiXSxbMiwxLCIqIl0sWzMsMSwiKiJdLFsxLDAsIioiXSxbMiwwLCIqIl0sWzMsMCwiKiJdLFswLDAsIjAiXSxbMCwxLCIwIl0sWzAsMiwiMCJdLFswLDMsIjAiXSxbMSwzLCIwIl0sWzIsMywiMCJdLFszLDMsIjAiXSxbMiw0LCIwIl0sWzMsNCwiMCJdLFswLDQsIjAiXSxbMSw0LCIwIl0sWzksMV0sWzEsMTZdXQ==
+        0 & {*} & {*} & {*} \\
+        0 & {*} & {*} & {*} \\
+        0 & {E^{0, -m}_2} & {*} & {*} \\
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+        \arrow[from=1-1, to=3-2]
+        \arrow[from=3-2, to=5-3]
+    \end{tikzcd}\]
+    The highlighted arrows are the two differentials mapping into and out of $E^{0,-m}_2$, meaning that $E^{0,-m}_3$ is also non-trivial. The same may be deduced for the $(0,-m)$-th therm of each page, allowing us to conclude that $E^{0,-m}_\infty$ is non-trivial. The filtration for $E^{-m} = \Hom_{\derb{X}}(\F^\bullet, k(x)[-m])$ thus contains a non-trivial intermediary quotient, making it itself non-trivial as well and proving our claim. 
+\end{proof}
+
+% \info{Grothendieck's vanishing results and Serre's finitness}
 
 \newpage
 
@@ -121,33 +201,182 @@ Let $x \in X$ be a closed point. Then we know there is a corresponding morphism 
 In this subsection we will derive some functors occuring in algebraic geometry and later state some important facts relating them with each other. To derive these functors we will either deal with injective sheaves and access the realm of quasi-coherent sheaves, following the first part of section \ref{}, or introduce certain special classes of coherent sheaves depending on the functor we wish to derive and taking up the role of adapted classes, mirroring what was done in subsection \ref{}.
 
 \subsubsection{Global sections functor}
-Arguably the most common functor in algebraic geometry is the global sections functor. Associated to a scheme $X$, the functor of \emph{global sections}
+Arguably the most common functor in algebraic geometry is the global sections functor. Associated to a noetherian scheme $X$, the functor of \emph{global sections}
 \[
     \Gamma \colon \mod{\OO_X} \to \mod{k}
 \]
 assigns to each $\OO_X$-module $\F$ its module of global sections $\F(X) = \Gamma(X, \F) = H^0(X, \F)$ and to a morphism of $\OO_X$-modules $\alpha\colon \F \to \G$ a homomorphism $\alpha_X \colon \F(X) \to \G(X)$.
-By abuse of notation we use $\Gamma$ to also denote the restrictions of the global sections functor to subcategories $\quasicoh{X}$ and $\coherent{X}$ of $\mod{\OO_X}$.
+By abuse of notation we use $\Gamma$ to also denote the restrictions of the global sections functor to subcategories $\quasicoh{X}$ and $\coherent{X}$ of $\mod{\OO_X}$. When we want to emphasise that $\Gamma$ is associated to a scheme $X$, we write $\Gamma(X, -)$ to denote the global sections functor on $X$.
 
-As is commonly known, $\Gamma$ is a left exact functor, so our aim is to construct its right derived counterpart. Due to $\coherent{X}$ not having enough injectives, we resort to $\quasicoh{X}$, on which we may define 
+As is commonly known, $\Gamma$ is a left exact functor, so our aim is to construct its right derived counterpart. Due to $\coherent{X}$ not having enough injectives, we resort to $\quasicoh{X}$\footnote{The scheme $X$ is noetherian, so $\quasicoh{X}$ contains enough injectives by Proposition \ref{qcoh of noetherian scheme contains enough injectives}}, on which we may define 
 \[
     \rderived{}{\Gamma}\colon \derplus{\quasicoh{X}} \to \derplus{\mod{k}},
 \]
-according to \ref{method 1}. Precomposing the latter functor with the inclusion $\derplus{\coherent{X}} \to \derplus{\quasicoh{X}}$ leaves us with the derived functor
+according to method 1 of Subsection \ref{method 1}. Precomposing the latter functor with the inclusion $\derplus{\coherent{X}} \to \derplus{\quasicoh{X}}$ leaves us with the derived functor
 \[
     \rderived{}{\Gamma} \colon \derplus{\coherent{X}} \to \derplus{\mod{k}}.
 \]
+Utilizing the cohomology functors, we obtain higher derived functors of $\Gamma$, denoted by
+\[
+    \rderived{i}{\Gamma} = \cohom{i}{X}{-},
+\]
+for $i \in \Z$. Applied to a complex of sheaves $\F^\bullet$ the resulting modules $\rderived{i}{\Gamma}(\F^\bullet) = H^i(X, \F^\bullet)$ are sometimes called the \emph{hypercohomology modules} of $\F^\bullet$.
+% Higher derived functors of $\rderived{}{\Gamma}$ are denoted by $\rderived{i}{\Gamma}$ and sometimes also called the \emph{hypercohomology}. Applied to a 
+% \[
+%     \rderived{i}{\Gamma} = \cohom{i}{X}{-}.
+% \]
+Plugging in just a single coherent sheaf $\F$, we get the familiar \emph{sheaf cohomology} of $X$ with respect to a sheaf $\F$, denoted with $\cohom{i}{X}{\F}$. 
 
+\begin{remark}
+    \label{LES in cohomology of SES of coherent sheaves}
+    As a nice application of the abstract machinery of Chapter \ref{Chapter: Derived categories} we now get the famous long exact sequence in cohomology 
+    \begin{multline}
+        \label{eq: LES in cohomology of SES of coherent sheaves}
+        0 \to \cohom{0}{X}{\E} \to \cohom{0}{X}{\F} \to \cohom{0}{X}{\G} \to \cohom{1}{X}{\E} \to \cohom{1}{X}{\F} \to \cdots \\
+        \cdots \to \cohom{i}{X}{\E} \to \cohom{i}{X}{\F} \to \cohom{i}{X}{\G} \to \cohom{i+1}{X}{\E} \to \cdots 
+    \end{multline}
+    associated to a short exact sequence $0 \to \E \to \F \to \G \to 0$ of coherent sheaves as an intermediate corollary of Proposition \ref{LES for right derived functor}.
+\end{remark}
 
+The above definition of $\rderived{}{\Gamma}$ will suffice for most cases, but we can go slightly further, utilizing a vanishing result of Grothendieck.
 
-
-
+\begin{theorem}[\text{\cite[\S III, Theorem 2.7]{Hartshorne1977}}]
+    \label{Grothendieck vanishig}
+    Let $\F$ be a quasi-coherent sheaf on a noetherian scheme $X$ of dimension $n$. Then $H^i(X, \F) = 0$ for all $i > n$.
+\end{theorem}
+\noindent
+If $X$ is a noetherian scheme of dimension $n$, the modules $\rderived{i}{\Gamma}(\F)$ are non-trivial only for finitely many $i \in \Z$, for any coherent sheaf $\F$. By Proposition \ref{Spectral sequences for derived cats} \ref{Bounded on objects implies bounded on complexes} we thus obtain a functor
+\[
+    \rderived{}{\Gamma} \colon \derb{X} \to \derb{\mod{k}}.
+\]
 
 
 \subsubsection{Push-forward $f_*$}
-\subsubsection{Inner hom}
+A generalization of the global sections functor is the \emph{push-forward} or the \emph{direct image} functor along a morphism of schemes $f \colon X \to Y$. The \emph{push-forward} functor
+\[
+    f_* \colon \mod{\struct{X}} \to \mod{\struct{Y}}
+\]
+is defined on objects by assigning an $\struct{X}$-module $\F$ the $\struct{Y}$-module $f_*\F$ defined on open subsets $V \subseteq Y$ to be $(f_*\F)(V) = \F(f\inv(V))$ with the obvious restriction homomorphisms. On a morphism $\alpha \colon \F \to \G$ of $\struct{X}$-modules, $f_*$ is defined to act as $(f_*\alpha)_V = \alpha_{f\inv(V)}$ for all open $V \subseteq Y$. 
+
+We are going to strengthen our initial assumption that our schemes are noetherian to them being of finite type over $k$ 
+% Within the class of varieties over $k$ this assumption is satisfied by definition. 
+and consider only morphisms $f \colon X \to Y$ between schemes of finite type over $k$. 
+To induce a functor between the quasi-coherent and coherent categories of $X$ and $Y$, we need to recall the following proposition first.
+
+\begin{proposition}
+    \label{push-forward of coherent and quasi coherent shaves}
+    Let $f \colon X \to Y$ be a morphism of schemes of finite type over $k$. Then for every quasi-coherent sheaf $\F$ on $X$, $f_*\F$ is quasi-coherent on $Y$. If $f$ is assumed to be projective or more generally proper and $\F$ is coherent on $X$, then $f_*\F$ is coherent on $Y$.
+\end{proposition}
+
+\begin{proof}
+    The quasi-coherent part is \cite[\S II, Proposition 5.8]{Hartshorne1977}, because schemes of finite type over $k$ are noetherian. For the coherent part see \cite[\S II, Proposition 5.20]{Hartshorne1977} in the case that $f$ is projective and \cite[Part III, \S 3.2, Theorem 3.2.1]{EGA}, when $f$ is proper.
+\end{proof}
+
+It is a well known fact that $f_*$ is left exact, because it is a right adjoint and right adjoints preserve limits. As $\quasicoh{X}$ contains enough injectives, we may right derive $f_*$ to obtain 
+\[
+    \rderived{}{f_*} \colon \derplus{\quasicoh{X}} \to \derplus{\quasicoh{Y}}.
+\]
+This allows us to introduce the higher derived direct image functors
+\[
+    \rderived{i}{f_*} = \mathcal H^i \circ \rderived{}{f_*}
+\] 
+for all $i \in \Z$.
+
+Next, we would like to introduce the derived push-forward also between the \emph{bounded} derived categories of quasi-coherent sheaves. The next proposition will enable us to do so. 
+
+\begin{proposition}
+    Let $f \colon X \to Y$ be a morphism of schemes of finite type over $k$ and let $\F$ be a coherent sheaf on $X$. Then $\rderived{i}{f_*}\F \iso 0$ for all $i > n$, where $n$ is the dimension of $X$.
+\end{proposition}
+
+\begin{proof}
+    Let $\F \to \I^\bullet$ be an injective resolution of $\F$ and let $\delta$ denote the differential of $\I^\bullet$. Then 
+    \[
+        \rderived{i}{f_*}\F = \mathcal H^i(\rderived{}{f_*}\F) = \mathcal H^i (f_*\I^\bullet) = \coker(\im(f_*\delta^{i-1}) \to \ker(f_*\delta^i)).
+    \]
+    We recognise the cokernel at the end as the sheafification of the presheaf described on open subsets of $Y$ by the assignment
+    \begin{equation}
+        \label{eq: presheaf of higher derived direct image functor}
+        V \mapsto \coker(\im(\delta^{i-1}_{f\inv(V)}) \to \ker(\delta^i_{f\inv(V)})).
+    \end{equation}
+    For every open $V \subseteq Y$, the open subset $f\inv(V)$ determines a noetherian subscheme of $Y$ whose dimension is at most $n$. Therefore, by Grothendieck's vanishing Theorem \ref{Grothendieck vanishig}, the presheaf given by \eqref{eq: presheaf of higher derived direct image functor} is trivial for $i > n$, because 
+    \begin{align*}
+        \coker(\im(\delta^{i-1}_{f\inv(V)}) \to \ker(\delta^i_{f\inv(V)})) &= H^i(\Gamma(f\inv(V), \I^\bullet)) = \\
+        &= \rderived{i}{\Gamma(f\inv(V), \I^\bullet)} \iso \cohom{i}{f\inv(V)}{\F}.
+        \qedhere
+    \end{align*} 
+\end{proof}
+
+\noindent
+Applying Proposition \ref{Spectral sequences for derived cats} \ref{Bounded on objects implies bounded on complexes}, we may induce the derived direct image functor
+\begin{equation}
+    \label{eq: derived direct image on bounded quasicoherent derived cats}
+    \rderived{}{f_*} \colon \derb{\quasicoh{X}} \to \derb{\quasicoh{Y}}.
+\end{equation}
+Finally, we obtain the derived direct image functor between the bounded derived categories of coherent sheaves formulated in the following proposition.
+\begin{proposition}
+    Let $f \colon X \to Y$ be a proper morphism between schemes $X$ and $Y$ of finite type over $k$. Then the derived direct image functor \eqref{eq: derived direct image on bounded quasicoherent derived cats} induces
+    \[
+        \rderived{}{f_*} \colon \derb{X} \to \derb{Y}.
+    \]
+\end{proposition} 
+
+\begin{proof}
+    By \cite[Part III, \S 3.2, Theorem 3.2.1]{EGA} all the higher direct images $\rderived{i}{f_*}\F$ of a coherent sheaf $\F$ are again coherent. As the category of coherent sheaves $\coherent{X}$ is thick in $\quasicoh{X}$, according to \cite[\S II, Proposition 5.7]{Hartshorne1977}, Proposition \ref{Spectral sequences for derived cats} \ref{Cohomology in a thick subcategory} tells us that the derived direct image $\rderived{}{f_*}\F^\bullet$ has coherent cohomology for any complex $\F^\bullet$ of $\derb{X}$. Functor $\rderived{}{f_*}$ thus maps complexes of $\derb{X}$ to complexes of $\mathsf{D}^b_{\mathsf{coh}}(\quasicoh{Y})$, inducing
+    \[
+        \rderived{}{f_*} \colon \derb{X} \to \derb{Y},
+    \]
+    by Proposition \ref{Db(X) is bounded derived of quasi-coherent with coherent cohomology}.
+\end{proof}
+
+\begin{example}
+    An example of a direct image functor we will encounter very often is pushing-forward along a projection $p \colon X \times Y \to X$ for smooth and projective varieties $X$ and $Y$ over a field $k$. In this case the projection $p$ is proper because the properness condition is stable under base change \cite[\href{https://stacks.math.columbia.edu/tag/01W4}{Tag 01W4}]{stacks-project} and the structure map $Y \to \spec{k}$ of a projective variety $Y$ is by definition proper. 
+\end{example}
+
+
+\subsubsection{Internal Hom}
+\label{Subsubsection: Internal Hom}
+
+The \emph{internal Hom} or \emph{sheaf Hom} of two sheaves $\F$ and $\G$ on $X$ is defined to be a sheaf on $X$ given on open sets $U \subseteq X$ by
+\[
+    U \mapsto \Hom_{\struct{U}}(\F|_U, \G|_U),
+\]
+with the restriction homomorphisms being the usual restrictions of homomorphisms of sheaves. When $\F$ and $\G$ are taken to be $\struct{X}$-modules, the internal Hom may also be equipped with an $\struct{X}$-action making it an $\struct{X}$-module. We denote it by $\localhom_{\struct{X}}(\F, \G)$. Applying the global sections functor $\Gamma(X, -)$ to $\localhom_{\struct{X}}(\F, \G)$ it is clear that
+\[
+    \Gamma(X, \localhom_{\struct{X}}(\F, \G)) = \Hom_{\struct{X}}(\F, \G).
+\]
+
+The internal Hom also defines a bifunctor
+\begin{equation}
+    \label{eq: internal hom on O_X-modules}
+    \localhom_{\struct{X}}(-, -) \colon \mod{\struct{X}}^\op \times \mod{\struct{X}} \to \mod{\struct{X}}.
+\end{equation}
+For a fixed $\struct{X}$-module $\G$ the $\localhom_{\struct{X}}(-, \G)$-action on a $\struct{X}$-module homomorphism $\alpha \colon \F_1 \to \F_0$ is defined as an $\struct{X}$-module homomorphism
+\[
+    \alpha^* \colon \localhom_{\struct{X}}(\F_0, \G) \to \localhom_{\struct{X}}(\F_1, \G),
+\]
+given on open subsets $U \subseteq X$ by $\Gamma(U, \struct{X})$-linear maps
+\[
+    (\alpha^*)_U = \left(\Hom_{\struct{U}}(\F_0|_U, \G|_U) \xrightarrow{(\alpha_U)^*} \Hom_{\struct{U}}(\F_1|_U, \G|_U)\right).
+\]
+This action is clearly functorial and the same may be said for the similarly defined $\localhom_{\struct{X}}(\F, -)$-action, for a fixed $\struct{X}$-module $\F$.
+
+By \cite[EGA II, \S 9, Proposition 9.1.1]{EGA} $\localhom_{\struct{X}}(\F, \G)$ is coherent for any two coherent sheaves $\F$ and $\G$ on $X$. Therefore \eqref{eq: internal hom on O_X-modules} may be restricted to the bifunctor
+\[
+    \localhom[X](-, -) \colon \coherent{X}^\op \times \coherent{X} \to \coherent{X}.
+\]
+By Remark \ref{} 
+
+
+\[
+    \rderived{}{\localhom[X]^\bullet(-, -)} \colon \derb{X}^\op \times \derb{X} \to \derb{X}
+\]
+
 \subsubsection{Tensor product }
 
 \subsection{Interactions between derived functors}
+\label{Subsection: Interactions between derived functors}
+
+In this section we will present some interactions that appear between the derived functors of geometric origin. Some of them will arise as derived incarnations of known formulas, which hold true already at the level of coherent sheaves. While others are deep theorems, which are far from from being simple consequences of known facts. We will start with the former.
 
 \info{projection formula, base change, GV-duality}
 
@@ -157,28 +386,19 @@ Define the functor $f^! \colon \derb{Y} \to \derb{X}$ to be
 \]
 where $\omega_f = \omega_X \otimes f^*\omega_Y^*$ and $\dim(f) = \dim(Y) - \dim(X)$. As $\omega_f$ is just a line bundle on $X$, the tensor product need not be derived. 
 
-\begin{theorem}[Grothendieck-Verdier duality, \text{\cite[Chapter VII, \S 4, Corollary 4.3]{Hartshorne1966}}]
+\begin{theorem}[Grothendieck-Verdier duality]
+    \label{Grothendieck-Verdier duality}
     Let $X$ and $Y$ be smooth schemes over $k$. Let $f \colon X \to Y$ be a proper morphism. Then for every $\F^\bullet$ in $\derb{X}$ and $\E^\bullet$ of $\derb{Y}$, there is an isomorphism in $\derb{Y}$
     \[
         \rderived{}{f_*}\rderived{}{\localhom^\bullet_X}(\F^\bullet, f^! \E^\bullet) \iso \rderived{}{\localhom^\bullet_Y}(\rderived{}{f_*}(\F^\bullet), \E^\bullet),
     \]
     which is natural in $\F^\bullet$ and $\E^\bullet$.
-
-\end{theorem}
-
-Define the Serre functor $S_X \colon \derb{X} \to \derb{X}$ to be the composition
-\[
-    S_X = (-) \otimes_\struct{X} \omega_X[\dim X]
-\]
-
-\begin{theorem}[Serre duality for derived categories]
-    Let $X$ be a projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. Then there is an isomorphism
-    \[
-        \Hom_{\derb{X}}(\F^\bullet, \E^\bullet) \iso \Hom_{\derb{X}}(\E^\bullet, S_X(\F^\bullet))^*,
-    \]
-    which is natural in $\E^\bullet$ and $\F^\bullet$.
 \end{theorem}
 
 \begin{proof}
-    From Grothendieck-Verdier duality
+    See \cite[Chapter VII, \S 4, Corollary 4.3]{Hartshorne1966}.
 \end{proof}
+
+\begin{remark}
+    Serre duality in the form of Theorem \ref{Serre duality for derived cats} is seen to follow from Grothendieck-Verdier duality by the next argument.
+\end{remark}

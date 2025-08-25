@@ -51,6 +51,40 @@
     Let $\fm{\E^\bullet} \colon \derb{X} \to \derb{Y}$ and $\fm{\F^\bullet} \colon \derb{Y} \to \derb{Z}$ be Fourier-Mukai transforms with kernels $\E^\bullet$ and $\F^\bullet$ belonging to $\derb{X \times Y}$ and $\derb{Y \times Z}$ respectively. Then the composition $\fm{\F^\bullet} \circ \fm{\E^\bullet} \colon \derb{X} \to \derb{Z}$ is also a Fourier-Mukai transform with kernel $\mathcal R^\bullet = ...$, which is sometimes also called the \emph{convolution} of $\E^\bullet$ and $\F^\bullet$.
 \end{proposition}
 
+The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem}. It is also an important statement by itself, providing evidence for why the bounded derived category of coherent sheaves is a nicely behaved invariant for smooth and projective varieties. In particular it says that $\derb{-}$ detects the dimension and triviality of the canonical bundle.  
+% showing that the bounded derived categories of coherent sheaves on smooth and projective varieties over $k$ detect dimension and triviality of the canonical bundle. 
+\begin{theorem}
+    \label{Db detects dimension and triviality of canonical bundle}
+    Suppose $X$ and $Y$ are smooth projective varieties over $k$. Assume
+    \[
+        \derb{X} \natiso \derb{Y}.
+    \]
+    Then $\dim X = \dim Y$ and if the canonical bundle $\omega_X$ of $X$ is trivial, the canonical bundle $\omega_Y$ of $Y$ is trivial as well.
+\end{theorem}
+
+\begin{proof}
+    By Orlov's Theorem \ref{Orlov's theorem} the equivalence $\derb{X} \natiso \derb{Y}$ is witnessed by a Fourier-Mukai transform $\fm{E}$ with the kernel $E$ belonging to $\derb{X \times Y}$. Since $\fm{E}$ is an equivalence its left and right adjoints agree. As they are both given by Fourier-Mukai transforms their respective kernels $E_L$ and $E_R$, introduced in \ref{}, must be isomorphic in $\derb{X \times Y}$. Writing this out we see that
+    \[
+        E^\vee \iso E^\vee \otimes (q^*\omega_X \otimes p^*\omega_Y)[\dim Y - \dim X].
+    \]
+    As tensoring by a line bundle, namely $q^*\omega_X \otimes p^*\omega_Y$ is exact, both tensor products are underived, but more importantly, the cohomology of complexes $E^\vee$ and ${E^\vee \otimes (q^*\omega_X \otimes p^*\omega_Y)}$ agree in all degrees. Since $E$ is a bounded complex, its derived dual $E^\vee = \rderived{}{\localhom[X \times Y]^\bullet(E, \struct{X \times Y})}$ is bounded as well. Then comparing cohomology intermediately\footnote{As $\fm{E}$ is an equivalence, the kernel $E$ cannot be isomorphic to the zero object in $\derb{X \times Y}$, implying that $E^\vee$ has non-trivial cohomology at least in some degrees.} gives 
+    \[
+        \dim X = \dim Y.
+    \]
+    
+    For the second part, the assumption $\omega_X \iso \struct{X}$, simplifies the Serre functor $S_X$ of $\derb{X}$ to 
+    \[
+        S_X \colon \derb{X} \to \derb{X} \qquad S_X(-) = (-)[n], 
+    \]
+    where $n$ denotes the dimension of $X$ and $Y$. Since equivalences of triangulated categories are known to commute with Serre functors by \ref{}, we deduce from $\fm{E} \circ S_X \natiso S_Y \circ \fm{E}$ that the Serre functor $S_Y$ also simplifies to $(-)[n]$. By Definition \ref{Serre functor on Db(X)} this may be expressed as
+    \[
+        (-)[n] \natiso S_Y(-) = (-) \otimes_{\struct{Y}} \omega_Y[n].
+    \]
+    Plugging in the structure sheaf $\struct{Y}$, we see that $\omega_Y \iso \struct{Y}$ holds in $\coherent{Y}$. The last assertion 
+    % about $\coherent{Y}$ 
+    follows from fully faithfulness of the inclusion $\coherent{Y} \to \derb{Y}$ according to Proposition \ref{A -> D(A) fully faithful}. 
+\end{proof}
+
 \subsection{on $K$-groups}
 
 
@@ -86,16 +120,41 @@
     from GRR.
 \end{proof}
 
+\begin{definition}
+    Let $f \colon X \to Y$ be a continuous map between closed orientable manifolds.  define the \emph{Gysin} or \emph{umkehr map} on cohomology as 
+    \[
+        f_! \colon
+    \]
+\end{definition}
+
 \begin{proposition}
     \label{cohomological projection formula}
     Let $f \colon X \to Y$ be a continuous map between closed orientable manifolds $X$ and $Y$. Then for all $\alpha \in \cohom{*}{X}{\Z}$ and $\beta \in \cohom{*}{Y}{\Z}$
     \[
-        f_*\alpha \smallsmile \beta = f_*(\alpha \smallsmile f^*\beta).
+        f_!(\alpha) \smallsmile \beta = f_!(\alpha \smallsmile f^*\beta).
     \]
 \end{proposition}
 
+\begin{remark}
+    In the proof of the above proposition we use the following formulas, which are easily seen to follow from the definitions of $\smallsmile$ and $\smallfrown$ operations on singular cohomology and homology. They may also be found in \cite[\S VI, Theorem 5.2]{Bredon1993}.
+    \begin{enumerate}[label = (\roman*)]
+        \item{Let $\eta \in \cohom{k}{X}{\Z}$, $\theta \in \cohom{\ell}{X}{\Z}$ and $\sigma \in H_{k+\ell+m}(X, \Z)$, then 
+        \[
+            (\sigma \smallfrown \eta) \smallfrown \theta = 
+            \sigma \smallfrown (\eta \smallsmile \theta)
+        \]
+        holds in $H_m(X, \Z)$.}
+        \item{Let $\sigma \in H_{k + \ell}(X, \Z)$ and $\eta \in \cohom{k}{Y}{\Z}$ then 
+        \[
+            f_*(\sigma \smallfrown f^*\eta) = f_*\sigma \smallfrown \eta
+        \]
+        holds in $H_\ell(Y, \Z)$.
+        }
+    \end{enumerate}
+\end{remark}
+
 \begin{proof}
-    
+    Let $n$ be the dimension of $X$ and let $D_X \colon H_k(X) \to \cohom{n-k}{X}{\Z}$ denote the inverse of $[X] \smallfrown -$, which we now to be an isomorphism by Poincaré duality \cite[text]{keylist}. Similarly let $m$ be the dimension of $Y$ and
 \end{proof}
 
 \begin{proposition}

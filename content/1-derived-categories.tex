@@ -1,4 +1,5 @@
 \section{Derived categories}
+\label{Chapter: Derived categories}
 
 The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments, although specialized to the homotopy category $\kcat{\A}$ and the class of quasi-isomorphisms, do not differ tremendously from the general theory of localization of categories. 
 % Our arguments will try to be minimal and will not rely on the already established theory of localization of categories. Our approach might at times seem less elegant, but we include the exposition for completness nonetheless.
@@ -1167,7 +1168,7 @@ We will use this construction many times through the course of the thesis, so we
     \item Pick an injective resolution $A^\bullet \to I_A^\bullet$ of $A^\bullet$.
     \item Apply the functor $F$ to the complex $I^\bullet_A$ term-wise to obtain $F(I^\bullet_A)$. As a complex
     \[
-        \rderived{}{F}(A^\bullet) = F(I^\bullet_A).
+        \rderived{}{F}(A^\bullet) \iso F(I^\bullet_A).
     \]
 \end{enumerate}
 
@@ -1234,7 +1235,7 @@ The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following l
 \end{lemma}
 
 \begin{proof}
-    A close inspection of the proof of Proposition \ref{injective resolution} reveals, that formally only properties \ref{F-adapted i} and \ref{F-adapted ii} of Definition \ref{F-adapted}, which the class of all injective objects clearly satisfies, were used. Thus the same proof can be copied for this lemma to be true.
+    A close inspection of the proof of Proposition \ref{injective resolution} reveals, that formally only properties \ref{F-adapted i} and \ref{F-adapted ii} of Definition \ref{F-adapted}, which the class of all injective objects clearly satisfies, were used. Thus the same proof can be copied for this lemma.
     % By inspecting the proof of Proposition \ref{injective resolution}, we see, that only conditions \ref{F-adapted i} and \ref{F-adapted ii} of Definition \ref{F-adapted} were actually used, so the proof of this lemma is just a copy 
 \end{proof}
 
@@ -1315,6 +1316,11 @@ The procedure for computing the right derived functor $\rderived{}{F}(A^\bullet)
     \rderived{}{F}(A^\bullet) = F(I^\bullet_A).
 \]
 
+\begin{remark}
+    \label{F-adapted subcategory}
+    $F$-adapted subcat?
+\end{remark}
+
 We mention that both methods give rise to right derived functors satisfying the following defining universal property. We only state this here, but refer the reader to \cite[\S III.6]{gelfand2002methods} for the claim and its proof or \cite[\S 13.3, \S 10.3, \S 7.3]{kashiwara2006categories} for a more comprehensive and high level treatment using the formalism of localization. 
 
 \begin{definition}\cite[\S III.6, Definition 6]{gelfand2002methods}
@@ -1359,7 +1365,7 @@ We mention that both methods give rise to right derived functors satisfying the 
 
 % \vspace{3cm}
 
-For two composable the following proposition tells us that first deriving and then composing or first composing and then deriving results in the same functor.
+For two composable left exact functors the following proposition tells us that first deriving and then composing or first composing and then deriving results in the same functor.
 
 \begin{proposition}
     
@@ -1371,7 +1377,7 @@ For two composable the following proposition tells us that first deriving and th
 
 \subsubsection*{Higher derived functors}
 
-Classically derived functors of a left exact functor $F \colon \A \to \B$ first appeared as a sequence of additive functors $\A \to \B$. We introduce them in the following definition, using our established (modern) viewpoint. 
+Classically derived functors of a left exact functor $F \colon \A \to \B$ first appeared as a sequence of additive functors $\A \to \B$. We introduce them in the following definition, using our established viewpoint. 
 
 \begin{definition}
     For a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$ of a left exact functor $F \colon \A \to \B$, we define the \emph{higher derived functors of} $F$ as compositions
@@ -1398,6 +1404,7 @@ Frequently we will be interested in the image of a higher derived functor $\rder
 A useful tool for gathering information about the action of the higher derived functors of a left exact functor $F$ on objects will be the long exact sequence associated to $F$ introduced in the following proposition. In view of this proposition we also interpret higher derived functors of $F$ as measuring the extent to which $F$ fails to be exact. 
 
 \begin{proposition}
+    \label{LES for right derived functor}
     Let $F \colon \A \to \B$ be a left exact functor and let $0 \to A \to B \to C \to 0$ be a short exact sequence in $\A$. Then there exists a long exact sequence
     \begin{multline}
         \label{eq: LES for left exact functor F}
@@ -1485,7 +1492,7 @@ As a first application of the established theory of derived functors we consider
 \[
     \Hom_\A(A, -) \colon \A \to \mod{k},
 \]
-where $A$ is an object of an abelian category $\A$. Assume that category $\A$ contains enough injectives. By Example \ref{Homs are left exact functors}, we know that $\Hom_\A(A, -)$ is a left exact functor, so we can right derive it, to obtain the functor
+where $A$ is an object of the abelian category $\A$. Assume that category $\A$ contains enough injectives. By Example \ref{Homs are left exact functors}, we know that $\Hom_\A(A, -)$ is a left exact functor, so we can right derive it, to obtain the functor
 % so there exists its right derived functor
 \[
     \mathbf{R}\Hom_\A(A, -) \colon \derplus{\A} \to \derplus{\mod{k}}.
@@ -1583,7 +1590,7 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 % \end{remark}
 
 \begin{remark}
-    Behind the scenes of this whole process one actually consideres an additive bifunctor $F \colon \A \times \A' \to \A''$, with $\A$, $\A'$ and $\A''$ abelian, where the latter is assumed to contain countable products. From this bifunctor we induce another additive bifunctor on the level of chain complexes $F_{\pi} \colon \com(\A) \times \com(\A') \to \com(\A'')$ via the total complex of a double complex as described in \cite[\S 11.6]{kashiwara2006categories}.
+    Behind the scenes of this whole procedure one actually consideres an additive bifunctor $F \colon \A \times \A' \to \A''$, with $\A$, $\A'$ and $\A''$ abelian, where the latter is assumed to contain countable products. From this bifunctor we induce another additive bifunctor on the level of chain complexes $F_{\pi} \colon \com(\A) \times \com(\A') \to \com(\A'')$ via the total complex of a double complex as described in \cite[\S 11.6]{kashiwara2006categories}.
     %  with terms $F^\bullet_\pi(X^\bullet, Y^\bullet) = \operatorname{tot_\pi}(F(X^\bullet, Y^\bullet))$, where $\operatorname{tot_\pi}(Z^{\bullet, \bullet})^n = \prod_{p+q = n} Z^{p,q}$. 
     It then turns out that $F_\pi$ induces a well defined triangulated bifunctor on the level of the homotopy category 
     \[
@@ -1617,11 +1624,11 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 \end{lemma}
 
 \begin{proof}
-    This is practically the definition of $\Hom_{\kcat{\A}}(A^\bullet, B[i]^\bullet)$. The cohomology $k$-module $H^i(\Hom^\bullet(A^\bullet, B^\bullet))$ is defined to be the quotient $\ker \delta^i / \im \delta^{i-1}$, thus let us identify $\ker \delta^i$ and $\im \delta^{i-1}$. Notice, that for $f \in \Hom^i(A^\bullet, B^\bullet)$ we have
+    This is practically the definition of $\Hom_{\kcat{\A}}(A^\bullet, B[i]^\bullet)$. The cohomology $k$-module $H^i(\Hom^\bullet(A^\bullet, B^\bullet))$ is defined to be the quotient $\ker \delta^i / \im \delta^{i-1}$. Here $\delta$ denotes the differential of $\Hom^\bullet(A^\bullet, B^\bullet)$. Thus let us identify $\ker \delta^i$ and $\im \delta^{i-1}$. Notice, that for $f \in \Hom^i(A^\bullet, B^\bullet)$ we have
     \[
         \delta^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z} = (-1)^i \left(d^j_{B[i]} \circ f^j - f^{j+1} \circ d^j_A\right)_{j \in \Z},
     \]
-    thus $\ker \delta^i$ is the set of all chain maps $A^\bullet \to B[i]^\bullet$, and $\im \delta^{i-1}$ the set of all null-homotopic chain maps.
+    therefore $\ker \delta^i$ is the set of all chain maps $A^\bullet \to B[i]^\bullet$, and $\im \delta^{i-1}$ the set of all null-homotopic chain maps.
 \end{proof}
 
 \begin{proof}[Proof of Proposition \ref{Homs in derived category}]
@@ -1629,7 +1636,7 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
     \begin{align*}
         \Hom_{\derb{\A}}(A^\bullet, B[i]^\bullet) &= \Hom_{\derplus{\A}}(A^\bullet, B[i]^\bullet)  \\
         &\iso \Hom_{\derplus{\A}}(A^\bullet, I[i]^\bullet)  \\
-        &\iso \Hom_{\kplus{\J}}(A^\bullet, I[i]^\bullet) &\text{(Theorem \ref{D+ = K+ and injectives})}\\
+        &\iso \Hom_{\kplus{\A}}(A^\bullet, I[i]^\bullet) &\text{(Theorem \ref{D+ = K+ and injectives})}\\
         &= H^i(\Hom^\bullet(A^\bullet, I^\bullet)) &\text{(Lemma \ref{Homotopy hom = cohomology of inner hom})} \\
         &= \Ext_\A^i(A^\bullet, B^\bullet). 
     \end{align*}\qedhere

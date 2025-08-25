@@ -59,6 +59,7 @@
 \newcommand{\D}{\mathcal D}
 \newcommand{\E}{\mathcal E}
 \newcommand{\M}{\mathcal M}
+\newcommand{\PP}{\mathbb P}
 % \newcommand{\k}{\texttt k}
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -116,9 +117,19 @@
 % }
 
 \newcommand{\derivedtensor}[3]{#1 \otimes_{#3}^{\mathbf{L}} #2}
-\newcommand{\localhom}{\mathcal{H}om}
+% \newcommand{\localhom}{\mathcal{H}om}
 \newcommand{\localtor}[4]{\mathcal{T}or^{#4}_{#1}(#2, #3)}
 \newcommand{\localext}[4]{\mathcal{E}xt^{#1}_{#4}(#2, #3)}
+
+\NewDocumentCommand{\localhom}{ o }{%
+  \IfNoValueTF{#1}%
+    { % no optional arg
+      \mathcal{H}om
+    }%
+    {
+      \mathcal{H}om_{\struct{#1}}
+    }
+}
 
 % Algebraic geometry
 \newcommand{\struct}[1]{{\mathcal{O}_{#1}}}
@@ -151,8 +162,8 @@
     }%
     { % with optional arg
       \IfNoValueTF{#2}%
-        { \mathrm{ch}^{#1} }%
-        { \mathrm{ch}^{#1}\!\left(#2\right) }%
+        { \mathrm{ch}_{#1} }%
+        { \mathrm{ch}_{#1}\!\left(#2\right) }%
     }%
 }
 

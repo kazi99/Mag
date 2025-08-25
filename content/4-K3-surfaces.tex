@@ -2,24 +2,76 @@
 
 \subsection{Algebraic and complex}
 
+K3 surfaces come in two flavours, algebraic and complex, essentially equivalent, but formally allowing us to effortlessly pass between the realms of algebraic and complex geometry. 
+
+A \emph{variety over a the field of complex numbers $\C$} is a separated integral scheme of finite type over $\C$. We say that a variety $X$ over $\C$ is \emph{smooth}, if the stalks $\struct{X, x}$ are regular\footnote{A noetherian local ring $(A, \mathfrak{m})$ is \emph{regular}, if $\dim A = \dim_k \mathfrak{m}/\mathfrak{m}^2$, where $\dim A$ denotes the \emph{Krull dimension of $A$} and $k$ denotes the residue field $A/\mathfrak{m}$.} local rings for every $x \in X$. A variety $X$ over $\C$ is \emph{projective}, if the structure morphism $X \to \spec{\C}$ is projective, meaning there exists a closed immersion $X \hookrightarrow \PP^n_\C$ for some $n \in \N$. A variety of dimension two will be called a \emph{surface}. 
+
+\begin{definition}
+    A smooth and projective variety $X$ over $\C$ of dimension two is a \emph{K3 surface}, if 
+    \[
+        \omega_X \iso \struct{X} \quad \text{and} \quad \cohom{1}{X}{\struct{X}} = 0.
+    \]
+\end{definition}
+
+
+
+\begin{definition}
+    A compact connected complex manifold $X$ of dimension two is a \emph{K3 surface}, if it is simply connected and $\omega_X \iso \struct{X}$.
+\end{definition}
+
+\begin{example}
+    Smooth quartic in $\PP^3$.
+\end{example}
+
 \subsection{Main invariants}
 
 \subsubsection{Cohomology}
 \subsubsection{Intersection pairing}
+
+The transcendental lattice of $X$ will be denoted by $\transc{X}$.
 
 \begin{proposition}
     \label{intersection pairing on K3 is even}
     Let $X$ be a K3 surface. Then the intersection pairing on $H^2(X, \Z)$ given by the $\smallsmile$-product is an even lattice. 
 \end{proposition}
 
+\begin{proposition}
+    \label{Todd class of K3}
+    Todd class of a K3
+\end{proposition}
+
+\begin{example}
+    
+\end{example}
+
 \subsubsection{Hodge structure}
+
+\begin{theorem}
+    Suppose $X$ and $Y$ are smooth projective varieties over $\C$. Assume $X$ is a K3 surface and
+    \[
+        \derb{X} \natiso \derb{Y}.
+    \]
+    Then $Y$ is a K3 surface as well. 
+\end{theorem}
+
+\begin{proof}
+    By Theorem \ref{Db detects dimension and triviality of canonical bundle} we already know $Y$ is a surface with a trivial canonical bundle. It is left to show that $\cohom{1}{Y}{\struct{Y}} = 0$. By Proposition \ref{Hodge lattice, fm transform interaction} we see that 
+    \[
+        h^{0,1}(X) + h^{1,2}(X) = h^{0,1}(Y) + h^{1,2}(Y). 
+    \]
+    However $h^{0,1}(X) = 0$ and $h^{1,2}(X) = h^{2,1}(X) = \dim \cohom{1}{X}{\omega_X} = \dim \cohom{1}{X}{\struct{X}} = 0$. Thus $h^{0,1}(Y) = 0$, proving that $Y$ is a K3 surface.
+\end{proof}
 
 \subsection{Two important theorems}
 
-\begin{theorem}
+\begin{theorem}[Torelli]
     \label{Classical Torelli theorem}
+    Let $X$ and $Y$ be K3 surfaces over $\C$. Then $X$ and $Y$ are isomorphic if and only if there exists a Hodge isometry
+    \[
+        f\colon \cohom{2}{X}{\Z} \to \cohom{2}{Y}{\Z}.
+    \]
 \end{theorem}
 
 \begin{remark}
-    For a topological space $X$ we will distinguish between the collection of all cohomology groups, considered concisely as a graded object $\cohom{\bullet}{X}{\Z} = \bigoplus_n \cohom{n}{X}{\Z}$, and its (graded) cohomology ring, which we will denote by $\cohom{*}{X}{\Z}$.
+    For a topological space $X$ we will distinguish between the collection of all cohomology groups, considered concisely as a graded object $\cohom{\bullet}{X}{\Z} = \bigoplus_{i\in \Z} \cohom{i}{X}{\Z}$, and its (graded) cohomology ring, which we will denote by $\cohom{*}{X}{\Z}$.
 \end{remark}
