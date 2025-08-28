@@ -4,8 +4,7 @@ In this section we try to make a brief account of the majority of the relevant p
 
 \subsection{Additive, $k$-linear and abelian categories}
 
-In this section we mainly follow \cite[Chapter 8]{kashiwara2006categories}. With $k$ we denote either a field or the ring of integers $\Z$.
-
+In this section we mainly follow \cite[\S 8]{kashiwara2006categories}. With $k$ we denote either a field or the ring of integers $\Z$.
 A categorical \emph{biproduct} of objects $X$ and $Y$ in a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
 \begin{center}
     \begin{tabular}{c c}
@@ -132,14 +131,13 @@ Axiom \ref{A4} essentially states that abelian categories are those additive cat
     The default examples of abelian categories are the category of abelian groups $\Ab$ or more generally the category of $A$-modules $\mod{A}$ for a commutative ring $A$. The categories of coherent and quasi-coherent sheaves, $\coherent{X}$ and $\quasicoh{X}$, on a scheme $X$ are also abelian (\cite[\href{https://stacks.math.columbia.edu/tag/01BY}{Tag 01BY}]{stacks-project} and \cite[\href{https://stacks.math.columbia.edu/tag/077P}{Tag 077P}]{stacks-project}). On the other hand the category of (real or complex) vector bundles for example over the real line $\R$ is additive, but not abelian. The last claim is due to the category of vector bundles on $\R$ not being closed under kernels and cokernels.
 \end{example}
 
-\begin{definition}
-    Let
+\begin{definition}  
+    \begin{enumerate}[label = (\roman*)] 
+        \item Let
     \[
         X \xrightarrow{\ f \ } Y \xrightarrow{\ g\ } Z
     \]
-    be a sequence of composable morphisms in an abelian category $\A$.  
-    \begin{enumerate}[label = (\roman*)] 
-        \item We say this sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im g \to \ker f$ is an isomorphism.
+    be a sequence of composable morphisms in an abelian category $\A$. We say this sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im g \to \ker f$ is an isomorphism.
 
         \item Extending (i), a sequence $\cdots \to X^0 \to X^1 \to X^2 \to \cdots$ is \emph{exact}, if any subsequence $X^{i-1} \to X^i \to X^{i+1}$ for $i \in \Z$ is exact. 
         \item Exact sequences of the form $0 \to X \to Y \to Z \to 0$ are called \emph{short exact sequences}.
@@ -173,11 +171,11 @@ In the context of abelian categories, functors, which preserve a bit more than j
 
 \begin{example}
     \label{Homs are left exact functors}
-    For an abelian category $\A$ the hom-functors 
+    For an abelian category $\A$ the Hom-functors 
     \[
-    \Hom_\A(A, -) \colon \A \to \mod{k} \quad \text{ and } \quad \Hom_\A( - , A) \colon \A^\op \to \mod{k}
+    \Hom_\A(W, -) \colon \A \to \mod{k} \quad \text{ and } \quad \Hom_\A( - , W) \colon \A^\op \to \mod{k}
     \] 
-    are both left exact. Note that a sequence $0 \to X \to Y \to Z \to 0$ is exact in $\A^\op$, if $0 \to Z \to Y \to X \to 0$ is exact in $\A$.
+    are both \emph{left} exact for any object $W$ of $\A$. Note that a sequence $0 \to X \to Y \to Z \to 0$ is exact in $\A^\op$, if $0 \to Z \to Y \to X \to 0$ is exact in $\A$.
 \end{example}
 
 
@@ -260,14 +258,53 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
         \]
         satisfying $v \circ f = f' \circ u$, there exists a (in general non-unique) morphism $w\colon Z \to Z'$, for which $(u, v, w)$ is a morphism of triangles \ie the diagram above commutes.
         } \label{TR3}
-        \item{ \info{Will be added at some point} } \label{TR4}
+        \item{ 
+            Given three distinguished triangles
+            \begin{align*}
+                X \xrightarrow{\ f \ } Y \xrightarrow{\ h \ } Z' \longrightarrow {X[1],} \\
+                Y \xrightarrow{\ g \ } Z \xrightarrow{\ k \ } X' \longrightarrow {Y[1],} \\
+                X \xrightarrow{g\circ f} Z \xrightarrow{\ \ell\ } Y' \longrightarrow {X[1],}
+            \end{align*}
+            there exists a distinguished triangle $Z'\xrightarrow{\ u \ } Y' \xrightarrow{\ v \ } X' \xrightarrow{\ w \ } Z'[1]$ for which the diagram below is commutative.
+            \[\begin{tikzcd}
+                % https://q.uiver.app/#q=WzAsMTYsWzAsMCwiWCJdLFsxLDAsIlkiXSxbMiwwLCJaJyJdLFszLDAsIlhbMV0iXSxbMCwxLCJYIl0sWzEsMSwiWiJdLFsyLDEsIlknIl0sWzMsMSwiWFsxXSJdLFswLDIsIlkiXSxbMSwyLCJaIl0sWzIsMiwiWCciXSxbMywyLCJZWzFdIl0sWzAsMywiWiciXSxbMSwzLCJZJyJdLFsyLDMsIlgnIl0sWzMsMywiWidbMV0iXSxbMCw0LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDksIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDE0LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDYsInUiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwxMCwidiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMiwxMywidSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMywxNCwidiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxNCwxNSwidyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDEsImYiXSxbMSwyLCJoIl0sWzIsM10sWzMsNywiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCJnIFxcY2lyYyBmIl0sWzEsNSwiZyJdLFs0LDgsImYiLDJdLFs4LDEyLCJoIiwyXSxbOCw5LCJnIl0sWzksMTMsIlxcZWxsIl0sWzksMTAsImsiXSxbNSw2LCJcXGVsbCJdLFs2LDddLFsxMCwxMV0sWzcsMTEsImZbMV0iXSxbMTEsMTUsImhbMV0iXV0=
+                X & Y & {Z'} & {X[1]} \\
+                X & Z & {Y'} & {X[1]} \\
+                Y & Z & {X'} & {Y[1]} \\
+                {Z'} & {Y'} & {X'} & {Z'[1]}
+                \arrow["f", from=1-1, to=1-2]
+                \arrow[equals, from=1-1, to=2-1]
+                \arrow["h", from=1-2, to=1-3]
+                \arrow["g", from=1-2, to=2-2]
+                \arrow[from=1-3, to=1-4]
+                \arrow["u", dashed, from=1-3, to=2-3]
+                \arrow[equals, from=1-4, to=2-4]
+                \arrow["{g \circ f}", from=2-1, to=2-2]
+                \arrow["f"', from=2-1, to=3-1]
+                \arrow["\ell", from=2-2, to=2-3]
+                \arrow[equals, from=2-2, to=3-2]
+                \arrow[from=2-3, to=2-4]
+                \arrow["v", dashed, from=2-3, to=3-3]
+                \arrow["{f[1]}", from=2-4, to=3-4]
+                \arrow["g", from=3-1, to=3-2]
+                \arrow["h"', from=3-1, to=4-1]
+                \arrow["k", from=3-2, to=3-3]
+                \arrow["\ell", from=3-2, to=4-2]
+                \arrow[from=3-3, to=3-4]
+                \arrow[equals, from=3-3, to=4-3]
+                \arrow["{h[1]}", from=3-4, to=4-4]
+                \arrow["u", dashed, from=4-1, to=4-2]
+                \arrow["v", dashed, from=4-2, to=4-3]
+                \arrow["w", dashed, from=4-3, to=4-4]
+            \end{tikzcd}\]
+         } \label{TR4}
     \end{enumerate} 
 \end{definition}
 
-Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the definition of a \emph{pre-triangulated category}. These are essentially the categories we will be working with, since we will never use nor verify the axiom \ref{TR4}. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will be honest triangulated categories anyway.
+Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the definition of a \emph{pre-triangulated category}. These are essentially the categories we will be working with, since we will never use nor verify the axiom \ref{TR4}. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will in fact be honest triangulated categories.
 
 \begin{remark}
-    The object $Z$, called the \emph{cone of $f$}, in axiom \ref{TR1} \ref{TR1 iii} is unique up to isomorphism. This is seen through the use of axiom \ref{TR3} in combination with example \ref{partial homs are cohomological functors} and the five lemma \cite[Lemma 8.3.13]{kashiwara2006categories} from homological algebra in $\mod{k}$. 
+    The object $Z$, called the \emph{cone of $f$}, in axiom \ref{TR1}\ref{TR1 iii} is unique up to isomorphism. This is seen through the use of axiom \ref{TR3} in combination with example \ref{partial homs are cohomological functors} and the five lemma \cite[Lemma 8.3.13]{kashiwara2006categories} from homological algebra in $\mod{k}$. 
 \end{remark}
 
 % we will nevertheless use the terminology 
@@ -338,8 +375,8 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \end{proof}
 
 \begin{definition}
-    Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. An additive functor $F \colon \D \to \D'$ is defined to be \emph{triangulated} or \emph{exact}, if the following two conditions are satisfied.
-    \info{Maybe I will pick only triangulated, to not overload the term exact...}
+    Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. An additive functor $F \colon \D \to \D'$ is defined to be \emph{triangulated}, if the following two conditions are satisfied.
+    % \info{Maybe I will pick only triangulated, to not overload the term exact...}
     \begin{enumerate}[label = (\roman*)]
         \item There exists a natural isomorphism of functors 
         \[
@@ -363,7 +400,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \info{this remark may be omitted.}
 
 \begin{example}
-    The entirety of subsection \ref{} and first section of chapter \ref{} will be devoted to a constructing a substantial amount of triangulated categories and triangulated functors.    
+    The entirety of Chapter \ref{Chapter: Derived categories} and first two sections of Chapter \ref{Chapter: Derived categories in geometry} will be devoted to constructing a substantial amount of triangulated categories and triangulated functors. The first triangulated category we will encounter in practice is the homotopy category of complexes $\kcat{\A}$ of an additive category $\A$ in Section \ref{Subsection: Categories of complexes} of this chapter.
 \end{example}
 
 \begin{definition}
@@ -422,8 +459,8 @@ and apply functor $H$ over it.
     \[
     \Hom_\D(W, X) \xrightarrow{f_*} \Hom_\D(W, Y) \xrightarrow{g_*} \Hom_\D(W, Z) \quad \text{ is exact.}
     \]
-    By proposition \ref{composition of two arrows in d.t. is zero} we see that $\im f_* \subseteq \ker g_* $, so we are left to prove the other inclusion. Suppose $v \colon W \to Y$ is in $\ker g_*$. Then axiom \ref{TR3} (together with \ref{TR2} and \ref{TR1} (ii))
-    \info{As this is the first argument with the axioms of triangulated cats, I could maybe expand it a little bit more. }
+    By proposition \ref{composition of two arrows in d.t. is zero} we see that $\im f_* \subseteq \ker g_* $, so we are left to prove the other inclusion. Suppose $v \colon W \to Y$ is in $\ker g_*$. Then axiom \ref{TR3} (together with \ref{TR2} and \ref{TR1}\ref{TR1 ii})
+    % \info{As this is the first argument with the axioms of triangulated cats, I could maybe expand it a little bit more. }
     asserts the existence of a morphism $u \colon W \to X$ making the diagram below commutative.
     \[
         \begin{tikzcd}[column sep = normal, row sep = 2.5em]
@@ -456,6 +493,7 @@ and apply functor $H$ over it.
 \end{proof}
 
 \begin{lemma}
+    \label{direct sum of d.t. is d.t.}
     Let triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ and $X'\xrightarrow{f'} Y' \xrightarrow{g'} Z' \xrightarrow{h'} X'[1]$ be distinguished in a triangulated category $\D$. Then their direct sum
     \[
         X \oplus X' \xrightarrow{f \oplus f'} Y \oplus Y' \xrightarrow{g \oplus g'} Z \oplus Z' \xrightarrow{h \oplus h'} (X \oplus X')[1]
@@ -464,13 +502,138 @@ and apply functor $H$ over it.
 \end{lemma}
 
 \begin{proof}
-    
+    By \ref{TR1}\ref{TR1 iii} we may extend $f_0 \oplus f_1$ to a distinguished triangle
+    \begin{equation}
+        \label{eq: triangle on f + f'}
+        X \oplus X' \xrightarrow{f \oplus f'} Y \oplus Y' \xrightarrow{} Q \xrightarrow{} (X \oplus X')[1].
+    \end{equation}
+    Axiom \ref{TR3} applied to the canonical projections
+    \[
+        X \xleftarrow{p} X \oplus X' \xrightarrow{p'} X' \quad \text{and} \quad 
+        Y \xleftarrow{q} Y \oplus Y' \xrightarrow{q'} Y'
+    \]
+    then induces morphisms $r \colon Q \to Z$ and $r' \colon Q \to Z'$, such that $(p,q,r)$ is a morphism from the triangle \eqref{eq: triangle on f + f'} to $(f,g,h)$ and similarly $(p', q', r')$ is a morphism from triangle \eqref{eq: triangle on f + f'} to $(f', g', h')$. By the universal property of products $(r, r') \colon Q \to Z \oplus Z'$ is induced. We thus obtain a morphism of triangles, where the top triangle is distinguished, while the bottom one we are aiming to show is distinguished as well.
+    \begin{equation}
+        \label{eq: diagram for sum of two triangles}
+        \begin{tikzcd}[column sep = normal, row sep = 2.5em]
+            % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+            X \oplus X' & Y \oplus Y' & Q & {(X \oplus X')[1]} \\
+            X \oplus X' & Y \oplus Y' & Z \oplus Z' & {(X \oplus X')[1]}
+            \arrow["f \oplus f'", from=1-1, to=1-2]
+            \arrow[""', equals, from=1-1, to=2-1]
+            \arrow["", from=1-2, to=1-3]
+            \arrow[""', equals, from=1-2, to=2-2]
+            \arrow["", from=1-3, to=1-4]
+            \arrow["{(r,r')}"', from=1-3, to=2-3]
+            \arrow[""', equals, from=1-4, to=2-4]
+            \arrow["f \oplus f'", from=2-1, to=2-2]
+            \arrow["g \oplus g'", from=2-2, to=2-3]
+            \arrow["h \oplus h'", from=2-3, to=2-4]
+        \end{tikzcd}
+    \end{equation}
+    Consider now the cohomological functor $H = \Hom_\D(W, -) \colon \D \to \mod{k}$ for an object $W$ of $\D$. Applying the functor $\Hom_\D(W, -)$ to the diagram \eqref{eq: diagram for sum of two triangles} yields the following commutative diagram in $\mod{k}$.
+    \[\begin{tikzcd}[column sep = 1.5em]
+        % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiSChYIFxcb3BsdXMgWCcpIl0sWzEsMCwiSChZIFxcb3BsdXMgWScpIl0sWzIsMCwiSChRKSJdLFszLDAsIkgoKFhcXG9wbHVzIFgnKVsxXSkiXSxbNCwwLCJIKChZXFxvcGx1cyBZJylbMV0pIl0sWzAsMSwiSChYIFxcb3BsdXMgWCcpIl0sWzEsMSwiSChZIFxcb3BsdXMgWScpIl0sWzIsMSwiSChaIFxcb3BsdXMgWicpIl0sWzMsMSwiSCgoWFxcb3BsdXMgWCcpWzFdKSJdLFs0LDEsIkgoKFlcXG9wbHVzIFknKVsxXSkiXSxbMCw1LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDksIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsOCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw3LCIocixyJylfKiJdLFsxLDYsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF0sWzgsOV0sWzcsOF0sWzYsN10sWzUsNl1d
+        {H(X \oplus X')} & {H(Y \oplus Y')} & {H(Q)} & {H((X\oplus X')[1])} & {H((Y\oplus Y')[1])} \\
+        {H(X \oplus X')} & {H(Y \oplus Y')} & {H(Z \oplus Z')} & {H((X\oplus X')[1])} & {H((Y\oplus Y')[1])}
+        \arrow[from=1-1, to=1-2]
+        \arrow[equals, from=1-1, to=2-1]
+        \arrow[from=1-2, to=1-3]
+        \arrow[equals, from=1-2, to=2-2]
+        \arrow[from=1-3, to=1-4]
+        \arrow["{(r,r')_*}", from=1-3, to=2-3]
+        \arrow[from=1-4, to=1-5]
+        \arrow[equals, from=1-4, to=2-4]
+        \arrow[equals, from=1-5, to=2-5]
+        \arrow[from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow[from=2-4, to=2-5]
+    \end{tikzcd}\]
+    By the universal property of products, we have isomorphisms of modules 
+    \[
+        \Hom_\D(W, X \oplus X') \iso \Hom_\D(W, X) \oplus \Hom_\D(W, X'),
+    \]
+    natural in $X$ and $X'$. Thus the bottom row of the above diagram may be viewed as a direct sum of two sequences, which come about through the application of the functor $\Hom_\D(W, -)$ to a pair of distinguished triangles $(f,g,h)$ and $(f',g',h')$. Since $\Hom_\D(W, -)$ is cohomological and a sum of exact sequences is exact the bottom row is an exact sequence. The top row is exact as well because \eqref{eq: triangle on f + f'} is distinguished. Since all but the middle vertical arrow $(r,r')_*$ are isomorphisms, the \emph{five lemma}\footcite[\S 8, Lemma 8.3.13]{kashiwara2006categories} implies that $(r,r')_*$ is an isomorphism as well. As this holds for any object $W$ of $\D$, the morphism $(r,r')$ is an isomorphism by Yoneda lemma, more precisely \cite[\S 1, Corollary 1.4.7]{kashiwara2006categories}. This means that the bottom row of \eqref{eq: diagram for sum of two triangles} is distinguished by axiom \ref{TR1}\ref{TR1 i}, which is what we wanted to show. \qedhere
+    % \[\begin{tikzcd}[column sep = 0.5em]
+    %     % https://q.uiver.app/#q=WzAsMTUsWzAsMCwiSChYIFxcb3BsdXMgWCcpIl0sWzEsMCwiSChZIFxcb3BsdXMgWScpIl0sWzIsMCwiSChRKSJdLFszLDAsIkgoKFhcXG9wbHVzIFgnKVsxXSkiXSxbNCwwLCJIKChZXFxvcGx1cyBZJylbMV0pIl0sWzAsMSwiSChYIFxcb3BsdXMgWCcpIl0sWzEsMSwiSChZIFxcb3BsdXMgWScpIl0sWzIsMSwiSChaIFxcb3BsdXMgWicpIl0sWzMsMSwiSCgoWFxcb3BsdXMgWCcpWzFdKSJdLFs0LDEsIkgoKFlcXG9wbHVzIFknKVsxXSkiXSxbMCwyLCJIKFgpIFxcb3BsdXMgSChYJykiXSxbMSwyLCJIKFkpIFxcb3BsdXMgSChZJykiXSxbMiwyLCJIKFopIFxcb3BsdXMgSChaJykiXSxbMywyLCJIKFhbMV0pXFxvcGx1cyBIKFgnWzFdKSJdLFs0LDIsIkgoWVsxXSlcXG9wbHVzIEgoWSdbMV0pIl0sWzAsNSwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxMCwiXFxzaW0iXSxbNiwxMSwiXFxzaW0iXSxbNywxMiwiXFxzaW0iXSxbOCwxMywiXFxzaW0iXSxbOSwxNCwiXFxzaW0iXSxbNCw5LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDgsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsNywiKHIscicpXyoiXSxbMSw2LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs4LDldLFsxMywxNF0sWzcsOF0sWzEyLDEzXSxbNiw3XSxbMTEsMTJdLFs1LDZdLFsxMCwxMV1d
+    %     {H(X \oplus X')} & {H(Y \oplus Y')} & {H(Q)} & {H((X\oplus X')[1])} & {H((Y\oplus Y')[1])} \\
+    %     {H(X \oplus X')} & {H(Y \oplus Y')} & {H(Z \oplus Z')} & {H((X\oplus X')[1])} & {H((Y\oplus Y')[1])} \\
+    %     {H(X) \oplus H(X')} & {H(Y) \oplus H(Y')} & {H(Z) \oplus H(Z')} & {H(X[1])\oplus H(X'[1])} & {H(Y[1])\oplus H(Y'[1])}
+    %     \arrow[from=1-1, to=1-2]
+    %     \arrow[equals, from=1-1, to=2-1]
+    %     \arrow[from=1-2, to=1-3]
+    %     \arrow[equals, from=1-2, to=2-2]
+    %     \arrow[from=1-3, to=1-4]
+    %     \arrow["{(r,r')_*}", from=1-3, to=2-3]
+    %     \arrow[from=1-4, to=1-5]
+    %     \arrow[equals, from=1-4, to=2-4]
+    %     \arrow[equals, from=1-5, to=2-5]
+    %     \arrow[from=2-1, to=2-2]
+    %     \arrow["\sim", from=2-1, to=3-1]
+    %     \arrow[from=2-2, to=2-3]
+    %     \arrow["\sim", from=2-2, to=3-2]
+    %     \arrow[from=2-3, to=2-4]
+    %     \arrow["\sim", from=2-3, to=3-3]
+    %     \arrow[from=2-4, to=2-5]
+    %     \arrow["\sim", from=2-4, to=3-4]
+    %     \arrow["\sim", from=2-5, to=3-5]
+    %     \arrow[from=3-1, to=3-2]
+    %     \arrow[from=3-2, to=3-3]
+    %     \arrow[from=3-3, to=3-4]
+    %     \arrow[from=3-4, to=3-5]
+    % \end{tikzcd}\]
+
+    % %  which fit into diagrams
+    % \begin{center}
+    %     \begin{tabular}{l c r}
+    %         \begin{tikzcd}[column sep = 1.5em, row sep = 2.5em]
+    %             % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzAsMSwiWSJdLFswLDIsIloiXSxbMCwzLCJYWzFdIl0sWzEsMCwiWCciXSxbMSwxLCJZJyJdLFsxLDIsIlonIl0sWzEsMywiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+    %             X \oplus X' & {X} \\
+    %             Y \oplus Y' & {Y} \\
+    %             W & {Z} \\
+    %             {(X \oplus X')[1]} & {X[1]}
+    %             \arrow["p", from=1-1, to=1-2]
+    %             \arrow["f \oplus f'"', from=1-1, to=2-1]
+    %             \arrow["f", from=1-2, to=2-2]
+    %             \arrow["q", from=2-1, to=2-2]
+    %             \arrow[from=2-1, to=3-1]
+    %             \arrow[from=2-2, to=3-2]
+    %             \arrow["r", dashed, from=3-1, to=3-2]
+    %             \arrow[from=3-1, to=4-1]
+    %             \arrow[from=3-2, to=4-2]
+    %             \arrow["{}", from=4-1, to=4-2]
+    %         \end{tikzcd}
+    %         & \quad \text{and} \quad &
+    %         \begin{tikzcd}[column sep = 1.5em, row sep = 2.5em]
+    %             % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzAsMSwiWSJdLFswLDIsIloiXSxbMCwzLCJYWzFdIl0sWzEsMCwiWCciXSxbMSwxLCJZJyJdLFsxLDIsIlonIl0sWzEsMywiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+    %             X \oplus X' & {X'} \\
+    %             Y \oplus Y' & {Y'} \\
+    %             W & {Z'} \\
+    %             {(X \oplus X')[1]} & {X'[1].}
+    %             \arrow["p'", from=1-1, to=1-2]
+    %             \arrow["f \oplus f'"', from=1-1, to=2-1]
+    %             \arrow["f'", from=1-2, to=2-2]
+    %             \arrow["q'", from=2-1, to=2-2]
+    %             \arrow[from=2-1, to=3-1]
+    %             \arrow[from=2-2, to=3-2]
+    %             \arrow["r'", dashed, from=3-1, to=3-2]
+    %             \arrow[from=3-1, to=4-1]
+    %             \arrow[from=3-2, to=4-2]
+    %             \arrow["{}", from=4-1, to=4-2]
+    %         \end{tikzcd}
+    %     \end{tabular}
+    % \end{center}
+
+
+    % $p_i \colon X_0 \oplus X_1 \to X_i$ and $q_i \colon Y_0 \oplus Y_1 \to Y_i$ 
 \end{proof}
 
 \begin{lemma}
     \label{split distinguished triangles}
     Let $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarrow{h} X[1]$ be a distinguished triangle in a triangulated category $\D$ and assume $h = 0$. Then there exists an isomorphism $Y \iso X \oplus Z$, for which the next diagram commutes.
-    \[
+    \begin{equation}
+        \label{eq: split d.t.}
         \begin{tikzcd}[column sep = normal, row sep = 2.5em]
             % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
             X & X \oplus Z & Z & {X[1]} \\
@@ -486,12 +649,17 @@ and apply functor $H$ over it.
             \arrow["g", from=2-2, to=2-3]
             \arrow["0", from=2-3, to=2-4]
         \end{tikzcd}
-        \]
+    \end{equation}
     % Let $\D$ be a triangulated category and assume morphism $h$ in \eqref{eq: basic distinguished triangle} is $0$. 
 \end{lemma}
 
 \begin{proof}
-    
+    First, the triangle $X \xrightarrow{i_X} X \oplus Z \xrightarrow{p_Z} Z \xrightarrow{0} X[1]$ is distinguished by Lemma \ref{direct sum of d.t. is d.t.}, because it is easily seen to be isomorphic to the direct sum of distinguished triangles $X \to X \to 0 \to X[1]$ and $0 \to Z \to Z \to 0[1]$. By axiom \ref{TR3}, there exists a morphism $X \oplus Z \to Y$ for which diagram \eqref{eq: split d.t.} commutes. A similar use of the cohomological functor $\Hom_\D(W, -)\colon \D \to \mod{k}$ as in the proof of Lemma \ref{direct sum of d.t. is d.t.}, arguing with the five lemma and Yoneda lemma, shows that $X \oplus Z \to Y$ is in fact an isomorphism.
+    % As per the assumption $h = 0$, the long exact sequence 
+    % \[
+    %     \cdots \to \Hom_\D(Z, X) \xrightarrow{f_*} \Hom_\D(Z, Y) \xrightarrow{g_*} \Hom_\D(Z, Z) \xrightarrow{0} \Hom_\D(X[1], Z) \to \cdots
+    % \]   
+    % implies that $g_*$ is surjective. This means that there exists a morphism $s \colon Z \to Y$, such that $g\circ s = \id{Z}$. The newly obtained morphism $s$ now alloThen $\langle f, s \rangle i_X = f$
 \end{proof}
 
 The following are all specialized results characterizing, when a triangulated functor is an equivalence. 
@@ -616,6 +784,7 @@ They will be used in a fundamental way in the proof of the Derived Torelli theor
 \end{proof}
 
 \begin{proposition}
+    \label{condition for functor to be an equivalence}
     Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ having both left and right adjoints $G \dashv F \dashv H$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence if and only if for all objects $Y$ in $\D'$ the condition $H(Y) \iso 0$ implies $G(Y) \iso 0$. 
 \end{proposition}
 
@@ -648,14 +817,15 @@ They will be used in a fundamental way in the proof of the Derived Torelli theor
     Once again considering the image of the distinguished triangle \eqref{eq: distinguished triangle of counit} via the functor $H$, we have already established that $H(Z) \iso 0$. The latter implies $Z \iso 0$ and finally, by Lemma \ref{f iso iff cone trivial}, $\varepsilon_Y$ is an isomorphism.
 \end{proof}
 
-\begin{corollary}
-    \label{condition for functor to be an equivalence}
-    Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ with $G \colon \D' \to \D$ simultaneously being its left and right adjoint $G \dashv F \dashv G$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence.
-\end{corollary}
+% \begin{corollary}
+%     \label{condition for functor to be an equivalence}
+%     Let $F \colon \D \to \D'$ be a fully faithful triangulated functor between triangulated categories $\D$ and $\D'$ with $G \colon \D' \to \D$ simultaneously being its left and right adjoint $G \dashv F \dashv G$. Further assume $\D$ has objects not isomorphic to $0$ and that $\D'$ is indecomposable. Then $F$ is an equivalence.
+% \end{corollary}
 
 For the last part of this section let $k$ denote a field.
 
 \begin{definition}
+    \label{Definiton of Serre functor}
     Let $\D$ be a triangulated category over $k$ with $\Hom_\D(X, Y)$ being a finite dimensional $k$-vector space for all objects $X$ and $Y$ of $\D$. A \emph{Serre functor} is a triangulated autoequivalence $S \colon \D \to \D$ of $\D$, such that for all objects $X$ and $Y$ there exists an isomorphism of $k$-vector spaces
     \[
         \sigma_{X,Y} \colon \Hom_\D(X, Y) \xrightarrow{ \ \sim \ } \Hom_\D(Y, S(X))^*,
@@ -664,6 +834,40 @@ For the last part of this section let $k$ denote a field.
     % and the collection of all such isomorphisms, $(\eta_{X,Y})_{X,Y}$ forms a natural in both arguments isomorphism of functors $\D^\op \times \D \to \mod{k}$.
     % forming an isomorphism natural in both arguments $X$ and $Y$.
 \end{definition}
+
+\begin{example}
+    In Section \ref{Subsection: Derived category of coherent sheaves} we will see that $\derb{X}$ -- the bounded derived category of coherent sheaves on a smooth and projective variety $X$ over $k$ -- comes equipped with a Serre functor owing to the fact that such varieties enjoy Serre duality. 
+\end{example}
+
+Whenever a triangulated category $\D$ over a filed $k$ is equipped with a Serre functor, we will tacitly assume all the Homs $\Hom_\D(X, Y)$ are finite dimensional $k$-vector spaces for any pair of objects $X$ and $Y$ of $\D$.
+
+\begin{proposition}
+    \label{Serre functors commute with equivalences}
+    Let $F \colon \D \to \D'$ be an equivalence of triangulated categories $\D$ and $\D'$ endowed with Serre functors $S_\D$ and $S_{\D'}$, respectively. Then there exists a natural isomorphism of functors 
+    \[
+        F \circ S_\D \natiso S_{\D'} \circ F.
+    \]
+\end{proposition}
+
+\begin{proof}
+    We will show that both $\id{\D}$ and $S_\D\inv \circ F\inv \circ S_{\D'} \circ F$ are left adjoint to the identity functor $\id{\D}$, making them naturally isomorphic by uniqueness of adjoints. For any two objects $X$, $Y$ of $\D$ we have a chain of natural isomorphisms in both $X$ and $Y$.
+    \begin{align*}
+        \Hom_\D(S\inv_\D(F\inv(S_{\D'}(F(X)))), Y) 
+        & \natiso \Hom_\D(F\inv(S_{\D'}(F(X))), S_\D(Y)) \\
+        & \natiso \Hom_\D(Y, F\inv(S_{\D'}(F(X))))^* \\
+        & \natiso \Hom_{\D'}(F(Y), S_{\D'}(F(X)))^* \\
+        & \natiso \Hom_{\D'}(F(X), (F(Y))) \\
+        & \natiso \Hom_{\D}(X, Y). \qedhere
+    \end{align*}
+    % \begin{align*}
+    %     \Hom_{\D'}(F(X), F(S_\D(Y))) &\natiso 
+    %     \Hom_{\D}(X, S_{\D'}(Y)) \\
+    %     & \natiso \Hom_{\D}(Y, X)^* \\
+    %     & \natiso \Hom_{\D'}(F(Y), F(X))^* \\
+    %     & \natiso \Hom_{\D'}(F(X), S_{\D'}(F(Y)))^{**} \\
+    %     & \natiso \Hom_{\D'}(F(X), S_{\D'}(F(Y))). \qedhere
+    % \end{align*} 
+\end{proof}
 
 \begin{proposition}
     \label{Serre functors and adjoints}
@@ -691,6 +895,7 @@ For the last part of this section let $k$ denote a field.
 
 
 \subsection{Categories of complexes}
+\label{Subsection: Categories of complexes}
 In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
 
 As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-indexed sequences $A^\bullet = (A^i)_{i \in \Z}$ of objects $A^i$ of $\A$. A \emph{morphism $f \colon A^\bullet \to B^\bullet$ of degree $k \in \Z$} is a sequence $(f^i \colon A^i \to B^{i+k})_{i \in \Z}$ of morphisms of $\A$. The set of all degree $k$ morphisms will be denoted with $\Hom^k_\A(A^\bullet, B^\bullet)$. Bundling up all this data, we obtain the $\Z$-\emph{graded category of $\A$} denoted by $\A^\Z$, consisting of graded objects of $\A$ and morphisms of all integer degrees, thus

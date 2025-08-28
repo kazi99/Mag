@@ -4,12 +4,12 @@
 The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments, although specialized to the homotopy category $\kcat{\A}$ and the class of quasi-isomorphisms, do not differ tremendously from the general theory of localization of categories. 
 % Our arguments will try to be minimal and will not rely on the already established theory of localization of categories. Our approach might at times seem less elegant, but we include the exposition for completness nonetheless.
 A more comprehensive and formal treatment of this topic is laid out in \cite[Chapters 7, 10, 13]{kashiwara2006categories} or \cite{milicic-dercat}.
-The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. To close the chapter, we prove a correspondence between the hom-sets of $\derplus{\A}$ and certain $\Ext$-modules.
+The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. To close the chapter, we prove a correspondence between the Homs of $\derplus{\A}$ and certain $\Ext$-modules.
 % more general framework realtes back to the classical higher derived functors. 
 
 \subsection{Derived categories of abelian categories}
 
-In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in section \ref{Derived categories in geometry}, involves the following. Instead of intrinsically \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
+In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in Section \ref{Subsection: Derived functors in geometry}, involves the following. Instead of intrinsically \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
 studying the sheaf $\F$, we represent it with a so called \emph{resolution}, which consists of a complex of sheaves $F^\bullet$, built up from sheaves $F^i$, for $i \in \Z$, belonging to some class of sheaves, which is well behaved under cohomology, and a quasi-isomorphism of the form $F^\bullet \to \F$ or $\F \to F^\bullet$. 
 % After observing that using two different resolutions of $\F$ 
 After noting that the sheaf $\F$ can be seen as a complex concentrated in degree $0$ and observing that replacing a resolution of $\F$ with another one
@@ -76,7 +76,7 @@ Taking a step back, we would like to modify the homotopy category $\kcat{\cohere
     We recognize this definition as a special case of localization of categories \cite[\S 7, Definition 7.1.1.]{kashiwara2006categories} or \cite[\S III.2, Definition 1]{gelfand2002methods}. In particular it defines $\dercat{\A}$ to be the \emph{localization of a triangulated category} $\kcat{\A}$ by the family of all quasi-isomorphisms in $\kcat{\A}$.
 \end{remark}
 
-A naive way of constructing $\dercat{\A}$ out of $\kcat{\A}$ would be to artificially add the inverses to all the quasi-isomorphisms in $\kcat{\A}$ and then impose the correct collection of relations on the newly constructed class of morphisms. As this can quickly lead us to some set theoretic problems, we will construct a specific model, which achieves this, instead. Our construction is a priori not going to result in a locally small\footnote{A category $\mathcal C$ is called \emph{locally small} if for all objects $X$ and $Y$ of $\mathcal C$ the hom-sets $\Hom_\mathcal{C}(X, Y)$ are actual sets.} category, but as we shall soon see in practice all the categories we will be concerned with will be locally small. 
+A naive way of constructing $\dercat{\A}$ out of $\kcat{\A}$ would be to artificially add the inverses to all the quasi-isomorphisms in $\kcat{\A}$ and then impose the correct collection of relations on the newly constructed class of morphisms. As this can quickly lead us to some set theoretic problems, we will construct a specific model, which achieves this, instead. Our construction is a priori not going to result in a locally small\footnote{A category $\mathcal C$ is called \emph{locally small} if for all objects $X$ and $Y$ of $\mathcal C$ the Homs $\Hom_\mathcal{C}(X, Y)$ are actual sets.} category, but as we shall soon see in practice all the categories we will be concerned with will be locally small. 
 % still going to reach outside the scope of sets, but as we will se in practise 
 % this can quickly become very tricky, we will construct a specific model instead.
 % This will be achieved by constructing a specific model. 
@@ -113,7 +113,10 @@ Equipped with the preceding lemma, we are now in a position to construct the der
 \]
 \ie the class of objects of $\kcat{\A}$ or $\com(\A)$, and a class of morphisms, which is quite intricate to define. 
 % Its class of objects is formed by chain complexes in $\A$ \ie equals the class of objects of $\kcat{\A}$ and $\com(\A)$, but the definition of morphisms in this case is a bit more intricate. 
-For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not necessarily a set, but a class, so $\dercat{\A}$, defined in this section, is not a category in the usual sense. We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.} $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ in the following way.
+For fixed complexes $A^\bullet$ and $B^\bullet$ we define the hom-set\footnote{What will be defined here is a priori not necessarily a set, but a class, so $\dercat{\A}$, defined in this section, is not necessarily a locally small category.
+% category in the usual sense. 
+% We will however prove that in specific cases some variants of the derived category, especially concrete ones used later on, will from categories in the usual sense.
+} $\Hom_{\dercat{\A}}(A^\bullet, B^\bullet)$ in the following way.
 
 \vspace{0.3 cm}
 
@@ -177,14 +180,14 @@ Note that since $C^\bullet \to C_0^\bullet \to A^\bullet$ is a quasi-isomorphism
 	\arrow["f_1 \circ g", from=1-3, to=2-5]
     \end{tikzcd}
 \end{equation*}
-which is also equivalent to the two roofs we started with $(s_0, f_0)$ and $(s_1, f_1)$. 
+which is also equivalent to the two roofs we started with, $(s_0, f_0)$ and $(s_1, f_1)$. 
 
 \begin{lemma}
     The equivalence of left roofs on $A^\bullet$ and $B^\bullet$ is an equivalence relation.
 \end{lemma}
 
 \begin{proof}
-    The relation is clearly reflexive. We take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose left roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and left roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the diagrams
+    The relation is clearly reflexive -- we take both $u$ and $g$ to be $\id{C^\bullet}$. By the note above it is also symmetric, for $g$ is a quasi-isomorphism. It remains to show transitivity. Suppose left roofs $A^\bullet \longleftarrow C_0^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ are equivalent and left roofs $A^\bullet \longleftarrow C_1^\bullet \longrightarrow B^\bullet$ and $A^\bullet \longleftarrow C_2^\bullet \longrightarrow B^\bullet$ are equivalent. This is witnessed by the diagrams
     \begin{center}
         \begin{tabular}{l c r}
             \begin{tikzcd}[column sep = small, row sep = small]

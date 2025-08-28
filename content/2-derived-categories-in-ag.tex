@@ -1,5 +1,12 @@
 \section{Derived categories in geometry}
-\label{Derived categories in geometry}
+\label{Chapter: Derived categories in geometry}
+
+This chapter will be devoted to applying results of Chapter \ref{Chapter: Derived categories} to the abelian category $\coherent{X}$ of coherent sheaves on $X$. 
+
+We will first define the bounded derived category of coherent sheaves of a scheme over $k$, discuss how this category fits into other 
+
+The second section will cover the construction of various different derived functors having their origin in geometry. These will include the global sections functor, the push-forward along a morphism, the internal Hom-functor and Ext-functors, the tensor product and Tor-functors, and the pull-back along a morphism. 
+We will conclude this chapter by providing a collection of results showcasing relationships that hold between the derived functors of the previous section. These will serve as convenient computational tools especially in Chapter \ref{Chapter: Fourier-Mukai transforms} on Fourier-Mukai transforms.
 
 \subsection{Derived category of coherent sheaves}
 \label{Subsection: Derived category of coherent sheaves}
@@ -16,6 +23,10 @@ but we will provide precise references when required. Certain results will serve
 \noindent
 \textsl{Notation.}
 Copying Huybrechts \cite{huybrechts2006fouriermukai}, we will denote by $\mathcal H^i(\F^\bullet)$ the $i$-th cohomology of a complex $\F^\bullet$, not to mistake it for sheaf cohomology $\cohom{i}{X}{\F}$ of $X$ with coefficients in a sheaf $\F$.
+
+\vspace{0.3cm}
+
+As observed in Chapter \ref{Chapter: Derived categories} the construction of derived functors relied heavily on the existence of some special class of objects in the domain category. The most special of them all being the class of injective objects. As the category of coherent sheaves on $X$ often does not contain enough injectives\footnote{Intuitively this statement may be mirrored with the analogous statement that injective $A$-modules almost never appear to be finitely generated.}, we are forced to expand our scope. Luckily, the contrary is true, if we restrict ourself to noetherian schemes and replace coherent sheaves with quasi-coherent ones. 
 
 \begin{proposition}
     \label{qcoh of noetherian scheme contains enough injectives}
@@ -35,6 +46,10 @@ Copying Huybrechts \cite{huybrechts2006fouriermukai}, we will denote by $\mathca
     \]
     where $\mathsf{D}^b_{\mathsf{coh}}(\quasicoh{X})$ is the full triangulated subcategory of $\derb{\quasicoh{X}}$, spanned on bounded complexes of quasi-coherent shaves on $X$ with coherent cohomology.
 \end{proposition}
+
+\begin{proof}
+    
+\end{proof}
 
 \begin{definition}
     \label{Definition of support}
@@ -111,9 +126,9 @@ Copying Huybrechts \cite{huybrechts2006fouriermukai}, we will denote by $\mathca
     For any two bounded complexes $\E^\bullet$ and $\F^\bullet$ of $\derb{X}$ the hom-set $\Hom_{\derb{X}}(\E^\bullet, \F^\bullet)$ is a finite dimensional $k$-vector space. 
 \end{proposition}
 
-The above proposition heavily relies on a finiteness result of Serre.
+The above proposition relies on a finiteness result of Serre found in \cite[\S III, Theorem 5.2]{Hartshorne1977}. As we will actually only need a very special case of this result, we also include a separate reference to the special case \cite[\S II, Theorem 5.19]{Hartshorne1977}.
 
-\begin{theorem}[\text{\cite[\S III, Theorem 5.2]{Hartshorne1977}}]
+\begin{theorem}
     \label{Serre finitness}
     Let $X$ be a projective variety over $k$ and $\F$ a coherent sheaf on $X$. Then $\cohom{i}{X}{\F}$ are finite dimensional $k$-vector spaces for all $i \in \Z$.
 \end{theorem}
@@ -122,6 +137,7 @@ The above proposition heavily relies on a finiteness result of Serre.
 
 \begin{proof}[Proof of Proposition \ref{Db(X) has finite dimensional homs}]
     % We will show that $\Ext^i_{\struct{X}}(\E^\bullet, \F^\bullet)$ is finite dimensional using spectral sequences \eqref{eq: Spectral sequence Ext 2} and \eqref{eq: Spectral sequence Ext 1}.
+    % For this proof we will momentarily borrow 
     Since $\derb{X} \to \derb{\quasicoh{X}}$ is fully faithful and $\quasicoh{X}$ contains enough injectives, Proposition \ref{Homs in derived category}, tells us that
     \[
         \Hom_{\derb{X}}(\E^\bullet, \F^\bullet) \iso \Ext^0_{\struct{X}}(\E^\bullet, \F^\bullet) = H^0(\Hom^\bullet_{\struct{X}}(\E^\bullet, \F^\bullet)).
@@ -135,17 +151,34 @@ Suppose $X$ is a variety over an algebraically closed field $k$ and let $x \in X
     k(x) := x_* \struct{\spec{k}}.
 \]
 
+Recall, that for a smooth and projective scheme $X$ over $k$ of dimension $n$, Serre duality \cite[\S III, Theorem 7.6]{Hartshorne1977} states that for any coherent sheaf $\F$ on $X$ there is an isomorphism
+\[
+    \Ext_{\struct{X}}^i(\F, \omega_X) \iso \cohom{n-i}{X}{\F}^*.
+\]
+Generalizing Serre's duality theorem for smooth projective schemes over $k$ to the context of complexes leads us to define Serre functors. This also clarifies why we called such functors Serre functors already in Section \ref{Subsection: Triangulated categories}, where no geometry was present. 
+
 \begin{definition}
     \label{Serre functor on Db(X)}
     For a smooth and projective variety $X$ over $k$ define the \emph{Serre functor} $S_X \colon \derb{X} \to \derb{X}$ to be the composition
     \[
-        S_X = (-) \otimes_\struct{X} \omega_X[\dim X]
+        S_X = (-) \otimes_\struct{X} \omega_X[\dim X].
     \]
 \end{definition}
 
+\begin{remark}
+    This remark serves as a quick justification, why $S_X$ may be defined in this way. The canonical bundle $\omega_X$ is a line bundle, thus in particular flat, so the additive functor $(-) \otimes_\struct{X} \omega_X \colon \coherent{X} \to \coherent{X}$ is exact. The induced homotopy functor $\kb{\coherent{X}} \to \kb{\coherent{X}}$ then satisfies the conditions of Lemma \ref{F preserves qis iff preserves acyclic} and therefore induces a triangulated functor
+    \[
+        (-) \otimes_\struct{X} \omega_X \colon \derb{X} \to \derb{X}
+    \]
+    by Proposition \ref{Exact functor induces a derived functor}.
+    The Serre functor $S_X$ is then obtained by composing the latter functor with the translation functor $\dim X$ times. 
+    
+    % formally induced by the triangulated functor on the homotopy category $\kb{X}$ given by tensoring with the canonical bundle $\omega_X$. 
+\end{remark}
+
 \begin{theorem}[Serre duality for derived categories]
     \label{Serre duality for derived cats}
-    Let $X$ be a smooth projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. Then there is an isomorphism
+    Let $X$ be a smooth projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. The functor $S_X$ is a Serre functor in the sense of Definition \ref{} \ie there is an isomorphism
     \[
         \Hom_{\derb{X}}(\F^\bullet, \E^\bullet) \iso \Hom_{\derb{X}}(\E^\bullet, S_X(\F^\bullet))^*,
     \]
@@ -155,6 +188,8 @@ Suppose $X$ is a variety over an algebraically closed field $k$ and let $x \in X
 \begin{proof}
     This will follow as a corollary of Grothendieck-Verdier duality \ref{}.
 \end{proof}
+
+We will use Serre duality for example to help us prove 
 
 The following proposition can be found in \cite[\S 3, Proposition 3.17]{huybrechts2006fouriermukai} or in Bridgeland's paper \cite[Example 2.2]{bridgeland2019equivalencestriangulatedcategoriesfouriermukai}. It is proven by a very neat application of the spectral sequence \eqref{eq: Spectral sequence derived hom 1}.
 
@@ -189,7 +224,7 @@ The following proposition can be found in \cite[\S 3, Proposition 3.17]{huybrech
         \arrow[from=1-1, to=3-2]
         \arrow[from=3-2, to=5-3]
     \end{tikzcd}\]
-    The highlighted arrows are the two differentials mapping into and out of $E^{0,-m}_2$, meaning that $E^{0,-m}_3$ is also non-trivial. The same may be deduced for the $(0,-m)$-th therm of each page, allowing us to conclude that $E^{0,-m}_\infty$ is non-trivial. The filtration for $E^{-m} = \Hom_{\derb{X}}(\F^\bullet, k(x)[-m])$ thus contains a non-trivial intermediary quotient, making it itself non-trivial as well and proving our claim. 
+    The highlighted arrows are the two trivial differentials, mapping into and out of $E^{0,-m}_2$, meaning that $E^{0,-m}_3$ is isomorphic to $E^{0,-m}_2$, thus also non-trivial. The same may be deduced for the $(0,-m)$-th therm of each page, allowing us to conclude that $E^{0,-m}_\infty$ is non-trivial. The filtration for $E^{-m} = \Hom_{\derb{X}}(\F^\bullet, k(x)[-m])$ thus contains a non-trivial intermediary quotient, making it itself non-trivial as well and proving our claim. 
 \end{proof}
 
 % \info{Grothendieck's vanishing results and Serre's finitness}
@@ -197,6 +232,7 @@ The following proposition can be found in \cite[\S 3, Proposition 3.17]{huybrech
 \newpage
 
 \subsection{Derived functors in algebraic geometry}
+\label{Subsection: Derived functors in geometry}
 
 In this subsection we will derive some functors occuring in algebraic geometry and later state some important facts relating them with each other. To derive these functors we will either deal with injective sheaves and access the realm of quasi-coherent sheaves, following the first part of section \ref{}, or introduce certain special classes of coherent sheaves depending on the functor we wish to derive and taking up the role of adapted classes, mirroring what was done in subsection \ref{}.
 
@@ -371,7 +407,11 @@ By Remark \ref{}
     \rderived{}{\localhom[X]^\bullet(-, -)} \colon \derb{X}^\op \times \derb{X} \to \derb{X}
 \]
 
-\subsubsection{Tensor product }
+\subsubsection{Tensor product}
+
+\subsubsection{Pull-back $f^*$}
+
+Cover flatness.
 
 \subsection{Interactions between derived functors}
 \label{Subsection: Interactions between derived functors}
@@ -402,3 +442,13 @@ where $\omega_f = \omega_X \otimes f^*\omega_Y^*$ and $\dim(f) = \dim(Y) - \dim(
 \begin{remark}
     Serre duality in the form of Theorem \ref{Serre duality for derived cats} is seen to follow from Grothendieck-Verdier duality by the next argument.
 \end{remark}
+
+\begin{proposition}
+    \label{flat base change formula}
+    Let
+\end{proposition}
+
+\begin{proposition}
+    \label{projection formula}
+    Let $f \colon X \to Y$ be 
+\end{proposition}

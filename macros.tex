@@ -141,6 +141,8 @@
 \newcommand{\fm}[1]{\Phi_{#1}}
 \newcommand{\fmkt}[1]{\phi_{#1}}
 \newcommand{\fmcoh}[1]{f^{#1}}
+\newcommand{\ladj}[1]{#1_\mathrm{L}}
+\newcommand{\radj}[1]{#1_\mathrm{R}}
 
 % Cohomology
 \newcommand{\td}{\operatorname{td}}
@@ -196,3 +198,16 @@
 
 % Quotient
 \newcommand{\bigslant}[2]{{\raisebox{.2em}{#1}\left/\raisebox{-.2em}{#2}\right.}}
+
+
+% Changes title font
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\ttfamily\Large}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\ttfamily\large}{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\ttfamily\normalsize}{\thesubsubsection}{1em}{}
