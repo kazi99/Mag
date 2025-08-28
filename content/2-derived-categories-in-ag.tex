@@ -51,6 +51,10 @@ As observed in Chapter \ref{Chapter: Derived categories} the construction of der
     
 \end{proof}
 
+\begin{proposition}
+    Let $X$ be a smooth variety over $k$. Then  $\F^\bullet$ of $\derb{X}$ 
+\end{proposition}
+
 \begin{definition}
     \label{Definition of support}
     Let $X$ be a scheme. The \emph{support} of an $\struct{X}$-module $\F$ is defined to be the set
@@ -155,7 +159,7 @@ Recall, that for a smooth and projective scheme $X$ over $k$ of dimension $n$, S
 \[
     \Ext_{\struct{X}}^i(\F, \omega_X) \iso \cohom{n-i}{X}{\F}^*.
 \]
-Generalizing Serre's duality theorem for smooth projective schemes over $k$ to the context of complexes leads us to define Serre functors. This also clarifies why we called such functors Serre functors already in Section \ref{Subsection: Triangulated categories}, where no geometry was present. 
+Generalizing Serre's duality theorem for smooth projective schemes over $k$ to the context of complexes leads us to define Serre functors. This also clarifies why we called such functors \emph{Serre functors} already in Section \ref{Subsection: Triangulated categories}, where no geometry was present. 
 
 \begin{definition}
     \label{Serre functor on Db(X)}
@@ -224,12 +228,10 @@ The following proposition can be found in \cite[\S 3, Proposition 3.17]{huybrech
         \arrow[from=1-1, to=3-2]
         \arrow[from=3-2, to=5-3]
     \end{tikzcd}\]
-    The highlighted arrows are the two trivial differentials, mapping into and out of $E^{0,-m}_2$, meaning that $E^{0,-m}_3$ is isomorphic to $E^{0,-m}_2$, thus also non-trivial. The same may be deduced for the $(0,-m)$-th therm of each page, allowing us to conclude that $E^{0,-m}_\infty$ is non-trivial. The filtration for $E^{-m} = \Hom_{\derb{X}}(\F^\bullet, k(x)[-m])$ thus contains a non-trivial intermediary quotient, making it itself non-trivial as well and proving our claim. 
+    The highlighted arrows are the two trivial differentials, mapping into and out of $E^{0,-m}_2$, meaning that $E^{0,-m}_3$ is isomorphic to $E^{0,-m}_2$, thus also non-trivial. The same may be deduced for the $(0,-m)$-th therm of each page, allowing us to conclude that $E^{0,-m}_\infty$ is non-trivial. The filtration for $E^{-m} = \Hom_{\derb{X}}(\F^\bullet, k(x)[-m])$ therefore contains a non-trivial intermediary quotient, making it itself non-trivial and proving our claim. 
 \end{proof}
 
 % \info{Grothendieck's vanishing results and Serre's finitness}
-
-\newpage
 
 \subsection{Derived functors in algebraic geometry}
 \label{Subsection: Derived functors in geometry}
@@ -263,20 +265,20 @@ for $i \in \Z$. Applied to a complex of sheaves $\F^\bullet$ the resulting modul
 % \]
 Plugging in just a single coherent sheaf $\F$, we get the familiar \emph{sheaf cohomology} of $X$ with respect to a sheaf $\F$, denoted with $\cohom{i}{X}{\F}$. 
 
-\begin{remark}
+\begin{example}
     \label{LES in cohomology of SES of coherent sheaves}
-    As a nice application of the abstract machinery of Chapter \ref{Chapter: Derived categories} we now get the famous long exact sequence in cohomology 
+    As a nice application of the abstract machinery of Chapter \ref{Chapter: Derived categories} we obtain the famous long exact sequence in cohomology 
     \begin{multline}
         \label{eq: LES in cohomology of SES of coherent sheaves}
         0 \to \cohom{0}{X}{\E} \to \cohom{0}{X}{\F} \to \cohom{0}{X}{\G} \to \cohom{1}{X}{\E} \to \cohom{1}{X}{\F} \to \cdots \\
         \cdots \to \cohom{i}{X}{\E} \to \cohom{i}{X}{\F} \to \cohom{i}{X}{\G} \to \cohom{i+1}{X}{\E} \to \cdots 
     \end{multline}
-    associated to a short exact sequence $0 \to \E \to \F \to \G \to 0$ of coherent sheaves as an intermediate corollary of Proposition \ref{LES for right derived functor}.
-\end{remark}
+    associated to a short exact sequence of coherent sheaves $0 \to \E \to \F \to \G \to 0$. This is as an intermediate corollary of Proposition \ref{LES for right derived functor}.
+\end{example}
 
-The above definition of $\rderived{}{\Gamma}$ will suffice for most cases, but we can go slightly further, utilizing a vanishing result of Grothendieck.
+The above definition of $\rderived{}{\Gamma}$ will suffice for most cases, but we can go slightly further, utilizing a vanishing result of Grothendieck, to be found in \cite[\S III, Theorem 2.7]{Hartshorne1977}.
 
-\begin{theorem}[\text{\cite[\S III, Theorem 2.7]{Hartshorne1977}}]
+\begin{theorem}
     \label{Grothendieck vanishig}
     Let $\F$ be a quasi-coherent sheaf on a noetherian scheme $X$ of dimension $n$. Then $H^i(X, \F) = 0$ for all $i > n$.
 \end{theorem}
@@ -292,11 +294,11 @@ A generalization of the global sections functor is the \emph{push-forward} or th
 \[
     f_* \colon \mod{\struct{X}} \to \mod{\struct{Y}}
 \]
-is defined on objects by assigning an $\struct{X}$-module $\F$ the $\struct{Y}$-module $f_*\F$ defined on open subsets $V \subseteq Y$ to be $(f_*\F)(V) = \F(f\inv(V))$ with the obvious restriction homomorphisms. On a morphism $\alpha \colon \F \to \G$ of $\struct{X}$-modules, $f_*$ is defined to act as $(f_*\alpha)_V = \alpha_{f\inv(V)}$ for all open $V \subseteq Y$. 
+is defined on objects by assigning an $\struct{X}$-module $\F$ the $\struct{Y}$-module $f_*\F$ defined on open subsets $V \subseteq Y$ to be $(f_*\F)(V) = \F(f\inv(V))$ with the obvious restriction homomorphisms of $\F$. On a morphism $\alpha \colon \F \to \G$ of $\struct{X}$-modules, $f_*$ is defined to act as $(f_*\alpha)_V = \alpha_{f\inv(V)}$ for all open $V \subseteq Y$. 
 
 We are going to strengthen our initial assumption that our schemes are noetherian to them being of finite type over $k$ 
 % Within the class of varieties over $k$ this assumption is satisfied by definition. 
-and consider only morphisms $f \colon X \to Y$ between schemes of finite type over $k$. 
+and consider only morphisms $f \colon X \to Y$ between schemes of this kind. 
 To induce a functor between the quasi-coherent and coherent categories of $X$ and $Y$, we need to recall the following proposition first.
 
 \begin{proposition}
@@ -448,7 +450,15 @@ where $\omega_f = \omega_X \otimes f^*\omega_Y^*$ and $\dim(f) = \dim(Y) - \dim(
     Let
 \end{proposition}
 
-\begin{proposition}
+\begin{proposition}[Projection formula]
     \label{projection formula}
-    Let $f \colon X \to Y$ be 
+    Let $f \colon X \to Y$ be a proper map between projective schemes over $k$. Let $\F^\bullet$ and $\E^\bullet$ denote complexes belonging to $\derb{X}$ and $\derb{Y}$ respectively. Then there is an isomorphism of complexes in $\derb{Y}$
+    \begin{equation}
+        \label{eq: projection formula}
+        \rderived{}{f_*}(\derivedtensor{\F^\bullet}{\lderived{}{f^*\E^\bullet}}{\struct{X}}) \iso \derivedtensor{\rderived{}{f_*}\F^\bullet}{\E^\bullet}{\struct{Y}}.
+    \end{equation}
 \end{proposition}
+
+\begin{proof}
+    We first recall the underived version of the projection formula, which states that for any morphism of $f \colon X \to Y$, coherent sheaf $\F$ and locally free sheaf $\E$  
+\end{proof}

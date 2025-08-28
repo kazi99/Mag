@@ -1,4 +1,4 @@
-\section{Fourier-Mukai transforms}
+\section{Fourier--Mukai transform}
 \label{Chapter: Fourier-Mukai transforms}
 
 Let $X$ and $Y$ be smooth projective varieties over $k$ and denote the canonical projections 
@@ -7,14 +7,14 @@ Let $X$ and $Y$ be smooth projective varieties over $k$ and denote the canonical
 \]
 
 \begin{definition}
-    The \emph{Fourier-Mukai transform} associated to an object $\E$ of $\derb{X \times Y}$ is defined to be the functor
+    The \emph{Fourier--Mukai transform} associated to an object $\E$ of $\derb{X \times Y}$ is defined to be the functor
     \[
         \fm{\E} \colon \derb{X} \to \derb{Y} \qquad \fm{\E} := \rderived{}{q_*}(\derivedtensor{\E}{\lderived{}{p^*}(-)}{\struct{X \times Y}}).
     \]
     The object $\E$ is called the \emph{kernel} of $\fm{\E}$.
 \end{definition}
 
-Note that as the projection $p \colon X \times Y \to X$ is flat, the pull-back functor $p^*$ need not be derived. Many examples of known functors are seen to be of Fourier-Mukai type.
+Note that as the projection $p \colon X \times Y \to X$ is flat, the pull-back functor $p^*$ need not be derived. Many examples of known functors are seen to be of Fourier--Mukai type.
 
 \begin{example}
     \label{Identifying fm transforms}
@@ -73,11 +73,34 @@ Mukai in \cite[text]{keylist} discovered that every Fourier-Mukai transform admi
 \end{proposition}
 
 \begin{proof}
-    See \cite[\S 5, Proposition 5.9]{huybrechts2006fouriermukai}.
+    See \cite[\S 5, Proposition 5.9]{huybrechts2006fouriermukai}. This follows from a highly non-trivial fact that the derived push-forward $\rderived{}{f_*} \colon \derb{X} \to \derb{Y}$ along a proper map $f \colon X \to Y$ admits a \emph{right} adjoint $f^! = \lderived{}{f^*}(-) \otimes_\struct{X} \omega_f[\dim f]$, where $\omega_f = \omega_X \otimes_\struct{X} f^*\omega_Y^*$ and $\dim f = \dim Y - \dim X$. Since $X$ and $Y$ are projective the projections   
 \end{proof}
 
 \begin{remark}
-    
+    \label{another description of adjoints of FM}
+    Using Serre functors we are able to write down an alternative description of left and right adjoints of $\fm{\E}$, namely
+    \begin{equation}
+        \label{eq: fm adjoints with serre functors}
+        \fm{\ladj{\E}} = \fm{\E^\vee} \circ S_Y \quad \text{and} \quad 
+        \fm{\radj{\E}} = S_X \circ \fm{\E^\vee}.
+    \end{equation}
+    Indeed, a straight forward computation, using the fact that pull-backs commute with tensor products, shows
+    \begin{align*}
+        \fm{\ladj{E}}(\F) &= p_*(\ladj{\E} \otimes_{\struct{X \times Y}} q^*\F) \\
+        &= p_*(\E^\vee \otimes_{\struct{X \times Y}} q^*\omega_Y[\dim Y] \otimes_{\struct{X \times Y}} q^*\F) \\
+        &\iso p_*(\E^\vee \otimes_{\struct{X \times Y}} q^*(\F \otimes_{\struct{Y}} \omega_Y[\dim Y])) \\
+        &= \fm{\E^\vee}(S_Y(\F))
+    \end{align*}
+    for any $\F$ of $\derb{Y}$. For the other, using the projection formula \ref{projection formula}, we have
+    \begin{align*}
+        \fm{\radj{E}}(\F) &= p_*(\radj{\E} \otimes_{\struct{X \times Y}} q^*\F) \\
+        &= p_*(\E^\vee \otimes_{\struct{X \times Y}} p^*\omega_X[\dim X] \otimes_{\struct{Y}} q^*\F) \\
+        & \iso p_*(\E^\vee \otimes_{\struct{X \times Y}} q^*\F) \otimes_\struct{X} \omega_X[\dim X] \\
+        % &\iso p_*(\E^\vee \otimes_{\struct{X \times Y}} q^*(\F \otimes_{\struct{Y}} \omega_Y[\dim Y])) \\
+        &= S_X(\fm{\E^\vee}(\F))
+    \end{align*}
+    for any $\F$ of $\derb{X}$. The equations \eqref{eq: fm adjoints with serre functors} also agree with the more general method of Proposition \ref{Serre functors and adjoints} for obtaining a right adjoint of a functor provided that the left adjoint is known, when Serre functors are present.
+    %  in the presence of Serre functors 
 \end{remark}
 
 \begin{theorem}[\text{\cite[Theorem 2.2]{Orlov-K3}}]
@@ -92,8 +115,12 @@ Mukai in \cite[text]{keylist} discovered that every Fourier-Mukai transform admi
     \[
         \G = (\pi_{XZ})_*(\pi_{XY}^*\E \otimes \pi_{YZ}^*\F),
     \]
-    which is sometimes also called the \emph{convolution} of $\E^\bullet$ and $\F^\bullet$.
+    which is sometimes also called the \emph{convolution} of $\E^\bullet$ and $\F^\bullet$. Morphisms $\pi_{XY}$, $\pi_{YZ}$ and $\pi_{XZ}$ denote the canonical projections from $X \times Y \times Z$ to $X \times Y$, $Y \times Z$ and $X \times Z$, respectively.
 \end{proposition}
+
+\begin{proof}
+    
+\end{proof}
 
 The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem}. It is also an important statement by itself, providing evidence for why the bounded derived category of coherent sheaves is a nicely behaved invariant for smooth projective varieties. In particular it says that $\derb{-}$ detects the dimension and triviality of the canonical bundle.  
 % showing that the bounded derived categories of coherent sheaves on smooth and projective varieties over $k$ detect dimension and triviality of the canonical bundle. 
@@ -107,11 +134,11 @@ The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem
 \end{theorem}
 
 \begin{proof}
-    By Orlov's Theorem \ref{Orlov's theorem} the equivalence $\derb{X} \natiso \derb{Y}$ is witnessed by a Fourier-Mukai transform $\fm{E}$ with the kernel $E$ belonging to $\derb{X \times Y}$. Since $\fm{E}$ is an equivalence its left and right adjoints agree. As they are both given by Fourier-Mukai transforms their respective kernels $\ladj{E}$ and $\radj{E}$, introduced in Proposition \ref{Adjoints of FM transforms}, must be isomorphic in $\derb{X \times Y}$. Writing this out we see that
+    By Orlov's Theorem \ref{Orlov's theorem} the equivalence $\derb{X} \natiso \derb{Y}$ is witnessed by a Fourier-Mukai transform $\fm{\E}$ with a kernel $\E$ belonging to $\derb{X \times Y}$. Since $\fm{\E}$ is an equivalence its left and right adjoints agree. As they are both given by Fourier-Mukai transforms their respective kernels $\ladj{\E}$ and $\radj{\E}$, introduced in Proposition \ref{Adjoints of FM transforms}, must be isomorphic in $\derb{X \times Y}$. Writing this out we see that
     \[
-        E^\vee \iso E^\vee \otimes (q^*\omega_X \otimes p^*\omega_Y)[\dim Y - \dim X].
+        \E^\vee \iso \E^\vee \otimes (q^*\omega_X \otimes p^*\omega_Y)[\dim Y - \dim X].
     \]
-    As tensoring by a line bundle, namely $q^*\omega_X \otimes p^*\omega_Y$ is exact, both tensor products are underived, but more importantly, the cohomology of complexes $E^\vee$ and ${E^\vee \otimes (q^*\omega_X \otimes p^*\omega_Y)}$ agree in all degrees. Since $E$ is a bounded complex of coherent sheaves, its derived dual $E^\vee = \rderived{}{\localhom[X \times Y]^\bullet(E, \struct{X \times Y})}$ is bounded as well. Then comparing cohomology intermediately\footnote{As $\fm{E}$ is an equivalence, the kernel $E$ cannot be isomorphic to the zero object in $\derb{X \times Y}$, implying that $E^\vee$ has non-trivial cohomology at least in some degrees.} gives 
+    As tensoring by a line bundle, namely $q^*\omega_X \otimes p^*\omega_Y$ is exact, both tensor products are underived, but more importantly, the cohomology of complexes $\E^\vee$ and ${\E^\vee \otimes (q^*\omega_X \otimes p^*\omega_Y)}$ agree in all degrees. Since $\E$ is a bounded complex of coherent sheaves, its derived dual $\E^\vee = \rderived{}{\localhom[X \times Y]^\bullet(\E, \struct{X \times Y})}$ is bounded as well. Then comparing cohomology intermediately\footnote{As $\fm{\E}$ is an equivalence, the kernel $\E$ cannot be isomorphic to the zero object in $\derb{X \times Y}$, implying that $\E^\vee$ has non-trivial cohomology at least in some degrees.} gives 
     \[
         \dim X = \dim Y.
     \]
@@ -120,7 +147,7 @@ The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem
     \[
         S_X \colon \derb{X} \to \derb{X} \qquad S_X \natiso (-)[n], 
     \]
-    where $n$ denotes the dimensions of both $X$ and $Y$. Since equivalences of triangulated categories are known to commute with Serre functors by Proposition \ref{Serre functors commute with equivalences}, we deduce from $\fm{E} \circ S_X \natiso S_Y \circ \fm{E}$ that the Serre functor $S_Y$ of $\derb{Y}$ also simplifies to $(-)[n]$. By Definition \ref{Serre functor on Db(X)} this may be expressed as
+    where $n$ denotes the dimensions of both $X$ and $Y$. Since equivalences of triangulated categories are known to commute with Serre functors by Proposition \ref{Serre functors commute with equivalences}, we deduce from $\fm{\E} \circ S_X \natiso S_Y \circ \fm{\E}$ that the Serre functor $S_Y$ of $\derb{Y}$ also simplifies to $(-)[n]$. By Definition \ref{Serre functor on Db(X)} this may be expressed as
     \[
         (-)[n] \natiso S_Y = (-) \otimes_{\struct{Y}} \omega_Y[n].
     \]
@@ -129,7 +156,7 @@ The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem
     follows from fully faithfulness of the inclusion $\coherent{Y} \to \derb{Y}$ according to Proposition \ref{A -> D(A) fully faithful}. 
 \end{proof}
 
-\subsection{...on $K$-groups}
+\subsection{...on K-groups}
 \label{Subsection: FM transform on K-theory}
 
 We introduce the $K$-theoretic Fourier-Mukai transforms as a passageway between categorical and cohomological Fourier-Mukai transforms. In particular we will utilize the Grothendieck-Riemann-Roch theorem, which will later on help us relate the two in Section \ref{Subsection: FM transform on cohomology}.

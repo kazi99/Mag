@@ -4,12 +4,13 @@
 The first goal of this section is to construct the derived category of an abelian category $\A$ and equip it with a triangulated structure. Our arguments, although specialized to the homotopy category $\kcat{\A}$ and the class of quasi-isomorphisms, do not differ tremendously from the general theory of localization of categories. 
 % Our arguments will try to be minimal and will not rely on the already established theory of localization of categories. Our approach might at times seem less elegant, but we include the exposition for completness nonetheless.
 A more comprehensive and formal treatment of this topic is laid out in \cite[Chapters 7, 10, 13]{kashiwara2006categories} or \cite{milicic-dercat}.
-The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. To close the chapter, we prove a correspondence between the Homs of $\derplus{\A}$ and certain $\Ext$-modules.
+The second part covers the construction of derived functors. We see how the established framework of derived categories nicely lends itself for the definition of derived functors and we also relate them back to the classical higher derived functors. To close the chapter, we prove a correspondence between the Hom-sets of $\derplus{\A}$ and certain $\Ext$-modules.
 % more general framework realtes back to the classical higher derived functors. 
 
 \subsection{Derived categories of abelian categories}
 
-In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in Section \ref{Subsection: Derived functors in geometry}, involves the following. Instead of intrinsically \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
+In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in Section \ref{Subsection: Derived functors in geometry}, involves the following. Instead of directly 
+% \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
 studying the sheaf $\F$, we represent it with a so called \emph{resolution}, which consists of a complex of sheaves $F^\bullet$, built up from sheaves $F^i$, for $i \in \Z$, belonging to some class of sheaves, which is well behaved under cohomology, and a quasi-isomorphism of the form $F^\bullet \to \F$ or $\F \to F^\bullet$. 
 % After observing that using two different resolutions of $\F$ 
 After noting that the sheaf $\F$ can be seen as a complex concentrated in degree $0$ and observing that replacing a resolution of $\F$ with another one
@@ -423,7 +424,7 @@ The zero complex $0^\bullet$ plays the role of the zero object of $\dercat{\A}$ 
 \noindent
 \textsc{Triangulated structure.} The translation functor $T \colon \dercat{\A} \to \dercat{\A}$ is defined to be the usual translation functor on objects and a morphism represented by some roof is sent to the equivalence class of that roof on which we have acted with the translation functor of $\kcat{\A}$. This action respects the equivalence relations, which define the hom-sets of $\dercat{\A}$, and thus induces a well defined functor, which is also an additive auto-equivalence, the quasi-inverse being given by translation in the other direction.  
 
-The class of distinguished triangles in $\dercat{\A}$ is defined to consist of all triangles $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$, for which there exists a distinguished triangle $A_0^\bullet \to B_0^\bullet \to C_0^\bullet \to A_0[1]^\bullet$ in $\kcat{\A}$, such that $Q(A_0^\bullet) \to Q(B_0^\bullet) \to Q(C_0^\bullet) \to Q(A_0[1]^\bullet)$ is isomorphic to $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ in $\dercat{\A}$. Spelling this out in the case of left roofs, we see that this condition implies the existence of another distinguished triangle $A_1^\bullet \to B_1^\bullet \to C_1^\bullet \to A_1[1]^\bullet$ in $\kcat{\A}$, such that the following commutative diagram, where vertical arrows are all quasi-isomorphisms exists in $\kcat{\A}$.
+The class of distinguished triangles in $\dercat{\A}$ is defined to consist of all triangles $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$, for which there exists a distinguished triangle $A_0^\bullet \to B_0^\bullet \to C_0^\bullet \to A_0[1]^\bullet$ in $\kcat{\A}$, such that $Q(A_0^\bullet) \to Q(B_0^\bullet) \to Q(C_0^\bullet) \to Q(A_0[1]^\bullet)$ is isomorphic to $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ in $\dercat{\A}$. Spelling this out in the case of left roofs, we see that this condition implies the existence of another distinguished triangle $A_1^\bullet \to B_1^\bullet \to C_1^\bullet \to A_1[1]^\bullet$ in $\kcat{\A}$, such that the following commutative diagram, where vertical arrows are all quasi-isomorphisms, exists in $\kcat{\A}$.
 \[\begin{tikzcd}[]
     % https://q.uiver.app/#q=WzAsMTIsWzAsMSwiQSJdLFsxLDEsIkIiXSxbMiwxLCJDIl0sWzMsMSwiQVsxXSJdLFswLDIsIlgnIl0sWzEsMiwiWSciXSxbMiwyLCJaJyJdLFszLDIsIlgnWzFdIl0sWzAsMCwiWCciXSxbMSwwLCJZJyJdLFsyLDAsIlonIl0sWzMsMCwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0XSxbMSw1XSxbMyw3XSxbOCw5XSxbOSwxMF0sWzEwLDExXSxbMCw4XSxbMSw5XSxbMiwxMF0sWzMsMTFdLFsyLDZdXQ==
 	{A^\bullet} & {B^\bullet} & {C^\bullet} & {A[1]^\bullet} \\
@@ -1101,7 +1102,8 @@ We start with some establishing lemmas.
 
 \begin{proposition}
     \label{Exact functor induces a derived functor}
-    Let $F\colon \kcat{\A} \to \kcat{\B}$ be a triangulated functor and assume it satisfies one of the equivalent conditions of Lemma \ref{F preserves qis iff preserves acyclic}. Then there exists a triangulated functor $\dercat{\A} \to \dercat{\B}$ on the level of derived categories, for which the following diagram of triangulated functors commutes.
+    % Let $F\colon \kcat{\A} \to \kcat{\B}$ be a triangulated functor and assume it satisfies one of the equivalent conditions of Lemma \ref{F preserves qis iff preserves acyclic}. Then there exists a triangulated functor $\dercat{\A} \to \dercat{\B}$ on the level of derived categories, for which the following diagram of triangulated functors commutes.
+    Let $F\colon \kcat{\A} \to \kcat{\B}$ be a functor and assume it satisfies one of the equivalent conditions of Lemma \ref{F preserves qis iff preserves acyclic}. Then there exists a unique functor $F_0 \colon \dercat{\A} \to \dercat{\B}$ on the level of derived categories, for which the following diagram of functors commutes. 
     \begin{equation}
         \label{eq: exact functor derives}
         \begin{tikzcd}[column sep = 1.5em]
@@ -1112,14 +1114,19 @@ We start with some establishing lemmas.
         \arrow["F", from=1-1, to=1-3]
         \arrow["{Q_\A}"', from=1-1, to=3-1]
         \arrow["{Q_\B}", from=1-3, to=3-3]
-        \arrow[from=3-1, to=3-3]
+        \arrow["{F_0}", from=3-1, to=3-3]
         \end{tikzcd}
     \end{equation}
+    Uniqueness of the functor $F_0 \colon \dercat{\A} \to \dercat{\B}$ and commutativity of the square are both meant up to natural isomorphism. If $F \colon \kcat{\A} \to \kcat{\B}$ is assumed to be $k$-linear or triangulated, the induced functor $F_0 \colon \dercat{\A} \to \dercat{\B}$ is as well. 
 \end{proposition}
 
 \begin{proof}
     The claim follows from the universal property of $\dercat{\A}$ (\cf proposition \ref{universal property for D(A) proposition}), as $Q_\B \circ F$ sends quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\dercat{\B}$.
 \end{proof}
+
+\begin{example}
+    This proposition gives us another way of defining the translation functor on the derived category $\dercat{\A}$. The translation functor $T \colon \kcat{\A} \to \kcat{\A}$ clearly satisfies the equivalent conditions of Lemma \ref{F preserves qis iff preserves acyclic}, thus it induces a functor on the level of derived categories $T \colon \dercat{\A} \to \dercat{\A}$. The fact that the induced translation functor on $\dercat{\A}$ is an autoequivalence follows from the assertion about uniqueness.  
+\end{example}
 
 % The induced functor $\dercat{\A} \to \dercat{\B}$ will be called the \emph{derived functor of $F$}, often being denoted with $F$ as well.
 
@@ -1135,7 +1142,7 @@ Every $k$-linear functor $F\colon \A \to \B$ induces a triangulated functor on t
 
 % ============================================================== %
 
-\subsubsection{Derived functors of left (right) exact functors}
+\subsubsection{Derived functors of left (\resp right) exact functors}
 % \subsubsection*{$F$-adapted classes}
 
 Assume $F \colon \A \to \B$ is a l\emph{eft} exact functor between abelian categories $\A$ and $\B$. The theory for right exact functors is obtained in parallel by dualizing everything. A crucial downside of functors, which are no longer exact, is that their induced functors on the category of complexes no longer satisfy the two equivalent conditions of Lemma \ref{F preserves qis iff preserves acyclic}, so the same idea with the universal property of Definition \ref{universal property of D(A)}, which worked in the case of exact functors, cannot be applied in this case. Instead we will present two other more restrictive methods of constructing right derived functors, which are the following:
@@ -1162,14 +1169,14 @@ Let $F\colon \A \to \B$ be a left exact functor between abelian categories with 
     \label{eq: construction of RF with injectives}
     \rderived{}{F}\colon \quad \derplus{\A} \xrightarrow{ \ \natiso \ } \kplus{\J} \hookrightarrow \kplus{\A} \xrightarrow{ \ F \ } \kplus{\B} \xrightarrow{\ Q_\B \ } \derplus{\B}
 \end{equation}
-The functor $\rderived{}{F}$ is clearly triangulated for it is a composition of triangulated functors. Note that in this case the functor $\rderived{}{F}$ does not necessarily make the square \eqref{eq: exact functor derives} commutative.
+The functor $\rderived{}{F}$ is clearly triangulated for it is a composition of triangulated functors. Note that in this case the functor $\rderived{}{F}$ does not necessarily make the square \eqref{eq: exact functor derives} commutative, but rather satisfies another kind of universal property, which we will mention towards the end of this subsection.
 
 We will use this construction many times through the course of the thesis, so we reiterate the above definition by providing a simple recipe for computing the image of $\rderived{}{F}$ on complexes $A^\bullet$ of $\derplus{\A}$.   
 % a complex $A^\bullet$ via the functor $\rderived{}{F}$.
 % and conceptually computing the image of a right derived functor $\rderived{}{F}$ on a complex $A^\bullet$ from $\kplus{\A}$ will be achieved using the next two steps. 
 \begin{enumerate}
     \item Pick an injective resolution $A^\bullet \to I_A^\bullet$ of $A^\bullet$.
-    \item Apply the functor $F$ to the complex $I^\bullet_A$ term-wise to obtain $F(I^\bullet_A)$. As a complex
+    \item Apply the functor $F$ to the complex $I^\bullet_A$ term-wise to obtain $F(I^\bullet_A)$. As complexes we have
     \[
         \rderived{}{F}(A^\bullet) \iso F(I^\bullet_A).
     \]
@@ -1193,9 +1200,9 @@ We will use this construction many times through the course of the thesis, so we
 
 \noindent
 \textsc{Method 2.}
-Unfortunately some of our categories will \emph{not} contain enough injectives, as can already be seen with the category of coherent sheaves $\coherent{X}$ of a scheme $X$ 
+Unfortunately some of our categories will \emph{not} contain enough injectives, as can already be seen with the category of coherent sheaves $\coherent{X}$ of a scheme $X$, 
 % differing from a point.
-, which is not a point. 
+which is not a point. 
 In this case \textsc{Method 1} of constructing right derived functors will not work. Luckily however, there exists another way of obtaining a right derived functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$, assigned to a left exact functor $F: \A \to \B$, when $\A$ does not contain enough injectives, but instead possesses a broader and less restrictive class of objects. To this end we first introduce \emph{$F$-adapted classes}.
 
 \begin{definition}
@@ -1229,7 +1236,7 @@ Since we want to define the derived functor $\rderived{}{F}$, whose domain is $\
     \]
 \end{proposition}
 
-The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following lemma, closely resembling Lemma \ref{injective resolution}. In the same sprit, we call the complex $I^\bullet$ belonging to $\kplus{\I}$ together with a quasi-isomorphism $A^\bullet \to I^\bullet$ an $\I$-resolution of the complex $A^\bullet$.
+The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following lemma, closely resembling Lemma \ref{injective resolution}. In the same sprit, we call the complex $I^\bullet$ belonging to $\kplus{\I}$ together with a quasi-isomorphism $A^\bullet \to I^\bullet$ an \emph{$\I$-resolution} of the complex $A^\bullet$.
 
 \begin{lemma}
     \label{F-acyclic resolutions}
@@ -1243,13 +1250,15 @@ The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following l
 \end{proof}
 
 \begin{proof}[Proof of Proposition \ref{D+(I) = D+(A) F-adapted}]
-    First, there exists a triangulated functor $\derplus{\I} \to \derplus{\A}$ by Proposition \ref{Exact functor induces a derived functor}, since the inclusion $\I \hookrightarrow \A$ induces an inclusion $\kplus{\I} \hookrightarrow \kplus{\A}$ sending acyclic complexes to acyclic ones. We claim, that functor $\derplus{\I} \to \derplus{\A}$ is an equivalence, so we will show that it is full, faithful and essentially surjective. 
+    First, there exists a triangulated functor $\derplus{\I} \to \derplus{\A}$ by Proposition \ref{Exact functor induces a derived functor}, since the inclusion $\I \hookrightarrow \A$ induces an inclusion $\kplus{\I} \hookrightarrow \kplus{\A}$ sending acyclic complexes to acyclic ones. We claim, that functor $\derplus{\I} \to \derplus{\A}$ is an equivalence, so we will show only that it is full and faithful, since essential surjectivity is already taken care of by Lemma \ref{F-acyclic resolutions}
     
     % Next we show that it is faithful \ie that the morphism action
     % \begin{equation}
     %     \label{eq: morphism action of D(J) - D(A)}
     %     \Hom_{\derplus{\I}}(I^\bullet, J^\bullet) \to \Hom_{\derplus{\A}}(I^\bullet, J^\bullet)
     % \end{equation}
+
+    % Lastly, Lemma \ref{F-acyclic resolutions} asserts that our functor is essentially surjective.
 
     First, we consider the morphism action 
     \begin{equation}
@@ -1301,8 +1310,6 @@ The proof of Proposition \ref{D+(I) = D+(A) F-adapted} hinges on the following l
     %     \arrow["\sim"', from=5-5, to=3-4]
     % \end{tikzcd}\]
     The above diagram then shows, that $\phi$ is sent to $\psi$ and thus the action on morphisms is surjective.
-    
-    Lastly, Lemma \ref{F-acyclic resolutions} asserts that our functor is essentially surjective.
 \end{proof}
 
 \begin{remark}
@@ -1326,7 +1333,8 @@ The procedure for computing the right derived functor $\rderived{}{F}(A^\bullet)
 
 We mention that both methods give rise to right derived functors satisfying the following defining universal property. We only state this here, but refer the reader to \cite[\S III.6]{gelfand2002methods} for the claim and its proof or \cite[\S 13.3, \S 10.3, \S 7.3]{kashiwara2006categories} for a more comprehensive and high level treatment using the formalism of localization. 
 
-\begin{definition}\cite[\S III.6, Definition 6]{gelfand2002methods}
+\begin{definition}
+    % [\text{\cite[\S III.6, Definition 6]{gelfand2002methods}}]
     Let $F \colon \A \to \B$ be a left exact functor between abelian categories. The \emph{right derived functor of $F$} is a triangulated functor $\rderived{}{F} \colon \derplus{\A} \to \derplus{\B}$ together with a natural transformation $\varepsilon_F \colon Q_\B \circ F \Longrightarrow \rderived{}{F} \circ Q_\A$, such that for any triangulated functor $G \colon \derplus{\A} \to \derplus{\B}$ and any natural transformation $\varepsilon \colon Q_\B \circ F \Longrightarrow G \circ Q_\A$, there exists a unique natural transformation $\eta \colon \rderived{}{F} \Longrightarrow G$, for which
     \[\begin{tikzcd}[column sep = small]
         % https://q.uiver.app/#q=WzAsMyxbMCwxLCJhIl0sWzEsMCwiYiJdLFsyLDEsImMiXSxbMSwwLCJ4IiwyLHsibGV2ZWwiOjJ9XSxbMSwyLCJ5IiwwLHsibGV2ZWwiOjJ9XSxbMCwyLCJ6IiwwLHsibGV2ZWwiOjJ9XV0=
@@ -1513,28 +1521,36 @@ There exists a very beautiful connection relating the Ext-functors of category $
     \]
 \end{proposition}
 
+As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-indexed sequences $A^\bullet = (A^j)_{j \in \Z}$ of objects $A^j$ of $\A$. A \emph{morphism $f \colon A^\bullet \to B^\bullet$ of degree $i \in \Z$} is a sequence $(f^j \colon A^j \to B^{i+j})_{j \in \Z}$ of morphisms of $\A$. The set of all degree $i$ morphisms will be denoted with $\Hom^i_\A(A^\bullet, B^\bullet)$. Bundling up all this data, we obtain the $\Z$-\emph{graded category of $\A$} denoted by $\A^\Z$, consisting of graded objects of $\A$ and morphisms of all integer degrees, thus
+\[
+    \Hom_{\A^\Z}(A^\bullet, B^\bullet) = \prod_{i \in \Z}\Hom^i_\A(A^\bullet, B^\bullet).
+\]  
+The category $\A^\Z$ can also be thought of as the functor category from the free category of $\Z$ to $\A$, hence the notation $\A^\Z$. 
+\info{This is introduced so I can say the differential is a morphism of degree $1$, homotopy is a morphism of degree $-1$, and makes defining $\Hom^\bullet$ just slightly easier.}
+
 For any two complexes $A^\bullet$ and $B^\bullet$ we can define a complex $\Hom^\bullet(A^\bullet, B^\bullet)$ of $k$-modules given by terms
 \[
-    \Hom^i(A^\bullet, B^\bullet) = \prod_{j \in \Z}\Hom_\A(A^j, B^{j + i}),
+    \Hom^i_\A(A^\bullet, B^\bullet) = \prod_{j \in \Z}\Hom_\A(A^j, B^{i + j}),
 \]
 \ie the set of all degree $i$ maps from $A^\bullet$ to $B^\bullet$, considered as graded objects of $\A^\Z$, and differentials 
 \[
-    d^i \colon \Hom^i(A^\bullet, B^\bullet) \to \Hom^{i+1}(A^\bullet, B^\bullet), \qquad 
-    d^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z}.
+    \delta^i \colon \Hom^i_\A(A^\bullet, B^\bullet) \to \Hom^{i+1}_\A(A^\bullet, B^\bullet), \quad 
+    \delta^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z}.
 \]
-This differential will also be denoted by $\delta^i_B$.
+In a moment, when specifying the dependence of the differential $\delta^i$ on the complex $B^\bullet$ will become important, we will denote it by $\delta^i_B$ instead. 
+% This differential will also be denoted by $\delta^i_B$.
 
-By setting $\Hom^\bullet(A^\bullet, -)(B^\bullet) = \Hom^\bullet(A^\bullet, B^\bullet)$ and for a chain map $u\colon B^\bullet \to C^\bullet$ in $\com(\A)$ defining $u_* = \Hom^\bullet(A^\bullet, -)(u) \colon \Hom^\bullet(A^\bullet, B^\bullet) \to \Hom^\bullet(A^\bullet, C^\bullet)$ to be the chain map given by the collection $(u_*^i)_{i \in \Z}$, where $u_*^i$ sends $f = (f^j)_{j \in \Z} \in \Hom^i(A^\bullet, B^\bullet)$ to $u \circ f = (u^{i+j} \circ f^j)_{j \in \Z}$, we obtain a functor
+By setting $\Hom^\bullet(A^\bullet, -)(B^\bullet) = \Hom^\bullet(A^\bullet, B^\bullet)$ and for a chain map $u\colon B^\bullet \to C^\bullet$ in $\com(\A)$ defining $u_* = \Hom^\bullet(A^\bullet, -)(u) \colon \Hom^\bullet(A^\bullet, B^\bullet) \to \Hom^\bullet(A^\bullet, C^\bullet)$ to be the chain map given by the collection $(u_*^i)_{i \in \Z}$, where $u_*^i$ sends $f = (f^j)_{j \in \Z} \in \Hom^i(A^\bullet, B^\bullet)$ to $(u^{i+j} \circ f^j)_{j \in \Z}$, we obtain a functor
 \[
     \Hom^\bullet(A^\bullet, -) \colon \com(\A) \to \com(\mod{k}).
 \]
 Indeed, clearly $u_*$ is a graded morphism of degree $0$, which moreover commutes with the differentials, according to the following computation
 \begin{align*}
-    u^{i+1}_*\left(d^i_{\Hom^\bullet(A, B)}(f)\right) &= u^{i+1}_*\left(\left(d^{i+j}_B f^j + (-1)^{i+1} f^{j+1} d^j_A\right)_j\right) \\
+    u^{i+1}_*\left(\delta^i_{B}(f)\right) &= u^{i+1}_*\left(\left(d^{i+j}_B f^j + (-1)^{i+1} f^{j+1} d^j_A\right)_j\right) \\
     &= \left(u^{i+j+1} d^{i+j}_B f^j + (-1)^{i+1} u^{i+j+1} f^{j+1} d^j_A\right)_j \\
     &= \left(d^{i+j}_C u^{i+j} f^j + (-1)^{i+1} u^{i+j+1} f^{j+1} d^j_A\right)_j \\
-    &= d^i_{\Hom^\bullet(A, C)}\left(\left(u^{i + j}f^j\right)_j\right) \\
-    &= d^i_{\Hom^\bullet(A, C)}\left(u^i_*(f)\right),
+    &= \delta^i_{C}\left(\left(u^{i + j}f^j\right)_j\right) \\
+    &= \delta^i_{C}\left(u^i_*(f)\right),
 \end{align*}
 for all $f \in \Hom^i(A^\bullet, B^\bullet)$. While not difficult to check, the verification of functoriality is omitted. 
 
@@ -1557,28 +1573,95 @@ Thus the homotopy $h_* = (h^i_*)_{i \in \Z}$ whitnesses $u_* \htpy 0$, allowing 
 \[
     \Hom^\bullet(A^\bullet, -) \colon \kcat{\A} \to \kcat{\mod{k}}
 \] 
-is well defined. The preceding functor is also triangulated, because it commutes with the translation functors and it sends distinguished triangles of $\kcat{\A}$ to distinguished triangles of $\kcat{\mod{k}}$ This is because of the following isomorphism of chain complexes of $k$-modules,
+is well defined. The preceding functor is also triangulated, because it commutes with the translation functors and it sends distinguished triangles of $\kcat{\A}$ to distinguished triangles of $\kcat{\mod{k}}$. This is because of the following isomorphism of chain complexes of $k$-modules,
 \[
-    C(u_*)^\bullet = C(\Hom^\bullet(A^\bullet, -)(u))^\bullet \cong \Hom^\bullet(A^\bullet, -)(C(u)^\bullet),
+    C(u_*)^\bullet = C(\Hom^\bullet(A^\bullet, -)(u))^\bullet \iso \Hom^\bullet(A^\bullet, -)(C(u)^\bullet) = \Hom^\bullet(A^\bullet, C(u)^\bullet),
 \]
-which holds for any chain map $u \colon B^\bullet \to C^\bullet$. Indeed, we have
+which holds for any chain map $u \colon B^\bullet \to C^\bullet$. Indeed, we first have for all $i \in \Z$ the following isomorphisms going between the terms of each complex
+% \begin{align*}
+%     C(u_*)^i 
+%     &= \Hom^{i+1}(A^\bullet, B^\bullet) \oplus \Hom^i(A^\bullet, C^\bullet) \\
+%     &= \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1}) \oplus \prod_{j \in \Z}\Hom_\A(A^j, C^{i+j}) \\
+%     &\iso \prod_{j \in \Z} \left(\Hom_\A(A^j, B^{i+j+1}) \oplus \Hom_\A(A^j, C^{i+j})\right) \\
+%     &\iso \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1} \oplus C^{i+j}) \\
+%     &= \prod_{j \in \Z}\Hom_\A(A^j, C(u)^{i+j}) \\
+%     &= \Hom^i(A^\bullet, C(u)^\bullet).
+% \end{align*}
 \begin{align*}
-    C(u_*)^i 
-    &= \Hom^{i+1}(A^\bullet, B^\bullet) \oplus \Hom^i(A^\bullet, C^\bullet) \\
+    \Hom^i(A^\bullet, C(u)^\bullet) &=
+    \prod_{j \in \Z}\Hom_\A(A^j, C(u)^{i+j}) \\
+    &\iso \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1} \oplus C^{i+j}) \\
+    &\iso \prod_{j \in \Z} \left(\Hom_\A(A^j, B^{i+j+1}) \oplus \Hom_\A(A^j, C^{i+j})\right) \\
     &= \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1}) \oplus \prod_{j \in \Z}\Hom_\A(A^j, C^{i+j}) \\
-    &\cong \prod_{j \in \Z} \left(\Hom_\A(A^j, B^{i+j+1}) \oplus \Hom_\A(A^j, C^{i+j})\right) \\
-    &\cong \prod_{j \in \Z}\Hom_\A(A^j, B^{i+j+1} \oplus C^{i+j}) \\
-    &= \prod_{j \in \Z}\Hom_\A(A^j, C(u)^{i+j}) \\
-    &= \Hom^i(A^\bullet, C(u)^\bullet),
+    &= \Hom^{i+1}(A^\bullet, B^\bullet) \oplus \Hom^i(A^\bullet, C^\bullet) \\
+    &= C(u_*)^i.
 \end{align*}
-where these isomorphisms also commute with the differentials. Pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$ which is given by a pair $f$
+To show that this collection of isomorphisms witnesses two complexes being isomorphic, we have to show that they are also chain maps, \ie they commute with the differentials.  
+% Under the above isomorphisms this element correcponds to the element $()$ of $\Hom^i(A^\bullet, C(u)^\bullet)$
+% For this pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$, which corresponds to a pair of $f_B \in \Hom_\A^{i+1}(A^\bullet, B^\bullet)$ and $f_C \in \Hom_\A^{i}(A^\bullet, C^\bullet)$ under the chain of isomorphisms above. 
+Let
+\[
+    \delta_{C(u)}^i \colon \Hom^i(A^\bullet, C(u)^\bullet) \to \Hom^{i+1}(A^\bullet, C(u)^\bullet)
+\]
+denote the differential of $\Hom^\bullet(A^\bullet, C(u)^\bullet)$ and
+\[
+    d^i \colon C(u_*)^i \to C(u_*)^{i+1} \qquad d^i = \begin{pmatrix}
+        -\delta^{i+1}_B & 0 \\
+        u_*^{i+1} & \delta^i_C
+    \end{pmatrix}
+\]
+the differential of $C(u_*)^\bullet$. 
+Pick an element $f = ((f_B^j, f_C^j))_{j \in \Z} \in \Hom^i(A^\bullet, C(u)^\bullet)$. Under the isomorphism above $f$ is sent to the pair $(f_B, f_C) \in C(u_*)^i$, where
+\[
+    f_B = (f_B^j \colon A^j \to B^{i+j+1})_{j \in \Z} \quad \text{and} \quad f_C = (f_C^j \colon A^j \to C^{i+j})_{j \in \Z}.
+\] 
+Then the computation below proves that the isomorphisms commute with the differentials, because $\delta^i_{C(u)}(f)$ and $d^i((f_B, f_C))$ coincide at every coordinate $j \in \Z$. 
+% $f = (f_B, f_C) \in C(u_*)^i$. Applying the above isomorphism amounts to reparenthesizing to obtain $((f_B^j, f_C^j))_{j \in \Z} \in \Hom^i(A^\bullet, C(u)^\bullet)$.
+% We will now verify that for each $i \in \Z$ the $j$-th component of tuple $\delta^i_{C(u)}(f)$ after reparenthesizing coincides with $d^i(((f_B^j, f_C^j))_{j \in \Z} )$.
+\begin{align*}
+    [\delta^i_{C(u)}(f)]_j &=
+    d^{i+j}_{C(u)} \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A \\
+    & = \begin{pmatrix}
+        d_{B[1]}^{i+j} & 0 \\
+        u^{i+j+1} & d_C^{i+j}
+    \end{pmatrix} \circ
+    \begin{pmatrix}
+        f^j_B \\
+        f^j_C
+    \end{pmatrix} + (-1)^{i+1}
+    \begin{pmatrix}
+        f^{j+1}_B \\
+        f^{j+1}_C
+    \end{pmatrix} \circ d^j_A \\
+    & = \begin{pmatrix}
+        d_{B[1]}^{i+j} f^j_B + (-1)^{i+1}f_B^{j+1}d^j_A \\
+        u^{i+j+1}f^j_B + d^{i+j}_Cf^j_C + (-1)^{i+1}f_C^{j+1}d^j_A
+    \end{pmatrix} \\
+    & = \begin{pmatrix}
+        [\delta^i_{B[1]}(f_B)]_j \\
+        [u^{i+1}_*(f_B)]_j + [\delta^i_C(f_C)]_j
+    \end{pmatrix} \\
+    & = \left[ \begin{pmatrix}
+        -\delta^{i+1}_B & 0 \\
+        u_*^{i+1} & \delta^i_C
+    \end{pmatrix}
+    \begin{pmatrix}
+        f_B \\
+        f_C
+    \end{pmatrix}
+    \right]_j
+\end{align*}
+Here we have used the notation $[-]_j$ to mean the $j$-th component of a tuple. 
+
+% We will now verify that for each $i \in \Z$ the $j$-th components of tuples $\delta_{C(u_*)}^i(f)$ and $...$ coincide. 
+% where these isomorphisms also commute with the differentials. Pick $f \in \Hom^i(A^\bullet, C(u)^\bullet)$ which is given by a pair $f$
 
 
-\vspace{3cm}
+\vspace{0.3cm}
 
 
 
-At last, for $A^\bullet$ belonging to $\kminus{\A}$ \ie bounded from \emph{above}\footnote{This assumption cannot be skipped, for otherwise we cannot claim, that the functor $\Hom^\bullet(A^\bullet, -)$ maps into the bounded \emph{below} homotopy category $\kplus{\A}$.}, we have a triangulated functor $\Hom^\bullet(A^\bullet, -) \colon \kplus{\A} \to \kplus{\mod{k}}$, which we may derive, in accordance with Remark \ref{Deriving homotopy functors}, of course assuming $\A$ contains enough injectives, to obtain
+At last, for $A^\bullet$ belonging to $\kminus{\A}$ \ie bounded from \emph{above}\footnote{This assumption cannot be omitted, for otherwise we cannot claim, that the functor $\Hom^\bullet(A^\bullet, -)$ maps into the bounded \emph{below} homotopy category $\kplus{\A}$.}, we have a triangulated functor $\Hom^\bullet(A^\bullet, -) \colon \kplus{\A} \to \kplus{\mod{k}}$, which we may derive, in accordance with Remark \ref{Deriving homotopy functors}, of course assuming $\A$ contains enough injectives, to obtain
 \[
     \rderived{}{\Hom^\bullet(A^\bullet, -)} \colon \derplus{\A} \longrightarrow \derplus{\mod{k}}.
 \]
@@ -1627,11 +1710,13 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 \end{lemma}
 
 \begin{proof}
-    This is practically the definition of $\Hom_{\kcat{\A}}(A^\bullet, B[i]^\bullet)$. The cohomology $k$-module $H^i(\Hom^\bullet(A^\bullet, B^\bullet))$ is defined to be the quotient $\ker \delta^i / \im \delta^{i-1}$. Here $\delta$ denotes the differential of $\Hom^\bullet(A^\bullet, B^\bullet)$. Thus let us identify $\ker \delta^i$ and $\im \delta^{i-1}$. Notice, that for $f \in \Hom^i(A^\bullet, B^\bullet)$ we have
+    This is practically the definition of $\Hom_{\kcat{\A}}(A^\bullet, B[i]^\bullet)$. The cohomology $k$-module $H^i(\Hom^\bullet(A^\bullet, B^\bullet))$ is defined to be the quotient $\ker \delta^i_B / \im \delta^{i-1}_B$.
+    % Here $\delta$ denotes the differential of $\Hom^\bullet(A^\bullet, B^\bullet)$.
+    Thus let us identify $\ker \delta^i_B$ and $\im \delta^{i-1}_B$. Notice, that for $f \in \Hom^i(A^\bullet, B^\bullet)$ we have
     \[
         \delta^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z} = (-1)^i \left(d^j_{B[i]} \circ f^j - f^{j+1} \circ d^j_A\right)_{j \in \Z},
     \]
-    therefore $\ker \delta^i$ is the set of all chain maps $A^\bullet \to B[i]^\bullet$, and $\im \delta^{i-1}$ the set of all null-homotopic chain maps.
+    therefore $\ker \delta^i_B$ is the set of all chain maps $A^\bullet \to B[i]^\bullet$, and $\im \delta^{i-1}_B$ the set of all null-homotopic chain maps.
 \end{proof}
 
 \begin{proof}[Proof of Proposition \ref{Homs in derived category}]

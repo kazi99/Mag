@@ -1,10 +1,13 @@
 \section{Categorical prerequisites}
 
-In this section we try to make a brief account of the majority of the relevant prerequisites needed to discuss derived categories. Firstly we introduce additive, $k$-linear and abelian categories together with relevant functors preserving (certain parts of) their structure. Next we build the framework for triangulated categories of which derived categories will be a special kind and also state and prove some specialized results on triangulated categories, which will be applied later on in chapter \ref{Chapter: Derived Torelli theorem}. Lastly, we lay out the foundations on which derived categories will be constructed on -- the (homotopy) category of complexes. The main pieces of literature for this part were \cite{kashiwara2006categories} and \cite{huybrechts2006fouriermukai}.
+The present chapter serves as a brief account of the majority of the relevant prerequisites needed to discuss derived categories.
+% This section we try to make a brief account of the majority of the relevant prerequisites needed to discuss derived categories. 
+In the first section we introduce additive, $k$-linear and abelian categories together with relevant functors preserving (certain parts of) their structure, following mainly \cite[\S 8]{kashiwara2006categories}. Next we build the framework for triangulated categories of which derived categories will be a special kind and also state and prove some specialized results on triangulated categories, which will be applied later on in chapter \ref{Chapter: Derived Torelli theorem}. Lastly, we lay out the foundations on which derived categories will be constructed -- the category of complexes and its quotient homotopy category of complexes. The main pieces of literature for this part were \cite{kashiwara2006categories} and \cite{huybrechts2006fouriermukai}.
 
 \subsection{Additive, $k$-linear and abelian categories}
 
-In this section we mainly follow \cite[\S 8]{kashiwara2006categories}. With $k$ we denote either a field or the ring of integers $\Z$.
+% For this section we mainly follow \cite[\S 8]{kashiwara2006categories}. 
+With $k$ we denote either a field or the ring of integers $\Z$.
 A categorical \emph{biproduct} of objects $X$ and $Y$ in a category $\mathcal C$ is an object $X \oplus Y$ together with morphisms
 \begin{center}
     \begin{tabular}{c c}
@@ -212,6 +215,7 @@ A \emph{morphism} of triangles $X\xrightarrow{f} Y \xrightarrow{g} Z \xrightarro
 One can compose morphisms of triangles in the obvious way and the notion of an isomorphism (of triangles) is defined as usual. The following definition as stated is originally due to Verdier, who first introduced it in his thesis \cite{Verdier}.
 
 \begin{definition}
+    \label{Definition of triangulated cat}
     A \emph{triangulated category} (\emph{over $k$}) is a $k$-linear category with translation $(\D, T)$ equipped with a class of \emph{distinguished triangles}, which is subject to the following four axioms.
     \begin{enumerate}[label = \textsf{TR\arabic*}]
         \item{
@@ -898,13 +902,6 @@ Whenever a triangulated category $\D$ over a filed $k$ is equipped with a Serre 
 \label{Subsection: Categories of complexes}
 In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
 
-As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-indexed sequences $A^\bullet = (A^i)_{i \in \Z}$ of objects $A^i$ of $\A$. A \emph{morphism $f \colon A^\bullet \to B^\bullet$ of degree $k \in \Z$} is a sequence $(f^i \colon A^i \to B^{i+k})_{i \in \Z}$ of morphisms of $\A$. The set of all degree $k$ morphisms will be denoted with $\Hom^k_\A(A^\bullet, B^\bullet)$. Bundling up all this data, we obtain the $\Z$-\emph{graded category of $\A$} denoted by $\A^\Z$, consisting of graded objects of $\A$ and morphisms of all integer degrees, thus
-\[
-    \Hom_{\A^\Z}(A^\bullet, B^\bullet) = \prod_{k \in \Z}\Hom^k_\A(A^\bullet, B^\bullet).
-\]  
-The category $\A^\Z$ can also be thought of as the functor category from the free category of $\Z$ to $\A$, hence the notation $\A^\Z$. 
-\info{This is introduced so I can say the differential is a morphism of degree $1$, homotopy is a morphism of degree $-1$, and makes defining $\Hom^\bullet$ just slightly easier.}
-
 \subsubsection*{{Category of chain complexes}}
 
 By a \emph{chain complex} in $\A$ we mean a collection of objects and morphisms 
@@ -1072,6 +1069,7 @@ This assignment is clearly well defined on morphisms, as $f \htpy f'$ implies $f
 The other piece of data required to obtain a triangulated category is a collection of \emph{distinguished triangles}. To describe what distinguished triangles are in the case of $\kcat{\A}$, we must first introduce the mapping cone of a morphism of complexes and to this end we will for a moment step outside the scope of the homotopy category of complexes back into the category of chain complexes.
 
 \begin{definition}
+    \label{Definition of C(f)}
     Let $f\colon A^\bullet \to B^\bullet$ be a morphism of complexes in $\com(\A)$. The complex $C(f)^\bullet$ is specified by the collection of objects
     \[
         C(f)^i := A^{i+1} \oplus B^i
@@ -1093,17 +1091,16 @@ The other piece of data required to obtain a triangulated category is a collecti
 \end{definition}
 
 \begin{remark}
-    Using matrix notation here might be a bit misleading at first. Formally, matrix \eqref{eq: cone differential} represents the morphism 
-    \[
-        \left(\langle -d^{i+1}_{A}, 0 \rangle, \langle f^{i+1}, d^i_B \rangle\right) = \left\langle (-d^{i+1}_{A}, f^{i+1}), (0, d^i_B) \right\rangle
-    \]
-    according to our convention for defining morphisms from and into biproducts. 
+    % Using matrix notation here might be a bit misleading at first. Formally, matrix \eqref{eq: cone differential} represents the morphism 
+    % \[
+    %     \left(\langle -d^{i+1}_{A}, 0 \rangle, \langle f^{i+1}, d^i_B \rangle\right) = \left\langle (-d^{i+1}_{A}, f^{i+1}), (0, d^i_B) \right\rangle
+    % \]
+    % according to our convention for defining morphisms from and into biproducts. 
     A simple matrix calculation, using the fact that $f$ is a chain map and $d_A$, $d_B$ differentials, shows that $C(f)^\bullet$ is indeed a chain complex.
 \end{remark}
 
 \begin{remark}
-    \info{this remark can be skipped}
-    The naming convention of course comes from topology, where one can show that the singular chain complex associated to the topological mapping cone $M(f)$ of a continuous map $f\colon X \to Y$ is chain homotopically equivalent to the cone of the chain map induced by $f$ between singular chain complexes of $X$ and $Y$.
+    The naming convention comes from topology, where one can show that the singular chain complex associated to the topological mapping cone $M(f)$ of a continuous map $f\colon X \to Y$ is chain homotopically equivalent to the cone of the chain map induced by $f$ between singular chain complexes of $X$ and $Y$.
 \end{remark}
 
 Along with the cone of a chain map $f$ we also introduce two chain maps
@@ -1118,20 +1115,176 @@ given by the collection $\left( \pi_f^i\colon A^{i+1} \oplus B^i \to A^{i+1} \ri
 
 
 \begin{definition}
-We define any triangle in $\kcat{\A}$ isomorphic to a triangle of the form
-\begin{equation}
-    \label{eq: model for d.t. in homotopy cat.}
-    A^\bullet \xrightarrow{ \ f \ }  B^\bullet \xrightarrow{\ \tau_f \ } C(f)^\bullet \xrightarrow{\ \pi_f \ } A[1]^\bullet
-\end{equation}
-to be distinguished.
+    \label{distinguished triangles in K(A)}
+    We define any triangle in $\kcat{\A}$ isomorphic to a triangle of the form
+    \begin{equation}
+        \label{eq: model for d.t. in homotopy cat.}
+        A^\bullet \xrightarrow{ \ f \ }  B^\bullet \xrightarrow{\ \tau_f \ } C(f)^\bullet \xrightarrow{\ \pi_f \ } A[1]^\bullet
+    \end{equation}
+    to be distinguished.
 \end{definition}
 
 \begin{proposition}
+    \label{K(A) is triangulated}
     The homotopy category $\kcat{\A}$ together with the translation functor $T\colon \kcat{\A} \to \kcat{\A}$ and distinguished triangles defined above is a triangulated category.
 \end{proposition}
 
+The proof of this proposition, more precisely the verification of axiom \ref{TR2}, relies heavily on the following very technical lemma. This lemma will also be useful later on in the construction of the derived category $\derb{\A}$.
+
+\begin{lemma}
+    \label{rotating triangle lemma}
+    Let $f \colon A^\bullet \to B^\bullet$ be a chain map. In notation of Definition \ref{distinguished triangles in K(A)} there exists a homotopy equivalence $g \colon A[1]^\bullet \to C(\tau)$, for which the diagram below commutes in $\kcat{\A}$.
+    \begin{equation}
+        \label{eq: two triangles isomorphic}
+    \begin{tikzcd}[column sep = normal, row sep = 2.5em]
+        % https://q.uiver.app/#q=WzAsOCxbMCwwLCJCIl0sWzEsMCwiQyhmKSJdLFsyLDAsIkFbMV0iXSxbMywwLCJCWzFdIl0sWzAsMSwiQiJdLFsxLDEsIkMoZikiXSxbMiwxLCJDKFxcdGF1KSJdLFszLDEsIkJbMV0iXSxbMCwxLCJcXHRhdSJdLFsxLDIsIlxccGkiXSxbMiwzLCItZlsxXSJdLFs0LDUsIlxcdGF1Il0sWzUsNiwiXFx0YXVfXFx0YXUiXSxbNiw3LCJcXHBpX1xcdGF1Il0sWzAsNCwiXFxhbHBoYSIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiXFxiZXRhIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw2LCJnIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsNywiXFxhbHBoYVsxXSIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+        B & {C(f)} & {A[1]} & {B[1]} \\
+        B & {C(f)} & {C(\tau)} & {B[1]}
+        \arrow["\tau", from=1-1, to=1-2]
+        \arrow[""', equals, from=1-1, to=2-1]
+        \arrow["\pi", from=1-2, to=1-3]
+        \arrow[""', equals, from=1-2, to=2-2]
+        \arrow["{-f[1]}", from=1-3, to=1-4]
+        \arrow["g"', dashed, from=1-3, to=2-3]
+        \arrow["{}"', equals, from=1-4, to=2-4]
+        \arrow["\tau", from=2-1, to=2-2]
+        \arrow["{\tau_\tau}", from=2-2, to=2-3]
+        \arrow["{\pi_\tau}", from=2-3, to=2-4]
+    \end{tikzcd}
+    \end{equation}
+\end{lemma}
+
 \begin{proof}
-    \info{Very detailed proof is given in \cite[Ch.~3, 2.1.]{milicic-dercat}}    
+    The morphism $g \colon A[1]^\bullet \to C(\tau)^\bullet$ is defined componentwise by 
+    \[
+        g^i = 
+        % \begin{pmatrix}
+        %     -f^{i+1} & \id{A} & 0
+        % \end{pmatrix}
+        \left(-f^{i+1}, \id{A}, 0\right) 
+        \qquad g^i \colon A^{i+1} \longrightarrow B^{i+1} \oplus A^{i+1} \oplus B^i.
+    \]
+    The computation below then shows that $g$ is a chain map. Indeed, omitting the indexes for clarity we have
+    \begin{align*}    
+        d^i_{C(\tau)}g^i &= 
+        % \left(\begin{smallmatrix}
+        %     -d_B^{i+1} & 0 & 0 \\
+        %     0 & -d_A^{i+1} & 0 \\
+        %     -\id{B} & -f^{i+1} & d_B^{i}
+        % \end{smallmatrix}\right)
+        \left(\begin{smallmatrix}
+            -d_B & 0 & 0 \\
+            0 & -d_A & 0 \\
+            -\id{B} & -f & d_B
+        \end{smallmatrix}\right)
+        \left(\begin{smallmatrix}
+            -f^{} \\
+            \id{A} \\
+            0
+        \end{smallmatrix}\right) 
+        =
+        \left(\begin{smallmatrix}
+            d_B f \\
+            -d_A \\
+            0
+        \end{smallmatrix}\right)
+        = 
+        \left(\begin{smallmatrix}
+            f d_A \\
+            -d_A \\
+            0
+        \end{smallmatrix}\right)
+        =
+        \left(\begin{smallmatrix}
+            f \\
+            \id{A} \\
+            0
+        \end{smallmatrix}\right) d_{A[1]}
+        = g^{i+1} d^i_{A[1]}.
+    \end{align*}
+    Next we will show that the projection $p \colon C(\tau)^\bullet \to A[1]^\bullet$, given by
+    % The homotopic inverse to $g$ is defined to be the projection onto the $A^\bullet$ component, namely $p \colon C(\tau)^\bullet \to A[1]^\bullet$, given by
+    \[
+        p^i = \left(0, \id{A}, 0\right) \qquad p^i \colon B^{i+1} \oplus A^{i+1} \oplus B^{i} \longrightarrow A^{i+1}
+    \]
+    is a homotopy inverse to $g$.
+    This is a left inverse to $g$ already in $\com(\A)$, so we only need to check $g \circ p \htpy \id{C(\tau)}$. One computes that $g^i \circ p^i - \id{C(\tau)}$ is represented by a matrix
+    \[
+        \left(\begin{smallmatrix}
+            -\id{B} & -f^{i+1} & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & -\id{B}
+        \end{smallmatrix}\right)
+    \]
+    and that the collection $(h^i \colon C(\tau)^i \to C(\tau)^{i-1})_{i \in \Z}$, given by
+    \[
+        h^i = \left(\begin{smallmatrix}
+            0 & 0 & \id{B} \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{smallmatrix}\right)
+    \]
+    is the homotopy witnessing $g \circ p - \id{C(\tau)} \htpy 0$. It is left to show that the diagram \eqref{eq: two triangles isomorphic} commutes in $\kcat{\A}$. Clearly the leftmost square commutes and we  have $-f[1] = \pi_\tau \circ g$ already in $\com(\A)$, so the rightmost square commutes as well. Lastly, we have $p \circ \tau_\tau = \pi$ in $\com(\A)$ thus post-composing both sides with $g$ gives $\tau_\tau \htpy g \circ p \circ \tau_\tau = g \circ \pi$, making the middle square also commutative, only now in $\kcat{\A}$.
+\end{proof}
+
+\begin{remark}
+    The above proposition is particularly important because it tells us that the rotated triangle \eqref{eq: model for d.t. in homotopy cat.}, namely
+    \begin{equation}
+        \label{eq: rotated model triangle}
+        B^\bullet \xrightarrow{\ \tau_f \ } C(f)^\bullet \xrightarrow{\ \pi_f \ } A[1]^\bullet \xrightarrow{-f[1]} B[1]^\bullet
+    \end{equation}
+    is also distinguished in $\kcat{\A}$.
+\end{remark}
+
+\begin{proof}[Proof of Proposition \ref{K(A) is triangulated}]
+    % \info{Very detailed proof is given in \cite[Ch.~3, 2.1.]{milicic-dercat}}
+    Omitting \ref{TR4}, we verify the axioms \ref{TR1}--\ref{TR3} of Definition \ref{Definition of triangulated cat} one by one. \ref{TR1}\ref{TR1 i} is true by definition. For \ref{TR1}\ref{TR1 ii} we see that for any complex $A^\bullet$ of $\kcat{\A}$, we have $C(\id{A})^\bullet \htpy 0$. This is seen to be true by constructing a homotopy witnessing $\id{C(\id{A})} \htpy 0$. It is not difficult to verify that the homotopy $h^i \colon A^{i+1} \oplus A^i \to A^i \oplus A^{i-1}$ given by $\left(\begin{smallmatrix}
+        0 & \id{A^i} \\
+        0 & 0
+    \end{smallmatrix}\right)$ for all $i \in \Z$ achieves this. Axiom \ref{TR1}\ref{TR1 iii} holds also by definition, since any $f \colon A^\bullet \to B^\bullet$ may be extended to a distinguished triangle via its cone. 
+
+    \noindent
+    \ref{TR2}. Assuming 
+    \[
+        A^\bullet \xrightarrow{\ f\ } B^\bullet \xrightarrow{\ g\ } C^\bullet \xrightarrow{\ h\ } A[1]^\bullet
+    \] 
+    is distinguished, it is isomorphic to a triangle of the form \eqref{eq: model for d.t. in homotopy cat.}. 
+    % Without loss of generality we may show the axiom holds only for triangles of the form \eqref{eq: model for d.t. in homotopy cat.}.
+    Lemma \ref{rotating triangle lemma} asserts that \eqref{eq: rotated model triangle} is distinguished, therefore triangle $B^\bullet \to C^\bullet \to A[1]^\bullet \to B[1]^\bullet$ is as well. For the opposite implication, if the former triangle were to be distinguished, rotating twice more shows that 
+    % $A[1]^\bullet \to B[1]^\bullet \to C[1]^\bullet \to A[2]^\bullet$
+    \[
+        A[1]^\bullet \xrightarrow{-f[1]} B[1]^\bullet \xrightarrow{-g[1]} C[1]^\bullet \xrightarrow{-h[1]} A[2]^\bullet
+    \]
+    is distinguished. It is therefore isomorphic to 
+    \[
+        A[1]^\bullet \xrightarrow{-f[1]} B[1]^\bullet \xrightarrow{} C(-f[1])^\bullet \xrightarrow{} A[2]^\bullet
+    \]
+    and since $C(f)[1]^\bullet = C(-f[1])^\bullet$, we see that $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ is isomorphic to a triangle of the form \eqref{eq: model for d.t. in homotopy cat.} \ie distinguished.
+
+    \noindent
+    \ref{TR3}. It suffices to verify this axiom only on distinguished triangles of the form \eqref{eq: model for d.t. in homotopy cat.}. We then have a commutative diagram in $\kcat{\A}$
+    \[\begin{tikzcd}[column sep = normal, row sep = 2.5em]
+        % https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzEsMCwiWSJdLFsyLDAsIloiXSxbMywwLCJYWzFdIl0sWzAsMSwiWCciXSxbMSwxLCJZJyJdLFsyLDEsIlonIl0sWzMsMSwiWCdbMV0iXSxbMCwxXSxbMSwyXSxbMiwzXSxbNCw1XSxbNSw2XSxbNiw3XSxbMCw0LCJcXGFscGhhIiwyXSxbMSw1LCJcXGJldGEiLDJdLFsyLDYsIlxcZ2FtbWEiLDJdLFszLDcsIlxcYWxwaGFbMV0iLDJdXQ==
+        A^\bullet_0 & B^\bullet_0 & C(f_0)^\bullet & {A_0[1]^\bullet} \\
+        A^\bullet_1 & B^\bullet_1 & C(f_1)^\bullet & {A_1[1]^\bullet,} 
+        \arrow["f_0",from=1-1, to=1-2]
+        \arrow["u"', from=1-1, to=2-1]
+        \arrow[from=1-2, to=1-3]
+        \arrow["v"', from=1-2, to=2-2]
+        \arrow[from=1-3, to=1-4]
+        \arrow["w"', dashed, from=1-3, to=2-3]
+        \arrow["{u[1]}"', from=1-4, to=2-4]
+        \arrow["f_1", from=2-1, to=2-2]
+        \arrow[from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+    \end{tikzcd}\]
+    where the dashed morphism $w \colon C(f_0)^\bullet \to C(f_1)^\bullet$ is the homotopy class of the chain map $u[1] \oplus v$, given by components
+    \[
+        u^{i+1} \oplus v^i \colon A^{i+1}_0 \oplus B^i_0 \to A^{i+1}_1 \oplus B^i_1. \qedhere
+    \] 
+
+    % \noindent
+    % \ref{TR4}. Verification is omitted.
 \end{proof}
 
 As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $\kcat{\A}$.
@@ -1164,7 +1317,7 @@ For a chain complex $A^\bullet$ in $\com(\A)$ and $i \in \Z$ we define its \emph
     \begin{align*}        
         H^i(A^\bullet) := & \coker(\im d^{i-1} \to \ker d^{i}) \iso \ker(\coker d^{i-1}\to \im d^i) \\ &\iso \coker(A^{i-1} \to \ker d^{i}) \iso \ker(\coker d^{i-1} \to A^{i}).
     \end{align*}
-    See \cite[Def.~8.3.8.~(i)]{kashiwara2006categories}.
+    See \cite[\S 8, Definition 8.3.8.]{kashiwara2006categories}.
 \end{remark}
 
 For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$ one can also define a morphism 
@@ -1281,8 +1434,12 @@ on the homotopy category $\kcat{\A}$.
     We compute $i_B \phi = f^i i_A = (h^{i+1}d^i_A + d^{i-1}_Bh^i)i_A = d^{i-1}_B h^i i_A = 
     % j_B \psi_B h^i i_A = 
     i_B \xi_B \psi_B h^i i_A$. Since $i_B$ is a monomorphism, we may cancel it on the left, to express $\phi$ as $\xi_B \psi_B h^i i_A$. Then it is clear, that $\pi_B \phi = 0$ (as $\pi_B\xi_B = 0$), which means that $0$ is the unique map $H^i(A^\bullet) \to H^i(B^\bullet)$ fitting into the commutative diagram \eqref{eq: diagram for map on cohomology}.
-    \info{ugly but uses only universal properties, no elements}
+    % \info{ugly but uses only universal properties, no elements}
 \end{proof}
+
+\begin{remark}
+    The proof of Proposition \ref{cohomology of nulhomotopic map} although technical and not very aesthetically pleasing is worth including, since it showcases a technique confined fully in the context of abelian categories. Usually these kinds of results are proven first in the category $\mod{A}$ of $A$-modules and then generalized to arbitrary abelian categories as a consequence of the Freyd--Mitchell embedding theorem. 
+\end{remark}
 
 It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ at once, as is witnessed by the next proposition. 
 
