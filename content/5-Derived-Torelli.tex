@@ -5,13 +5,13 @@ In this last chapter we will again be dealing with K3 surfaces over the field of
 %   which will be of great importance. 
 Pretty much in all aspects Fourier--Mukai transforms whether categorical or cohomological will be present. They will serve as crucial constituents of the proof facilitating a way to connect either various different Hodge lattices or the bounded derived categories. It is worth mentioning here that Orlov's paper \cite[]{Orlov2003}, especially Chapter 3, was the primary inspiration to govern the course of this section followed closely by the influential paper of Mukai \cite{Mukai1987}.
 
-
 We will let the following theorem be our initial guide for this chapter.
 % Quite subtly Fourier--Mukai transforms will 
 % Categorically tying together 
 % Fourier--Mukai transforms will also play a very prominent role 
 % Our initial guide for this chapter will be the following theorem. 
 \begin{theorem}
+    \label{transc iso iff der equiv}
     Let $X$ and $Y$ be complex K3 surfaces. Then the following two statements are equivalent
     \begin{enumerate}[label = \roman*.]
         \item{There exists a Hodge isometry $f \colon \transc{X} \to \transc{Y}$ between the lattices of transcendental cycles of $X$ and $Y$.}
@@ -28,59 +28,54 @@ Throughout $X$ and $Y$ are reserved to denote K3 surfaces over the field of comp
 
 \subsection{The Mukai lattice and one side of the proof}
 
-Recall that the \emph{transcendental lattice} $\transc{X}$ of a complex K3 surface $X$ is defined to be the orthogonal complement of the Néron-Severi group $\NS{X} \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\pairing{-}{-}$ on $\cohom{2}{X}{\Z}$.
-Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$, by declaring $\transc{X}^{p,q} = H^{p,q}(X) \cap (\transc{X} \otimes_\Z \C)$. This Hodge structure together with the restriction of the pairing $\pairing{-}{-}$ to $\transc{X}$ make $\transc{X}$ into a Hodge lattice.
+Recall that the \emph{transcendental lattice} $\transc{X}$ of a complex K3 surface $X$ is defined to be the orthogonal complement of the Néron-Severi group $\NS{X} \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\intersect{\cdot}{\cdot}$ on $\cohom{2}{X}{\Z}$.
+Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$, by declaring $\transc{X}^{p,q} = H^{p,q}(X) \cap (\transc{X} \otimes_\Z \C)$. By inspecting the Hodge structure of $\transc{X}$ a bit closer we see that
+\begin{center}
+    \begin{tabular}{r c l}
+        $T^{2,0}(X)$ & $=$ & $H^{2,0}(X)$ \\
+        $T^{1,1}(X)$ & $=$ & $H^{1,1}(X) \cap (\transc{X} \otimes_\Z \C)$ \\
+        $T^{0,2}(X)$ & $=$ & $H^{0,2}(X)$.
+    \end{tabular}
+\end{center}
+This is because on a K3 surface $X$ we have $\NS{X} = \pic{X} = H^{1,1}(X) \cap H^2(X, \Z)$, which is orthogonal to both $H^{2,0}(X)$ and $H^{0,2}(X)$.
+The Hodge structure together with the restriction of the pairing $\intersect{\cdot}{\cdot}$ to $\transc{X}$ make $\transc{X}$ into a Hodge lattice.
+
+
+With the purpose of examining not only the smaller transcendental lattice, but taking into account the whole cohomology group $\cohom{\bullet}{X}{\Z}$ of $X$, Mukai in \cite[]{Mukai1987} devised the following. First, he equipped $\cohom{\bullet}{X}{\Z}$ with the pairing introduced in Definition \ref{Definition of Mukai pairing}. To be more explicit, letting $v = v_0 + v_1 + v_2$ and $w = w_0 + w_1 + w_2$ belong to $\cohom{\bullet}{X}{\Z}$, with the ordinary grading $\cohom{0}{X}{\Z} \oplus \cohom{2}{X}{\Z} \oplus \cohom{4}{X}{\Z}$, the Mukai pairing is expressed as
+\[
+    \pairing{v}{w} = \pairing{v_0w_2 + v_2w_0 - v_1 \smallsmile w_1}{[X]}.
+\]
+Put more simply, if we identify $\cohom{0}{X}{\Z}$ and $\cohom{4}{X}{\Z}$ with $\Z$ and under this identification interpret components $v_0$, $w_0$ and $v_2$, $w_2$ as ordinary integers, the Mukai pairing is given by
+\[
+    \pairing{v}{w} = v_0w_2 + v_2w_0 - (v_1.w_1).
+\] 
+% where $(\cdot.\cdot)$ denotes the usual intersection pairing on $\cohom{2}{X}{\Z}$. 
 
 \begin{remark}
-    On $\cohom{2}{X}{\Z}$ the Mukai pairing $\pairing{\cdot}{\cdot}$ differs from the usual intersection pairing by a sign. This makes the Mukai lattice abstractly isomorphic to
+    This kind of identification will be done quite often during the span of this chapter. On this note $[X] \in H_4(X, \Z)$ will denote a fixed chosen fundamental class of a K3 surface $X$ and $\mu_X \in \cohom{4}{X}{\Z}$ its dual with respect to the Kronecker pairing $\pairing{\mu_X}{[X]} = 1$. Then we have the following bijective correspondence between vectors $v \in \Z \oplus \cohom{2}{X}{\Z} \oplus \Z$ and cohomology classes of $\cohom{\bullet}{X}{\Z}$
     \[
-        \mukai{X} \iso \cohom{2}{X}{\Z} \oplus \hyperbolic \iso E_8^{\oplus 2} \oplus \hyperbolic^{\oplus 4}.
+        (v_0, v_1, v_2) \quad \leftrightarrow \quad v_0 \smallsmile 1 + v_1 + v_2 \smallsmile \mu_X,
     \]
+    % A vector $(v_0, v_1, v_2) \in \Z \oplus \cohom{2}{X}{\Z} \oplus \Z$ will then correspond to $v_0 \smallsmile 1 + v_1 + v_2 \smallsmile \mu_X$ considered as a cohomology class in $\cohom{*}{X}{\Z}$, 
+    where $1 \in \cohom{0}{X}{\Z}$ denotes the neutral element for multiplication in the cohomology ring of $X$. 
 \end{remark}
 
-\begin{proposition}
-    Let $X$ and $Y$ be complex K3 surfaces. Then their transcendental lattices are Hodge isometric if and only if their Mukai lattices are Hodge isometric. Schematically
+
+
+% Attempting to invite the whole cohomology group $\cohom{\bullet}{X}{\Z}$ into 
+
+\begin{remark}
+    Notice that upon restricting the Mukai pairing $\pairing{\cdot}{\cdot}$ onto $\cohom{2}{X}{\Z}$, the usual intersection pairing $\intersect{\cdot}{\cdot}$ of $\cohom{2}{X}{\Z}$ differs from it by a sign. This makes the lattice $\cohom{\bullet}{X}{\Z}$ abstractly isomorphic to the orthogonal direct sum
     \[
-        \transc{X} \iso \transc{Y} \iff \mukai{X} \iso \mukai{Y}.
+        \cohom{\bullet}{X}{\Z} \iso \cohom{2}{X}{\Z}(-1) \oplus \hyperbolic \iso E_8^{\oplus 2} \oplus \hyperbolic^{\oplus 4}.
     \]
-\end{proposition}
+    Note that $\hyperbolic(-1) \iso \hyperbolic$. The above also shows that the lattice structure on $\cohom{\bullet}{X}{\Z}$ is an even unimodular lattice.
+\end{remark}
 
-\begin{proof}
-    ($\Rightarrow$) First note that $\transc{X}$ is primitively embedded into $\cohom{2}{X}{\Z}$ and the latter is primitively embedded into $\mukai{X}$. Thus $T_X \hookrightarrow \mukai{X}$ is also primitive and the same holds true for $T_Y \hookrightarrow \mukai{Y}$. Since $T_X$ is embedded into $\cohom{2}{X}{\Z}$, it is clearly orthogonal to $H^0(X, \Z) \oplus H^4(X, \Z) \iso \hyperbolic$. This means that one can find a copy of the hyperbolic lattice in the orthogonal complement $\transc{X}^\perp$ inside of $\mukai{X}$. By Corollary \ref{extending an isometry 2} one can extend the Hodge isometry $f \colon \transc{X} \to \transc{Y}$ to an isomorphism of lattices $\phi \colon \mukai{X} \to \mukai{Y}$. 
-\end{proof}
-
-
-\newpage
-
-% \info{in this chapter sheaves will always be coherent.}
-
-In this last chapter we will again be dealing with K3 surfaces over the field of complex numbers $\C$. We will characterize when two K3 surfaces $X$ and $Y$ have equivalent bounded derived categories, through their internal structure, namely their \emph{transcendental lattices}. Recall that the \emph{transcendental lattice} $\transc{X}$ of a K3 surface $X$ is defined to be the orthogonal complement of the Néron-Severi group $\NS{X} \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\pairing{-}{-}$ on $\cohom{2}{X}{\Z}$.
-Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$, by declaring $\transc{X}^{p,q} = H^{p,q}(X) \cap (\transc{X} \otimes_\Z \C)$. Hodge structure together with the restriction of the pairing $\pairing{-}{-}$ makes $T_X$ into a Hodge lattice. The transcendental lattice of a K3 surface plays a prominent role in the following theorem. 
-
-% \info{todd class of K3}
-
-\begin{theorem}
-    \label{Derived Torelli}
-    Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then $\derb{X} \natiso \derb{Y}$ if and only if there exists a Hodge isometry $f\colon T_X \to T_Y$ between their transcendental lattices.
-\end{theorem}
-
-Along with the transcendental lattice, Fourier-Mukai transforms and related concepts of chapter \ref{} will become very involved once we start proving the above theorem. We provide a quick summary for the incarnation of these concepts, when $X$ is a K3 surface. 
-
-
-
-We will be using Fourier-Mukai transforms in an essential way. When applied to the case of K3 surfaces adjoints of Fourier-Mukai transforms take up an interesting form.
-
-Thus we see that in the case of K3 surfaces every left and right adjoints of Fourier-Mukai transforms agree.
-Here we have of course used one of the defining properties of K3 surfaces -- triviality of their canonical bundle.
-
-% \subsection{Mukai lattice}
-
-In order to consider all the cohomology groups of a K3 surface $X$ at once Mukai introduced the following pairing on $\cohom{\bullet}{X}{\Z}$. For 
-
-For this lattice to nicely fit into our context of Hodge lattices, we also equip it with a compatible weight $2$ Hodge structure. This is achieved through the introduction of the \emph{Mukai lattice}. 
+Endowing $\cohom{\bullet}{X}{\Z}$ with the Mukai pairing and the following Hodge structure makes the group $\cohom{\bullet}{X}{\Z}$ into a \emph{Mukai lattice}.
 
 \begin{definition}
-    The \emph{Mukai lattice} of a K3 surface $X$ over $\C$, denoted $\mukai{X}$, consists of the free abelian group $\cohom{\bullet}{X}{\Z}$ together with the bilinear pairing introduced above in \eqref{} equipped with a weight $2$ Hodge structure described by 
+    The \emph{Mukai lattice} of a K3 surface $X$ over $\C$, denoted by $\mukai{X}$, is an even unimodular lattice $\cohom{\bullet}{X}{\Z}$ given by the Mukai pairing $\pairing{\cdot}{\cdot}$ equipped with a Hodge structure of weight $2$ described by 
 \end{definition}
 
 \begin{center}
@@ -93,31 +88,47 @@ For this lattice to nicely fit into our context of Hodge lattices, we also equip
 % \info{describe which parts are orthogonal and why}
 
 \begin{remark}
-    This Hodge decomposition is \emph{not} orthogonal with respect to the Mukai pairing on $\mukai{X} \otimes \C$, but we have the following orthogonality relations among the components. 
-    \begin{align*}
-        \widetilde{H}^{2,0}(X) \perp \widetilde{H}^{2,0}(X) & & \widetilde{H}^{0,2}(X) \perp \widetilde{H}^{0,2}(X) \\
-        \widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X) & &\widetilde{H}^{0,2}(X) \perp \widetilde{H}^{1,1}(X) \\
-        \widetilde{H}^{2,0}(X) \not\perp \widetilde{H}^{0,2}(X) & &\widetilde{H}^{1,1}(X) \not\perp \widetilde{H}^{1,1}(X)
-    \end{align*}
+    This Hodge decomposition is \emph{not} orthogonal with respect to the Mukai pairing on $\mukai{X} \otimes \C$, but we have some orthogonality relations among the components nonetheless. 
+    \begin{align}
+        \widetilde{H}^{2,0}(X) \perp \widetilde{H}^{2,0}(X) & & \widetilde{H}^{0,2}(X) \perp \widetilde{H}^{0,2}(X) \label{eq: orthogonality relations 1}\\
+        \widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X) & &\widetilde{H}^{0,2}(X) \perp \widetilde{H}^{1,1}(X) \label{eq: orthogonality relations 2}
+        % \\
+        % \widetilde{H}^{2,0}(X) \not\perp \widetilde{H}^{0,2}(X) & &\widetilde{H}^{1,1}(X) \not\perp \widetilde{H}^{1,1}(X)
+    \end{align}
+    These relations essentially all stem from observing the following facts regarding the Hodge decomposition of a compact complex manifold.
+    \begin{itemize}[label = $\circ$]
+        \item{
+            Each cohomology class $x \in H^{p,q}(X) = H^q(X, \Omega_X^p)$ corresponds bijectively to a certain \emph{harmonic} differential form, which is a smooth complex valued $(p,q)$-form.
+        }
+        \item{
+            The wedge product of a $(p,q)$-form with a $(r,s)$-form results in a $(p+r, q+s)$-from.
+        }
+        \item{
+            Singular cohomology ring with complex coefficients and complex de Rham cohomology ring of a complex manifold $X$ are isomorphic as rings.
+        }
+    \end{itemize}
 \end{remark}
 
-Let $X$ be a complex K3 surface. The Mukai vector $(0,0,1)$ denoted by $e \in \mukai{X}$ lets us relate the Mukai lattice $\mukai{X}$ back to the Hodge lattice $\cohom{2}{X}{\Z}$. The orthogonal complement of $e$ is easily seen to be
+The reason for considering Mukai lattices ends up being beneficial is showcased in the following reconstruction technique allowing us to relate the Mukai lattice $\mukai{X}$ back to the original Hodge lattice $\cohom{2}{X}{\Z}$.
+Let $e \in \mukai{X}$ denote the Mukai vector $(0,0,1)$.
+% The Mukai vector $(0,0,1)$ denoted by $e \in \mukai{X}$ lets us relate the Mukai lattice $\mukai{X}$ back to the Hodge lattice $\cohom{2}{X}{\Z}$. 
+The orthogonal complement of $e$ is then easily seen to be
 \begin{align*}
     e^\perp &= \{ v \in \mukai{X} \mid \pairing{e}{v} = 0\} \\
     &= \{(v_0, v_1, v_2) \in \mukai{X} \mid v_0 = 0\} \\
     &= \cohom{2}{X}{\Z} \oplus \Z e.
 \end{align*}
-First consider the quotient $e^\perp / \Z e$. It is clearly isomorphic to $\cohom{2}{X}{\Z}$ as a free finite rank $\Z$-module. Actually this isomorphism preserves much more than just the additive structure once we equip $\quot{e}$ with lattice and Hodge structures. Since $e$ is isotropic, this quotient naturally inherits a bilinear from from the Mukai lattice $\mukai{X}$. It is simply defined by
+Next consider the quotient $e^\perp / \Z e$. It is clearly isomorphic to $\cohom{2}{X}{\Z}$ as a free finite rank $\Z$-module. Actually this isomorphism preserves much more than just the additive structure once we equip $\quot{e}$ with lattice and Hodge structures. Since $e$ is isotropic, the quotient naturally inherits a bilinear from from the Mukai lattice $\mukai{X}$. It is simply defined by
 \[
     \pairing{v + \Z e}{w + \Z e} = \pairing{v}{w}.
 \]
-The quotient $\quot{e}$ is also naturally equipped with a weight $2$ Hodge structure, since it is a quotient of two free finite rank $\Z$-modules equipped with weight $2$ Hodge structures\footnote{
+The quotient $\quot{e}$ is also naturally equipped with a weight $2$ Hodge structure, since it is a quotient of two free finite rank $\Z$-modules endowed with weight $2$ Hodge structures\footnote{
     $(e^\perp)_\C$ decomposes into $H^{2,0}(X)$, $H^{1,1}(X) \oplus \C e$ and $H^{0,2}(X)$ of bi-degrees $(2,0)$, $(1,1)$ and $(0,2)$, respectively. $\Z e$ has a weight $2$ Hodge structure concentrated only in bi-degree $(1,1)$.
-}. This makes $\quot{e}$ a Hodge lattice and the isomorphism
+}. This makes $\quot{e}$ into a Hodge lattice and the isomorphism
 \[
     \quot{e} \iso \cohom{2}{X}{\Z}
 \]
-an isomorphism of Hodge lattices. This notion now enables us to abstractly identify a Hodge lattice of a K3 surface $Y$ in terms of certain vectors in the Mukai lattice of another K3 surface $X$, provided $\mukai{X} \iso \mukai{Y}$ is a Hodge isometry.  
+an isomorphism of Hodge lattices. This notion now enables us to abstractly identify a Hodge lattice of a K3 surface $Y$ in terms of certain vectors in the Mukai lattice of another K3 surface $X$, provided there exists a Hodge isometry $\mukai{X} \iso \mukai{Y}$.  
 % Then $e^\perp / \Z e$ naturally inherits a bilinear from from $\mukai{X}$, because $e$ is isotropic. 
 \begin{proposition}
     \label{Hodge lattice described by v}
@@ -128,21 +139,102 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
 \end{proposition}
 
 \begin{proof}
-    Since $f$ is an isometry it restricts to a well defined map on the orthogonal complements $v^\perp \to e^\perp$ and is moreover an isomorphism of additive structures. It then clearly descends to a well-defined additive isomorphism of the quotients $\quot{v} \to \quot{e}$. This makes $\quot{v}$ into a free finite rank $\Z$-module. Since $v$ is isotropic, $\quot{v}$ inherits a bilinear form from $\mukai{X}$. The Hodge structure on $\quot{v}$ is also induced from $\mukai{X}$, because both $v^\perp$ and $\Z v$ come equipped with weight $2$ Hodge structures. This is because $f$ preserves the Hodge structures of $\mukai{X}$ and $\mukai{Y}$. The induced map between the quotients then preserves the bilinear form and the Hodge structure, in turn proving our claim. 
+    Since $f$ is an isometry it restricts to a well defined map on the orthogonal complements $v^\perp \to e^\perp$ and is moreover an isomorphism of additive structures. It then clearly descends to a well-defined additive isomorphism of the quotients $\quot{v} \to \quot{e}$. This makes $\quot{v}$ into a free finite rank $\Z$-module. Since $v$ is isotropic, $\quot{v}$ inherits a bilinear form from $\mukai{X}$. The Hodge structure on $\quot{v}$ is also induced from $\mukai{X}$, because both $v^\perp$ and $\Z v$ come equipped with weight $2$ Hodge structures. The reason for this being that $f$ preserves the Hodge structures of $\mukai{X}$ and $\mukai{Y}$.
+    % This is because $f$ preserves the Hodge structures of $\mukai{X}$ and $\mukai{Y}$. 
+    The induced map between the quotients then preserves the bilinear form and the Hodge structure, in turn proving our claim. 
 \end{proof}
 
-% \subsection{Moduli space of sheaves on a K3 surface}
 
+% Another benefit of the Mukai lattice is showcased in the following reconstruction technique allowing us to relate the Mukai lattice $\mukai{X}$ back to the original Hodge lattice $\cohom{2}{X}{\Z}$.
 
-\info{recall what the projections $p$ and $q$ are.}
+\begin{lemma}
+    \label{isometry of Mukai lattices preserving H20}
+    Let $X$ and $Y$ be complex K3 surfaces and $\phi \colon \mukai{X} \to \mukai{Y}$ an isomorphism of lattices satisfying only
+    \begin{equation}
+        \label{eq: H20 is mapped to H20}
+        \phi_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y).
+    \end{equation}
+    Then $\phi$ is a Hodge isometry, \ie preserves Hodge structures. 
+\end{lemma}
+
+\begin{proof}
+    First, if $\phi_\C(\tildi{H}^{2,0}(X)) \subseteq \tildi{H}^{2,0}(Y)$, then $\phi_\C(\widetilde{H}^{0,2}(X)) \subseteq \widetilde{H}^{0,2}(Y)$ is obtained by conjugating
+    \[
+        \phi_\C\left(\widetilde{H}^{0,2}(X)\right) = \phi_\C\left(\ols{\widetilde{H}^{2,0}(X)}\right) = \ols{\phi_\C\left(\widetilde{H}^{2,0}(X)\right)} \subseteq \ols{\widetilde{H}^{2,0}(Y)} = \widetilde{H}^{0,2}(Y).
+    \]
+    To see $\phi_\C(\widetilde{H}^{1,1}(X)) \subseteq \widetilde{H}^{1,1}(Y)$, we pick a non-zero class $x \in \widetilde{H}^{1,1}(X)$ and map it over to $y = \phi_\C(x) \in \mukai{X} \otimes \C$. Then for any $y^{2,0} \in \widetilde{H}^{2,0}(Y)$, we have $\pairing{y}{y^{2,0}} = 0$. Indeed, first as $\phi_\C$ is an isomorphism of $\C$-vector spaces and $\widetilde{H}^{2,0}(X)$ and $\widetilde{H}^{2,0}(Y)$ are one dimensional, the inclusion \eqref{eq: H20 is mapped to H20} is actually an equality\footnote{
+        This is one of the specialities of working with K3 surfaces, they have a one-dimensional $H^{2,0}(X)$.
+    }, thus we may represent $y^{2,0}$ as $\phi_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$. As $\widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X)$ and $\phi_\C$ is an isometry, we obtain $0 = \pairing{x}{x^{2,0}} = \pairing{y}{y^{2,0}}$ to conclude $y \in \widetilde{H}^{2,0}(Y)^\perp$. Symmetrically one obtains $y \in \widetilde{H}^{0,2}(Y)^\perp$. 
+
+    Finally, once we verify that $\widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp \subseteq \widetilde{H}^{1,1}(Y)$, we may conclude that $y \in \widetilde{H}^{1,1}(Y)$, which will prove our last claim.
+    This is indeed the case for once we write a class $z \in \widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp$ with respect to the Hodge decomposition as $z = z^{2,0} + z^{1,1} + z^{0,2}$, we see that $z^{2,0} = z^{0,2} = 0$, by non-degeneracy of the pairing $\pairing{\cdot}{\cdot}$. For example, for any $w = w^{2,0} + w^{1,1} + w^{0,2} \in \mukai{Y}$, written out with respect to the Hodge decomposition, we have 
+    \begin{itemize}[label = $\circ$ ]
+        \item{$\pairing{z^{2,0}}{w^{2,0}} = 0$, by the first orthogonality relation of \eqref{eq: orthogonality relations 1}.
+        }
+        \item{
+            $\pairing{z^{2,0}}{w^{1,1}} = 0$, by the first orthogonality relation of \eqref{eq: orthogonality relations 2}.
+        }
+        \item{
+            $\pairing{z^{2,0}}{w^{0,2}} = 0$, because $z^{2,0} = z - z^{1,1} - z^{0,2}$ and all the terms on the right-hand side of the equation lie in $\widetilde{H}^{0,2}(Y)^\perp$.
+        }
+    \end{itemize}
+    This implies that
+    \[
+        \pairing{z^{2,0}}{w} = \pairing{z^{2,0}}{w^{2,0}} + \pairing{z^{2,0}}{w^{1,1}} + \pairing{z^{2,0}}{w^{0,2}} = 0,
+    \]
+    which shows that $z^{2,0} = 0$. Symmetrically one also shows $z^{0,2} = 0$ to conclude that $z = z^{1,1} \in \widetilde{H}^{1,1}(Y)$. \qedhere
+\end{proof}
+
+The following proposition explains why our sudden jump away from transcendental lattices to Mukai lattices was reasonable. 
+% The following proposition justifies that we may study the Mukai lattice instead of the transcendental one. 
+\begin{proposition}
+    \label{transcendental iso iff Mukai iso}
+    Let $X$ and $Y$ be complex K3 surfaces. Then their transcendental lattices are Hodge isometric if and only if their Mukai lattices are Hodge isometric. Schematically,
+    \[
+        \transc{X} \iso \transc{Y} \quad \iff \quad \mukai{X} \iso \mukai{Y}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    ($\Rightarrow$) First note that $\transc{X}$ is primitively embedded into $\cohom{2}{X}{\Z}$ by Example \ref{orthogonal complement primitive} and the latter is clearly also primitively embedded into $\mukai{X}$. By Proposition \ref{composition of primitive embeddings}, $T_X \hookrightarrow \mukai{X}$ is therefore also primitive and the same holds true for $T_Y \hookrightarrow \mukai{Y}$. Since $T_X$ is embedded into $\cohom{2}{X}{\Z}$, it is orthogonal to $H^0(X, \Z) \oplus H^4(X, \Z) \iso \hyperbolic$. This means that one can find a copy of the hyperbolic lattice in the orthogonal complement $\transc{X}^\perp$ inside of $\mukai{X}$. By Corollary \ref{extending an isometry 2} one can extend any isomorphism of lattices $f \colon \transc{X} \to \transc{Y}$ to an isomorphism $\phi \colon \mukai{X} \to \mukai{Y}$. It is left to show that $\phi$ also preserves the Hodge structures. By Lemma \ref{isometry of Mukai lattices preserving H20} it turns out that for this to be the case, it is sufficient only that the inclusion
+    % For this to hold true, as it turns out, it is sufficient only that
+    \[
+        \phi_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y),
+    \]
+    holds. But in our case this is satisfied as $\phi_\C$ extends $f_\C$, $\widetilde{H}^{2,0}(X) = H^{2,0}(X) = T^{2,0}(X)$ and $\widetilde{H}^{0,2}(Y) = T^{0,2}(Y)$.
+    % It turns out that for $\phi$ to preserve Hodge structures, it is sufficient only that
+    % suffices (only) is sufficient to only prove that
+    % \[
+    %     \phi_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y),
+    % \]
+    % which in our case is clearly satisfied as $\phi_\C$ extends $f_\C$ and $\widetilde{H}^{2,0}(X) = H^{2,0}(X) = T^{2,0}(X)$, with analogous likewise for $Y$.
+
+    ($\Leftarrow$) Assuming we have a Hodge isometry $\phi \colon \mukai{X} \to \mukai{Y}$ we need to show that $\transc{X}$ is sent to $\transc{Y}$. This is seen by first introducing the \emph{extended Neron-Severi group}
+    \[
+        \extendedNS{X} = \NS{X} \oplus \cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z} = \widetilde{H}^{1,1}(X) \cap \mukai{X}.
+    \]  
+    Observe that $\transc{X}$ is actually also the orthogonal complement of $\extendedNS{X}$ in the Mukai lattice $\mukai{X}$. Indeed, since $\NS{X} \subseteq \extendedNS{X}$, we have $\extendedNS{X}^\perp \subseteq \transc{X}$. For the converse observe that since $\transc{X}\subseteq \cohom{2}{X}{\Z}$, $\transc{X}$ is automatically orthogonal to $\cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z}$ with respect to the Mukai pairing $\pairing{\cdot}{\cdot}$. Therefore $\transc{X} \subseteq \extendedNS{X}^\perp$.
+
+    Lastly, since $\phi(\extendedNS{X}) = \phi_\C(\widetilde{H}^{1,1} \cap \mukai{X}) = N(Y)$, it is clear that $\phi$ maps transcendental cycles of $\transc{X}$ to cycles $\transc{Y}$. This allows us to restrict the Hodge isometry $\phi$ to a Hodge isometry
+    \[
+        \phi|_{\transc{X}} \colon \transc{X} \to \transc{Y}. \qedhere
+    \]
+\end{proof}
 
 \noindent
-\textsc{Implication $\derb{X} \iso \derb{Y} \implies \mukai{X} \iso \mukai{Y}$.} After first establishing a few preliminary results, we will prove Proposition \ref{D equivalence implies Hodge isometry} by borrowing the kernel of a Fourier-Mukai transform appearing as the equivalence $\derb{X} \iso \derb{Y}$, which Orlov's result \ref{Orlov's theorem} enables us to do, and then show that its corresponding cohomological version gives a Hodge isometry $\mukai{X} \iso \mukai{Y}$.
+Proposition \ref{transcendental iso iff Mukai iso} thus lets us reformulate our guiding Theorem \ref{transc iso iff der equiv} into the following.
 
-\begin{proposition}
-    \label{D equivalence implies Hodge isometry}
-    Suppose there exists an equivalence of triangulated categories $\derb{X} \natiso \derb{Y}$, then there exists a Hodge isometry $\mukai{X} \iso \mukai{Y}$.
-\end{proposition}
+\begin{theorem}
+    \label{Derived Torelli}
+    Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then the bounded derived categories $\derb{X}$ and $\derb{Y}$ are equivalent as triangulated categories if and only if there exists a Hodge isometry $f \colon \mukai{X} \to \mukai{Y}$ between their Mukai lattices. Schematically,
+    \[
+        \derb{X} \iso \derb{Y} \quad \iff \quad \mukai{X} \iso \mukai{Y}.
+    \] 
+\end{theorem}
+
+The remainder of this section will be devoted to proving the left-to-right implication of Theorem \ref{Derived Torelli}. For this purpose we first develop some technical preliminary results.
+
+\subsubsection*{Technical preliminaries}
 
 \begin{lemma}
     \label{Mukai vector is integral}
@@ -155,7 +247,7 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     \[
         H^n(X \times Y, \Z) \iso \bigoplus_{k+\ell = n} H^k(X, \Z) \otimes_\Z H^\ell(Y, \Z),
     \] 
-    for all $n \in \N$.
+    for all $n \in \N$. Let $p$ and $q$ denote the canonical projections from $X \times Y$ onto $X$ and $Y$, respectively.
     
     First, rewrite the Chern character with respect to the ordinary grading on cohomology $H^\bullet(X \times Y, \Q) = \bigoplus_{i=0}^4 H^{2i}(X \times Y, \Q)$ as the vector
     \[
@@ -174,7 +266,7 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
         &= q_!(\ch[]{\E} \smallsmile p^*\tdclass{X} \smallsmile q^*\tdclass{Y}) \\
         &= q_!(\ch[]{\E}p^*\tdclass{X})\tdclass{Y}.  
     \end{align*} 
-    Thus $\ch[]{q_!\E} = q_!(\ch[]{\E}p^*\tdclass{X})$, because $\tdclass{Y}$ is invertible in $\cohom{*}{Y}{\Q}$. This will be very useful as the left side of the equation is the Chern character associated to $Y$, which we already know to be integral. According to the Künneth decomposition write the Chern character as 
+    Thus $\ch[]{q_!\E} = q_!(\ch[]{\E}p^*\tdclass{X})$, because $\tdclass{Y} = 1 + 2\mu_Y$ is invertible in $\cohom{*}{Y}{\Q}$. This will be very useful as the left side of the equation is the Chern character of some sheaf on $Y$, which we already know to be integral by Remark \ref{chern character on K3 is integral}. According to the Künneth decomposition write the Chern character as 
     \[
         \ch[]{\E} = \sum_{k,\ell \leq 4} e^{k,\ell},
     \]
@@ -182,13 +274,13 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     \[
         \ch[3]{\E} = e^{4,2} + e^{2,4}.
     \]
-    We show only that $e^{4,2}$ is integral, for the case of $e^{2,4}$ follows by a symmetric argument. First note that $q_!$ lowers degrees by $4$, then using the fact that $\tdclass{X} = 1 + 2\mu_X$ and our modified Grothendieck--Riemann--Roch formula, we calculate its $H^2(Y, \Q)$-contributions to be
+    We show only that $e^{4,2}$ is integral, the case of $e^{2,4}$ follows by a symmetric argument. First note that $q_!$ lowers degrees by $4$, then using the fact that $\tdclass{X} = 1 + 2\mu_X$ and our modified Grothendieck--Riemann--Roch formula, we calculate its $H^2(Y, \Q)$-contributions to be
     \begin{align*}
         \ch[1]{q_!\E} &= q_!(\ch[3]{\E} + 2\ch[1]{\E}p^*\mu_X) \\
         &= q_!(e^{4,2} + e^{2,4} + 2(e^{2,0} + e^{0,2}) \smallsmile p^*\mu_X) \\
         &= q_!(e^{4,2}) + 2q_!(e^{0,2} \smallsmile p^*\mu_X).
     \end{align*}
-    Terms $ q_!(e^{2,4})$ and $q_!(2e^{2,0} \smallsmile p^*\mu_X)$ are seen to vanish for dimension reasons after applying the projection formula. We already know $e^{0,2}$ and $\ch[1]{q_!\E}$ to be integral so $q_!(e^{4,2}) \in \cohom{2}{Y}{\Z}$ is integral as well. To show that $e^{4,2}$ is integral write $\alpha^{4,2} = a \mu_X$ and $\beta^{4,2} = \sum_i b_i y_i$ for some $a$, $b_i \in \Q$, where $y_i$ form an integral basis of $\cohom{2}{Y}{\Z}$. First note that $q_!(p^*\mu_X) = 1$, then compute
+    Terms $ q_!(e^{2,4})$ and $q_!(2e^{2,0} \smallsmile p^*\mu_X)$ are seen to vanish for dimension reasons after applying the projection formula. We already know $e^{0,2}$ and $\ch[1]{q_!\E}$ are integral so $q_!(e^{4,2}) \in \cohom{2}{Y}{\Z}$ is integral as well. To show that $e^{4,2}$ is integral write $\alpha^{4,2} = a \mu_X$ and $\beta^{4,2} = \sum_i b_i y_i$ for some $a$, $b_i \in \Q$, where $y_i$ form an integral basis of $\cohom{2}{Y}{\Z}$. First note that $q_!(p^*\mu_X) = 1$, then compute
     \[
         q_!(e^{4,2}) = q_!(p^*\alpha^{4,2} \smallsmile q^*\beta^{4,2}) = q_!p^*(\alpha^{4,2}) \smallsmile \beta^{4,2} = a \cdot q_!p^*(\mu_X) \smallsmile \sum_i b_i y_i = \sum_i ab_i y_i.
     \]
@@ -227,7 +319,7 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     \label{Intersection pairing through push-forward of structure map}
     Let $X$ be a K3 surface over $\C$ and $\varepsilon \colon X \to \spec{\C}$ its structure map. Then for all $v$, $w \in \mukai{X}$
     \[
-        \pairing{v}{w} = - \varepsilon_!(v^\vee \smallsmile w) \qquad \text{and} \qquad \varepsilon_!(v^\vee) = \varepsilon_!(v). 
+        \pairing{v}{w} = \varepsilon_!(v^\vee \smallsmile w) \qquad \text{and} \qquad \varepsilon_!(v^\vee) = \varepsilon_!(v). 
     \] 
 \end{lemma}
 
@@ -259,8 +351,10 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     \]
 \end{proof}
 
-\begin{proof}[Proof of Proposition \ref{D equivalence implies Hodge isometry}]
-    By Orlov's Theorem \ref{Orlov's theorem}, the functor witnessing the equivalence $\derb{X} \natiso \derb{Y}$ is naturally isomorphic to a Fourier--Mukai transform $\fm{\E}$ for some kernel $\E$ of the category $\derb{X \times Y}$. 
+\subsubsection*{Proof of $(\Rightarrow)$}
+
+\begin{proof}[Proof for $(\Rightarrow)$ of Theorem \ref{Derived Torelli}]
+    By Orlov's Theorem \ref{Orlov's theorem}, the functor witnessing the equi\-valence $\derb{X} \natiso \derb{Y}$ is naturally isomorphic to a Fourier--Mukai transform $\fm{\E}$ for some kernel $\E$ of the category $\derb{X \times Y}$. 
     % We will show that the cohomological Fourier--Mukai transform $\fmcoh{\E} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q)$ of section \ref{Subsection: FM transform on cohomology} induces a Hodge isometry between the Mukai lattices
     % \[
     %     \fmcoh{\E} \colon \mukai{X} \to \mukai{Y}.
@@ -282,40 +376,23 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     \[
         \fmcoh{\E^\bullet} \colon H^\bullet(X, \Z) \to H^\bullet(Y, \Z).
     \]
-    of free abelian groups. In the following three parts we show $\fmcoh{\E}$ is a Hodge structure preserving bijective isometry.
+    In the following three parts we show $\fmcoh{\E}$ is a bijective Hodge structure preserving isometry.
     
     \vspace{0.3 cm}
     \noindent
     \textsl{Bijection.}
     We first tackle bijectivity
     % Next we verify that $\fmcoh{\E^\bullet}$ is bijective. 
-    and do so by proving it has a right inverse. For $\fm{\E}$ is an equivalence, the Fourier--Mukai transform associated to the the kernel $\ladj{\E}$, of its left adjoint, is actually its quasi-inverse. Thus $\fm{\ladj{\E}} \circ \fm{\E} \natiso \id{\derb{X}}$ and by Proposition \ref{Composition of fm is fm} there is a kernel $\G$ from $\derb{X \times X}$, for which $\fm{\ladj{\E}} \circ \fm{\E} \natiso \fm{\G}$. By uniqueness of kernels ensured by Theorem \ref{Orlov's theorem} we see that $\G \iso \struct{\Delta}$, since $\struct{\Delta}$ was computed to be the kernel of $\id{\derb{X}}$ in Example \ref{Identifying fm transforms}. As cohomological Fourier--Mukai transforms compose just like the categorical ones do, according to Proposition \ref{Composition of cohomological fm is fm}, we see that $\fmcoh{\ladj{\E}} \circ \fmcoh{\E} = \fmcoh{\struct{\Delta}}$. According to Lemma, \ref{cohomological fm of diagonal} $\fmcoh{\struct{\Delta}} = \id{\cohom{\bullet}{X}{\Z}}$, thus $\fmcoh{\E}$ has a right inverse. Since $\fmcoh{\E}$ is a homomorphism of free abelian groups of equal rank admitting a right inverse it must be an isomorphism\footnote{
-        If $f \colon A \to B$ is a homomorphism of free abelian groups of equal (finite) rank, admitting a right inverse $r \colon B \to A$, $f$ is in particular injective and the short exact sequence $0 \to A \to B \to \coker f \to 0$ splits. The cokernel $\coker f$ can only be finite and is therefore trivial, proving that $f$ is an isomorphism.
+    by proving $\fmcoh{\E}$ has a right inverse. Since $\fm{\E}$ is an equivalence, its left adjoint $\fm{\ladj{\E}}$ is also its quasi-inverse. 
+    % the Fourier--Mukai transform associated to the kernel $\ladj{\E}$, is actually its quasi-inverse.
+    Thus $\fm{\ladj{\E}} \circ \fm{\E} \natiso \id{\derb{X}}$ and by Proposition \ref{Composition of fm is fm} there is a kernel $\G$ from $\derb{X \times X}$, for which $\fm{\ladj{\E}} \circ \fm{\E} \natiso \fm{\G}$. By uniqueness of kernels, ensured by Theorem \ref{Orlov's theorem}, we see that $\G \iso \struct{\Delta}$, since $\struct{\Delta}$ was computed to be the kernel of $\id{\derb{X}}$ in Example \ref{Identifying fm transforms}. As cohomological Fourier--Mukai transforms compose just like the categorical ones do, according to Proposition \ref{Composition of cohomological fm is fm}, we see that $\fmcoh{\ladj{\E}} \circ \fmcoh{\E} = \fmcoh{\struct{\Delta}}$. According to Lemma \ref{cohomological fm of diagonal}, $\fmcoh{\struct{\Delta}} = \id{\cohom{\bullet}{X}{\Z}}$, thus $\fmcoh{\E}$ has a right inverse. Since $\fmcoh{\E}$ is a homomorphism of free abelian groups of equal rank admitting a right inverse it must be an isomorphism\footnote{
+        If $f \colon A \to B$ is a homomorphism of free abelian groups of equal (finite) rank, admitting a right inverse $r \colon B \to A$, $f$ is in particular injective and the short exact sequence $0 \to A \to B \to \coker f \to 0$ splits. The cokernel $\coker f$ can therefore only be finite, hence it is trivial, because $B \iso A \oplus \coker f$.
     }.
-    
-    
-    % thus it suffices to show that $\fmcoh{\struct{\Delta_X}} = \id{H^\bullet(X, \Z)}$.
-    
-    % We start by computing the Mukai vector of $\struct{\Delta_X}$. Consulting the help of Grothendieck-Riemann-Roch \ref{Grothendieck-Riemann-Roch}, we see that
-    % \begin{align*}
-    %     \ch(\struct{\Delta_X}) \tdclass{X \times X} &= \ch(\Delta_*\struct{X})\tdclass{X \times X} = \\ &= \ch(\Delta_!\struct{X})\tdclass{X \times X} = \Delta_*(\ch(\struct{X}) \tdclass{X}) = \Delta_*\tdclass{X},
-    % \end{align*}
-    % holds true in $\cohom{*}{X \times X}{\Q}$. In the second equality, we have used the relation $\Delta_*\struct{X} = \Delta_!\struct{X}$ in $K(X \times X)$, because for any closed embedding, such as $\Delta \colon X \to X \times X$, its push-forward $\Delta_*$ is exact, and separately in the last equality $\ch(\struct{X}) = \exp(\cclass[1](\struct{X})) = 1$, because $\struct{X}$ is a line bundle. Next, we observe, that from $\tdclass{X \times X} = p^*\tdclass{X} \smallsmile p^*\tdclass{X}$, equation $\Delta^*\sqrt{\tdclass{X\times X}} = \tdclass{X}$ follows. By the cohomological projection formula (\cf Proposition \ref{cohomological projection formula}) for the map $\Delta$, we further compute
-    % \[
-    %     \Delta_*\tdclass{X} = \Delta_*\Delta^*\sqrt{\tdclass{X \times X}} = \Delta_*(1)\sqrt{\tdclass{X \times X}},
-    % \] 
-    % implying that $v(\struct{\Delta_X}) = \Delta_*(1)$. 
-    % Lastly, for any $\alpha \in \cohom{\bullet}{X}{\Z}$, using the projection formula again, we arrive at
-    % \[
-    %     \fmcoh{\struct{\Delta_X}}(\alpha) = p_*(v(\struct{\Delta_X})\smallsmile p^*\alpha) = p_*(\Delta_*(1)\smallsmile p^*\alpha) = p_*(\Delta_*(1\smallsmile \Delta^*p^*(\alpha))) = \alpha.
-    % \]
-    % % By letting $\mathcal R^\bullet$ denote the convolution of $\E^\bullet$ and $\E^\bullet_L$, we see that by uniqueness of kernels of Fourier-Mukai transforms it follows that 
-    % The map $\fmcoh{\E^\bullet}$ is now a homomorphism of free abelian groups admitting a right inverse, therefore it is an isomorphism. We are left to show that $\fmcoh{\E^\bullet}$ is an isometry and that it preserves the Hodge structure. 
     
     \vspace{0.3cm}
     \noindent
     \textsl{Isometry.}
-    To see that $\fmcoh{\E}$ is an isometry, we do two preliminary computations. Let $\alpha \in \mukai{X}$ and $\beta \in \mukai{Y}$ and let $\gamma \colon X \to \spec{\C}$, $\varepsilon \colon Y \to \spec{\C}$ and $\eta \colon X \times Y \to \spec{\C}$ denote the structure maps. Then by the first formula of Lemma \ref{Intersection pairing through push-forward of structure map} we see that
+    To see that $\fmcoh{\E}$ is an isometry, we do two preliminary computations. Let $\alpha \in \mukai{X}$ and $\beta \in \mukai{Y}$ and let $\gamma \colon X \to \spec{\C}$, $\varepsilon \colon Y \to \spec{\C}$ and $\eta \colon X \times Y \to \spec{\C}$ denote the structure maps. Then, by the first formula of Lemma \ref{Intersection pairing through push-forward of structure map}, we see that
     \begin{align*}
         \pairing{\fmcoh{\E}(\alpha)}{\beta}_Y &= \varepsilon_!(\beta^\vee \smallsmile \fmcoh{\E}(\alpha))
         \\
@@ -335,7 +412,7 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
                 \smallsmile q^*\alpha
             \right)
         \right) \\
-        &= \theta_!\left(
+        &= \eta_!\left(
             p^*\beta^\vee \smallsmile \ch{\E}
                 {\sqrt{\tdclass{X \times Y}}}
                 \smallsmile q^*\alpha
@@ -344,7 +421,7 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     Similarly, using the property $\ch[](\F^\vee) = \ch[](\F)^\vee$ of the Chern character, one computes
     % \info{$\ch(E^\vee) = \ch(E)^\vee$?}
     \[
-        \pairing{\alpha}{\fmcoh{\ladj{\E}}(\beta)}_X = \theta_!\left(
+        \pairing{\alpha}{\fmcoh{\ladj{\E}}(\beta)}_X = \eta_!\left(
             q^*\alpha^\vee \smallsmile \ch{\E}^\vee
                 {\sqrt{\tdclass{X \times Y}}}
                 \smallsmile p^*\beta
@@ -363,57 +440,27 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
 
     \noindent
     \textsl{Hodge structures.}
-    Lastly, we show that $\fmcoh{\E}$ preserves the Hodge structure \ie
+    Lastly, we show that $\fmcoh{\E}$ preserves the Hodge structures \ie
     \[
         \fmcoh{\E}_\C(\widetilde{H}^{p,q}(X)) \subseteq \widetilde{H}^{p,q}(Y) 
     \]
     for all $p$, $q$, with $p + q = 2$. 
-    For brevity denote $\fmcoh{\E}$ by $f$. By Proposition \ref{Hodge lattice, fm transform interaction}, the condition \eqref{eq: Hodge lattice, fm transform} specializes to 
+    % For brevity denote $\fmcoh{\E}$ by $f$. 
+    Since $\fmcoh{\E}$ is a cohomological Fourier--Mukai transform, the condition \eqref{eq: Hodge lattice, fm transform} of Proposition \ref{Hodge lattice, fm transform interaction}, conveniently specializes to 
     \begin{equation}
-        \label{eq: H20 is mapped to H20}
-        f_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y)
+        % \label{eq: H20 is mapped to H20}
+        \fmcoh{\E}_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y).
     \end{equation}
+    Then we have already shown in Lemma \ref{isometry of Mukai lattices preserving H20} that the bijective isometry $\fmcoh{\E}$ preserves the Hodge structures. \qedhere
     % since the term on the right is the only non-trivial one of the direct sum decomposition.
-    and in fact this turns out to be sufficient for $f$ to preserve the Hodge structures. This is a very special coincidence, which happens as a consequence of Hodge structures on Mukai lattices of K3 surfaces taking a particular from.
-    % In fact, we will show this inclusion holds only for $(p,q) = (2,0)$, as this turns out to be sufficient. 
-    Indeed, if $f_\C(\tildi{H}^{2,0}(X)) \subseteq \tildi{H}^{2,0}(Y)$, then $f_\C(\widetilde{H}^{0,2}(X)) \subseteq \widetilde{H}^{0,2}(Y)$ is obtained by conjugating
-    \[
-        f_\C\left(\widetilde{H}^{0,2}(X)\right) = f_\C\left(\ols{\widetilde{H}^{2,0}(X)}\right) = \ols{f_\C\left(\widetilde{H}^{2,0}(X)\right)} \subseteq \ols{\widetilde{H}^{2,0}(Y)} = \widetilde{H}^{0,2}(Y).
-    \]
-    To see $f_\C(\widetilde{H}^{1,1}(X)) \subseteq \widetilde{H}^{1,1}(Y)$, we pick a non-zero class $x \in \widetilde{H}^{1,1}(X)$ and map it over to $y = f_\C(x) \in \mukai{X} \otimes \C$. Then for any $y^{2,0} \in \widetilde{H}^{2,0}(Y)$, we have $\pairing{y}{y^{2,0}} = 0$. Indeed, first as $f_\C$ is an isomorphism of $\C$-vector spaces and $\widetilde{H}^{2,0}(X)$ and $\widetilde{H}^{2,0}(Y)$ are one dimensional, the inclusion \eqref{eq: H20 is mapped to H20} is actually an equality, thus we may represent $y^{2,0}$ as $f_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$. As $\widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X)$ and $f_\C$ is an isometry, we obtain $0 = \pairing{x}{x^{2,0}} = \pairing{y}{y^{2,0}}$ to conclude $y \in \widetilde{H}^{2,0}(Y)^\perp$. Symmetrically one obtains $y \in \widetilde{H}^{0,2}(Y)^\perp$. 
-
-    Finally, once we verify that $\widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp \subseteq \widetilde{H}^{1,1}(Y)$, we may conclude that $y \in \widetilde{H}^{1,1}(Y)$, which will prove our last claim.
-    This is indeed the case for once we write a class $z \in \widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp$ with respect to the Hodge decomposition as $z = z^{2,0} + z^{1,1} + z^{0,2}$, we see that $z^{2,0} = z^{0,2} = 0$, by non-degeneracy of the pairing $\pairing{-}{-}$. For example, for any $w = w^{2,0} + w^{1,1} + w^{0,2} \in \mukai{Y}$, written out with respect to the Hodge decomposition, we have 
-    \begin{itemize}[label = $\circ$ ]
-        \item{$\pairing{z^{2,0}}{w^{2,0}} = 0$ by orthogonality relations \eqref{}.
-        }
-        \item{
-            $\pairing{z^{2,0}}{w^{1,1}} = 0$ by orthogonality relations \eqref{}.
-        }
-        \item{
-            $\pairing{z^{2,0}}{w^{0,2}} = 0$, because $z^{2,0} = z - z^{1,1} - z^{0,2}$ and all the terms on the right-hand side of the equation lie in $\widetilde{H}^{0,2}(Y)^\perp$.
-        }
-    \end{itemize}
-    This implies that
-    \[
-        \pairing{z^{2,0}}{w} = \pairing{z^{2,0}}{w^{2,0}} + \pairing{z^{2,0}}{w^{1,1}} + \pairing{z^{2,0}}{w^{0,2}} = 0,
-    \]
-    which shows that $z^{2,0} = 0$. Symmetrically one also shows $z^{0,2} = 0$ to conclude that $z = z^{1,1} \in \widetilde{H}^{1,1}(Y)$. \qedhere
-    % where $\pairing{z^{2,0}}{w^{2,0}} = 0$, because $z^{2,0} = z - z^{1,1} - z^{0,2}$ shows $z^{2,0} \in \widetilde{H}^{0,2}(Y)^\perp$ and $\pairing{z^{2,0}}{w^{1,1}} = 0$ together with $\pairing{z^{2,0}}{w^{0,2}} = 0$ follow from orthogonality relations \eqref{}. \qedhere
-    
-    % arising from the fact that $y^{2,0}$ is of the form $f_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$
-    
-    
-    % As $f_\C$ is an isomorphism of $\C$-vector spaces, the class $y$ is non-zero. 
-    
-    % $\widetilde{H}^{2,0}(Y) \oplus \widetilde{H}^{1,1}(Y) \oplus \widetilde{H}^{0,2}(Y)$
+    % and in fact this turns out to be sufficient for $f$ to preserve the Hodge structures. This is a very special coincidence, which happens as a consequence of Hodge structures on Mukai lattices of K3 surfaces taking a particular from.
 \end{proof}
 
-For convenience and later referencing we record the following corollary, which is essentially what we have just proven. 
+For convenience and later referencing we record the following corollary, which states essentially what we have just proven. 
 
 \begin{corollary}
     \label{FM equivalence implies FM on Mukai is an isomorphism}
-    Let $\E$ denote a complex belonging to $\derb{X \times Y}$ such that the corresponding Fourier--Mukai transform $\fm{\E} \colon \derb{X} \to \derb{Y}$ is an equivalence. Then the on the level of Mukai lattices
+    Let $\E$ denote a complex belonging to $\derb{X \times Y}$ such that the corresponding Fourier--Mukai transform $\fm{\E} \colon \derb{X} \to \derb{Y}$ is an equivalence. Then the the cohomological Fourier--Mukai transform
     \[
         \fmcoh{\E} \colon \mukai{X} \to \mukai{Y}
     \]
@@ -421,10 +468,13 @@ For convenience and later referencing we record the following corollary, which i
 \end{corollary}
 
 
+% =========== Moduli spaces ========== %
+
+
 \subsection[Moduli spaces of sheaves and the other side of the proof]{\texorpdfstring{Moduli spaces of sheaves \\ and the other side of the proof}{Moduli spaces of sheaves and the other side of the proof}
 }
 
-The last subsection is devoted to proving the right to left implication of Theorem \ref{Derived Torelli}, captured in the ensuing proposition.
+The last subsection is devoted to proving the right-to-left implication of Theorem \ref{Derived Torelli}, captured in the ensuing proposition.
 
 \begin{proposition}
     \label{Hodge isometry implies D equivalence}
@@ -449,6 +499,8 @@ Essential surjectivity will be proven via the use of Corollary \ref{condition fo
 
 % A few more words are required to introduce how the K3 surface $M$ comes about. Not only is the K3 surface $M$ important, but also how it is constructed or what it \emph{represents}. This viewpoint will serve as an invaluable tool for obtaining a kernel for a Fourier-Mukai transform of the from $\derb{M} \to \derb{X}$, which we will later prove to be an equivalence. 
 \vspace{0.3cm}
+\noindent
+\textsl{A categorical digression.}
 For a moment let $\mathcal C$ be any category. Recall that each object $X$ of $\mathcal C$ gives rise to a functor 
 \[
     h_X = \Hom_{\mathcal C}(-, X) \colon  \quad \mathcal C^\op \to \Set.
@@ -461,7 +513,9 @@ A functor $F \colon \mathcal C^\op \to \Set$ is said to be \emph{representable},
 \end{equation}
 is an isomorphism for every object $X$ of $\mathcal C$ and any functor $F \colon \mathcal C ^\op \to \Set$, and it is natural both in $X$ and $F$.
 
-From now on we focus on a fixed K3 surface $X$ over the field of complex numbers $\C$ and consider the category $\sch{\C}$ of schemes over $\C$. The main idea for conceiving a new space out of $X$, we will employ, is an attempt to try and perceive the collection of all coherent sheaves on $X$ as a space itself. What was said above is not precise nor fully correct, as the collection of all coherent sheaves on $X$ is way too large to consider all at once, so we will instead restrict ourself to a smaller class of sheaves by imposing some additional constraints, which we present presently. 
+\vspace{0.3cm}
+\noindent
+From now on we focus on a fixed K3 surface $X$ over the field of complex numbers $\C$ and consider the category $\sch{\C}$ \info{Huybrechts restricts himself to schemes of finite type. But Huybrechts, Lehn do not.}of schemes over $\C$. The main idea for conceiving a new space out of $X$, we will employ, is an attempt to try and perceive the collection of all coherent sheaves on $X$ as a space itself. What was said above is not precise nor fully correct, as the collection of all coherent sheaves on $X$ is way too large to consider all at once, so we will instead restrict ourself to a smaller class of sheaves by imposing some additional constraints, which we present presently. 
 
 Firstly, in the spirit of deformation theory, we might consider our sheaves arising as members of certain families of sheaves on $X$ ``parametrized'' by points of some other scheme $S$ over $\C$. The notion of such a family is encoded in a single coherent sheaf $\F \in \coherent{X \times S}$, defined on the product $X \times S$. Indeed, consider a closed point $s \in S$, to which there is a corresponding morphism of schemes over $\C$, also denoted $s \colon \spec{\C} \to S$. Then we define the morphism $i_s \colon X \to X \times S$ to be the composition
 \begin{equation}
@@ -500,7 +554,8 @@ Since we would like the geometry of our scheme $S$ to have a greater impact on t
     For any scheme $S$ over $\C$, a sheaf $\F \in \coherent{X \times S}$ is said to be \emph{flat over $S$}, if $\F$ is a flat $\pi_S\inv \struct{S}$-module, where $\pi_S \colon X \times S \to S$ is the canonical projection. 
 \end{definition}
  
-
+% \noindent
+% \textsl{Stability.}
 A condition, which restricts the scope of available sheaves even further is \emph{stability}. We quickly glance over the main components, which enable us to define what a stable sheaf is in the first place and give a property analogous to Schur's lemma, but for stable sheaves, which will become relevant in the proof of Proposition \ref{Hodge isometry implies D equivalence}.
 % reason about two properties of stable sheaves relevant for us.
 \begin{itemize}[label = $\vartriangleright$]
@@ -784,7 +839,7 @@ With all the preparations now out of the way, we may begin with the proof.
         \\
         \spec{\C} && M
         \arrow["{i_s}", from=1-1, to=1-3]
-        \arrow["{\nu}"', from=1-1, to=3-1]
+        \arrow["{\varepsilon}"', from=1-1, to=3-1]
         \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=3-3]
         \arrow["{q}", from=1-3, to=3-3]
         \arrow["{s}", from=3-1, to=3-3]
@@ -795,9 +850,9 @@ With all the preparations now out of the way, we may begin with the proof.
         \fm{\E}(k(s)) 
         &= \rderived{}{p_*}(\E \otimes_{\struct{X \times M}} q^*(k(s))) \\
         & = \rderived{}{p_*}(\E \otimes_{\struct{X \times M}} q^*(s_*\struct{\spec{\C}})) \\
-        & \iso \rderived{}{p_*}(\E \otimes_{\struct{X \times M}} i_{s*}\nu^*(\struct{\spec{\C}})) &\text{(Base change \ref{flat base change formula})}\\
-        & \iso \rderived{}{p_*}(i_{s*}(i_s^*\E \otimes_{\struct{X}} \nu^*\struct{\spec{\C}})) &\text{(Projection formula \ref{projection formula})}\\
-        & \iso i_s^*\E \otimes_{\struct{X}} \nu^*\struct{\spec{\C}} &\text{($p \circ i_s = \id{X}$)}\\
+        & \iso \rderived{}{p_*}(\E \otimes_{\struct{X \times M}} i_{s*}\varepsilon^*(\struct{\spec{\C}})) &\text{(Base change \ref{flat base change formula})}\\
+        & \iso \rderived{}{p_*}(i_{s*}(i_s^*\E \otimes_{\struct{X}} \varepsilon^*\struct{\spec{\C}})) &\text{(Projection formula \ref{projection formula})}\\
+        & \iso i_s^*\E \otimes_{\struct{X}} \varepsilon^*\struct{\spec{\C}} &\text{($p \circ i_s = \id{X}$)}\\
         & \iso i_s^*\E \otimes_{\struct{X}} \struct{X} \\
         & \iso i_s^*\E \\
         & = \E|_s.
@@ -825,7 +880,7 @@ With all the preparations now out of the way, we may begin with the proof.
     \]
     Lastly, for $i = 1$, we have $\Hom_{\derb{X}}(\E|_s, \E|_t[1]) \iso \Ext^1_\struct{X}(\E|_s, \E|_t)$. The latter is trivial, because $v$ is isotropic and 
     \[
-        \pairing{v}{v} = \chi(\E|_s, \E|_t) = \dim\Ext^0_\struct{X}(\E|_s, \E|_t) - \dim\Ext^1_\struct{X}(\E|_s, \E|_t) + \dim\Ext^2_\struct{X}(\E|_s, \E|_t),
+        -\pairing{v}{v} = \chi(\E|_s, \E|_t) = \dim\Ext^0_\struct{X}(\E|_s, \E|_t) - \dim\Ext^1_\struct{X}(\E|_s, \E|_t) + \dim\Ext^2_\struct{X}(\E|_s, \E|_t),
     \]
     for both $\Ext^0_\struct{X}(\E|_s, \E|_t)$ and $\Ext^2_\struct{X}(\E|_s, \E|_t)$ are trivial.
 
@@ -870,7 +925,7 @@ With all the preparations now out of the way, we may begin with the proof.
     \]
     In the first equality we have used that the Mukai vector of any skyscraper $k(s)$, for a closed point $s \in M_v$ is precisely $e = (0,0,1)$ by Example \ref{}. The second equality is Proposition \ref{Mukai vector FM transform interaction}. 
     % where in the first equality we have used that the Mukai vector of any skyscraper $k(s)$, for a closed point $s \in M$ is precisely $e = (0,0,1)$ by Example \ref{} and in the second equality 
-    Transform $\fm{\E}$ being an equivalence, shows $\fmcoh{\E}$ is a Hodge isometry by Corollary \ref{}. Since $\fmcoh{\E}(e) = v$ this lets us identify 
+    Transform $\fm{\E}$ being an equivalence, shows $\fmcoh{\E}$ is a Hodge isometry by Corollary \ref{FM equivalence implies FM on Mukai is an isomorphism}. Since $\fmcoh{\E}(e) = v$ this lets us identify 
     \[
         \quot{v} \iso \cohom{2}{M_v}{\Z}
     \]
@@ -1065,4 +1120,5 @@ The contents of these two sections finally allow as to conclude with the followi
 
 \subsubsection*{A comment}
 
-Lastly we touch upon an attempt of proving fully faithfulness of $\fm{\E} \colon \derb{M} \to \derb{X}$, which did not quite work out.
+Lastly we touch upon an attempt of proving fully faithfulness of $\fm{\E} \colon \derb{M} \to \derb{X}$, which did not quite work.
+\info{maybe I will add this if time permits.}
