@@ -3,7 +3,7 @@
 
 In this last chapter we will again be dealing with K3 surfaces over the field of complex numbers $\C$. We will characterize when two K3 surfaces $X$ and $Y$ have equivalent bounded derived categories, through their internal structure, namely their \emph{transcendental lattices} and yet to be defined, \emph{Mukai lattices}. In the process of proving these results we will encounter other realizations of smooth projective varieties over $\C$, disguised as \emph{moduli spaces} of certain sheaves on K3 surfaces, which will themself turn out to be K3 surfaces as well.
 %   which will be of great importance. 
-Pretty much in all aspects Fourier--Mukai transforms whether categorical or cohomological will be present. They will serve as crucial constituents of the proof facilitating a way to connect either various different Hodge lattices or the bounded derived categories. It is worth mentioning here that Orlov's paper \cite[]{Orlov2003}, especially Chapter 3, was the primary inspiration to govern the course of this section followed closely by the influential paper of Mukai \cite{Mukai1987}.
+Pretty much in all aspects Fourier--Mukai transforms whether categorical or cohomological will be present. They will serve as crucial constituents of the proof facilitating a way to connect either various different Hodge lattices or the bounded derived categories. It is worth mentioning here that Orlov's paper \cite[]{Orlov2003}, especially Chapter 3, was the primary inspiration to govern the course of this chapter followed closely by the pioneering paper of Mukai \cite{Mukai1987}.
 
 We will let the following theorem be our initial guide for this chapter.
 % Quite subtly Fourier--Mukai transforms will 
@@ -185,7 +185,11 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     which shows that $z^{2,0} = 0$. Symmetrically one also shows $z^{0,2} = 0$ to conclude that $z = z^{1,1} \in \widetilde{H}^{1,1}(Y)$. \qedhere
 \end{proof}
 
-The following proposition explains why our sudden jump away from transcendental lattices to Mukai lattices was reasonable. 
+It is beneficial to introduce the Neron-Severi group analog for the Mukai lattice. We call it the \emph{extended Neron-Severi group} and it is defined to be 
+\[
+    \extendedNS{X} = \NS{X} \oplus \cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z} = \widetilde{H}^{1,1}(X) \cap \mukai{X}.
+\]  
+We will utilize it in the following proposition, which explains why our sudden jump away from transcendental lattices to Mukai lattices was reasonable. 
 % The following proposition justifies that we may study the Mukai lattice instead of the transcendental one. 
 \begin{proposition}
     \label{transcendental iso iff Mukai iso}
@@ -209,13 +213,14 @@ The following proposition explains why our sudden jump away from transcendental 
     % \]
     % which in our case is clearly satisfied as $\phi_\C$ extends $f_\C$ and $\widetilde{H}^{2,0}(X) = H^{2,0}(X) = T^{2,0}(X)$, with analogous likewise for $Y$.
 
-    ($\Leftarrow$) Assuming we have a Hodge isometry $\phi \colon \mukai{X} \to \mukai{Y}$ we need to show that $\transc{X}$ is sent to $\transc{Y}$. This is seen by first introducing the \emph{extended Neron-Severi group}
-    \[
-        \extendedNS{X} = \NS{X} \oplus \cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z} = \widetilde{H}^{1,1}(X) \cap \mukai{X}.
-    \]  
+    ($\Leftarrow$) Assuming we have a Hodge isometry $\phi \colon \mukai{X} \to \mukai{Y}$ we need to show that $\transc{X}$ is sent to $\transc{Y}$. 
+    % This is seen by first introducing the \emph{extended Neron-Severi group}
+    % \[
+    %     \extendedNS{X} = \NS{X} \oplus \cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z} = \widetilde{H}^{1,1}(X) \cap \mukai{X}.
+    % \]  
     Observe that $\transc{X}$ is actually also the orthogonal complement of $\extendedNS{X}$ in the Mukai lattice $\mukai{X}$. Indeed, since $\NS{X} \subseteq \extendedNS{X}$, we have $\extendedNS{X}^\perp \subseteq \transc{X}$. For the converse observe that since $\transc{X}\subseteq \cohom{2}{X}{\Z}$, $\transc{X}$ is automatically orthogonal to $\cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z}$ with respect to the Mukai pairing $\pairing{\cdot}{\cdot}$. Therefore $\transc{X} \subseteq \extendedNS{X}^\perp$.
 
-    Lastly, since $\phi(\extendedNS{X}) = \phi_\C(\widetilde{H}^{1,1} \cap \mukai{X}) = N(Y)$, it is clear that $\phi$ maps transcendental cycles of $\transc{X}$ to cycles $\transc{Y}$. This allows us to restrict the Hodge isometry $\phi$ to a Hodge isometry
+    Lastly, since $\phi(\extendedNS{X}) = \phi_\C(\widetilde{H}^{1,1}(X) \cap \mukai{X}) = \extendedNS{Y}$, it is clear that $\phi$ maps transcendental cycles of $\transc{X}$ to cycles $\transc{Y}$. This allows us to restrict the Hodge isometry $\phi$ to a Hodge isometry
     \[
         \phi|_{\transc{X}} \colon \transc{X} \to \transc{Y}. \qedhere
     \]
@@ -243,11 +248,11 @@ The remainder of this section will be devoted to proving the left-to-right impli
 \end{lemma}
 
 \begin{proof}
-    We will use the Künneth formula in an essential way so we recall it here. Since $X$ and $Y$, as K3 surfaces, have torsion-free integral cohomology the $n$-th cohomology of the product $X \times Y$ decomposes as
+    We will use the Künneth formula in an essential way, so we recall it again. Since $X$ and $Y$, as K3 surfaces, have torsion-free integral cohomology the $n$-th cohomology of the product $X \times Y$ decomposes as
     \[
         H^n(X \times Y, \Z) \iso \bigoplus_{k+\ell = n} H^k(X, \Z) \otimes_\Z H^\ell(Y, \Z),
     \] 
-    for all $n \in \N$. Let $p$ and $q$ denote the canonical projections from $X \times Y$ onto $X$ and $Y$, respectively.
+    for all $n \in \N$. Let $p$ and $q$, as always, denote the canonical projections from $X \times Y$ onto $X$ and $Y$, respectively.
     
     First, rewrite the Chern character with respect to the ordinary grading on cohomology $H^\bullet(X \times Y, \Q) = \bigoplus_{i=0}^4 H^{2i}(X \times Y, \Q)$ as the vector
     \[
@@ -342,16 +347,17 @@ The remainder of this section will be devoted to proving the left-to-right impli
     \end{align*}
     In the second equality, we have used that $[\Delta_*\struct{X}] = [\Delta_!\struct{X}]$ in $\kgroup{X \times X}$, because for any closed embedding, such as $\Delta \colon X \to X \times X$, its push-forward $\Delta_*$ is exact. For the last equality we have used $\ch(\struct{X}) = \exp(\cclass[1](\struct{X})) = 1$. Next, we observe, that from $\tdclass{X \times X} = p^*\tdclass{X} \smallsmile p^*\tdclass{X}$, equation $\Delta^*\sqrt{\tdclass{X\times X}} = \tdclass{X}$ follows. By the cohomological projection formula (\cf Proposition \ref{cohomological projection formula}), we further compute
     \[
-        \Delta_*\tdclass{X} = \Delta_*\Delta^*\sqrt{\tdclass{X \times X}} = \Delta_*(1)\sqrt{\tdclass{X \times X}}.
+        \Delta_!\tdclass{X} = \Delta_!\Delta^*\sqrt{\tdclass{X \times X}} = \Delta_!(1)\sqrt{\tdclass{X \times X}}.
     \] 
-    This implies that $v(\struct{\Delta}) = \Delta_*(1)$. 
+    This implies that $v(\struct{\Delta}) = \Delta_!(1)$. 
     Finally, for any $\alpha \in \cohom{\bullet}{X}{\Z}$, again utilizing  the projection formula, we arrive at
     \[
-        \fmcoh{\struct{\Delta}}(\alpha) = p_*(v(\struct{\Delta_X})\smallsmile p^*\alpha) = p_*(\Delta_*(1)\smallsmile p^*\alpha) = p_*(\Delta_*(1\smallsmile \Delta^*p^*(\alpha))) = \alpha. \qedhere
+        \fmcoh{\struct{\Delta}}(\alpha) = q_!(v(\struct{\Delta_X})\smallsmile p^*\alpha) = q_!(\Delta_!(1)\smallsmile p^*\alpha) = q_!(\Delta_!(1\smallsmile \Delta^*p^*(\alpha))) = \alpha. \qedhere
     \]
 \end{proof}
 
-\subsubsection*{Proof of $(\Rightarrow)$}
+\subsubsection*{Proof}
+% \subsubsection*{Proof of $(\Rightarrow)$}
 
 \begin{proof}[Proof for $(\Rightarrow)$ of Theorem \ref{Derived Torelli}]
     By Orlov's Theorem \ref{Orlov's theorem}, the functor witnessing the equi\-valence $\derb{X} \natiso \derb{Y}$ is naturally isomorphic to a Fourier--Mukai transform $\fm{\E}$ for some kernel $\E$ of the category $\derb{X \times Y}$. 
@@ -652,6 +658,10 @@ With all the necessary terminology now established, we can introduce the followi
     As Mukai vectors and Chern characters determine each other on a K3 surface, the definitions are in fact equivalent. 
 \end{remark}
 
+\begin{definition}
+    Let $X$ be a complex K3 surface. A vector $v = (v_0, v_1, v_2) \in \mukai{X}$ is \emph{effective} if either $v_0 > 0$ or $v_0 = 0$ and $v_1$ is an effective divisor\footnote{A divisor $D = \sum_i n_i[X_i]$ is \emph{effective}, if $n_i \geq 0$, for each $i$. Here $X_i$ are closed integral subschemes of codimension one in $X$.}. 
+\end{definition}
+
 % \begin{theorem}
 %     \label{Representability of moduli functor}
 %     Let $v \in \mukai{X}$ be an isotropic vector with $\gcd_{w \in N(X)}\pairing{v}{w} = 1$. Then the moduli functor $\M_v \colon \sch{\C}^\op \to \Set$ is representable and is represented by a K3 surface $M_v$ over $\C$, also called the \emph{fine moduli space}.
@@ -660,14 +670,18 @@ With all the necessary terminology now established, we can introduce the followi
 %     \label{Representability of moduli functor}
 %     Let $v \in \mukai{X}$ be an isotropic vector with $\gcd_{w \in N(X)}\pairing{v}{w} = 1$. Then the moduli functor $\M^{ss}_v \colon \sch{\C}^\op \to \Set$ is representable and is represented by a smooth projective surface $M$ over $\C$, called the \emph{fine moduli space}. 
 % \end{theorem}
+
+The following theorem, based on the pioneering work of Mukai \cite{Mukai1987} is due to many authors \cite{GottscheHuybrechts1996,huybrechts2006fouriermukai, OGrady1997}. A modern exposition can be found in \cite{BayerMacri2014}.
+
 \begin{theorem}
     \label{Representability of moduli functor}
-    Let $v \in \mukai{X}$ be an isotropic vector for which there exists a class $v' \in N(X)$, satisfying $\pairing{v}{v'} = 1$. Then there exists a polarization on $X$ for which all semi-stable sheaves are stable, so the functors $\M_v$ and $\M^s_v$ coincide, and the moduli functor $\M_v \colon \sch{\C}^\op \to \Set$ is representable. The moduli functor $\M_v$ is then represented by a smooth projective complex surface $M$, called a \emph{fine moduli space}.
+    \textsl{\cite{GottscheHuybrechts1996,huybrechts2006fouriermukai, OGrady1997,HuybrechtsLehn2010,BayerMacri2014}}
+    Let $v \in \mukai{X}$ be an effective isotropic vector for which there exists a class $v' \in \extendedNS{X}$, satisfying $\pairing{v}{v'} = 1$. Then there exists a polarization on $X$ for which all semi-stable sheaves are stable, so the functors $\M_v$ and $\M^s_v$ coincide, and the moduli functor $\M_v \colon \sch{\C}^\op \to \Set$ is representable. The moduli functor $\M_v$ is then represented by a smooth projective complex surface $M_v$, called a \emph{fine moduli space}.
     % Then the moduli functor $\M^{ss}_v \colon \sch{\C}^\op \to \Set$ is representable and is represented by a projective surface $M^{ss}$ over $\C$, called a \emph{fine moduli space}. 
 \end{theorem}
 
 \begin{proof}
-    This is a very sophisticated and deep result lying fully outside the scope of this thesis. Not only is the construction of a moduli space $M$ in a certain weaker sense, called \emph{universal corepresentability}, very complicated also showing that it has the desired properties is very difficult. As a reference see for instance \cite[Theorem 3.6]{BayerMacri2014}.
+    This is a very sophisticated and deep result lying fully outside the scope of this thesis. Not only is the construction of a moduli space $M_v$ in a certain weaker sense, called \emph{universal corepresentability}, very complicated also showing that it has the desired properties is very difficult. 
     % First the existence of a projective variety $M$ is ensured by \cite[\S 10, Theorem 10.18]{huybrechts2006fouriermukai}. By \cite[\S 10, Corollary 10.23]{huybrechts2006fouriermukai} the moduli space $M^{ss}$ is fine \ie represents the functor $\M_v^{ss}$.
 \end{proof}
 
@@ -681,12 +695,12 @@ With all the necessary terminology now established, we can introduce the followi
 %     The moduli functor $\M_v$ is actually representable already even under no additional assumptions on the Mukai vector $v$. The conditions are there only to ensure $M_v$ is a K3 surface. For example in general $M_v$ is smooth and has dimension $\pairing{v}{v} + 2$ (\cf \cite[\S 4.3, Propositon 4.20]{vanBree2020}).
 % \end{remark}
 
-Circling back to the original idea of constructing a space, which parametrizes isomorphism classes of stable coherent shaves on $X$ with a prescribed Mukai vector, we now argue as to why $M$ achieves this. This is done in its entirety through unwrapping the definition of what it means for a moduli functor $\M_v$ to be representable. Since the set of all closed points of $M_v$ is in bijection with the set of morphisms $\spec{\C} \to M$ in $\sch{\C}$, we obtain the following chain of natural bijections
+Circling back to the original idea of constructing a space, which parametrizes isomorphism classes of stable coherent shaves on $X$ with a prescribed Mukai vector, we now argue as to why $M_v$ achieves this. This is done in its entirety through unwrapping the definition of what it means for a moduli functor $\M_v$ to be representable. Since the set of all closed points of $M_v$ is in bijection with the set of morphisms $\spec{\C} \to M_v$ in $\sch{\C}$, we obtain the following chain of natural bijections
 \begin{equation}
     \label{eq: natural iso applied to SpecC}
-    \Hom_{\sch{\C}}(\spec{\C}, M) \xrightarrow{\ = \ } h_{M}(\spec{\C}) \xrightarrow{\ \iso \ } \M_v(\spec{\C}).
+    \Hom_{\sch{\C}}(\spec{\C}, M_v) \xrightarrow{\ = \ } h_{M_v}(\spec{\C}) \xrightarrow{\ \iso \ } \M_v(\spec{\C}).
 \end{equation}
-Thus every closed point of $M$ represents and is represented by a unique class $[\F]_\sim \in \M_v(\spec{\C})$ of coherent sheaves on $X \times \spec{\C}$. As $\spec{\C}$ carries only the trivial line bundle $\struct{\spec{\C}}$, the equivalence relation $\sim$ of Definition \ref{Definition of moduli functor} is enhanced to distinguishing only \emph{non-isomorphic} sheaves on $X \times \spec{\C}$. Since clearly $X \iso X \times \spec{\C}$, we arrive at the bijective correspondence
+Thus every closed point of $M_v$ represents and is represented by a unique class $[\F]_\sim \in \M_v(\spec{\C})$ of coherent sheaves on $X \times \spec{\C}$. As $\spec{\C}$ carries only the trivial line bundle $\struct{\spec{\C}}$, the equivalence relation $\sim$ of Definition \ref{Definition of moduli functor} is enhanced to distinguishing only \emph{non-isomorphic} sheaves on $X \times \spec{\C}$. Since clearly $X \iso X \times \spec{\C}$, we arrive at the bijective correspondence
 % \begin{equation}
 %     \{ p \in M \mid \text{$p$ closed point}\} \leftrightarrows \{\F \in \coherent{X} \mid \text{$\F$ is stable with $v(\F) = v$.}\}
 % \end{equation}
@@ -700,7 +714,7 @@ Thus every closed point of $M$ represents and is represented by a unique class $
         \end{array}
         \right\}.
 \end{equation}
-This correspondence ties in perfectly into our initial idea of $M$ parametrizing certain sheaves on $X$.  
+This correspondence ties in perfectly into our initial idea of $M_v$ parametrizing certain sheaves on $X$.  
 
 Another key ingredient, playing a principal part in the proof of Proposition \ref{Hodge isometry implies D equivalence}, is the \emph{universal bundle} defined by the subsequent category theoretic magic.
 
@@ -713,18 +727,18 @@ Another key ingredient, playing a principal part in the proof of Proposition \re
 % \end{definition}
 
 \begin{definition}
-    The \emph{universal bundle (on $X$)} is any representative $\E \in \coherent{X \times M}$ of the unique equivalence class of $\M_v(M)$, to which the isomorphism 
+    The \emph{universal bundle (on $X$)} is any representative $\E \in \coherent{X \times M_v}$ of the unique equivalence class of $\M_v(M_v)$, to which the isomorphism 
     \[
-        \Hom_{\operatorname{Fct(\sch{\C}^\op, \Set)}}(h_M, \M_v) \to \M_v(M)
+        \Hom_{\operatorname{Fct(\sch{\C}^\op, \Set)}}(h_{M_v}, \M_v) \to \M_v(M_v)
     \]
-    of Yoneda lemma sends the natural isomorphism $\eta \colon h_M \Longrightarrow \M_v$, detecting representability of the moduli functor $\M_v$. In other words 
+    of Yoneda lemma sends the natural isomorphism of functors $\eta \colon h_M \Longrightarrow \M_v$, which detects representability of the moduli functor $\M_v$. In other words 
     \[
-        [\E]_\sim = \eta_M(\id{M}).
+        [\E]_\sim = \eta_{M_v}(\id{{M_v}}).
     \]
 \end{definition}
 
 \begin{remark}
-    As a consequence of a more general fact \cite[\S 6.1, Remark 6.1.9]{HuybrechtsLehn2010}, we see that the universal bundle $\E$ is a \emph{vector bundle} \ie a locally free $\struct{X \times M}$-module of finite rank. This is just a justification for why we call $\E$ a bundle as we will never actually use this fact. 
+    As a consequence of a more general fact \cite[\S 6.1, Remark 6.1.9]{HuybrechtsLehn2010}, we see that the universal bundle $\E$ is a \emph{vector bundle} \ie a locally free $\struct{X \times M_v}$-module of finite rank. This is just a justification for why we call $\E$ a bundle as we will never actually use this fact. 
 \end{remark}
 
 % \begin{theorem}
@@ -733,24 +747,24 @@ Another key ingredient, playing a principal part in the proof of Proposition \re
 
 \begin{remark}
     \label{Points of M are sheaves}
-Utilizing the universal bundle $\E$ we can provide another way of interpreting the isomorphism classes of stable sheaves on $X$ with Mukai vector $v$ \ie elements of $\M_v(\spec{\C})$. Under the natural bijection $\eta_{\spec{\C}}$ of \eqref{eq: natural iso applied to SpecC} every isomorphism class $[\F]_\iso \in \M_v(\spec{\C})$ corresponds to a unique morphism $t \colon \spec{\C} \to M$. By naturality of $\eta$, we obtain the following commutative square 
+Utilizing the universal bundle $\E$ we can provide another way of interpreting the isomorphism classes of stable sheaves on $X$ with Mukai vector $v$ \ie elements of $\M_v(\spec{\C})$. Under the natural bijection $\eta_{\spec{\C}}$ of \eqref{eq: natural iso applied to SpecC} every isomorphism class $[\F]_\iso \in \M_v(\spec{\C})$ corresponds to a unique morphism $s \colon \spec{\C} \to M_v$. By naturality of $\eta$, we obtain the following commutative square 
 \[\begin{tikzcd}[column sep = normal, row sep = 1.8em]
     % https://q.uiver.app/#q=WzAsNCxbMCwwLCIxIl0sWzIsMCwiMiJdLFswLDIsIjMiXSxbMiwyLCI0Il0sWzAsMSwiXFxldGFfTSJdLFswLDIsInBeKiIsMl0sWzEsMywiXFxNX3YocCkiXSxbMiwzLCJcXGV0YSIsMl1d
-	\Hom_{\sch{\C}}(M, M) && \M_v(M) \\
+	\Hom_{\sch{\C}}(M_v, M_v) && \M_v(M_v) \\
 	\\
-	\Hom_{\sch{\C}}(\spec{\C}, M) && \M_v(\spec{\C}),
-	\arrow["{\eta_M}", from=1-1, to=1-3]
-	\arrow["{- \circ t}"', from=1-1, to=3-1]
-	\arrow["{\M_v(t)}", from=1-3, to=3-3]
+	\Hom_{\sch{\C}}(\spec{\C}, M_v) && \M_v(\spec{\C}),
+	\arrow["{\eta_{M_v}}", from=1-1, to=1-3]
+	\arrow["{- \circ s}"', from=1-1, to=3-1]
+	\arrow["{\M_v(s)}", from=1-3, to=3-3]
 	\arrow["\eta_{\spec{\C}}", from=3-1, to=3-3]
 \end{tikzcd}\]
 which spells out that 
 \begin{align*}
-    [\F]_\iso = \eta_{\spec{\C}}(t) &= \eta_{\spec{\C}}(((-)\circ t)(\id{M})) = \\
-    &= \M_v(t)(\eta_M(\id{M})) = \M_v(t)([\E]_\sim) = [(\id{X} \times t)^*\E]_\iso.
+    [\F]_\iso = \eta_{\spec{\C}}(s) &= \eta_{\spec{\C}}(((-)\circ s)(\id{M})) = \\
+    &= \M_v(s)(\eta_M(\id{M})) = \M_v(s)([\E]_\sim) = [(\id{X} \times s)^*\E]_\iso.
     % = [\E|_{X \times \{p\}}]_\iso.
 \end{align*}
-Taking the liberty of identifying $t \colon \spec{\C} \to M$ with its image -- a closed point corresponding to a stable sheaf $\F \in \coherent{X}$, with $v(\F) = v$, and denoting it with $[\F]$, we see that the above calculation reads
+Taking the liberty of identifying $s \colon \spec{\C} \to M_v$ with its image -- a closed point corresponding to a stable sheaf $\F \in \coherent{X}$, with $v(\F) = v$, as in \eqref{eq: closed points of M}, and denoting it with $[\F]$, we see that the above calculation reads
 \[
     \E|_{[\F]} \iso \F.
 \]
@@ -809,11 +823,23 @@ With all the preparations now out of the way, we may begin with the proof.
 % where we will exploit brilliant results of Mukai 
 % In the definition of the moduli functor, we will use the term \emph{stable}, which we have not defined. 
 \begin{proof}[Proof of Proposition \ref{Hodge isometry implies D equivalence}]
-    Assume $f \colon \mukai{X} \to \mukai{Y}$ is a Hodge isometry. Let $e \in \mukai{Y}$ denote the Mukai vector $(0,0,1)$. Denote with $v =(v_0, v_1, v_2) \in \mukai{X}$ the Mukai vector for which $f(v) = e$. Then $v$ satisfies the following two properties, both consequences of $f$ being an isometry.
+    Assume $f \colon \mukai{X} \to \mukai{Y}$ is a Hodge isometry. Let $e \in \mukai{Y}$ denote the Mukai vector $(0,0,1)$. Denote with $v =(v_0, v_1, v_2) \in \mukai{X}$ the Mukai vector for which $f(v) = e$. We may always assume that $v_0 > 0$ by the following casework.
+    \begin{itemize}[label = $\circ$]
+        \item If $v_1 = 0$, then either $v_0 \neq 0$ or $v_2 \neq 0$. Then using a combination of the following two obvious Hodge isometries of $\mukai{X}$ one is able to achieve $v_0 > 0$. 
+        \[
+            (w_0, w_1, w_2) \mapsto (w_2, w_1, w_0) \qquad \text{and} \qquad (w_0, w_1, w_2) \mapsto (-w_0, w_1, -w_2).
+        \]
+        \item If $v_1 \neq 0$ and either $v_0 \neq 0$ or $v_2 \neq 0$, proceed as in the case above, otherwise for $v_0 = 0$ and $v_2 = 0$ consider the Fourier--Mukai transform, whose kernel is the sheaf $\Delta_*\mathcal L$ on $X \times X$ for some line bundle $\mathcal L$ on $X$. We have shown in Example \ref{Identifying fm transforms} \ref{Tensoring by a line bundle is FM}, that $\fm{\Delta_*\mathcal L}$ is naturally isomorphic to $\mathcal L \otimes (-)$. This is clearly an equivalence, thus by Corollary \ref{FM equivalence implies FM on Mukai is an isomorphism} the associated cohomological Fourier--Mukai $\fmcoh{\Delta_*\mathcal L}$ is a Hodge isometry. In a very similar way as in the proof of Lemma \ref{cohomological fm of diagonal} one computes that
+        \[
+            \fmcoh{\Delta_*\mathcal{L}}(w) = \ch[](\mathcal L) \smallsmile w = \left(w_0, w_1 + w_0 \cclass[1](\mathcal L), w_2 + \intersect{w_1}{\cclass[1](\mathcal L)} + \tfrac{1}{2}w_0\cclass[1]^2(\mathcal L)\right).
+        \]
+        Since $e \in \widetilde{H}^{1,1}(Y)$ and $f \colon \mukai{X} \to \mukai{Y}$ is a Hodge isometry, we may conclude that $v_1 \in H^{1,1}(X) \cap \cohom{2}{X}{\Z}$. The latter group we know to be $\NS{X} = \pic{X}$ and the intersection pairing $\intersect{\cdot}{\cdot}$ restricted to $\pic{X}$ is non-degenerate by Proposition \ref{Pic has non-degenerate intersection pairing}. Hence there always exists a line bundle $\mathcal L \in \pic{X}$, such that $\intersect{v_1}{\cclass[1](\mathcal L)} \neq 0$. Together with the Hodge isometries of the previous case, we can achieve $v_0 > 0$. 
+    \end{itemize} 
+    The Mukai vector $v$ also satisfies the following two properties, both consequences of $f$ being a Hodge isometry.
     %  to a Mukai vector $v = (v_0, v_1, v_2) \in \mukai{Y}$, which satisfies the following two properties.
     \begin{itemize}[label = $\vartriangleright$]
         \item{$v$ is isotropic, since $\pairing{v}{v} = \pairing{f(v)}{f(v)} = \pairing{e}{e} = 0$.}
-        \item {$v$ is of divisibility $1$. Indeed let $e' = (1, 0, 0)$ and $v'\in \mukai{X}$, for which $f(v') = e'$. Then $\pairing{v}{v'} = \pairing{f(v)}{f(v')} = \pairing{e}{e'} = 1$.
+        \item {$v$ is of divisibility $1$. Indeed let $e' = (1, 0, 0)$ and $v'\in \mukai{X}$, for which $f(v') = e'$. Then, since $f$ is a Hodge isometry, $v' \in \extendedNS{X}$ and $\pairing{v}{v'} = \pairing{f(v)}{f(v')} = \pairing{e}{e'} = 1$.
         }
     \end{itemize}
     % We will split the proof in a couple of cases, depending on where the Hodge isometry $f \colon \mukai{X} \to \mukai{Y}$ sends the vector $(0,0,1) \in \mukai{X}$. Let $v = (v_0, v_1, v_2) \in \mukai{Y}$ be the image of $(0,0,1)$ under $f$.
@@ -878,11 +904,11 @@ With all the preparations now out of the way, we may begin with the proof.
     \[
         \Hom_{\derb{X}}(\E|_s, \E|_t[2]) = 0.
     \]
-    Lastly, for $i = 1$, we have $\Hom_{\derb{X}}(\E|_s, \E|_t[1]) \iso \Ext^1_\struct{X}(\E|_s, \E|_t)$. The latter is trivial, because $v$ is isotropic and 
+    Lastly, for $i = 1$, we have $\Hom_{\derb{X}}(\E|_s, \E|_t[1]) \iso \Ext^1_\struct{X}(\E|_s, \E|_t)$. This is because $v$ is isotropic and by Proposition \ref{equler pairing = mukai pairing} we have
     \[
-        -\pairing{v}{v} = \chi(\E|_s, \E|_t) = \dim\Ext^0_\struct{X}(\E|_s, \E|_t) - \dim\Ext^1_\struct{X}(\E|_s, \E|_t) + \dim\Ext^2_\struct{X}(\E|_s, \E|_t),
+        \pairing{v}{v} = \chi(\E|_s, \E|_t) = \dim\Ext^0_\struct{X}(\E|_s, \E|_t) - \dim\Ext^1_\struct{X}(\E|_s, \E|_t) + \dim\Ext^2_\struct{X}(\E|_s, \E|_t).
     \]
-    for both $\Ext^0_\struct{X}(\E|_s, \E|_t)$ and $\Ext^2_\struct{X}(\E|_s, \E|_t)$ are trivial.
+    And since both $\Ext^0_\struct{X}(\E|_s, \E|_t)$ and $\Ext^2_\struct{X}(\E|_s, \E|_t)$ are trivial, $\Ext^1_\struct{X}(\E|_s, \E|_t)$ is trivial as well.
 
     \vspace{0.3cm}
     \noindent

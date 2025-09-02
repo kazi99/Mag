@@ -1,5 +1,23 @@
 \section{Lattice theory}
 
+\begin{definition}
+    An embedding of lattices $L \hookrightarrow \Lambda$ is said to be \emph{primitive}, if $\Lambda/L$ is free. In that case we also call $L$ a \emph{primitive sublattice} of $\Lambda$.
+\end{definition}
+
+\begin{example}
+    \label{orthogonal complement primitive}
+    Let $L$ be any sublattice of a lattice $\Lambda$. Then the orthogonal complement $L^\perp$ is always a primitive sublattice of $\Lambda$.
+\end{example}
+
+\begin{proposition}
+    \label{composition of primitive embeddings}
+    Let $i \colon L \hookrightarrow \Lambda$ and $i' \colon \Lambda \hookrightarrow \Lambda'$ be a pair of primitive embeddings. Then their composition $i' \circ i \colon L \hookrightarrow \Lambda'$ is also a primitive embedding.
+\end{proposition}
+
+\begin{proof}
+    Since $\Lambda/L$ and $\Lambda'/\Lambda$ are free abelian, the short exact sequences $0 \to L \to \Lambda \to \Lambda/L \to 0$ and $0 \to \Lambda \to \Lambda' \to \Lambda'/\Lambda \to 0$ are split. This means that there are retracts $r \colon \Lambda \to L$ and $r' \colon \Lambda' \to \Lambda$, thus the short exact sequence $0 \to L \to \Lambda' \to \Lambda'/L \to 0$ also splits, which makes $\Lambda'/L$ free as a subgroup of $\Lambda'$.
+\end{proof}
+
 \begin{proposition}
     \label{extending an isometry 1}
     Let $L$ and $\Lambda$ be even lattices and assume $\Lambda$ is unimodular. Let $i_0$ and $i_1$ denote two primitive embeddings $L \hookrightarrow \Lambda$. Suppose the orthogonal complement $i_0(L)^\perp$ in $\Lambda$ contains a copy of the hyperbolic lattice $\hyperbolic$. Then there exists an isometry $\phi \colon \Lambda \to \Lambda$ such that $i_1 = \phi \circ i_0$.
