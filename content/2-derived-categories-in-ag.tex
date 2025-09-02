@@ -65,8 +65,8 @@ As observed in Chapter \ref{Chapter: Derived categories} the construction of der
         \[
             0 \to \E^{-n} \to \E^{-n+1} \to \cdots \to \E^{-1} \to \E^0 \to \F \to 0.
         \]
-        If $\E^0$, $\E^{-1}$,..., $\E^{-n+1}$ are locally free, the sheaf $\E^{-n}$ is locally free as well. 
-        \info{needs reference}
+        If $\E^0$, $\E^{-1}$,..., $\E^{-n+1}$ are locally free, the sheaf $\E^{-n}$ is locally free as well. See \cite[\S B.8.3]{Fulton1998} and note that this is essentially a local statement since a coherent sheaf $\E$ is a vector bundle if and only if all its stalks $\E_x$ are free $\struct{X, x}$-modules \cite[\S1, Lemma 5.1.3]{Weibel2013}.
+        % \info{needs reference}
         }
     \end{itemize}
     Pick a bounded complex of coherent sheaves $\F^\bullet$. Without loss of generality assume $\F^i \iso 0$ for $i \leq 1$,
@@ -107,11 +107,11 @@ As observed in Chapter \ref{Chapter: Derived categories} the construction of der
         \arrow[from=2-9, to=2-10]
         \arrow[from=2-10, to=2-11]
     \end{tikzcd}\]
-    Hence $\mathcal H^i(\E^\bullet) \iso 0$ for $i \leq 1$ and the right truncation $\rtruncation{1}(\E^\bullet)$ is acyclic. Truncating once more on the left, we obtain an exact sequence $\ltruncation{-n}(\rtruncation{1}(\E^\bullet))$, depicted below
+    Hence $\mathcal H^i(\E^\bullet) \iso 0$ for $i \leq 1$ and the right truncation $\rtruncation{1}(\E^\bullet)$ is acyclic. Truncating once more on the \emph{left} at degree $-n$, where $n$ is the dimension of $X$, we obtain an exact sequence $\ltruncation{-n}(\rtruncation{1}(\E^\bullet))$, depicted below
     \[
         0 \to \coker d_\E^{-n-1} \to \E^{-n+1} \to \cdots \to \E^{0} \to \ker d^1_\E \to 0.
     \]
-    This is now a resolution of a coherent sheaf $\ker d_\E^1$ by coherent sheaves, where $\E^0$, $\E^{-1}$,..., $\E^{-n+1}$ are vector bundles. By the second fact we see that $\coker d_\E^{-n-2}$ is then a vector bundle, therefore $\ltruncation{-n}(\E^\bullet)$ is a complex of vector bundles quasi-isomorphic to $\E^\bullet$ and consequently also quasi-isomorphic to $\F^\bullet$.
+    This is now a resolution of a coherent sheaf $\ker d_\E^1$ by coherent sheaves, where $\E^0$, $\E^{-1}$,..., $\E^{-n+1}$ are vector bundles. By the second fact we see that $\coker d_\E^{-n-1}$ is then a vector bundle, therefore $\ltruncation{-n}(\E^\bullet)$ is a complex of vector bundles quasi-isomorphic to $\E^\bullet$ and consequently also quasi-isomorphic to $\F^\bullet$.
 \end{proof}
 
 \begin{definition}
@@ -472,7 +472,7 @@ given on open subsets $U \subseteq X$ by $\Gamma(U, \struct{X})$-linear maps
 \]
 This action is clearly functorial and the same may be said for the similarly defined $\localhom_{\struct{X}}(\F, -)$-action, for a fixed $\struct{X}$-module $\F$.
 
-By \cite[EGA II, \S 9, Proposition 9.1.1]{EGA} $\localhom_{\struct{X}}(\F, \G)$ is coherent for any two coherent sheaves $\F$ and $\G$ on $X$. Therefore \eqref{eq: internal hom on O_X-modules} may be restricted to the bifunctor
+By \cite[II, \S 9, Proposition 9.1.1]{EGA} the internal Hom $\localhom_{\struct{X}}(\F, \G)$ is coherent for any two coherent sheaves $\F$ and $\G$ on $X$. Therefore \eqref{eq: internal hom on O_X-modules} may be restricted to a bifunctor
 \[
     \localhom[X](-, -) \colon \coherent{X}^\op \times \coherent{X} \to \coherent{X}.
 \]
@@ -486,6 +486,37 @@ By Remark \ref{}
 \subsubsection{Tensor product}
 
 \subsubsection{Pull-back $f^*$}
+
+\begin{proposition}
+    \label{pull-back of coherent sheaves}
+    Let $f \colon X \to Y$ be a morphism of schemes. 
+    \begin{enumerate}[label = (\roman*)]
+        \item{If $\G$ is a quasi-coherent shaef on $Y$, then $f^*\G$ is a quasi-coherent sheaf on $X$}
+        \item{If $X$ and $Y$ are noetherain and $\G$ is a coherent sheaf on $Y$, then $f^*\G$ is a coherent sheaf on $X$.} 
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    See \cite[\S II, Proposition 5.8]{Hartshorne1977}.
+\end{proof}
+
+\begin{proposition}
+    \label{vector bundles f^* adapted}
+    Let $f \colon X \to Y$ be a morphism of smooth projective varieties. Then the class of vector bundles on $Y$ forms an $f^*$-adapted class. 
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{corollary}
+    \label{vector bundles f^* acyclic}
+    Let $f \colon X \to Y$ be a morphism of smooth projective varieties. Then any vector bundle on $Y$ is $f^*$-acyclic. 
+\end{corollary}
+
+\begin{proof}
+    This is a consequence of Proposition \ref{vector bundles f^* adapted} and Lemma \ref{F-adapted is F-acyclic}.
+\end{proof}
 
 Cover flatness.
 
@@ -538,3 +569,7 @@ In this section we will present some interactions that appear between the derive
 \begin{proof}
     We first recall the underived version of the projection formula, which states that for any morphism of $f \colon X \to Y$, coherent sheaf $\F$ and locally free sheaf $\E$  
 \end{proof}
+
+\[
+    {\E^\bullet}^\vee \derivedtensor{}{}{\struct{X}} \F^\bullet \iso \rderived{}{\localhom[X]^\bullet(\E^\bullet, \F^\bullet)}.
+\]
