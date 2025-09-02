@@ -137,10 +137,11 @@
 \newcommand{\spec}[1]{\operatorname{Spec}#1}
 \newcommand{\sch}[1]{\mathsf{Sch}_{/#1}}
 \newcommand{\supp}[1]{\operatorname{supp}(#1)}
+\newcommand{\tangent}[1]{\mathcal{T}_{#1}}
 
 % Fourier-Mukai
 \newcommand{\fm}[1]{\Phi_{#1}}
-\newcommand{\fmkt}[1]{\phi_{#1}}
+\newcommand{\fmkt}[1]{\Psi_{#1}}
 \newcommand{\fmcoh}[1]{f^{#1}}
 \newcommand{\ladj}[1]{#1_\mathrm{L}}
 \newcommand{\radj}[1]{#1_\mathrm{R}}
@@ -148,12 +149,18 @@
 % Cohomology
 \newcommand{\td}{\operatorname{td}}
 \newcommand{\tdclass}[1]{\td_{#1}}
-\newcommand{\mukai}[1]{\widetilde{H}(#1, \Z)}
+\newcommand{\mukai}[1]{\tildi{H}(#1, \Z)}
 \newcommand{\rk}[1]{\operatorname{rk}(#1)}
 \newcommand{\cohom}[3]{H^{#1}(#2, #3)}
 \newcommand{\pairing}[2]{\langle #1, #2 \rangle}
+\newcommand{\intersect}[2]{(#1.#2)}
 \newcommand{\NS}[1]{\operatorname{NS}(#1)}
+\newcommand{\extendedNS}[1]{\operatorname{N}(#1)}
 \newcommand{\transc}[1]{T_{#1}}
+\newcommand{\pic}[1]{\operatorname{Pic}(#1)}
+
+% K-theory
+\newcommand{\kgroup}[1]{K_{\circ}(#1)}
 
 % Chern character
 \NewDocumentCommand{\ch}{ o g }{%
@@ -191,26 +198,40 @@
 
 % Lattices
 \newcommand{\hyperbolic}{\mathcal U}
+\newcommand{\quot}[1]{{#1}^\perp / \Z{#1}}
+\renewcommand{\div}{\operatorname{div}}
 
 %command for alg-closure that automatically adapts its 'bar' to the arg based on the args length (including '\')
 \newcommand{\ols}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip} % overline short
 \newcommand{\olsi}[1]{\,\overline{\!{#1}}} % overline short italic
 
+\newcommand{\tild}[1]{\mskip.5\thinmuskip\tilde{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\newcommand{\tildi}[1]{\,\tilde{\!{#1}}}
 
 % Quotient
 \newcommand{\bigslant}[2]{{\raisebox{.2em}{#1}\left/\raisebox{-.2em}{#2}\right.}}
 
 
 
-% Changes title font
-\usepackage{beramono}
+% =========== Technical stuff =========== %
+
+% Changes section font
+
+\usepackage{beramono}        % makes family 'fvm' available
+\renewcommand{\ttdefault}{lmtt} % restore default monospace (use lmtt if you load lmodern)
+
 \usepackage{titlesec}
 
+% explicit selector for the Bera Mono family (local use only)
+\newcommand{\sectiontt}{\fontfamily{fvm}\selectfont}
+
 \titleformat{\section}
-  {\normalfont\ttfamily\Large}{\thesection}{1em}{}
-
+  {\normalfont\sectiontt\Large}{\thesection}{1em}{}
 \titleformat{\subsection}
-  {\normalfont\ttfamily\large}{\thesubsection}{1em}{}
-
+  {\normalfont\sectiontt\large}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}
-  {\normalfont\ttfamily\normalsize}{\thesubsubsection}{1em}{}
+  {\normalfont\sectiontt\normalsize}{\thesubsubsection}{1em}{}
+
+% Theorems w/o numbers
+\newtheorem*{theorem*}{Theorem}
+
