@@ -1,58 +1,101 @@
 \section{Fourier--Mukai transforms}
 \label{Chapter: Fourier-Mukai transforms}
 
+Fourier--Mukai transforms are named after two prominent mathematicians -- Fourier and Mukai. The second one naming them after the first and in the process of studying them also getting his name attached to the term. In his paper \cite{Mukai1981} Mukai introduced these transforms to study bounded derived categories of coherent sheaves on abelian varieties and their duals, discovering non-isomorphic varieties which share equivalent bounded derived categories. He named his transforms after Fourier because of their resemblance to classical Fourier transforms of analysis and also provided a dictionary to pass between the two sides of his analogy.
+
+In this chapter we will first define Fourier--Mukai transforms on the level of derived categories, explore some of their properties and state an important theorem of Orlov, which will be indispensable later on. The remaining part of the chapter will be devoted to passing Fourier--Mukai transforms first to the level of $K$-groups and lastly to rational cohomology.   
+
+\vspace{0.3cm}
+\noindent
 Let $X$ and $Y$ be smooth projective varieties over $k$ and denote the canonical projections 
 \[
     p \colon X \times Y \to X \quad \text{and} \quad q \colon X \times Y \to Y.
 \]
 
 \begin{definition}
-    The \emph{Fourier--Mukai transform} associated to an object $\E$ of $\derb{X \times Y}$ is defined to be the functor
+    The \emph{Fourier--Mukai transform} associated to a complex $\E$ of $\derb{X \times Y}$ is defined to be the functor
     \[
         \fm{\E} \colon \derb{X} \to \derb{Y} \qquad \fm{\E} := \rderived{}{q_*}(\derivedtensor{\E}{\lderived{}{p^*}(-)}{\struct{X \times Y}}).
     \]
-    The object $\E$ is called the \emph{kernel} of $\fm{\E}$.
+    The complex $\E$ is called the \emph{kernel} of $\fm{\E}$.
 \end{definition}
 
-Note that as the projection $p \colon X \times Y \to X$ is flat, the pull-back functor $p^*$ need not be derived. Many examples of known functors are seen to be of Fourier--Mukai type.
+\begin{remark}
+    We see that $\fm{\E}$ is a composition of three triangulated functors,
+    \[
+        \fm{\E} \colon \quad \derb{X} \xrightarrow{\ \lderived{}{p^*} \ } \derb{X \times Y} \xrightarrow{\derivedtensor{\E}{(-)}{\struct{X \times Y}}} \derb{X \times Y} \xrightarrow{\ \rderived{}{q_*} \ } \derb{Y}
+    \]
+    meaning it is also triangulated itself.  
+\end{remark}
+
+Note that as the projection $p \colon X \times Y \to X$ is flat, the pull-back functor $p^*$ is exact and therefore needs not be derived. Many examples of known functors are seen to be of Fourier--Mukai type.
 
 \begin{example}
     \label{Identifying fm transforms}
     % In this example we notice and identity some common functors from algebraic geometry appear as Fourier-Mukai transforms. 
+    In the following examples we will write derived functors only wherever truly necessary. For instance tensoring with a vector bundle, pushing-forward along a closed embedding, pulling-back along a flat morphism are all exact functors, which need not be derived.
+    % 
+    % only the functors which are necessary to be derived will be derived. 
 \begin{enumerate}[label = (\roman*)]
     \item{
     $\id{\derb{X}} \iso \fm{\struct{\Delta}}$. Recall that $\struct{\Delta}$ is defined to be the push-forward $\Delta_*\struct{X}$, of the structure sheaf of $X$ along the diagonal embedding $\Delta \colon X \to X \times X$. Then for any object $\F$ of $\derb{X}$ we compute 
+    \begin{align*}
+        \fm{\struct{\Delta}}(\F) &= \rderived{}{q_*}(\derivedtensor{\struct{\Delta}}{p^*(\F)}{\struct{X \times X}}) \\
+        &\iso \rderived{}{q_*}(\derivedtensor{\Delta_*\struct{X}}{{p^*}(\F)}{\struct{X \times X}}) \\
+        &\iso \rderived{}{q_*}(\Delta_*(\struct{X} \otimes_{\struct{X}}\lderived{}{\Delta^*}({q^*}(\F)))) \\
+        &\iso \rderived{}{(q \circ \Delta)_*}(\lderived{}{(p \circ \Delta)^*}(\F)) \\
+        &\iso \F.
+    \end{align*}
     % \begin{align*}
     %     \fm{\struct{\Delta_X}} &= \rderived{}{p_*}(\derivedtensor{\struct{\Delta_X}}{\lderived{}{p^*}(E)}{\struct{X \times X}}) \\
     %     &\iso \rderived{}{p_*}(\derivedtensor{\Delta_*\struct{X}}{\lderived{}{p^*}(E)}{\struct{X \times X}}) \\
     %     &\iso \rderived{}{p_*}(\derivedtensor{\Delta_*\struct{X}}{\lderived{}{\Delta^*}(\lderived{}{p^*}(E))}{\struct{X \times X}}) \\
     % \end{align*}
-    \begin{align*}
-        \fm{\struct{\Delta}} &= p_*(\struct{\Delta} \otimes_{\struct{X \times X}} p^*(\F)) \\
-        &= p_*(\Delta_*\struct{X} \otimes_{\struct{X \times X}} p^*(\F)) \\
-        &\iso p_*(\Delta_*(\struct{X} \otimes_{\struct{X}} \Delta^*p^*(\F))) \\
-        % &\iso \struct{X} \otimes E \\
-        &\iso \id{\derb{X}}(\F).
-    \end{align*}
+    % \begin{align*}
+    %     \fm{\struct{\Delta}} &= p_*(\struct{\Delta} \otimes_{\struct{X \times X}} p^*(\F)) \\
+    %     &= p_*(\Delta_*\struct{X} \otimes_{\struct{X \times X}} p^*(\F)) \\
+    %     &\iso p_*(\Delta_*(\struct{X} \otimes_{\struct{X}} \Delta^*p^*(\F))) \\
+    %     &\iso (p \circ \Delta)_*((p \circ \Delta)^* \F) \\
+    %     % &\iso \struct{X} \otimes E \\
+    %     &\iso \F.
+    % \end{align*}
     All isomorphisms are natural in $\F$, thus proving $\id{\derb{X}} \iso \fm{\struct{\Delta}}$.
     }
-    \item{$(-)[1] \iso \fm{\struct{\Delta}[1]}$. A similar computation as above identifies the translation functor as a Fourier-Mukai transform with kernel $\struct{\Delta}[1]$.}
-    \item{$\rderived{}{f_*} \iso \fm{\struct{\Gamma_f}}$. For a morphism $f \colon X \to Y$, let $\struct{\Gamma_f}$ denote the push-forward of the sheaf $\struct{X}$ along the morphism $i\colon X \to X \times Y$ induced by the identity $\id{X}\colon X \to X$ and $f\colon X \to Y$.  Then for any object $\F$ of $\derb{X}$ we have
+    \item{$(-)[1] \iso \fm{\struct{\Delta}[1]}$. While noting that all the functors involved are triangulated, a similar computation as above identifies the translation functor as a Fourier-Mukai transform with kernel $\struct{\Delta}[1]$.}
+    \item{
+    $\mathcal L \otimes (-) \iso \fm{\Delta_*\mathcal L}$. Let $\mathcal L$ denote a line bundle on $X$. Then utilizing the diagonal embedding $\Delta \colon X \to X \times X$ again, we can compute for any complex $\F$ of $\derb{X}$
     \begin{align*}
-        \fm{\struct{\Gamma_f}} &= p_*(\struct{\Gamma_f} \otimes_{\struct{X \times Y}} q^*(\F)) \\
-        &= p_*(i_*\struct{X} \otimes_{\struct{X \times X}} q^*(\F)) \\
-        &\iso p_*(i_*(\struct{X} \otimes_{\struct{X}} i^*q^*(\F))) \\
-        % &\iso \struct{X} \otimes E \\
-        &\iso f_*\F.
+        \fm{{\Delta_*\mathcal L}}(\F) &= \rderived{}{q_*}(\derivedtensor{\Delta_*\mathcal L}{p^*(\F)}{\struct{X \times X}}) \\
+        % &\iso \rderived{}{q_*}(\derivedtensor{\Delta_*\struct{X}}{{p^*}(\F)}{\struct{X \times X}}) \\
+        &\iso \rderived{}{q_*}(\Delta_*(\mathcal L \otimes_{\struct{X}}\lderived{}{\Delta^*}({q^*}(\F)))) \\
+        &\iso \rderived{}{(q \circ \Delta)_*}(\mathcal L \otimes_{\struct{X}} \lderived{}{(p \circ \Delta)^*}(\F)) \\
+        &\iso \mathcal L \otimes_{\struct{X}} \F.
     \end{align*}
+    Since all the isomorphisms are natural, we have $\mathcal L \otimes_{\struct{X}} (-) \iso \fm{\Delta_*\mathcal L}$.
+    } \label{Tensoring by a line bundle is FM}
+    \item{$\rderived{}{f_*} \iso \fm{\struct{\Gamma_f}}$. For a morphism $f \colon X \to Y$, let $\struct{\Gamma_f}$ denote the push-forward of the sheaf $\struct{X}$ along the morphism $i\colon X \to X \times Y$ induced by the identity $\id{X}\colon X \to X$ and $f\colon X \to Y$.  Then for any object $\F$ of $\derb{X}$ we have
     % \begin{align*}
-    %     \fm{\struct{\Gamma_f}} &= \rderived{}{p_*}(\struct{\Gamma_f} \otimes_{\struct{X \times Y}} \lderived{}{q^*}(E)) \\
+    %     \fm{\struct{\Gamma_f}} &= p_*(\struct{\Gamma_f} \otimes_{\struct{X \times Y}} q^*(\F)) \\
+    %     &= p_*(i_*\struct{X} \otimes_{\struct{X \times X}} q^*(\F)) \\
+    %     &\iso p_*(i_*(\struct{X} \otimes_{\struct{X}} i^*q^*(\F))) \\
+    %     % &\iso \struct{X} \otimes E \\
+    %     &\iso f_*\F.
+    % \end{align*}
+    % \begin{align*}
+    %     \fm{\struct{\Gamma_f}} &= \rderived{}{p_*}(\struct{\Gamma_f} \otimes_{\struct{X \times Y}} \lderived{}{q^*}(\F)) \\
     %     &= \rderived{}{p_*}(i_*\struct{X} \otimes_{\struct{X \times X}} \lderived{}{q^*}(E)) \\
     %     &\iso \rderived{}{p_*}(\rderived{}{i_*}(\struct{X} \otimes_{\struct{X}} \lderived{}{i^*}\lderived{}{q^*}(E))) \\
     %     % &\iso \struct{X} \otimes E \\
     %     &\iso \rderived{}{f_*}(E).
     % \end{align*}
-    Note that we have used $p \circ i = f$ and $q \circ i = \id{X}$ passing to the last line. As all the isomorphisms are natural, we have $\rderived{}{f_*} \iso \fm{\struct{\Gamma_f}}$.
+    \begin{align*}
+        \fm{\struct{\Gamma_f}}(\F) &= \rderived{}{q_*}(\derivedtensor{\struct{\Gamma_f}}{p^*(\F)}{\struct{X \times Y}}) \\
+        &\iso \rderived{}{q_*}(\derivedtensor{i_*\struct{X}}{{p^*}(\F)}{\struct{X \times Y}}) \\
+        &\iso \rderived{}{q_*}(i_*(\struct{X} \otimes_{\struct{X}}\lderived{}{i^*}({p^*}(\F)))) \\
+        &\iso \rderived{}{(q \circ i)_*}(\lderived{}{(p \circ i)^*}(\F)) \\
+        &\iso \rderived{}{f_*}\F.
+    \end{align*}
+    Note that we have used $p \circ i = \id{X}$ and $q \circ i = f$ passing to the last line. As all the isomorphisms are natural, we have $\rderived{}{f_*} \iso \fm{\struct{\Gamma_f}}$.
     }
 \end{enumerate}
 \end{example}
@@ -73,7 +116,7 @@ In his paper \cite{Mukai1981} Mukai discovered that every Fourier-Mukai transfor
 \end{proposition}
 
 \begin{proof}
-    See \cite[\S 5, Proposition 5.9]{huybrechts2006fouriermukai}. This follows from a highly non-trivial fact that the derived push-forward $\rderived{}{f_*} \colon \derb{X} \to \derb{Y}$ along a proper map $f \colon X \to Y$ admits a \emph{right} adjoint $f^! = \lderived{}{f^*}(-) \otimes_\struct{X} \omega_f[\dim f]$, where $\omega_f = \omega_X \otimes_\struct{X} f^*\omega_Y^*$ and $\dim f = \dim Y - \dim X$. This is a consequence of Grothendieck--Verdier duality \cite[\S VII, Corollary 4.3]{Hartshorne1966}. Since $X$ and $Y$ are projective the projection   
+    See \cite[\S 5, Proposition 5.9]{huybrechts2006fouriermukai}. This follows from a highly non-trivial fact that the derived push-forward $\rderived{}{f_*} \colon \derb{X} \to \derb{Y}$ along a proper map $f \colon X \to Y$ admits a \emph{right} adjoint $f^! = \lderived{}{f^*}(-) \otimes_\struct{X} \omega_f[\dim f]$, where $\omega_f = \omega_X \otimes_\struct{X} f^*\omega_Y^*$ and $\dim f = \dim Y - \dim X$. This is a consequence of Grothendieck--Verdier duality \cite[\S VII, Corollary 4.3]{Hartshorne1966}. Since $X$ and $Y$ are projective the projection $p \colon X \times Y \to X$ is proper.
 \end{proof}
 
 \begin{remark}
@@ -103,15 +146,6 @@ In his paper \cite{Mukai1981} Mukai discovered that every Fourier-Mukai transfor
     %  in the presence of Serre functors 
 \end{remark}
 
-The following is a celebrated theorem by Orlov, which shed a new light on the topic of triangulated functors between bounded derived categories of coherent sheaves on smooth projective varieties. Its main advantage lies in the fact that instead of studying fully faithful triangulated functors on their own, one can study them in simpler terms using their Fourier--Mukai kernels. 
-% in the fact that we can study 
-% It can be interpreted to provide a way 
-
-\begin{theorem}[\text{\cite[Theorem 2.2]{Orlov-K3}}]
-    \label{Orlov's theorem}
-    Let $X$ and $Y$ be smooth projective varieties over a field $k$. Suppose $F \colon \derb{X} \to \derb{Y}$ is a fully faithful functor admitting a right (and, consequently, left) adjoint functor. Then there exists up to an isomorphism a unique object $\E$ of $\derb{X \times Y}$ such that $F$ and $\fm{\E}$ are naturally isomorphic.
-\end{theorem}
-
 \begin{proposition}
     \label{Composition of fm is fm}
     % Let $\fm{\E^\bullet} \colon \derb{X} \to \derb{Y}$ and $\fm{\F^\bullet} \colon \derb{Y} \to \derb{Z}$ be Fourier-Mukai transforms with kernels $\E^\bullet$ and $\F^\bullet$ belonging to $\derb{X \times Y}$ and $\derb{Y \times Z}$ respectively. Then the composition $\fm{\F^\bullet} \circ \fm{\E^\bullet} \colon \derb{X} \to \derb{Z}$ is also a Fourier-Mukai transform with kernel $\mathcal R^\bullet = ...$, which is sometimes also called the \emph{convolution} of $\E^\bullet$ and $\F^\bullet$.
@@ -126,7 +160,24 @@ The following is a celebrated theorem by Orlov, which shed a new light on the to
     See \cite[\S 5, 5.10]{huybrechts2006fouriermukai}. The proof utilizes the projection formula \eqref{eq: projection formula} and the flat base change formula \eqref{eq:}. Essentially this means that it is far less sophisticated then the proof of the existence of adjoints.    
 \end{proof}
 
-The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem}. It is also an important statement by itself, providing evidence for why the bounded derived category of coherent sheaves is a nicely behaved invariant for smooth projective varieties. In particular it says that $\derb{-}$ detects the dimension and triviality of the canonical bundle.  
+The following is a celebrated theorem by Orlov, which shed a new light on the topic of triangulated functors between bounded derived categories of coherent sheaves on smooth projective varieties. Its main advantage lies in the fact that instead of studying fully faithful triangulated functors on their own, one can study them in simpler terms using their Fourier--Mukai kernels. One finds this theorem in \cite[Theorem 3.2.2]{Orlov2003}.
+% in the fact that we can study 
+% It can be interpreted to provide a way 
+
+\begin{theorem}[Orlov]
+    \label{Orlov's theorem}
+    Let $X$ and $Y$ be smooth projective varieties over a field $k$. Suppose $F \colon \derb{X} \to \derb{Y}$ is a triangulated fully faithful functor admitting a left (or right) adjoint functor. Then there exists up to an isomorphism a unique object $\E$ of $\derb{X \times Y}$ such that $F$ and $\fm{\E}$ are naturally isomorphic.
+\end{theorem}
+
+\begin{remark}
+    \begin{enumerate}[label = (\roman*)]
+        \item Theorem \ref{Orlov's theorem} may be applied to any triangulated equivalence $F$ between bounded derived categories $\derb{X}$ and $\derb{Y}$. This is what we will do most often. 
+        \item Due to bounded derived categories being equipped with Serre functors (Proposition \ref{Serre functor on Db(X)}), the assumptions that $F$ admits a left or a right adjoint are equivalent by Proposition \ref{Serre functors and adjoints}.
+    \end{enumerate}
+\end{remark}
+
+% Once equipped with Orlov's Theorem \ref{Orlov's theorem}, we are able to prove a beautiful 
+This leads us to the following beautiful application of Orlov's theorem. It is also an important statement by itself, providing evidence for why the bounded derived category of coherent sheaves is a nicely behaved invariant for smooth projective varieties. In particular it says that $\derb{-}$ detects the dimension and triviality of the canonical bundle.  
 % showing that the bounded derived categories of coherent sheaves on smooth and projective varieties over $k$ detect dimension and triviality of the canonical bundle. 
 \begin{theorem}
     \label{Db detects dimension and triviality of canonical bundle}
@@ -165,7 +216,9 @@ The following is a beautiful application of Orlov's Theorem \ref{Orlov's theorem
 
 We introduce the $K$-theoretic Fourier-Mukai transforms as a passageway between categorical and cohomological Fourier-Mukai transforms. Throughout this section we assume our schemes are smooth projective complex varieties and our morphisms are proper. We do this so that we have for example access to propositions like \ref{In Db(X) everything is a complex of vector bundles}, \ref{push-forward on Db(X)}, etc.
 
-Given a smooth projective complex variety $X$ we define its \emph{$K$-group} as follows. Consider the free abelian group generated by isomorphism classes of coherent sheaves on $X$. The quotient of this group with its subgroup generated by expressions of the form $[\E] - [\F] + [\G]$, when there is a short exact sequence $0 \to \E \to \F \to \G \to 0$, is the $K$-group of $X$. We denote it by $\kgroup{X}$. Extending this notion of additivity on short exact sequences, we define for any bounded complex $\F^\bullet$ of $\derb{X}$ 
+Given a smooth projective complex variety $X$ we define its \emph{$K$-group} as follows. Consider the free abelian group generated by isomorphism classes of coherent sheaves\footnote{
+    An attentive reader might express a set-theoretic concern at this point -- whether the collection of all isomorphism classes of coherent sheaves on $X$ forms a set. On every noetherian scheme $X$ the latter is indeed tha case. Vaguely this follows from the fact that $X$ can be covered by a (finite) set of affine schemes of some noetherian rings and over noetherian rings there are only set-many isomorphism classes of finitely generated modules, because all such modules are finitely presented. 
+} on $X$. The quotient of this group with its subgroup generated by expressions of the form $[\E] - [\F] + [\G]$, when there is a short exact sequence $0 \to \E \to \F \to \G \to 0$, is defined to be the $K$-group of $X$. We denote it by $\kgroup{X}$. Extending this notion of additivity on short exact sequences, we define for any bounded complex $\F^\bullet$ of $\derb{X}$ 
 \[
     [\F^\bullet] := \sum_{i \in \Z}(-1)^i[\F^i] \in \kgroup{X}.
 \]
@@ -174,21 +227,45 @@ Given a smooth projective complex variety $X$ we define its \emph{$K$-group} as 
     \[
         0 \to \ker d^{i}_\F \to \F^i \to \im d^i_\F \to 0.
     \]
-    In $\kgroup{X}$ this means that $[\F^i] = [\ker d^{i}_\F] + [\im d^i_\F]$. From the short exact sequence defining the cohomology $\mathcal H^i(\F^\bullet)$ we also see that $[\mathcal H^i(\F^\bullet)] = [\im d^{i-1}_\F] + [\ker d^{i}_\F]$. Using these two formulas one reparenthesizes the definition of $[\F^\bullet]$ to obtain
-    \[
+    In $\kgroup{X}$ this means that $[\F^i] = [\ker d^{i}_\F] + [\im d^i_\F]$. From the short exact sequence defining the cohomology sheaf  $\mathcal H^i(\F^\bullet)$ we also see that $[\mathcal H^i(\F^\bullet)] = [\im d^{i-1}_\F] + [\ker d^{i}_\F]$. Using these two formulas one reparenthesizes the definition of $[\F^\bullet]$ to obtain
+    \begin{equation}
+        \label{eq: K-class alternating sum of cohomology}
         [\F^\bullet] = \sum_{i \in \Z}(-1)^i[\mathcal H^i(\F^\bullet)].
-    \]
+    \end{equation}
     In particular this shows that the operation $[-]$ of forming a class in $\kgroup{X}$ out of a complex $\F^\bullet$ of $\derb{X}$ is an invariant of its isomorphism class in $\derb{X}$.
 \end{remark}
 
 
-The group $\kgroup{X}$ also comes equipped with a multiplication operation. On isomorphism classes of locally free sheaves $\E$ and $\F$ this operation is given by
+The group $\kgroup{X}$ also comes equipped with a multiplication operation. On isomorphism classes of locally free sheaves $\E$ and $\E'$ this operation is given by
 \[
-    [\E]\cdot[\F] = [\E \otimes_{\struct{X}} \F].
+    [\E]\cdot[\E'] = [\E \otimes_{\struct{X}} \E'].
 \]
+For coherent sheaves $\F$ and $\G$ it turns out that one has to take the \emph{derived} tensor product $[\F]\cdot[\G] = [\derivedtensor{\F}{\G}{\struct{X}}]$ to accommodate the relations in $\kgroup{X}$ coming from short exact sequences. It turns out that extending this operation to chain complexes $\F^\bullet$ and $\G^\bullet$ of $\derb{X}$ also amounts to taking the derived tensor product but now of complexes
+\begin{equation}
+    \label{eq: K-theory product compatibility}
+    [\F^\bullet]\cdot [\G^\bullet] = [\derivedtensor{\F^\bullet}{\G^\bullet}{\struct{X}}].
+\end{equation}
+
+\begin{remark}
+    The above is seen to be true by resolving 
+\end{remark}
 
 \begin{definition}
-    Let $f \colon X \to Y$ be a proper morphism between smooth projective complex varieties. 
+    Let $f \colon X \to Y$ be a morphism between smooth projective varieties over $\C$. The \emph{pull-back map} is defined to be
+    \[
+        f^* \colon \kgroup{Y} \to \kgroup{X}, \qquad f^*([\G]) = \sum_{i \in \Z}(-1)^i[\lderived{i}{f^*}\G].
+    \]
+\end{definition}
+
+\begin{remark}
+    First, all the higher inverse image sheaves $\lderived{i}{f^*}\G$ are coherent. This is because $\lderived{}{f^*}$ may be computed using locally free resolutions and by Proposition \ref{pull-back of coherent sheaves}, $f^*\E$ is coherent for any coherent sheaf $\E$. Second, the existence of a long exact sequence for derived functors associated to a short exact sequence of coherent sheaves (Proposition \ref{LES for right derived functor}), makes $f^*$ well-defined.    
+    
+    In many occasions the morphism $f \colon X \to Y$ will be flat, which means that it induces an \emph{exact} pull-back functor $f^* \colon \coherent{Y} \to \coherent{X}$ on the level of categories of coherent sheaves. In this case the above definition greatly simplifies to $f^*([\G]) = [f^*\G]$. This will for instance be the case for the canonical projection $X \times Y \to X$, which is known to be flat.  
+    % Second, every flat morphism $f \colon X \to Y$ induces an \emph{exact} pull-back functor $f^* \colon \coherent{Y} \to \coherent{X}$, thus $f^* \colon \kgroup{Y} \to \kgroup{X}$ is well defined. 
+\end{remark}
+
+\begin{definition}
+    Let $f \colon X \to Y$ be a proper morphism between smooth projective varieties over $\C$. 
     % Let $\F$ be a coherent sheaf on $X$. 
     The \emph{push-forward map} defined on equivalence classes of coherent sheaves is
     \[
@@ -198,29 +275,61 @@ The group $\kgroup{X}$ also comes equipped with a multiplication operation. On i
 \end{definition}
 
 \begin{remark}
-    Existence of a long exact sequence for right derived functors associated to a short exact sequence of coherent sheaves (Proposition \ref{LES for right derived functor}) implies that $f_!$ is well-defined.
+    First, by \cite[\S III.3.2, Theorem 3.2.1]{EGA} all the higher direct images $\rderived{i}{f_*}\F$ are coherent.
+    Second, existence of a long exact sequence for right derived functors associated to a short exact sequence of coherent sheaves (Proposition \ref{LES for right derived functor}) implies that $f_!$ is well-defined. See also \cite[\S II, Lemma 6.2.6]{Weibel2013}.
 \end{remark}
 
 The following proposition captures compatibilities of categorical derived push-forward and derived pull-back functors with their respective $K$-theoretical counterparts.  
 
 \begin{proposition}
     \label{push-forward and pull-back compatibilities}
-    Let $f \colon X \to Y$ be a proper morphism between smooth projective complex varieties. For every bounded complex $\E^\bullet$ of $\derb{X}$ and $\F^\bullet$ of $\derb{Y}$, we have
+    Let $f \colon X \to Y$ be a proper morphism between smooth projective complex varieties. For every bounded complex $\F^\bullet$ of $\derb{X}$ and $\G^\bullet$ of $\derb{Y}$, we have
     \[
-        [\rderived{}{f_*}\E^\bullet] = f_!([\E^\bullet]) \qquad \text{and} \qquad [\lderived{}{f^*}\F^\bullet] = f^*([\F^\bullet]).
+        f_!([\F^\bullet]) = [\rderived{}{f_*}\F^\bullet] \qquad \text{and} \qquad f^*([\G^\bullet]) = [\lderived{}{f^*}\G^\bullet].
     \]
 \end{proposition}
 
 \begin{proof}
-    
-    We see the second equality holds true, because $\F^\bullet$ may be replaced by its locally free resolution $\E_0^\bullet$, guaranteed to exist by Proposition \ref{In Db(X) everything is a complex of vector bundles}. and noting that the pull-back functor $f^*$ . 
+    We prove the first equality by applying the \emph{Leray spectral sequence}, which is a special instance of the spectral sequence \eqref{eq: special case of Grothendieck spectral sequence}
+    \[
+        E^{p,q}_2 = \rderived{p}{f_*}\mathcal{H}^q(\F^\bullet) \implies \rderived{p+q}{f_*}\F^\bullet = E^{p+q}.
+    \]
+    Observe that 
+    \[
+        f_!([\F^\bullet]) = \sum_{j\in \Z}(-1)^j f_!([\mathcal{H}^j(\F^\bullet)]) = \sum_{j \in \Z}(-1)^j \sum_{i \in \Z}(-1)^i[\rderived{i}{f_*}\mathcal{H}^j(\F^\bullet)] = \sum_{i, j \in \Z}(-1)^{i+j}[E^{i,j}_2]
+    \]  
+    and
+    \[
+        [\rderived{}{f_*}\F^\bullet] = \sum_{n \in \Z}(-1)^n[\rderived{n}{f_*}\F^\bullet] = \sum_{n \in \Z}(-1)^n[E^n].
+    \]
+    Thus we only need to show that
+    \[
+        \sum_{i, j \in \Z}(-1)^{i+j}[E^{i,j}_2] = \sum_{n \in \Z}(-1)^n[E^n].
+    \]
+    After recalling that $H^{p,q}(E_r) = \ker(d^{p,q}_r)/\im(d_r^{p-r, q+r-q})$, and realizing that each page $E_r$ of the spectral sequence consists of a collection of chain complexes, one utilizes \eqref{eq: K-class alternating sum of cohomology} to inductively compute 
+    \[
+        \sum_{i,j \in \Z}(-1)^{i+j}[E^{i,j}_2] = \sum_{i,j \in \Z}(-1)^{i+j}[E^{i,j}_3] = \cdots = \sum_{i,j \in \Z}(-1)^{i+j}[E^{i,j}_\infty]. 
+    \]
+    Since $E^{i,j}_\infty \iso F^iE^{i+j}/F^{i+1}E^{i+j}$, we see that
+    \begin{align*}
+        \sum_{i,j \in \Z}(-1)^{i+j}[E^{i,j}_\infty] &=
+        \sum_{i,j \in \Z}(-1)^{i+j}([F^{i}E^{i+j}] - [F^{i+1}E^{i+j}]) \\
+        &= \sum_{p,n \in \Z}(-1)^{n}([F^{p}E^{n}] - [F^{p+1}E^{n}]) \\
+        &= \sum_{n \in \Z}(-1)^n[E^n],
+    \end{align*}
+    where the last equation is seen to follow by telescoping along the filtration $(F^pE^n)_p$ of $E^n$.
+
+    We see the second equality holds true, because $\G^\bullet$ may be replaced by an isomorphic (in $\derb{X}$) complex $\E^\bullet$ of vector bundles, guaranteed to exist by Proposition \ref{In Db(X) everything is a complex of vector bundles}. Since vector bundles are $f^*$-acyclic by Corollary \ref{vector bundles f^* acyclic}, we compute
+    \begin{equation*}
+        f^*([\G^\bullet]) = f^*([\E^\bullet]) = \sum_{i \in \Z}(-1)^i[\lderived{i}{f^*}\E^i] = \sum_{i \in \Z}(-1)^i[f^*\E^i] = [f^*\E^\bullet] = [\lderived{}{f^*}\G^\bullet]. \qedhere
+    \end{equation*}
     % For the second equation it is enough to verify it for a single coherent sheaf $\F$ on $Y$, because this time both sides of the equation are clearly additive in $\F$.
 \end{proof}
 
 % In particular we will utilize the Grothendieck-Riemann-Roch theorem, which will later on help us relate the two in Section \ref{Subsection: FM transform on cohomology}.
 
 \begin{definition}
-    Let $X$ and $Y$ be smooth projective complex varieties. The \emph{Fourier--Mukai transform} with kernel $\xi \in \kgroup{X \times Y}$ on the level of $K$-groups is defined to be
+    Let $X$ and $Y$ be smooth projective complex varieties. The \emph{$K$-theoretic Fourier--Mukai transform} with kernel $\xi \in \kgroup{X \times Y}$ is defined to be
     \[
         \fmkt{\xi} \colon \kgroup{X} \to \kgroup{Y}, \qquad \fmkt{\xi} := q_!(\xi \cdot p^*(-)).
     \]
@@ -234,7 +343,7 @@ The following proposition captures compatibilities of categorical derived push-f
 \end{corollary}
 
 \begin{proof}
-    This is a direct consequence of Proposition \ref{push-forward and pull-back compatibilities}.
+    This is a direct consequence of the compatibility between the product on $\kgroup{X}$ and the derived tensor product on $\derb{X}$, according to \eqref{eq: K-theory product compatibility}, and Proposition \ref{push-forward and pull-back compatibilities}.
 \end{proof}
 
 \subsection{...on rational cohomology}
@@ -272,7 +381,7 @@ is an isomorphism and we denote its inverse with $D_X \colon H_{n-k}(X, \Q) \to 
 \end{remark}
 
 \begin{remark}
-    For a topological space $X$ we will distinguish between the collection of all cohomology groups, considered concisely as a graded object $\cohom{\bullet}{X}{\Z} = \bigoplus_{i\in \Z} \cohom{i}{X}{\Z}$, and its (graded) cohomology ring, which we will denote by $\cohom{*}{X}{\Z}$.
+    For a topological space $X$ we will distinguish between the collection of all cohomology groups, considered concisely as a graded object $\cohom{\bullet}{X}{\Z} = \bigoplus_{i\in \Z} \cohom{i}{X}{\Z}$, and its (graded) cohomology ring, which we will denote by $\cohom{*}{X}{\Z}$. In that regard $f^* \colon \cohom{\bullet}{Y}{\Q} \to \cohom{\bullet}{X}{\Q}$ is a graded map of degree $0$ and $f_! \colon \cohom{\bullet}{X}{\Q} \to \cohom{\bullet}{Y}{\Q}$ is a graded map of degree $m - n$.
 \end{remark}
 
 \begin{proposition}[Cohomological projection formula]
@@ -349,16 +458,9 @@ As before let $p \colon X \times Y \to X$ and $q \colon X \times Y \to Y$ denote
     \]
 \end{definition}
 
-We would now like to relate this cohomological Fourier-Mukai transform back to the $K$-theoretic and the categorical one. This will be achieved by applying the famous Grothendieck--Riemann--Roch theorem \ref{Grothendieck-Riemann-Roch}, for which we first need to introduce the Chern character and the Todd class. 
-
-\begin{proposition}
-    \label{Composition of cohomological fm is fm}
-    Let $\fmcoh{\E} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q)$ and $\fmcoh{\F} \colon H^\bullet(Y, \Q) \to H^\bullet(Z, \Q)$ be cohomological Fourier--Mukai transforms for kernels $\E$ and $\F$ belonging to $\derb{X \times Y}$ and $\derb{Y \times Z}$ respectively. Then the composition $\fmcoh{\F} \circ \fmcoh{\E}$ is also a cohomological Fourier-Mukai transform given by the kernel $\G$ of Proposition \ref{Composition of fm is fm}.
-\end{proposition}
-
-\begin{proof}
-    The proof of this result is analogous to the proof of Proposition \ref{Composition of fm is fm}, where instead we use the cohomological projection and base change formulas, \eqref{eq: cohomological projection formula} and \eqref{eq: cohomological base change}, respectively.
-\end{proof}
+We would now like to relate this cohomological Fourier-Mukai transform back to the $K$-theoretic and the categorical one. This will be achieved by applying the famous Grothendieck--Riemann--Roch theorem, 
+% \ref{Grothendieck-Riemann-Roch}, 
+for which we first need to introduce the Chern character and the Todd class. 
 
 \subsubsection*{Grothendieck--Riemann--Roch theorem}
 
@@ -377,20 +479,24 @@ In order to relate Fourier--Mukai functors on bounded derived categories of smoo
         } \label{chern character on line bundle}
         \item{\footnote{
             See \ref{Definition of v vee} for the definiton of $(-)^\vee$ and \cite[Lemma C.7]{vanBree2020} for a proof.
-        }For any coherent sheaf $\E$ on $X$: $\ch[]{\E^\vee} = \ch[]{\E}^\vee$}
+        }For any coherent sheaf $\E$ on $X$: $\ch[]{\E^\vee} = \ch[]{\E}^\vee$.}
         \item{Naturality for pull-back: $f^*\ch[]{e} = \ch[]{f^*e}$ for any proper morphism $f \colon X \to Y$.}
         \item{The Chern character takes values in $\cohom{2\bullet}{X}{\Q}$, \ie cohomology groups of \emph{even} degree.}
     \end{enumerate} 
 \end{definition}
 
 \begin{remark}
-    Such a homomorphism in fact exists and is usually constructed by first specifying it on line bundles as in \ref{chern character on line bundle}. Then utilizing the so-called \emph{Splitting principle} \cite[text]{Fulton1998} it is possible to extend the Chern character to arbitrary vector bundles on $X$. Further, one defines the Chern character of a coherent sheaf $\E$ on $X$ using a bounded locally free resolution, mentioned already in Proposition \ref{In Db(X) everything is a complex of vector bundles}. Lastly, one extends the Chern character to arbitrary bounded complexes of coherent sheaves by additivity \ie
+    Such a homomorphism in fact exists and a construction may be found in \cite[\S 3.2]{Fulton1998}. The Chern character is usually constructed by first specifying it on line bundles as in \ref{chern character on line bundle}. Then utilizing the so-called \emph{Splitting principle} \cite[\S 3.2, Remark 3.2.3]{Fulton1998} it is possible to extend the Chern character to arbitrary vector bundles on $X$. Further, one defines the Chern character of a coherent sheaf $\E$ on $X$ using a bounded locally free resolution, mentioned already in Proposition \ref{In Db(X) everything is a complex of vector bundles}. Lastly, one extends the Chern character to arbitrary bounded complexes of coherent sheaves by additivity \ie
     \[
         \ch[](\F^\bullet) = \sum_{i \in \Z}(-1)^i\ch[](\F^i).
     \] 
     % one uses the fact that every coherent sheaf on $X$ has a bounded resolution with vector bundles, mentioned already in the proof of Proposition \ref{In Db(X) everything is a complex of vector bundles}.
 \end{remark}
 
+The Chern character of a coherent sheaf $\E$ is also expressible in terms of the Chern classes $\cclass[i] = \cclass[i](\E)$ of $\E$ as the following series
+\[
+    \ch[]{\E} = \cclass[0] + \cclass[1] + \frac{1}{2}\left(\cclass[1]^2 - \cclass[2]\right) + \frac{1}{6}\left(\cclass[1]^3 - 3 \cclass[1]\cclass[2] + 3\cclass[3]\right) + \cdots.
+\]
 % The Chern character exists 
 
 
@@ -404,6 +510,7 @@ As with the Chern character we refrain from properly defining or constructing $\
 \[
     \tdclass{X} = 1 + \frac{1}{2}\cclass[1](X) + \frac{1}{12}(\cclass[1]{X}^2 + \cclass[2]{X}) + \frac{1}{12}\cclass[1](X)\cclass[2](X) + \cdots.
 \] 
+Here $\cclass[i](X)$ denotes the $i$-th Chern class of the tangent sheaf $\tangent{X}$ of $X$. The reader can consult \cite[\S 3.2]{Fulton1998} for more details.
 
 % \begin{definition}
 %     The \emph{Todd class} of a smooth complex variety $X$ is defined to be
@@ -459,16 +566,18 @@ For a coherent sheaf $\E$ on $X$ we already know that $\cohom{i}{X}{\E} = 0$ for
 \[
     \chi(X, \E) = \sum_{i \in \Z} (-1)^i \dim_\C H^i(X, \E),
 \] 
-is then well-defined.
-
-\begin{corollary}[Hirzebruch--Riemann--Roch]
+is then well-defined. From the existence of a long exact sequence in cohomology \eqref{eq: LES in cohomology of SES of coherent sheaves}, we see that $\chi(X, -)$ is additive on short exact sequences \ie for a short exact sequence of coherent sheaves $0 \to \E \to \F \to \G \to 0$, we have
+\[
+    \chi(X, \F) = \chi(X, \E) + \chi(X, \G).
+\]
+\begin{theorem}[Hirzebruch--Riemann--Roch]
     \label{Hirzebruch-Riemann-Roch}
     Let $X$ be a smooth complex projective variety and $\E$ a coherent sheaf on $X$. Then
     \begin{equation}
         \label{eq: Hirzebruch-Riemann-Roch formula}
         \chi(X, \E) = \int_X \ch{\E}\tdclass{X}.
     \end{equation}
-\end{corollary}
+\end{theorem}
 
 % Evaluated against a fundamental class $[X]$ 
 
@@ -493,6 +602,10 @@ is then well-defined.
     %     \varepsilon_!(\ch[]{\E} \smallsmile \tdclass{X}) = \langle \ch[]{\E} \smallsmile \tdclass{X}, [X] \rangle = \int_X \ch[]{\E} \smallsmile \tdclass{X}.
     % \]
 \end{proof}
+
+\begin{remark}
+    $\E$ can also be a complex in HRR...
+\end{remark}
 
 \subsubsection*{Mukai vector}
 
@@ -538,6 +651,18 @@ Of special importance for relating the $K$-theoretic Fourier--Mukai transforms w
     \end{align*}
 \end{proof}
 
+From now on a cohomological Fourier--Mukai transform, whose kernel is a Mukai vector $v(\E)$ of some complex $\E$ of $\derb{X \times Y}$, will be denoted by $\fmcoh{\E} \colon \cohom{\bullet}{X}{\Q} \to \cohom{\bullet}{Y}{\Q}$ instead of $\fmcoh{v(\E)}$.   
+
+\begin{proposition}
+    \label{Composition of cohomological fm is fm}
+    Let $\fmcoh{\E} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q)$ and $\fmcoh{\F} \colon H^\bullet(Y, \Q) \to H^\bullet(Z, \Q)$ be cohomological Fourier--Mukai transforms for kernels $\E$ and $\F$ belonging to $\derb{X \times Y}$ and $\derb{Y \times Z}$ respectively. Then the composition $\fmcoh{\F} \circ \fmcoh{\E}$ is also a cohomological Fourier-Mukai transform given by the kernel $\G$ of Proposition \ref{Composition of fm is fm}.
+\end{proposition}
+
+\begin{proof}
+    The proof of this result is analogous to the proof of Proposition \ref{Composition of fm is fm}, where instead we use the cohomological projection and base change formulas, \eqref{eq: cohomological projection formula} and \eqref{eq: cohomological base change}, respectively. We also mention that the Mukai vector $v(\G)$ turns out to transform to $(\pi_{XZ})_!(\pi_{XY}^*v(\E) \smallsmile \pi_{YZ}^*v(\F))$, which is also an ingredient we need for the computation above, but we omit the tedious verification.
+    % We also note that in this case the Mukai vector $v(\G)$ is transformed to $(\pi_{XZ})_!(\pi_{XY}^*v(\E) \smallsmile \pi_{YZ}^*v(\F))$.
+\end{proof}
+
 \begin{definition}
     \label{Definition of v vee}
     For a vector $v \in \cohom{2\bullet}{X}{\Q} = \bigoplus_{i \in \Z} \cohom{2i}{X}{\Q}$ confined in \emph{even} degrees, with components $v = (v_0, v_1, v_2, v_3, \dots)$, we define $v^\vee = (v_0, -v_1, v_2, -v_3, \dots)$.
@@ -551,34 +676,61 @@ This operation is clearly natural for pull-backs and fixes all cohomology classe
     \label{Definition of Mukai pairing}
     For any $v$, $w \in \cohom{2\bullet}{X}{\Q}$ coming from the even part, we define the \emph{Mukai pairing} on $\cohom{2\bullet}{X}{\Q}$ to be
     \[
-        \pairing{v}{w} = - \int_X v^\vee \smallsmile w.
+        \pairing{v}{w} = \int_X v^\vee \smallsmile w.
     \]
 \end{definition}
 
-Since the Mukai vector of any complex $\E^\bullet$ is spread out only in the even cohomology groups, we can pair their Mukai vectors with each other in this way. Another way of pairing up (bounded complexes of) coherent sheaves is given by the \emph{Euler pairing}, defined for $\E^\bullet$ and $\F^\bullet$ belonging to $\derb{X}$ to be the alternating sum
+% Since the Mukai vector of any complex $\E^\bullet$ is spread out only in the even cohomology groups, we can pair their Mukai vectors with each other in this way. Another way of pairing up (bounded complexes of) coherent sheaves is given by the \emph{Euler pairing}, defined for $\E^\bullet$ and $\F^\bullet$ belonging to $\derb{X}$ to be the alternating sum
+Since the Mukai vector of any coherent sheaf $\E$ is spread out only in the even cohomology groups, we can pair their Mukai vectors with each other in this way. Another way of pairing up coherent sheaves is given by the \emph{Euler pairing}, defined for coherent sheaves $\E$ and $\F$ on $X$ to be the alternating sum
+% \begin{equation}
+%     \label{Euler pairing}
+%     \chi(\E^\bullet, \F^\bullet) = \sum_{i \in \Z} (-1)^i \dim_\C \Ext^i_\struct{X}(\E^\bullet, \F^\bullet).
+% \end{equation}
 \begin{equation}
     \label{Euler pairing}
-    \chi(\E^\bullet, \F^\bullet) = \sum_{i \in \Z} (-1)^i \dim_\C \Ext^i_\struct{X}(\E^\bullet, \F^\bullet).
+    \chi(\E, \F) = \sum_{i \in \Z} (-1)^i \dim_\C \Ext^i_\struct{X}(\E, \F).
 \end{equation}
-The following proposition says that these two pairings are basically the same, differing only by a sign. 
+The following proposition says that these two pairings of coherent sheaves are the same.
+% basically the same, differing only by a sign. 
 
 \begin{proposition}
-    Let $\E^\bullet$ and $\F^\bullet$ be complexes of coherent sheaves belonging to $\derb{X}$. Then
+    \label{equler pairing = mukai pairing}
+    Let $\E$ and $\F$ be coherent sheaves on $X$. Then
     \[
-        \pairing{v(\E^\bullet)}{v(\F^\bullet)} = -\chi(\E^\bullet, \F^\bullet)
+        \pairing{v(\E)}{v(\F)} = \chi(\E, \F).
     \]
 \end{proposition}
+% \begin{proposition}
+%     \label{equler pairing = mukai pairing}
+%     Let $\E^\bullet$ and $\F^\bullet$ be complexes of coherent sheaves belonging to $\derb{X}$. Then
+%     \[
+%         \pairing{v(\E^\bullet)}{v(\F^\bullet)} = \chi(\E^\bullet, \F^\bullet)
+%     \]
+% \end{proposition}
 
 \begin{proof}
-    This is a straight forward application of the Hirzebruch--Riemann--Roch formula \eqref{eq: Hirzebruch-Riemann-Roch formula}, once we realize that we have the following isomorphism in $\derb{X}$
-    \[
-        {\E^\bullet}^\vee \derivedtensor{}{}{\struct{X}} \F^\bullet \iso \rderived{}{\localhom[X]^\bullet(\E^\bullet, \F^\bullet)}.
-    \]
+    
 \end{proof}
+
+% \begin{proof}
+%     This is a straight forward application of the Hirzebruch--Riemann--Roch formula \eqref{eq: Hirzebruch-Riemann-Roch formula}, once we realize that we have the following isomorphism in $\derb{X}$
+%     \[
+%         {\E^\bullet}^\vee \derivedtensor{}{}{\struct{X}} \F^\bullet \iso \rderived{}{\localhom[X]^\bullet(\E^\bullet, \F^\bullet)}.
+%     \]
+%     Indeed,
+%     \begin{align*}
+%         \pairing{v(\E^\bullet)}{v(\F^\bullet)} &= \int_X v(\E^\bullet)^\vee \smallsmile v(\F^\bullet) \\
+%         &= \int_X \ch[]{{\E^\bullet}^\vee \derivedtensor{}{}{\struct{X}} \F^\bullet}\tdclass{X} \\
+%         &= \chi(X, \rderived{}{\localhom[X]^\bullet(\E^\bullet, \F^\bullet)}) \\
+%         &= \sum_{i \in \Z}(-1)^i \dim_\C \rderived{i}{\Gamma}(\rderived{}{\localhom[X]^\bullet(\E^\bullet, \F^\bullet)}) \\
+%         &= \sum_{i\in \Z}(-1)^i \dim_\C \Ext^i_{\struct{X}}(\E^\bullet, \F^\bullet) \\
+%         &= \chi(\E^\bullet, \F^\bullet).
+%     \end{align*}
+% \end{proof}
 
 \subsubsection*{Hodge structures}
 
-This short section serves as a quick recollection on the very basics of Hodge theory and ends with a proposition describing a relationship between a cohomological Fourier--Mukai transform and some Hodge structures. 
+This short section serves as a quick recollection on the very basics of Hodge theory and ends with a proposition describing a relationship between a cohomological Fourier--Mukai transform and some Hodge decompositions. 
 
 \begin{definition}
     A \emph{Hodge structure of weight $n \in \Z$} on a finitely generated free abelian group or a finite dimensional $\Q$-vector space $V$ is a direct sum decomposition of $V_\C = V \otimes_\Z \C$, consisting of subspaces $V^{p,q} \subseteq V_\C$ for $p$, $q \in \Z$ of the form
@@ -602,21 +754,89 @@ A prototypical example of a Hodge structure of weight $n$ comes from complex geo
 \[
     H^n(X, \Q)_\C = \bigoplus_{p+q = n} H^{p,q}(X).
 \]
-The groups $H^{p,q}(X)$ are defined to be the \emph{Dolbeault cohomology groups} or $\cohom{q}{X}{\Omega_X^p}$. Here $\Omega_X^p$ denotes the sheaf of holomorphic $p$-forms or more precisely the $p$-th exterior power $\bigwedge^p \Omega_X$ of the sheaf of Kähler differentials $\Omega_X$ on $X$. The Hodge decomposition of $\cohom{n}{X}{\Q}$ then arises from the well-known Hodge decomposition theorem through identifying the Dolbeault cohomology groups as certain subspaces of globally defined $(p,q)$-forms, called \emph{harmonic} forms. This viewpoint also allows one to see that the $\smallsmile$-product on the cohomology ring $\cohom{*}{X}{\C}$ defines  
+The groups $H^{p,q}(X)$ are defined to be the sheaf cohomology groups $\cohom{q}{X}{\Omega_X^p}$. 
+% which turn out to be isomorphic to the \emph{Dolbeault cohomology groups}.
+% may also be identified with \emph{Dolbeault cohomology groups}. 
+Here $\Omega_X^p$ denotes the sheaf of holomorphic $p$-forms or more precisely the $p$-th exterior power $\bigwedge^p \Omega_X$ of the sheaf of Kähler differentials $\Omega_X$ on $X$. 
+The groups $H^{p,q}(X)$ turn out to be isomorphic to the so-called \emph{Dolbeault cohomology groups} $H^{p,q}_{\olsi{\partial}}(X)$, which are in turn easier to identify with certain subspaces of globally defined $(p,q)$-forms, which are called \emph{harmonic} forms. This shift of perspective, from cohomology classes to globally defined differntial forms, then makes the origin of a Hodge decomposition of $\cohom{n}{X}{\C}$ at least somewhat reasonable and we mention that it arises as a result of the \emph{Hodge decomposition theorem} \cite[\S 0.6]{GriffithsHarris1994}.
+% The Hodge decomposition of $\cohom{n}{X}{\Q}$ then arises from the \emph{Hodge decomposition theorem} \cite[text]{keylist} through identifying the Dolbeault cohomology groups with certain subspaces of globally defined $(p,q)$-forms, called \emph{harmonic} forms. 
+We collect a few facts, which one is able to deduce from this viewpoint. They can be found in standard texts like \cite{GriffithsHarris1994} or \cite{Voisin2002}.
+\begin{itemize}[label = $\vartriangleright$ ]
+    \item{For any $p$, $q \in \Z$: $\olsi{H^{p,q}(X)} = H^{q,p}(X)$ \cite[\S II, Corollary 6.12]{Voisin2002}.}
+    \item{The exterior product of a $(p,q)$-form $\alpha$ with a $(r,s)$-from $\beta$ is a $(p+r, q+s)$ form $\alpha \wedge \beta$. Consequently, if $n$ denotes the complex dimension of $X$ and if either $p+r > n$ or $q + s > n$, then $\alpha \wedge \beta = 0$ \cite[\S II, Corollary 6.15]{Voisin2002}}.
+    \item{For any holomorphic map $f \colon X \to Y$, the pull-back $f^* \colon \cohom{\bullet}{Y}{\Q} \to \cohom{\bullet}{X}{\Q}$ preserves the Hodge structures, meaning that if $\beta$ is a $(p,q)$-from on $Y$, $f^*\beta$ is a $(p,q)$-from on $X$. See \cite[\S 7.3.2]{Voisin2002}.}
+    \item{Let $n$ and $m$ denote the \emph{complex} dimensions of compact complex manifolds $X$ and $Y$, respectively and set $k = m-n$. Then for any holomorphic map $f \colon X \to Y$, the Gysin map $f_! \colon \cohom{\bullet}{X}{\C} \to \cohom{\bullet}{Y}{\C}[2k]$ is of bi-degree $(k,k)$, meaning that a $(p,q)$-from $\alpha$ on $X$ is sent to a $(p+k, q+k)$-form $f_*\alpha$ on $Y$. In that regard $f_!$ does not preserve the Hodge structure unless $X$ and $Y$ are equidmensional. See \cite[\S 7.3.2]{Voisin2002}.}
+    \item{Characteristic classes like the Chern character and the Todd class are \emph{algebraic}, meaning they live in
+    % belong to rational cohomology, they are invariant under complex conjugation, meaning they live in the \emph{algebraic part} of $\cohom{\bullet}{X}{\C}$, \ie 
+    \[
+        \bigoplus_{p \in \Z} H^{p,p}(X) \cap \cohom{2p}{X}{\Q}.
+    \]} 
+\end{itemize} 
+
+\begin{remark}
+    In this section the meaning of cohomology groups $\cohom{n}{X}{\C}$ is a bit blurred. At times we take it to be the singular cohomology with complex coefficients, this makes it easy to understand how $\cohom{n}{X}{\Q}$ might be a subgroup of $\cohom{n}{X}{\Q}$. At other times we take it to be the complex de Rham cohomology, which is better suited for Hodge decompositions. In any case our worries may be remedied by the complex analogue of \emph{de Rham's theorem}, which states that for compact complex manifolds $X$ there is a natural isomorphism of graded rings
+    \[
+        H^*_{\operatorname{dR}}(X, \C) \to H^*_{\operatorname{sing}}(X, \C).
+    \]
+    For a proof using a sheaf-theoretic argument see \cite[p.\ 43--45]{GriffithsHarris1994}.
+\end{remark}
+
+% This viewpoint also allows one to see why
+% \[
+%     \olsi{H^{p,q}(X)} = H^{q,p}(X) 
+% \]
+% holds for any $p$, $q$.
+
+
+% that the $\smallsmile$-product on the cohomology ring $\cohom{*}{X}{\C}$ defines  
 
 
 % We will describe the groups $H^{p,q}(X)$ using our established language of derived functors but refer the reader to consult \cite[text]{keylist} for many of the details left out.
 
-For example in the case of a $2$-dimensional complex manifold  
+% For example in the case of a $2$-dimensional complex manifold  
 
-Cohomological Fourier--Mukai transforms unfortunately do not preserve the Hodge structures in general\footnote{In the same breath we have to mention that for K3 surfaces this is true, as we shall see in Lemma \ref{}, but that will }, but they interact with Hodge structures in a particular way, which is worth noting. 
+Cohomological Fourier--Mukai transforms unfortunately do not preserve the Hodge structures in general\footnote{
+    In the same breath we have to mention that for K3 surfaces Fourier--Mukai transforms actually \emph{do} preserve the Hodge structures, as on can deduce from Lemma \ref{isometry of Mukai lattices preserving H20}. However note that one uses also a certain lattice structure on the cohomology ring to prove this fact.
+}, but they interact with Hodge structures in a particular way, which is worth noting. 
 
 \begin{proposition}
     \label{Hodge lattice, fm transform interaction}
-    Let $X$ and $Y$ be complex smooth projective varieties and let $\fmcoh{\E} \colon \cohom{\bullet}{X}{\Q} \to \cohom{\bullet}{Y}{\Q}$ be a Cohomological Fourier--Mukai transform associated to a kernel $\E$ belonging to $\derb{X \times Y}$.
+    Let $X$ and $Y$ be complex projective varieties over $\C$. Consider the cohomological Fourier--Mukai transform $\fmcoh{\E} \colon \cohom{\bullet}{X}{\Q} \to \cohom{\bullet}{Y}{\Q}$ associated to a kernel $\E$ belonging to $\derb{X \times Y}$.
     Then for every pair of integers $(p,q)$
     \begin{equation}
         \label{eq: Hodge lattice, fm transform}
-        \fmcoh{\E}_\C\left(H^{p,q}(X)\right) \subseteq \bigoplus_{s - t = p - q} H^{s,t}(Y).
+        \fmcoh{\E}_\C\left(H^{p,q}(X)\right) \subseteq \bigoplus_{r - s = p - q} H^{r,s}(Y).
     \end{equation}
 \end{proposition}
+
+\begin{proof}
+    The Mukai vector $v(\E) = \ch[]{\E}\sqrt{\tdclass{X \times Y}}$ being a product of two algebraic classes is also algebraic, meaning that it is a sum of classes of type $(p,p)$, \ie
+    \[
+        v(\E) \in \bigoplus_{p \in \Z} H^{p,p}(X \times Y) \cap \cohom{2p}{X \times Y}{\Q}.
+    \] 
+    % We are now going to express $v(\E)$ in terms of two types of decompositions into classes belonging to $H^{p,q}(X)$ and $H^{r,s}(Y)$.
+    % The first decomposition is given the \emph{Künneth formula}, which allows us to decompose $\cohom{n}{X \times Y}{\Q}$ into a direct sum
+    % \[
+    %     \cohom{n}{X \times Y}{\Q} \iso \bigoplus_{i+j = n} \cohom{i}{X}{\Q} \otimes_\Q \cohom{j}{Y}{\Q}.
+    % \]
+    % Further, by the Hodge decomposition, each cohomology group $\cohom{i}{X}{\Q}$ decomposes into $\bigoplus_{p+q = i}H^{p,q}(X) \cap \cohom{i}{X}{\Q}$ and similarly for the cohomology groups $\cohom{j}{Y}{\Q}$. The Mukai vector $v(\E) \in \cohom{\bullet}{X \times Y}{\Q}$ can therefore be expressed as
+    % \[
+    %     v(\E) = \sum_{\substack{p,q,r,s \in \Z \\ p+r = q+s}} p^*\alpha^{p,q} \smallsmile q^*\beta^{r,s},
+    % \] 
+    % where $\alpha^{p,q} \in H^{p,q}(X)$ and $\beta^{r,s} \in H^{r,s}(Y)$ and the condition $p+r = q+s$ is there because $v(\E)$ is algebraic. 
+    % Let $n$ and $m$ denote the dimensions of $X$ and $Y$, respectively, and set $k = m-n$. 
+    Consider the complexified\footnote{
+        The universal coefficients theorem allows us to just swap $\Q$ for $\C$ everywhere, because the isomorphisms $\cohom{n}{X}{\Q}\otimes \C \iso \cohom{n}{X}{\C}$ and $H_n(X, \Q)\otimes \C \iso H_n(X, \C)$ are natural. 
+    } cohomological Fourier--Mukai transform $\fmcoh{\E}$ as a composition
+    \[  
+        \fmcoh{\E} \colon \quad \cohom{\bullet}{X}{\C} \xrightarrow{p^*} \cohom{\bullet}{X \times Y}{\C} \xrightarrow{v(\E) \smallsmile -} \cohom{\bullet}{X \times Y}{\C} \xrightarrow{q_!} \cohom{\bullet}{Y}{\C}.
+    \]
+    Pick any class $\theta \in H^{k, \ell}(X)$. Since $p^*$ is of bi-degree $(0,0)$, $p^*\theta \in H^{k,\ell}(X \times Y)$. Multiplying by $v(\E)$ results in a sum of classes of type $(k + t, \ell + t)$ for $t \in \Z$, \ie
+    \[
+        v(\E) \smallsmile p^*\theta \in \bigoplus_{t \in \Z}H^{k + t, \ell + t}(X \times Y)
+    \]
+    Lastly, since the push-forward $q_!$ is of bi-degree $(n,n)$, where $n$ denotes the dimension of $X$, we end up with a sum of classes of type $(k + t + n, \ell + t + n)$ for $t \in \Z$. Re-indexing shows that $\fmcoh{\E}(\theta)$ is a sum of classes of type $(r,s)$, where $r$, $s$ run over the integers, satisfying $r - s = k - \ell$, \ie
+    \[
+        \fmcoh{\E}(\theta) = q_!(v(\E) \smallsmile p^*\theta) \in \bigoplus_{\substack{r,s\in \Z \\ r-s = k - \ell}}H^{r,s}(Y). \qedhere
+    \]
+\end{proof}
