@@ -88,16 +88,16 @@ In this case we also denote the existence of such a spectral sequence by
 
 \begin{lemma}
     \label{finite filtration}
-    Let $a \leq b$ be integers and consider the regular decreasing filtration
+    Let $a \leq b$ be integers and consider a regular decreasing filtration
     \begin{equation}
         \label{eq: filtration}
         F \supseteq \dots F^{p-1} \supseteq F^p \supseteq F^{p + 1} \supseteq \dots \supseteq 0
     \end{equation}
-    of an object $F$. Assume that the quotients $F^p/F^{p+1}$ vanish for $p \notin [a,b]$, then $F^{p} \iso F$ for $p \leq a$ and $F^{p} \iso 0$ for $p \geq b$, so \eqref{eq: filtration} is a finite filtration of $F$. In particular, when $a = b$, we have $F \iso 0$.
+    of an object $F$. Assume that the quotients $F^p/F^{p+1}$ vanish for $p \notin [a,b]$, then $F^{p} \iso F$ for all $p \leq a$ and $F^{p} \iso 0$ for all $p \geq b$, so \eqref{eq: filtration} is a finite filtration of $F$. In particular, when $a = b$, we have $F \iso 0$.
 \end{lemma}
 
 \begin{proof}
-    For the quotients $F^p/F^{p+1}$ vanish for $p \notin [a,b]$, all the inclusions $F^{p+1} \subseteq F^p$ turn into isomorphisms. Then by regularity it follows that $F = \colim_p F^p \iso \colim_{p \leq a} F^p = F^{a}$ and similarly $0 \iso \lim_p F^p \iso \lim_{p \geq b} F^p =  F^b$.
+    Since the quotients $F^p/F^{p+1}$ vanish for $p \notin [a,b]$, all the inclusions $F^{p+1} \subseteq F^p$ turn into isomorphisms. Then by regularity it follows that $F = \colim_p F^p \iso \colim_{p \leq a} F^p = F^{a}$ and similarly $0 \iso \lim_p F^p \iso \lim_{p \geq b} F^p =  F^b$.
 \end{proof}
 
 % Next we mention two ways of naturally obtaining a spectral sequence, the first one arises from a filtered chain complex. A filtration of a chain complex $K^\bullet \in \Ob(\com(\mathcal A))$ is a decreasing sequence of chain complexes 
@@ -106,7 +106,7 @@ In this case we also denote the existence of such a spectral sequence by
 % \]
 % respecting the differential of $K^\bullet$ \ie $d(F^p K^n) \subseteq F^p K^{n+1}$. Using only this piece of information one can 
 
-In his famous ``Tohoku paper'' \cite{} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two functors with the composition of their higher derived functors.
+In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two left exact functors with the composition of their higher derived functors. For a proof see either \cite[\S 2, Proposition 2.66]{huybrechts2006fouriermukai} (sketch) or \cite[\S 2.4]{grothendieck57}.
 
 \begin{theorem}[Grothendieck]
     \label{Grothendieck spectral sequence}
@@ -124,6 +124,8 @@ In his famous ``Tohoku paper'' \cite{} Grothendieck devised the following spectr
         E^{p,q}_2 = \rderived{p}{F}(H^q(A^\bullet)) \implies \rderived{p+q}{F}(A^\bullet) = E^{p+q},
     \end{equation}
     for every $A^\bullet$ of $\kplus{\A}$.
+
+
 \end{remark}
 
 \begin{proposition}
