@@ -2,7 +2,7 @@
 
 The present chapter serves as a brief account of the majority of the relevant prerequisites needed to discuss derived categories.
 % This section we try to make a brief account of the majority of the relevant prerequisites needed to discuss derived categories. 
-In the first section we introduce additive, $k$-linear and abelian categories together with relevant functors preserving (certain parts of) their structure, following mainly \cite[\S 8]{kashiwara2006categories}. Next we build the framework for triangulated categories of which derived categories will be a special kind and also state and prove some specialized results on triangulated categories, which will be applied later on in chapter \ref{Chapter: Derived Torelli theorem}. Lastly, we lay out the foundations on which derived categories will be constructed -- the category of complexes and its quotient homotopy category of complexes. The main pieces of literature for this part were \cite{kashiwara2006categories} and \cite{huybrechts2006fouriermukai}.
+In the first section we introduce additive, $k$-linear and abelian categories together with relevant functors preserving (certain parts of) their structure, following mainly \cite[\S 8]{kashiwara2006categories}. Next we build the framework for triangulated categories of which derived categories will be a special kind and also state and prove some specialized results on triangulated categories, which will be applied later on in chapter \ref{Chapter: Derived Torelli theorem}. Lastly, we lay out the foundations on which derived categories will be constructed -- the category of complexes and its quotient homotopy category of complexes. The main pieces of literature for this part were \cite{kashiwara2006categories} and \cite[\S 1]{huybrechts2006fouriermukai}.
 
 \subsection{Additive, $k$-linear and abelian categories}
 
@@ -22,7 +22,7 @@ for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the 
         $f_{10}\colon X_1 \to Y_1$ & $f_{11}\colon X_1 \to Y_1$ \\
     \end{tabular}
 \end{center}
-of $\mathcal C$, there are two equal morphisms $X_0 \oplus X_1 \to Y_0 \oplus Y_1$, namely
+of $\mathcal C$, there are two equal\footnote{This stems from the fact that both morphisms fit into a diagram } morphisms $X_0 \oplus X_1 \to Y_0 \oplus Y_1$, namely
 \[
     \left(\langle f_{00}, f_{01} \rangle, \langle f_{10}, f_{11} \rangle\right) 
     \quad \text{ and } \quad 
@@ -55,9 +55,9 @@ which we will be denoting with the matrix
 % $X \xleftarrow{p_X} X \oplus Y \xrightarrow{p_Y} Y$ is the categorical product of $X$ and $Y$ and $X \xrightarrow{i_X} X \oplus Y \xleftarrow{i_Y} Y$.
 
 \begin{definition}
-    A category $\A$ is additive (resp.\ $k$-linear) 
+    A category $\A$ is additive (\resp $k$-linear) 
     \info{Decide on which terminology to use (everything is covered by $k$-linear...)}
-    if all the hom-sets carry the structure of abelian groups (resp.\ $k$-modules) and the following axioms are satisfied
+    if all the Hom-sets carry the structure of abelian groups (\resp $k$-modules) and the following axioms are satisfied
     \begin{enumerate}[label = \textsf{A\arabic*}]
         \item{For all all objects $X$, $Y$ and $Z$ of $\A$ the composition
         \[
@@ -77,8 +77,8 @@ which we will be denoting with the matrix
             f_0 \oplus f_1 \colon X_0 \oplus X_1 \to Y_0 \oplus Y_1
         \]
         to mean either of the two (equal) morphisms $\left(\langle f_0, 0 \rangle, \langle 0, f_1 \rangle\right)$ or $\left\langle (f_0, 0), (0, f_1)\right\rangle$.
-        \item One can recognize $k$-linear categories as the categories \emph{enriched} over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
-        \info{this point may be skipped}
+        % \item One can recognize $k$-linear categories as the categories \emph{enriched} over the category $\mod{k}$ of $k$-modules and $k$-linear maps. 
+        % \info{this point may be skipped}
     \end{enumerate}
 \end{remark}
 
@@ -127,11 +127,19 @@ For a monomorphism $Y \hookrightarrow X$ we will sometimes by abuse of terminolo
 Axiom \ref{A4} essentially states that abelian categories are those additive categories possessing all kernels and cokernels in which the first isomorphism theorem holds.
 
 \begin{remark}
-    We obtain the morphism mentioned in axiom \ref{A4} in the following way. Due to $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ being $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composition $\ker f \to X \to \im f$ then equals $0$, by $\im f \hookrightarrow Y$ begin a monomorphism and $\ker f \to X \to Y$ equaling $0$. From the universal property of cokernels we then obtain a unique morphism $\coim f \to \im f$, because $(X \to \coim f) = \coker(\ker f \to X)$.
+    We obtain the morphism mentioned in axiom \ref{A4} in the following way. Due to $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ being $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composition $\ker f \to X \to \im f$ then equals $0$, by $\im f \hookrightarrow Y$ being a monomorphism and $\ker f \to X \to Y$ being equal to $0$. From the universal property of cokernels we then obtain a unique morphism $\coim f \to \im f$, because $(X \to \coim f) = \coker(\ker f \to X)$.
 \end{remark}
 
 \begin{example}
-    The default examples of abelian categories are the category of abelian groups $\Ab$ or more generally the category of $A$-modules $\mod{A}$ for a commutative ring $A$. The categories of coherent and quasi-coherent sheaves, $\coherent{X}$ and $\quasicoh{X}$, on a scheme $X$ are also abelian (\cite[\href{https://stacks.math.columbia.edu/tag/01BY}{Tag 01BY}]{stacks-project} and \cite[\href{https://stacks.math.columbia.edu/tag/077P}{Tag 077P}]{stacks-project}). On the other hand the category of (real or complex) vector bundles for example over the real line $\R$ is additive, but not abelian. The last claim is due to the category of vector bundles on $\R$ not being closed under kernels and cokernels.
+    The default examples of abelian categories are the category of abelian groups $\Ab$ or more generally the category of $A$-modules $\mod{A}$ for a commutative ring $A$. The categories of coherent and quasi-coherent sheaves, $\coherent{X}$ and $\quasicoh{X}$, on a scheme $X$ are also abelian (\cite[\href{https://stacks.math.columbia.edu/tag/01BY}{Tag 01BY}]{stacks-project} and \cite[\href{https://stacks.math.columbia.edu/tag/077P}{Tag 077P}]{stacks-project}). 
+       
+    On the other hand the full subcategory of projective $\Z$-modules is additive, but not abelian, for its lack of cokernels. For example $\Z/n$, for $n > 1$, is not projective even though it is realized as a cokernel of a map between two projectives. Another, more geometric example also showcases the same behaviour. The category of (real or complex) vector bundles for example over the real line $\R$ is additive, but not abelian. The last claim is due to the category of vector bundles over $\R$ not being closed under kernels and cokernels.
+    Through the lens of the Serre--Swan theorem, we observe that the above examples are at least in spirit quite closely related. The theorem states
+    that over a connected compact Hausdorff base space $X$ the categories of real (\resp complex) vector bundles over $X$ and the category of projective finitely generated $\mathcal{C}(X, \R)$-modules (\resp $\mathcal{C}(X, \C)$-modules) are equivalent as additive categories.
+
+    % Through a more algebraically inclined lens, the above also makes sense because of the Serre--Swan theorem. It states  The categories of projective modules are additive, but generally not abelian. 
+
+    % are quite closely related. 
 \end{example}
 
 \begin{definition}  
@@ -140,21 +148,30 @@ Axiom \ref{A4} essentially states that abelian categories are those additive cat
     \[
         X \xrightarrow{\ f \ } Y \xrightarrow{\ g\ } Z
     \]
-    be a sequence of composable morphisms in an abelian category $\A$. We say this sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im g \to \ker f$ is an isomorphism.
+    be a sequence of composable morphisms in an abelian category $\A$. We say the sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im g \to \ker f$ is an isomorphism.
 
         \item Extending (i), a sequence $\cdots \to X^0 \to X^1 \to X^2 \to \cdots$ is \emph{exact}, if any subsequence $X^{i-1} \to X^i \to X^{i+1}$ for $i \in \Z$ is exact. 
         \item Exact sequences of the form $0 \to X \to Y \to Z \to 0$ are called \emph{short exact sequences}.
     \end{enumerate}
 \end{definition}
 
-To relate the definition of exactness with more primitive objects of an abelian category, namely kernels and cokernels, it is not difficult to show that
-\[
-    0 \to X \to Y \to Z \text{ is exact, if and only if } (X \to Y) = \ker(Y \to Z),
-\]
-and dually
-\[
-    X \to Y \to Z \to 0 \text{ is exact, if and only if } (Y \to Z) = \coker(X \to Y).
-\]
+To relate the definition of exactness with more primitive objects of an abelian category, namely kernels and cokernels, it is not difficult to show the following two dual statements.
+\begingroup
+\renewcommand{\arraystretch}{1.2}
+\begin{center}
+    \begin{tabular}{r c l}
+        $0 \to X \to Y \to Z$ & is exact, if and only if & $(X \to Y) = \ker(Y \to Z).$ \\
+        $X \to Y \to Z \to 0$ & is exact, if and only if & $(Y \to Z) = \coker(X \to Y).$
+    \end{tabular}
+\end{center}
+\endgroup
+% \[
+%     0 \to X \to Y \to Z \quad \text{ is exact, if and only if } \quad (X \to Y) = \ker(Y \to Z),
+% \]
+% and dually
+% \[
+%     X \to Y \to Z \to 0 \quad \text{ is exact, if and only if } \quad (Y \to Z) = \coker(X \to Y).
+% \]
 
 In the context of abelian categories, functors, which preserve a bit more than just the $k$-linear structure, are of interest. This brings us to the notion of exactness of additive functors.
 
@@ -270,7 +287,7 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
                 X \xrightarrow{g\circ f} Z \xrightarrow{\ \ell\ } Y' \longrightarrow {X[1],}
             \end{align*}
             there exists a distinguished triangle $Z'\xrightarrow{\ u \ } Y' \xrightarrow{\ v \ } X' \xrightarrow{\ w \ } Z'[1]$ for which the diagram below is commutative.
-            \[\begin{tikzcd}
+            \[\begin{tikzcd}[row sep = 2.5em]
                 % https://q.uiver.app/#q=WzAsMTYsWzAsMCwiWCJdLFsxLDAsIlkiXSxbMiwwLCJaJyJdLFszLDAsIlhbMV0iXSxbMCwxLCJYIl0sWzEsMSwiWiJdLFsyLDEsIlknIl0sWzMsMSwiWFsxXSJdLFswLDIsIlkiXSxbMSwyLCJaIl0sWzIsMiwiWCciXSxbMywyLCJZWzFdIl0sWzAsMywiWiciXSxbMSwzLCJZJyJdLFsyLDMsIlgnIl0sWzMsMywiWidbMV0iXSxbMCw0LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDksIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEwLDE0LCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDYsInUiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiwxMCwidiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMiwxMywidSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMywxNCwidiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxNCwxNSwidyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDEsImYiXSxbMSwyLCJoIl0sWzIsM10sWzMsNywiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw1LCJnIFxcY2lyYyBmIl0sWzEsNSwiZyJdLFs0LDgsImYiLDJdLFs4LDEyLCJoIiwyXSxbOCw5LCJnIl0sWzksMTMsIlxcZWxsIl0sWzksMTAsImsiXSxbNSw2LCJcXGVsbCJdLFs2LDddLFsxMCwxMV0sWzcsMTEsImZbMV0iXSxbMTEsMTUsImhbMV0iXV0=
                 X & Y & {Z'} & {X[1]} \\
                 X & Z & {Y'} & {X[1]} \\
@@ -401,10 +418,10 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \begin{remark}
     The condition on $F$ being an \emph{additive} functor in the above definition is actually unnecessary and follows from conditions (i) and (ii) \cite[\href{https://stacks.math.columbia.edu/tag/05QY}{Tag 05QY}]{stacks-project}.
 \end{remark}
-\info{this remark may be omitted.}
+% \info{this remark may be omitted.}
 
 \begin{example}
-    The entirety of Chapter \ref{Chapter: Derived categories} and first two sections of Chapter \ref{Chapter: Derived categories in geometry} will be devoted to constructing a substantial amount of triangulated categories and triangulated functors. The first triangulated category we will encounter in practice is the homotopy category of complexes $\kcat{\A}$ of an additive category $\A$ in Section \ref{Subsection: Categories of complexes} of this chapter.
+    The entirety of Chapter \ref{Chapter: Derived categories} and first two sections of Chapter \ref{Chapter: Derived categories in geometry} will be devoted to constructing a substantial amount of triangulated categories and triangulated functors. The first triangulated category we will encounter in practice is $\kcat{\A}$, the homotopy category of complexes of an additive category $\A$. More on this can be found already in Section \ref{Subsection: Categories of complexes} of this chapter.
 \end{example}
 
 \begin{definition}
@@ -775,7 +792,7 @@ They will be used in a fundamental way in the proof of the Derived Torelli theor
     ($\Rightarrow$) Let $Y$ belong to $\D'$. Since $F$ is part of an equivalence, the counit $\varepsilon_Y \colon FH(Y) \to Y$ is an isomorphism, thus, as $H(Y) \iso 0$ implies $FH(Y) \iso 0$, we see that $Y \iso 0$.
 
     \noindent
-    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism (this is easily seen from digram \eqref{eq: two adjunctions diagram} or \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}). Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[Prop.~1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
+    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism (this is easily seen from diagram \eqref{eq: two adjunctions diagram} or \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}). Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[Prop.~1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
     \[
         HFH(Y) \xrightarrow{ H(\varepsilon_Y) } H(Y) \longrightarrow H(Z) \longrightarrow HFH(Y)[1].
     \]
@@ -854,7 +871,7 @@ Whenever a triangulated category $\D$ over a filed $k$ is equipped with a Serre 
 \end{proposition}
 
 \begin{proof}
-    We will show that both $\id{\D}$ and $S_\D\inv \circ F\inv \circ S_{\D'} \circ F$ are left adjoint to the identity functor $\id{\D}$, making them naturally isomorphic by uniqueness of adjoints. For any two objects $X$, $Y$ of $\D$ we have a chain of natural isomorphisms in both $X$ and $Y$.
+    We will show that $S_\D\inv \circ F\inv \circ S_{\D'} \circ F$ is left adjoint to the identity functor $\id{\D}$. As $\id{\D}$ is already left adjoint to $\id{\D}$, this will show that $S_\D\inv \circ F\inv \circ S_{\D'} \circ F$ and $\id{\D}$ are naturally isomorphic by uniqueness of adjoints. This is indeed so, since for any two objects $X$, $Y$ of $\D$ we have a chain of isomorphisms, natural in both $X$ and $Y$
     \begin{align*}
         \Hom_\D(S\inv_\D(F\inv(S_{\D'}(F(X)))), Y) 
         & \natiso \Hom_\D(F\inv(S_{\D'}(F(X))), S_\D(Y)) \\
@@ -932,21 +949,21 @@ for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This 
 	\arrow[from=3-6, to=3-7]
 \end{tikzcd}
 \]
-Sometimes we will denote a complex just by $A$, $B$,... insted of $A^\bullet$, $B^\bullet$,... to simplify notation. 
+% Sometimes we will denote a complex just by $A$, $B$,... insted of $A^\bullet$, $B^\bullet$,... to simplify notation. 
 
 Next we define the \emph{category of chain complexes} in $\A$, denoted by $\com(\A)$, as the following additive category. 
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
-        \textsl{Morphisms:} & $\Hom_{\com(\A)}(A, B)$ is the set of chain maps $A \to B$, \\ & equipped with a group structure inherited from $\A$ \\ & by applying operations componentwise.
+        \textsl{Morphisms:} & $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$ is the set of chain maps $A^\bullet \to B^\bullet$, \\ & equipped with a group structure inherited from $\A$ \\ & by applying operations componentwise.
     \end{tabular}
 \end{center}
-The composition law is defined componentwise and is clearly associative and bilinear. The identity morphisms $\id{A^\bullet}$ are defined to be $(\id{A^i})_{i \in \Z}$. The complex $\cdots \to 0 \to 0 \to \cdots$ plays the role of the zero object in $\com(\A)$ and the biproduct of complexes $A$ and $B$ exists and is witnessed by the chain complex
+The composition law is defined componentwise and is clearly associative and bilinear. The identity morphisms $\id{A^\bullet}$ are defined to be $(\id{A^i})_{i \in \Z}$. The complex $\cdots \to 0 \to 0 \to \cdots$ plays the role of the zero object in $\com(\A)$ and the biproduct of complexes $A^\bullet$ and $B^\bullet$ exists and is witnessed by the chain complex
 \[
-    A \oplus B = \left( (A^i \oplus B^i)_{i \in \Z}, (d^i_A \oplus d^i_B)_{i \in \Z}\right),
+    A^\bullet \oplus B^\bullet = \left( (A^i \oplus B^i)_{i \in \Z}, (d^i_A \oplus d^i_B)_{i \in \Z}\right),
     % \quad \quad \cdots \to A^i \oplus B^i \xrightarrow{d^i_A \oplus d^i_B} A^{i+1} \oplus B^{i+1} \to \cdots,
 \]
-together with the canonical projection and injection morphisms arising from biproducts componentwise.
+together with the canonical projection and injection morphisms arising from direct sums componentwise.
 
 Additionally, we also define the following full additive subcategories of $\com(\A)$.
 \begin{center}
@@ -968,8 +985,8 @@ given by its action on objects and morphisms as follows.
 
 \begin{center}
     \begin{tabular}{r l}
-        \textsl{Objects:} & $T(A^\bullet) = A^\bullet[1]$ is the chain complex with $(A^\bullet[1])^i := A^{i+1}$ \\ & and differentials $d^i_{A[1]} = - d^{i+1}_{A}$. \\
-        \textsl{Morphisms:} & For a chain map $f^\bullet\colon A^\bullet \to B^\bullet$ we define $f^\bullet[1]$ to have \\ & component maps $(f^\bullet[1])^i = f^{i+1}$.
+        \textsl{Objects:} & $T(A^\bullet) = A[1]^\bullet$ is the chain complex with $(A[1]^\bullet)^i := A^{i+1}$ \\ & and differentials $d^i_{A[1]} = - d^{i+1}_{A}$. \\
+        \textsl{Morphisms:} & For a chain map $f^\bullet\colon A^\bullet \to B^\bullet$ we define $f[1]^\bullet$ to have \\ & component maps $(f[1]^\bullet)^i = f^{i+1}$.
     \end{tabular}
 \end{center}
 The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its differential by a sign and shifting it one step to the \emph{left}, which is pictured below.
@@ -978,7 +995,7 @@ The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its d
     % https://q.uiver.app/#q=WzAsMTcsWzAsMSwiQV5cXGJ1bGxldFxcY29sb24iXSxbMCwyLCJBXlxcYnVsbGV0WzFdXFxjb2xvbiJdLFsxLDAsIlxcY2RvdHMiXSxbMywxLCJBXjAiXSxbNCwxLCJBXjEiXSxbMiwxLCJBXnstMX0iXSxbMiwyLCJBXjAiXSxbMywyLCJBXjEiXSxbNCwyLCJBXjIiXSxbNSwxLCJcXGNkb3RzIl0sWzUsMiwiXFxjZG90cyJdLFsxLDEsIlxcY2RvdHMiXSxbMSwyLCJcXGNkb3RzIl0sWzMsMCwiXFx0ZXh0dHR7MH0iXSxbNCwwLCJcXHRleHR0dHsxfSJdLFsyLDAsIlxcdGV4dHR0ey0xfSJdLFs1LDAsIlxcY2RvdHMiXSxbNiw3XSxbNyw4XSxbNSwzXSxbMyw0XSxbNCw5XSxbMTEsNV0sWzEyLDZdXQ==
 	& \color{linkcolor}\cdots & {\color{linkcolor}{\mathtt{-1}}} & {\color{linkcolor}\small{\mathtt{0}}} & {\color{linkcolor}\small{\mathtt{1}}} & {\color{linkcolor}\small{\mathtt{2}}} & \color{linkcolor}\cdots \\
 	{A^\bullet} & \cdots & {A^{-1}} & {A^0} & {A^1} & {A^2} & \cdots \\
-	{A^\bullet[1]} & \cdots & {A^0} & {A^1} & {A^2} & {A^3} & \cdots
+	{A[1]^\bullet} & \cdots & {A^0} & {A^1} & {A^2} & {A^3} & \cdots
 	\arrow[from=2-2, to=2-3]
 	\arrow[from=2-3, to=2-4]
 	\arrow[from=2-4, to=2-5]
@@ -995,18 +1012,19 @@ The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its d
     We remark that the translation functor $T$ is clearly also additive or $k$-linear, whenever $\A$ is additive or $k$-linear.
 \end{remark}
 
-Since $T$ is an auto-equivalence there exists a quasi-inverse $T\inv$ to $T$, which is defined and unique up to a natural isomorphism. We may then speak of $T^{k}$ for any $k \in \Z$, whose action on a complex $A^\bullet$ is described by $(A^\bullet[k])^i = A^{i + k}$ with differential $d^{i}_{A[k]} = (-1)^k d^{i+k}_A$.
+Since $T$ is an auto-equivalence there exists a quasi-inverse $T\inv$ to $T$, which is defined and unique up to a natural isomorphism. We may then speak of $T^{k}$ for any $k \in \Z$, whose action on a complex $A^\bullet$ is described by $(A[k]^\bullet)^i = A^{i + k}$ with differential $d^{i}_{A[k]} = (-1)^k d^{i+k}_A$.
 
 \subsubsection*{Homotopy category of chain complexes}
 
 In this subsection we construct the homotopy category of chain complexes associated to a given additive category $\A$ and equip it with a triangulated structure. The main motivation for its introduction in this work is the fact that we will later on use it to construct the derived category of $\A$. In particular the homotopy category of $\A$, as opposed to the category of complexes\footnote{It is still possible to construct the derived category of $\A$ without passing through the homotopy category of complexes, however equipping it with a triangulated structure in that case becomes less elegant.} $\com(\A)$, can be enhanced with a triangulated structure which will afterwards descend to the level of derived categories.
 
 \begin{definition}
-    Let $f^\bullet$ and $g^\bullet$ be two chain maps in $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$. We define $f^\bullet$ and $g^\bullet$ to be \emph{homotopic}, if there exists a collection of morphisms $\left( h^i\colon A^i \to B^{i-1} \right)_{i \in \Z}$, satisfying
+    Let $f$ and $g$ be two chain maps in $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$. We define $f$ and $g$ to be \emph{homotopic}, if there exists a collection of morphisms $\left( h^i\colon A^i \to B^{i-1} \right)_{i \in \Z}$, satisfying
     \[
         f^i - g^i = h^{i+1} \circ d^i_A + d^{i-1}_B \circ h^i
     \] 
-    for all $i \in \Z$. The collection of morphisms $(h^i)_{i \in \Z}$ is called a \emph{homotopy} and we denote $f^\bullet$ and $g^\bullet$ being homotopic by $f^\bullet \htpy g^\bullet$. 
+    for all $i \in \Z$. The collection of morphisms $(h^i)_{i \in \Z}$ is called a \emph{homotopy} and we write $f \htpy g$, if $f$ and $g$ are homotopic.
+    % denote $f^\bullet$ and $g^\bullet$ being homotopic by $f^\bullet \htpy g^\bullet$. 
     \[\begin{tikzcd}
         % https://q.uiver.app/#q=WzAsMTAsWzEsMCwiQV57aS0xfSJdLFszLDAsIkFeaSJdLFs1LDAsIkFee2krMX0iXSxbMSwyLCJCXntpLTF9Il0sWzMsMiwiQl5pIl0sWzUsMiwiQl57aSsxfSJdLFs2LDIsIlxcY2RvdHMiXSxbNiwwLCJcXGNkb3RzIl0sWzAsMCwiXFxjZG90cyJdLFswLDIsIlxcY2RvdHMiXSxbMCwzLCJmXntpLTF9Il0sWzEsNCwiZl5pIl0sWzIsNSwiZl57aSsxfSJdLFswLDEsImRee2ktMX1fQSJdLFsxLDIsImReaV9BIl0sWzQsNSwiZF57aX1fQiJdLFszLDQsImRee2ktMX1fQiJdLFs1LDZdLFsyLDddLFs4LDBdLFs5LDNdLFsxLDMsImheaSJdLFsyLDQsImhee2krMX0iXV0=
         \cdots & {A^{i-1}} && {A^i} && {A^{i+1}} & \cdots \\
@@ -1026,21 +1044,21 @@ In this subsection we construct the homotopy category of chain complexes associa
         \arrow["{d^{i}_B}", from=3-4, to=3-6]
         \arrow[from=3-6, to=3-7]
         \end{tikzcd}\] 
-    We say $f^\bullet$ is \emph{nullhomotopic}, if $f^\bullet \htpy 0$.
+    We say $f$ is \emph{null-homotopic}, if $f \htpy 0$.
 \end{definition}
 
 \begin{lemma}
     \label{nullhomotopics form a subgroup}
     Let $A^\bullet$, $B^\bullet$ and $C^\bullet$ be complexes in $\com(\A)$ and let $f, f' \in \Hom_{\com(\A)}(A^\bullet, B^\bullet)$ and $g, g' \in \Hom_{\com(\A)}(B^\bullet, C^\bullet)$ be chain maps.
     \begin{enumerate}[label=(\roman*)]
-        \item The subset of all nullhomotopic chain maps in $A^\bullet \to B^\bullet$ forms a submodule of $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$. \label{nullhomotopic maps are a submodule}
+        \item The subset of all null-homotopic chain maps in $A^\bullet \to B^\bullet$ forms a submodule of $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$. \label{nullhomotopic maps are a submodule}
         \item If $f \htpy f'$ and $g \htpy g'$, then $g \circ f \htpy g' \circ f'$. \label{composition and homotopy behave}
-        \info{Pick one notation convention, sometimes its $f$, $f'$, sometimes its $f_0$, $f_1$, ...}
+        % \info{Pick one notation convention, sometimes its $f$, $f'$, sometimes its $f_0$, $f_1$, ...}
     \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    For \ref{nullhomotopic maps are a submodule} see \cite[Chapter 3, 1.3.1]{milicic-dercat}. Claim \ref{composition and homotopy behave} is a direct consequence of \cite[Chapter 3, 1.3.2]{milicic-dercat}.
+    For \ref{nullhomotopic maps are a submodule} see \cite[\S 3, 1.3.1]{milicic-dercat}. Claim \ref{composition and homotopy behave} is a direct consequence of \cite[\S 3, 1.3.2]{milicic-dercat}.
 \end{proof}
 
 The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined to be an additive category consisting of
@@ -1050,7 +1068,7 @@ The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined t
         \textsl{Morphisms:} & $\Hom_{\kcat{\A}}(X, Y) := \Hom_{\com(\A)}(X, Y)/_\htpy$
     \end{tabular}
 \end{center}
-The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[\id{A^\bullet}]$. All the hom-sets $\Hom_{\kcat{\A}}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The biproduct of two complexes $A^\bullet$ and $B^\bullet$ consists of an object $A^\bullet \oplus B^\bullet$ corresponding to the usual biproduct in $\com(\A)$ together with the homotopy classes of structure maps of its $\com(\A)$-counterpart.
+The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[\id{A^\bullet}]$. All the Hom-sets $\Hom_{\kcat{\A}}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The direct sum of two complexes $A^\bullet$ and $B^\bullet$ consists of an object $A^\bullet \oplus B^\bullet$ corresponding to the usual biproduct in $\com(\A)$ together with the homotopy classes of structure maps of its $\com(\A)$-counterpart.
 
 \vspace*{0.3 cm}
 
@@ -1060,7 +1078,7 @@ We now shift\footnote{Pun intended.} our focus to the construction of a triangul
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & $A^\bullet \longmapsto A^\bullet[1]$. \\
-        \textsl{Morphisms:} & $[f^\bullet] \longmapsto [f^\bullet[1]]$.
+        \textsl{Morphisms:} & $[f^\bullet] \longmapsto [f[1]^\bullet]$.
     \end{tabular}
 \end{center}
 This assignment is clearly well defined on morphisms, as $f \htpy f'$ implies $f[1] \htpy f'[1]$.
@@ -1103,7 +1121,7 @@ The other piece of data required to obtain a triangulated category is a collecti
     The naming convention comes from topology, where one can show that the singular chain complex associated to the topological mapping cone $M(f)$ of a continuous map $f\colon X \to Y$ is chain homotopically equivalent to the cone of the chain map induced by $f$ between singular chain complexes of $X$ and $Y$.
 \end{remark}
 
-Along with the cone of a chain map $f$ we also introduce two chain maps
+Along with the cone of a chain map $f$, we also introduce two chain maps
 \[
     \tau_f \colon B^\bullet \to C(f)^\bullet,
 \]
@@ -1138,8 +1156,8 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
         \label{eq: two triangles isomorphic}
     \begin{tikzcd}[column sep = normal, row sep = 2.5em]
         % https://q.uiver.app/#q=WzAsOCxbMCwwLCJCIl0sWzEsMCwiQyhmKSJdLFsyLDAsIkFbMV0iXSxbMywwLCJCWzFdIl0sWzAsMSwiQiJdLFsxLDEsIkMoZikiXSxbMiwxLCJDKFxcdGF1KSJdLFszLDEsIkJbMV0iXSxbMCwxLCJcXHRhdSJdLFsxLDIsIlxccGkiXSxbMiwzLCItZlsxXSJdLFs0LDUsIlxcdGF1Il0sWzUsNiwiXFx0YXVfXFx0YXUiXSxbNiw3LCJcXHBpX1xcdGF1Il0sWzAsNCwiXFxhbHBoYSIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsNSwiXFxiZXRhIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMiw2LCJnIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsNywiXFxhbHBoYVsxXSIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
-        B & {C(f)} & {A[1]} & {B[1]} \\
-        B & {C(f)} & {C(\tau)} & {B[1]}
+        B^\bullet & {C(f)^\bullet} & {A[1]^\bullet} & {B[1]^\bullet} \\
+        B^\bullet & {C(f)^\bullet} & {C(\tau)^\bullet} & {B[1]^\bullet}
         \arrow["\tau", from=1-1, to=1-2]
         \arrow[""', equals, from=1-1, to=2-1]
         \arrow["\pi", from=1-2, to=1-3]
@@ -1290,9 +1308,9 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
 As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $\kcat{\A}$.
 \begin{center}
     \begin{tabular}{c l}
-        $\kplus{\A}$ & \emph{Homotopy category of complexes bounded below}, spanned on \\ &complexes in $\A$ bounded below. \\
-        $\kminus{\A}$ & \emph{Homotopy category of complexes bounded above}, spanned on \\ &complexes in $\A$ bounded above. \\
-        $\kb{\A}$ & \emph{Homotopy category of bounded complexes}, spanned on \\ &bounded complexes in $\A$. \\    
+        $\kplus{\A}$ & \emph{Homotopy category of complexes bounded below}, consisting of \\ &complexes in $\A$ bounded below. \\
+        $\kminus{\A}$ & \emph{Homotopy category of complexes bounded above}, consisting of \\ &complexes in $\A$ bounded above. \\
+        $\kb{\A}$ & \emph{Homotopy category of bounded complexes}, consisting of \\ &bounded complexes in $\A$. \\    
     \end{tabular}
 \end{center}
 
@@ -1300,9 +1318,20 @@ As in the case of categories of complexes in $\A$, we can also define the follow
 For convenience we will in practice assume that unless otherwise stated our complexes $A^\bullet$ in $\kplus{\A}$ will be supported in $\N$ \ie we will assume $A^i \iso 0$ for $i < 0$.
 
 \begin{remark}
-    By proposition \ref{triangulated subcategory proposition} all the subcategories $\kplus{\A}$, $\kminus{\A}$, $\kb{\A}$ of $\kcat{\A}$ are triangulated.
+    By Proposition \ref{triangulated subcategory proposition} all the subcategories $\kplus{\A}$, $\kminus{\A}$, $\kb{\A}$ of $\kcat{\A}$ are triangulated.
     % The proposition still holds true, if we replace $\kcat{\A}$ with any of the categories $\kplus{\A}$, $\kminus{\A}$, $\kb{\A}$.
 \end{remark}
+
+% \footnote{More precisely, there is always a fully faithful functor $\A \to \kcat{\A}$ sending an object $A$ to a complex $\cdots \to 0 \to A \to 0 \to \cdots$ concentrated in degree $0$ and a morphism $f\colon A \to B$ to the homotopy class of the chain map defined by $f^0 = f$ and $f^i = 0$, for $i \neq 0$ \cite[Chapter 3, Lemma 1.3.5]{milicic-dercat}.}
+
+Lastly we mention that $\A$ can naturally be seen as a full subcategory of $\kcat{\A}$. This is due to the functor $\A \to \kcat{\A}$, defined by the following action on objects and morphisms, being fully faithful. 
+\begin{center}
+    \begin{tabular}{r r c l}
+        \textsl{Objects:} & $A$ & $\longmapsto$ & $(\cdots \to 0 \to A \to 0 \to \cdots)$, \\
+        \textsl{Morphisms:} & $f$ & $\longmapsto$ & $[(f^i)_{i \in \Z}]$, where $f^0 = f$ and $f^i = 0$ for $i \neq 0$.
+    \end{tabular}
+\end{center}
+The proof of this fact is not difficult to verify, yet we skip it for brevity, but leave the interested reader with the reference \cite[\S 3, Lemma 1.3.5]{milicic-dercat} for completeness.
 
 \subsubsection*{Cohomology}
 
@@ -1320,7 +1349,7 @@ For a chain complex $A^\bullet$ in $\com(\A)$ and $i \in \Z$ we define its \emph
     See \cite[\S 8, Definition 8.3.8.]{kashiwara2006categories}.
 \end{remark}
 
-For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$ one can also define a morphism 
+For a morphism of complexes $f^\bullet\colon A^\bullet \to B^\bullet$, one can also define a morphism 
 \[
     H^i(f^\bullet) \colon H^i(A^\bullet) \to H^i(B^\bullet)
 \]
@@ -1414,11 +1443,11 @@ on the homotopy category $\kcat{\A}$.
 
 \begin{proposition}
     \label{cohomology of nulhomotopic map}
-    Let $f \colon A^\bullet \to B^\bullet$ be a nullhomotopic chain map in $\com(\A)$. Then $f$ induces the zero map on cohomology, that is $H^i(f) = 0$ for all $i \in \Z$.
+    Let $f \colon A^\bullet \to B^\bullet$ be a null-homotopic chain map in $\com(\A)$. Then $f$ induces the zero map on cohomology, that is $H^i(f) = 0$ for all $i \in \Z$.
 \end{proposition}
 
 \begin{proof}
-    As $f$ is nullhomotopic, there exists a homotopy $(h^i \colon A^i \to B^{i-1})_{i\in Z}$ such that 
+    As $f$ is null-homotopic, there exists a homotopy $(h^i \colon A^i \to B^{i-1})_{i\in Z}$ such that 
     \[
         f^i =  h^{i+1} d^i_A + d^{i-1}_B  h^i \quad \text{ for all $i \in \Z$.}
     \]
@@ -1433,12 +1462,12 @@ on the homotopy category $\kcat{\A}$.
     \end{center}
     We compute $i_B \phi = f^i i_A = (h^{i+1}d^i_A + d^{i-1}_Bh^i)i_A = d^{i-1}_B h^i i_A = 
     % j_B \psi_B h^i i_A = 
-    i_B \xi_B \psi_B h^i i_A$. Since $i_B$ is a monomorphism, we may cancel it on the left, to express $\phi$ as $\xi_B \psi_B h^i i_A$. Then it is clear, that $\pi_B \phi = 0$ (as $\pi_B\xi_B = 0$), which means that $0$ is the unique map $H^i(A^\bullet) \to H^i(B^\bullet)$ fitting into the commutative diagram \eqref{eq: diagram for map on cohomology}.
+    i_B \xi_B \psi_B h^i i_A$. Since $i_B$ is a monomorphism, we may cancel it on the left to express $\phi$ as $\xi_B \psi_B h^i i_A$. Then it is clear that $\pi_B \phi = 0$ (as $\pi_B\xi_B = 0$), which means that $0$ is the unique map $H^i(A^\bullet) \to H^i(B^\bullet)$ fitting into the commutative diagram \eqref{eq: diagram for map on cohomology}.
     % \info{ugly but uses only universal properties, no elements}
 \end{proof}
 
 \begin{remark}
-    The proof of Proposition \ref{cohomology of nulhomotopic map} although technical and not very aesthetically pleasing is worth including, since it showcases a technique confined fully in the context of abelian categories. Usually these kinds of results are proven first in the category $\mod{A}$ of $A$-modules and then generalized to arbitrary abelian categories as a consequence of the Freyd--Mitchell embedding theorem. 
+    The proof of Proposition \ref{cohomology of nulhomotopic map} although technical and not very aesthetically pleasing is worth including, since it showcases a technique confined fully in the context of abelian categories and universal properties. Usually these kinds of results are proven first in the category $\mod{A}$ of $A$-modules and then generalized to arbitrary abelian categories as a consequence of the Freyd--Mitchell embedding theorem. 
 \end{remark}
 
 It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ at once, as is witnessed by the next proposition. 
@@ -1456,17 +1485,20 @@ It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ a
     Morphisms $H^i(A^\bullet) \to H^i(B^\bullet)$ and $H^i(B^\bullet) \to H^i(C^\bullet)$ are induced by the corresponding morphisms between complexes. But the existence of a \emph{connecting} morphism $H^i(C^\bullet) \to H^{i+1}(A^\bullet)$ is part of the assertion of the proposition.  
 \end{remark}
 
-An elementary observation shows that for all $i \in \Z$ the following natural equivalence exists
+An elementary observation shows that the translation functor $T$ on $\com(\A)$ gives rise to natural equivalences
+%   the following natural equivalence exists
 \begin{equation}
     \label{eq: cohomology and translation}
     H^0 \circ T^i \natiso H^{i},
 \end{equation}
-so the long exact sequence of proposition \ref{LES in cohomology} can be rephrased as 
+for all $i \in \Z$.
+Hence the long exact sequence of Proposition \ref{LES in cohomology} can be rephrased as 
 \[
     \cdots \to H^0(A^\bullet[i]) \to H^0(B^\bullet[i]) \to H^0(C^\bullet[i]) \to H^{0}(A^\bullet[i+1]) \to \cdots.
 \]
 
 \begin{proposition}
+    \label{Cohomology is cohomological functor on K(A)}
     With respect to the triangulated structure on $\kcat{\A}$ the cohomology functors $H^i$ are cohomological. 
 \end{proposition}
 

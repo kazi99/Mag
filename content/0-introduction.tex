@@ -9,4 +9,27 @@
     \item{Recall what a coherent and quasi-coherent sheaf is. } 
 \end{itemize}
 
+Through the course of the last chapter, we will prove the following theorem. 
 
+\begin{theorem*}[Derived Torelli theorem]
+    Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then the following are equivalent.
+    \begin{enumerate}[label = (\roman*)]
+        \item{$X$ and $Y$ share equivalent bounded derived categories of coherent sheaves, 
+        \[
+            \derb{X} \iso \derb{Y}.
+        \]
+        }
+        \item{There exists a Hodge isometry $f \colon \transc{X} \to \transc{Y}$ between the transcendental lattices of $X$ and $Y$.}
+        \item{There exists 
+        % a polarization on $X$ and 
+        an isotropic Mukai vector $v \in \mukai{X}$ of divisibility $1$,
+        such that $Y$ is isomorphic to a moduli space $M_v$ of stable sheaves on $X$ with Mukai vector $v$. Moreover $M_v$ is the unique K3 surface, for which there exists a Hodge isometry
+        %  of divisibility $1$, 
+        % such that $Y$ is isomorphic to the unique K3 surface $M_v$, for which
+        \[
+            \cohom{2}{M_v}{\Z} \iso v^\perp / \Z v.
+        \]
+        }
+        % moduli space of stable sheaves on $X$, with Mukai vector $v$.
+    \end{enumerate}
+\end{theorem*}
