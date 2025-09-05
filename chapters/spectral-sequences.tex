@@ -1,4 +1,5 @@
 \section{Spectral sequences and how to use them}
+\label{Appendix A}
 
 In this chapter we will first define cohomological spectral sequences and then discuss their meaning through applications related with derived categories.
 
@@ -106,9 +107,9 @@ In this case we also denote the existence of such a spectral sequence by
 % \]
 % respecting the differential of $K^\bullet$ \ie $d(F^p K^n) \subseteq F^p K^{n+1}$. Using only this piece of information one can 
 
-In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two left exact functors with the composition of their higher derived functors. For a proof see either \cite[\S 2, Proposition 2.66]{huybrechts2006fouriermukai} (sketch) or \cite[\S 2.4]{grothendieck57}.
+In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two left exact functors with the composition of their higher derived functors. For a proof see either \cite[\S 2, Proposition 2.66]{huybrechts2006fouriermukai} (merely a sketch) or \cite[\S 2.4]{grothendieck57}.
 
-\begin{theorem}[Grothendieck]
+\begin{theorem}[Grothendieck, \cite{grothendieck57}]
     \label{Grothendieck spectral sequence}
     Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class in $\A$, $\I_G$ a $G$-adapted class of objects in $\B$ and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $\kplus{\A}$ there exists a spectral sequence
     \begin{equation}
@@ -124,15 +125,53 @@ In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the follo
         E^{p,q}_2 = \rderived{p}{F}(H^q(A^\bullet)) \implies \rderived{p+q}{F}(A^\bullet) = E^{p+q},
     \end{equation}
     for every $A^\bullet$ of $\kplus{\A}$.
-
-
 \end{remark}
+
+\begin{definition}
+    Let $\B$ be an abelian category and $\mathcal C$ its \emph{full abelian subcategory}, meaning that $\mathcal C$ is abelian, a full subcategory of $\B$ and the inclusion functor $\mathcal C \hookrightarrow \B$ is exact. Then $\mathcal C$ is called \emph{thick}, if every extension in $\B$ of objects in $\mathcal C$ is again in $\mathcal C$. In other words, assuming 
+    \[
+            0 \to B_0 \to B_1 \to B_2 \to 0
+    \]
+    is a short exact sequence in $\B$, if $B_0$ and $B_2$ belong to $\mathcal C$, then so does $B_1$.
+    
+    % then the condition
+    % for any short exact sequence
+    % \[
+    %         0 \to B_0 \to B_1 \to B_2 \to 0
+    % \]
+    % in $\B$, if $B_0$ and $B_2$ belong to $\mathcal C$, then so does $B_1$. 
+    % Let $\mathcal C$ be a full abelian subcategory of an abelian 
+
+    % Let $\B$ be an abelian category and $\mathcal C$ a full additive subcategory of $\B$.
+    % \begin{enumerate}[label = (\roman*)]
+    %     \item{ 
+    %     The subcategory $\mathcal C \subseteq \B$ is \emph{closed under extensions}, if for any objects $B_0$, $B_1$, $B_2$ of $\B$, for which there is a short exact sequence
+    %     \[
+    %         0 \to B_0 \to B_1 \to B_2 \to 0,
+    %     \]
+    %     the condition that $B_0$ and $B_1$ belong to $\mathcal C$, implies that $B_2$ belongs to $\mathcal C$.
+    %     }
+    %     \item{
+    %     The subcategory $\mathcal C \subseteq \B$ is \emph{thick}, if it contains kernels and cokernels of all its morphisms and is closed under extensions.
+    %     }
+    %     \end{enumerate}
+    %  meaning that for any objects $C_0$, $C_1$, $C_2$ of $\B$ for which there is a short exact sequence
+    % \[
+    %     0 \to C_0 \to C_1 \to C_2 \to 0,
+    % \]
+    % if $C_0$ and $C_1$ belong to $\mathcal C$, then so does $C_2$.
+    % Let $\mathcal C$ be an abelian subcategory of an abelian category $\B$. 
+\end{definition}
+
+\begin{example}
+    The subcategory of finitely generated abelian groups forms a thick subcategory of the category of abelian groups $\Ab$.
+\end{example}
 
 \begin{proposition}
     \label{Spectral sequences for derived cats}
     Let $F \colon \A \to \B$ be a left exact functor admitting a right derived functor $\rderived{}{F}\colon \derplus{\A} \to \derplus{\B}$. 
     \begin{enumerate}[label = (\roman*)]
-        \item{Suppose that for every object $A$ of $\A$ the complex $\rderived{i}{F}(A)$ is non-trivial only for finitely many $i \in \Z$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\derb{\B}$ for any bounded complex $A^\bullet$ of $\derb{\A}$, consequently inducing a right derived functor on the level of bounded derived categories
+        \item{Suppose that for every object $A$ of $\A$ the objects $\rderived{i}{F}(A)$ are non-trivial only for finitely many $i \in \Z$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\derb{\B}$ for any bounded complex $A^\bullet$ of $\derb{\A}$, consequently inducing a right derived functor on the level of bounded derived categories
         \[
             \rderived{}{F} \colon \derb{\A} \to \derb{\B}.
         \]} \label{Bounded on objects implies bounded on complexes}
@@ -182,7 +221,7 @@ In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the follo
 \end{proof}
 
 \begin{remark}
-    Using Proposition \ref{Homs in derived category}, and taking $A^\bullet$ and $B^\bullet$ to be bounded complexes of $\derb{\A}$ the above spectral sequences specialize to 
+    Using Proposition \ref{Homs in derived category}, and taking $A^\bullet$ and $B^\bullet$ to be bounded complexes of $\derb{\A}$ the spectral sequences \eqref{eq: Spectral sequence Ext 2} and \eqref{eq: Spectral sequence Ext 1} specialize to 
     \begin{align}
         E^{p,q}_2 = \Hom_{\derb{\A}}(A^\bullet, H^q(B^\bullet)[p]) &\Rightarrow \Hom_{\derb{\A}}(A^\bullet, B^\bullet[p+q]) = E^{p+q}, \\
         E^{p,q}_2 = \Hom_{\derb{\A}}(H^{-q}(A^\bullet), B^\bullet[p]) &\Rightarrow \Hom_{\derb{\A}}(A^\bullet, B^\bullet[p+q]) = E^{p+q}. 
