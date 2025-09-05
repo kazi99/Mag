@@ -47,7 +47,7 @@ As observed in Chapter \ref{Chapter: Derived categories} the construction of der
 \end{proposition}
 
 \begin{proof}
-    \info{add}
+    For a proof see \cite[\S 3, Proposition 3.5]{huybrechts2006fouriermukai}.
 \end{proof}
 
 \begin{proposition}
@@ -209,13 +209,17 @@ The above proposition relies on a finiteness result of Serre found in \cite[\S I
     \[
         \Hom_{\derb{X}}(\E^\bullet, \F^\bullet) \iso \Ext^0_{\struct{X}}(\E^\bullet, \F^\bullet) = H^0(\Hom^\bullet_{\struct{X}}(\E^\bullet, \F^\bullet)).
     \]
-    Recall that $\Hom^i_{\struct{X}}(\E^\bullet, \F^\bullet) = \bigoplus_{j \in \Z} \Hom_{\struct{X}}(\E^j, \F^{i+j})$, where the direct sum is actually finite due to $\E^\bullet$ and $\F^\bullet$ being bounded complexes. From \cite[\href{https://stacks.math.columbia.edu/tag/01CQ}{Tag 01CQ}]{stacks-project}, we see that the internal Hom of two coherent sheaves is again coherent, thus its module of global sections $\Gamma(X, \localhom_{\struct{X}}(\F, \G)) = \Hom_{\struct{X}}(\F, \G)$ is finite dimensional by Theorem \ref{Serre finitness}. In turn this implies $\Hom^i_{\struct{X}}(\E^\bullet, \F^\bullet)$ are finitely dimensional $k$-vector spaces for all $i \in \Z$, meaning $H^0(\Hom^\bullet_{\struct{X}}(\E^\bullet, \F^\bullet))$ is finite dimensional as well. 
+    Recall that $\Hom^i_{\struct{X}}(\E^\bullet, \F^\bullet) = \bigoplus_{j \in \Z} \Hom_{\struct{X}}(\E^j, \F^{i+j})$, where the direct sum is actually finite due to $\E^\bullet$ and $\F^\bullet$ being bounded complexes. Momentarily borrowing the internal Hom of two sheaves from Section \ref{Subsubsection: Internal Hom}, \cite[II, \S 9, Proposition 9.1.1]{EGA} lets us state that the internal Hom of two coherent sheaves is again coherent.
+    % From \cite[\href{https://stacks.math.columbia.edu/tag/01CQ}{Tag 01CQ}]{stacks-project}, 
+    % we see that the internal Hom of two coherent sheaves is again coherent, 
+    Thus for any two coherent sheaves $\F$ and $\G$ the module of global sections $\Gamma(X, \localhom_{\struct{X}}(\F, \G)) = \Hom_{\struct{X}}(\F, \G)$ is finite dimensional by Theorem \ref{Serre finitness}. In turn this implies $\Hom^i_{\struct{X}}(\E^\bullet, \F^\bullet)$ are finitely dimensional $k$-vector spaces for all $i \in \Z$, meaning $H^0(\Hom^\bullet_{\struct{X}}(\E^\bullet, \F^\bullet))$ is finite dimensional as well. 
 \end{proof}
 
 Recall, that for a smooth and projective scheme $X$ over $k$ of dimension $n$, Serre duality \cite[\S III, Theorem 7.6]{Hartshorne1977} states that for any coherent sheaf $\F$ on $X$ there is an isomorphism
-\[
-    \Ext_{\struct{X}}^i(\F, \omega_X) \iso \cohom{n-i}{X}{\F}^*.
-\]
+\begin{equation}
+    \label{eq: Classic Serre duality}
+    \Ext_{\struct{X}}^{n-i}(\F, \omega_X) \iso \cohom{i}{X}{\F}^*.
+\end{equation}
 Generalizing Serre's duality theorem for smooth projective schemes over $k$ to the context of complexes leads us to define Serre functors. This also clarifies why we called such functors \emph{Serre functors} already in Section \ref{Subsection: Triangulated categories}, where no geometry was present. 
 
 \begin{definition}
@@ -239,7 +243,7 @@ Generalizing Serre's duality theorem for smooth projective schemes over $k$ to t
 
 \begin{theorem}[Serre duality for derived categories]
     \label{Serre duality for derived cats}
-    Let $X$ be a smooth projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. The functor $S_X$ is a Serre functor in the sense of Definition \ref{} \ie there is an isomorphism
+    Let $X$ be a smooth projective variety over a field $k$ and let $\E^\bullet$ and $\F^\bullet$ belong to $\derb{X}$. The functor $S_X$ is a Serre functor in the sense of Definition \ref{Definiton of Serre functor} \ie there is an isomorphism
     \[
         \Hom_{\derb{X}}(\F^\bullet, \E^\bullet) \iso \Hom_{\derb{X}}(\E^\bullet, S_X(\F^\bullet))^*,
     \]
@@ -247,7 +251,8 @@ Generalizing Serre's duality theorem for smooth projective schemes over $k$ to t
 \end{theorem}
 
 \begin{proof}
-    This will follow as a corollary of Grothendieck-Verdier duality \ref{}.
+    See \cite[\S 3.4, Remark 3.37]{huybrechts2006fouriermukai} for an elegant proof using Grothendieck--Verdier duality. One is able to derive this version of Serre duality also from the classical one \eqref{eq: Classic Serre duality}. 
+    % This will follow as a corollary of Grothendieck-Verdier duality \ref{}.
 \end{proof}
 
 % We will use Serre duality for example to help us prove 
@@ -305,7 +310,7 @@ The following proposition can be found in \cite[\S 3, Proposition 3.17]{huybrech
 
 In this section we will derive some functors occurring in algebraic geometry 
 % and later state some important facts relating them with each other. 
-To derive these functors we will pursue either of the two following options. Either deal with injective sheaves and access the realm of quasi-coherent sheaves, following the first part of section \ref{}, or introduce certain special classes of coherent sheaves depending on the functor we wish to derive, which are going to take the role of adapted classes, mirroring what was done in subsection \ref{}.
+To derive these functors we will pursue one of the two following options. Either deal with injective sheaves and access the realm of quasi-coherent sheaves, following the first part of Subsection \ref{Subsubsection: Derived functors of left exact functors}, or introduce certain special classes of coherent sheaves depending on the functor we wish to derive, which are going to take the role of adapted classes, mirroring what was done in the second part of that subsection.
 
 \subsubsection{Global sections functor}
 Arguably the most common functor in algebraic geometry is the global sections functor. Associated to a noetherian scheme $X$, the functor of \emph{global sections}
@@ -445,53 +450,181 @@ Finally, we obtain the derived direct image functor between the bounded derived 
     An example of a direct image functor we will encounter very often is pushing-forward along a projection $p \colon X \times Y \to X$ for smooth and projective varieties $X$ and $Y$ over a field $k$. In this case the projection $p$ is proper because the properness condition is stable under base change \cite[\href{https://stacks.math.columbia.edu/tag/01W4}{Tag 01W4}]{stacks-project} and the structure map $Y \to \spec{k}$ of a projective variety $Y$ is by definition proper. 
 \end{example}
 
-\subsubsection{Internal Hom}
+\subsubsection{Hom functors}
 \label{Subsubsection: Internal Hom}
+
+Let $X$ be a noetherian scheme over a field $k$. For any two quasi-coherent sheaves $\F$ and $\G$ on $X$, we denote with $\Hom_{\struct{X}}(\F, \G)$ the $k$-vector space of morphisms in the abelian category $\quasicoh{X}$. As with any category it gives rise to a functor
+\[
+    \Hom_{\struct{X}}(\F, -) \colon \quasicoh{X} \to \mod{k}
+\]
+for any quasi-coherent sheaf $\F$ on $X$. Since $\quasicoh{X}$ contains enough injectives by Proposition \ref{qcoh of noetherian scheme contains enough injectives}, we can derive this Hom functor according to Section \ref{subsection: Ext functors} to obtain
+\[
+    \rderived{}{\Hom_{\struct{X}}(\F, -)} \colon \derplus{\quasicoh{X}} \to \derplus{\mod{k}}.
+\]
+In this way we also obtain all its higher derived functors, namely the \emph{Ext-functors}
+\[
+    \Ext_{\struct{X}}^i(\F, -) = \rderived{i}{\Hom_{\struct{X}}(\F, -)}
+\]
+for all $i \in \Z$.
+
+
+\subsubsection*{Internal Hom}
 
 The \emph{internal Hom} or \emph{sheaf Hom} of two sheaves $\F$ and $\G$ on $X$ is defined to be a sheaf on $X$ given on open sets $U \subseteq X$ by
 \[
     U \mapsto \Hom_{\struct{U}}(\F|_U, \G|_U),
 \]
-with the restriction homomorphisms being the usual restrictions of homomorphisms of sheaves. When $\F$ and $\G$ are taken to be $\struct{X}$-modules, the internal Hom may also be equipped with an $\struct{X}$-action making it an $\struct{X}$-module. We denote it by $\localhom_{\struct{X}}(\F, \G)$. Applying the global sections functor $\Gamma(X, -)$ to $\localhom_{\struct{X}}(\F, \G)$ it is clear that
+with the restriction homomorphisms being the usual restrictions of homomorphisms of sheaves. When $\F$ and $\G$ are taken to be $\struct{X}$-modules, the internal Hom may also be equipped with an $\struct{X}$-action making it an $\struct{X}$-module. We denote it by $\localhom_{\struct{X}}(\F, \G)$ when we want to clarify that we are working over a base space $X$ and $\localhom(\F, \G)$ otherwise. Applying the global sections functor $\Gamma(X, -)$ to $\localhom(\F, \G)$ it is clear that
 \[
-    \Gamma(X, \localhom_{\struct{X}}(\F, \G)) = \Hom_{\struct{X}}(\F, \G).
+    \Gamma(X, \localhom(\F, \G)) = \Hom_{\struct{X}}(\F, \G).
 \]
-
 The internal Hom also defines a bifunctor
 \begin{equation}
     \label{eq: internal hom on O_X-modules}
-    \localhom_{\struct{X}}(-, -) \colon \mod{\struct{X}}^\op \times \mod{\struct{X}} \to \mod{\struct{X}}.
+    \localhom(-, -) \colon \mod{\struct{X}}^\op \times \mod{\struct{X}} \to \mod{\struct{X}}.
 \end{equation}
-For a fixed $\struct{X}$-module $\G$ the $\localhom_{\struct{X}}(-, \G)$-action on a $\struct{X}$-module homomorphism $\alpha \colon \F_1 \to \F_0$ is defined as an $\struct{X}$-module homomorphism
+For a fixed $\struct{X}$-module $\G$ the $\localhom(-, \G)$-action on a $\struct{X}$-module homomorphism $\alpha \colon \F_1 \to \F_0$ is defined as an $\struct{X}$-module homomorphism
 \[
-    \alpha^* \colon \localhom_{\struct{X}}(\F_0, \G) \to \localhom_{\struct{X}}(\F_1, \G),
+    \alpha^* \colon \localhom(\F_0, \G) \to \localhom(\F_1, \G),
 \]
 given on open subsets $U \subseteq X$ by $\Gamma(U, \struct{X})$-linear maps
 \[
     (\alpha^*)_U = \left(\Hom_{\struct{U}}(\F_0|_U, \G|_U) \xrightarrow{(\alpha_U)^*} \Hom_{\struct{U}}(\F_1|_U, \G|_U)\right).
 \]
-This action is clearly functorial and the same may be said for the similarly defined $\localhom_{\struct{X}}(\F, -)$-action, for a fixed $\struct{X}$-module $\F$.
-
-By \cite[II, \S 9, Proposition 9.1.1]{EGA} the internal Hom $\localhom_{\struct{X}}(\F, \G)$ is coherent for any two coherent sheaves $\F$ and $\G$ on $X$. Therefore \eqref{eq: internal hom on O_X-modules} may be restricted to a bifunctor
+This action is clearly functorial and the same may be said for the similarly defined $\localhom(\F, -)$-action, for a fixed $\struct{X}$-module $\F$. By \cite[II, \S 9, Proposition 9.1.1]{EGA} the sheaf $\localhom_{\struct{X}}(\F, \G)$ is coherent for any two coherent sheaves $\F$ and $\G$ on $X$. Therefore \eqref{eq: internal hom on O_X-modules} may be restricted to a bifunctor
 \[
-    \localhom[X](-, -) \colon \coherent{X}^\op \times \coherent{X} \to \coherent{X}.
+    \localhom(-, -) \colon \coherent{X}^\op \times \coherent{X} \to \coherent{X}.
 \]
-By Remark \ref{} 
+% By Remark \ref{} 
 
 
+% \[
+%     \rderived{}{\localhom^\bullet(-, -)} \colon \derb{X}^\op \times \derb{X} \to \derb{X}
+% \]
+
+Analogous to the Hom complex of Section \ref{subsection: Ext functors} (Definition \ref{definition of Hom complex}) we can also define the following complex. Let $\F^\bullet$ and $\G^\bullet$ be bounded complexes of coherent sheaves on $X$. The \emph{internal Hom complex} $\localhom^\bullet(\F^\bullet, \G^\bullet)$ is then defined by its terms
 \[
-    \rderived{}{\localhom[X]^\bullet(-, -)} \colon \derb{X}^\op \times \derb{X} \to \derb{X}
+    \localhom^i(\F^\bullet, \G^\bullet) = \bigoplus_{j \in \Z} \localhom(\F^{j}, \G^{i+j})
 \]
+and differentials
+\[
+    \delta^i \colon \localhom^i(\F^\bullet, \G^\bullet) \to \localhom^{i+1}(\F^\bullet, \G^\bullet),
+\]
+which one can formally described as follows. Let $\pi_j \colon \localhom^i(\F^\bullet, \G^\bullet) \to \localhom(\F^{j}, \G^{i+j})$ denote the canonical projection onto the $j$-th component. Then $\delta^i$ is the unique map obtained by the universal property of the product $\localhom^{i+1}(\F^\bullet, \G^\bullet)$, induced by the family of morphisms
+\[
+    (d_{\G}^{i+j})_*\circ \pi_j + (-1)^i(d_\F^{j})^*\circ \pi_{j+1} \colon \quad  \localhom^i(\F^\bullet, \G^\bullet) \to \localhom(\F^{j}, \G^{i+j+1}).
+\]
+Not very different from how we showed in Section \ref{subsection: Ext functors} that the Hom complex induces a functor or even a bifunctor according to Remark \ref{bifunctors on the homotopy category}, we obtain a bifunctor 
+\[
+    \localhom^\bullet \colon \kminus{\coherent{X}}^\op \times \kplus{\coherent{X}} \to \kplus{\coherent{X}}.
+\] 
+When $X$ is smooth and projective and Proposition \ref{In Db(X) everything is a complex of vector bundles} is at ones disposal, it is possible to derive the internal Hom complex functor above to obtain a bifunctor
+\[
+    \rderived{}{\localhom^\bullet}(-,-) \colon \derb{X}^\op \times \derb{X} \to \derb{X}.
+\]  
+The main ingredients for how one goes about proving the above are described in \cite[75--77]{huybrechts2006fouriermukai}. On this note we also mention that Proposition \ref{In Db(X) everything is a complex of vector bundles} greatly simplifies how we compute
+%  values of the functor 
+$\rderived{}{\localhom^\bullet}(\F^\bullet,-)$ for some complex $\F^\bullet$ from $\derb{X}$. This is because $\F^\bullet$ can be replaced by an isomorphic (in $\derb{X}$) complex $\E^\bullet$ of vector bundles, for which $\rderived{}{\localhom^\bullet(\E^\bullet, -)}$ and $\localhom^\bullet(\E^\bullet, -)$ coincide. The \emph{dual} of a complex $\F^\bullet$ of $\derb{X}$ will be taken to be 
+\[
+    {\F^\bullet}^\vee := \rderived{}{\localhom}(\F^\bullet, \struct{X}).
+\]
+In general, even if $\F^\bullet$ is just a coherent sheaf concentrated in degree $0$, its dual may be an honest complex.
+
+% We also establish notation ${\F^\bullet}^\vee$ to 
+
+% For any complex $\F^\bullet$ belonging to $\derminus{X}$ one is then able to obtain by similar reasoning as in Section \ref{subsection: Ext functors} the following derived functor
+% \[
+%     \rderived{}{\localhom(\F^\bullet, -)} \colon \derb{X} \to \derb{X}
+% \]
+
+
+
+% In practice we will always be dealing with smooth projective varieties, so Proposition \ref{In Db(X) everything is a complex of vector bundles} will be at our disposal. 
 
 \subsubsection{Tensor product}
 
+For two $\struct{X}$-modules $\F$ and $\G$ their \emph{tensor product} $\F \otimes_{\struct{X}} \G$ is defined as the sheafification of the presheaf given on open subsets $U \subseteq X$ by
+\[
+    U \mapsto \Gamma(U, \F) \otimes_{\Gamma(U, \struct{X})} \Gamma(U, \G).
+\] 
+Using this description $\F \otimes_{\struct{X}} \G$ is equipped with the $\struct{X}$-action in the obvious way making it into an $\struct{X}$-module. Moreover this definition is functorial in both arguments $\F$ and $\G$ in the sense that a morphism of $\struct{X}$-modules $\alpha \colon \F_0 \to \F_1$ induces a morphism ${\alpha \otimes \id{\G} \colon} \F_0 \otimes_{\struct{X}} \G \to \F_1 \otimes_{\struct{X}} \G $ in a functorial way. The morphism $\alpha \otimes \id{\G}$ comes from the universal property of sheafification, such that for every open subset $U \subseteq X$ we have a commutative diagram
+\[
+    \begin{tikzcd}[column sep = 1.5em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLKFxcQSkiXSxbMiwwLCJLKFxcQikiXSxbMCwyLCJEKFxcQSkiXSxbMiwyLCJEKFxcQikiXSxbMCwxLCJGIl0sWzAsMl0sWzIsM10sWzEsM11d
+        {\Gamma(U, \F_0) \otimes_{\Gamma(U, \struct{X})} \Gamma(U, \G)} && {\Gamma(U, \F_0 \otimes_{\struct{X}} \G)} \\
+        \\
+        {\Gamma(U, \F_1) \otimes_{\Gamma(U, \struct{X})} \Gamma(U, \G)} && {\Gamma(U, \F_1 \otimes_{\struct{X}} \G)}
+        \arrow["", from=1-1, to=1-3]
+        \arrow["{\alpha_U \otimes (\id{\G})_U}"', from=1-1, to=3-1]
+        \arrow["{(\alpha \otimes \id{\G})_U}", dashed, from=1-3, to=3-3]
+        \arrow["", from=3-1, to=3-3]
+    \end{tikzcd}
+\]
+In exactly the same way one also sees that the tensor product is functorial in the other variable. Hence the tensor product assembles a bifunctor
+\[
+    (-) \otimes_{\struct{X}} (-) \colon \mod{\struct{X}} \times \mod{\struct{X}} \to \mod{\struct{X}}.
+\]
+According to \cite[\href{https://stacks.math.columbia.edu/tag/01CE}{Tag 01CE}]{stacks-project} tensor product of two coherent sheaves is again coherent, so we also have a bifunctor 
+\[
+    (-) \otimes_{\struct{X}} (-) \colon \coherent{X} \times \coherent{X} \to \coherent{X}.
+\]
+Partially evaluating this functor at a coherent sheaf $\F$ on $X$ gives a functor ${\F \otimes_{\struct{X}} (-) \colon}$ $ \coherent{X} \to \coherent{X}$, which we know is left exact (for example due to the tensor-Hom adjunction \cite[\href{https://stacks.math.columbia.edu/tag/01CN}{Tag 01CN}]{stacks-project}). We also mention that tensor product commutes with the stalks functor \cite[\href{https://stacks.math.columbia.edu/tag/01CB}{Tag 01CB}]{stacks-project}, meaning that for any $x \in X$ there are natural isomorphisms
+\[
+    (\F \otimes_{\struct{X}} \G)_x \iso \F_x \otimes_{\struct{X,x}} \G_x.
+\]
+In order to derive the functor $\F \otimes_{\struct{X}} (-)$, we need an adapted class, which is provided by the following proposition.
+
+\begin{proposition}
+    \label{vector bundles adapted to tensor product}
+    Let $X$ be a smooth projective variety and $\F$ a coherent sheaf on $X$. Then the class of vector bundles on $X$ forms a $\F \otimes_{\struct{X}} (-)$-adapted class.
+\end{proposition}
+
+\begin{proof}
+    The class of vector bundles is obviously closed under finite direct sums and we already know that every coherent sheaf is a quotient of some vector bundle. Thus it remains to show that given an acyclic complex of vector bundles $\E^\bullet$, which is bounded from above, the tensor product $\F \otimes \E^\bullet$ is again acyclic. This is verified on stalks, where localizing at a point $x \in X$ gives
+    \[
+        \cdots \to \F_x \otimes_{\struct{X,x}} \E^{i-1}_x \to \F_x \otimes_{\struct{X,x}} \E^{i}_x \to \F_x \otimes_{\struct{X,x}} \E^{i+1}_x \to \cdots.
+    \]
+    This complex is acyclic, because the complex $\E^{\bullet}_x$ is acyclic and consists of free $\struct{X,x}$-modules.
+\end{proof}
+
+On a smooth projective variety $X$ Proposition \ref{vector bundles adapted to tensor product} allows us to derive $\F \otimes_{\struct{X}} (-)$ and obtain the left derived tensor product functor
+\[
+    \derivedtensor{\F}{(-)}{\struct{X}} \colon \derminus{X} \to \derminus{X}.
+\]
+Along with it also come its higher derived companions, called the \emph{internal Tor sheaves}
+\[
+    \localtor{i}{\F}{\G}{{\struct{X}}} = \mathcal{H}^{-i}(\derivedtensor{\F}{\G}{\struct{X}}).
+\] 
+
+Generalizing the tensor product of sheaves, we can define also a tensor product of complexes of sheaves in an analogous way to what was done with the internal Hom complex. For bounded complexes $\F^\bullet$ and $\G^\bullet$ of coherent sheaves on $X$ we introduce the \emph{internal tensor complex} $\F^\bullet \otimes_{\struct{X}} \G^\bullet$ to consist of terms
+\[
+    (\F^\bullet \otimes_\struct{X} \G^\bullet)^i = \bigoplus_{p + q = i} \F^p \otimes_{\struct{X}} \G^q
+\]
+and differentials $\delta^i \colon (\F^\bullet \otimes_\struct{X} \G^\bullet)^i \to (\F^\bullet \otimes_\struct{X} \G^\bullet)^{i+1}$ formally described as the unique map induced by the family of morphisms, indexed by $p$, $q$, satisfying $p + q = i+1$
+\[
+    (d_\F^{p-1} \otimes \id{\G^q})\circ \pi_{p-1,q} + (-1)^i(\id{\F^p} \otimes d_{\G}^{q-1})\circ \pi_{p,q-1} \colon \quad (\F^\bullet \otimes_\struct{X} \G^\bullet)^i \to \F^p \otimes_{\struct{X}} \G^q
+\]
+by universal property of the product $(\F^\bullet \otimes_\struct{X} \G^\bullet)^{i+1}$. Here $\pi_{p,q}$ denote the canonical projections $(\F^\bullet \otimes_\struct{X} \G^\bullet)^i \to \F^p \otimes_{\struct{X}} \G^q$ for $p + q = i$.
+
+The contents of \cite[79--80]{Huybrechts2016} allow us to first form a bifunctor out of the internal tensor complex and provided we are working over a smooth projective variety $X$ derive it into a bifunctor
+\[
+    \derivedtensor{(-)}{(-)}{\struct{X}} \colon \derb{X} \times \derb{X} \to \derb{X}.
+\]
+We remark that due to Proposition \ref{In Db(X) everything is a complex of vector bundles} one can always replace bounded complexes of coherent sheaves with bounded complexes of vector bundles and compute the derived tensor product as the ordinary complex tensor product of the corresponding complexes of vector bundles. 
+
 \subsubsection{Pull-back $f^*$}
+
+Let $f \colon X \to Y$ be a morphism of smooth projective varieties. The \emph{pull-back} or the \emph{inverse image} functor along $f$ is defined to be 
+\[
+    f^* : \mod{\struct{Y}} \to \mod{\struct{X}} \qquad f^* = \struct{X} \otimes_{f\inv \struct{Y}} f\inv(-).
+\]
+As with the tensor product, the pull-back $f^*$ is also \emph{left exact} because it is a composition of an exact functor $f\inv \colon \mod{\struct{Y}} \to \mod{f\inv\struct{Y}}$ and a left exact functor ${\struct{X} \otimes_{f\inv\struct{Y}} (-)} \colon$ $\mod{f\inv\struct{Y}} \to \mod{\struct{X}}$. 
 
 \begin{proposition}
     \label{pull-back of coherent sheaves}
     Let $f \colon X \to Y$ be a morphism of schemes. 
     \begin{enumerate}[label = (\roman*)]
-        \item{If $\G$ is a quasi-coherent shaef on $Y$, then $f^*\G$ is a quasi-coherent sheaf on $X$}
+        \item{If $\G$ is a quasi-coherent sheaf on $Y$, then $f^*\G$ is a quasi-coherent sheaf on $X$}
         \item{If $X$ and $Y$ are noetherain and $\G$ is a coherent sheaf on $Y$, then $f^*\G$ is a coherent sheaf on $X$.} 
     \end{enumerate}
 \end{proposition}
@@ -500,13 +633,33 @@ By Remark \ref{}
     See \cite[\S II, Proposition 5.8]{Hartshorne1977}.
 \end{proof}
 
+Clearly we may thus restrict the pull-back functor to the categories of coherent sheaves 
+\[
+    f^* \colon \coherent{Y} \to \coherent{X}.
+\]
+To derive it we will utilize the class of vector bundles on $X$
+
 \begin{proposition}
     \label{vector bundles f^* adapted}
     Let $f \colon X \to Y$ be a morphism of smooth projective varieties. Then the class of vector bundles on $Y$ forms an $f^*$-adapted class. 
 \end{proposition}
 
 \begin{proof}
+    % Just as with The class of vector bundles is obviously closed under finite direct sums and we already know that every coherent sheaf is a quotient of some vector bundle. 
+    Similarly as in the proof of Proposition \ref{vector bundles adapted to tensor product}, it remains to show that given a bounded above acyclic complex of vector bundles $\E^\bullet$ the pull-back $f^*\E^\bullet$ is still acyclic. This is verified on stalks, where one first sees that upon localizing at any $y \in Y$, the complex $\E^\bullet$ becomes an acyclic complex of free $\struct{Y,y}$-modules
+    \[
+        \cdots \to \E^{i-1}_y \to \E^i_y \to \E^{i+1}_y \to \cdots.
+    \]
+    Since localization and $f^*$ naturally commute, we see that the complex $f^*\E^\bullet$ localized at a point $x \in X$ becomes
+    \[
+        \cdots \to \struct{X,x} \otimes_{\struct{Y,f(x)}} \E^{i-1}_{f(x)} \to \struct{X,x} \otimes_{\struct{Y,f(x)}} \E^i_{f(x)} \to \struct{X,x} \otimes_{\struct{Y,f(x)}} \E^{i+1}_{f(x)} \to \cdots.
+    \] 
+    As $\E_{f(x)}^i$ are free $\struct{Y,f(x)}$-modules the sequence stays acyclic. This holds true for any $x \in X$, therefore $f^*\E^\bullet$ is acyclic.
+    \qedhere
     
+    % Since $f\inv$ is exact we only need to show that This follows from the fact that $f\inv\E^i$ are locally free $f\inv\struct{Y}$-modules and therefore $\struct{X} \otimes_{f\inv\struct{Y}}(-)$-acyclic and a very similar argument 
+
+    % We show this inductively using the long exact sequence arising from the derived tensor product. Without loss of generality assume $\E^{i} \iso 0$ for $i > 0$. Let $\KK^{-1}$ denote the kernel of $d^{-1} \colon \E^{-1} \to \E^0$.
 \end{proof}
 
 \begin{corollary}
@@ -518,12 +671,26 @@ By Remark \ref{}
     This is a consequence of Proposition \ref{vector bundles f^* adapted} and Lemma \ref{F-adapted is F-acyclic}.
 \end{proof}
 
-Cover flatness.
+Under the assumption that $f \colon X \to Y$ is a morphism of smooth projective varieties the presence of an $f^*$-adapted class ensured by Proposition \ref{vector bundles f^* adapted} allows us to derive the pull-back functor to obtain
+\[
+    f^* \colon \derminus{Y} \to \derminus{X}.
+\]
+Since any bounded complex in $\derb{Y}$ is isomorphic to a \emph{bounded} complex of vector bundles by Proposition \ref{In Db(X) everything is a complex of vector bundles} it is also clear that the functor above may be restricted to the bounded derived categories
+\[
+    f^* \colon \derb{Y} \to \derb{X}.
+\]
+
+\begin{remark}
+    In many cases the morphism $f \colon X \to Y$ will be \emph{flat}. By definition this means that for any $x \in X$ the local ring $\struct{X, x}$ is flat as a $\struct{Y, f(x)}$-module, which in turn translates to the functor $\struct{X,x} \otimes_{\struct{Y,f(x)}} (-)$ being exact. For any such flat morphism $f$ the pull-back functor $f^* \colon \coherent{Y} \to \coherent{X}$ is exact and allows us to induce the derived functor $f^* \colon \derb{Y} \to \derb{X}$ simply by Proposition \ref{Exact functor induces a derived functor}. 
+\end{remark}
+
 
 \subsection{Interactions between derived functors}
 \label{Subsection: Interactions between derived functors}
 
-In this section we will present some interactions that appear between the derived functors of geometric origin. Some of them will arise as derived incarnations of known formulas, which hold true already at the level of coherent sheaves. 
+In this section we will present two interactions that appear between the derived functors of geometric origin. We will need them in the next chapter on Fourier--Mukai transforms, in particular when dealing with compositions of two such transforms. 
+
+% Some of them will arise as derived incarnations of known formulas, which hold true already at the level of coherent sheaves. 
 
 % While others are deep theorems, which are far from from being simple consequences of known facts. We will start with the former.
 
@@ -552,10 +719,31 @@ In this section we will present some interactions that appear between the derive
 %     Serre duality in the form of Theorem \ref{Serre duality for derived cats} is seen to follow from Grothendieck-Verdier duality by the next argument.
 % \end{remark}
 
-\begin{proposition}
+\begin{proposition}[Flat base change formula]
     \label{flat base change formula}
-    Let
+    Let the following be a pull-back square of smooth projective varieties
+    \[\begin{tikzcd}[row sep = 2.8em]
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYJyJdLFswLDEsIlgiXSxbMSwxLCJZIl0sWzEsMCwiWSciXSxbMSwyLCJmIl0sWzMsMiwiZyJdLFswLDEsInYiLDJdLFswLDMsInUiXSxbMCwyLCIiLDEseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+        {X'} & {Y'} \\
+        X & Y
+        \arrow["u", from=1-1, to=1-2]
+        \arrow["v"', from=1-1, to=2-1]
+        \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+        \arrow["g", from=1-2, to=2-2]
+        \arrow["f", from=2-1, to=2-2]
+    \end{tikzcd}\]
+    Assuming $f\colon X \to Y$ is flat and $g \colon Y' \to Y$ is proper, then $u \colon X' \to Y'$ is flat and there is a natural isomorphism of functors $\derb{Y'} \to \derb{X}$
+    \begin{equation}
+        \label{eq: flat base change formula}
+        f^*\circ \rderived{}{g_*} \natiso \rderived{}{v_*} \circ u^*.
+    \end{equation}
 \end{proposition}
+
+\begin{proof}
+    See \cite[\href{https://stacks.math.columbia.edu/tag/02KH}{Tag 02KH}]{stacks-project}.
+\end{proof}
+
+The following projection formula we will see is just a derived incarnation of the ordinary projection formula, which is known to hold for sheaves.
 
 \begin{proposition}[Projection formula]
     \label{projection formula}
@@ -567,9 +755,23 @@ In this section we will present some interactions that appear between the derive
 \end{proposition}
 
 \begin{proof}
-    We first recall the underived version of the projection formula, which states that for any morphism of $f \colon X \to Y$, coherent sheaf $\F$ and locally free sheaf $\E$  
+    We first recall the underived version of the projection formula, from which we will derive \eqref{eq: projection formula}. It states that for any morphism of $f \colon X \to Y$, coherent sheaf $\F$ on $Y$ and locally free sheaf $\E$ on $X$
+    \begin{equation}
+        \label{eq: underived projection formula}
+        f_*(\F \otimes_{\struct{Y}} f^*\E) \iso f_*\F \otimes_{\struct{X}} \E.
+    \end{equation}
+    By Proposition \ref{In Db(X) everything is a complex of vector bundles} we may assume $\E^\bullet$ is a complex of locally free sheaves on $Y$, otherwise we just replace it by an isomorphic complex of this sort. Then $f^*\E^\bullet$ is a complex of locally free sheaves on $X$ (we can check local freeness on stalks because of the useful criterion found in \cite[\S 1, Lemma 5.1.3]{Weibel2013}). This already implies that it is enough to only show
+    \[
+        \rderived{}{f_*}({\F^\bullet}\otimes_{\struct{X}}{{f^*\E^\bullet}}) \iso {\rderived{}{f_*}\F^\bullet}\otimes_{\struct{Y}}{\E^\bullet},
+    \]
+    where the pull-back and the tensor product are underived. Let $\I^\bullet \to \F^\bullet$ be an injective resolution of $\F^\bullet$, momentarily accessing the category of quasi-coherent sheaves on $X$. Since $f^*\E^\bullet$ is locally free, we see that 
+    \[
+        \I^\bullet \otimes_{\struct{X}} f^*\E^\bullet \to \F^\bullet \otimes_{\struct{X}} f^*\E^\bullet
+    \] 
+    is an injective resolution of $\F^\bullet \otimes_{\struct{X}} f^*\E^\bullet$, because $(-) \otimes_\struct{X} f^*\E^\bullet$ is exact and tensoring injectives with locally free sheaves again results in an injective sheaf \cite[\href{https://stacks.math.columbia.edu/tag/01E7}{Tag 01E7}]{stacks-project}. This means that we can compute $\rderived{}{f_*}$ using this resolution. Utilizing \eqref{eq: underived projection formula} on each term of the complex now lets us see that 
+    \[
+        \rderived{}{f_*}({\F^\bullet}\otimes_{\struct{X}}{{f^*\E^\bullet}}) \iso
+        f_*(\I^\bullet \otimes_{\struct{X}} f^*\E^\bullet) \iso f_*\I^\bullet \otimes_{\struct{Y}} \E^\bullet \iso
+        {\rderived{}{f_*}\F^\bullet}\otimes_{\struct{Y}}{\E^\bullet}. \qedhere
+    \]
 \end{proof}
-
-\[
-    {\E^\bullet}^\vee \derivedtensor{}{}{\struct{X}} \F^\bullet \iso \rderived{}{\localhom[X]^\bullet(\E^\bullet, \F^\bullet)}.
-\]
