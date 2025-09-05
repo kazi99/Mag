@@ -1,24 +1,138 @@
 \section{Lattice theory}
+\label{appendix B}
+
+This short chapter's purpose is mainly to establish the language of lattice theory. It contains two highly non-trivial results as well. One on extending certain isometries due to Nikulin \cite{Nikulin1980}, which we are generously utilizing in the proof of Proposition \ref{transcendental iso iff Mukai iso}. And another due to Milnor, one which the first one builds upon, classifying indefinite even unimodular lattices. The second one is not strictly necessary anywhere in this thesis, but serves as a pleasant way to make the intersection pairing on $\cohom{2}{X}{\Z}$ and later the Mukai pairing on $\mukai{X}$ of a K3 surface $X$ a bit more concrete. Our main sources were \cite[\S 14]{Huybrechts2016} and \cite{Nikulin1980}.
 
 \begin{definition}
-    An embedding of lattices $L \hookrightarrow \Lambda$ is said to be \emph{primitive}, if $\Lambda/L$ is free. In that case we also call $L$ a \emph{primitive sublattice} of $\Lambda$.
+    A free finitely generated $\Z$-module $\Lambda$ together with a bilinear form $\intersect{\cdot}{\cdot} \colon \Lambda \times \Lambda \to \Z$, which is
+    \begin{itemize}
+        \item \emph{symmetric:} $\intersect{x}{y} = \intersect{y}{x}$, for all $x$, $y \in \Lambda$,
+        \item \emph{non-degenerate:} if $\intersect{x}{y} = 0$ for all $y \in \Lambda$, then $x = 0$,
+    \end{itemize}
+    is called a \emph{lattice}. Lattice $\Lambda$ is said to be \emph{even} if $\intersect{x}{x}$ is an even integer for all $x \in \Lambda$. An element $x \in \Lambda$ is \emph{isotropic}, if $\intersect{x}{x} = 0$.
+    % a non-degenerate symmetric bilinear form $\intersect{\cdot}{\cdot} \colon \Lambda \times \Lambda \to \Z$ is called a \emph{lattice}. The lattice is said to be \emph{even} if $\intersect{x}{x}$ is an even integer for all $x \in \Lambda$.
+\end{definition}
+
+By picking an integral basis of $\Lambda$ one can represent a lattice by a symmetric integral matrix, called the \emph{intersection matrix}. If $x_1, \dots, x_n$ form an integral basis of $\Lambda$ the intersection matrix is
+\[
+    \bigl( (x_i.x_j)\bigr)_{1 \leq i, j \leq n}.
+\]
+Determinant of the intersection matrix is called the \emph{discriminant} of the lattice $\Lambda$, denoted $\operatorname{disc}\Lambda$, and is independent of the choice of the integral basis for $\Lambda$. Upon tensoring $\Lambda$ with $\R$ and $\R$-linearly extending the bilinear form $\intersect{\cdot}{\cdot}$, we obtain a non-degenerate symmetric bilinear form on $\Lambda \otimes_\Z \R$. These are known to be diagonalizable with only $1$ or $-1$ on the diagonal and we let $n_\pm$ denote the number of $\pm 1$ on the diagonal. The quantities $n_\pm$ are readily seen to be invariants of $\Lambda$. We call the pair $(n_+, n_-)$ the \emph{signature} of $\Lambda$ and the $n_+ + n_- = \rk\Lambda$ the \emph{rank} of $\Lambda$. The lattice $\Lambda$ is called \emph{definite}, if either $n_+ = 0$ or $n_- = 0$ and \emph{indefinite} otherwise.
+
+
+
+% Since the intersection matrix is symmetric, we may diagonalize it over $\R$. Because the bilinear form is non-degenerate the intersection matrix is non-singular thus the diagonalization process results in a matrix with only non-zero values on the diagonal. Denote with $n_+$ the number of positive values on the diagonal and with $n_-$ 
+
+% Upon tensoring a lattice $\Lambda$ with $\R$ and $\R$-linearly extending the bilinear form $\intersect{\cdot}{\cdot}$,
+% we obtain a finitely generated $\R$-vector space $\Lambda \otimes_\Z \R$ and $\R$-linearly extending the bilinear form $\intersect{\cdot}{\cdot}$, 
+% we obtain a non-degenerate symmetric bilinear form on $\Lambda \otimes_\Z \R$. 
+% In a given basis this form is represented by a symmetric matrix 
+% We call the pair $(n_+, n_-)$ the \emph{signature} of $\Lambda$ and the quantity $n_+ + n_- = \rk{\Lambda}$ the \emph{rank} of $\Lambda$. The lattice $\Lambda$ is called \emph{definite}, if either $n_+ = 0$ or $n_- = 0$ and \emph{indefinite} otherwise.
+
+\begin{definition}
+    A lattice $\Lambda$ is called \emph{unimodular}, if the morphism
+    \[
+        i_\Lambda \colon \Lambda \to \Lambda^* = \Hom_\Z(\Lambda, \Z), \qquad x \mapsto \intersect{x}{-}
+    \]
+    is an isomorphism of $\Z$-modules or equivalently\footnote{
+        $\Lambda^*$ is also a free $\Z$-module and by non-degeneracy of $\intersect{\cdot}{\cdot}$, $i_\Lambda$ is an embedding. Then \eg using the Smith normal form allows one to see that $\abs{\operatorname{disc}\Lambda}$ equals the index $[\Lambda^* : \Lambda]$.
+    } $\operatorname{disc}\Lambda = \pm 1$.
+\end{definition}
+
+\begin{remark}
+    The morphism $i_\Lambda \colon \Lambda \to \Lambda^*$ is always injective, because the bilinear form $\intersect{\cdot}{\cdot}$ on $\Lambda$ is non-degenerate.
+\end{remark}
+
+\begin{example}
+    \begin{enumerate}[label = (\roman*)]
+        \item{The \emph{hyperbolic} lattice is defined by the intersection matrix
+        \[
+            \begin{pmatrix}
+                0 & 1\\
+                1 & 0
+            \end{pmatrix}.
+        \]
+        We denote this indefinite unimodular lattice of rank two with $\hyperbolic$.}
+        \item{The \emph{$E_8$-lattice} is given by the intersection matrix
+        \[
+            \begin{pmatrix}
+                2 & -1 & & & & & & \\
+                -1 & 2 & -1 & & & & & \\
+                & -1 & 2 & -1 & -1 & & & \\
+                & & -1 & 2 & 0 & & & \\
+                & & -1 & 0 & 2 & -1 & & \\
+                & & & &  -1 & 2 & -1 & \\
+                & & & & &  -1 & 2 & -1 & \\
+                & & & & & & -1 & 2
+            \end{pmatrix}.
+        \]
+        The $E_8$-lattice is the unique even unimodular positive definite lattice of rank $8$ and we denote it by $E_8$.}
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    The orthogonal direct sum of lattices $\Lambda$ and $\Lambda'$ is the free $\Z$-module $\Lambda \oplus \Lambda'$ equipped with the following bilinear form
+    \[
+        \intersect{(x,x')}{(y,y')} := \intersect{x}{y}_{\Lambda} + \intersect{x'}{y'}_{\Lambda'}.
+    \]
+    A \emph{twist} of a lattice $\Lambda$ by an integer $m \in \Z$ is the lattice $\Lambda(m)$ given by the same underlying $\Z$-module $\Lambda$, but equipped with the \emph{twisted} bilinear form
+    \[
+        \intersect{\cdot}{\cdot}_{\Lambda(m)} = m \cdot \intersect{\cdot}{\cdot}_{\Lambda}.
+    \]
+\end{definition}
+
+\begin{definition}
+    Let $\Lambda$ and $\Lambda'$ be two lattices. A morphism of lattices or an \emph{isometry} is a $\Z$-linear map $\phi \colon \Lambda \to \Lambda'$ satisfying
+    \[
+        \intersect{\phi(x)}{\phi(y)}_{\Lambda'} = \intersect{x}{y}_{\Lambda'},
+    \]
+    for all $x$, $y \in \Lambda$. A lattice $L$ is called a \emph{sublattice} of $\Lambda$, if $L \subseteq \Lambda$ as underlying $\Z$-modules and the embedding $L\hookrightarrow \Lambda$ is an isometry. The \emph{orthogonal complement} of a sublattice $L$ in $\Lambda$ is defined to be
+    \[
+        L^\perp = \{x \in \Lambda \mid \intersect{x}{y} = 0, \text{ for all $y \in L$}\}.
+    \]
+\end{definition}
+
+\begin{lemma}
+    \label{orthogonal complemet is a lattice}
+    Let $L$ be a sublattice of a lattice $\Lambda$. Then the orthogonal complement $L^\perp$ with the inherited bilinear from on $\Lambda$ is also a sublattice.
+\end{lemma}
+
+\begin{proof}
+    First, $L^\perp$ is a subgroup of a free finite rank abelian group $\Lambda$, thus it is itself also free of finite rank. It is left to show that the inherited form on $L^\perp$ is also non-degenerate. For this we consider the rational extensions $L_\Q \subseteq \Lambda_\Q$ and show instead that the extended form on $L_\Q^\perp$ is non-degenerate. We denote with $W$ and $V$ the $\Q$-vector spaces $L_\Q$ and $\Lambda_\Q$, respectively. The adjoint map $V \to V^*$, given by $v \mapsto \intersect{v}{-}$, is injective and thus an isomorphism, therefore the linear map
+    \[  
+        V \longrightarrow W^*, \qquad v \mapsto \intersect{v}{-}|_W
+    \]  
+    is surjective. Its kernel is $W^\perp$, so $\dim W^\perp + \dim W = \dim V$. Thus $W^\perp \oplus W = V$ is an orthogonal direct sum decomposition. Assume now that $w \in W^\perp$ is such that $\intersect{w}{w'} = 0$ for all $w \in W^\perp$. Then $\intersect{w}{v} = 0$ for all $v \in V$ and by non-degeneracy of the form on $V$ this implies $v = 0$.
+\end{proof}
+
+\begin{definition}
+    An embedding of lattices $L \hookrightarrow \Lambda$ is said to be \emph{primitive}, if its cokernel $\coker(L \hookrightarrow \Lambda) = \Lambda/L$ is free. In that case we also call $L$ a \emph{primitive sublattice} of $\Lambda$.
 \end{definition}
 
 \begin{example}
     \label{orthogonal complement primitive}
-    Let $L$ be any sublattice of a lattice $\Lambda$. Then the orthogonal complement $L^\perp$ is always a primitive sublattice of $\Lambda$.
+    Let $L$ be any sublattice of a lattice $\Lambda$. Then the orthogonal complement $L^\perp$ is a primitive sublattice of $\Lambda$. Indeed, suppose $x \in \Lambda$ represents a torsion element in $\Lambda/L^\perp$. Then $n x \in L^\perp$ for some positive integer $n \in \Z$. But this implies that $x \in L^\perp$, so $x$ represents the zero element in $\Lambda/L^\perp$. Hence $\Lambda/L^\perp$ is free.
 \end{example}
 
-\begin{proposition}
+% \begin{proof}
+%     First $L^\perp$ is a subgroup of a free finite rank abelian group $\Lambda$, thus it is itself also free of finite rank. 
+
+    % To see that $L^\perp \hookrightarrow \Lambda$ is primitive, suppose $x \in \Lambda$ represents a torsion element in $\Lambda/L^\perp$. Then $n x \in L^\perp$ for some positive integer $n \in \Z$. But this implies that also $x \in L^\perp$ so $x$ represents the zero element in $\Lambda/L^\perp$.
+% \end{proof}
+    
+    
+    % Indeed, if $x \in \Lambda$ represented a torsion class in $\Lambda/L^\perp$, then $n x \in L^\perp$ for some positive integer $n \in \Z$. But this implies that $x \in L^\perp$, so its class in $\Lambda/L^\perp$ is trivial.
+
+\begin{lemma}
     \label{composition of primitive embeddings}
     Let $i \colon L \hookrightarrow \Lambda$ and $i' \colon \Lambda \hookrightarrow \Lambda'$ be a pair of primitive embeddings. Then their composition $i' \circ i \colon L \hookrightarrow \Lambda'$ is also a primitive embedding.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
     Since $\Lambda/L$ and $\Lambda'/\Lambda$ are free abelian, the short exact sequences $0 \to L \to \Lambda \to \Lambda/L \to 0$ and $0 \to \Lambda \to \Lambda' \to \Lambda'/\Lambda \to 0$ are split. This means that there are retracts $r \colon \Lambda \to L$ and $r' \colon \Lambda' \to \Lambda$, thus the short exact sequence $0 \to L \to \Lambda' \to \Lambda'/L \to 0$ also splits, which makes $\Lambda'/L$ free as a subgroup of $\Lambda'$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[Nikulin, \cite{Nikulin1980}]
     \label{extending an isometry 1}
     Let $L$ and $\Lambda$ be even lattices and assume $\Lambda$ is unimodular. Let $i_0$ and $i_1$ denote two primitive embeddings $L \hookrightarrow \Lambda$. Suppose the orthogonal complement $i_0(L)^\perp$ in $\Lambda$ contains a copy of the hyperbolic lattice $\hyperbolic$. Then there exists an isometry $\phi \colon \Lambda \to \Lambda$ such that $i_1 = \phi \circ i_0$.
     \[\begin{tikzcd}[row sep = 1em, column sep = 2em]
@@ -33,7 +147,7 @@
 \end{proposition}
 
 \begin{proof}
-    For a proof consult \cite[text]{keylist}.
+    See \cite[\S 14, Theorem 1.12]{Huybrechts2016} and in particular point (iii) in the subsequent remark. For a more general statement, from which this one follows, consult \cite[Theorem 1.14.4]{Nikulin1980}.
 \end{proof}
 
 \begin{corollary}
@@ -52,26 +166,29 @@
 \end{corollary}
 
 \begin{proof}
-    Let $\theta \colon \Lambda_1 \to \Lambda_0$ be an isomorphism. Then $\theta \circ i_1 \circ \psi \colon L_0 \to \Lambda_0$ is an primitive embedding and we can use Proposition \ref{extending an isometry 1}.
+    Let $\theta \colon \Lambda_1 \to \Lambda_0$ be an isomorphism. Then $\theta \circ i_1 \circ \psi \colon L_0 \to \Lambda_0$ is a primitive embedding and we can use Proposition \ref{extending an isometry 1}.
 \end{proof}
 
-\begin{theorem}[Milnor]
+\begin{theorem}[Milnor, \text{\cite[Theorem 1.1.1]{Nikulin1980}}]
     \label{Milnor}
     Let $(n_+,n_-)$ be a pair of non-negative integers. Then there exists an even unimodular lattice of signature $(n_+, n_-)$, if and only if $n_+ - n_- \equiv 0 \ (8)$. If $n_+$, $n_- > 0$ then the (indefinite) lattice is unique up to isomorphism.
 \end{theorem}
 
-\begin{corollary}
-    Let $\Lambda_0$ and $\Lambda_1$ be positive definite even unimodular lattices with $\rk{\Lambda_0} = \rk{\Lambda_1}$, then
-    \[
-        \Lambda_0 \oplus \hyperbolic \iso \Lambda_1 \oplus \hyperbolic.
-    \]
-\end{corollary}
+% \begin{corollary}
+%     Let $\Lambda_0$ and $\Lambda_1$ be positive definite even unimodular lattices with $\rk{\Lambda_0} = \rk{\Lambda_1}$, then
+%     \[
+%         \Lambda_0 \oplus \hyperbolic \iso \Lambda_1 \oplus \hyperbolic.
+%     \]
+% \end{corollary}
 
-\begin{proof}
-    Signature of $\Lambda_0$ and $\Lambda_1$ is $(\rk{\Lambda_0}, 0)$, thus the signature of $\Lambda_0 \oplus \hyperbolic$ and $\Lambda_1 \oplus \hyperbolic$ is $(\rk{\Lambda_0} + 1, 1)$, so the result follows by Milnor's Theorem \ref{Milnor}.
-\end{proof}
+% \begin{proof}
+%     Signature of $\Lambda_0$ and $\Lambda_1$ is $(\rk{\Lambda_0}, 0)$, thus the signature of $\Lambda_0 \oplus \hyperbolic$ and $\Lambda_1 \oplus \hyperbolic$ is $(\rk{\Lambda_0} + 1, 1)$, so the result follows by Milnor's Theorem \ref{Milnor}.
+% \end{proof}
 
-\begin{corollary}
+Its easy yet powerful corollary allow us to abstractly identify the lattice structures on $\cohom{2}{X}{\Z}$ and $\mukai{X}$.
+
+\begin{theorem}
+    \label{Classification of indefinite even unimodular lattices}
     Let $\Lambda$ be an indefinite even unimodular lattice of signature $(n_+, n_-)$. Setting $\tau = n_+ - n_-$ to be the index of $\Lambda$, then $\tau \equiv 0 \ (8)$ and
     \begin{center}
         \begin{tabular}{r l}
@@ -79,10 +196,17 @@
             if $\tau \leq 0$, then & $\Lambda \iso E_8(-1)^{\oplus \frac{-\tau}{8}} \oplus \hyperbolic^{\oplus n_+}.$
         \end{tabular}
     \end{center}
-\end{corollary}
+\end{theorem}
 
 \begin{proof}
-    The $E_8$ lattice has signature $(8,0)$, and the hyperbolic lattice $\hyperbolic$ has signature $(1,1)$, thus the signature of $E_8^{\oplus \frac{\tau}{8}} \oplus \hyperbolic^{\oplus n_-}$ equals $(8\cdot \tfrac{\tau}{8} + n_-,n_-) = (n_+, n_-)$.
+    The $E_8$ lattice has signature $(8,0)$, and the hyperbolic lattice $\hyperbolic$ has signature $(1,1)$, thus the signature of $E_8^{\oplus \frac{\tau}{8}} \oplus \hyperbolic^{\oplus n_-}$ equals $(8\cdot \tfrac{\tau}{8} + n_-,n_-) = (n_+, n_-)$. Now use uniqueness from Theorem \ref{Milnor}.
 \end{proof}
 
-\info{These three results are from Huybrects K3}
+\begin{remark}
+    We know from Proposition \ref{intersection pairing on K3 is even} that for a K3 surface $X$ the Hodge lattice $\cohom{2}{X}{\Z}$ has signature $(3,19)$ and from Remark \ref{Mukai lattice structure} that $\mukai{X}$ has signature $(20,4)$, therefore Theorem \ref{Classification of indefinite even unimodular lattices} tells us
+    \[
+        \cohom{2}{X}{\Z} \iso E_8(-1)^{\oplus 2} \oplus \hyperbolic^{\oplus 3} \quad \text{and} \quad
+        \mukai{X} \iso E_8^{\oplus 2} \oplus \hyperbolic^{\oplus 4}.
+    \]
+\end{remark}
+% \info{These three results are from Huybrects K3}
