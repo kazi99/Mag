@@ -61,6 +61,7 @@
 \newcommand{\E}{\mathcal E}
 \newcommand{\M}{\mathcal M}
 \newcommand{\PP}{\mathbb P}
+\newcommand{\KK}{\mathcal K}
 % \newcommand{\k}{\texttt k}
 \newcommand{\inv}{^{-1}}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -77,8 +78,8 @@
 \newcommand{\coker}{\operatorname{coker}}
 \newcommand{\colim}{\operatorname{colim}}
 \newcommand{\Ob}{\operatorname{Ob}}
-\renewcommand{\hom}{\operatorname{Hom}}
-\newcommand{\Hom}{\operatorname{Hom}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}[1]{\operatorname{id}_{#1}}
 \newcommand{\op}{\text{op}}
 
@@ -162,6 +163,9 @@
 % K-theory
 \newcommand{\kgroup}[1]{K_{\circ}(#1)}
 
+% GAGA
+\newcommand{\an}{^{\operatorname{an}}}
+
 % Chern character
 \NewDocumentCommand{\ch}{ o g }{%
   \IfNoValueTF{#1}%
@@ -192,6 +196,22 @@
     }%
 }
 
+% Stiefel-Whitney class
+\NewDocumentCommand{\sw}{ o g }{%
+  \IfNoValueTF{#1}%
+    { % no optional arg
+      \IfNoValueTF{#2}%
+        { \mathrm{w} }%
+        { \mathrm{w}\!\left(#2\right) }%
+    }%
+    { % with optional arg
+      \IfNoValueTF{#2}%
+        { \mathrm{w}_{#1} }%
+        { \mathrm{w}_{#1}\!\left(#2\right) }%
+    }%
+}
+
+
 % Truncations
 \newcommand{\ltruncation}[1]{\tau_{\geq #1}}
 \newcommand{\rtruncation}[1]{\tau_{\leq #1}}
@@ -200,6 +220,7 @@
 \newcommand{\hyperbolic}{\mathcal U}
 \newcommand{\quot}[1]{{#1}^\perp / \Z{#1}}
 \renewcommand{\div}{\operatorname{div}}
+\newcommand{\LK}{\Lambda_{\mathrm{K3}}}
 
 %command for alg-closure that automatically adapts its 'bar' to the arg based on the args length (including '\')
 \newcommand{\ols}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip} % overline short
@@ -234,4 +255,3 @@
 
 % Theorems w/o numbers
 \newtheorem*{theorem*}{Theorem}
-

@@ -148,7 +148,7 @@ Axiom \ref{A4} essentially states that abelian categories are those additive cat
     \[
         X \xrightarrow{\ f \ } Y \xrightarrow{\ g\ } Z
     \]
-    be a sequence of composable morphisms in an abelian category $\A$. We say the sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im g \to \ker f$ is an isomorphism.
+    be a sequence of composable morphisms in an abelian category $\A$. We say the sequence is \emph{exact}, if $g \circ f = 0$ and the induced morphism $\im f \to \ker g$ is an isomorphism.
 
         \item Extending (i), a sequence $\cdots \to X^0 \to X^1 \to X^2 \to \cdots$ is \emph{exact}, if any subsequence $X^{i-1} \to X^i \to X^{i+1}$ for $i \in \Z$ is exact. 
         \item Exact sequences of the form $0 \to X \to Y \to Z \to 0$ are called \emph{short exact sequences}.
@@ -191,7 +191,8 @@ In the context of abelian categories, functors, which preserve a bit more than j
 
 \begin{example}
     \label{Homs are left exact functors}
-    For an abelian category $\A$ the Hom-functors 
+    Let $\A$ be an abelian category and $\A^\op$ its opposite category, which is readily seen to be an abelian category as well. Then the Hom-functors 
+    % For an abelian category $\A$ the Hom-functors 
     \[
     \Hom_\A(W, -) \colon \A \to \mod{k} \quad \text{ and } \quad \Hom_\A( - , W) \colon \A^\op \to \mod{k}
     \] 
@@ -917,7 +918,7 @@ Whenever a triangulated category $\D$ over a filed $k$ is equipped with a Serre 
 
 \subsection{Categories of complexes}
 \label{Subsection: Categories of complexes}
-In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopic category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
+In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopy category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall the definition of cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
 
 \subsubsection*{{Category of chain complexes}}
 
@@ -1147,7 +1148,7 @@ given by the collection $\left( \pi_f^i\colon A^{i+1} \oplus B^i \to A^{i+1} \ri
     The homotopy category $\kcat{\A}$ together with the translation functor $T\colon \kcat{\A} \to \kcat{\A}$ and distinguished triangles defined above is a triangulated category.
 \end{proposition}
 
-The proof of this proposition, more precisely the verification of axiom \ref{TR2}, relies heavily on the following very technical lemma. This lemma will also be useful later on in the construction of the derived category $\derb{\A}$.
+The proof of this proposition, more precisely the verification of axiom \ref{TR2}, relies heavily on the following very technical lemma. This lemma will also be useful later on in the construction of the derived category $\dercat{\A}$.
 
 \begin{lemma}
     \label{rotating triangle lemma}
@@ -1256,11 +1257,16 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
 
 \begin{proof}[Proof of Proposition \ref{K(A) is triangulated}]
     % \info{Very detailed proof is given in \cite[Ch.~3, 2.1.]{milicic-dercat}}
-    Omitting \ref{TR4}, we verify the axioms \ref{TR1}--\ref{TR3} of Definition \ref{Definition of triangulated cat} one by one. \ref{TR1}\ref{TR1 i} is true by definition. For \ref{TR1}\ref{TR1 ii} we see that for any complex $A^\bullet$ of $\kcat{\A}$, we have $C(\id{A})^\bullet \htpy 0$. This is seen to be true by constructing a homotopy witnessing $\id{C(\id{A})} \htpy 0$. It is not difficult to verify that the homotopy $h^i \colon A^{i+1} \oplus A^i \to A^i \oplus A^{i-1}$ given by $\left(\begin{smallmatrix}
+    Omitting \ref{TR4}, we verify the axioms \ref{TR1}--\ref{TR3} of Definition \ref{Definition of triangulated cat} one by one. 
+
+    \vspace{0.15cm}
+    \noindent
+    \ref{TR1}\ref{TR1 i} is true by definition. For \ref{TR1}\ref{TR1 ii} we see that for any complex $A^\bullet$ of $\kcat{\A}$, we have $C(\id{A})^\bullet \htpy 0$. This is seen to be true by constructing a homotopy witnessing $\id{C(\id{A})} \htpy 0$. It is not difficult to verify that the homotopy $h^i \colon A^{i+1} \oplus A^i \to A^i \oplus A^{i-1}$ given by $\left(\begin{smallmatrix}
         0 & \id{A^i} \\
         0 & 0
     \end{smallmatrix}\right)$ for all $i \in \Z$ achieves this. Axiom \ref{TR1}\ref{TR1 iii} holds also by definition, since any $f \colon A^\bullet \to B^\bullet$ may be extended to a distinguished triangle via its cone. 
 
+    \vspace{0.15cm}
     \noindent
     \ref{TR2}. Assuming 
     \[
@@ -1279,6 +1285,7 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
     \]
     and since $C(f)[1]^\bullet = C(-f[1])^\bullet$, we see that $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ is isomorphic to a triangle of the form \eqref{eq: model for d.t. in homotopy cat.} \ie distinguished.
 
+    \vspace{0.15cm}
     \noindent
     \ref{TR3}. It suffices to verify this axiom only on distinguished triangles of the form \eqref{eq: model for d.t. in homotopy cat.}. We then have a commutative diagram in $\kcat{\A}$
     \[\begin{tikzcd}[column sep = normal, row sep = 2.5em]

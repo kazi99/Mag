@@ -1,0 +1,496 @@
+In this last chapter we will again be dealing with K3 surfaces over the field of complex numbers $\C$. We will characterize when two K3 surfaces $X$ and $Y$ have equivalent bounded derived categories, through their internal structure, namely their \emph{transcendental lattices}. Recall that the \emph{transcendental lattice} $\transc{X}$ of a K3 surface $X$ is defined to be the orthogonal complement of the Néron-Severi group $\NS{X} \subseteq \cohom{2}{X}{\Z}$ with respect to the intersection pairing $\pairing{-}{-}$ on $\cohom{2}{X}{\Z}$.
+Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure induced from that of $\cohom{2}{X}{\Z}$, by declaring $\transc{X}^{p,q} = H^{p,q}(X) \cap (\transc{X} \otimes_\Z \C)$. Hodge structure together with the restriction of the pairing $\pairing{-}{-}$ makes $T_X$ into a Hodge lattice. The transcendental lattice of a K3 surface plays a prominent role in the following theorem. 
+
+% \info{todd class of K3}
+
+\begin{theorem}
+    \label{Derived Torelli}
+    Let $X$ and $Y$ be K3 surfaces over the field of complex numbers $\C$. Then $\derb{X} \natiso \derb{Y}$ if and only if there exists a Hodge isometry $f\colon T_X \to T_Y$ between their transcendental lattices.
+\end{theorem}
+
+Along with the transcendental lattice, Fourier-Mukai transforms and related concepts of chapter \ref{} will become very involved once we start proving the above theorem. We provide a quick summary for the incarnation of these concepts, when $X$ is a K3 surface. 
+
+
+
+We will be using Fourier-Mukai transforms in an essential way. When applied to the case of K3 surfaces adjoints of Fourier-Mukai transforms take up an interesting form.
+
+Thus we see that in the case of K3 surfaces every left and right adjoints of Fourier-Mukai transforms agree.
+Here we have of course used one of the defining properties of K3 surfaces -- triviality of their canonical bundle.
+
+% \subsection{Mukai lattice}
+
+In order to consider all the cohomology groups of a K3 surface $X$ at once Mukai introduced the following pairing on $\cohom{\bullet}{X}{\Z}$. For 
+
+For this lattice to nicely fit into our context of Hodge lattices, we also equip it with a compatible weight $2$ Hodge structure. This is achieved through the introduction of the \emph{Mukai lattice}. 
+
+\begin{definition}
+    The \emph{Mukai lattice} of a K3 surface $X$ over $\C$, denoted $\mukai{X}$, consists of the free abelian group $\cohom{\bullet}{X}{\Z}$ together with the bilinear pairing introduced above in \eqref{} equipped with a weight $2$ Hodge structure described by 
+\end{definition}
+
+\begin{center}
+    \begin{tabular}{r c c}
+        $\widetilde{H}^{2,0}(X)$ & $=$ & $H^{2,0}(X)$ \\
+        $\widetilde{H}^{1,1}(X)$ & $=$ & $\cohom{0}{X}{\C} \oplus H^{1,1}(X) \oplus \cohom{4}{X}{\C}$ \\
+        $\widetilde{H}^{0,2}(X)$ & $=$ & $H^{0,2}(X)$.
+    \end{tabular}
+\end{center}
+% \info{describe which parts are orthogonal and why}
+
+\begin{remark}
+    This Hodge decomposition is \emph{not} orthogonal with respect to the Mukai pairing on $\mukai{X} \otimes \C$, but we have the following orthogonality relations among the components. 
+    \begin{align*}
+        \widetilde{H}^{2,0}(X) \perp \widetilde{H}^{2,0}(X) & & \widetilde{H}^{0,2}(X) \perp \widetilde{H}^{0,2}(X) \\
+        \widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X) & &\widetilde{H}^{0,2}(X) \perp \widetilde{H}^{1,1}(X) \\
+        \widetilde{H}^{2,0}(X) \not\perp \widetilde{H}^{0,2}(X) & &\widetilde{H}^{1,1}(X) \not\perp \widetilde{H}^{1,1}(X)
+    \end{align*}
+\end{remark}
+
+Let $X$ be a complex K3 surface. The Mukai vector $(0,0,1)$ denoted by $e \in \mukai{X}$ lets us relate the Mukai lattice $\mukai{X}$ back to the Hodge lattice $\cohom{2}{X}{\Z}$. The orthogonal complement of $e$ is easily seen to be
+\begin{align*}
+    e^\perp &= \{ v \in \mukai{X} \mid \pairing{e}{v} = 0\} \\
+    &= \{(v_0, v_1, v_2) \in \mukai{X} \mid v_0 = 0\} \\
+    &= \cohom{2}{X}{\Z} \oplus \Z e.
+\end{align*}
+First consider the quotient $e^\perp / \Z e$. It is clearly isomorphic to $\cohom{2}{X}{\Z}$ as a free finite rank $\Z$-module. Actually this isomorphism preserves much more than just the additive structure once we equip $\quot{e}$ with lattice and Hodge structures. Since $e$ is isotropic, this quotient naturally inherits a bilinear from from the Mukai lattice $\mukai{X}$. It is simply defined by
+\[
+    \pairing{v + \Z e}{w + \Z e} = \pairing{v}{w}.
+\]
+The quotient $\quot{e}$ is also naturally equipped with a weight $2$ Hodge structure, since it is a quotient of two free finite rank $\Z$-modules equipped with weight $2$ Hodge structures\footnote{
+    $(e^\perp)_\C$ decomposes into $H^{2,0}(X)$, $H^{1,1}(X) \oplus \C e$ and $H^{0,2}(X)$ of bi-degrees $(2,0)$, $(1,1)$ and $(0,2)$, respectively. $\Z e$ has a weight $2$ Hodge structure concentrated only in bi-degree $(1,1)$.
+}. This makes $\quot{e}$ a Hodge lattice and the isomorphism
+\[
+    \quot{e} \iso \cohom{2}{X}{\Z}
+\]
+an isomorphism of Hodge lattices. This notion now enables us to abstractly identify a Hodge lattice of a K3 surface $Y$ in terms of certain vectors in the Mukai lattice of another K3 surface $X$, provided $\mukai{X} \iso \mukai{Y}$ is a Hodge isometry.  
+% Then $e^\perp / \Z e$ naturally inherits a bilinear from from $\mukai{X}$, because $e$ is isotropic. 
+\begin{proposition}
+    \label{Hodge lattice described by v}
+    Let $X$ and $Y$ be complex K3 surfaces. Assume $f \colon \mukai{X} \to \mukai{Y}$ is a Hodge isometry. Let $e \in \mukai{Y}$ denote the vector $(0,0,1)$ and let $v \in \mukai{X}$ be such that $f(v) = e$. Then we have an isomorphism of Hodge lattices
+    \[
+        \quot{v} \iso \cohom{2}{Y}{\Z}.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Since $f$ is an isometry it restricts to a well defined map on the orthogonal complements $v^\perp \to e^\perp$ and is moreover an isomorphism of additive structures. It then clearly descends to a well-defined additive isomorphism of the quotients $\quot{v} \to \quot{e}$. This makes $\quot{v}$ into a free finite rank $\Z$-module. Since $v$ is isotropic, $\quot{v}$ inherits a bilinear form from $\mukai{X}$. The Hodge structure on $\quot{v}$ is also induced from $\mukai{X}$, because both $v^\perp$ and $\Z v$ come equipped with weight $2$ Hodge structures. This is because $f$ preserves the Hodge structures of $\mukai{X}$ and $\mukai{Y}$. The induced map between the quotients then preserves the bilinear form and the Hodge structure, in turn proving our claim. 
+\end{proof}
+
+% \subsection{Moduli space of sheaves on a K3 surface}
+
+
+\info{recall what the projections $p$ and $q$ are.}
+
+\noindent
+\textsc{Implication $\derb{X} \iso \derb{Y} \implies \mukai{X} \iso \mukai{Y}$.} After first establishing a few preliminary results, we will prove Proposition \ref{D equivalence implies Hodge isometry} by borrowing the kernel of a Fourier-Mukai transform appearing as the equivalence $\derb{X} \iso \derb{Y}$, which Orlov's result \ref{Orlov's theorem} enables us to do, and then show that its corresponding cohomological version gives a Hodge isometry $\mukai{X} \iso \mukai{Y}$.
+
+\begin{proposition}
+    \label{D equivalence implies Hodge isometry}
+    Suppose there exists an equivalence of triangulated categories $\derb{X} \natiso \derb{Y}$, then there exists a Hodge isometry $\mukai{X} \iso \mukai{Y}$.
+\end{proposition}
+
+\begin{lemma}
+    \label{Mukai vector is integral}
+    For any object $\E$ of $\derb{X \times Y}$, its Chern character $\ch{\E}$ is integral, \ie belongs to $H^\bullet(X \times Y, \Z) \subseteq H^\bullet(X \times Y, \Q)$. 
+    % Consequently the Mukai vector $v(\E)$ is integral as well, and the cohomological Fourier--Mukai transform $\fmcoh{\E}$ sends integral cohomology classes to integral cohomology classes.
+\end{lemma}
+
+\begin{proof}
+    We will use the Künneth formula in an essential way so we recall it here. Since $X$ and $Y$, as K3 surfaces, have torsion-free integral cohomology the $n$-th cohomology of the product $X \times Y$ decomposes as
+    \[
+        H^n(X \times Y, \Z) \iso \bigoplus_{k+\ell = n} H^k(X, \Z) \otimes_\Z H^\ell(Y, \Z),
+    \] 
+    for all $n \in \N$.
+    
+    First, rewrite the Chern character with respect to the ordinary grading on cohomology $H^\bullet(X \times Y, \Q) = \bigoplus_{i=0}^4 H^{2i}(X \times Y, \Q)$ as the vector
+    \[
+        \ch{\E} = \left(\rk{\E}, \cclass[1](\E), \tfrac{1}{2}(\cclass[1]{\E}^2 - 2\cclass[2]{\E}), \ch[3]{\E}, \ch[4]{\E} \right).
+    \]
+    Components $\rk{\E}$ and $\cclass[1]{\E}$ are integral by definition. The first Chern class $\cclass[1]{\E} \in H^2(X\times Y, \Z)$ may be rewritten, in accordance with the Künneth decomposition
+    \[
+        H^2(X\times Y, \Z) \iso H^2(X, \Z) \oplus H^2(Y, \Z),
+    \]
+    in the form $\cclass[1]{\E} = p^*\alpha + q^*\beta$, for some $\alpha \in H^2(X, \Z)$ and $\beta \in H^2(Y, \Z)$. Therefore, as K3 surfaces $X$ and $Y$ have \emph{even} intersection pairings by Proposition \ref{intersection pairing on K3 is even}, we see that $\cclass[1]{\E}^2 = p^*\alpha^2 + 2 p^*\alpha \smallsmile q^*\beta + q^*\beta^2$ is an even multiple of some class from $\cohom{4}{X \times Y}{\Z}$. Along with $\cclass[2]{\E}$ being integral this shows the $H^4(X \times Y, \Q)$-component of $\ch[](\E)$ is integral.
+
+
+    To show $\ch[3]{\E}$ and $\ch[4]{\E}$ are integral, we first modify the Grothendieck--Riemann--Roch formula a bit. Recalling that $\tdclass{X \times Y} = p^*\tdclass{X} \smallsmile q^*\tdclass{Y}$, we compute
+    \begin{align*}
+        \ch[]{q_!\E}\tdclass{Y} &= q_!(\ch[]{\E}\tdclass{X \times Y}) \\
+        &= q_!(\ch[]{\E} \smallsmile p^*\tdclass{X} \smallsmile q^*\tdclass{Y}) \\
+        &= q_!(\ch[]{\E}p^*\tdclass{X})\tdclass{Y}.  
+    \end{align*} 
+    Thus $\ch[]{q_!\E} = q_!(\ch[]{\E}p^*\tdclass{X})$, because $\tdclass{Y}$ is invertible in $\cohom{*}{Y}{\Q}$. This will be very useful as the left side of the equation is the Chern character associated to $Y$, which we already know to be integral. According to the Künneth decomposition write the Chern character as 
+    \[
+        \ch[]{\E} = \sum_{k,\ell \leq 4} e^{k,\ell},
+    \]
+    where $e^{k,\ell} = p^* \alpha^{k,\ell} \smallsmile q^*\beta^{k, \ell} \in \cohom{k+\ell}{X \times Y}{\Q}$ for some $\alpha^{k,\ell} \in \cohom{k}{X}{\Q}$ and $\beta^{k, \ell} \in \cohom{\ell}{Y}{\Q}$. As $\cohom{6}{X \times Y}{\Q}$ decomposes into a direct sum of $H^4(X, \Q) \otimes H^2(Y, \Q)$ and $H^2(X, \Q) \otimes H^4(Y, \Q)$, we have
+    \[
+        \ch[3]{\E} = e^{4,2} + e^{2,4}.
+    \]
+    We show only that $e^{4,2}$ is integral, for the case of $e^{2,4}$ follows by a symmetric argument. First note that $q_!$ lowers degrees by $4$, then using the fact that $\tdclass{X} = 1 + 2\mu_X$ and our modified Grothendieck--Riemann--Roch formula, we calculate its $H^2(Y, \Q)$-contributions to be
+    \begin{align*}
+        \ch[1]{q_!\E} &= q_!(\ch[3]{\E} + 2\ch[1]{\E}p^*\mu_X) \\
+        &= q_!(e^{4,2} + e^{2,4} + 2(e^{2,0} + e^{0,2}) \smallsmile p^*\mu_X) \\
+        &= q_!(e^{4,2}) + 2q_!(e^{0,2} \smallsmile p^*\mu_X).
+    \end{align*}
+    Terms $ q_!(e^{2,4})$ and $q_!(2e^{2,0} \smallsmile p^*\mu_X)$ are seen to vanish for dimension reasons after applying the projection formula. We already know $e^{0,2}$ and $\ch[1]{q_!\E}$ to be integral so $q_!(e^{4,2}) \in \cohom{2}{Y}{\Z}$ is integral as well. To show that $e^{4,2}$ is integral write $\alpha^{4,2} = a \mu_X$ and $\beta^{4,2} = \sum_i b_i y_i$ for some $a$, $b_i \in \Q$, where $y_i$ form an integral basis of $\cohom{2}{Y}{\Z}$. First note that $q_!(p^*\mu_X) = 1$, then compute
+    \[
+        q_!(e^{4,2}) = q_!(p^*\alpha^{4,2} \smallsmile q^*\beta^{4,2}) = q_!p^*(\alpha^{4,2}) \smallsmile \beta^{4,2} = a \cdot q_!p^*(\mu_X) \smallsmile \sum_i b_i y_i = \sum_i ab_i y_i.
+    \]
+    Since we have deduced $q_!(e^{4,2})$ is integral all the products $ab_i$ are integers. Thus $e^{4,2}$ is integral as
+    \[
+        e^{4,2} = p^*\alpha^{4,2} \smallsmile q^*\beta^{4,2} = \sum_i ab_i p^*\mu_X \smallsmile q^*y_i
+    \]
+    and $p^*\mu_X \smallsmile q^*y_i \in \cohom{6}{X \times Y}{\Z}$. This shows that $\ch[3]{\E}$ is integral.
+
+    To show $\ch[4]{\E}$ is integral observe that $H^8(X \times Y, \Q) \iso H^4(X, \Q) \otimes H^4(Y, \Q)$, thus $\ch[4]{\E} = e^{4,4}$. Using the modified Grothendieck--Riemann--Roch formula, its $H^4(Y, \Q)$-contributions are
+    \begin{align*}
+        \ch[4]{q_!\E} &= q_!(\ch[4]{\E} + 2\ch[2]{\E}p^*\mu_X) \\
+        &= q_!(e^{4,4} + 2(e^{4,0} + e^{2,2} + e^{0,4})\smallsmile p^*\mu_X) \\
+        &= q_!(e^{4,4}) + 2q_!(e^{0,4} \smallsmile p^*\mu_X).
+    \end{align*}
+    Similarly as before the missing terms vanish for dimension reasons. The class $e^{0,4}$ is integral either by observing $H^0(Y, \Q)$-contributions of the modified Grothendieck--Riemann--Roch or noting that $\ch[2]{\E}$ is integral. Then an analogous argument as with $e^{4,2}$ shows that $e^{4,4}$ is integral, because $\ch[4]{q_!\E} = 0$ and $e^{0,4}$ is integral. 
+\end{proof}
+
+\begin{remark}
+    \label{Remark for rational to integral fm restriction}
+    Any bounded complex of sheaves $\E$ of $\derb{X \times Y}$ has a Mukai vector
+    \[
+        v(\E) = \ch[]{\E}\sqrt{\tdclass{X \times Y}}.
+    \]
+    We know that $\sqrt{\tdclass{X}} = 1 + \mu_X$ and likewise $\sqrt{\tdclass{Y}} = 1 + \mu_X$, as $X$ and $Y$ are both K3 surfaces. Thus $\sqrt{\tdclass{X \times Y}}$ is integral since it may be expressed as
+    \[
+        \sqrt{\tdclass{X \times Y}} = p^*\sqrt{\tdclass{X}} \smallsmile q^*\sqrt{\tdclass{Y}} = p^*(1 + \mu_X) \smallsmile q^*(1 + \mu_Y).
+    \]
+    The Mukai vector $v(\E)$ is therefore an integral vector, which allows us to restrict our cohomological Fourier--Mukai transforms from rational to integral cohomology. A Fourier--Mukai transform $\fmcoh{\E}$ associated to a kernel $\E$ of $\derb{X \times Y}$ will thus from now on always mean a homomorphism between \emph{integral} cohomology groups
+    \[
+        \fmcoh{\E} \colon \cohom{\bullet}{X}{\Z} \to \cohom{\bullet}{Y}{\Z}.
+    \] 
+\end{remark}
+
+\begin{lemma}
+    \label{Intersection pairing through push-forward of structure map}
+    Let $X$ be a K3 surface over $\C$ and $\varepsilon \colon X \to \spec{\C}$ its structure map. Then for all $v$, $w \in \mukai{X}$
+    \[
+        \pairing{v}{w} = - \varepsilon_!(v^\vee \smallsmile w) \qquad \text{and} \qquad \varepsilon_!(v^\vee) = \varepsilon_!(v). 
+    \] 
+\end{lemma}
+
+\begin{proof}
+    We only have to recall Definition \ref{Definition of umkehr map} of the Gysin map. Since $\spec{\C}$ is topologically just a point, we see that $\varepsilon_!$ is non-trivial only in degree $4$ for dimension reasons. The first formula is then evident from the definition of the Mukai pairing and the second one by the $(-)^\vee$-operation leaving the degree $4$ component of a Mukai vector invariant.
+\end{proof}
+
+\begin{lemma}
+    \label{cohomological fm of diagonal}
+    Let $\struct{\Delta}$ denote the push-forward $\Delta_*\struct{X}$ of the structure sheaf $\struct{X}$ along the diagonal embedding $\Delta \colon X \to X \times X$. Then
+    \[
+        \fmcoh{\struct{\Delta}} = \id{\cohom{\bullet}{X}{\Z}}.
+    \]
+\end{lemma}
+
+\begin{proof}
+    We start by computing the Mukai vector of $\struct{\Delta}$. By the Grothendieck--Rie\-mann--Roch formula \eqref{eq: GRR}, we see that
+    \begin{align*}
+        \ch(\struct{\Delta}) \tdclass{X \times X} &= \ch(\Delta_*\struct{X})\tdclass{X \times X} = \\ &= \ch(\Delta_!\struct{X})\tdclass{X \times X} = \Delta_*(\ch(\struct{X}) \tdclass{X}) = \Delta_*\tdclass{X}.
+    \end{align*}
+    In the second equality, we have used that $[\Delta_*\struct{X}] = [\Delta_!\struct{X}]$ in $\kgroup{X \times X}$, because for any closed embedding, such as $\Delta \colon X \to X \times X$, its push-forward $\Delta_*$ is exact. For the last equality we have used $\ch(\struct{X}) = \exp(\cclass[1](\struct{X})) = 1$. Next, we observe, that from $\tdclass{X \times X} = p^*\tdclass{X} \smallsmile p^*\tdclass{X}$, equation $\Delta^*\sqrt{\tdclass{X\times X}} = \tdclass{X}$ follows. By the cohomological projection formula (\cf Proposition \ref{cohomological projection formula}), we further compute
+    \[
+        \Delta_*\tdclass{X} = \Delta_*\Delta^*\sqrt{\tdclass{X \times X}} = \Delta_*(1)\sqrt{\tdclass{X \times X}}.
+    \] 
+    This implies that $v(\struct{\Delta}) = \Delta_*(1)$. 
+    Finally, for any $\alpha \in \cohom{\bullet}{X}{\Z}$, again utilizing  the projection formula, we arrive at
+    \[
+        \fmcoh{\struct{\Delta}}(\alpha) = p_*(v(\struct{\Delta_X})\smallsmile p^*\alpha) = p_*(\Delta_*(1)\smallsmile p^*\alpha) = p_*(\Delta_*(1\smallsmile \Delta^*p^*(\alpha))) = \alpha. \qedhere
+    \]
+\end{proof}
+
+\begin{proof}[Proof of Proposition \ref{D equivalence implies Hodge isometry}]
+    By Orlov's Theorem \ref{Orlov's theorem}, the functor witnessing the equivalence $\derb{X} \natiso \derb{Y}$ is naturally isomorphic to a Fourier--Mukai transform $\fm{\E}$ for some kernel $\E$ of the category $\derb{X \times Y}$. 
+    % We will show that the cohomological Fourier--Mukai transform $\fmcoh{\E} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q)$ of section \ref{Subsection: FM transform on cohomology} induces a Hodge isometry between the Mukai lattices
+    % \[
+    %     \fmcoh{\E} \colon \mukai{X} \to \mukai{Y}.
+    % \]
+    %
+    % First recall that by Definition \ref{}, the cohomological Fourier--Mukai transform $\fmcoh{\E}$ is defined to be
+    % \[
+    %     \fmcoh{\E^\bullet} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q) \qquad \alpha \mapsto p_*(v(\E^\bullet) \smallsmile q^*(\alpha)).
+    % \]
+    % By lemma \ref{Mukai vector is integral} the Mukai vector $v(\E^\bullet)$ lies in $H^\bullet(X \times Y, \Z) \subseteq H^\bullet(X \times Y, \Q)$, thus $\fmcoh{\E^\bullet}$ may be restricted to the integral parts, thus forming a homomorphism of abelian groups
+    % \[
+    %     \fmcoh{\E^\bullet} \colon H^\bullet(X, \Z) \to H^\bullet(Y, \Z).
+    % \]
+    By Remark \ref{Remark for rational to integral fm restriction} the cohomological Fourier--Mukai transform associated to $\E$, defined as
+     \[
+        \fmcoh{\E} \colon H^\bullet(X, \Q) \to H^\bullet(Y, \Q) \qquad \alpha \mapsto p_*(v(\E) \smallsmile q^*(\alpha)),
+    \]
+    restricts to integral cohomology, forming a homomorphism
+    \[
+        \fmcoh{\E^\bullet} \colon H^\bullet(X, \Z) \to H^\bullet(Y, \Z).
+    \]
+    of free abelian groups. In the following three parts we show $\fmcoh{\E}$ is a Hodge structure preserving bijective isometry.
+    
+    \vspace{0.3 cm}
+    \noindent
+    \textsl{Bijection.}
+    We first tackle bijectivity
+    % Next we verify that $\fmcoh{\E^\bullet}$ is bijective. 
+    and do so by proving it has a right inverse. For $\fm{\E}$ is an equivalence, the Fourier--Mukai transform associated to the the kernel $\ladj{\E}$, of its left adjoint, is actually its quasi-inverse. Thus $\fm{\ladj{\E}} \circ \fm{\E} \natiso \id{\derb{X}}$ and by Proposition \ref{Composition of fm is fm} there is a kernel $\G$ from $\derb{X \times X}$, for which $\fm{\ladj{\E}} \circ \fm{\E} \natiso \fm{\G}$. By uniqueness of kernels ensured by Theorem \ref{Orlov's theorem} we see that $\G \iso \struct{\Delta}$, since $\struct{\Delta}$ was computed to be the kernel of $\id{\derb{X}}$ in Example \ref{Identifying fm transforms}. As cohomological Fourier--Mukai transforms compose just like the categorical ones do, according to Proposition \ref{Composition of cohomological fm is fm}, we see that $\fmcoh{\ladj{\E}} \circ \fmcoh{\E} = \fmcoh{\struct{\Delta}}$. According to Lemma, \ref{cohomological fm of diagonal} $\fmcoh{\struct{\Delta}} = \id{\cohom{\bullet}{X}{\Z}}$, thus $\fmcoh{\E}$ has a right inverse. Since $\fmcoh{\E}$ is a homomorphism of free abelian groups of equal rank admitting a right inverse it must be an isomorphism\footnote{
+        If $f \colon A \to B$ is a homomorphism of free abelian groups of equal (finite) rank, admitting a right inverse $r \colon B \to A$, $f$ is in particular injective and the short exact sequence $0 \to A \to B \to \coker f \to 0$ splits. The cokernel $\coker f$ can only be finite and is therefore trivial, proving that $f$ is an isomorphism.
+    }.
+    
+    
+    % thus it suffices to show that $\fmcoh{\struct{\Delta_X}} = \id{H^\bullet(X, \Z)}$.
+    
+    % We start by computing the Mukai vector of $\struct{\Delta_X}$. Consulting the help of Grothendieck-Riemann-Roch \ref{Grothendieck-Riemann-Roch}, we see that
+    % \begin{align*}
+    %     \ch(\struct{\Delta_X}) \tdclass{X \times X} &= \ch(\Delta_*\struct{X})\tdclass{X \times X} = \\ &= \ch(\Delta_!\struct{X})\tdclass{X \times X} = \Delta_*(\ch(\struct{X}) \tdclass{X}) = \Delta_*\tdclass{X},
+    % \end{align*}
+    % holds true in $\cohom{*}{X \times X}{\Q}$. In the second equality, we have used the relation $\Delta_*\struct{X} = \Delta_!\struct{X}$ in $K(X \times X)$, because for any closed embedding, such as $\Delta \colon X \to X \times X$, its push-forward $\Delta_*$ is exact, and separately in the last equality $\ch(\struct{X}) = \exp(\cclass[1](\struct{X})) = 1$, because $\struct{X}$ is a line bundle. Next, we observe, that from $\tdclass{X \times X} = p^*\tdclass{X} \smallsmile p^*\tdclass{X}$, equation $\Delta^*\sqrt{\tdclass{X\times X}} = \tdclass{X}$ follows. By the cohomological projection formula (\cf Proposition \ref{cohomological projection formula}) for the map $\Delta$, we further compute
+    % \[
+    %     \Delta_*\tdclass{X} = \Delta_*\Delta^*\sqrt{\tdclass{X \times X}} = \Delta_*(1)\sqrt{\tdclass{X \times X}},
+    % \] 
+    % implying that $v(\struct{\Delta_X}) = \Delta_*(1)$. 
+    % Lastly, for any $\alpha \in \cohom{\bullet}{X}{\Z}$, using the projection formula again, we arrive at
+    % \[
+    %     \fmcoh{\struct{\Delta_X}}(\alpha) = p_*(v(\struct{\Delta_X})\smallsmile p^*\alpha) = p_*(\Delta_*(1)\smallsmile p^*\alpha) = p_*(\Delta_*(1\smallsmile \Delta^*p^*(\alpha))) = \alpha.
+    % \]
+    % % By letting $\mathcal R^\bullet$ denote the convolution of $\E^\bullet$ and $\E^\bullet_L$, we see that by uniqueness of kernels of Fourier-Mukai transforms it follows that 
+    % The map $\fmcoh{\E^\bullet}$ is now a homomorphism of free abelian groups admitting a right inverse, therefore it is an isomorphism. We are left to show that $\fmcoh{\E^\bullet}$ is an isometry and that it preserves the Hodge structure. 
+    
+    \vspace{0.3cm}
+    \noindent
+    \textsl{Isometry.}
+    To see that $\fmcoh{\E}$ is an isometry, we do two preliminary computations. Let $\alpha \in \mukai{X}$ and $\beta \in \mukai{Y}$ and let $\gamma \colon X \to \spec{\C}$, $\varepsilon \colon Y \to \spec{\C}$ and $\eta \colon X \times Y \to \spec{\C}$ denote the structure maps. Then by the first formula of Lemma \ref{Intersection pairing through push-forward of structure map} we see that
+    \begin{align*}
+        \pairing{\fmcoh{\E}(\alpha)}{\beta}_Y &= \varepsilon_!(\beta^\vee \smallsmile \fmcoh{\E}(\alpha))
+        \\
+        &= \varepsilon_!\left(
+            \beta^\vee \smallsmile p_*\left(v(\E) \smallsmile q^*\alpha\right)\right) 
+        \\
+        &= \varepsilon_!\left(
+            \beta^\vee \smallsmile p_*\left(\ch{\E}
+            {\sqrt{\tdclass{X \times Y}}}
+            \smallsmile q^*\alpha\right)
+        \right) 
+        \\
+        &= \varepsilon_!\left( 
+            p_*\left(
+                p^*\beta^\vee \smallsmile \ch{\E}
+                {\sqrt{\tdclass{X \times Y}}}
+                \smallsmile q^*\alpha
+            \right)
+        \right) \\
+        &= \theta_!\left(
+            p^*\beta^\vee \smallsmile \ch{\E}
+                {\sqrt{\tdclass{X \times Y}}}
+                \smallsmile q^*\alpha
+        \right).
+    \end{align*}
+    Similarly, using the property $\ch[](\F^\vee) = \ch[](\F)^\vee$ of the Chern character, one computes
+    % \info{$\ch(E^\vee) = \ch(E)^\vee$?}
+    \[
+        \pairing{\alpha}{\fmcoh{\ladj{\E}}(\beta)}_X = \theta_!\left(
+            q^*\alpha^\vee \smallsmile \ch{\E}^\vee
+                {\sqrt{\tdclass{X \times Y}}}
+                \smallsmile p^*\beta
+        \right).
+    \]
+    Using the second formula of Lemma \ref{Intersection pairing through push-forward of structure map} shows $\pairing{\fmcoh{\E}(\alpha)}{\beta}_Y = \pairing{\alpha}{\fmcoh{\ladj{\E}}(\beta)}_X$.
+    Thus for any $\alpha$, $\alpha' \in \mukai{X}$ we obtain
+    \[
+        \pairing{\fmcoh{\E}(\alpha)}{\fmcoh{\E}(\alpha')}_Y = 
+        \pairing{\alpha}{\fmcoh{\ladj{\E}}(\fmcoh{\E}(\alpha'))}_X = 
+        \pairing{\alpha}{\alpha'}_X,
+    \]       
+    proving that $\fmcoh{\E}$ is an isometry. 
+
+    \vspace{0.3cm}
+
+    \noindent
+    \textsl{Hodge structures.}
+    Lastly, we show that $\fmcoh{\E}$ preserves the Hodge structure \ie
+    \[
+        \fmcoh{\E}_\C(\widetilde{H}^{p,q}(X)) \subseteq \widetilde{H}^{p,q}(Y) 
+    \]
+    for all $p$, $q$, with $p + q = 2$. 
+    For brevity denote $\fmcoh{\E}$ by $f$. Since $\fmcoh{\E}$ is a cohomological Fourier--Mukai transform, the condition \eqref{eq: Hodge lattice, fm transform} of Proposition \ref{Hodge lattice, fm transform interaction}, conveniently specializes to 
+    \begin{equation}
+        % \label{eq: H20 is mapped to H20}
+        f_\C(\widetilde{H}^{2,0}(X)) \subseteq \widetilde{H}^{2,0}(Y)
+    \end{equation}
+    % since the term on the right is the only non-trivial one of the direct sum decomposition.
+    and in fact this turns out to be sufficient for $f$ to preserve the Hodge structures. This is a very special coincidence, which happens as a consequence of Hodge structures on Mukai lattices of K3 surfaces taking a particular from.
+    % In fact, we will show this inclusion holds only for $(p,q) = (2,0)$, as this turns out to be sufficient. 
+    Indeed, if $f_\C(\tildi{H}^{2,0}(X)) \subseteq \tildi{H}^{2,0}(Y)$, then $f_\C(\widetilde{H}^{0,2}(X)) \subseteq \widetilde{H}^{0,2}(Y)$ is obtained by conjugating
+    \[
+        f_\C\left(\widetilde{H}^{0,2}(X)\right) = f_\C\left(\ols{\widetilde{H}^{2,0}(X)}\right) = \ols{f_\C\left(\widetilde{H}^{2,0}(X)\right)} \subseteq \ols{\widetilde{H}^{2,0}(Y)} = \widetilde{H}^{0,2}(Y).
+    \]
+    To see $f_\C(\widetilde{H}^{1,1}(X)) \subseteq \widetilde{H}^{1,1}(Y)$, we pick a non-zero class $x \in \widetilde{H}^{1,1}(X)$ and map it over to $y = f_\C(x) \in \mukai{X} \otimes \C$. Then for any $y^{2,0} \in \widetilde{H}^{2,0}(Y)$, we have $\pairing{y}{y^{2,0}} = 0$. Indeed, first as $f_\C$ is an isomorphism of $\C$-vector spaces and $\widetilde{H}^{2,0}(X)$ and $\widetilde{H}^{2,0}(Y)$ are one dimensional, the inclusion \eqref{eq: H20 is mapped to H20} is actually an equality\footnote{
+        This is one of the specialities of working with K3 surfaces where $H^{2,0}(X)$ is one-dimensional.
+    }, thus we may represent $y^{2,0}$ as $f_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$. As $\widetilde{H}^{2,0}(X) \perp \widetilde{H}^{1,1}(X)$ and $f_\C$ is an isometry, we obtain $0 = \pairing{x}{x^{2,0}} = \pairing{y}{y^{2,0}}$ to conclude $y \in \widetilde{H}^{2,0}(Y)^\perp$. Symmetrically one obtains $y \in \widetilde{H}^{0,2}(Y)^\perp$. 
+
+    Finally, once we verify that $\widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp \subseteq \widetilde{H}^{1,1}(Y)$, we may conclude that $y \in \widetilde{H}^{1,1}(Y)$, which will prove our last claim.
+    This is indeed the case for once we write a class $z \in \widetilde{H}^{2,0}(Y)^\perp \cap \widetilde{H}^{0,2}(Y)^\perp$ with respect to the Hodge decomposition as $z = z^{2,0} + z^{1,1} + z^{0,2}$, we see that $z^{2,0} = z^{0,2} = 0$, by non-degeneracy of the pairing $\pairing{\cdot}{\cdot}$. For example, for any $w = w^{2,0} + w^{1,1} + w^{0,2} \in \mukai{Y}$, written out with respect to the Hodge decomposition, we have 
+    \begin{itemize}[label = $\circ$ ]
+        \item{$\pairing{z^{2,0}}{w^{2,0}} = 0$ by orthogonality relations \eqref{}.
+        }
+        \item{
+            $\pairing{z^{2,0}}{w^{1,1}} = 0$ by orthogonality relations \eqref{}.
+        }
+        \item{
+            $\pairing{z^{2,0}}{w^{0,2}} = 0$, because $z^{2,0} = z - z^{1,1} - z^{0,2}$ and all the terms on the right-hand side of the equation lie in $\widetilde{H}^{0,2}(Y)^\perp$.
+        }
+    \end{itemize}
+    This implies that
+    \[
+        \pairing{z^{2,0}}{w} = \pairing{z^{2,0}}{w^{2,0}} + \pairing{z^{2,0}}{w^{1,1}} + \pairing{z^{2,0}}{w^{0,2}} = 0,
+    \]
+    which shows that $z^{2,0} = 0$. Symmetrically one also shows $z^{0,2} = 0$ to conclude that $z = z^{1,1} \in \widetilde{H}^{1,1}(Y)$. \qedhere
+    % where $\pairing{z^{2,0}}{w^{2,0}} = 0$, because $z^{2,0} = z - z^{1,1} - z^{0,2}$ shows $z^{2,0} \in \widetilde{H}^{0,2}(Y)^\perp$ and $\pairing{z^{2,0}}{w^{1,1}} = 0$ together with $\pairing{z^{2,0}}{w^{0,2}} = 0$ follow from orthogonality relations \eqref{}. \qedhere
+    
+    % arising from the fact that $y^{2,0}$ is of the form $f_\C(x^{2,0})$ for some $x^{2,0} \in \widetilde{H}^{2,0}(X)$
+    
+    
+    % As $f_\C$ is an isomorphism of $\C$-vector spaces, the class $y$ is non-zero. 
+    
+    % $\widetilde{H}^{2,0}(Y) \oplus \widetilde{H}^{1,1}(Y) \oplus \widetilde{H}^{0,2}(Y)$
+\end{proof}
+
+For convenience and later referencing we record the following corollary, which is essentially what we have just proven. 
+
+\begin{corollary}
+    \label{FM equivalence implies FM on Mukai is an isomorphism}
+    Let $\E$ denote a complex belonging to $\derb{X \times Y}$ such that the corresponding Fourier--Mukai transform $\fm{\E} \colon \derb{X} \to \derb{Y}$ is an equivalence. Then the the cohomological Fourier--Mukai transform
+    \[
+        \fmcoh{\E} \colon \mukai{X} \to \mukai{Y}
+    \]
+    is an isomorphism of Hodge lattices.
+\end{corollary}
+
+
+
+
+
+
+
+% ========== sth from K3 chapter =============== %
+
+
+
+
+
+
+\vspace{5cm}
+\[
+    \Omega_X \otimes_\struct{X} \Omega_X \to \omega_X \iso \struct{X}.
+\]
+A pairing begin perfect means that the associated morphism $\Omega_X \to \localhom[X](\Omega_X, \struct{X}) = \Omega_X^\vee$ is an isomorphism. 
+
+% \subsubsection{Cohomology}
+
+We start by computing the cohomology groups of the structure sheaf
+
+Before we start computing, we first recall some tools at our disposal. 
+Starting with Serre duality \eqref{eq: Classic Serre duality} we see that for any vector bundle $\E$ it specializes to 
+\[
+    \cohom{i}{X}{\E^\vee} \iso \cohom{2-i}{X}{\E}^*
+\]
+
+Consider the exponential short exact sequence
+\[
+    0 \to \Z \to \struct{X} \to \OO^*_X \to 0.
+\]
+Associated to it comes the long exact sequence in cohomology
+\begin{align*}
+    0 &\to \cohom{}{X}{\Z}_{\ \Z} \to \cohom{}{X}{\struct{X}}_{\ \C} \to \cohom{}{X}{\OO^*_X}_{\C^*} \to \\
+    &\to \cohom{}{X}{\Z} \to \cohom{}{X}{\struct{X}} \to \cohom{}{X}{\OO^*_X} \to \\
+    &\to \cohom{}{X}{\Z} \to \cohom{}{X}{\struct{X}} \to \cohom{}{X}{\OO^*_X} \to \\
+    &\to \cohom{}{X}{\Z} \to \cohom{}{X}{\struct{X}} \to \cohom{}{X}{\OO^*_X} \to \\
+    &\to \cohom{}{X}{\Z} \to \cohom{}{X}{\struct{X}} \to \cohom{}{X}{\OO^*_X} \to \cdots \\
+\end{align*}
+
+\newpage
+
+The \emph{Picard group} of $X$ is defined to be the group of all isomorphism classes of line bundles on $X$ with multiplication given by the tensor product of sheaves. It is denoted by $\pic{X}$. Interpreting $\cohom{1}{X}{\OO^*_X}$ as the first \emph{Čech cohomology} group of $X$ with coefficients in the sheaf $\OO_X^*$ one is able to construct a canonical isomorphism
+\[
+    \pic{X} \iso \cohom{1}{X}{\OO_X^*}
+\]
+based on the the ability to represent line bundles with cocycles.  
+
+Chern character, Todd class, Mukai vector. $H^*(X, \Z)$ commutative ring (dimension/degree reasons)
+Mukai vectors are integral 
+
+\begin{remark}
+    \label{chern character on K3 is integral}
+    Chern character of K3 is integral..
+\end{remark}
+
+% \subsubsection{Intersection pairing}
+
+\begin{definition}
+    The \emph{intersection pairing} on $\cohom{2}{X}{\Z}$ is defined to be 
+    \[
+        \intersect{\alpha}{\beta} = \pairing{\alpha \smallsmile \beta}{[X]}.
+    \] 
+\end{definition}
+
+The transcendental lattice of $X$ will be denoted by $\transc{X}$.
+
+$\NS{X} = H^{1,1}(X) \cap \cohom{2}{X}{\Z}$
+
+
+
+\begin{proposition}
+    \label{intersection pairing on K3 is even}
+    Let $X$ be a K3 surface. Then the intersection pairing $\intersect{\cdot}{\cdot}$ makes $\cohom{2}{X}{\Z}$ into an even unimodular lattice of rank $22$ and signature $(3,19)$, making it isomorphic to the following orthogonal direct sum
+    \begin{equation}
+        \label{eq: intersection pairing on K3}
+        \cohom{2}{X}{\Z} \iso E_8(-1)^{\oplus 2} \oplus \hyperbolic^{\oplus 3}.
+    \end{equation}
+    % given by the $\smallsmile$-product is an even lattice. 
+\end{proposition}
+
+\begin{proof}
+    % To see that the intersection pairing is unimodular we
+    Since $\cohom{2}{X}{\Z}$ is free, the Kronecker pairing universal coefficients theorem together with Poincaré duality show that the intersection pairing is unimodular. To see that the intersection pairing is even one considers the mod $2$ reduction $\cohom{2}{X}{\Z} \to \cohom{2}{X}{\Z/2}$ and shows that the pairing on $\cohom{2}{X}{\Z/2}$ is always $0$. By Proposition \ref{characteristic classes of K3} we know that the first Chern class $\cclass[1](X)$ is trivial and we also know that it reduces to the second Stiefel--Whitney class $w_2(X)$ $\mathrm{(mod \ 2)}$, which is therefore also trivial. Using the Wu formula, one is able to show that
+    \[
+        x \smallsmile x = w_2(X) \smallsmile x
+    \]
+    holds for all classes $x \in \cohom{2}{X}{\Z/2}$ from which the desired result follows. Proposition \ref{cohomology of K3} shows that $\cohom{2}{X}{\Z}$ is free of rank $22$. The claim about the signature of this lattice is proven in \cite[\S 1, Proposition 3.5]{Huybrechts2016}. Lastly employing Milnor's classification result of even indefinite unimodular lattices (Theorem \ref{Classification of indefinite even unimodular lattices}), we obtain \eqref{eq: intersection pairing on K3}.
+\end{proof}
+
+
+\begin{proposition}
+    \label{Pic has non-degenerate intersection pairing}
+    $\pic{X}$ has non-degenerate intersection pairing.
+\end{proposition}
+
+
+
+% \begin{example}
+%     \label{Mukai vector of skyscraper}
+%     As a toy example of an application of the Grothendieck--Riemann--Roch theorem, we can now compute the Mukai vector of a skyscraper $k(x)$ associated to a closed point $x \in X$. Let $x \colon \spec{\C} \to X$ also denote the corresponding morphism so that we may compute
+%     \[
+%         \ch[](k(x))\tdclass{X} = \ch[]{x_*\struct{\spec{\C}}} \tdclass{X} = x_!(\ch[]{\struct{\spec{\C}}}\tdclass{\spec{\C}}) = x_!(1) = \mu_X.
+%     \]
+%     Thus $v(k(x)) = \ch[](k(x))\sqrt{\tdclass{X}} = \mu_X (1-\mu_X) = \mu_X$.
+% \end{example}
+
+% \subsubsection{Hodge structure}
+
+\begin{theorem}
+    \label{Db(-) detects K3}
+    Suppose $X$ and $Y$ are smooth projective varieties over $\C$. Assume $X$ is a K3 surface and
+    \[
+        \derb{X} \natiso \derb{Y}.
+    \]
+    Then $Y$ is a K3 surface as well. 
+\end{theorem}
+
+\begin{proof}
+    By Theorem \ref{Db detects dimension and triviality of canonical bundle}, we already know $Y$ is a surface with a trivial canonical bundle. It is left to show that $\cohom{1}{Y}{\struct{Y}} = 0$. By Proposition \ref{Hodge lattice, fm transform interaction} we see that 
+    \[
+        h^{0,1}(X) + h^{1,2}(X) = h^{0,1}(Y) + h^{1,2}(Y). 
+    \]
+    However $h^{0,1}(X) = 0$ and $h^{1,2}(X) = h^{2,1}(X) = \dim \cohom{1}{X}{\omega_X} = \dim \cohom{1}{X}{\struct{X}} = 0$. Thus $h^{0,1}(Y) = 0$, proving that $Y$ is a K3 surface.
+\end{proof}
+

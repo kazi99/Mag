@@ -37,8 +37,8 @@ Naturally, $\transc{X}$ also comes equipped with a weight $2$ Hodge structure in
         $T^{0,2}(X)$ & $=$ & $H^{0,2}(X)$.
     \end{tabular}
 \end{center}
-This is because on a K3 surface $X$ we have $\NS{X} = \pic{X} = H^{1,1}(X) \cap H^2(X, \Z)$, which is orthogonal to both $H^{2,0}(X)$ and $H^{0,2}(X)$.
-The Hodge structure together with the restriction of the pairing $\intersect{\cdot}{\cdot}$ to $\transc{X}$ make $\transc{X}$ into a Hodge lattice.
+This is because on a K3 surface $X$ we have $\NS{X} \iso \pic{X} \iso H^{1,1}(X) \cap H^2(X, \Z)$, which is orthogonal to both $H^{2,0}(X)$ and $H^{0,2}(X)$.
+The Hodge structure together with the restriction of the pairing $\intersect{\cdot}{\cdot}$ to $\transc{X}$, make $\transc{X}$ into a Hodge lattice.
 
 
 With the purpose of examining not only the smaller transcendental lattice, but taking into account the whole cohomology group $\cohom{\bullet}{X}{\Z}$ of $X$, Mukai in \cite[]{Mukai1987} devised the following. First, he equipped $\cohom{\bullet}{X}{\Z}$ with the pairing introduced in Definition \ref{Definition of Mukai pairing}. To be more explicit, letting $v = v_0 + v_1 + v_2$ and $w = w_0 + w_1 + w_2$ belong to $\cohom{\bullet}{X}{\Z}$, with the ordinary grading $\cohom{0}{X}{\Z} \oplus \cohom{2}{X}{\Z} \oplus \cohom{4}{X}{\Z}$, the Mukai pairing is expressed as
@@ -65,6 +65,7 @@ Put more simply, if we identify $\cohom{0}{X}{\Z}$ and $\cohom{4}{X}{\Z}$ with $
 % Attempting to invite the whole cohomology group $\cohom{\bullet}{X}{\Z}$ into 
 
 \begin{remark}
+    \label{Mukai lattice structure}
     Notice that upon restricting the Mukai pairing $\pairing{\cdot}{\cdot}$ onto $\cohom{2}{X}{\Z}$, the usual intersection pairing $\intersect{\cdot}{\cdot}$ of $\cohom{2}{X}{\Z}$ differs from it by a sign. This makes the lattice $\cohom{\bullet}{X}{\Z}$ abstractly isomorphic to the orthogonal direct sum
     \[
         \cohom{\bullet}{X}{\Z} \iso \cohom{2}{X}{\Z}(-1) \oplus \hyperbolic \iso E_8^{\oplus 2} \oplus \hyperbolic^{\oplus 4}.
@@ -72,7 +73,7 @@ Put more simply, if we identify $\cohom{0}{X}{\Z}$ and $\cohom{4}{X}{\Z}$ with $
     Note that $\hyperbolic(-1) \iso \hyperbolic$. The above also shows that the lattice structure on $\cohom{\bullet}{X}{\Z}$ is an even unimodular lattice.
 \end{remark}
 
-Endowing $\cohom{\bullet}{X}{\Z}$ with the Mukai pairing and the following Hodge structure makes the group $\cohom{\bullet}{X}{\Z}$ into a \emph{Mukai lattice}.
+Endowing $\cohom{\bullet}{X}{\Z}$ with the Mukai pairing and the ensuing Hodge structure makes the group $\cohom{\bullet}{X}{\Z}$ into a \emph{Mukai lattice}.
 
 \begin{definition}
     The \emph{Mukai lattice} of a K3 surface $X$ over $\C$, denoted by $\mukai{X}$, is an even unimodular lattice $\cohom{\bullet}{X}{\Z}$ given by the Mukai pairing $\pairing{\cdot}{\cdot}$ equipped with a Hodge structure of weight $2$ described by 
@@ -185,7 +186,7 @@ an isomorphism of Hodge lattices. This notion now enables us to abstractly ident
     which shows that $z^{2,0} = 0$. Symmetrically one also shows $z^{0,2} = 0$ to conclude that $z = z^{1,1} \in \widetilde{H}^{1,1}(Y)$. \qedhere
 \end{proof}
 
-It is beneficial to introduce the Neron-Severi group analog for the Mukai lattice. We call it the \emph{extended Neron-Severi group} and it is defined to be 
+It is beneficial to introduce the Néron-Severi group analog for the Mukai lattice. We call it the \emph{extended Néron-Severi group} and it is defined to be 
 \[
     \extendedNS{X} = \NS{X} \oplus \cohom{0}{X}{\Z} \oplus \cohom{4}{X}{\Z} = \widetilde{H}^{1,1}(X) \cap \mukai{X}.
 \]  
@@ -357,6 +358,7 @@ The remainder of this section will be devoted to proving the left-to-right impli
 \end{proof}
 
 \subsubsection*{Proof}
+\label{proof of ->}
 % \subsubsection*{Proof of $(\Rightarrow)$}
 
 \begin{proof}[Proof for $(\Rightarrow)$ of Theorem \ref{Derived Torelli}]
@@ -659,7 +661,9 @@ With all the necessary terminology now established, we can introduce the followi
 \end{remark}
 
 \begin{definition}
-    Let $X$ be a complex K3 surface. A vector $v = (v_0, v_1, v_2) \in \mukai{X}$ is \emph{effective} if either $v_0 > 0$ or $v_0 = 0$ and $v_1$ is an effective divisor\footnote{A divisor $D = \sum_i n_i[X_i]$ is \emph{effective}, if $n_i \geq 0$, for each $i$. Here $X_i$ are closed integral subschemes of codimension one in $X$.}. 
+    Let $X$ be a complex K3 surface. A vector $v = (v_0, v_1, v_2) \in \mukai{X}$ is \emph{effective} if either $v_0 > 0$ or $v_0 = 0$ and $v_1$ is an effective divisor\footnote{
+        A divisor $D = \sum_i n_i[X_i]$ is \emph{effective}, if $n_i \geq 0$, for each $i$. Here $X_i$ are closed integral subschemes of codimension one in $X$.
+    }. The \emph{divisibility} of a vector $v \in \mukai{X}$ is defined to be the greatest common divisor of the set of integers $\{\pairing{v}{v'} \in \Z \mid v' \in \extendedNS{X}\}$ and denoted by $\div(v)$. 
 \end{definition}
 
 % \begin{theorem}
@@ -829,11 +833,11 @@ With all the preparations now out of the way, we may begin with the proof.
         \[
             (w_0, w_1, w_2) \mapsto (w_2, w_1, w_0) \qquad \text{and} \qquad (w_0, w_1, w_2) \mapsto (-w_0, w_1, -w_2).
         \]
-        \item If $v_1 \neq 0$ and either $v_0 \neq 0$ or $v_2 \neq 0$, proceed as in the case above, otherwise for $v_0 = 0$ and $v_2 = 0$ consider the Fourier--Mukai transform, whose kernel is the sheaf $\Delta_*\mathcal L$ on $X \times X$ for some line bundle $\mathcal L$ on $X$. We have shown in Example \ref{Identifying fm transforms} \ref{Tensoring by a line bundle is FM}, that $\fm{\Delta_*\mathcal L}$ is naturally isomorphic to $\mathcal L \otimes (-)$. This is clearly an equivalence, thus by Corollary \ref{FM equivalence implies FM on Mukai is an isomorphism} the associated cohomological Fourier--Mukai $\fmcoh{\Delta_*\mathcal L}$ is a Hodge isometry. In a very similar way as in the proof of Lemma \ref{cohomological fm of diagonal} one computes that
+        \item If $v_1 \neq 0$ and either $v_0 \neq 0$ or $v_2 \neq 0$, proceed as in the case above, otherwise for $v_0 = 0$ and $v_2 = 0$ consider the Fourier--Mukai transform, whose kernel is the sheaf $\Delta_*\mathcal L$ on $X \times X$ for some line bundle $\mathcal L$ on $X$. We have shown in Example \ref{Identifying fm transforms} \ref{Tensoring by a line bundle is FM}, that $\fm{\Delta_*\mathcal L}$ is naturally isomorphic to $\mathcal L \otimes (-)$. This is clearly an equivalence, thus by Corollary \ref{FM equivalence implies FM on Mukai is an isomorphism} the associated cohomological Fourier--Mukai $\fmcoh{\Delta_*\mathcal L}$ is a Hodge isometry. In a very similar way as in the proof of Lemma \ref{cohomological fm of diagonal} one computes that $\fmcoh{\Delta_*\mathcal L}$ is given by multiplication with the Chern character $\ch[](\mathcal L)$, \ie
         \[
             \fmcoh{\Delta_*\mathcal{L}}(w) = \ch[](\mathcal L) \smallsmile w = \left(w_0, w_1 + w_0 \cclass[1](\mathcal L), w_2 + \intersect{w_1}{\cclass[1](\mathcal L)} + \tfrac{1}{2}w_0\cclass[1]^2(\mathcal L)\right).
         \]
-        Since $e \in \widetilde{H}^{1,1}(Y)$ and $f \colon \mukai{X} \to \mukai{Y}$ is a Hodge isometry, we may conclude that $v_1 \in H^{1,1}(X) \cap \cohom{2}{X}{\Z}$. The latter group we know to be $\NS{X} = \pic{X}$ and the intersection pairing $\intersect{\cdot}{\cdot}$ restricted to $\pic{X}$ is non-degenerate by Proposition \ref{Pic has non-degenerate intersection pairing}. Hence there always exists a line bundle $\mathcal L \in \pic{X}$, such that $\intersect{v_1}{\cclass[1](\mathcal L)} \neq 0$. Together with the Hodge isometries of the previous case, we can achieve $v_0 > 0$. 
+        Since $e \in \widetilde{H}^{1,1}(Y)$ and $f \colon \mukai{X} \to \mukai{Y}$ is a Hodge isometry, we may conclude that $v_1 \in H^{1,1}(X) \cap \cohom{2}{X}{\Z}$. The latter group we know to be $\NS{X} \iso \pic{X}$ and the intersection pairing $\intersect{\cdot}{\cdot}$ restricted to $\pic{X}$ is non-degenerate by Proposition \ref{picard group torsion free}. Hence there always exists a line bundle $\mathcal L \in \pic{X}$, such that $\intersect{v_1}{\cclass[1](\mathcal L)} \neq 0$. Together with the Hodge isometries of the previous case, we can achieve $v_0 > 0$. 
     \end{itemize} 
     The Mukai vector $v$ also satisfies the following two properties, both consequences of $f$ being a Hodge isometry.
     %  to a Mukai vector $v = (v_0, v_1, v_2) \in \mukai{Y}$, which satisfies the following two properties.
@@ -941,7 +945,7 @@ With all the preparations now out of the way, we may begin with the proof.
     \noindent
     \textsl{Identifying $M_v$ and $Y$.}
     As a consequence of Theorem \ref{Db(-) detects K3}, we first conclude that the fine moduli space $M_v$ is also a complex K3 surface!
-    It is left to show that $\derb{X}$ and $\derb{Y}$ are equivalent. We will prove this by showing an important result by itself, that is
+    It is left to show that $\derb{X}$ and $\derb{Y}$ are equivalent. We will prove this by showing an important result by itself, that
     \begin{center}
         $M_v$ and $Y$ are isomorphic K3 surfaces.
     \end{center}
@@ -949,7 +953,7 @@ With all the preparations now out of the way, we may begin with the proof.
     \[
         \fmcoh{\E}(e) = \fmcoh{\E}(v(k(s))) = v(\fm{\E}(k(s))) = v(\E|_s) = v.
     \]
-    In the first equality we have used that the Mukai vector of any skyscraper $k(s)$, for a closed point $s \in M_v$ is precisely $e = (0,0,1)$ by Example \ref{}. The second equality is Proposition \ref{Mukai vector FM transform interaction}. 
+    In the first equality we have used that the Mukai vector of any skyscraper $k(s)$, for a closed point $s \in M_v$ is precisely $e = (0,0,1)$ by Example \ref{Mukai vector of skyscraper}. The second equality is Proposition \ref{Mukai vector FM transform interaction}. 
     % where in the first equality we have used that the Mukai vector of any skyscraper $k(s)$, for a closed point $s \in M$ is precisely $e = (0,0,1)$ by Example \ref{} and in the second equality 
     Transform $\fm{\E}$ being an equivalence, shows $\fmcoh{\E}$ is a Hodge isometry by Corollary \ref{FM equivalence implies FM on Mukai is an isomorphism}. Since $\fmcoh{\E}(e) = v$ this lets us identify 
     \[

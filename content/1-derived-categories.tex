@@ -1379,10 +1379,10 @@ The procedure for computing the right derived functor $\rderived{}{F}(A^\bullet)
     \rderived{}{F}(A^\bullet) = F(I^\bullet_A).
 \]
 
-\begin{remark}
-    \label{F-adapted subcategory}
-    $F$-adapted subcat?
-\end{remark}
+% \begin{remark}
+%     \label{F-adapted subcategory}
+%     $F$-adapted subcat?
+% \end{remark}
 
 We mention that both methods give rise to right derived functors satisfying the following defining universal property. We only state this here, but refer the reader to \cite[\S III.6]{gelfand2002methods} for the claim and its proof or \cite[\S 13.3, \S 10.3, \S 7.3]{kashiwara2006categories} for a more comprehensive and high level treatment using the formalism of localization. 
 
@@ -1432,7 +1432,9 @@ We mention that both methods give rise to right derived functors satisfying the 
 
 For two composable right exact functors the following proposition tells us that first deriving and then composing, or first composing and then deriving gives essentially the same result.
 
-\begin{proposition}\textsl{\cite[\S III.7, Theorem 1]{gelfand2002methods}}
+\begin{proposition}
+    \label{composition of derived functors}
+    \textsl{\cite[\S III.7, Theorem 1]{gelfand2002methods}}
     % Let $F \colon \kcat{\A} \to \kcat{\B}$ and $G \colon \kcat{\B} \to \kcat{\mathcal C}$ be triangulated. 
     Let $F \colon \A \to \B$ and $G \colon \B \to \mathcal{C}$ be left exact functors between abelian categories. Suppose category $\A$ admits an $F$-adapted class $\I_F$, category $\B$ admits a $G$-adapted class $\I_G$ and assume that every object of $\I_F$ is sent to $\I_G$ by $F$. Then $\rderived{}{F}$, $\rderived{}{G}$ and $\rderived{}{(G \circ F)}$ exist and there is a natural isomorphism of functors
     \[
@@ -1450,7 +1452,7 @@ For two composable right exact functors the following proposition tells us that 
     \[
         \varepsilon \colon Q_{\mathcal C} \circ (G\circ F) \implies \rderived{}{(G \circ F)} \circ Q_\A.
     \]
-    Define a natural transformation $\theta := \rderived{}{G}\alpha \circ \beta F$.
+    Define a natural transformation $\theta := \rderived{}{G}\alpha \circ \beta F$, this means $\theta_{A^\bullet} = \rderived{}{G}(\alpha_{A^\bullet})\circ \beta_{F(A^\bullet)}$ for any object $A^\bullet$ of $\kplus{\A}$.
     By the universal property of $\rderived{}{(G\circ F)}$ there exists a natural transformation $\eta \colon \rderived{}{(G \circ F)} \implies \rderived{}{G} \circ \rderived{}{F}$ such that the following diagram of natural transformations commutes.
      \[\begin{tikzcd}[column sep = small]
         % https://q.uiver.app/#q=WzAsMyxbMCwxLCJhIl0sWzEsMCwiYiJdLFsyLDEsImMiXSxbMSwwLCJ4IiwyLHsibGV2ZWwiOjJ9XSxbMSwyLCJ5IiwwLHsibGV2ZWwiOjJ9XSxbMCwyLCJ6IiwwLHsibGV2ZWwiOjJ9XV0=
@@ -1739,7 +1741,9 @@ As a preliminary we introduce the \emph{graded objects} of $\A$ to be $\Z$-index
 The category $\A^\Z$ can also be thought of as the functor category from the free category of $\Z$ to $\A$, hence the notation $\A^\Z$. 
 % \info{This is introduced so I can say the differential is a morphism of degree $1$, homotopy is a morphism of degree $-1$, and makes defining $\Hom^\bullet$ just slightly easier.}
 
-For any two complexes $A^\bullet$ and $B^\bullet$ we can define a complex $\Hom^\bullet(A^\bullet, B^\bullet)$ of $k$-modules given by terms
+\begin{definition}
+    \label{definition of Hom complex}
+Let $A^\bullet$ and $B^\bullet$ be complexes of $\A$. We define the \emph{Hom complex} $\Hom^\bullet(A^\bullet, B^\bullet)$ of $k$-modules given by terms
 \[
     \Hom^i_\A(A^\bullet, B^\bullet) = \prod_{j \in \Z}\Hom_\A(A^j, B^{i + j}),
 \]
@@ -1749,6 +1753,7 @@ For any two complexes $A^\bullet$ and $B^\bullet$ we can define a complex $\Hom^
     \delta^i(f) = \left(d^{i+j}_B \circ f^j + (-1)^{i+1} f^{j+1} \circ d^j_A\right)_{j \in \Z}.
 \]
 In a moment, when specifying the dependence of the differential $\delta^i$ on the complex $B^\bullet$ will become important, we will denote it by $\delta^i_B$ instead. 
+\end{definition}
 % This differential will also be denoted by $\delta^i_B$.
 
 Set $\Hom^\bullet(A^\bullet, -)(B^\bullet) = \Hom^\bullet(A^\bullet, B^\bullet)$ and for a chain map $u\colon B^\bullet \to C^\bullet$ in $\com(\A)$ define $u_* = \Hom^\bullet(A^\bullet, -)(u) \colon \Hom^\bullet(A^\bullet, B^\bullet) \to \Hom^\bullet(A^\bullet, C^\bullet)$ to be the chain map given by the collection $(u_*^i)_{i \in \Z}$, where $u_*^i$ sends $f = (f^j)_{j \in \Z} \in \Hom^i(A^\bullet, B^\bullet)$ to $(u^{i+j} \circ f^j)_{j \in \Z}$. Then we obtain a functor
@@ -1889,6 +1894,7 @@ Its higher derived counterpart will be denoted by $\Ext^i_\A(A^\bullet, - ) := \
 % \end{remark}
 
 \begin{remark}
+    \label{bifunctors on the homotopy category}
     Behind the scenes of this whole procedure one actually consideres an additive bifunctor $F \colon \A \times \A' \to \A''$, with $\A$, $\A'$ and $\A''$ abelian, where the latter is assumed to contain countable products. From this bifunctor we induce another additive bifunctor on the level of chain complexes $F_{\pi} \colon \com(\A) \times \com(\A') \to \com(\A'')$ via the total complex of a double complex as described in \cite[\S 11.6]{kashiwara2006categories}.
     %  with terms $F^\bullet_\pi(X^\bullet, Y^\bullet) = \operatorname{tot_\pi}(F(X^\bullet, Y^\bullet))$, where $\operatorname{tot_\pi}(Z^{\bullet, \bullet})^n = \prod_{p+q = n} Z^{p,q}$. 
     It then turns out that $F_\pi$ induces a well defined triangulated bifunctor on the level of the homotopy category 
