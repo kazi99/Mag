@@ -1,4 +1,5 @@
 \section{Categorical prerequisites}
+\label{Chapter: Categorical prerequisites}
 
 The present chapter serves as a brief account of the majority of the relevant prerequisites needed to discuss derived categories.
 % This section we try to make a brief account of the majority of the relevant prerequisites needed to discuss derived categories. 
@@ -323,7 +324,7 @@ One can compose morphisms of triangles in the obvious way and the notion of an i
     \end{enumerate} 
 \end{definition}
 
-Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the definition of a \emph{pre-triangulated category}. These are essentially the categories we will be working with, since we will never use nor verify the axiom \ref{TR4}. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will in fact be honest triangulated categories.
+Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the definition of a \emph{pre-tri\-an\-gu\-lat\-ed category}. These are essentially the categories we will be working with, since we will never use nor verify the axiom \ref{TR4}. We will nevertheless use the terminology \emph{``triangulated category''} in part to remain consistent with the existent literature and more importantly because our categories will in fact be honest triangulated categories.
 
 \begin{remark}
     The object $Z$, called the \emph{cone of $f$}, in axiom \ref{TR1}\ref{TR1 iii} is unique up to isomorphism. This is seen through the use of axiom \ref{TR3} in combination with example \ref{partial homs are cohomological functors} and the five lemma \cite[Lemma 8.3.13]{kashiwara2006categories} from homological algebra in $\mod{k}$. 
@@ -686,7 +687,7 @@ and apply functor $H$ over it.
 
 The following are all specialized results characterizing, when a triangulated functor is an equivalence. 
 % We will use \ref{} in the proof of proposition \ref{}. 
-They will be used in a fundamental way in the proof of the Derived Torelli theorem. In particular we highlight Proposition \ref{Fully faithful functor on a spanning class}, Proposition \ref{Serre functors and adjoints} and Corollary \ref{condition for functor to be an equivalence}, which will be directly used in the proof. We mention that all the results of this part can be found in \cite[Chapter 1]{huybrechts2006fouriermukai}.
+They will be used in a fundamental way in the proof of the Derived Torelli theorem. In particular we highlight Proposition \ref{Fully faithful functor on a spanning class}, Proposition \ref{Serre functors and adjoints} and Corollary \ref{condition for functor to be an equivalence}, which will be directly used in the proof. We mention that all the results of this part can be found in \cite[\S 1]{huybrechts2006fouriermukai}.
 % We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
 
 \begin{definition}
@@ -793,7 +794,7 @@ They will be used in a fundamental way in the proof of the Derived Torelli theor
     ($\Rightarrow$) Let $Y$ belong to $\D'$. Since $F$ is part of an equivalence, the counit $\varepsilon_Y \colon FH(Y) \to Y$ is an isomorphism, thus, as $H(Y) \iso 0$ implies $FH(Y) \iso 0$, we see that $Y \iso 0$.
 
     \noindent
-    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism (this is easily seen from diagram \eqref{eq: two adjunctions diagram} or \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}). Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[Prop.~1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
+    ($\Leftarrow$) Recall, that whenever $F$ is part of an adjunction $F \dashv H$, it is fully faithful if and only if the unit $\eta\colon \id{\D} \Longrightarrow HF$ is an isomorphism (this is easily seen from diagram \eqref{eq: two adjunctions diagram} or \cite[\href{https://stacks.math.columbia.edu/tag/07RB}{Tag 07RB}]{stacks-project}). Thus it suffices to show that the counit $\varepsilon \colon FH \Longrightarrow \id{\D'}$ is an isomorphism. Pick an object $Y$ of $\D'$ and extend $\varepsilon_Y \colon FH(Y) \to Y$ to a distinguished triangle $FH(Y) \to Y \to Z \to FH(Y)[1]$ in $\D'$. After applying the triangulated functor $H$ (\cf \cite[\S 1, Proposition 1.41]{huybrechts2006fouriermukai}) to the latter triangle, we obtain
     \[
         HFH(Y) \xrightarrow{ H(\varepsilon_Y) } H(Y) \longrightarrow H(Z) \longrightarrow HFH(Y)[1].
     \]
@@ -1066,12 +1067,12 @@ The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined t
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
-        \textsl{Morphisms:} & $\Hom_{\kcat{\A}}(X, Y) := \Hom_{\com(\A)}(X, Y)/_\htpy$
+        \textsl{Morphisms:} & $\Hom_{\kcat{\A}}(A^\bullet, B^\bullet) := \Hom_{\com(\A)}(A^\bullet, B^\bullet)/_\htpy$
     \end{tabular}
 \end{center}
 The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[\id{A^\bullet}]$. All the Hom-sets $\Hom_{\kcat{\A}}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The direct sum of two complexes $A^\bullet$ and $B^\bullet$ consists of an object $A^\bullet \oplus B^\bullet$ corresponding to the usual biproduct in $\com(\A)$ together with the homotopy classes of structure maps of its $\com(\A)$-counterpart.
 
-\vspace*{0.3 cm}
+% \vspace*{0.3 cm}
 
 \noindent
 \textsc{Triangulated structure on $\kcat{\A}$.}
@@ -1479,7 +1480,7 @@ on the homotopy category $\kcat{\A}$.
 
 It is very fruitful to consider all the cohomology functors $(H^i)_{i \in \Z}$ at once, as is witnessed by the next proposition. 
 
-\begin{proposition}\cite[Theorem 12.3.3.]{kashiwara2006categories}
+\begin{proposition}\textsl{\cite[\S 12, Theorem 12.3.3]{kashiwara2006categories}}
     \label{LES in cohomology}
     Let $0 \to A^\bullet \to B^\bullet \to C^\bullet \to 0$ be a short exact sequence in $\com(\A)$. Then there exists a long exact sequence in $\A$
     \[

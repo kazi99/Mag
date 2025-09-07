@@ -1,17 +1,20 @@
 \section{Fourier--Mukai transforms}
 \label{Chapter: Fourier-Mukai transforms}
 
-Fourier--Mukai transforms are named after two prominent mathematicians -- Fourier and Mukai. The second one naming them after the first and in the process of studying them also getting his name attached to the term. In his paper \cite{Mukai1981} Mukai introduced these transforms to study bounded derived categories of coherent sheaves on abelian varieties and their duals, discovering non-isomorphic varieties which share equivalent bounded derived categories. He named his transforms after Fourier because of their resemblance to classical Fourier transforms of analysis and also provided a dictionary to pass between the two sides of his analogy.
+Fourier--Mukai transforms are named after two prominent mathematicians -- Fourier and Mukai. The second one naming them after the first and in the process of studying them also getting his name attached to the term. In his paper \cite{Mukai1981} Mukai introduced these transforms to study bounded derived categories of coherent sheaves on abelian varieties and their duals, in the process discovering non-isomorphic varieties which share equivalent bounded derived categories. He named his transforms after Fourier because of their resemblance to classical Fourier transforms of analysis and also provided a dictionary to pass between the two sides of his analogy.
 
 In this chapter we will first define Fourier--Mukai transforms on the level of derived categories, explore some of their properties and state an important theorem of Orlov, which will be indispensable later on. The remaining part of the chapter will be devoted to passing Fourier--Mukai transforms first to the level of $K$-groups and lastly to rational cohomology. We will examine the interactions of these three views with the use of Mukai vectors.
 % and then examining their interactions via Mukai vectors. 
 
-\vspace{0.3cm}
+% \vspace{0.3cm}
 \noindent
+\textsl{Notation.}
 Let $X$ and $Y$ be smooth projective varieties over $k$ and denote the canonical projections 
 \[
     p \colon X \times Y \to X \quad \text{and} \quad q \colon X \times Y \to Y.
 \]
+% We will also transition from using $\F^\bullet$ for denoting complexes of sheaves to instead using a touch lighter notation $\F$ to denote either a single sheaf or a complex of sheaves.
+We will also transition from using $\F^\bullet$ to denote complexes of sheaves to the lighter notation $\F$, which may refer either to a single sheaf or to a complex of sheaves.
 
 \begin{definition}
     The \emph{Fourier--Mukai transform} associated to a complex $\E$ of $\derb{X \times Y}$ is defined to be the functor
@@ -43,7 +46,7 @@ Note that as the projection $p \colon X \times Y \to X$ is flat, the pull-back f
     \begin{align*}
         \fm{\struct{\Delta}}(\F) &= \rderived{}{q_*}(\derivedtensor{\struct{\Delta}}{p^*(\F)}{\struct{X \times X}}) \\
         &\iso \rderived{}{q_*}(\derivedtensor{\Delta_*\struct{X}}{{p^*}(\F)}{\struct{X \times X}}) \\
-        &\iso \rderived{}{q_*}(\Delta_*(\struct{X} \otimes_{\struct{X}}\lderived{}{\Delta^*}({q^*}(\F)))) \\
+        &\iso \rderived{}{q_*}(\Delta_*(\struct{X} \otimes_{\struct{X}}\lderived{}{\Delta^*}({p^*}(\F)))) \\
         &\iso \rderived{}{(q \circ \Delta)_*}(\lderived{}{(p \circ \Delta)^*}(\F)) \\
         &\iso \F.
     \end{align*}
@@ -102,6 +105,10 @@ Note that as the projection $p \colon X \times Y \to X$ is flat, the pull-back f
     }
 \end{enumerate}
 \end{example}
+
+\begin{remark}
+    From now on we will consider all our functors on derived categories to be derived and follow the convention of not explicitly denoting them as being derived. For example we will write just $f_*$ to mean $\rderived{}{f_*}$ etc.
+\end{remark}
 
 In his paper \cite{Mukai1981} Mukai discovered that every Fourier-Mukai transform admits left and right adjoints. 
 
@@ -163,11 +170,12 @@ In his paper \cite{Mukai1981} Mukai discovered that every Fourier-Mukai transfor
     See \cite[\S 5, 5.10]{huybrechts2006fouriermukai}. The proof utilizes the projection formula \eqref{eq: projection formula} and the flat base change formula \eqref{eq: flat base change formula}. Essentially this means that it is far less sophisticated than the proof of the existence of adjoints.    
 \end{proof}
 
-The following is a celebrated theorem by Orlov, which shed a new light on the topic of triangulated functors between bounded derived categories of coherent sheaves on smooth projective varieties. Its main advantage lies in the fact that instead of studying fully faithful triangulated functors on their own, one can study them in simpler terms using their Fourier--Mukai kernels. One finds this theorem in \cite[Theorem 3.2.2]{Orlov2003}.
+The following is a celebrated theorem by Orlov, which shed a new light on the topic of triangulated functors between bounded derived categories of coherent sheaves on smooth projective varieties. Its main advantage lies in the fact that instead of studying fully faithful triangulated functors on their own, one can study them in simpler terms using their Fourier--Mukai kernels. 
+% One finds this theorem in \cite[Theorem 3.2.2]{Orlov2003}.
 % in the fact that we can study 
 % It can be interpreted to provide a way 
 
-\begin{theorem}[Orlov \text{\cite[Theorem 3.2.2]{Orlov2003}}]
+\begin{theorem}[\text{\cite[Theorem 3.2.2]{Orlov2003}}]
     \label{Orlov's theorem}
     Let $X$ and $Y$ be smooth projective varieties over a field $k$. Suppose $F \colon \derb{X} \to \derb{Y}$ is a triangulated fully faithful functor admitting a left (or right) adjoint functor. Then there exists up to an isomorphism a unique object $\E$ of $\derb{X \times Y}$ such that $F$ and $\fm{\E}$ are naturally isomorphic.
 \end{theorem}
@@ -176,11 +184,12 @@ The following is a celebrated theorem by Orlov, which shed a new light on the to
     \begin{enumerate}[label = (\roman*)]
         \item Theorem \ref{Orlov's theorem} may be applied to any triangulated equivalence $F$ between bounded derived categories $\derb{X}$ and $\derb{Y}$. This is what we will do most often. 
         \item Due to bounded derived categories being equipped with Serre functors (Proposition \ref{Serre functor on Db(X)}), the assumptions that $F$ admits a left or a right adjoint are equivalent by Proposition \ref{Serre functors and adjoints}.
+        \item{Even though this theorem was generally believed to be false without the fully faithfulness assumption, the first example of a non-Fourer--Mukai triangulated functor between bounded derived categories of coherent sheaves of two smooth projective varieties was given only in 2019 \cite{RizzardoVanDenBerghNeeman2019}.}
     \end{enumerate}
 \end{remark}
 
 % Once equipped with Orlov's Theorem \ref{Orlov's theorem}, we are able to prove a beautiful 
-We say that smooth varieties $X$ and $Y$ are \emph{derived equivalent}, if there exists a triangulated equivalence $\derb{X} \iso \derb{Y}$. Due to the above theorem by Orlov, varieties $X$ and $Y$ are in that case called \emph{Fourier--Mukai partners.}
+We say that varieties $X$ and $Y$ are \emph{derived equivalent}, if there exists a triangulated equivalence $\derb{X} \iso \derb{Y}$. Due to the above theorem by Orlov, varieties $X$ and $Y$ are in that case called \emph{Fourier--Mukai partners.}
 This leads us to the following beautiful application of Orlov's theorem. It is also an important statement by itself, providing evidence for why the bounded derived category of coherent sheaves is a nicely behaved invariant for smooth projective varieties. In particular it says that $\derb{-}$ detects the dimension and triviality of the canonical bundle.  
 % showing that the bounded derived categories of coherent sheaves on smooth and projective varieties over $k$ detect dimension and triviality of the canonical bundle. 
 \begin{theorem}[\text{\cite[\S 4, Proposition 4.1]{huybrechts2006fouriermukai}}]
@@ -605,9 +614,10 @@ Precisely this property allows us to extend $\chi(X,-)$ to a group homomorphism 
 % Evaluated against a fundamental class $[X]$ 
 
 \begin{remark}
-    The integral on the right hand side we will take to be $\int_X \ch{\E}\tdclass{X} = \pairing{\ch{\E}\tdclass{X}}{[X]}$. 
+    The integral on the right hand side we will take to be $\int_X \ch{\E}\tdclass{X} = \pairing{(\ch{\E}\tdclass{X})_n}{[X]}$, where $n$ denotes the real dimension of $X$. 
     % In other words to compute the right side we only calculate the top degree contributions of the product $\ch{\E}\td{X}$
-    Letting $n$ denote the real dimension of $X$, computing the integral amounts to calculating the $n$-th degree contributions of the product $\ch{\E}\td{X}$ and evaluating them into a rational number through the isomorphism $\cohom{n}{X}{\Q} \iso \Q$, given by the choice of a fundamental class $[X]$.
+    % Letting $n$ denote the real dimension of $X$, 
+    Computing the integral then amounts to calculating the $n$-th degree contributions of the product $\ch{\E}\tdclass{X}$ and evaluating them into a rational number through the isomorphism $\cohom{n}{X}{\Q} \iso \Q$, given by the choice of a fundamental class $[X]$.
 \end{remark}
 
 \begin{proof}

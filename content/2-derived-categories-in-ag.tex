@@ -4,7 +4,7 @@
 This chapter will be devoted to applying results of Chapter \ref{Chapter: Derived categories} to the abelian category $\coherent{X}$ of coherent sheaves on $X$. 
 We will first define the bounded derived category of coherent sheaves $\derb{X}$ of a scheme $X$ over $k$ and discuss how this category fits into the broader context of other derived categories. We prove that under some assumptions $\derb{X}$ is indecomposable and admits a spanning class, which will play an important role later on. Generalizing Serre duality we also equip $\derb{X}$ with a Serre functor 
 
-The second section will cover the construction of various different derived functors having their origin in geometry. These will include the global sections functor, the push-forward along a morphism, the internal Hom-functor and Ext-functors, the tensor product and Tor-functors, and the pull-back along a morphism. 
+The second section will cover the construction of various different derived functors having their origin in geometry. These will include the global sections functor, the push-forward along a morphism, different Hom-functors and Ext-functors, the tensor product and Tor-functors, and the pull-back along a morphism. 
 We will conclude this chapter by providing a collection of results showcasing relationships that hold between the derived functors of the previous section. These will serve as convenient computational tools especially in Chapter \ref{Chapter: Fourier-Mukai transforms} on Fourier-Mukai transforms.
 
 \subsection{Derived category of coherent sheaves}
@@ -18,12 +18,12 @@ One of the main invariants of a scheme $X$ over $k$ is its category of coherent 
 In this section some of the results will have to be given without proof
 but we will provide precise references when required. Certain results will serve as the groundwork on which the theory is then further developed, for example statements like certain functors map coherent sheaves into coherent shaves, while others, like Grothendieck-Verdier duality, lie well outside the scope of this thesis, but are relevant for establishing certain relations among the derived functors. We also mainly focus on showcasing the methods and interactions between the derived functors and not that much on being as general as one can be. 
 
-\vspace{0.3cm}
+% \vspace{0.3cm}
 \noindent
 \textsl{Notation.}
 Copying Huybrechts \cite{huybrechts2006fouriermukai}, we will denote by $\mathcal H^i(\F^\bullet)$ the $i$-th cohomology of a complex $\F^\bullet$, not to mistake it for sheaf cohomology $\cohom{i}{X}{\F}$ of $X$ with coefficients in a sheaf $\F$.
 
-\vspace{0.3cm}
+% \vspace{0.3cm}
 
 As observed in Chapter \ref{Chapter: Derived categories} the construction of derived functors relied heavily on the existence of some special class of objects in the domain category. The most special of them all being the class of injective objects. As the category of coherent sheaves on $X$ often does not contain enough injectives\footnote{Intuitively this statement may be mirrored with the analogous statement that injective $A$-modules almost never appear to be finitely generated.}, we are forced to expand our scope. Luckily, the contrary is true, if we restrict ourself to noetherian schemes and replace coherent sheaves with quasi-coherent ones. 
 
@@ -151,7 +151,9 @@ As observed in Chapter \ref{Chapter: Derived categories} the construction of der
         % is not isomorphic to a direct sum of two non-trivial $R$-modules. 
     }, for every $x \in X$, either $\F_{0,x} = 0$ or $\F_{1,x} = 0$, meaning $\supp{\F_0} \cap \supp{\F_1} = \varnothing$. By connectedness of $X$, it follows that either $\F_0 = 0$ or $\F_1 = 0$, thus, without loss of generality, we may assume that $\struct{X}$ belongs to $\D_0$. 
 
-    Secondly picking any closed point $x \in X$, we see that $k(x)$ belongs to $\D_0$ as well. Indeed, as with $\struct{X}$, we may decompose $k(x)$ as $k(x) \iso \F_0 \oplus \F_1$ in $\coherent{X}$ for some coherent sheaves $\F_i$ belonging to $\D_i$. Then firstly $\supp{\F_i} \subset \{x\}$ and computing the stalk at $x$ shows either $\F_0$ or $\F_1$ is trivial. If $\F_1 = 0$, $k(x)$ belongs to $\D_0$, but if $\F_0 = 0$, then the isomorphism $k(x) \iso \F_1$ allows us to construct a non-zero homomorphism of sheaves $\struct{X} \to k(x) \to \F_1$\footnote{The morphism $\struct{X} \to k(x)$ comes from the morphism $\spec{k} \to X$, which includes the closed point $x$ into $X$.}, contradicting orthogonality of $\D_0$ and $\D_1$.
+    Secondly picking any closed point $x \in X$, we see that $k(x)$ belongs to $\D_0$ as well. Indeed, as with $\struct{X}$, we may decompose $k(x)$ as $k(x) \iso \F_0 \oplus \F_1$ in $\coherent{X}$ for some coherent sheaves $\F_i$ belonging to $\D_i$. Then firstly $\supp{\F_i} \subset \{x\}$ and computing the stalk at $x$ shows either $\F_0$ or $\F_1$ is trivial. If $\F_1 = 0$, $k(x)$ belongs to $\D_0$, but if $\F_0 = 0$, then the isomorphism $k(x) \iso \F_1$ allows us to construct a non-zero homomorphism of sheaves $\struct{X} \to k(x) \to \F_1$,
+    % \footnote{The morphism $\struct{X} \to k(x)$ comes from the morphism $\spec{k} \to X$, which includes the closed point $x$ into $X$.}
+    contradicting orthogonality of $\D_0$ and $\D_1$. In the latter composition the morphism $\struct{X} \to k(x)$ comes from the morphism $\spec{k} \to X$, which includes the closed point $x$ into $X$.
 
     To finish off the proof, we now show that $\D_1$ contains only trivial objects. Suppose $\F^\bullet$ is an object of $\D_1$. If $\F^\bullet$ is not trivial, let $m \in \Z$ be maximal with the property $\mathcal H^m(\F^\bullet) \neq 0$. Then $\supp{\mathcal H^m(\F^\bullet)} \neq \varnothing$ and there is a \emph{closed} point $x \in X$, which is also contained in $\supp{\mathcal H^m(\F^\bullet)}$\footnote{
         If $x_0 \in \supp{\mathcal H}$ is not a closed point, consider it inside an affine open chart $U \iso \spec{A}$. Then $\supp{\mathcal H} \cap U$ corresponds in $\spec{A}$ to a non-empty closed subset of the form $V(I)$ for some ideal $I \trianglelefteq A$. Since every ideal $I$ is contained in some maximal ideal, we obtain a closed point of $V(I)$ in this way.
@@ -218,9 +220,9 @@ The above proposition relies on a finiteness result of Serre found in \cite[\S I
 Recall, that for a smooth and projective scheme $X$ over $k$ of dimension $n$, Serre duality \cite[\S III, Theorem 7.6]{Hartshorne1977} states that for any coherent sheaf $\F$ on $X$ there is an isomorphism
 \begin{equation}
     \label{eq: Classic Serre duality}
-    \Ext_{\struct{X}}^{n-i}(\F, \omega_X) \iso \cohom{i}{X}{\F}^*.
+    \Ext_{\struct{X}}^{n-i}(\F, \omega_X) \iso \cohom{i}{X}{\F}^*,
 \end{equation}
-Generalizing Serre's duality theorem for smooth projective schemes over $k$ to the context of complexes leads us to define Serre functors. This also clarifies why we called such functors \emph{Serre functors} already in Section \ref{Subsection: Triangulated categories}, where no geometry was present. 
+where $\omega_X$ denotes the canonical bundle of $X$ \ie the $n$-th exterior power of the sheaf of Kähler differentials, $\omega_X = \bigwedge^n \Omega_X$. Generalizing Serre's duality theorem for smooth projective schemes over $k$ to the context of complexes leads us to define Serre functors. This also clarifies why we called such functors \emph{Serre functors} already in Section \ref{Subsection: Triangulated categories}, where no geometry was present. 
 
 \begin{definition}
     \label{Serre functor on Db(X)}

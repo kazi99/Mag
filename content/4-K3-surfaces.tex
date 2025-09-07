@@ -1,10 +1,7 @@
 \section{K3 surfaces}
 \label{Chapter: K3}
 
-This chapter serves as a gentle introduction and overview of the main properties of K3 surfaces. 
-
-We will start off by defining algebraic K3 surfaces and their complex counterparts. Next, using a combination of both viewpoints we will derive the most important invariants of K3 surfaces.
-We will start with computing the Chern and Todd classes, which will enable us to compute the so-called Hodge diamond of a K3 surface. Using some topological methods we will identify all the integral cohomology groups. Along the way we will introduce the Picard and Néron--Severi group and see that they are isomorphic. We will conclude the chapter with examining the intersection pairing and finally stating the global Torelli theorem at the end characterizing K3 surfaces through their Hodge lattices. 
+This chapter serves as a gentle introduction and overview of the main properties of K3 surfaces. We will start off by defining algebraic K3 surfaces and their complex counterparts. Next, using a combination of both viewpoints we will derive the most important invariants of K3 surfaces, beginning with the computation of the Chern and Todd classes, which will enable us to compute the so-called Hodge diamond of a K3 surface. Using some topological methods we will identify all the integral cohomology groups. Along the way we will introduce the Picard and Néron--Severi group and see that they are isomorphic. We will conclude the chapter with examining the intersection pairing and finally stating the global Torelli theorem at the end characterizing K3 surfaces through their Hodge lattices. 
 % staring with computing their integral cohomology groups using the exponential sequence. We will shed some light on the Hodge decomposition and compute the so-called Hodge diamond of a K3 surface. We will conclude the chapter with examining the intersection pairing and introducing the Picard and Neron-Severi groups. 
 
 % \vspace{0.15cm}
@@ -176,7 +173,7 @@ This already allows us to compute the Hodge numbers of a K3 surface $X$.
     Thus, since $h^{0,1}(X) = h^{2,1}(X) = 0$, we get $h^{1,1}(X) = 20$.
 \end{proof}
 
-Notice that Proposition \ref{Hodge lattice, fm transform interaction}, says in particular that a Fourier--Mukai transform, which arises from an equivalence of derived categories, preserves columns of the Hodge diamond. As a consequence of the Hodge numbers just computed above, we prove that the bounded derived category $\derb{-}$ ``detects K3 surfaces''.
+Notice that Proposition \ref{Hodge lattice, fm transform interaction}, says in particular that a Fourier--Mukai transform, which arises from an equivalence of derived categories, preserves sums of all the columns in the Hodge diamond. As a consequence of the Hodge numbers just computed above, we prove that the bounded derived category $\derb{-}$ ``detects K3 surfaces''.
 % As a consequence of the Hodge numbers just computed and Proposition \ref{Hodge lattice, fm transform interaction}, saying in particular that a Fourier--Mukai transform, which is an isomorphism, preserves columns of the Hodge diamond, we prove that $\derb{-}$ ``detects K3 surfaces''.
 
 \begin{theorem}
@@ -346,7 +343,7 @@ The Chern character of a coherent sheaf $\E$ being integral implies also that it
 Thus, one easily sees that the Mukai vector on a K3 surface is integral because it has the following from
 \begin{align}
     v(\E) &= \ch[0](\E) + \ch[1]{\E} + \bigl(\ch[2]{\E} + \ch[0]{\E}\mu_X\bigr)
-    \notag \\
+    \label{eq: Mukai vector on K3 chern character} \\
     &= \rk{\E} + \cclass[1]{\E} + \frac{1}{2}\Bigl(\cclass[1]{\E}^2 - 2\cclass[2]{\E}\Bigr) + \rk{\E}\mu_X. \notag
 \end{align}
 We also remark that on a K3 surface the inverse of the square root of the Todd class $(\sqrt{\tdclass{X}})\inv$ equals $1 - \mu_X$ and is therefore integral as well.
@@ -367,7 +364,7 @@ With the Néron--Severi group seen as a sublattice of $\cohom{2}{X}{\Z}$ one can
 
 \subsubsection*{Global Torelli theorem}
 
-Lastly we mention the global Torelli theorem. It will be utilized in the last chapter to prove that a K3 surface $Y$ is isomorphic to a moduli space of certain sheaves on its Fourier--Mukai partner. We have already seen that $\cohom{2}{X}{\Z}$ comes equipped with a lattice structure given by the intersection pairing. Moreover due to $X$ being a complex projective manifold it also posseses a Hodge structure. We will call such lattices Hodge lattices and two Hodge lattices will be considered isomorphic, if there is a \emph{Hodge isometry} between them. 
+Lastly we mention the global Torelli theorem. It will be utilized in the last chapter to prove that a K3 surface $Y$ is isomorphic to a moduli space of certain sheaves on its Fourier--Mukai partner. We have already seen that $\cohom{2}{X}{\Z}$ comes equipped with a lattice structure given by the intersection pairing. Moreover due to $X$ being a complex projective manifold it also posseses a Hodge structure. We will call such lattices \emph{Hodge lattices} and two Hodge lattices will be considered isomorphic, if there is a \emph{Hodge isometry} between them. 
 
 \begin{definition}
 
