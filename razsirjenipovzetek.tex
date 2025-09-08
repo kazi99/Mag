@@ -17,8 +17,8 @@ Dodani členi se pravzaprav pojavijo kot slike višjih izpeljanih funktorjev pot
 \[
     \derb{X} = \derb{\coherent{X}}.
 \]
-Izpeljana kategorija se potem sama po sebi izkaže za zanimiv objekt preiskave zaradi svoje kompleksnosti in ker se pojavi kot obetavna invarianta gladkih projektivnih raznoterosti. V posebnem postane pomenljivo vprašanje v kolikšni meri se informacija o raznoterosti porazgubi, ko preidemo na njeno izpeljano kategorijo?  V ta namen pravimo, da sta raznoterosti $X$ in $Y$ izpeljano ekvivalentni, kadar imata ekvivalentni izpeljani kategoriji $\derb{X}\iso \derb{Y}$. Izkaže se, da je v določenih primerih mogoče raznoterost popolnoma prepoznati zgolj na podlagi njenega odtisa na izpeljani kategoriji. O tem priča izrek Bondala in Orlova \cite{BondalOrlov2001}, ki v primeru gladkih projektivnih raznoterosti $X$ in $Y$, pravi da se zanju pojma izpeljane ekvivalentnosti in izomorfnosti sovpadata, če je le bodisi kanonični bodisi anti-kanonični sveženj raznoterosti $X$ obilen\footnote{
-    Sveženj premic $\mathcal L$ na $X$ je \emph{obilen} (angl.~\emph{ample}), če za vsak koherentni snop $\F$ na $X$ obstaja število $n_\F \in \N$, da je za vse $n \geq n_\F$ snop $\F \otimes \mathcal L^{\otimes n}$ generiran z globalnimi prerezi.
+Izpeljana kategorija se potem sama po sebi izkaže za zanimiv objekt preiskave zaradi svoje kompleksnosti in ker se pojavi kot obetavna invarianta gladkih projektivnih raznoterosti. V posebnem postane pomenljivo vprašanje v kolikšni meri se informacija o raznoterosti porazgubi, ko preidemo na njeno izpeljano kategorijo?  V ta namen pravimo, da sta raznoterosti $X$ in $Y$ izpeljano ekvivalentni, kadar imata ekvivalentni izpeljani kategoriji $\derb{X}\iso \derb{Y}$. Izkaže se, da je v določenih primerih mogoče raznoterost popolnoma prepoznati zgolj na podlagi njenega odtisa na izpeljani kategoriji. O tem priča izrek Bondala in Orlova \cite{BondalOrlov2001}, ki v primeru gladkih projektivnih raznoterosti $X$ in $Y$, pravi da se zanju pojma izpeljane ekvivalentnosti in izomorfnosti sovpadata, če je le bodisi kanonični bodisi anti-kanonični sveženj raznoterosti $X$ bujen\footnote{
+    Sveženj premic $\mathcal L$ na $X$ je \emph{bujen} (angl.~\emph{ample}), če za vsak koherentni snop $\F$ na $X$ obstaja število $n_\F \in \N$, da je za vse $n \geq n_\F$ snop $\F \otimes \mathcal L^{\otimes n}$ generiran z globalnimi prerezi.
 }.
 % , pravi da sta $X$ in $Y$ izomorfni natanko tedaj, ko obstaja triangulirana ekvivalenca med njunima izpeljanima kategorijama. 
 Obstajajo pa tudi primeri, ko tovrstni zaključki niso resnični. V članku \cite{Mukai1981} je Mukai na primeru abelovih raznoterosti pokazal, da obstajajo pari neizomorfnih a izpeljano ekvivalentnih raznoterosti.
@@ -127,14 +127,14 @@ Kohomologijo verižnega kompleksa $A^\bullet$ v stopnji $i \in \Z$ definiramo ko
 	\arrow["f"', from=1-3, to=2-5]
     \end{tikzcd}
 \end{equation*}
-pri tem pa je $s$ kvazi-izomorfizem. Če na ustrezen način (kot je opisano v poglavju \ref{Chapter: Derived categories}) definiramo, kdaj sta dve levi strehi ekvivalentni in kako komponirati ekvivalenčne razrede le teh, postane $\dercat{\A}$ kategorija. Še več, triangulirana struktura na $\kcat{\A}$ se preko lokalizacijskega funktorja $Q_\A \colon \kcat{\A} \to \dercat{\A}$ naravno spusti na $\dercat{\A}$ tako da tudi ta postane triangulirana kategorija. Kot pri $\kcat{\A}$ se tudi tu pojavijo omejene različice $\derplus{\A}$, $\derminus{\A}$ in $\derb{\A}$ kot polne podkategorije $\dercat{\A}$, ki jih zaporedoma sestavljajo navzdol omejeni, navzgor omejeni in omejeni kompleksi. Omenimo še da tako kostruirana izpeljana kategorija zadošča naslednji univerzalni lastnosti. 
+pri tem pa je $s$ kvazi-izomorfizem. Če na ustrezen način (kot je opisano v poglavju \ref{Chapter: Derived categories}) definiramo, kdaj sta dve levi strehi ekvivalentni in kako komponirati ekvivalenčne razrede le-teh, postane $\dercat{\A}$ kategorija. Še več, triangulirana struktura na $\kcat{\A}$ se preko lokalizacijskega funktorja $Q_\A \colon \kcat{\A} \to \dercat{\A}$ naravno spusti na $\dercat{\A}$ tako da tudi ta postane triangulirana kategorija. Kot pri $\kcat{\A}$ se tudi tu pojavijo omejene različice $\derplus{\A}$, $\derminus{\A}$ in $\derb{\A}$ kot polne podkategorije $\dercat{\A}$, ki jih zaporedoma sestavljajo navzdol omejeni, navzgor omejeni in omejeni kompleksi. Omenimo še, da tako konstruirana izpeljana kategorija zadošča naslednji univerzalni lastnosti. 
 
 \begin{definicija}
     % \label{universal property of D(A)}
     Naj bo $\A$ abelova kategorija in $\kcat{\A}$ njena homotopska kategorija. Kategorija $\dercat{\A}$ skupaj s funktorjem $Q_\A\colon \kcat{\A} \to \dercat{\A}$ je izpeljana kategorija kategorije $\A$, če zadošča: 
     \begin{enumerate}[label = (\roman*)]
         \item Za vsak kvazi-izomorfizem $s$ v $\kcat{\A}$, je $Q_\A(s)$ izomorfizem v $\dercat{\A}$
-        \item Za vsako kategorijo $\D$ in funktor $F\colon \kcat{\A} \to \D$, ki slika kvazi-izomorfizme $s$ iz $\kcat{\A}$ v izomorfozme $\D$, obstaja do naravnega izomorfizma natančno enoličen funktor $F_0 \colon \dercat{\A} \to \D$, za katerega $F \natiso F_0 \circ Q_\A$. Z drugimi besedami spodnji diagram komutira do naravnega izomorfizma natančno
+        \item Za vsako kategorijo $\D$ in funktor $F\colon \kcat{\A} \to \D$, ki slika kvazi-izomorfizme $s$ iz $\kcat{\A}$ v izomorfizme $\D$, obstaja do naravnega izomorfizma natančno enoličen funktor $F_0 \colon \dercat{\A} \to \D$, za katerega $F \natiso F_0 \circ Q_\A$. Z drugimi besedami spodnji diagram komutira do naravnega izomorfizma natančno
         \[\begin{tikzcd}
             % https://q.uiver.app/#q=WzAsMyxbMCwwLCJLKFxcQSkiXSxbMCwxLCJEKFxcQSkiXSxbMSwwLCJcXEQiXSxbMCwyLCJGIl0sWzAsMSwiUSIsMl0sWzEsMiwiRl9cXEEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
             {\kcat{\A}} & \D \\
@@ -198,7 +198,7 @@ V posebnem nam ta teorija omogoča izpeljati Hom-funktorje $\Hom_\A(A, -)$ za po
 
 \subsection*{Izpeljane kategorije v geometriji}
 
-Naj bo $X$ shema. Spomnimo se, da je snop $\struct{X}$-modulov $\F$ \emph{qvazi-koherenten}, če ga je lokalno mogoče predstaviti kot kojedro morfizma med dvema prostima $\struct{X}$-moduloma. Z drugimi besedami to pomeni, da za vsako točko $x \in X$ obstaja odprta okolica $U \subseteq X$, ki vsebuje $x$, in obstaja eksaktno zaporedje oblike 
+Naj bo $X$ shema. Spomnimo se, da je snop $\struct{X}$-modulov $\F$ \emph{kvazi-koherenten}, če ga je lokalno mogoče predstaviti kot kojedro morfizma med dvema prostima $\struct{X}$-moduloma. Z drugimi besedami to pomeni, da za vsako točko $x \in X$ obstaja odprta okolica $U \subseteq X$, ki vsebuje $x$, in obstaja eksaktno zaporedje oblike 
 \[
     \OO_{X|U}^{\oplus I} \to \OO_{X|U}^{\oplus J} \to \F|_U \to 0.
 \]
@@ -208,7 +208,7 @@ Skupka vseh kohernetnih \oz kvazi-kohernetnih snopov tvorita polni abelovi podka
 \[
     \derb{X} = \derb{\coherent{X}}.
 \]   
-Privzeli bomo da so naše sheme noetherske \tj kvazi-kompaktne in lokalno predstavljive s spektri noetherskih kolobarjev, saj tedaj velja, da kategorija kvazi-kohernetnih snopov $\quasicoh{X}$ vsebuje dovolj injektivnih objektov. Slednje se s pridom uporabi za kostrukcijo mnogih izpeljanih funktorjev na $\derb{X}$. Namreč izkaže se, da vložitev kategorije $\derb{X}$ v $\derb{\quasicoh{X}}$ porodi ekvivalenco trianguliranih kategorij 
+Privzeli bomo da so naše sheme noetherske \tj kvazi-kompaktne in lokalno predstavljive s spektri noetherskih kolobarjev, saj tedaj velja, da kategorija kvazi-kohernetnih snopov $\quasicoh{X}$ vsebuje dovolj injektivnih objektov. Slednje se s pridom uporabi za konstrukcijo mnogih izpeljanih funktorjev na $\derb{X}$. Namreč izkaže se, da vložitev kategorije $\derb{X}$ v $\derb{\quasicoh{X}}$ porodi ekvivalenco trianguliranih kategorij 
 \[
     \derb{X} \natiso \mathsf{D}^b_{\mathsf{coh}}(\quasicoh{X}),
 \]
@@ -285,7 +285,7 @@ Kot kompozicija samih trianguliranih funktorjev, vidimo, da je tudi funktor $\fm
     Naj bo funktor $F \colon \derb{X} \to \derb{Y}$ trianguliran zvest in poln in naj obstaja bodisi levi bodisi desni adjunkt $F$. Tedaj obstaja do izomorfizma natančno določeno jedro $\E$ iz $\derb{X \times Y}$, da je $F$ naravno izomorfen Fourier--Mukaijevi transformaciji $\fm{\E}$.
 \end{izrek}
 % ki zagotovi, da so vsi triangulirani zvesti in polni funktorji $\derb{X} \to \derb{Y}$, ki dopuščajo levi (ali ekvivalentno desni) adjunkt, Fourier--Mukaijevega tipa. 
-Ta pristop je s pridom uporabil Orlov \cite{Orlov2003} pri dokazu izpeljanega Torellijevega izreka, ki ga obravnavamo v zadnjem poglavju. Omenimo tudi, da je kompozicija Fourier--Mukaijevih transformacij spet Fourier--Mukai\-je\-vega tipa. Presenetljivo vse Fourier--Mu\-kai\-jeve transformacje $\fm{\E} \colon \derb{X} \to \derb{Y}$ dopuščajo tudi leva in desna adjunkta, ki sta pravtako Fourier--Mukaijevi transformaciji z jedri 
+Ta pristop je s pridom uporabil Orlov \cite{Orlov2003} pri dokazu izpeljanega Torellijevega izreka, ki ga obravnavamo v zadnjem poglavju. Omenimo tudi, da je kompozicija Fourier--Mukaijevih transformacij spet Fourier--Mukai\-je\-vega tipa. Presenetljivo vse Fourier--Mu\-kai\-jeve transformacije $\fm{\E} \colon \derb{X} \to \derb{Y}$ dopuščajo tudi leva in desna adjunkta, ki sta prav tako Fourier--Mukaijevi transformaciji z jedri 
 \[
     \ladj{\E} = \E^\vee \otimes_{\struct{X \times Y}} q^*\omega_Y[\dim Y] \quad \text{in} \quad 
     \radj{\E} = \E^\vee \otimes_{\struct{X \times Y}} p^*\omega_X[\dim X].
@@ -299,13 +299,13 @@ Pravimo da sta gladki projektivni raznoterosti $X$ in $Y$ \emph{izpeljano ekviva
 \[
     \derb{X} \natiso \derb{Y}.
 \]
-Ker je po izreku Orlova vsaka ekvivalenca tudi Fourier--Mukaijeva transformacija, imenujemo izpeljano ekvivalentni raznoterosi $X$ in $Y$ tudi \emph{Fourier--Mukaijeva partnerja}. Izrek Orlova nam tudi omogiči sklepati, da si Fourier--Mukaijeva partnerja delita nekaj skupnih geometrijskih lastnosti. To povzema naslednji izrek.
+Ker je po izreku Orlova vsaka ekvivalenca tudi Fourier--Mukaijeva transformacija, imenujemo izpeljano ekvivalentni raznoterosti $X$ in $Y$ tudi \emph{Fourier--Mukaijeva partnerja}. Izrek Orlova nam tudi omogoči sklepati, da si Fourier--Mukaijeva partnerja delita nekaj skupnih geometrijskih lastnosti. To povzema naslednji izrek.
 
 \begin{izrek}
     Naj bosta $X$ in $Y$ Fourier--Mukaijeva partnerja. Tedaj je $\dim X = \dim Y$ in če ima $X$ trivialen kanonični sveženj ga ima tudi $Y$. 
 \end{izrek}
 
-Eventuelno bomo Fourier--Mukaijeve transformacije inducirali tudi na racionalni kohomologiji, pred tem pa se je potrebno spustiti še skozi $K$-teorijo. Gladki projektivni raznoterosti $X$ priredimo $K$-grupo, ki je podana kot naslednji kvocient. Prosto grupo genrirano z vsemi izomorfnostnimi razredi koherentnih snopov na $X$ delimo z njeno podgrupo, ki je generirana z elementi oblike $[\E] - [\F] + [\G]$, pri pogoju da obstaja kratko eksaktno zaporedje oblike $0 \to \E \to \F \to \G \to 0$. Označimo jo s $\kgroup{X}$. S predpisom $[\F^\bullet] = \sum_{i \in \Z} (-1)^i[\F^i]$ je mogoče razumeti tudi omejene verižne komplekse iz $\derb{X}$ kot elemente $\kgroup{X}$. Pri tem se izkaže, da je ta predpis odvisen le od izomorfnostnega tipa kompleksa $\F^\bullet$ znotraj $\derb{X}$. Na ta način dobimo preslikavo, ki slika objekte izpeljane kategorije $\derb{X}$ v ekvialenčne razrede abelove grupe $\kgroup{X}$. Izkaže se, da je $\kgroup{X}$ možno opremiti tudi s produktom, ki je na ekvivalenčnih razredih lokalno prostih snopih podan s predpisom 
+Eventuelno bomo Fourier--Mukaijeve transformacije inducirali tudi na racionalni kohomologiji, pred tem pa se je potrebno spustiti še skozi $K$-teorijo. Gladki projektivni raznoterosti $X$ priredimo $K$-grupo, ki je podana kot naslednji kvocient. Prosto grupo generirano z vsemi izomorfnostnimi razredi koherentnih snopov na $X$ delimo z njeno podgrupo, ki je generirana z elementi oblike $[\E] - [\F] + [\G]$, pri pogoju da obstaja kratko eksaktno zaporedje oblike $0 \to \E \to \F \to \G \to 0$. Označimo jo s $\kgroup{X}$. S predpisom $[\F^\bullet] = \sum_{i \in \Z} (-1)^i[\F^i]$ je mogoče razumeti tudi omejene verižne komplekse iz $\derb{X}$ kot elemente $\kgroup{X}$. Pri tem se izkaže, da je ta predpis odvisen le od izomorfnostnega tipa kompleksa $\F^\bullet$ znotraj $\derb{X}$. Na ta način dobimo preslikavo, ki slika objekte izpeljane kategorije $\derb{X}$ v ekvivalenčne razrede abelove grupe $\kgroup{X}$. Izkaže se, da je $\kgroup{X}$ možno opremiti tudi s produktom, ki je na ekvivalenčnih razredih lokalno prostih snopih podan s predpisom 
 \[
     [\E_0] \cdot [\E_1] = [\E_0 \otimes_{\struct{X}} \E_1].
 \]
@@ -320,7 +320,7 @@ Z uporabo dolgega eksaktnega zaporedja za desno eksaktne funktorje se lahko prep
 \[
     f_! \colon \kgroup{X} \to \kgroup{Y}, \qquad f_!([\F]) = \sum_{i \in \Z}(-1)^i[\rderived{i}{f_*}\F],
 \]
-ki je pravtako dobro definiran zaradi obstoja dolgega ekasktnega zaporedja, tokrat za levo eksaktne funktorje. Sedaj lahko vpeljemo Fourier--Mukaijevo transformacijo prirejeno jedru $\xi \in \kgroup{X \times Y}$ tudi na $K$-grupah kot
+ki je prav tako dobro definiran zaradi obstoja dolgega eksaktnega zaporedja, tokrat za levo eksaktne funktorje. Sedaj lahko vpeljemo Fourier--Mukaijevo transformacijo prirejeno jedru $\xi \in \kgroup{X \times Y}$ tudi na $K$-grupah kot
 \[
     \fmkt{\xi} \colon \kgroup{X} \to \kgroup{Y}, \qquad \fmkt{\xi} := q_!(\xi \cdot p^*(-)).
 \]
@@ -329,7 +329,7 @@ Izkaže se, da med kategorično in $K$-teoretično Fourier--Mukaijevo transforma
     \fmkt{[\E^\bullet]}([\F^\bullet]) = [\fm{\E^\bullet}(\F^\bullet)].
 \]
 
-Pri prehodu iz $K$-grup na racionalno kohomologijo moramo biti pazljivi. Zgodi se namreč subtilna menjava konteksta, kjer gladko projektivno raznoterost zamenjamo z njenim kompleksno analitičnim prosotrom po Serrovem \emph{principu GAGA} \cite{Serre1956}. V tem primeru se ta kompleksno analitečen prostor inkarnira kot projektivna kompleksna mnogoterost. Kohomološka Fourier--Mukaijeva transformacija je definirana analogno, le da se tokrat poslužimo induciranim preslikavam na kohomologiji. Za kohomološki razred $\alpha \in \cohom{\bullet}{X \times Y}{\Q}$ je ta podana kot
+Pri prehodu iz $K$-grup na racionalno kohomologijo moramo biti pazljivi. Zgodi se namreč subtilna menjava konteksta, kjer gladko projektivno raznoterost zamenjamo z njenim kompleksno analitičnim prostorom po Serrovem \emph{principu GAGA} \cite{Serre1956}. V tem primeru se ta kompleksno analitičen prostor inkarnira kot projektivna kompleksna mnogoterost. Kohomološka Fourier--Mukaijeva transformacija je definirana analogno, le da se tokrat poslužimo induciranim preslikavam na kohomologiji. Za kohomološki razred $\alpha \in \cohom{\bullet}{X \times Y}{\Q}$ je ta podana kot
 \[
     \fmcoh{\alpha} \colon \cohom{\bullet}{X}{\Q} \longrightarrow \cohom{\bullet}{Y}{\Q} \qquad \fmcoh{\alpha} = q_!(\alpha \smallsmile p^*(-)).
 \]
@@ -343,7 +343,7 @@ Pri prehodu iz $K$-grup na racionalno kohomologijo moramo biti pazljivi. Zgodi s
     znotraj kolobarja $\cohom{*}{Y}{\Q}$.
 \end{izrek}
 
-Če vpeljemo Mukaijev vektor razreda $e \in \kgroup{X}$ kot $v(e) = \ch[]{e}\sqrt{\tdclass{X}}$ in to razširimo do $v(\F^\bullet) = \ch{\F^\bullet}\sqrt{\tdclass{X}}$ za omejen kompleks koherentnih snopov $\F^\bullet$ iz $\derb{X}$ lahko s pomočjo Grothendieck--Riemann--Rochovega izreka pokažemo še zadnjo kompaibilnost
+Če vpeljemo Mukaijev vektor razreda $e \in \kgroup{X}$ kot $v(e) = \ch[]{e}\sqrt{\tdclass{X}}$ in to razširimo do $v(\F^\bullet) = \ch{\F^\bullet}\sqrt{\tdclass{X}}$ za omejen kompleks koherentnih snopov $\F^\bullet$ iz $\derb{X}$ lahko s pomočjo Grothendieck--Riemann--Rochovega izreka pokažemo še zadnjo kompatibilnost
 \[
     v(\fm{\E^\bullet}(\F^\bullet)) = \fmcoh{v(\E^\bullet)}(v(\F^\bullet))
 \]
@@ -404,7 +404,7 @@ Primer K3 ploskve, ki ga spoznamo v delu je gladka kvartika v $\PP^3$, torej hip
 %     \chi(X, \E) = \pairing{\ch[2](\E)}{[X]} + 2\rk{\E} = \pairing{\tfrac{1}{2}(\cclass[1]{\E}^2 - 2\cclass[2]{\E})}{[X]} + 2 \rk{\E}.
 % \end{equation}
 
-Na drugi strani imamo še kompleksno-geometrično različico zgornje definicije. Ta K3 ploskev definira kot povezano projektivno kompleksno mnogoterost $X$ dimenzije dva za katero pravtako velja
+Na drugi strani imamo še kompleksno-geometrično različico zgornje definicije. Ta K3 ploskev definira kot povezano projektivno kompleksno mnogoterost $X$ dimenzije dva za katero prav tako velja
 \[
     \omega_X \iso \struct{X} \quad \text{in} \quad \cohom{1}{X}{\struct{X}} = 0.
 \]
@@ -417,16 +417,16 @@ Tukaj seveda $\struct{X}$ označuje snop holomorfnih funkcij na $X$, $\omega_X$ 
     \end{equation}
 \end{trditev}
 
-Na prosti abelovi grupi $\cohom{2}{X}{\Z}$ imamo tudi presečno formo, ki je podana s pomočjo $\smallsmile$-produkta kot $\intersect{\alpha}{\beta} = \pairing{\alpha \smallsmile \beta}{[X]}$. S topološkimi argumenti je nazadnje možno določiti še naslednje lasntosti presečne forme.
+Na prosti abelovi grupi $\cohom{2}{X}{\Z}$ imamo tudi presečno formo, ki je podana s pomočjo $\smallsmile$-produkta kot $\intersect{\alpha}{\beta} = \pairing{\alpha \smallsmile \beta}{[X]}$. S topološkimi argumenti je nazadnje možno določiti še naslednje lastnosti presečne forme.
 
 \begin{trditev}
-    Naj bo $X$ K3 ploskev. Potem je presečna forma na kohomologiji $\cohom{2}{X}{\Z}$ soda in unimodularna. Rang mreže $\cohom{2}{X}{\Z}$ je tedaj $22$ njena signatura pa je $(3,19)$. Abstraktno je izomorfna
+    Naj bo $X$ K3 ploskev. Potem je presečna forma na kohomologiji $\cohom{2}{X}{\Z}$ soda in unimodularna. Rang mreže $\cohom{2}{X}{\Z}$ je tedaj $22$, njena signatura pa je $(3,19)$. Abstraktno je izomorfna
     \begin{equation}
         \cohom{2}{X}{\Z} \iso E_8(-1)^{\oplus 2} \oplus \hyperbolic^{\oplus 3}.
     \end{equation}
 \end{trditev}
 
-Pomembna invarianta K3 ploskev je tudi Picardova groupa $\pic{X}$, ki jo sestavljajo izomorfnostni razredi svežnjev premic, množenje na njej pa je podano s tenzorskim produktom. Na K3 ploskvah se izkaže, da je Picardova grupa $\pic{X}$ izomorfna Néron--Severijevi groupi $\NS{X}$ ravno zaradi karakterističnega pogoja $\cohom{1}{X}{\struct{X}} = 0$. 
+Pomembna invarianta K3 ploskev je tudi Picardova grupa $\pic{X}$, ki jo sestavljajo izomorfnostni razredi svežnjev premic, množenje na njej pa je podano s tenzorskim produktom. Na K3 ploskvah se izkaže, da je Picardova grupa $\pic{X}$ izomorfna Néron--Severijevi groupi $\NS{X}$ ravno zaradi karakterističnega pogoja $\cohom{1}{X}{\struct{X}} = 0$. 
 
 Hodgeva dekompozicija grupe $\cohom{2}{X}{\Z}$ je dekompozicija njene kompleksifikacije
 \[
@@ -445,16 +445,16 @@ Grupi $\cohom{2}{X}{\Z}$ opremljeni s presečno formo in Hodgevo dekompozicijo i
 \subsection*{Izpeljani Torellijev izrek}
 
 Izpeljani Torellijev izrek v grobem poda bolj oprijemljiv kriterij, ki pove kdaj imata dve K3 ploskvi ekvivalentni izpeljani kategoriji.
-Vključuje mnoge koncepte kot so Mukaijeve mreže, transendentalne mreže in prostori modulov stabilnih snopov na K3 ploskvah. \emph{Transcendentalna mreža} je ortogonalni koplement Néron--Severijeve grupe $\NS{X}$ v $\cohom{2}{X}{\Z}$ glede na presečno parjenje $\intersect{\cdot}{\cdot}$. Opremljena je tudi s podedovano Hodgevo strukturo iz $\cohom{2}{X}{\Z}$. Izkaže se, da ta mreža nosi ekvivalentno mero informacij o K3 ploskvi $X$ kot večja Mukaijeva mreža, ki jo sestavlja bilinearno parjenje na $\cohom{\bullet}{X}{\Z}$, podano s predpisom 
+Vključuje mnoge koncepte kot so Mukaijeve mreže, transcendantalne mreže in prostori modulov stabilnih snopov na K3 ploskvah. \emph{Transcendentalna mreža} je po definiciji ortogonalni komplement Néron--Severijeve grupe $\NS{X}$ v $\cohom{2}{X}{\Z}$ glede na presečno parjenje $\intersect{\cdot}{\cdot}$. Opremljena je tudi s podedovano Hodgevo strukturo iz $\cohom{2}{X}{\Z}$. Izkaže se, da ta mreža nosi ekvivalentno mero informacij o K3 ploskvi $X$ kot večja Mukaijeva mreža, ki jo sestavlja bilinearno parjenje na $\cohom{\bullet}{X}{\Z}$, podano s predpisom 
 \[
     \pairing{v}{w} = v_0w_2 + v_2w_0 - \intersect{v_1}{w_1}.
 \]
 Pri tem pišemo vektorja $v = (v_0, v_1, v_2)$ in $w = (w_0, w_1, w_2)$ po stopnjah glede na običajno stopničenje na $\cohom{\bullet}{X}{\Z}$, ob tem pa identificiramo $\cohom{0}{X}{\Z} \iso \Z$ in $\cohom{2}{X}{\Z} \iso \Z$. Poleg bilinearnega parjenja grupo $\cohom{\bullet}{X}{\Z}$ dopolnjuje še Hodgeva struktura, ki je v tem primeru dekompozicija njene kompleksifikacije
 \[
-    \cohom{\bullet}{X}{\Z}_\C = \widetilde{H}^{2,0}(X) \oplus \widetilde{H}^{1,1}(X) \oplus \widetilde{H}^{0,2}(X)
+    \cohom{\bullet}{X}{\Z}_\C = \widetilde{H}^{2,0}(X) \oplus \widetilde{H}^{1,1}(X) \oplus \widetilde{H}^{0,2}(X).
 \]
 % in zadošča $\olsi{\widetilde{H}^{2,0}(X)} = \widetilde{H}^{0,2}(X)$ in $\olsi{\widetilde{H}^{1,1}(X)} = \widetilde{H}^{1,1}(X)$. 
-Prosto abelovo grupo $\cohom{\bullet}{X}{\Z}$ skupaj z zgornjim bilinarnim parjenjem in opisano Hodgevo strukturo imenujemo \emph{Mukaijeva mreža} in jo označimo z $\mukai{X}$. Analogno kot pri Hodgevih mrežah $\cohom{2}{X}{\Z}$, v tem primeru izomorfizmu grup ${\phi \colon \mukai{X} \to \mukai{Y}}$ pravimo \emph{Hodgeva izometrija}, če velja $\pairing{\phi(x)}{\phi(x)} = \pairing{x}{y}$ za vse $x$, $y \in \mukai{X}$ in $\phi_\C$ ohranja Hodgevo strukturo. Izkaže se, da je za slednje dovolj zahtevati le inkluzijo $\phi_\C(H^{2,0}(X)) \subseteq H^{2,0}(Y)$.
+Prosto abelovo grupo $\cohom{\bullet}{X}{\Z}$ skupaj z zgornjim bilinearnim parjenjem in opisano Hodgevo strukturo imenujemo \emph{Mukaijeva mreža} in jo označimo s $\mukai{X}$. Analogno kot pri Hodgevih mrežah $\cohom{2}{X}{\Z}$, v tem primeru izomorfizmu grup ${\phi \colon \mukai{X} \to \mukai{Y}}$ pravimo \emph{Hodgeva izometrija}, če velja $\pairing{\phi(x)}{\phi(x)} = \pairing{x}{y}$ za vse $x$, $y \in \mukai{X}$ in $\phi_\C$ ohranja Hodgevo strukturo. Izkaže se, da je za slednje dovolj zahtevati le inkluzijo $\phi_\C(H^{2,0}(X)) \subseteq H^{2,0}(Y)$.
 
 Pomembno vlogo v dokazu izpeljanega Torellijevega izreka bo igral tudi naslednji funktor, saj bo v nekem smislu omogočil določene K3 ploskve prepoznati kot prostore modulov stabilnih snopov na $X$.
 
@@ -491,9 +491,9 @@ Sledi globok izrek, ki je izven obsega tega dela, ga pa s pridom uporabimo pri d
 \begin{izrek}
     % \label{Representability of moduli functor}
     \textsl{\cite{GottscheHuybrechts1996,huybrechts2006fouriermukai, OGrady1997,HuybrechtsLehn2010,BayerMacri2014}}
-    Naj bo $v \in \mukai{X}$ efektiven isotropičnen vektor z deljivostjo $1$. Potem na $X$ obstaja polarizacija za katero so vsi semi-stabilni snopi stabilni in funktor modulov $\M_v$ je \emph{reprezentabilen}, kar pomeni, da obstaja shema $M_v$ in naravni izomorfizem funktorjev 
+    Naj bo $v \in \mukai{X}$ efektiven izotropičnen vektor z deljivostjo $1$. Potem na $X$ obstaja polarizacija za katero so vsi semi-stabilni snopi stabilni in funktor modulov $\M_v$ je \emph{reprezentabilen}, kar pomeni, da obstaja shema $M_v$ nad $\C$ in naravni izomorfizem funktorjev 
     \[
-        \M_v \natiso \Hom_{\sch{\C}}(-, M_v)
+        \M_v \natiso \Hom_{\sch{\C}}(-, M_v).
     \]
     Poleg tega je \emph{prostor modulov} $M_v$ gladka projektivna ploskev. 
 \end{izrek}
@@ -508,7 +508,7 @@ Naposled lahko podamo še izpeljani Torellijev izrek, ki je delo Orlova \cite{Or
         \[
             \derb{X} \iso \derb{Y}.
         \]
-        \item Obstaja Hodgeva izometrija $\transc{X} \xrightarrow{\sim} \transc{Y}$ med transcendentnima mrežama ploskev $X$ in $Y$.
+        \item Obstaja Hodgeva izometrija $\transc{X} \xrightarrow{\sim} \transc{Y}$ med transcendentalnima mrežama ploskev $X$ in $Y$.
         \item Obstaja Hodgeva izometrija $\mukai{X} \xrightarrow{\sim} \mukai{Y}$ med Mukaijevima mrežama ploskev $X$ in $Y$. 
         \item Obstaja izotropičen vektor $v \in \mukai{X}$ z deljivostjo $1$, tako da je $Y$ izomorfna prostoru modulov $M_v$ stabilnih snopov na $X$ z Mukaijevim vektorjem $v$. Poleg tega je $M_v$ do izomorfizma natančno enolična K3 ploskev za katero obstaja Hodgeva izometrija 
         \[

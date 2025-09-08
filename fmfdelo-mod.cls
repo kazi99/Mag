@@ -707,8 +707,8 @@
 }
 \def\@frontpages@en@acknowledgements{
   \ifdefined\@zahvala
-    \pdfbookmark[1]{Zahvala}{zahvala}
-    \section*{Zahvala}
+    \pdfbookmark[1]{Acknowledgements}{zahvala} % Acknowledgements
+    \section*{Acknowledgements}                % Acknowledgements
     \@zahvala
     \vfill
     \cleardoublepage

@@ -58,9 +58,13 @@ which we will be denoting with the matrix
 % $X \xleftarrow{p_X} X \oplus Y \xrightarrow{p_Y} Y$ is the categorical product of $X$ and $Y$ and $X \xrightarrow{i_X} X \oplus Y \xleftarrow{i_Y} Y$.
 
 \begin{definition}
-    A category $\A$ is additive (\resp $k$-linear) 
+    % A category $\A$ is additive (\resp $k$-linear)
+    A category $\A$ is $k$-linear
     % \info{Decide on which terminology to use (everything is covered by $k$-linear...)}
-    if all the Hom-sets carry the structure of abelian groups (\resp $k$-modules) and the following axioms are satisfied
+    if all the Hom-sets carry the structure of 
+    % abelian groups (\resp $k$-modules)
+    $k$-modules 
+    and the following axioms are satisfied
     \begin{enumerate}[label = \textsf{A\arabic*}]
         \item{For all objects $X$, $Y$ and $Z$ of $\A$ the composition
         \[
@@ -88,18 +92,29 @@ which we will be denoting with the matrix
 % Whenever it will be clear from context, we will sometimes omit the subindex $\A$ from $\Hom_\A(X, Y)$ for clarity and write just $\Hom(X, Y)$ instead.
 
 \begin{definition}
-    A functor $F \colon \A \to \A'$ between two additive (\resp $k$-linear) categories $\A$ and $\A'$ is \emph{additive} (\resp \emph{$k$-linear}) if its action on morphisms
+    A functor $F \colon \A \to \A'$ between two 
+    % additive (\resp $k$-linear)
+    $k$-linear
+    categories $\A$ and $\A'$ is 
+    % \emph{additive} (\resp \emph{$k$-linear}) 
+    \emph{$k$-linear}
+    if its action on morphisms
     \[
         \hom_\A(X, Y) \to \hom_{\A'}(F(X), F(Y))
     \] 
-    is a group homomorphism (\resp $k$-linear map).
+    % is a group homomorphism (\resp $k$-linear map).
+    is a $k$-linear map.
 \end{definition}
 
-Traditionally the term \emph{additive} is reserved for $\Z$-linear categories and $\Z$-linear functors between such categories.
+\begin{remark}
+    Whenever $k$ is the ring of integers $\Z$, we will instead use the terms \emph{additive category} and \emph{additive functor} to refer to $\Z$-linear categories and $\Z$-linear functors, respectively. 
+    % between such categories.
+    % Traditionally the term \emph{additive} is reserved for $\Z$-linear categories and $\Z$-linear functors between such categories.
+\end{remark}
 
 % Traditionally $\Z$-linear categories and functors between such categories are called \emph{additive}.
 
-For a morphism $f\colon X \to Y$ in an additive category $\A$ recall that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$, if it exists. It is well-known and easy to verify that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are a monomorphism and an epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
+For a morphism $f\colon X \to Y$ in a $k$-linear category $\A$ recall that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$, if it exists. It is well-known and easy to verify that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are a monomorphism and an epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
 \begin{align*}
     (\im f \to Y) &:= \ker(Y \to \coker f) \\
     (X \to \coim f) &:= \coker(\ker f \to X).
@@ -109,7 +124,7 @@ Notice that the image and the coimage, just like the kernel and the cokernel, ar
 For a monomorphism $Y \hookrightarrow X$ we will sometimes by abuse of terminology call the cokernel $\coker(Y \to X)$ a \emph{quotient} and denote it by $X/Y$.
 
 \begin{definition}
-    A $k$-linear category $\A$ is \emph{abelian} if it is closed under kernels and cokernels and satisfies axiom \ref{A4}.
+    A $k$-linear category $\A$ is called an \emph{abelian category (over $k$)} if it is closed under kernels and cokernels and satisfies axiom \ref{A4}.
     \begin{enumerate}[label = \textsf{A4}]
         \item{For any morphism $f\colon X \to Y$ in $\A$ the canonical morphism $\coim f \xrightarrow{\ \sim \ } \im f$ is an isomorphism.
         \[\begin{tikzcd}[column sep = small]
@@ -127,7 +142,7 @@ For a monomorphism $Y \hookrightarrow X$ we will sometimes by abuse of terminolo
     \end{enumerate}
 \end{definition}
 
-Axiom \ref{A4} essentially states that abelian categories are those additive categories possessing all kernels and cokernels in which the first isomorphism theorem holds.
+Axiom \ref{A4} essentially states that abelian categories are those $k$-linear categories possessing all kernels and cokernels in which the first isomorphism theorem holds.
 
 \begin{remark}
     We obtain the morphism mentioned in axiom \ref{A4} in the following way. Due to $(\im f \to Y) = \ker(Y \to \coker f)$ and the composition $X \to Y \to \coker f$ being $0$, there is a unique morphism $X \to \im f$ by the universal property of kernels. The composition $\ker f \to X \to \im f$ then equals $0$, by $\im f \hookrightarrow Y$ being a monomorphism and $\ker f \to X \to Y$ being equal to $0$. From the universal property of cokernels we then obtain a unique morphism $\coim f \to \im f$, because $(X \to \coim f) = \coker(\ker f \to X)$.
@@ -176,10 +191,10 @@ To relate the definition of exactness with more primitive objects of an abelian 
 %     X \to Y \to Z \to 0 \quad \text{ is exact, if and only if } \quad (Y \to Z) = \coker(X \to Y).
 % \]
 
-In the context of abelian categories, functors, which preserve a bit more than just the $k$-linear structure, are of interest. This brings us to the notion of exactness of additive functors.
+In the context of abelian categories, functors, which preserve a bit more than just the $k$-linear structure, are of interest. This brings us to the notion of exactness of $k$-linear functors.
 
 \begin{definition}
-    Let $F \colon \A \to \B$ be an additive functor between abelian categories. 
+    Let $F \colon \A \to \B$ be a $k$-linear functor between abelian categories. 
     % Consider a short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$.
     \begin{enumerate}[label = (\roman*)]
         \item $F$ is said to be \emph{left exact} if $0 \to FX \to FY \to FZ$ is exact for any short exact sequence $0 \to X \to Y \to Z \to 0$ in $\A$.
@@ -189,7 +204,7 @@ In the context of abelian categories, functors, which preserve a bit more than j
 \end{definition}
 
 \begin{remark}
-    Equivalently, one can also define left exact functors to be exactly those additive functors, which commute with kernels and dually define right exact functors to be additive functors commuting with cokernels.  
+    Equivalently, one can also define left exact functors to be exactly those $k$-linear functors, which commute with kernels and dually define right exact functors to be $k$-linear functors commuting with cokernels.  
 \end{remark}
 
 \begin{example}
@@ -210,7 +225,7 @@ In the context of abelian categories, functors, which preserve a bit more than j
 \subsection{Triangulated categories}
 \label{Subsection: Triangulated categories}
 
-In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is additive or $k$-linear, $T$ is moreover assumed to be additive or $k$-linear. We usually denote its action on objects $X$ with $T(X) = X[1]$ and likewise its action on morphisms $f$ with $T(f) = f[1]$. A \emph{triangle} in a category with translation $(\D, T)$ is a triple of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
+In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ $k$-linear, $T$ is moreover assumed to be $k$-linear. We usually denote its action on objects $X$ with $T(X) = X[1]$ and likewise its action on morphisms $f$ with $T(f) = f[1]$. A \emph{triangle} in a category with translation $(\D, T)$ is a triple of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
 \begin{equation}
     \label{eq: basic distinguished triangle}
     X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1].
@@ -400,7 +415,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \end{proof}
 
 \begin{definition}
-    Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. An additive functor $F \colon \D \to \D'$ is defined to be \emph{triangulated} if the following two conditions are satisfied.
+    Let $\D$ and $\D'$ be triangulated categories with translation functors $T$ and $T'$ respectively. A $k$-linear functor $F \colon \D \to \D'$ is defined to be \emph{triangulated} if the following two conditions are satisfied.
     % \info{Maybe I will pick only triangulated, to not overload the term exact...}
     \begin{enumerate}[label = (\roman*)]
         \item There exists a natural isomorphism of functors 
@@ -419,13 +434,13 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
     \end{enumerate}
 \end{definition}
 
-\begin{remark}
-    The condition on $F$ being an \emph{additive} functor in the above definition is actually unnecessary and follows from conditions (i) and (ii) \cite[\href{https://stacks.math.columbia.edu/tag/05QY}{Tag 05QY}]{stacks-project}.
-\end{remark}
+% \begin{remark}
+%     The condition on $F$ being an \emph{additive} functor in the above definition is actually unnecessary and follows from conditions (i) and (ii) \cite[\href{https://stacks.math.columbia.edu/tag/05QY}{Tag 05QY}]{stacks-project}.
+% \end{remark}
 % \info{this remark may be omitted.}
 
 \begin{example}
-    The entirety of Chapter \ref{Chapter: Derived categories} and first two sections of Chapter \ref{Chapter: Derived categories in geometry} will be devoted to constructing a substantial amount of triangulated categories and triangulated functors. The first triangulated category we will encounter in practice is $\kcat{\A}$, the homotopy category of complexes of an additive category $\A$. More on this can be found already in Section \ref{Subsection: Categories of complexes} of this chapter.
+    The entirety of Chapter \ref{Chapter: Derived categories} and first two sections of Chapter \ref{Chapter: Derived categories in geometry} will be devoted to constructing a substantial amount of triangulated categories and triangulated functors. The first triangulated category we will encounter in practice is $\kcat{\A}$, the homotopy category of complexes of a $k$-linear category $\A$. More on this can be found already in Section \ref{Subsection: Categories of complexes} of this chapter.
 \end{example}
 
 \begin{definition}
@@ -434,7 +449,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 
 \begin{proposition}
     \label{triangulated subcategory proposition}
-    Let $\D$ be a triangulated category and $\D_0 \subseteq \D$ a full additive subcategory of $\D$. Assume that the translation functor $T$ of $\D$ restricts to an autoequivalence $T_0$ of $\D_0$ and that for every distinguished triangle $X\xrightarrow{f} Y \xrightarrow{} Z \xrightarrow{} X[1]$ in $\D$, where $f$ belongs to $\D_0$, the object $Z$ is isomorphic to some object of $\D_0$. Then $\D_0$ is naturally equipped with a  triangulated structure, for which it becomes a \emph{triangulated} subcategory of $\D$.
+    Let $\D$ be a triangulated category and $\D_0 \subseteq \D$ a full $k$-linear subcategory of $\D$. Assume that the translation functor $T$ of $\D$ restricts to an autoequivalence $T_0$ of $\D_0$ and that for every distinguished triangle $X\xrightarrow{f} Y \xrightarrow{} Z \xrightarrow{} X[1]$ in $\D$, where $f$ belongs to $\D_0$, the object $Z$ is isomorphic to some object of $\D_0$. Then $\D_0$ is naturally equipped with a  triangulated structure, for which it becomes a \emph{triangulated} subcategory of $\D$.
 \end{proposition}
 
 \begin{proof}
@@ -456,7 +471,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 As a consequence, two triangulated categories are equivalent (as triangulated categories) whenever there exists a fully faithful essentially surjective triangulated functor from one to the other. 
 
 \begin{definition}
-    Let $H\colon \D \to \A$ be an additive functor from a triangulated category $\D$ to an abelian category $\A$. We say $H$ is a \emph{cohomological functor} if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
+    Let $H\colon \D \to \A$ be a $k$-linear functor from a triangulated category $\D$ to an abelian category $\A$. We say $H$ is a \emph{cohomological functor} if for every distinguished triangle $X \to Y \to Z \to X[1]$ in $\D$, the induced long sequence in $\A$
     \begin{equation}
         \label{eq: long exact sequence of cohomological functor}
         \cdots \to H(X) \to H(Y) \to H(Z) \to H(X[1]) \to H(Y[1]) \to H(Z[1]) \to \cdots
@@ -691,7 +706,9 @@ and apply functor $H$ over it.
 
 The following are all specialized results characterizing, when a triangulated functor is an equivalence. 
 % We will use \ref{} in the proof of proposition \ref{}. 
-They will be used in a fundamental way in the proof of the derived Torelli theorem. In particular we highlight Proposition \ref{Fully faithful functor on a spanning class}, Proposition \ref{Serre functors and adjoints} and Corollary \ref{condition for functor to be an equivalence}, which will be directly used in the proof. We mention that all the results of this part can be found in \cite[\S 1]{huybrechts2006fouriermukai}.
+They will be used in a fundamental way in the proof of the derived Torelli theorem. In particular we highlight 
+% Proposition \ref{Fully faithful functor on a spanning class},  and
+Corollary \ref{condition for functor to be an equivalence} and Proposition \ref{Serre functors and adjoints}, which will be directly used in the proof. We mention that all the results of this part can be found in \cite[\S 1]{huybrechts2006fouriermukai}.
 % We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
 
 \begin{definition}
@@ -928,7 +945,7 @@ Whenever a triangulated category $\D$ over a field $k$ is equipped with a Serre 
 
 \subsection{Categories of complexes}
 \label{Subsection: Categories of complexes}
-In order to define derived categories of an additive category $\A$ we first introduce the category of complexes and the homotopy category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall the definition of cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed additive or $k$-linear category and we also mention that we will be using the cohomological indexing convention.
+In order to define derived categories of a $k$-linear category $\A$ we first introduce the category of complexes and the homotopy category of complexes of $\A$. We will equip the latter with a triangulated structure. We also recall the definition of cohomology of chain complexes and introduce quasi-isomorphisms. Throughout this section $\A$ will be a fixed $k$-linear category with $k$ being either a field or the ring of integers $\Z$. We also mention that we will be using the cohomological indexing convention.
 
 \subsubsection*{{Category of chain complexes}}
 
@@ -962,7 +979,7 @@ for which $f^{i+1}\circ d^i_A = d^i_B \circ f^i$ holds for all $i \in \Z$. This 
 \]
 % Sometimes we will denote a complex just by $A$, $B$,... insted of $A^\bullet$, $B^\bullet$,... to simplify notation. 
 
-Next we define the \emph{category of chain complexes} in $\A$, denoted by $\com(\A)$, as the following additive category. 
+Next we define the \emph{category of chain complexes} in $\A$, denoted by $\com(\A)$, as the following $k$-linear category. 
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
@@ -976,7 +993,7 @@ The composition law is defined componentwise and is clearly associative and bili
 \]
 together with the canonical projection and injection morphisms arising from direct sums componentwise.
 
-Additionally, we define the following full additive subcategories of $\com(\A)$.
+Additionally, we define the following full $k$-linear subcategories of $\com(\A)$.
 \begin{center}
     \begin{tabular}{c l}
         $\com^+(\A)$ & \emph{Category of complexes bounded below}, consisting of \\ & bounded below complexes in $\A$. \\
@@ -1020,14 +1037,14 @@ The translation functor $T$ thus acts on a complex $A^\bullet$ by twisting its d
 \end{tikzcd}\]
 
 \begin{remark}
-    We remark that the translation functor $T$ is clearly also additive or $k$-linear, whenever $\A$ is additive or $k$-linear.
+    We remark that the translation functor $T$ is clearly also $k$-linear, whenever $\A$ is $k$-linear.
 \end{remark}
 
 Since $T$ is an auto-equivalence there exists a quasi-inverse $T\inv$ to $T$, which is defined and unique up to a natural isomorphism. We may then speak of $T^{k}$ for any $k \in \Z$, whose action on a complex $A^\bullet$ is described by $(A[k]^\bullet)^i = A^{i + k}$ with differential $d^{i}_{A[k]} = (-1)^k d^{i+k}_A$.
 
 \subsubsection*{Homotopy category of chain complexes}
 
-In this subsection we construct the homotopy category of chain complexes associated to a given additive category $\A$ and equip it with a triangulated structure. The main motivation for its introduction in this work is the fact that we will later on use it to construct the derived category of $\A$. In particular the homotopy category of $\A$, as opposed to the category of complexes\footnote{It is still possible to construct the derived category of $\A$ without passing through the homotopy category of complexes, however equipping it with a triangulated structure in that case becomes less elegant.} $\com(\A)$, can be enhanced with a triangulated structure which will afterwards descend to the level of derived categories.
+In this subsection we construct the homotopy category of chain complexes associated to a given $k$-linear category $\A$ and equip it with a triangulated structure. The main motivation for its introduction in this work is the fact that we will later on use it to construct the derived category of $\A$. In particular the homotopy category of $\A$, as opposed to the category of complexes\footnote{It is still possible to construct the derived category of $\A$ without passing through the homotopy category of complexes, however equipping it with a triangulated structure in that case becomes less elegant.} $\com(\A)$, can be enhanced with a triangulated structure which will afterwards descend to the level of derived categories.
 
 \begin{definition}
     Let $f$ and $g$ be two chain maps in $\Hom_{\com(\A)}(A^\bullet, B^\bullet)$. We define $f$ and $g$ to be \emph{homotopic} if there exists a collection of morphisms $\left( h^i\colon A^i \to B^{i-1} \right)_{i \in \Z}$, satisfying
@@ -1072,7 +1089,7 @@ In this subsection we construct the homotopy category of chain complexes associa
     For \ref{nullhomotopic maps are a submodule} see \cite[\S 3, 1.3.1]{milicic-dercat}. Claim \ref{composition and homotopy behave} is a direct consequence of \cite[\S 3, 1.3.2]{milicic-dercat}.
 \end{proof}
 
-The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined to be an additive category consisting of the following.
+The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined to be a $k$-linear category consisting of the following.
 \begin{center}
     \begin{tabular}{r l}
         \textsl{Objects:} & chain complexes in $\A$. \\
@@ -1322,7 +1339,7 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
     % \ref{TR4}. Verification is omitted.
 \end{proof}
 
-As in the case of categories of complexes in $\A$, we can also define the following full additive subcategories of $\kcat{\A}$.
+As in the case of categories of complexes in $\A$, we can also define the following full $k$-linear subcategories of $\kcat{\A}$.
 \begin{center}
     \begin{tabular}{c l}
         $\kplus{\A}$ & \emph{Homotopy category of complexes bounded below}, consisting of \\ & bounded below complexes in $\A$. \\
@@ -1352,7 +1369,7 @@ The proof of this fact is not difficult to verify, yet we skip it for brevity, b
 
 \subsubsection*{Cohomology}
 
-A very important invariant of a chain complex in the homotopy category, which measures the extent to which it fails to be exact, is its cohomology. Here we are no longer assuming $\A$ is just $k$-linear, but abelian, since we will need kernels and cokernels to exist. 
+A very important invariant of a chain complex in the homotopy category, which measures the extent to which it fails to be exact, is its cohomology. Here we are no longer assuming $\A$ is just $k$-linear, but also \emph{abelian}, since we will need kernels and cokernels to exist. 
 For a chain complex $A^\bullet$ in $\com(\A)$ and $i \in \Z$ we define its \emph{$i$-th cohomology} to be 
 \[
     H^i(A^\bullet) := \coker(\im d^{i-1} \to \ker d^{i}).
@@ -1452,7 +1469,7 @@ is functorial \ie respects composition and maps identity morphisms to identity m
 \[
     H^i \colon \com(\A) \to \A
 \]
-a $k$-linear functor. Due to the following proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defined additive functor 
+a $k$-linear functor. Due to the following proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defined $k$-linear functor 
 \[
     H^i \colon \kcat{\A} \to \A
 \]

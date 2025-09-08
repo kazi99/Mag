@@ -237,7 +237,7 @@ where $\omega_X$ denotes the canonical bundle of $X$, \ie the $n$-th exterior po
 \end{definition}
 
 \begin{remark}
-    This remark serves as a quick justification, why $S_X$ may be defined in this way. The canonical bundle $\omega_X$ is a line bundle, thus in particular flat, so the additive functor $(-) \otimes_\struct{X} \omega_X \colon \coherent{X} \to \coherent{X}$ is exact. The induced homotopy functor $\kb{\coherent{X}} \to \kb{\coherent{X}}$ then satisfies the conditions of Lemma \ref{F preserves qis iff preserves acyclic} and therefore induces a triangulated functor
+    This remark serves as a quick justification, why $S_X$ may be defined in this way. The canonical bundle $\omega_X$ is a line bundle, thus in particular flat, so the $k$-linear functor $(-) \otimes_\struct{X} \omega_X \colon \coherent{X} \to \coherent{X}$ is exact. The induced homotopy functor $\kb{\coherent{X}} \to \kb{\coherent{X}}$ then satisfies the conditions of Lemma \ref{F preserves qis iff preserves acyclic} and therefore induces a triangulated functor
     \[
         (-) \otimes_\struct{X} \omega_X \colon \derb{X} \to \derb{X}
     \]
@@ -393,7 +393,7 @@ To induce a functor between the quasi-coherent and coherent categories of $X$ an
     The quasi-coherent part is \cite[\S II, Proposition 5.8]{Hartshorne1977}, because schemes of finite type over $k$ are noetherian. For the coherent part see \cite[\S II, Proposition 5.20]{Hartshorne1977} in the case that $f$ is projective and \cite[Part III, \S 3.2, Theorem 3.2.1]{EGA}, when $f$ is proper.
 \end{proof}
 
-It is a well known fact that $f_*$ is left exact, because it is a right adjoint and right adjoints preserve limits. As $\quasicoh{X}$ contains enough injectives, we may right derive $f_*$ to obtain 
+It is a well-known fact that $f_*$ is left exact, because it is a right adjoint and right adjoints preserve limits. As $\quasicoh{X}$ contains enough injectives, we may right derive $f_*$ to obtain 
 \[
     \rderived{}{f_*} \colon \derplus{\quasicoh{X}} \to \derplus{\quasicoh{Y}}.
 \]
