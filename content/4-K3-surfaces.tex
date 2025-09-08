@@ -1,7 +1,7 @@
 \section{K3 surfaces}
 \label{Chapter: K3}
 
-This chapter serves as a gentle introduction and overview of the main properties of K3 surfaces. We will start off by defining algebraic K3 surfaces and their complex counterparts. Next, using a combination of both viewpoints we will derive the most important invariants of K3 surfaces, beginning with the computation of the Chern and Todd classes, which will enable us to compute the so-called Hodge diamond of a K3 surface. Using some topological methods we will identify all the integral cohomology groups. Along the way we will introduce the Picard and Néron--Severi group and see that they are isomorphic. We will conclude the chapter with examining the intersection pairing and finally stating the global Torelli theorem at the end characterizing K3 surfaces through their Hodge lattices. 
+This chapter serves as a gentle introduction and overview of the main properties of K3 surfaces. We will start off by defining algebraic K3 surfaces and their complex counterparts. Next, using a combination of both viewpoints we will derive the most important invariants of K3 surfaces, beginning with the computation of the Chern and Todd classes, which will enable us to compute the so-called Hodge diamond of a K3 surface. Using some topological methods we will identify all the integral cohomology groups. Along the way we will introduce the Picard and Néron--Severi group and see that they are isomorphic. We will conclude the chapter by examining the intersection pairing and finally stating the global Torelli theorem at the end characterizing K3 surfaces through their Hodge lattices. 
 % staring with computing their integral cohomology groups using the exponential sequence. We will shed some light on the Hodge decomposition and compute the so-called Hodge diamond of a K3 surface. We will conclude the chapter with examining the intersection pairing and introducing the Picard and Neron-Severi groups. 
 
 % \vspace{0.15cm}
@@ -14,7 +14,7 @@ K3 surfaces come in two flavours, algebraic and complex, essentially equivalent,
 % but formally allowing us to effortlessly pass between the realms of algebraic and complex geometry. 
 
 \begin{definition}
-    A smooth projective surface $X$ over a field $k$ is a \emph{K3 surface}, if 
+    A smooth projective surface $X$ over a field $k$ is a \emph{K3 surface} if 
     \[
         \omega_X \iso \struct{X} \quad \text{and} \quad \cohom{1}{X}{\struct{X}} = 0.
     \]
@@ -24,7 +24,8 @@ K3 surfaces come in two flavours, algebraic and complex, essentially equivalent,
     Let $X$ be a smooth quartic in $\PP^3$, meaning a smooth projective variety given by some homogeneous polynomial equation of degree four.
     We will show that any such variety is a K3 surface. Let $f \in \Gamma(\PP^3, \struct{\PP^3}(4))$ be the defining homogeneous polynomial for $X$ of degree four.
     % We will now show that any such smooth quartic $X$ in $\PP^3$, defined by some homogeneous degree $4$ polynomial $f \in \Gamma(X, \struct{\PP^3}(4))$, is a K3 surface. 
-    Since $X$ is a hypersurface in $\PP^3$ it is of dimension two \ie a surface. Let $i \colon X \hookrightarrow \PP^3$ denote the closed embedding of $X$ into $\PP^3$ and consider the following short exact sequence of coherent sheaves on $\PP^3$
+    At this point we recall that $\struct{\PP^3}(n)$ for all $n \in \Z$ denote \emph{Serre's twisting sheaves} on the projective space $\PP^3$ and refer the reader to \cite[\S II.5]{Hartshorne1977} for its construction.
+    Since $X$ is a hypersurface in $\PP^3$ it is of dimension two, \ie a surface. Let $i \colon X \hookrightarrow \PP^3$ denote the closed embedding of $X$ into $\PP^3$ and consider the following short exact sequence of coherent sheaves on $\PP^3$
     \[
         0 \to \struct{\PP^3}(-4) \to \struct{\PP^3} \to i_*\struct{X} \to 0.
     \]
@@ -46,14 +47,17 @@ K3 surfaces come in two flavours, algebraic and complex, essentially equivalent,
         & = \cohom{1}{X}{\struct{X}}.
     \end{align*}
     Therefore $\cohom{1}{X}{\struct{X}} = 0$. Triviality of the canonical bundle $\omega_X$ is seen from the \emph{conormal sequence}
-    \[
+    \begin{equation}
+        \label{eq: conormal SES}
         0 \to \struct{X}(-4) \to i^*\Omega_{\PP^3} \to \Omega_X \to 0.
-    \]
-    After taking determinants we obtain
+    \end{equation}
+    The first non-trivial morphism in this short exact sequence can roughly be described by sending a section $s$ of $\struct{X}(-4)$ to $d(f \cdot s)$. The second non-trivial morphism can be interpreted as sending a section of the form $d\varphi$ of $i^*\Omega_{\PP^3}$ to $d(\varphi|_X)$. 
+
+    Recall that for a locally free sheaf $\E$ of rank $n$ its determinant line bundle is defined as $\det(\E) = \bigwedge^n \E$. Moreover, we know that for a short exact sequence of locally free sheaves $0 \to \E_0 \to \E_1 \to \E_2 \to 0$, we have $\det(\E_1) \iso \det(\E_0) \otimes \det(\E_2)$. Thus taking determinants of \eqref{eq: conormal SES}, we obtain
     \[
         i^*\omega_{\PP^3} \iso \struct{X}(-4) \otimes \omega_X.
     \]
-    Upon tensoring with the inverse of the pull-back of $\omega_{\PP^3} \iso \struct{\PP^3}(-4)$, we conclude with $\omega_X \iso \struct{X}$.
+    Upon tensoring with the inverse of the pull-back of $\omega_{\PP^3} \iso \struct{\PP^3}(-4)$, we conclude with $\omega_X \iso \struct{X}$, which shows that $X$ is a K3 surface.
 \end{example}
 
 \begin{example}        
@@ -67,7 +71,7 @@ Complex analytic K3 surfaces come with essentially the same definition as the al
 
 \begin{definition}
     \label{Definition of complex K3}
-    A connected complex projective manifold $X$ of dimension two is a \emph{K3 surface}, if  
+    A connected complex projective manifold $X$ of dimension two is a \emph{K3 surface} if  
      \[
         \omega_X \iso \struct{X} \quad \text{and} \quad \cohom{1}{X}{\struct{X}} = 0.
     \]
@@ -80,7 +84,7 @@ Complex analytic K3 surfaces come with essentially the same definition as the al
 As already mentioned in the introduction to Section \ref{Subsection: FM transform on cohomology} one can pass between the algebraic and the analytic categories using Serre's GAGA principle \cite{Serre1956}. We also mentioned the existence of an equivalence between categories of coherent sheaves on the algebraic side and analytic coherent sheaves on the complex analytic side preserving cohomology. This passage is also well behaved in the sense that the associated analytic coherent sheaf to the structure sheaf $\struct{X}$ is the sheaf of holomorphic functions $\struct{X\an}$ on $X\an$ and the sheaf associated to the sheaf of Kähler differentials $\Omega_X$ on $X$ is the sheaf of holomorphic 1-forms $\Omega^1_{X\an}$ on $X\an$. From this we see that the complex analytic space associated to an algebraic K3 surface is a complex K3 surface in the sense of Definition \ref{Definition of complex K3}.
 
 \begin{remark}
-    The \emph{projective} assumption is usually not present in the definition. In fact it is replaced by a more general assumption of compactness. We made this choice, because we will only be dealing only with algebraic K3 surfaces and thus every complex analytic K3 surface will have its algebraic counterpart. It is also worth noting that there do exist non-projective complex K3 surfaces and that they show up in important places. One of which is in a proof of the global Torelli theorem \ref{Classical Torelli theorem}, which will make an appearance at the end of this chapter, but whose proof we omit, instead referring to \cite[\S 7]{Huybrechts2016}. 
+    The \emph{projective} assumption is usually not present in the definition. In fact it is replaced by a more general assumption of compactness. We made this choice, because we will only be dealing with algebraic K3 surfaces and thus every complex analytic K3 surface will have its algebraic counterpart. It is also worth noting that there do exist non-projective complex K3 surfaces and that they show up in important places. One of which is in a proof of the global Torelli theorem \ref{Classical Torelli theorem}, which will make an appearance at the end of this chapter, but whose proof we omit, instead referring to \cite[\S 7]{Huybrechts2016}. 
 \end{remark}
 
 
@@ -113,14 +117,15 @@ is \emph{perfect}. By definition this means that the morphism $\Omega_X \to \loc
 \]
 This useful observation will be key in the computation of Chern and Todd classes of K3 surfaces. 
 
-\begin{proposition}
+\begin{lemma}
     \label{characteristic classes of K3}
+    \emph{\cite[\S 4, Lemma 4.7]{vanBree2020}}
     Let $X$ be a complex K3 surface, then
     % and let $\mu_X \in \cohom{4}{X}{\Z}$ denote the generator for which $\pairing{\mu_X}{[X]} = 1$. Then
     \[
-        \cclass[0](X) = 2 \qquad \cclass[1](X) = 0 \qquad \cclass[2](X) = 24\mu_X  \qquad \tdclass{X} = 1 + 2\mu_X.
+        \cclass[0](X) = 2, \qquad \cclass[1](X) = 0, \qquad \cclass[2](X) = 24\mu_X,  \qquad \tdclass{X} = 1 + 2\mu_X.
     \]
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
     Tangent sheaf $\tangent{X}$ is a vector bundle of rank $2$, so $\cclass[0](X) = 2$. Since the sheaf of differentials $\Omega_X$ is self-dual, the tangent sheaf $\tangent{X}$ is as well. First, we see that $\ch[1](\tangent{X}) = \cclass[1](X)$. Then property \ref{chern character and dual} of Definition \ref{Definition of Chern character} applied to $\tangent{X} \iso \tangent{X}^\vee$ shows that $\cclass[1](X) = -\cclass[1](X)$. In Proposition \ref{cohomology of K3} we will see that $\cohom{2}{X}{\Z}$ is torsion-free, thus we reach $\cclass[1](X) = 0$. The second Chern class is computed using the Hirzebruch--Riemann--Roch formula applied to the trivial line bundle $\struct{X}$. Utilizing \eqref{eq: Serre duality on K3} we compute its Euler characteristic to be 
@@ -142,6 +147,7 @@ For later we record the following K3 version of the Hirzebruch--Riemann--Roch fo
 This already allows us to compute the Hodge numbers of a K3 surface $X$.
 
 \begin{proposition}
+    \emph{\cite[\S 1.2.4]{Huybrechts2016}}
     Let $X$ be a K3 surface. Arranged in a so-called \emph{Hodge diamond} the Hodge numbers of $X$ are the following:
     \begin{center}
         \begin{tabular}{c c c}
@@ -173,11 +179,12 @@ This already allows us to compute the Hodge numbers of a K3 surface $X$.
     Thus, since $h^{0,1}(X) = h^{2,1}(X) = 0$, we get $h^{1,1}(X) = 20$.
 \end{proof}
 
-Notice that Proposition \ref{Hodge lattice, fm transform interaction}, says in particular that a Fourier--Mukai transform, which arises from an equivalence of derived categories, preserves sums of all the columns in the Hodge diamond. As a consequence of the Hodge numbers just computed above, we prove that the bounded derived category $\derb{-}$ ``detects K3 surfaces''.
+Notice that Proposition \ref{Hodge lattice, fm transform interaction}, says in particular that a Fourier--Mukai transform, which arises from an equivalence of derived categories, preserves sums of all the columns in the Hodge diamond. As a simple corollary of the Hodge numbers computed above, we prove that the bounded derived category $\derb{-}$ can ``detect'' K3 surfaces.
 % As a consequence of the Hodge numbers just computed and Proposition \ref{Hodge lattice, fm transform interaction}, saying in particular that a Fourier--Mukai transform, which is an isomorphism, preserves columns of the Hodge diamond, we prove that $\derb{-}$ ``detects K3 surfaces''.
 
 \begin{theorem}
     \label{Db(-) detects K3}
+    \emph{\cite[\S 16, Proposition 2.1]{Huybrechts2016}}
     Suppose $X$ and $Y$ are smooth projective varieties over $\C$. Assume $X$ is a K3 surface and
     \[
         \derb{X} \natiso \derb{Y}.
@@ -221,7 +228,7 @@ cohomology then reads
     % Using \emph{Čech's} viewpoint on cohomology 
     Based on the cocycle representation of line bundles, one is able to construct a natural isomorphism from $\pic{X}$ to the first \emph{Čech cohomology} group $H^1(X,\OO_X^*)$ \cite[\S 4, Theorem 4.49]{Voisin2002}.
     %  with coefficients in the sheaf $\OO_X^*$ of nowhere vanishing holomorphic functions. 
-    The Čech cohomology groups are also known to be isomorphic to the ususal sheaf cohomology groups we have been using all along \cite[\S 4, Theorem 4.44]{Voisin2002}.
+    The Čech cohomology groups are also known to be isomorphic to the usual sheaf cohomology groups we have been using all along \cite[\S 4, Theorem 4.44]{Voisin2002}.
 \end{remark}
 
 Based on the previous remark we are able to bring new meaning to the second connecting homomorphism $\cohom{1}{X}{\OO_X^*} \to \cohom{2}{X}{\Z}$ of \eqref{eq: LES of exponential SES}. 
@@ -247,11 +254,12 @@ can actually be taken to be the definition of its \emph{first Chern class} $\ccl
 
 \begin{proposition}
     \label{picard group torsion free}
-    Let $X$ be a complex K3 surafce. The Picard group $\pic{X}$ and the Néron--Severi group $\NS{X}$ are isomorphic. They are torsion-free and carry a symmetric non-degenerate integral bilinear form called the intersection form. 
+    \emph{\cite[\S 1, Proposition 2.4]{Huybrechts2016}}
+    Let $X$ be a complex K3 surface. The Picard group $\pic{X}$ and the Néron--Severi group $\NS{X}$ are isomorphic. They are torsion-free and carry a symmetric non-degenerate integral bilinear form called the intersection form. 
     % called the \emph{intersection pairing}. 
 \end{proposition}
 
-\begin{proof}
+\begin{proof}[Sketch of proof]
     Observe that $\cohom{1}{X}{\struct{X}} = 0$ in \eqref{eq: LES of exponential SES} shows that the connecting homomorphism is injective, therefore $\pic{X} \iso \NS{X}$. For the definition of the bilinear form on $\pic{X}$ and the rest see \cite[\S 1, Proposition 2.4]{Huybrechts2016}.
     % For a proof see \cite[\S 1, Proposition 2.4]{Huybrechts2016}.
     % See \cite[\S 1, Remark]{Huybrechts2016} for why $\pic{X}$ is torsion free and \cite[\S 1, Proposition 2.4]{Huybrechts2016} for the rest. 
@@ -259,6 +267,7 @@ can actually be taken to be the definition of its \emph{first Chern class} $\ccl
 
 \begin{proposition}
     \label{cohomology of K3}
+    \emph{\cite[\S 1.3.2]{Huybrechts2016}}
     Let $X$ be a complex K3 surface. The integral cohomology of $X$ is
     \begin{equation}
         \label{eq: cohomology of K3}
@@ -274,7 +283,7 @@ can actually be taken to be the definition of its \emph{first Chern class} $\ccl
     \[
         \cohom{0}{X}{\struct{X}} \to \cohom{0}{X}{\OO_X^*} \to \cohom{1}{X}{\Z} \to \cohom{1}{X}{\struct{X}}.
     \]
-    The two groups on the left are $\C$ and $\C^*$, respectively, since $X$ is compact. The morphism relating them is the surjective exponential function, thus the connecting homomorphism going into $\cohom{1}{X}{\Z}$ is trivial, This makes $\cohom{1}{X}{\Z}$ into a subgroup of the trivial group $\cohom{1}{X}{\struct{X}} = 0$.
+    The two groups on the left are $\C$ and $\C^*$, respectively, since $X$ is compact. The morphism relating them is the surjective exponential function, thus the connecting homomorphism going into $\cohom{1}{X}{\Z}$ is trivial. This makes $\cohom{1}{X}{\Z}$ into a subgroup of the trivial group $\cohom{1}{X}{\struct{X}} = 0$.
     % , therefore $\cohom{1}{X}{\Z}$ is trivial.
     Identifying $\pic{X} \iso \cohom{1}{X}{\OO_X^*}$ we have an exact sequence
     \[
@@ -286,7 +295,7 @@ can actually be taken to be the definition of its \emph{first Chern class} $\ccl
     By the universal coefficients theorem the torsion subgroup of $\cohom{3}{X}{\Z}$ is isomorphic to the torsion subgroup of the homology $H_2(X,\Z)$. As the latter is torsion free, being isomorphic to $\cohom{2}{X}{\Z}$ by Poincaré duality, the former must be torsion free as well. 
 \end{proof}
 
-The middle cohomology group $\cohom{2}{X}{\Z}$ now being free, enables us to introduce a lattice structure on it. The pairing it comes equipped with is called the \emph{intersection pairing} and is naturality induced by the cohomological $\smallsmile$-product. 
+The middle cohomology group $\cohom{2}{X}{\Z}$ now being free, enables us to introduce a lattice structure on it. The pairing it comes equipped with is called the \emph{intersection pairing} and is naturally induced by the cohomological $\smallsmile$-product. 
 % It comes naturally equipped with the so-called \emph{intersection pairing} induced by the $\smallsmile$-product. 
 \begin{definition}
     The \emph{intersection pairing} on $\cohom{2}{X}{\Z}$ is defined to be 
@@ -297,6 +306,7 @@ The middle cohomology group $\cohom{2}{X}{\Z}$ now being free, enables us to int
 
 \begin{proposition}
     \label{intersection pairing on K3 is even}
+    \emph{\cite[\S 1, Proposition 3.5]{Huybrechts2016}}
     Let $X$ be a K3 surface. Then the intersection pairing $\intersect{\cdot}{\cdot}$ makes $\cohom{2}{X}{\Z}$ into an even unimodular lattice of rank $22$ and signature $(3,19)$, making it isomorphic to the following orthogonal direct sum
     \begin{equation}
         \label{eq: intersection pairing on K3}
@@ -307,16 +317,16 @@ The middle cohomology group $\cohom{2}{X}{\Z}$ now being free, enables us to int
 
 \begin{proof}[Sketch of proof]
     % To see that the intersection pairing is unimodular we
-    Since $\cohom{2}{X}{\Z}$ is free, the Kronecker pairing from the universal coefficients theorem together with Poincaré duality show that the intersection pairing is unimodular. To see that the intersection pairing is even one considers the mod $2$ reduction in the coefficients $\cohom{2}{X}{\Z} \to \cohom{2}{X}{\Z/2}$ and shows that the pairing on $\cohom{2}{X}{\Z/2}$ is always $0$. By Proposition \ref{characteristic classes of K3} we know that the first Chern class $\cclass[1](X)$ is trivial and we also know that it reduces to the second Stiefel--Whitney class $w_2(X)$ $\mathrm{(mod \ 2)}$, which is therefore also trivial. Using the Wu formula, one is able to show that
+    Since $\cohom{2}{X}{\Z}$ is free, the Kronecker pairing from the universal coefficients theorem together with Poincaré duality show that the intersection pairing is unimodular. For a display of these methods one can consult \cite[\S VI.9]{Bredon1993}. To see that the intersection pairing is even one considers the mod $2$ reduction in the coefficients $\cohom{2}{X}{\Z} \to \cohom{2}{X}{\Z/2}$ and shows that the pairing on $\cohom{2}{X}{\Z/2}$ is always $0$. This is indeed sufficient as the mod $2$ reduction on coefficients is a ring homomorphism $\cohom{*}{X}{\Z} \to \cohom{*}{X}{\Z/2}$. By Proposition \ref{characteristic classes of K3} we know that the first Chern class $\cclass[1](X)$ is trivial and we also know that it reduces to the second Stiefel--Whitney class $w_2(X)$ $\mathrm{(mod \ 2)}$, which is therefore also trivial. Using the results of \cite[\S VI.17]{Bredon1993}, one is able to show that
     \[
         x \smallsmile x = w_2(X) \smallsmile x
     \]
-    holds for all classes $x \in \cohom{2}{X}{\Z/2}$ from which the desired result follows. Proposition \ref{cohomology of K3} shows that $\cohom{2}{X}{\Z}$ is free of rank $22$. The claim about the signature of this lattice is proven in \cite[\S 1, Proposition 3.5]{Huybrechts2016}. Lastly employing Milnor's classification result of even indefinite unimodular lattices (Theorem \ref{Classification of indefinite even unimodular lattices}), we obtain \eqref{eq: intersection pairing on K3}.
+    holds for all classes $x \in \cohom{2}{X}{\Z/2}$ from which the desired result follows. Proposition \ref{cohomology of K3} shows that $\cohom{2}{X}{\Z}$ is free of rank $22$. The claim about the signature of this lattice is proven in \cite[\S 1, Proposition 3.5]{Huybrechts2016}. Lastly employing Milnor's classification result for even indefinite unimodular lattices (Theorem \ref{Classification of indefinite even unimodular lattices}), we obtain \eqref{eq: intersection pairing on K3}.
 \end{proof}
 
 \begin{remark}
-    When $\NS{X}$ is equipped with the lattice structure of Proposition \ref{picard group torsion free}, the inclusion $\NS{X} \hookrightarrow \cohom{2}{X}{\Z}$ is an isometry. This makes it possible to interpret the intersection pairing
-    of two (isomorphism classes of) line bundles $\mathcal L$ and $\mathcal L'$ on $X$ as 
+    When $\NS{X}$ is equipped with the lattice structure of Proposition \ref{picard group torsion free}, the inclusion $\cclass[1] \colon \NS{X} \hookrightarrow \cohom{2}{X}{\Z}$ turns out to be an isometry. Roughly this due to $\cclass[1]$ being closely related to a cycle map and as such being compatible with these kinds of intersections \cite[\S 19]{Fulton1998}. But more importantly this fact now makes it possible to interpret the intersection pairing
+    of two (isomorphism classes of) line bundles $\mathcal L$ and $\mathcal L'$  on $X$ cohomologically as 
     \[
         \intersect{\mathcal L}{\mathcal L'} = \intersect{\cclass[1](\mathcal L)}{\cclass[1](\mathcal{L'})}.
     \]
@@ -331,16 +341,17 @@ The middle cohomology group $\cohom{2}{X}{\Z}$ now being free, enables us to int
     \[
         \ch[]{\E} = \rk{\E} + \cclass[1]{\E} + \frac{1}{2}\Bigl(\cclass[1]{\E}^2 - 2\cclass[2]{\E}\Bigr).
     \]
-    Since the intersection pairing is even, $\cclass[1]^2(\E)$ is twice a multiple of some cohomology class from $\cohom{4}{X}{\Z}$.
+    Since the intersection pairing is even, $\cclass[1](\E)^2$ is twice a multiple of some cohomology class from $\cohom{4}{X}{\Z}$.
 \end{proof}
 
 \begin{remark}
-The Chern character of a coherent sheaf $\E$ being integral implies also that its Mukai vector $v(\E)$ is integral. Indeed, using the power series expansion \eqref{eq: sqrt power series} (or just guessing), we see that 
+    \label{chern character of K3 integral}
+The Chern character of a coherent sheaf $\E$ being integral also implies that its Mukai vector $v(\E)$ is integral. Indeed, using the power series expansion \eqref{eq: sqrt power series} (or just guessing), we see that 
 \[
     \sqrt{\tdclass{X}} = 1 + \mu_X.
 \]
 % (the other possible choice being $1 - \mu_X)$
-Thus, one easily sees that the Mukai vector on a K3 surface is integral because it has the following from
+Thus, one easily sees that the Mukai vector on a K3 surface is integral because it has the following form
 \begin{align}
     v(\E) &= \ch[0](\E) + \ch[1]{\E} + \bigl(\ch[2]{\E} + \ch[0]{\E}\mu_X\bigr)
     \label{eq: Mukai vector on K3 chern character} \\
@@ -349,7 +360,7 @@ Thus, one easily sees that the Mukai vector on a K3 surface is integral because 
 We also remark that on a K3 surface the inverse of the square root of the Todd class $(\sqrt{\tdclass{X}})\inv$ equals $1 - \mu_X$ and is therefore integral as well.
 \end{remark}
 
-With the Néron--Severi group seen as a sublattice of $\cohom{2}{X}{\Z}$ one can consider also its orthogonal coplement. The resulting group will play a very important role in the last chapter in characterizing derived equivalent K3 surfaces. 
+With the Néron--Severi group seen as a sublattice of $\cohom{2}{X}{\Z}$ one can consider also its orthogonal complement. The resulting group will play a very important role in the last chapter in characterizing derived equivalent K3 surfaces. 
 
 \begin{definition}
     The \emph{transcendental lattice} of a complex K3 surface $X$ is defined to be the orthogonal complement
@@ -364,7 +375,7 @@ With the Néron--Severi group seen as a sublattice of $\cohom{2}{X}{\Z}$ one can
 
 \subsubsection*{Global Torelli theorem}
 
-Lastly we mention the global Torelli theorem. It will be utilized in the last chapter to prove that a K3 surface $Y$ is isomorphic to a moduli space of certain sheaves on its Fourier--Mukai partner. We have already seen that $\cohom{2}{X}{\Z}$ comes equipped with a lattice structure given by the intersection pairing. Moreover due to $X$ being a complex projective manifold it also posseses a Hodge structure. We will call such lattices \emph{Hodge lattices} and two Hodge lattices will be considered isomorphic, if there is a \emph{Hodge isometry} between them. 
+Lastly we mention the global Torelli theorem. It will be utilized in the last chapter to prove that a K3 surface $Y$ is isomorphic to a moduli space of certain sheaves on its Fourier--Mukai partner. We have already seen that $\cohom{2}{X}{\Z}$ comes equipped with a lattice structure given by the intersection pairing. Moreover due to $X$ being a complex projective manifold it also possesses a Hodge structure. We will call such lattices \emph{Hodge lattices} and two Hodge lattices will be considered isomorphic if there is a \emph{Hodge isometry} between them. 
 
 \begin{definition}
 
@@ -372,7 +383,7 @@ Lastly we mention the global Torelli theorem. It will be utilized in the last ch
     % , which also preserves the Hodge structures. 
 \end{definition}
 
-\begin{theorem}[Global Torelli theorem]
+\begin{theorem}[Global Torelli theorem, \text{\cite{PjateckiiShafarevich1971}}]
     \label{Classical Torelli theorem}
     Let $X$ and $Y$ be K3 surfaces over $\C$. Then $X$ and $Y$ are isomorphic if and only if there exists a Hodge isometry
     \[

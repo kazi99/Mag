@@ -6,7 +6,7 @@ In this chapter we will first define cohomological spectral sequences and then d
 At first, when encountering spectral sequences, one might think of them as just  bookkeeping devices encoding a tremendous amount of data, but we will soon see how elegantly one can infer certain properties related to derived categorical claims exploiting the fact that they can naturally be encoded with spectral sequences.
 % from a spectral sequence associated to a given problem  that we can encode a problem in terms of such a sequence. 
 % just by considering their form for example.
-One of the most important spectral sequences, which is also very general within our scope of inspection, will be the Grothendieck spectral sequence relating the higher derived functors of two composable functors with the higher derived functors of their composition. Later on we will see that many useful and well-known spectral sequences occur as special cases of the Grothendieck spectral sequence. What follows was gathered mostly from \cite[Chapter 2, \S 2.1]{huybrechts2006fouriermukai} and \cite[Chapter III.7]{gelfand2002methods}.
+One of the most important spectral sequences, which is also very general within our scope of inspection, will be the Grothendieck spectral sequence relating the higher derived functors of two composable functors with the higher derived functors of their composition. Later on we will see that many useful and well-known spectral sequences occur as special cases of the Grothendieck spectral sequence. What follows was gathered mostly from \cite[\S 2.2.1]{huybrechts2006fouriermukai} and \cite[\S III.7]{gelfand2002methods}.
 
 % For the time being we fix an abelian category $\mathcal A$ and start off with a definition.
 
@@ -46,7 +46,7 @@ One of the most important spectral sequences, which is also very general within 
     \item \emph{Goal of computation.} A sequence of objects $(E^n)_{n \in \Z}$ of the category $\mathcal A$.
 \end{itemize}
 The above collection of data also has to satisfy the following two convergence conditions.
-\begin{enumerate}
+\begin{enumerate}[label = (\alph*)]
     \item For each pair $(p,q)$, there exists $r_0 \geq 0$, such that for all $r \geq r_0$ we have
     \[
         d^{p,q}_r = 0 \quad \text{and} \quad d^{p + r, q - r + 1}_r = 0
@@ -107,10 +107,14 @@ In this case we also denote the existence of such a spectral sequence by
 % \]
 % respecting the differential of $K^\bullet$ \ie $d(F^p K^n) \subseteq F^p K^{n+1}$. Using only this piece of information one can 
 
-In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two left exact functors with the composition of their higher derived functors. For a proof see either \cite[\S 2, Proposition 2.66]{huybrechts2006fouriermukai} (merely a sketch) or \cite[\S 2.4]{grothendieck57}.
+In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the following spectral sequence relating higher derived functors of a composition of two left exact functors with the composition of their higher derived functors. For a proof see either the original \cite[\S 2.4]{grothendieck57} or \cite[\S III.7, Theorem 7]{gelfand2002methods}.
+%  or the original
+% \cite[\S 2, Proposition 2.66]{huybrechts2006fouriermukai} (merely a sketch)
+% \cite[\S 2.4]{grothendieck57}.
 
-\begin{theorem}[Grothendieck, \cite{grothendieck57}]
+\begin{theorem}
     \label{Grothendieck spectral sequence}
+    \emph{\cite{grothendieck57}}
     Let $F\colon \A \to \B$ and $G\colon \B \to \mathcal C$ be left exact functors between abelian categories. Let $\I_F$ be an $F$-adapted class in $\A$, $\I_G$ a $G$-adapted class of objects in $\B$ and suppose every object of $\I_F$ is sent to a $G$-acyclic object by the functor $F$. Then for every $A^\bullet$ in $\kplus{\A}$ there exists a spectral sequence
     \begin{equation}
         \label{eq: Grothendieck spectral sequence}
@@ -128,7 +132,7 @@ In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the follo
 \end{remark}
 
 \begin{definition}
-    Let $\B$ be an abelian category and $\mathcal C$ its \emph{full abelian subcategory}, meaning that $\mathcal C$ is abelian, a full subcategory of $\B$ and the inclusion functor $\mathcal C \hookrightarrow \B$ is exact. Then $\mathcal C$ is called \emph{thick}, if every extension in $\B$ of objects in $\mathcal C$ is again in $\mathcal C$. In other words, assuming 
+    Let $\B$ be an abelian category and $\mathcal C$ its \emph{full abelian subcategory}, meaning that $\mathcal C$ is abelian, a full subcategory of $\B$ and the inclusion functor $\mathcal C \hookrightarrow \B$ is exact. Then $\mathcal C$ is called \emph{thick} if every extension in $\B$ of objects in $\mathcal C$ is again in $\mathcal C$. In other words, assuming 
     \[
             0 \to B_0 \to B_1 \to B_2 \to 0
     \]
@@ -169,6 +173,7 @@ In his famous Tôhoku paper \cite{grothendieck57} Grothendieck devised the follo
 
 \begin{proposition}
     \label{Spectral sequences for derived cats}
+    \emph{\cite[\S 2, Corollary 2.68]{huybrechts2006fouriermukai}}
     Let $F \colon \A \to \B$ be a left exact functor admitting a right derived functor $\rderived{}{F}\colon \derplus{\A} \to \derplus{\B}$. 
     \begin{enumerate}[label = (\roman*)]
         \item{Suppose that for every object $A$ of $\A$ the objects $\rderived{i}{F}(A)$ are non-trivial only for finitely many $i \in \Z$. Then $\rderived{}{F}(A^\bullet)$ belongs to $\derb{\B}$ for any bounded complex $A^\bullet$ of $\derb{\A}$, consequently inducing a right derived functor on the level of bounded derived categories

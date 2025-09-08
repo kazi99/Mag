@@ -9,7 +9,7 @@ This short chapter's purpose is mainly to establish the language of lattice theo
         \item \emph{symmetric:} $\intersect{x}{y} = \intersect{y}{x}$, for all $x$, $y \in \Lambda$,
         \item \emph{non-degenerate:} if $\intersect{x}{y} = 0$ for all $y \in \Lambda$, then $x = 0$,
     \end{itemize}
-    is called a \emph{lattice}. Lattice $\Lambda$ is said to be \emph{even} if $\intersect{x}{x}$ is an even integer for all $x \in \Lambda$. An element $x \in \Lambda$ is \emph{isotropic}, if $\intersect{x}{x} = 0$.
+    is called a \emph{lattice}. Lattice $\Lambda$ is said to be \emph{even} if $\intersect{x}{x}$ is an even integer for all $x \in \Lambda$. An element $x \in \Lambda$ is \emph{isotropic} if $\intersect{x}{x} = 0$.
     % a non-degenerate symmetric bilinear form $\intersect{\cdot}{\cdot} \colon \Lambda \times \Lambda \to \Z$ is called a \emph{lattice}. The lattice is said to be \emph{even} if $\intersect{x}{x}$ is an even integer for all $x \in \Lambda$.
 \end{definition}
 
@@ -17,7 +17,7 @@ By picking an integral basis of $\Lambda$ one can represent a lattice by a symme
 \[
     \bigl( (x_i.x_j)\bigr)_{1 \leq i, j \leq n}.
 \]
-Determinant of the intersection matrix is called the \emph{discriminant} of the lattice $\Lambda$, denoted $\operatorname{disc}\Lambda$, and is independent of the choice of the integral basis for $\Lambda$. Upon tensoring $\Lambda$ with $\R$ and $\R$-linearly extending the bilinear form $\intersect{\cdot}{\cdot}$, we obtain a non-degenerate symmetric bilinear form on $\Lambda \otimes_\Z \R$. These are known to be diagonalizable with only $1$ or $-1$ on the diagonal and we let $n_\pm$ denote the number of $\pm 1$ on the diagonal. The quantities $n_\pm$ are readily seen to be invariants of $\Lambda$. We call the pair $(n_+, n_-)$ the \emph{signature} of $\Lambda$ and the $n_+ + n_- = \rk\Lambda$ the \emph{rank} of $\Lambda$. The lattice $\Lambda$ is called \emph{definite}, if either $n_+ = 0$ or $n_- = 0$ and \emph{indefinite} otherwise.
+The determinant of the intersection matrix is called the \emph{discriminant} of the lattice $\Lambda$, denoted $\operatorname{disc}\Lambda$, and is independent of the choice of the integral basis for $\Lambda$. Upon tensoring $\Lambda$ with $\R$ and $\R$-linearly extending the bilinear form $\intersect{\cdot}{\cdot}$, we obtain a non-degenerate symmetric bilinear form on $\Lambda \otimes_\Z \R$. These are known to be diagonalizable with only $1$ or $-1$ on the diagonal and we let $n_\pm$ denote the number of $\pm 1$ on the diagonal. The quantities $n_\pm$ are readily seen to be invariants of $\Lambda$. We call the pair $(n_+, n_-)$ the \emph{signature} of $\Lambda$ and the $n_+ + n_- = \rk\Lambda$ the \emph{rank} of $\Lambda$. The lattice $\Lambda$ is called \emph{definite} if either $n_+ = 0$ or $n_- = 0$ and \emph{indefinite} otherwise.
 
 
 
@@ -30,7 +30,7 @@ Determinant of the intersection matrix is called the \emph{discriminant} of the 
 % We call the pair $(n_+, n_-)$ the \emph{signature} of $\Lambda$ and the quantity $n_+ + n_- = \rk{\Lambda}$ the \emph{rank} of $\Lambda$. The lattice $\Lambda$ is called \emph{definite}, if either $n_+ = 0$ or $n_- = 0$ and \emph{indefinite} otherwise.
 
 \begin{definition}
-    A lattice $\Lambda$ is called \emph{unimodular}, if the morphism
+    A lattice $\Lambda$ is called \emph{unimodular} if the morphism
     \[
         i_\Lambda \colon \Lambda \to \Lambda^* = \Hom_\Z(\Lambda, \Z), \qquad x \mapsto \intersect{x}{-}
     \]
@@ -84,9 +84,9 @@ Determinant of the intersection matrix is called the \emph{discriminant} of the 
 \begin{definition}
     Let $\Lambda$ and $\Lambda'$ be two lattices. A morphism of lattices or an \emph{isometry} is a $\Z$-linear map $\phi \colon \Lambda \to \Lambda'$ satisfying
     \[
-        \intersect{\phi(x)}{\phi(y)}_{\Lambda'} = \intersect{x}{y}_{\Lambda'},
+        \intersect{\phi(x)}{\phi(y)}_{\Lambda'} = \intersect{x}{y}_{\Lambda},
     \]
-    for all $x$, $y \in \Lambda$. A lattice $L$ is called a \emph{sublattice} of $\Lambda$, if $L \subseteq \Lambda$ as underlying $\Z$-modules and the embedding $L\hookrightarrow \Lambda$ is an isometry. The \emph{orthogonal complement} of a sublattice $L$ in $\Lambda$ is defined to be
+    for all $x$, $y \in \Lambda$. A lattice $L$ is called a \emph{sublattice} of $\Lambda$ if $L \subseteq \Lambda$ as underlying $\Z$-modules and the embedding $L\hookrightarrow \Lambda$ is an isometry. The \emph{orthogonal complement} of a sublattice $L$ in $\Lambda$ is defined to be
     \[
         L^\perp = \{x \in \Lambda \mid \intersect{x}{y} = 0, \text{ for all $y \in L$}\}.
     \]
@@ -94,7 +94,7 @@ Determinant of the intersection matrix is called the \emph{discriminant} of the 
 
 \begin{lemma}
     \label{orthogonal complemet is a lattice}
-    Let $L$ be a sublattice of a lattice $\Lambda$. Then the orthogonal complement $L^\perp$ with the inherited bilinear from on $\Lambda$ is also a sublattice.
+    Let $L$ be a sublattice of a lattice $\Lambda$. Then the orthogonal complement $L^\perp$ with the inherited bilinear form on $\Lambda$ is also a sublattice.
 \end{lemma}
 
 \begin{proof}
@@ -102,11 +102,11 @@ Determinant of the intersection matrix is called the \emph{discriminant} of the 
     \[  
         V \longrightarrow W^*, \qquad v \mapsto \intersect{v}{-}|_W
     \]  
-    is surjective. Its kernel is $W^\perp$, so $\dim W^\perp + \dim W = \dim V$. Thus $W^\perp \oplus W = V$ is an orthogonal direct sum decomposition. Assume now that $w \in W^\perp$ is such that $\intersect{w}{w'} = 0$ for all $w \in W^\perp$. Then $\intersect{w}{v} = 0$ for all $v \in V$ and by non-degeneracy of the form on $V$ this implies $v = 0$.
+    is surjective. Its kernel is $W^\perp$, so $\dim W^\perp + \dim W = \dim V$. Thus $W^\perp \oplus W = V$ is an orthogonal direct sum decomposition. Assume now that $w \in W^\perp$ is such that $\intersect{w}{w'} = 0$ for all $w \in W^\perp$. Then $\intersect{w}{v} = 0$ for all $v \in V$ and by non-degeneracy of the form on $V$ this implies $w = 0$.
 \end{proof}
 
 \begin{definition}
-    An embedding of lattices $L \hookrightarrow \Lambda$ is said to be \emph{primitive}, if its cokernel $\coker(L \hookrightarrow \Lambda) = \Lambda/L$ is free. In that case we also call $L$ a \emph{primitive sublattice} of $\Lambda$.
+    An embedding of lattices $L \hookrightarrow \Lambda$ is said to be \emph{primitive} if its cokernel $\coker(L \hookrightarrow \Lambda) = \Lambda/L$ is free. In that case we also call $L$ a \emph{primitive sublattice} of $\Lambda$.
 \end{definition}
 
 \begin{example}
@@ -132,8 +132,10 @@ Determinant of the intersection matrix is called the \emph{discriminant} of the 
     Since $\Lambda/L$ and $\Lambda'/\Lambda$ are free abelian, the short exact sequences $0 \to L \to \Lambda \to \Lambda/L \to 0$ and $0 \to \Lambda \to \Lambda' \to \Lambda'/\Lambda \to 0$ are split. This means that there are retracts $r \colon \Lambda \to L$ and $r' \colon \Lambda' \to \Lambda$, thus the short exact sequence $0 \to L \to \Lambda' \to \Lambda'/L \to 0$ also splits, which makes $\Lambda'/L$ free as a subgroup of $\Lambda'$.
 \end{proof}
 
-\begin{proposition}[Nikulin, \cite{Nikulin1980}]
+\begin{proposition}
+    % [Nikulin, \cite{Nikulin1980}]
     \label{extending an isometry 1}
+    \emph{\cite{Nikulin1980}}
     Let $L$ and $\Lambda$ be even lattices and assume $\Lambda$ is unimodular. Let $i_0$ and $i_1$ denote two primitive embeddings $L \hookrightarrow \Lambda$. Suppose the orthogonal complement $i_0(L)^\perp$ in $\Lambda$ contains a copy of the hyperbolic lattice $\hyperbolic$. Then there exists an isometry $\phi \colon \Lambda \to \Lambda$ such that $i_1 = \phi \circ i_0$.
     \[\begin{tikzcd}[row sep = 1em, column sep = 2em]
         % https://q.uiver.app/#q=WzAsMyxbMSwwLCJMIl0sWzAsMiwiXFxMYW1iZGEiXSxbMiwyLCJcXExhbWJkYSJdLFswLDEsImlfMCIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoiYm90dG9tIn19fV0sWzAsMiwiaV8xIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMSwyLCJcXHBoaSJdXQ==
@@ -171,7 +173,7 @@ Determinant of the intersection matrix is called the \emph{discriminant} of the 
 
 \begin{theorem}[Milnor, \text{\cite[Theorem 1.1.1]{Nikulin1980}}]
     \label{Milnor}
-    Let $(n_+,n_-)$ be a pair of non-negative integers. Then there exists an even unimodular lattice of signature $(n_+, n_-)$, if and only if $n_+ - n_- \equiv 0 \ (8)$. If $n_+$, $n_- > 0$ then the (indefinite) lattice is unique up to isomorphism.
+    Let $(n_+,n_-)$ be a pair of non-negative integers. Then there exists an even unimodular lattice of signature $(n_+, n_-)$ if and only if $n_+ - n_- \equiv 0 \ (\text{\emph{mod} }8)$. If $n_+$, $n_- > 0$, then the (indefinite) lattice is unique up to isomorphism.
 \end{theorem}
 
 % \begin{corollary}
@@ -189,7 +191,7 @@ Its easy yet powerful corollary allow us to abstractly identify the lattice stru
 
 \begin{theorem}
     \label{Classification of indefinite even unimodular lattices}
-    Let $\Lambda$ be an indefinite even unimodular lattice of signature $(n_+, n_-)$. Setting $\tau = n_+ - n_-$ to be the index of $\Lambda$, then $\tau \equiv 0 \ (8)$ and
+    Let $\Lambda$ be an indefinite even unimodular lattice of signature $(n_+, n_-)$. Setting $\tau = n_+ - n_-$ to be the index of $\Lambda$, then $\tau \equiv 0 \ (\text{\emph{mod }}8)$ and
     \begin{center}
         \begin{tabular}{r l}
             if $\tau \geq 0$, then & $\Lambda \iso E_8^{\oplus \frac{\tau}{8}} \oplus \hyperbolic^{\oplus n_-},$ \\

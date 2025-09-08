@@ -23,8 +23,8 @@
 %   - izr.~prof.~dr.~Ime Priimek
 %   - prof.~dr.~Ime Priimek
 %   za druge variante uporabite ustrezne ukaze
-\mentor{.}
-% \somentor{...}
+\mentor{doc.~dr.~Matej Filip}
+\somentor{dr.~Reinder Meinsma}
 % \mentorica{...}
 % \somentorica{...}
 % \mentorja{...}{...}
@@ -35,9 +35,9 @@
 % - doc.~dr. = Assist.~Prof.~Dr.
 % - izr.~prof.~dr. = Assoc.~Prof.~Dr.
 % - prof.~dr. = Prof.~Dr.
-\supervisor{.}
+\supervisor{Assist.~Prof.~Dr.~Matej Filip}
 % \supervisor{...}
-% \cosupervisor{...}
+\cosupervisor{Dr.~Reinder Meinsma}
 % \supervisors{...}{...}
 % \cosupervisors{...}{...}
 
@@ -47,20 +47,28 @@
 % - povzetek v slovenščini
 %   V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga
 %   organizacije dela, torej v katerem razdelku je kaj, pač pa le opis vsebine.
-\povzetek{.}
+\povzetek{
+    V zaključnem delu konstruiramo izpeljano kategorijo abelove kategorije, jo opremimo s strukturo triangulirane kategorije in definiramo izpeljane funktorje. Posebej se posvetimo omejeni izpeljani kategoriji koherentnih snopov na gladki projektivni raznoterosti in vpeljemo izpeljane funktorje, ki izhajajo iz geometrije. Preko njih definiramo in obravnavamo Fourier--Mukaijeve transformacije, najprej na nivoju omejenih izpeljanih kategorij, nato na nivoju $K$-grup in nazadnje na racionalni kohomologiji. Za tem se osredotočimo na kompleksne K3 ploskve in opišemo nekaj njihovih invariant, še zlasti presečno formo in Hodgevo strukturo. Nazadnje predstavimo Orlovov dokaz izpeljanega Torellijevega izrek, ki karakterizira izpeljano ekvivalentne K3 ploskve preko Mukaijevih mrež in pridruženih prostorov modulov stabilnih snopov.
+}
 
 % - povzetek v angleščini
-\abstract{.}
+\abstract{
+    In this thesis we construct the derived category of an abelian category, equip it with a triangulated structure and define derived functors. In particular we address the bounded derived category of coherent sheaves on a smooth projective variety and introduce derived functors of geometric origin. Utilizing them we define and study Fourier--Mukai transforms first on the level of derived categories, then on the level of $K$-groups and lastly on rational cohomology. Focusing on complex K3 surfaces we describe some of their invariants, most notably their intersection form and associated Hodge structure. Lastly we present Orlov's proof of the derived Torelli theorem, which characterizes derived equivalent K3 surfaces in terms of their Mukai lattices and the associated moduli space of stable sheaves. 
+
+    % The aim of this thesis is to develop the necessary 
+    % We cover triangulated categories and categories of complexes. We define the derived category of an abelian category. 
+
+}
 
 % - klasifikacijske oznake, ločene z vejicami
 %   Oznake, ki opisujejo področje dela, so dostopne na strani https://www.ams.org/msc/
-\klasifikacija{.}
+\klasifikacija{14F08, 14J28, 18G80}
 
 % - ključne besede, ki nastopajo v delu, ločene s \sep
-\kljucnebesede{.}
+\kljucnebesede{triangulirana kategorija\sep izpeljana kategorija\sep Fourier--Mukaijeva transformacija\sep K3 ploskev\sep izpeljani Torellijev izrek}
 
 % - angleški prevod ključnih besed
-\keywords{.}
+\keywords{triangulated category, derived category\sep Fourier--Mukai transform\sep K3 surface, derived Torelli theorem}
 
 % - neobvezna zahvala
 \zahvala{.}
@@ -89,10 +97,6 @@
 \input{content/0-categorical-prerequisites.tex}
 \newpage
 
-% \input{chapters/derived-categories.tex}
-% \newpage
-% \newpage
-
 \input{content/1-derived-categories.tex}
 \newpage
 
@@ -111,7 +115,5 @@
 \appendix
 \input{chapters/spectral-sequences.tex}
 \input{content/B-Lattice-theory.tex}
-
-% \input{chapters/test.tex}
 
 \end{document}
