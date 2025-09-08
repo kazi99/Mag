@@ -259,4 +259,14 @@
 % \setlength\parindent{0pt}
 \usepackage{parskip}
 
-\usepackage{doi}
+\usepackage{hyperref}
+\usepackage{url}               % provides \nolinkurl and good breakpoints
+\def\UrlBreaks{\do\/\do-\do_}  % allow breaks after / - _ if needed
+\def\UrlBreaks{\do\/\do-\do_\do.}
+
+
+% print "doi:" as plain text, but make only the DOI itself the clickable link
+\newcommand{\doiretarda}{\textup{\textsc{doi: }}\href{https://doi.org/10.1007/PL00004847}{\texttt{10.1007/}}}
+\newcommand{\doiretardb}{\href{https://doi.org/10.1007/PL00004847}{\texttt{PL00004847}}}
+\newcommand{\doiretardc}{\textup{\textsc{doi: }}\href{https://doi.org/10.1017/S002776300001922X}{\texttt{10.1017/}}}
+\newcommand{\doiretardd}{\href{https://doi.org/10.1017/S002776300001922X}{\texttt{S002776300001922X}}}
