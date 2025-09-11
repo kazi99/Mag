@@ -16,7 +16,7 @@ A \emph{direct sum} of objects $X$ and $Y$ in a category $\mathcal C$ is an obje
         $i_X\colon X \to X \oplus Y$ & $i_Y\colon Y \to X \oplus Y$ \\
     \end{tabular}
 \end{center}
-for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct. For a pair of morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$ the unique induced morphism into the product $Z \to X \oplus Y$ is denoted by $(f_X, f_Y)$ and for a pair of morphisms $g_X \colon X \to Z$ and $g_Y \colon Y \to Z$, the unique induced morphism from the coproduct $X \oplus Y \to Z$ is denoted by $\langle g_X, g_Y \rangle$. For morphisms 
+for which the pair $p_X, p_Y$ is the categorical product of $X$ and $Y$ and the pair $i_X, i_Y$ is the categorical coproduct of $X$ and $Y$. For a pair of morphisms $f_X \colon Z \to X$ and $f_Y \colon Z \to Y$ the unique induced morphism into the product $Z \to X \oplus Y$ is denoted by $(f_X, f_Y)$ and for a pair of morphisms $g_X \colon X \to Z$ and $g_Y \colon Y \to Z$, the unique induced morphism from the coproduct $X \oplus Y \to Z$ is denoted by $\langle g_X, g_Y \rangle$. For morphisms 
 \begin{center}
     \begin{tabular}{c c}
         $f_{00}\colon X_0 \to Y_0$ & $f_{01}\colon X_0 \to Y_1$ \\
@@ -116,7 +116,7 @@ which we will be denoting with the matrix
 
 For a morphism $f\colon X \to Y$ in a $k$-linear category $\A$ recall that the \emph{kernel} of $f$ is the equalizer of $f$ and $0$ in $\A$, if it exists, and, dually, the \emph{cokernel} of $f$ is the coequalizer of $f$ and $0$, if it exists. It is well-known and easy to verify that the structure maps $\ker f \hookrightarrow X$ and $Y \twoheadrightarrow \coker f$ are a monomorphism and an epimorphism respectively. We also define the \emph{image} and the \emph{coimage} of $f$ to be
 \begin{align*}
-    (\im f \to Y) &:= \ker(Y \to \coker f) \\
+    (\im f \to Y) &:= \ker(Y \to \coker f), \\
     (X \to \coim f) &:= \coker(\ker f \to X).
 \end{align*}
 Notice that the image and the coimage, just like the kernel and the cokernel, are defined to be morphisms, not only objects. Sometimes these are called their \emph{structure morphisms}.
@@ -1207,7 +1207,7 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
         % \begin{pmatrix}
         %     -f^{i+1} & \id{A} & 0
         % \end{pmatrix}
-        \left(-f^{i+1}, \id{A}, 0\right) 
+        \left(-f^{i+1}, \id{A}, 0\right), 
         \qquad g^i \colon A^{i+1} \longrightarrow B^{i+1} \oplus A^{i+1} \oplus B^i.
     \]
     The computation below then shows that $g$ is a chain map. Indeed, omitting the indexes for clarity we have
@@ -1251,7 +1251,7 @@ The proof of this proposition, more precisely the verification of axiom \ref{TR2
     Next we will show that the projection $p \colon C(\tau)^\bullet \to A[1]^\bullet$, given by
     % The homotopic inverse to $g$ is defined to be the projection onto the $A^\bullet$ component, namely $p \colon C(\tau)^\bullet \to A[1]^\bullet$, given by
     \[
-        p^i = \left(0, \id{A}, 0\right) \qquad p^i \colon B^{i+1} \oplus A^{i+1} \oplus B^{i} \longrightarrow A^{i+1}
+        p^i = \left(0, \id{A}, 0\right), \qquad p^i \colon B^{i+1} \oplus A^{i+1} \oplus B^{i} \longrightarrow A^{i+1}
     \]
     is a homotopy inverse to $g$.
     This is a left inverse to $g$ already in $\com(\A)$, so we only need to check $g \circ p \htpy \id{C(\tau)}$. One computes that $g^i \circ p^i - \id{C(\tau)}$ is represented by a matrix
@@ -1361,7 +1361,7 @@ For convenience we will in practice assume that unless otherwise stated our comp
 Lastly we mention that $\A$ can naturally be seen as a full subcategory of $\kcat{\A}$. This is due to the functor $\A \to \kcat{\A}$, defined by the following action on objects and morphisms, being fully faithful. 
 \begin{center}
     \begin{tabular}{r r c l}
-        \textsl{Objects:} & $A$ & $\longmapsto$ & $(\cdots \to 0 \to A \to 0 \to \cdots)$, \\
+        \textsl{Objects:} & $A$ & $\longmapsto$ & $(\cdots \to 0 \to A \to 0 \to \cdots)$. \\
         \textsl{Morphisms:} & $f$ & $\longmapsto$ & $[(f^i)_{i \in \Z}]$, where $f^0 = f$ and $f^i = 0$ for $i \neq 0$.
     \end{tabular}
 \end{center}

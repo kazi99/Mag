@@ -24,7 +24,7 @@ K3 surfaces come in two flavours, algebraic and complex, essentially equivalent,
     Let $X$ be a smooth quartic in $\PP^3$, meaning a smooth projective variety given by some homogeneous polynomial equation of degree four.
     We will show that any such variety is a K3 surface. Let $f \in \Gamma(\PP^3, \struct{\PP^3}(4))$ be the defining homogeneous polynomial for $X$ of degree four.
     % We will now show that any such smooth quartic $X$ in $\PP^3$, defined by some homogeneous degree $4$ polynomial $f \in \Gamma(X, \struct{\PP^3}(4))$, is a K3 surface. 
-    At this point we recall that $\struct{\PP^3}(n)$ for all $n \in \Z$ denote \emph{Serre's twisting sheaves} on the projective space $\PP^3$ and refer the reader to \cite[\S II.5]{Hartshorne1977} for its construction.
+    At this point we recall that $\struct{\PP^3}(n)$ for some $n \in \Z$ denotes \emph{Serre's twisting sheaves} on the projective space $\PP^3$ and refer the reader to \cite[\S II.5]{Hartshorne1977} for its construction.
     Since $X$ is a hypersurface in $\PP^3$ it is of dimension two, \ie a surface. Let $i \colon X \hookrightarrow \PP^3$ denote the closed embedding of $X$ into $\PP^3$ and consider the following short exact sequence of coherent sheaves on $\PP^3$
     \[
         0 \to \struct{\PP^3}(-4) \to \struct{\PP^3} \to i_*\struct{X} \to 0.
@@ -51,7 +51,7 @@ K3 surfaces come in two flavours, algebraic and complex, essentially equivalent,
         \label{eq: conormal SES}
         0 \to \struct{X}(-4) \to i^*\Omega_{\PP^3} \to \Omega_X \to 0.
     \end{equation}
-    The first non-trivial morphism in this short exact sequence can roughly be described by sending a section $s$ of $\struct{X}(-4)$ to $d(f \cdot s)$. The second non-trivial morphism can be interpreted as sending a section of the form $d\varphi$ of $i^*\Omega_{\PP^3}$ to $d(\varphi|_X)$. 
+    Here $\struct{X}(-4)$ denotes the pull-back $i^*\struct{\PP^3}(-4)$. The first non-trivial morphism in this short exact sequence can roughly be described by sending a section $s$ of $\struct{X}(-4)$ to $d(f \cdot s)$. The second non-trivial morphism can be interpreted as sending a section of the form $d\varphi$ of $i^*\Omega_{\PP^3}$ to $d(\varphi|_X)$. 
 
     Recall that for a locally free sheaf $\E$ of rank $n$ its determinant line bundle is defined as $\det(\E) = \bigwedge^n \E$. Moreover, we know that for a short exact sequence of locally free sheaves $0 \to \E_0 \to \E_1 \to \E_2 \to 0$, we have $\det(\E_1) \iso \det(\E_0) \otimes \det(\E_2)$. Thus taking determinants of \eqref{eq: conormal SES}, we obtain
     \[
