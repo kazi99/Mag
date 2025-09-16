@@ -13,7 +13,7 @@ Throughout this chapter $\A$ will denote an abelian category over $k$ and $k$ wi
 
 In algebraic geometry cohomology of a geometric object, like a scheme or a variety, $X$ with respect to some coherent sheaf $\F$ plays a very important role. One way of computing $H^i(X, \F)$, which we shall also feature in Section \ref{Subsection: Derived functors in geometry}, involves the following. Instead of directly 
 % \info{intrinsically might not be the best word as resolutions in certain cases do represent a sheaf intrinsically in the sense of generators and relations... (Hilbert syzygy thm)}
-studying the sheaf $\F$, we represent it with a so called \emph{resolution}, which consists of a complex of sheaves $F^\bullet$, built up from sheaves $F^i$, for $i \in \Z$, belonging to some class of sheaves, which is well behaved under cohomology, and a quasi-isomorphism of the form $F^\bullet \to \F$ or $\F \to F^\bullet$. 
+studying the sheaf $\F$, we represent it with a so-called \emph{resolution}, which consists of a complex of sheaves $\E^\bullet$, built up from sheaves $\E^i$, for $i \in \Z$, belonging to some class of sheaves, which is well behaved under cohomology, and a quasi-isomorphism of the form $\E^\bullet \to \F$ or $\F \to \E^\bullet$. 
 % After observing that using two different resolutions of $\F$ 
 After noting that the sheaf $\F$ can be seen as a complex concentrated in degree $0$ and observing that replacing a resolution of $\F$ with another one
 results in computing isomorphic cohomology groups, we are motivated  
@@ -756,7 +756,7 @@ A category $\A$ is said to \emph{have enough injectives} if every object $A$ of 
 \end{example}
 
 Injective objects will be utilized as building blocks for representing complexes. They are the preferred class of objects to work with in this context because they enable a favourable interplay between cohomology and homotopy. 
-For example, as a consequence of lemma \ref{acyclic to injective is nulhomotopic}, every acyclic bounded below complex of injectives $I^\bullet$ is actually null-homotopic \ie isomorphic to the object $0$ in $\kplus{\A}$. 
+For example, as a consequence of Lemma \ref{acyclic to injective is nulhomotopic}, every acyclic bounded below complex of injectives $I^\bullet$ is actually null-homotopic \ie isomorphic to the object $0$ in $\kplus{\A}$. 
 In light of this, consider a complex $A^\bullet$ of $\kplus{\A}$. A complex of injectives $I^\bullet$ of $\kplus{\J}$ together with a quasi-isomorphism $f \colon A^\bullet \to I^\bullet$ is called an \emph{injective resolution} of $A^\bullet$.
 Later we will also see that this injective resolution is unique up to homotopy equivalence.
 % of their nice behaviour with respect to cohomology and homotopy
@@ -957,7 +957,7 @@ Later we will also see that this injective resolution is unique up to homotopy e
 \end{lemma}
 
 \begin{proof}
-    We already know this is a $k$-module homomorphism, thus it is enough to show that it is bijective. This is accomplished by constructing its inverse. Let $\phi \colon A^\bullet \to I^\bullet$ be a morphism in $\derplus{\A}$ and let $A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet$ be its left roof representative. The morphism $s$ being a quasi-isomorphism implies that $s^* \colon \Hom_{\kplus{\A}}(A^\bullet, I^\bullet) \to \Hom_{\kplus{\A}}(B^\bullet, I^\bullet)$ is bijective by lemma \ref{D+ K+ aux lemma 1}, so there is a unique morphism $g\colon A^\bullet \to I^\bullet$, such that $f = g \circ s$ in $\kplus{\A}$. The inverse to \eqref{eq: morphism action of Q} is then defined by sending $\phi$ to $g$. 
+    We already know this is a $k$-module homomorphism, thus it is enough to show that it is bijective. This is accomplished by constructing its inverse. Let $\phi \colon A^\bullet \to I^\bullet$ be a morphism in $\derplus{\A}$ and let $A^\bullet \xleftarrow{ \ s \ } B^\bullet \xrightarrow{ \ f \ } I^\bullet$ be its left roof representative. The morphism $s$ being a quasi-isomorphism implies that $s^* \colon \Hom_{\kplus{\A}}(A^\bullet, I^\bullet) \to \Hom_{\kplus{\A}}(B^\bullet, I^\bullet)$ is bijective by Lemma \ref{D+ K+ aux lemma 1}, so there is a unique morphism $g\colon A^\bullet \to I^\bullet$, such that $f = g \circ s$ in $\kplus{\A}$. The inverse to \eqref{eq: morphism action of Q} is then defined by sending $\phi$ to $g$. 
     
     First let's argue why this map is well defined, \ie independent of the choice of a left roof representative for $\phi$. We pick two left roof representatives $A^\bullet \xleftarrow{ \ s_0 \ } B_0^\bullet \xrightarrow{ \ f_0 \ } I^\bullet$ and $A^\bullet \xleftarrow{ \ s_1 \ } B_1^\bullet \xrightarrow{ \ f_1 \ } I^\bullet$ for $\phi$ and let $g_0$ and $g_1$ be such that $f_i = g_i \circ s_i$ for both $i$. As the roofs are equivalent there are quasi-isomorphisms $t_0 \colon C^\bullet \to B^\bullet_0$ and $t_1 \colon C^\bullet \to B^\bullet_1$, which fit into the following commutative diagram.
     \[\begin{tikzcd}[row sep = small, column sep = small]
@@ -1175,7 +1175,7 @@ We start with some establishing lemmas.
 \end{proposition}
 
 \begin{proof}
-    The claim follows from the universal property of $\dercat{\A}$ (\cf proposition \ref{universal property for D(A) proposition}), as $Q_\B \circ F$ sends quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\dercat{\B}$.
+    The claim follows from the universal property of $\dercat{\A}$ (\cf Proposition \ref{universal property for D(A) proposition}), as $Q_\B \circ F$ sends quasi-isomorphisms of $\kcat{\A}$ to isomorphisms of $\dercat{\B}$.
 \end{proof}
 
 \begin{example}
@@ -1229,7 +1229,7 @@ Let $F\colon \A \to \B$ be a left exact functor between abelian categories with 
 \end{equation}
 The functor $\rderived{}{F}$ is clearly triangulated for it is a composition of triangulated functors. Note that in this case the functor $\rderived{}{F}$ does not necessarily make the square \eqref{eq: exact functor derives} commutative, but rather satisfies another kind of universal property, which we will mention towards the end of this subsection.
 
-We will use this construction many times through the course of the thesis, so we reiterate the above definition by providing a simple recipe for computing the image of $\rderived{}{F}$ on complexes $A^\bullet$ of $\derplus{\A}$.   
+We will use this construction many times throughout the course of the thesis, so we reiterate the above definition by providing a simple recipe for computing the image of $\rderived{}{F}$ on a complex $A^\bullet$ of $\derplus{\A}$.   
 % a complex $A^\bullet$ via the functor $\rderived{}{F}$.
 % and conceptually computing the image of a right derived functor $\rderived{}{F}$ on a complex $A^\bullet$ from $\kplus{\A}$ will be achieved using the next two steps. 
 \begin{enumerate}
@@ -1283,12 +1283,12 @@ In this case \textsc{Method 1} of constructing right derived functors will not w
 
 In the presence of an $F$-adapted class $\I$ we will now construct the right derived functor of $F$. Firstly, we upgrade the class of objects $\I$ to a full $k$-linear subcategory of $\A$, also denoted by $\I$, having its class of objects be precisely the $F$-adapted class $\I$. 
 % This is done by declaring $\hom_\J(X, Y) := \hom_\A(X, Y)$ for all objects $X$, $Y$ of the class $\I$. 
-Then extending $F$ term-wise to a functor on the level of homotopy categories, also denoted by $F \colon \kplus{\I} \to \kplus{\A}$, utilizing the procedure outlined at the end of Subsection \ref{subsection: Derived functors of exact functors}, we obtain a functor, which maps acyclic complexes to acyclic complexes because by definition the $F$-adapted class $\I$ satisfies condition \ref{F-adapted iii} of Definition \ref{F-adapted}. By Proposition \ref{Exact functor induces a derived functor} the functor $F$ descends to a well-defined functor on the level of derived categories
+Then extending $F$ term-wise to a functor on the level of homotopy categories, also denoted by $F \colon \kplus{\I} \to \kplus{\B}$, utilizing the procedure outlined at the end of Subsection \ref{subsection: Derived functors of exact functors}, we obtain a functor, which maps acyclic complexes to acyclic complexes because by definition the $F$-adapted class $\I$ satisfies condition \ref{F-adapted iii} of Definition \ref{F-adapted}. By Proposition \ref{Exact functor induces a derived functor} the functor $F$ descends to a well-defined functor on the level of derived categories
 \begin{equation}
     \label{eq: D+(I) -> D+(B)}
     \derplus{\I} \to \derplus{\B}.
 \end{equation}
-Since we want to define the derived functor $\rderived{}{F}$, whose domain is $\derplus{\A}$, it remains to construct a functor $\derplus{\A} \to \derplus{\I}$, which we can then post-compose with $\derplus{\I} \to \derplus{\B}$ to obtain $\rderived{}{F}$. What we will show instead is the following.
+Since we want to define the derived functor $\rderived{}{F}$, whose domain is $\derplus{\A}$, it remains to construct a functor $\derplus{\A} \to \derplus{\I}$, which we can then post-compose with the functor $\derplus{\I} \to \derplus{\B}$ to obtain $\rderived{}{F}$. What we will show instead is the following.
 
 \begin{proposition}
     \label{D+(I) = D+(A) F-adapted}
@@ -1447,7 +1447,7 @@ For two composable right exact functors the following proposition tells us that 
     % Let $F \colon \kcat{\A} \to \kcat{\B}$ and $G \colon \kcat{\B} \to \kcat{\mathcal C}$ be triangulated. 
     Let $F \colon \A \to \B$ and $G \colon \B \to \mathcal{C}$ be left exact functors between abelian categories. Suppose category $\A$ admits an $F$-adapted class $\I_F$, category $\B$ admits a $G$-adapted class $\I_G$ and assume that every object of $\I_F$ is sent to $\I_G$ by $F$. Then $\rderived{}{F}$, $\rderived{}{G}$ and $\rderived{}{(G \circ F)}$ exist and there is a natural isomorphism of functors
     \[
-        \rderived{}{(G \circ F)} \natiso \rderived{}{G} \circ \rderived{}{F} \colon \qquad \derplus{\A} \to \derplus{\mathcal C}.
+        \rderived{}{(G \circ F)} \natiso \rderived{}{G} \circ \rderived{}{F} \colon \quad \derplus{\A} \to \derplus{\mathcal C}.
     \] 
 \end{proposition}
 

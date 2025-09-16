@@ -225,7 +225,7 @@ In the context of abelian categories, functors, which preserve a bit more than j
 \subsection{Triangulated categories}
 \label{Subsection: Triangulated categories}
 
-In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ $k$-linear, $T$ is moreover assumed to be $k$-linear. We usually denote its action on objects $X$ with $T(X) = X[1]$ and likewise its action on morphisms $f$ with $T(f) = f[1]$. A \emph{triangle} in a category with translation $(\D, T)$ is a triple of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
+In order to formulate the definition of a triangulated category more concisely, we introduce some preliminary notions. A \emph{category with translation} is a pair $(\D, T)$, where $\D$ is a category and $T$ is an auto-equivalence $T\colon \D \to \D$ called the \emph{translation functor}. If $\D$ is $k$-linear, $T$ is moreover assumed to be $k$-linear. We usually denote its action on objects $X$ with $T(X) = X[1]$ and likewise its action on morphisms $f$ with $T(f) = f[1]$. A \emph{triangle} in a category with translation $(\D, T)$ is a triple of composable morphisms $(f, g, h)$ of category $\D$ taking the form 
 \begin{equation}
     \label{eq: basic distinguished triangle}
     X\xrightarrow{\ f \ } Y \xrightarrow{\ g \ } Z \xrightarrow{\ h \ } X[1].
@@ -394,7 +394,7 @@ Omitting the so-called \emph{octahedral} axiom \ref{TR4} we arrive at the defini
 \end{proposition}
 
 \begin{proof}
-    First, by axiom \ref{TR2}, triangle $Y \xrightarrow{ g } Z \xrightarrow{ h } X[1] \xrightarrow{-f[1]} Y[1]$ is distinguished. By axiom \ref{TR1} \ref{TR1 ii}, triangle $Z \xrightarrow{\id{Z}} Z \to 0 \to Z[1]$ is distinguished and, by axiom \ref{TR3}, there exits a morphism from the first triangle to the second one depicted in the diagram below.
+    First, by axiom \ref{TR2}, triangle $Y \xrightarrow{ g } Z \xrightarrow{ h } X[1] \xrightarrow{-f[1]} Y[1]$ is distinguished. By axiom \ref{TR1}\ref{TR1 ii}, triangle $Z \xrightarrow{\id{Z}} Z \to 0 \to Z[1]$ is distinguished and, by axiom \ref{TR3}, there exists a morphism from the first triangle to the second one depicted in the diagram below.
     \[\begin{tikzcd}[column sep = normal, row sep = 2.5em]
         % https://q.uiver.app/#q=WzAsOCxbMCwwLCJZIl0sWzEsMCwiWiJdLFsyLDAsIlhbMV0iXSxbMywwLCJZWzFdIl0sWzAsMSwiWiJdLFsxLDEsIloiXSxbMiwxLCIwIl0sWzMsMSwiWlsxXSJdLFswLDEsImciXSxbMSwyLCJoIl0sWzIsMywiLWZbMV0iXSxbNCw1LCJcXGlke1p9Il0sWzUsNl0sWzYsN10sWzEsNSwiXFxpZHtafSJdLFsyLDZdLFszLDcsImdbMV0iLDJdLFswLDQsImciLDJdXQ==
         Y & Z & {X[1]} & {Y[1]} \\
@@ -705,11 +705,11 @@ and apply functor $H$ over it.
 \end{proof}
 
 The following are all specialized results characterizing, when a triangulated functor is an equivalence. 
-% We will use \ref{} in the proof of proposition \ref{}. 
+% We will use \ref{} in the proof of Proposition \ref{}. 
 They will be used in a fundamental way in the proof of the derived Torelli theorem. In particular we highlight 
 % Proposition \ref{Fully faithful functor on a spanning class},  and
 Corollary \ref{condition for functor to be an equivalence} and Proposition \ref{Serre functors and adjoints}, which will be directly used in the proof. We mention that all the results of this part can be found in \cite[\S 1]{huybrechts2006fouriermukai}.
-% We will exploit corollary \ref{condition for functor to be an equivalence} and proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
+% We will exploit corollary \ref{condition for functor to be an equivalence} and Proposition \ref{Serre functors and adjoints} in the proof of the Derived Torelli theorem in section \ref{}.
 
 \begin{definition}
     Let $\D$ be a triangulated category. A collection of objects $\Omega$ in $\D$ forms a \emph{spanning class} of $\D$, if for all objects $X$ of $\D$, the following two conditions are satisfied. 
@@ -1096,7 +1096,7 @@ The homotopy category of complexes in $\A$, denoted by $\kcat{\A}$, is defined t
         \textsl{Morphisms:} & $\Hom_{\kcat{\A}}(A^\bullet, B^\bullet) := \Hom_{\com(\A)}(A^\bullet, B^\bullet)/_\htpy$.
     \end{tabular}
 \end{center}
-The composition law descends to the quotient by lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[\id{A^\bullet}]$. All the Hom-sets $\Hom_{\kcat{\A}}(X, Y)$ are $k$-modules by lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The direct sum of two complexes $A^\bullet$ and $B^\bullet$ consists of an object $A^\bullet \oplus B^\bullet$ corresponding to the usual biproduct in $\com(\A)$ together with the homotopy classes of structure maps of its $\com(\A)$-counterpart.
+The composition law descends to the quotient by Lemma \ref{nullhomotopics form a subgroup} (ii), \ie $[g]\circ[f] := [g \circ f]$, for composable $[f]$ and $[g]$, and for any $A^\bullet$ the identity morphism is defined to be $[\id{A^\bullet}]$. All the Hom-sets $\Hom_{\kcat{\A}}(X, Y)$ are $k$-modules by Lemma \ref{nullhomotopics form a subgroup} (i) and compositions are $k$-bilinear maps. The direct sum of two complexes $A^\bullet$ and $B^\bullet$ consists of an object $A^\bullet \oplus B^\bullet$ corresponding to the usual biproduct in $\com(\A)$ together with the homotopy classes of structure maps of its $\com(\A)$-counterpart.
 
 % \vspace*{0.3 cm}
 
@@ -1469,7 +1469,7 @@ is functorial \ie respects composition and maps identity morphisms to identity m
 \[
     H^i \colon \com(\A) \to \A
 \]
-a $k$-linear functor. Due to the following proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defined $k$-linear functor 
+a $k$-linear functor. Due to the following Proposition \ref{cohomology of nulhomotopic map}, the $i$-th cohomology functor $H^i$ descends to a well defined $k$-linear functor 
 \[
     H^i \colon \kcat{\A} \to \A
 \]
@@ -1548,7 +1548,7 @@ Hence the long exact sequence of Proposition \ref{LES in cohomology} can be reph
     \[
         0 \longrightarrow B^\bullet \xrightarrow{ \ \tau_f \ } C(f)^\bullet \xrightarrow{\ \pi_f \ } A[1]^\bullet \longrightarrow 0
     \]
-    in $\com(\A)$ to which one then applies proposition \ref{LES in cohomology}.\footnote{Note that we have actually used much less than what the proposition has to offer, in particular not even the existence of the connecting morphism.}
+    in $\com(\A)$ to which one then applies Proposition \ref{LES in cohomology}.\footnote{Note that we have actually used much less than what the proposition has to offer, in particular not even the existence of the connecting morphism.}
 
     Now we argue why this is enough to show that all $H^i$ are cohomological. Since every distinguished triangle in $\kcat{\A}$ is isomorphic to a triangle of the form \eqref{eq: model for d.t. in homotopy cat.} we see that the sequence $H^0(B^\bullet) \to H^0(C^\bullet) \to H^0(A[1]^\bullet)$ is exact for any distinguished triangle $A^\bullet \to B^\bullet \to C^\bullet \to A[1]^\bullet$ by functoriality of $H^i$. Rotating the preceding triangle \ie periodically applying axiom \ref{TR2},
     % the translation functor or its quasi-inverse (both preserving distinguishness of triangles by axiom \ref{TR2}),
@@ -1557,7 +1557,7 @@ Hence the long exact sequence of Proposition \ref{LES in cohomology} can be reph
 
     % We are allowed to make this reduction because of \eqref{eq: cohomology and translation}, the fact that distinguished triangles 
     
-    % Since the long exact sequence of proposition \ref{LES in cohomology} is functorial and any distinguished triangle in $\kcat{\A}$ is isomorphic to a triangle of the form $A^\bullet \to B^\bullet \to C(f)^\bullet \to A[1]^\bullet$, we verify only that these triangles induce long exact sequences.
+    % Since the long exact sequence of Proposition \ref{LES in cohomology} is functorial and any distinguished triangle in $\kcat{\A}$ is isomorphic to a triangle of the form $A^\bullet \to B^\bullet \to C(f)^\bullet \to A[1]^\bullet$, we verify only that these triangles induce long exact sequences.
     % % be a distinguished triangle in $\kcat{\A}$. 
     % We will show that 
     % \[
